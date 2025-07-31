@@ -92,7 +92,7 @@
 </details>
 
 ### 下一步计划
-还没想好qwq
+开发**Class Widgets 2**
 
 ## 鸣谢
 ### 贡献者
@@ -100,7 +100,7 @@
 
 ### 依赖库
 - PySide6
-- RinUI(https://github.com/RinLit-233-shiroko/Rin-UI)
+- <u>[RinUI](https://github.com/RinLit-233-shiroko/Rin-UI)</u>
 
 ## 许可证
 本项目采用 GNU 通用公共许可证 v3.0 (GPL-3.0) 许可证，
