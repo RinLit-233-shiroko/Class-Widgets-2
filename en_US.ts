@@ -50,22 +50,22 @@
 <context>
     <name>Dashboard</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Dashboard.qml" line="51"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="51"/>
         <source>[ALPHA]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Dashboard.qml" line="57"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="57"/>
         <source>Dashboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Dashboard.qml" line="66"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="66"/>
         <source>Under Construction...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Dashboard.qml" line="70"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="70"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
     </message>
