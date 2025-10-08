@@ -613,7 +613,7 @@ Licensed under the GPL-3 license.</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/EntryListView.qml" line="40"/>
-        <source>No timeline selected</source>
+        <source>No schedule selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
