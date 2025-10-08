@@ -480,9 +480,13 @@ Licensed under the GPL-3 license.</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="98"/>
+        <source>Don&apos;t forget to save your changes before closing the editor or switching schedule. You can click the save button in the title bar.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Don&apos;t forget to save your changes before closing the editor or switching schedule. 
 You can click the save button in the title bar.</source>
-        <translation>在关闭编辑器或切换课程表之前，请勿忘记保存你的更改。
+        <translation type="vanished">在关闭编辑器或切换课程表之前，请勿忘记保存你的更改。
 可以在标题栏点击保存按钮。</translation>
     </message>
     <message>
@@ -1966,7 +1970,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation>小组件编辑界面</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/WidgetsContainer.qml" line="298"/>
+        <location filename="../../src/qml/ClassWidgets/components/WidgetsContainer.qml" line="300"/>
         <source>Add</source>
         <translation>添加</translation>
     </message>

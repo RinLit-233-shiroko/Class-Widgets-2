@@ -474,8 +474,7 @@ Licensed under the GPL-3 license.</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="98"/>
-        <source>Don&apos;t forget to save your changes before closing the editor or switching schedule. 
-You can click the save button in the title bar.</source>
+        <source>Don&apos;t forget to save your changes before closing the editor or switching schedule. You can click the save button in the title bar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1871,7 +1870,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/WidgetsContainer.qml" line="298"/>
+        <location filename="../../src/qml/ClassWidgets/components/WidgetsContainer.qml" line="300"/>
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
