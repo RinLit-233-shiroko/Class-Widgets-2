@@ -32,6 +32,9 @@
 - RinUI
 - Pydantic
 
-## License
+## 许可
 本项目根据 GNU General Public License v3.0 (GPL-3.0) 开放源代码许可证进行分发, 
 查看 [LICENSE](LICENSE) 文件以获取详细信息.
+
+## 本中文版文档校对
+汉化校对与翻译：白白的群子(furinafirefly) 有问题请寻找本人，谢谢.
