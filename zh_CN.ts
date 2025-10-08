@@ -186,7 +186,7 @@ Licensed under the GPL-3 license.</source>
     <message>
         <location filename="../../src/core/config/model.py" line="45"/>
         <source>New Schedule 1</source>
-        <translation type="unfinished"></translation>
+        <translation>新课程表 1</translation>
     </message>
 </context>
 <context>
@@ -363,12 +363,12 @@ Licensed under the GPL-3 license.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="84"/>
         <source>Set Start Date</source>
-        <translation type="unfinished"></translation>
+        <translation>设置开学日期</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="85"/>
         <source>Set the first day of school to calculate week numbers accurately</source>
-        <translation type="unfinished"></translation>
+        <translation>设置开学日期，以便准确计算周次</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="89"/>
@@ -378,7 +378,7 @@ Licensed under the GPL-3 license.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="101"/>
         <source>Select Date</source>
-        <translation type="unfinished"></translation>
+        <translation>选择日期</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="114"/>
@@ -388,7 +388,7 @@ Licensed under the GPL-3 license.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="115"/>
         <source>Failed to set start date. Please report this issue to the community or the developer.</source>
-        <translation type="unfinished"></translation>
+        <translation>设置开学日期失败，请向社区或者开发者提交这个问题。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="142"/>
@@ -431,7 +431,7 @@ Licensed under the GPL-3 license.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="38"/>
         <source>Save Changes</source>
-        <translation type="unfinished"></translation>
+        <translation>保存更改</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="46"/>
@@ -441,7 +441,7 @@ Licensed under the GPL-3 license.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="48"/>
         <source>Schedule saved successfully</source>
-        <translation type="unfinished">计划已成功保存</translation>
+        <translation>课程表已成功保存</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="52"/>
@@ -451,7 +451,7 @@ Licensed under the GPL-3 license.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="54"/>
         <source>Failed to save schedule, see log for details</source>
-        <translation type="unfinished">无法保存计划，请查看日志以获取详细信息</translation>
+        <translation>无法保存课程表，请查看日志以获取详细信息</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="68"/>
@@ -476,18 +476,19 @@ Licensed under the GPL-3 license.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="97"/>
         <source>Unsaved Changes</source>
-        <translation type="unfinished"></translation>
+        <translation>未保存的更改</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="98"/>
         <source>Don&apos;t forget to save your changes before closing the editor or switching schedule. 
 You can click the save button in the title bar.</source>
-        <translation type="unfinished"></translation>
+        <translation>在关闭编辑器或切换课程表之前，请勿忘记保存你的更改。
+可以在标题栏点击保存按钮。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="104"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>好</translation>
     </message>
 </context>
 <context>
@@ -676,7 +677,7 @@ You can click the save button in the title bar.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="26"/>
         <source>Open schedules folder</source>
-        <translation type="unfinished"></translation>
+        <translation>打开课程表文件夹</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="34"/>
@@ -838,17 +839,17 @@ You can click the save button in the title bar.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="128"/>
         <source>Actions</source>
-        <translation type="unfinished"></translation>
+        <translation>行动</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="133"/>
         <source>Run at Startup</source>
-        <translation type="unfinished"></translation>
+        <translation>开机自启动</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="134"/>
         <source>Run Class Widgets on startup</source>
-        <translation type="unfinished"></translation>
+        <translation>开机后自动运行 Class Widgets</translation>
     </message>
 </context>
 <context>
@@ -1609,7 +1610,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <location filename="../../src/core/utils/subjects.py" line="63"/>
         <location filename="../../src/core/utils/subjects.py" line="88"/>
         <source>Club</source>
-        <translation>社</translation>
+        <translation>社团</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="91"/>
@@ -1733,7 +1734,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Tutorial.qml" line="54"/>
         <source>Select a language</source>
-        <translation type="unfinished"></translation>
+        <translation>选择一种语言</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Tutorial.qml" line="60"/>
