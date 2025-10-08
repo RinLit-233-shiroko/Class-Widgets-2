@@ -373,7 +373,7 @@ Licensed under the GPL-3 license.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="89"/>
         <source>Set</source>
-        <translation type="unfinished">设置</translation>
+        <translation>设置</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="101"/>
@@ -383,7 +383,7 @@ Licensed under the GPL-3 license.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="114"/>
         <source>Failed</source>
-        <translation type="unfinished">失败</translation>
+        <translation>失败</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="115"/>
@@ -436,7 +436,7 @@ Licensed under the GPL-3 license.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="46"/>
         <source>Saved</source>
-        <translation type="unfinished">已保存</translation>
+        <translation>已保存</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="48"/>
@@ -446,7 +446,7 @@ Licensed under the GPL-3 license.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="52"/>
         <source>Save Failed</source>
-        <translation type="unfinished">保存失败</translation>
+        <translation>保存失败</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="54"/>
@@ -1457,7 +1457,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/core/utils/subjects.py" line="56"/>
         <source>Art</source>
-        <translation>艺术</translation>
+        <translation>美术</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="57"/>
@@ -1626,117 +1626,117 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/core/utils/subjects.py" line="71"/>
         <source>CHN</source>
-        <translation type="unfinished">语</translation>
+        <translation>语</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="72"/>
         <source>Math</source>
-        <translation type="unfinished">数</translation>
+        <translation>数</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="73"/>
         <source>Eng</source>
-        <translation type="unfinished">英</translation>
+        <translation>英</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="74"/>
         <source>Civics</source>
-        <translation type="unfinished">政</translation>
+        <translation>政</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="75"/>
         <source>Hist</source>
-        <translation type="unfinished">史</translation>
+        <translation>史</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="76"/>
         <source>Phys</source>
-        <translation type="unfinished">物</translation>
+        <translation>物</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="77"/>
         <source>Chem</source>
-        <translation type="unfinished">化</translation>
+        <translation>化</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="78"/>
         <source>Bio</source>
-        <translation type="unfinished">生</translation>
+        <translation>生</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="79"/>
         <source>Geo</source>
-        <translation type="unfinished">地</translation>
+        <translation>地</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="80"/>
         <source>Mus</source>
-        <translation type="unfinished">音</translation>
+        <translation>音</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="81"/>
         <source>Art</source>
-        <translation type="unfinished">艺术</translation>
+        <translation>美</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="82"/>
         <source>Psy</source>
-        <translation type="unfinished">心</translation>
+        <translation>心</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="83"/>
         <source>PE</source>
-        <translation type="unfinished">体</translation>
+        <translation>体</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="84"/>
         <source>IT</source>
-        <translation type="unfinished">信</translation>
+        <translation>信</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="85"/>
         <source>GenTech</source>
-        <translation type="unfinished">通</translation>
+        <translation>通</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="86"/>
         <source>Elective</source>
-        <translation type="unfinished">选修</translation>
+        <translation>选</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="87"/>
         <source>Study</source>
-        <translation type="unfinished">自</translation>
+        <translation>自</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="88"/>
         <source>Club</source>
-        <translation type="unfinished">社团</translation>
+        <translation>社</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="89"/>
         <source>ClassMtg</source>
-        <translation type="unfinished">班</translation>
+        <translation>班</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="90"/>
         <source>Weekly</source>
-        <translation type="unfinished">测</translation>
+        <translation>测</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="91"/>
         <source>Econ</source>
-        <translation type="unfinished">经</translation>
+        <translation>经</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="92"/>
         <source>Philos</source>
-        <translation type="unfinished">哲</translation>
+        <translation>哲</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="93"/>
         <source>CS</source>
-        <translation type="unfinished">计科</translation>
+        <translation>计科</translation>
     </message>
 </context>
 <context>
@@ -1834,7 +1834,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Tutorial.qml" line="60"/>
         <source>Use System Language</source>
-        <translation type="unfinished">使用系统语言</translation>
+        <translation>使用系统语言</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Tutorial.qml" line="81"/>
