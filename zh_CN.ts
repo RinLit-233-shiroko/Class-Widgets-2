@@ -481,7 +481,7 @@ Licensed under the GPL-3 license.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="98"/>
         <source>Don&apos;t forget to save your changes before closing the editor or switching schedule. You can click the save button in the title bar.</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭编辑器或切换课程表之前，请不要忘记保存更改。您可以点击标题栏中的“保存”按钮。</translation>
     </message>
     <message>
         <source>Don&apos;t forget to save your changes before closing the editor or switching schedule. 
@@ -758,7 +758,7 @@ You can click the save button in the title bar.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="10"/>
         <source>General</source>
-        <translation>其他配置</translation>
+        <translation>通用</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="18"/>
@@ -1929,12 +1929,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="105"/>
         <source>Opacity</source>
-        <translation>透明度</translation>
+        <translation>不透明度</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="106"/>
         <source>Change the opacity of the background of widgets</source>
-        <translation>调整小组件背景透明度</translation>
+        <translation>调整小组件背景的不透明度</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="125"/>
