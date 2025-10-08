@@ -1465,7 +1465,6 @@ If it takes place in another location, such as a sport field, lab, or another cl
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="56"/>
-        <location filename="../../src/core/utils/subjects.py" line="81"/>
         <source>Art</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1491,53 +1490,12 @@ If it takes place in another location, such as a sport field, lab, or another cl
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="61"/>
-        <location filename="../../src/core/utils/subjects.py" line="86"/>
         <source>Elective</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="62"/>
         <source>Self Study</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/subjects.py" line="71"/>
-        <source>CHN</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/subjects.py" line="74"/>
-        <source>Civics</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/subjects.py" line="82"/>
-        <source>Psy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/subjects.py" line="85"/>
-        <source>GenTech</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/subjects.py" line="87"/>
-        <source>Study</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/subjects.py" line="89"/>
-        <source>ClassMtg</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/subjects.py" line="90"/>
-        <source>Weekly</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/subjects.py" line="92"/>
-        <source>Philos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1566,6 +1524,19 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="63"/>
+        <source>Club</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SubjectsSimplified</name>
+    <message>
+        <location filename="../../src/core/utils/subjects.py" line="71"/>
+        <source>CHN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../src/core/utils/subjects.py" line="72"/>
         <source>Math</source>
         <translation type="unfinished"></translation>
@@ -1573,6 +1544,11 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/core/utils/subjects.py" line="73"/>
         <source>Eng</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/utils/subjects.py" line="74"/>
+        <source>Civics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1606,6 +1582,16 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="81"/>
+        <source>Art</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/utils/subjects.py" line="82"/>
+        <source>Psy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../src/core/utils/subjects.py" line="83"/>
         <source>PE</source>
         <translation type="unfinished"></translation>
@@ -1616,14 +1602,43 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="63"/>
+        <location filename="../../src/core/utils/subjects.py" line="85"/>
+        <source>GenTech</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/utils/subjects.py" line="86"/>
+        <source>Elective</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/utils/subjects.py" line="87"/>
+        <source>Study</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../src/core/utils/subjects.py" line="88"/>
         <source>Club</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="89"/>
+        <source>ClassMtg</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/utils/subjects.py" line="90"/>
+        <source>Weekly</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../src/core/utils/subjects.py" line="91"/>
         <source>Econ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/utils/subjects.py" line="92"/>
+        <source>Philos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
