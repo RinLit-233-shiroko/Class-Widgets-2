@@ -1,7 +1,7 @@
 <div align="center">
 <h1>Class Widgets 2</h1>
   
-**English** | [中文](./README_CN.md)
+  **中文** | [English](./README.md)
 
 </div>
 
