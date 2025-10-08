@@ -624,13 +624,9 @@ You can click the save button in the title bar.</source>
         <translation>课程</translation>
     </message>
     <message>
-        <source>No timeline selected</source>
-        <translation type="vanished">未选择时间线</translation>
-    </message>
-    <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/EntryListView.qml" line="40"/>
-        <source>No schedule selected</source>
-        <translation type="unfinished"></translation>
+        <source>No timeline selected</source>
+        <translation>未选择时间线</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/EntryListView.qml" line="46"/>
