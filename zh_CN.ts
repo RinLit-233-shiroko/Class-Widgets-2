@@ -184,7 +184,7 @@ Licensed under the GPL-3 license.</source>
         <translation type="vanished">默认</translation>
     </message>
     <message>
-        <location filename="../../src/core/config/model.py" line="45"/>
+        <location filename="../../src/core/config/model.py" line="127"/>
         <source>New Schedule 1</source>
         <translation>新课程表 1</translation>
     </message>
@@ -372,51 +372,82 @@ Licensed under the GPL-3 license.</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="89"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="105"/>
         <source>Set</source>
         <translation>设置</translation>
     </message>
     <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="100"/>
+        <source>Set Default Duration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="101"/>
+        <source>Set the default duration for new classes, breaks, or activities.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="115"/>
         <source>Select Date</source>
         <translation>选择日期</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="114"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="128"/>
         <source>Failed</source>
         <translation>失败</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="115"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="129"/>
         <source>Failed to set start date. Please report this issue to the community or the developer.</source>
         <translation>设置开学日期失败，请向社区或者开发者提交这个问题。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="142"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="140"/>
+        <source>Select Default Duration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="146"/>
+        <source>Class</source>
+        <translation type="unfinished">课程</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="160"/>
+        <source>Break</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="173"/>
+        <source>Activity</source>
+        <translation type="unfinished">活动</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="224"/>
         <source>No timelines yet</source>
         <translation>未添加时间线</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="148"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="230"/>
         <source>No timelines yet. Click &quot;New Timeline&quot; to get started.</source>
         <translation>点击“新建时间线”以开始编辑日程。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="189"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="271"/>
         <source>Edit</source>
         <translation>编辑</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="194"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="276"/>
         <source>Remove</source>
         <translation>删除</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="218"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="300"/>
         <source>New Timeline</source>
         <translation>新建时间线</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="222"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="304"/>
         <source>Duplicate</source>
         <translation>复制</translation>
     </message>
@@ -2052,17 +2083,26 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation>即将进行</translation>
     </message>
     <message>
-        <location filename="../../src/qml/widgets/upcomingActivities.qml" line="27"/>
-        <source>Unknown</source>
-        <translation>未知</translation>
+        <location filename="../../src/qml/widgets/upcomingActivities.qml" line="29"/>
+        <source>Class</source>
+        <translation type="unfinished">课程</translation>
     </message>
     <message>
-        <location filename="../../src/qml/widgets/upcomingActivities.qml" line="31"/>
+        <location filename="../../src/qml/widgets/upcomingActivities.qml" line="30"/>
+        <source>Activity</source>
+        <translation type="unfinished">活动</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation type="vanished">未知</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/upcomingActivities.qml" line="35"/>
         <source>Nothing ahead</source>
         <translation>接下来暂无课程</translation>
     </message>
     <message>
-        <location filename="../../src/qml/widgets/upcomingActivities.qml" line="45"/>
+        <location filename="../../src/qml/widgets/upcomingActivities.qml" line="31"/>
         <source>Unset</source>
         <translation>未设置</translation>
     </message>

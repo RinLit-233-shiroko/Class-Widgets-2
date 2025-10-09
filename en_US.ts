@@ -178,7 +178,7 @@ Licensed under the GPL-3 license.</source>
 <context>
     <name>Configs</name>
     <message>
-        <location filename="../../src/core/config/model.py" line="45"/>
+        <location filename="../../src/core/config/model.py" line="127"/>
         <source>New Schedule 1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -366,51 +366,82 @@ Licensed under the GPL-3 license.</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="89"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="105"/>
         <source>Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="101"/>
-        <source>Select Date</source>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="100"/>
+        <source>Set Default Duration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="114"/>
-        <source>Failed</source>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="101"/>
+        <source>Set the default duration for new classes, breaks, or activities.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="115"/>
+        <source>Select Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="128"/>
+        <source>Failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="129"/>
         <source>Failed to set start date. Please report this issue to the community or the developer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="142"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="140"/>
+        <source>Select Default Duration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="146"/>
+        <source>Class</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="160"/>
+        <source>Break</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="173"/>
+        <source>Activity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="224"/>
         <source>No timelines yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="148"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="230"/>
         <source>No timelines yet. Click &quot;New Timeline&quot; to get started.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="189"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="271"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="194"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="276"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="218"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="300"/>
         <source>New Timeline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="222"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="304"/>
         <source>Duplicate</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1952,17 +1983,22 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/widgets/upcomingActivities.qml" line="27"/>
-        <source>Unknown</source>
+        <location filename="../../src/qml/widgets/upcomingActivities.qml" line="29"/>
+        <source>Class</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/widgets/upcomingActivities.qml" line="31"/>
+        <location filename="../../src/qml/widgets/upcomingActivities.qml" line="30"/>
+        <source>Activity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/upcomingActivities.qml" line="35"/>
         <source>Nothing ahead</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/widgets/upcomingActivities.qml" line="45"/>
+        <location filename="../../src/qml/widgets/upcomingActivities.qml" line="31"/>
         <source>Unset</source>
         <translation type="unfinished"></translation>
     </message>
