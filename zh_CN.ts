@@ -2026,7 +2026,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="86"/>
         <source>Take a break</source>
-        <translation>课间休息</translation>
+        <translation>课间</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="87"/>
