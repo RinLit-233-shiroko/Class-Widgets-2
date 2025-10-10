@@ -178,7 +178,7 @@ Licensed under the GPL-3 license.</source>
 <context>
     <name>Configs</name>
     <message>
-        <location filename="../../src/core/config/model.py" line="127"/>
+        <location filename="../../src/core/config/model.py" line="128"/>
         <source>New Schedule 1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1332,11 +1332,16 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="46"/>
-        <source>Plugins</source>
+        <source>Notification &amp; Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="51"/>
+        <source>Plugins</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="56"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1686,54 +1691,82 @@ If it takes place in another location, such as a sport field, lab, or another cl
     </message>
 </context>
 <context>
+    <name>Time</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Time.qml" line="13"/>
+        <source>Notification &amp; Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Time.qml" line="20"/>
+        <source>Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Time.qml" line="26"/>
+        <source>Time Offset (minutes)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Time.qml" line="27"/>
+        <source>Adjust schedule time to match your school&apos;s broadcast. Increase the offset to compensate for early bells, decrease to compensate for late bells.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Time.qml" line="35"/>
+        <source>minutes</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>TrayPanel</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="70"/>
+        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="68"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="71"/>
+        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="69"/>
         <source>Adjust the settings of Class Widgets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="84"/>
+        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="82"/>
         <source>Schedules</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="85"/>
+        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="83"/>
         <source>Edit your schedule profile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="98"/>
+        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="96"/>
         <source>Plugin Plaza</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="99"/>
+        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="97"/>
         <source>Discover and download plugins</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="116"/>
+        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="114"/>
         <source>Switch your schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="169"/>
+        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="167"/>
         <source>Debugger</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="182"/>
+        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="180"/>
         <source>Restart</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="192"/>
+        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="190"/>
         <source>Exit</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1873,12 +1906,22 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="218"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="131"/>
+        <source>Display</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="132"/>
+        <source>Set which screen to display widgets on, and adjust their position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="240"/>
         <source>X-axis offset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="228"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="254"/>
         <source>Y-axis offset</source>
         <translation type="unfinished"></translation>
     </message>
