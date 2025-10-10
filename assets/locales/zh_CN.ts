@@ -379,12 +379,12 @@ Licensed under the GPL-3 license.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="100"/>
         <source>Set Default Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>设置默认时长</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="101"/>
         <source>Set the default duration for new classes, breaks, or activities.</source>
-        <translation type="unfinished"></translation>
+        <translation>为新创建的班级、休息时段或活动设置默认持续时间。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="115"/>
@@ -404,22 +404,22 @@ Licensed under the GPL-3 license.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="140"/>
         <source>Select Default Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>选择默认持续时间</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="146"/>
         <source>Class</source>
-        <translation type="unfinished">课程</translation>
+        <translation>课程</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="160"/>
         <source>Break</source>
-        <translation type="unfinished"></translation>
+        <translation>课间</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="173"/>
         <source>Activity</source>
-        <translation type="unfinished">活动</translation>
+        <translation>活动</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="224"/>
@@ -1349,7 +1349,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="46"/>
         <source>Notification &amp; Time</source>
-        <translation type="unfinished"></translation>
+        <translation>通知与时间</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="51"/>
@@ -1792,27 +1792,27 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Time.qml" line="13"/>
         <source>Notification &amp; Time</source>
-        <translation type="unfinished"></translation>
+        <translation>通知与时间</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Time.qml" line="20"/>
         <source>Time</source>
-        <translation type="unfinished"></translation>
+        <translation>时间</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Time.qml" line="26"/>
         <source>Time Offset (minutes)</source>
-        <translation type="unfinished"></translation>
+        <translation>时差偏移（分钟）</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Time.qml" line="27"/>
         <source>Adjust schedule time to match your school&apos;s broadcast. Increase the offset to compensate for early bells, decrease to compensate for late bells.</source>
-        <translation type="unfinished"></translation>
+        <translation>调整时差偏移以匹配学校的广播提醒。增加偏移量以抵消提前时间，减少偏移量以抵消晚点时间。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Time.qml" line="35"/>
         <source>minutes</source>
-        <translation type="unfinished"></translation>
+        <translation>分钟</translation>
     </message>
 </context>
 <context>
@@ -2008,12 +2008,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="131"/>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>显示</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="132"/>
         <source>Set which screen to display widgets on, and adjust their position</source>
-        <translation type="unfinished"></translation>
+        <translation>设置小组件显示的屏幕，亦可调整其位置</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="240"/>
@@ -2128,12 +2128,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="29"/>
         <source>Class</source>
-        <translation type="unfinished">课程</translation>
+        <translation>课程</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="30"/>
         <source>Activity</source>
-        <translation type="unfinished">活动</translation>
+        <translation>活动</translation>
     </message>
     <message>
         <source>Unknown</source>
