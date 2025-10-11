@@ -1,5 +1,5 @@
 from copy import deepcopy
-from datetime import datetime
+from datetime import datetime, time
 from typing import Optional, List, Dict, Union
 
 from PySide6.QtCore import QObject, Property, Signal, Slot
@@ -21,6 +21,31 @@ class ScheduleEditor(QObject):
         self.schedule: ScheduleData = self.manager.schedule
         self.updated.connect(self.refresh_manager)
         self.manager.scheduleSwitched.connect(self.refresh)
+
+    def _validate_time_range(self, start_time: str, end_time: str) -> bool:
+        """
+        验证时间范围，确保结束时间不早于开始时间
+        
+        Args:
+            start_time: 开始时间字符串，格式为 "HH:MM"
+            end_time: 结束时间字符串，格式为 "HH:MM"
+            
+        Returns:
+            bool: 如果时间范围有效返回True，否则返回False
+        """
+        try:
+            start = datetime.strptime(start_time, "%H:%M").time()
+            end = datetime.strptime(end_time, "%H:%M").time()
+            
+            # 结束时间必须晚于开始时间
+            if end <= start:
+                logger.warning(f"Invalid time range: end time {end_time} is not later than start time {start_time}")
+                return False
+                
+            return True
+        except ValueError as e:
+            logger.error(f"Invalid time format: {e}")
+            return False
 
     def refresh(self, schedule: ScheduleData):  # 接受来自 manager 的更新
         self.schedule = schedule
@@ -171,6 +196,11 @@ class ScheduleEditor(QObject):
         if not day:
             return ""
 
+        # 验证时间范围
+        if not self._validate_time_range(start_time, end_time):
+            logger.error(f"Cannot add entry: invalid time range {start_time} - {end_time}")
+            return ""
+
         entry = Entry(
             id=generate_id("entry"),
             type=EntryType(entry_type),
@@ -194,6 +224,15 @@ class ScheduleEditor(QObject):
         if not entry:
             logger.warning(f"Entry: {entry_id} not found")
             return
+
+        # 如果提供了时间参数，需要验证时间范围
+        current_start = start_time if start_time else entry.startTime
+        current_end = end_time if end_time else entry.endTime
+        
+        if start_time or end_time:
+            if not self._validate_time_range(current_start, current_end):
+                logger.error(f"Cannot update entry: invalid time range {current_start} - {current_end}")
+                return
 
         if entry_type:
             entry.type = EntryType(entry_type)

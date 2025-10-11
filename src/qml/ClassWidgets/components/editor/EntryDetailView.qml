@@ -48,10 +48,30 @@ ColumnLayout {
                           : typeSegmented.currentIndex === 1 ? "break"
                           : "activity"
 
+            const startTime = startTimePicker.time.toString("hh:mm")
+            const endTime = endTimePicker.time.toString("hh:mm")
+            
+            // 验证时间范围：结束时间不能早于开始时间
+            if (endTime <= startTime) {
+                // 显示错误提示
+                floatLayer.createInfoBar({
+                    title: qsTr("Invalid Time Range"),
+                    text: qsTr("End time must be later than start time."),
+                    severity: Severity.Error
+                })
+                
+                // 重置为原来的时间
+                Qt.callLater(function() {
+                    startTimePicker.setTime(currentEntry.startTime || "08:00")
+                    endTimePicker.setTime(currentEntry.endTime || "09:00")
+                })
+                return
+            }
+
             AppCentral.scheduleEditor.updateEntry(
                 currentEntry.id, newType,
-                startTimePicker.time.toString("hh:mm"),
-                endTimePicker.time.toString("hh:mm"),
+                startTime,
+                endTime,
                 entrySubject.checkedId || null,
                 entryTitle.text || null
             )

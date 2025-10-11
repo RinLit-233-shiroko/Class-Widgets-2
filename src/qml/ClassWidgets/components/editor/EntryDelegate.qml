@@ -224,6 +224,21 @@ Clip {
         id: updateTimer
         interval: 300
         onTriggered: {
+            // 验证时间范围：结束时间不能早于开始时间
+            if (entryDelegate.tempEnd <= entryDelegate.tempStart) {
+                // 重置为原来的时间
+                entryDelegate.tempStart = parseTime(entry.startTime)
+                entryDelegate.tempEnd = parseTime(entry.endTime)
+                
+                // 显示错误提示
+                floatLayer.createInfoBar({
+                    title: qsTr("Invalid Time Range"),
+                    text: qsTr("End time must be later than start time."),
+                    severity: Severity.Error
+                })
+                return
+            }
+            
             entry.startTime = minutesToTime(entryDelegate.tempStart)
             entry.endTime = minutesToTime(entryDelegate.tempEnd)
             AppCentral.scheduleEditor.updateEntry(
