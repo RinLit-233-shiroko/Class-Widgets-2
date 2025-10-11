@@ -18,7 +18,7 @@ Button {
         anchors.centerIn: parent
         width: parent.width - 20
         horizontalAlignment: Text.AlignHCenter
-        text: entry ? entry.title || AppCentral.scheduleEditor.subjectNameById(entry.subjectId) || qsTr("Unset") : undefined
+        text: entry ? entry.title || AppCentral.scheduleEditor.subjectNameById(entry.subjectId) || qsTr("Unset") : ""
     }
     opacity: entry ? (entry.title || AppCentral.scheduleEditor.subjectNameById(entry.subjectId)) ? 1 : 0.5 : 1
     enabled: entry
