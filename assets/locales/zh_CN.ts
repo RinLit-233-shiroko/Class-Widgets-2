@@ -184,8 +184,9 @@ Licensed under the GPL-3 license.</source>
         <translation type="vanished">默认</translation>
     </message>
     <message>
+        <location filename="../../src/core/config/model.py" line="128"/>
         <source>New Schedule 1</source>
-        <translation type="vanished">新课程表 1</translation>
+        <translation>新课程表 1</translation>
     </message>
 </context>
 <context>
@@ -979,16 +980,19 @@ You can click the save button in the title bar.</source>
 <context>
     <name>Notification</name>
     <message>
+        <location filename="../../src/core/notification/notify.py" line="24"/>
         <source>活动开始</source>
-        <translation type="vanished">活动开始</translation>
+        <translation>活动开始</translation>
     </message>
     <message>
+        <location filename="../../src/core/notification/notify.py" line="25"/>
         <source>放学提醒</source>
-        <translation type="vanished">放学提醒</translation>
+        <translation>放学提醒</translation>
     </message>
     <message>
+        <location filename="../../src/core/notification/notify.py" line="26"/>
         <source>活动结束</source>
-        <translation type="vanished">活动结束</translation>
+        <translation>活动结束</translation>
     </message>
 </context>
 <context>
@@ -1461,72 +1465,89 @@ If it takes place in another location, such as a sport field, lab, or another cl
 <context>
     <name>Subjects</name>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="46"/>
         <source>Chinese</source>
-        <translation type="vanished">语文</translation>
+        <translation>语文</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="47"/>
         <source>Mathematics</source>
-        <translation type="vanished">数学</translation>
+        <translation>数学</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="48"/>
         <source>English</source>
-        <translation type="vanished">英语</translation>
+        <translation>英语</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="49"/>
         <source>Politics</source>
-        <translation type="vanished">政治</translation>
+        <translation>政治</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="50"/>
         <source>History</source>
-        <translation type="vanished">历史</translation>
+        <translation>历史</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="51"/>
         <source>Physics</source>
-        <translation type="vanished">物理</translation>
+        <translation>物理</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="52"/>
         <source>Chemistry</source>
-        <translation type="vanished">化学</translation>
+        <translation>化学</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="53"/>
         <source>Biology</source>
-        <translation type="vanished">生物</translation>
+        <translation>生物</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="54"/>
         <source>Geography</source>
-        <translation type="vanished">地理</translation>
+        <translation>地理</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="55"/>
         <source>Music</source>
-        <translation type="vanished">音乐</translation>
+        <translation>音乐</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="56"/>
         <source>Art</source>
-        <translation type="vanished">美术</translation>
+        <translation>美术</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="57"/>
         <source>Psychology</source>
-        <translation type="vanished">心理</translation>
+        <translation>心理</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="58"/>
         <source>Physical Education</source>
-        <translation type="vanished">体育</translation>
+        <translation>体育</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="59"/>
         <source>Information Technology</source>
-        <translation type="vanished">信息技术</translation>
+        <translation>信息技术</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="60"/>
         <source>General Technology</source>
-        <translation type="vanished">通用技术</translation>
+        <translation>通用技术</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="61"/>
         <source>Elective</source>
-        <translation type="vanished">选修</translation>
+        <translation>选修</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="62"/>
         <source>Self Study</source>
-        <translation type="vanished">自学</translation>
+        <translation>自学</translation>
     </message>
     <message>
         <source>CHN</source>
@@ -1561,24 +1582,29 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="vanished">哲</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="64"/>
         <source>Class Meeting</source>
-        <translation type="vanished">班会</translation>
+        <translation>班会</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="65"/>
         <source>Weekly Test</source>
-        <translation type="vanished">周测</translation>
+        <translation>周测</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="66"/>
         <source>Economics</source>
-        <translation type="vanished">经济学</translation>
+        <translation>经济学</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="67"/>
         <source>Philosophy</source>
-        <translation type="vanished">哲学</translation>
+        <translation>哲学</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="70"/>
         <source>Computer Science</source>
-        <translation type="vanished">计算机科学</translation>
+        <translation>计算机科学</translation>
     </message>
     <message>
         <source>Math</source>
@@ -1621,8 +1647,9 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="vanished">信</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="63"/>
         <source>Club</source>
-        <translation type="vanished">社团</translation>
+        <translation>社团</translation>
     </message>
     <message>
         <source>Econ</source>
@@ -1657,96 +1684,119 @@ If it takes place in another location, such as a sport field, lab, or another cl
 <context>
     <name>SubjectsSimplified</name>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="71"/>
         <source>CHN</source>
-        <translation type="vanished">语</translation>
+        <translation>语</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="72"/>
         <source>Math</source>
-        <translation type="vanished">数</translation>
+        <translation>数</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="73"/>
         <source>Eng</source>
-        <translation type="vanished">英</translation>
+        <translation>英</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="74"/>
         <source>Civics</source>
-        <translation type="vanished">政</translation>
+        <translation>政</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="75"/>
         <source>Hist</source>
-        <translation type="vanished">史</translation>
+        <translation>史</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="76"/>
         <source>Phys</source>
-        <translation type="vanished">物</translation>
+        <translation>物</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="77"/>
         <source>Chem</source>
-        <translation type="vanished">化</translation>
+        <translation>化</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="78"/>
         <source>Bio</source>
-        <translation type="vanished">生</translation>
+        <translation>生</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="79"/>
         <source>Geo</source>
-        <translation type="vanished">地</translation>
+        <translation>地</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="80"/>
         <source>Mus</source>
-        <translation type="vanished">音</translation>
+        <translation>音</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="81"/>
         <source>Art</source>
-        <translation type="vanished">美</translation>
+        <translation>美</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="82"/>
         <source>Psy</source>
-        <translation type="vanished">心</translation>
+        <translation>心</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="83"/>
         <source>PE</source>
-        <translation type="vanished">体</translation>
+        <translation>体</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="84"/>
         <source>IT</source>
-        <translation type="vanished">信</translation>
+        <translation>信</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="85"/>
         <source>GenTech</source>
-        <translation type="vanished">通</translation>
+        <translation>通</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="86"/>
         <source>Elective</source>
-        <translation type="vanished">选</translation>
+        <translation>选</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="87"/>
         <source>Study</source>
-        <translation type="vanished">自</translation>
+        <translation>自</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="88"/>
         <source>Club</source>
-        <translation type="vanished">社</translation>
+        <translation>社</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="89"/>
         <source>ClassMtg</source>
-        <translation type="vanished">班</translation>
+        <translation>班</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="90"/>
         <source>Weekly</source>
-        <translation type="vanished">测</translation>
+        <translation>测</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="91"/>
         <source>Econ</source>
-        <translation type="vanished">经</translation>
+        <translation>经</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="92"/>
         <source>Philos</source>
-        <translation type="vanished">哲</translation>
+        <translation>哲</translation>
     </message>
     <message>
+        <location filename="../../src/core/utils/subjects.py" line="93"/>
         <source>CS</source>
-        <translation type="vanished">计科</translation>
+        <translation>计科</translation>
     </message>
 </context>
 <context>
