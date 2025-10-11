@@ -1,10 +1,10 @@
 from pathlib import Path
 
 from PySide6.QtCore import Slot
-from loguru import logger
 
-from src.core.plugin import CW2Plugin
 from src.core.directories import QML_PATH
+from src.core.plugin import CW2Plugin
+
 
 class Plugin(CW2Plugin):
     def __init__(self, plugin_api):

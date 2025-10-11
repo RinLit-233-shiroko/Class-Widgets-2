@@ -1,13 +1,13 @@
 from copy import deepcopy
-from datetime import datetime, time
+from datetime import datetime
 from typing import Optional, List, Dict, Union
 
 from PySide6.QtCore import QObject, Property, Signal, Slot
 from loguru import logger
 
 from src.core.schedule import ScheduleData, Subject, Timeline, Entry, EntryType
-from src.core.schedule.model import WeekType, Timetable
 from src.core.schedule import ScheduleManager
+from src.core.schedule.model import WeekType, Timetable
 from src.core.utils import generate_id, get_default_subjects
 
 
