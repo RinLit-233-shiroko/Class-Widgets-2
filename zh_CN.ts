@@ -184,9 +184,8 @@ Licensed under the GPL-3 license.</source>
         <translation type="vanished">默认</translation>
     </message>
     <message>
-        <location filename="../../src/core/config/model.py" line="128"/>
         <source>New Schedule 1</source>
-        <translation>新课程表 1</translation>
+        <translation type="vanished">新课程表 1</translation>
     </message>
 </context>
 <context>
@@ -559,74 +558,94 @@ You can click the save button in the title bar.</source>
         <source> minutes</source>
         <translation> 分钟</translation>
     </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDelegate.qml" line="235"/>
+        <source>Invalid Time Range</source>
+        <translation>无效的时间范围</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDelegate.qml" line="236"/>
+        <source>End time must be later than start time.</source>
+        <translation>结束时间必须晚于开始时间。</translation>
+    </message>
 </context>
 <context>
     <name>EntryDetailView</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="83"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="58"/>
+        <source>Invalid Time Range</source>
+        <translation>无效的时间范围</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="59"/>
+        <source>End time must be later than start time.</source>
+        <translation>结束时间必须晚于开始时间。</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="103"/>
         <source>Edit </source>
         <translation>编辑 </translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="93"/>
-        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="108"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="113"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="128"/>
         <source>Class</source>
         <translation>课程</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="94"/>
-        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="109"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="114"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="129"/>
         <source>Break</source>
         <translation>课间</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="95"/>
-        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="110"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="115"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="130"/>
         <source>Activity</source>
         <translation>活动</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="96"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="116"/>
         <source>Unknown Type</source>
         <translation>未知类型</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="115"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="135"/>
         <source>ID</source>
         <translation>ID</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="125"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="145"/>
         <source>Default Subject</source>
         <translation>默认课程</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="131"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="151"/>
         <source>Select Subject</source>
         <translation>选择课程</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="160"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="180"/>
         <source>Set Subject</source>
         <translation>设置课程</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="177"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="197"/>
         <source>Title</source>
         <translation>标题</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="190"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="210"/>
         <source>Start Time</source>
         <translation>开始时间</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="203"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="223"/>
         <source>End Time</source>
         <translation>结束时间</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="222"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryDetailView.qml" line="242"/>
         <source>Remove</source>
         <translation>移除</translation>
     </message>
@@ -787,102 +806,102 @@ You can click the save button in the title bar.</source>
 <context>
     <name>Index</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="10"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="10"/>
         <source>General</source>
         <translation>通用</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="18"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="18"/>
         <source>Locale</source>
         <translation>区域设置</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="23"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="23"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="24"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="24"/>
         <source>Set the language of Class Widgets</source>
         <translation>设置 Class Widgets 的语言</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="31"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="31"/>
         <source>Use System Language</source>
         <translation>使用系统语言</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="55"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="55"/>
         <source>Customize</source>
         <translation>自定义</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="60"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="60"/>
         <source>App Theme</source>
         <translation>应用主题</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="61"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="61"/>
         <source>Select which app theme to display</source>
         <translation>选择显示的应用主题</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="67"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="67"/>
         <source>Light</source>
         <translation>浅色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="68"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="68"/>
         <source>Dark</source>
         <translation>深色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="69"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="69"/>
         <source>Use system setting</source>
         <translation>使用系统设置</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="81"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="81"/>
         <source>Window Layer</source>
         <translation>窗口图层</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="82"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="82"/>
         <source>Let your widgets floating on top, or tuck them neatly behind other windows</source>
         <translation>让您的小组件浮在顶部，或整齐地隐藏在其他窗口后面</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="87"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="87"/>
         <source>Pin on Top</source>
         <translation>置顶</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="90"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="90"/>
         <source>Send to Back</source>
         <translation>置底</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="109"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="109"/>
         <source>Mini Mode</source>
         <translation>迷你模式</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="110"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="110"/>
         <source>Use a more compact layout for smaller widgets</source>
         <translation>使用更紧凑的布局以适配小型小组件</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="128"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="128"/>
         <source>Actions</source>
         <translation>行动</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="133"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="133"/>
         <source>Run at Startup</source>
         <translation>开机自启动</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="134"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="134"/>
         <source>Run Class Widgets on startup</source>
         <translation>开机后自动运行 Class Widgets</translation>
     </message>
@@ -890,69 +909,69 @@ You can click the save button in the title bar.</source>
 <context>
     <name>Interactions</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="10"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="10"/>
         <source>Interactions &amp; Actions</source>
         <translation>交互与操作</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="18"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="18"/>
         <source>Widgets</source>
         <translation>控件</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="23"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="23"/>
         <source>Hover fade</source>
         <translation>悬停渐隐</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="24"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="24"/>
         <source>Hover to make the widget transparent and let clicks go through, move away to bring it back.</source>
         <translation>悬停使部件透明并允许点击穿透，移开后恢复显示。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="39"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="39"/>
         <source>Tap to hide</source>
         <translation>轻触隐藏</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="40"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="40"/>
         <source>Click on the widget to hide it, click it again to bring it back. 
 * Some interactive elements may not respond to clicks</source>
         <translation>点击小组件以隐藏，再次点击以恢复显示。 
 * 部分交互元素可能不响应点击</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="53"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="53"/>
         <source>More hide behavior</source>
         <translation>更多隐藏行为</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="55"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="55"/>
         <source>Choose whether widgets hide or switch to Mini Mode when triggered</source>
         <translation>选择触发时部件隐藏或切换至迷你模式</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="61"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="61"/>
         <source>Hide Widgets</source>
         <translation>隐藏小组件</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="62"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="62"/>
         <source>Switch to mini mode</source>
         <translation>切换至迷你模式</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="78"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="78"/>
         <source>Hide when in class</source>
         <translation>在课堂中隐藏</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="84"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="84"/>
         <source>Hide when a window is maximized</source>
         <translation>窗口最大化时隐藏</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="91"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="91"/>
         <source>Hide when a window enters fullscreen</source>
         <translation>窗口进入全屏时隐藏</translation>
     </message>
@@ -960,19 +979,16 @@ You can click the save button in the title bar.</source>
 <context>
     <name>Notification</name>
     <message>
-        <location filename="../../src/core/notification/notify.py" line="24"/>
         <source>活动开始</source>
-        <translation>活动开始</translation>
+        <translation type="vanished">活动开始</translation>
     </message>
     <message>
-        <location filename="../../src/core/notification/notify.py" line="25"/>
         <source>放学提醒</source>
-        <translation>放学提醒</translation>
+        <translation type="vanished">放学提醒</translation>
     </message>
     <message>
-        <location filename="../../src/core/notification/notify.py" line="26"/>
         <source>活动结束</source>
-        <translation>活动结束</translation>
+        <translation type="vanished">活动结束</translation>
     </message>
 </context>
 <context>
@@ -1445,89 +1461,72 @@ If it takes place in another location, such as a sport field, lab, or another cl
 <context>
     <name>Subjects</name>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="46"/>
         <source>Chinese</source>
-        <translation>语文</translation>
+        <translation type="vanished">语文</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="47"/>
         <source>Mathematics</source>
-        <translation>数学</translation>
+        <translation type="vanished">数学</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="48"/>
         <source>English</source>
-        <translation>英语</translation>
+        <translation type="vanished">英语</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="49"/>
         <source>Politics</source>
-        <translation>政治</translation>
+        <translation type="vanished">政治</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="50"/>
         <source>History</source>
-        <translation>历史</translation>
+        <translation type="vanished">历史</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="51"/>
         <source>Physics</source>
-        <translation>物理</translation>
+        <translation type="vanished">物理</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="52"/>
         <source>Chemistry</source>
-        <translation>化学</translation>
+        <translation type="vanished">化学</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="53"/>
         <source>Biology</source>
-        <translation>生物</translation>
+        <translation type="vanished">生物</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="54"/>
         <source>Geography</source>
-        <translation>地理</translation>
+        <translation type="vanished">地理</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="55"/>
         <source>Music</source>
-        <translation>音乐</translation>
+        <translation type="vanished">音乐</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="56"/>
         <source>Art</source>
-        <translation>美术</translation>
+        <translation type="vanished">美术</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="57"/>
         <source>Psychology</source>
-        <translation>心理</translation>
+        <translation type="vanished">心理</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="58"/>
         <source>Physical Education</source>
-        <translation>体育</translation>
+        <translation type="vanished">体育</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="59"/>
         <source>Information Technology</source>
-        <translation>信息技术</translation>
+        <translation type="vanished">信息技术</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="60"/>
         <source>General Technology</source>
-        <translation>通用技术</translation>
+        <translation type="vanished">通用技术</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="61"/>
         <source>Elective</source>
-        <translation>选修</translation>
+        <translation type="vanished">选修</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="62"/>
         <source>Self Study</source>
-        <translation>自学</translation>
+        <translation type="vanished">自学</translation>
     </message>
     <message>
         <source>CHN</source>
@@ -1562,29 +1561,24 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="vanished">哲</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="64"/>
         <source>Class Meeting</source>
-        <translation>班会</translation>
+        <translation type="vanished">班会</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="65"/>
         <source>Weekly Test</source>
-        <translation>周测</translation>
+        <translation type="vanished">周测</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="66"/>
         <source>Economics</source>
-        <translation>经济学</translation>
+        <translation type="vanished">经济学</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="67"/>
         <source>Philosophy</source>
-        <translation>哲学</translation>
+        <translation type="vanished">哲学</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="70"/>
         <source>Computer Science</source>
-        <translation>计算机科学</translation>
+        <translation type="vanished">计算机科学</translation>
     </message>
     <message>
         <source>Math</source>
@@ -1627,9 +1621,8 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="vanished">信</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="63"/>
         <source>Club</source>
-        <translation>社团</translation>
+        <translation type="vanished">社团</translation>
     </message>
     <message>
         <source>Econ</source>
@@ -1664,119 +1657,96 @@ If it takes place in another location, such as a sport field, lab, or another cl
 <context>
     <name>SubjectsSimplified</name>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="71"/>
         <source>CHN</source>
-        <translation>语</translation>
+        <translation type="vanished">语</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="72"/>
         <source>Math</source>
-        <translation>数</translation>
+        <translation type="vanished">数</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="73"/>
         <source>Eng</source>
-        <translation>英</translation>
+        <translation type="vanished">英</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="74"/>
         <source>Civics</source>
-        <translation>政</translation>
+        <translation type="vanished">政</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="75"/>
         <source>Hist</source>
-        <translation>史</translation>
+        <translation type="vanished">史</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="76"/>
         <source>Phys</source>
-        <translation>物</translation>
+        <translation type="vanished">物</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="77"/>
         <source>Chem</source>
-        <translation>化</translation>
+        <translation type="vanished">化</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="78"/>
         <source>Bio</source>
-        <translation>生</translation>
+        <translation type="vanished">生</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="79"/>
         <source>Geo</source>
-        <translation>地</translation>
+        <translation type="vanished">地</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="80"/>
         <source>Mus</source>
-        <translation>音</translation>
+        <translation type="vanished">音</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="81"/>
         <source>Art</source>
-        <translation>美</translation>
+        <translation type="vanished">美</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="82"/>
         <source>Psy</source>
-        <translation>心</translation>
+        <translation type="vanished">心</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="83"/>
         <source>PE</source>
-        <translation>体</translation>
+        <translation type="vanished">体</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="84"/>
         <source>IT</source>
-        <translation>信</translation>
+        <translation type="vanished">信</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="85"/>
         <source>GenTech</source>
-        <translation>通</translation>
+        <translation type="vanished">通</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="86"/>
         <source>Elective</source>
-        <translation>选</translation>
+        <translation type="vanished">选</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="87"/>
         <source>Study</source>
-        <translation>自</translation>
+        <translation type="vanished">自</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="88"/>
         <source>Club</source>
-        <translation>社</translation>
+        <translation type="vanished">社</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="89"/>
         <source>ClassMtg</source>
-        <translation>班</translation>
+        <translation type="vanished">班</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="90"/>
         <source>Weekly</source>
-        <translation>测</translation>
+        <translation type="vanished">测</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="91"/>
         <source>Econ</source>
-        <translation>经</translation>
+        <translation type="vanished">经</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="92"/>
         <source>Philos</source>
-        <translation>哲</translation>
+        <translation type="vanished">哲</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="93"/>
         <source>CS</source>
-        <translation>计科</translation>
+        <translation type="vanished">计科</translation>
     </message>
 </context>
 <context>
@@ -1954,74 +1924,74 @@ If it takes place in another location, such as a sport field, lab, or another cl
 <context>
     <name>Widgets</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="10"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="10"/>
         <source>Widgets</source>
         <translation>小组件</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="62"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="62"/>
         <source>The new way to edit widgets</source>
         <translation>编辑小组件的新方式</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="63"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="63"/>
         <source>Right-click or long press any widget, 
 then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation>右键单击或长按任意小组件，
 然后在菜单中选择&quot;编辑小组件界面&quot;以体验该功能。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="72"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="72"/>
         <source>Edit Widgets Screen</source>
         <translation>小组件编辑界面</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="82"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="82"/>
         <source>Appearances</source>
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="88"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="88"/>
         <source>Widgets Scale</source>
         <translation>小组件缩放</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="89"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="89"/>
         <source>Make widgets look bigger or stay compact</source>
         <translation>让小组件显示得更大或保持紧凑</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="105"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="105"/>
         <source>Opacity</source>
         <translation>不透明度</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="106"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="106"/>
         <source>Change the opacity of the background of widgets</source>
         <translation>调整小组件背景的不透明度</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="125"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="125"/>
         <source>Window</source>
         <translation>窗口</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="131"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="131"/>
         <source>Display</source>
         <translation>显示</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="132"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="132"/>
         <source>Set which screen to display widgets on, and adjust their position</source>
         <translation>设置小组件显示的屏幕，亦可调整其位置</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="240"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="240"/>
         <source>X-axis offset</source>
         <translation>X 轴偏移</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="254"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="254"/>
         <source>Y-axis offset</source>
         <translation>Y 轴偏移</translation>
     </message>
