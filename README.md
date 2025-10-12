@@ -11,7 +11,7 @@
 [![开源许可](https://img.shields.io/badge/license-GPLv3-blue.svg?label=%E5%BC%80%E6%BA%90%E8%AE%B8%E5%8F%AF%E8%AF%81&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2?tab=GPL-3.0-1-ov-file)
 [![下载量](https://img.shields.io/github/downloads/rinlit-233-shiroko/class-widgets-2/total.svg?label=%E4%B8%8B%E8%BD%BD%E9%87%8F&color=green&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2)
 
-<b>简体中文</b> | <a href="/docs/lang/en_US.md">English</a>
+<b>简体中文</b> | <a href="/docs/lang/en_US.md">English</a> | <a href="/docs/lang/ja.md">日本語</a>
 
 </div>
 
