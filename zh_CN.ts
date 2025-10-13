@@ -1186,12 +1186,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/dialogs/RescheduleDayDialog.qml" line="8"/>
         <source>Reschedule day</source>
-        <translation type="unfinished"></translation>
+        <translation>套用其他星期课程</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/dialogs/RescheduleDayDialog.qml" line="31"/>
         <source>Apply a day-of-week schedule to a specific date</source>
-        <translation type="unfinished"></translation>
+        <translation>将某星期的课程表应用到指定日期</translation>
     </message>
 </context>
 <context>
@@ -1883,18 +1883,18 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="114"/>
         <source>Shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>快捷方式</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="125"/>
         <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="229"/>
         <source>Reschedule Day</source>
-        <translation type="unfinished"></translation>
+        <translation>套用其他星期课程</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="133"/>
         <source>Class Swap</source>
-        <translation type="unfinished"></translation>
+        <translation>换课</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="143"/>
