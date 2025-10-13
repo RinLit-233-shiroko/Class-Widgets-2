@@ -11,7 +11,7 @@
 [![Open-Source License](https://img.shields.io/badge/license-GPLv3-blue.svg?label=Open-Source%20License&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2?tab=GPL-3.0-1-ov-file)
 [![Download Volume](https://img.shields.io/github/downloads/rinlit-233-shiroko/class-widgets-2/total.svg?label=Download%20Volume&color=green&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2)
 
-<b>English</b> | <a href="../../README.md">简体中文</a>
+<b>English</b> | <a href="../../README.md">简体中文</a> | <a href="ja.md">日本語</a>
 
 </div>
 

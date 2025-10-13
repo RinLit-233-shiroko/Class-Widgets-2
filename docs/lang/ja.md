@@ -1,5 +1,5 @@
 <div align="center">
-<img src="assets/images/logo.png" width="15%" alt="Class Widgets 2">
+<img src="../../assets/images/logo.png" width="15%" alt="Class Widgets 2">
 <h1>Class Widgets 2</h1>
 <p>新しさは、当然の違いを生む。</p>
 <!--[![現在のバージョン](https://img.shields.io/github/v/release/rinlit-233-shiroko/class-widgets-2?style=for-the-badge&color=purple&label=%E7%8F%BE%E5%9C%A8%E3%81%AE%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3)](https://github.com/rinlit-233-shiroko/class-widgets-2/releases/latest)--->
