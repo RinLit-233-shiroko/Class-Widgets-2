@@ -145,7 +145,6 @@ class ScheduleRuntime(QObject):
         :param schedule:
         :return:
         """
-        # 处理自动时间偏移
         self._handle_auto_time_offset()
         
         self.time_offset = self.app_central.configs.schedule.time_offset  # 时间偏移
@@ -177,13 +176,13 @@ class ScheduleRuntime(QObject):
         if self.previous_entry != self.current_entry:
             self.currentsChanged.emit(self.current_status)
 
-    def _update_time(self):  # 更新时间
+    def _update_time(self):  
         self.current_day_of_week = self.current_offset_time.isoweekday()
         self.current_week = get_week_number(self.schedule.meta.startDate, self.current_offset_time)
         self.current_week_of_cycle = get_cycle_week(self.current_week, self.schedule.meta.maxWeekCycle)
 
     def get_progress_percent(self) -> float:
-        if not self.current_entry:  # 空
+        if not self.current_entry:  
             return 1
 
         now = self.current_offset_time
@@ -232,27 +231,27 @@ class ScheduleRuntime(QObject):
         """
         config = self.app_central.configs.schedule
         
-        # 如果未启用自动时间偏移，直接返回
+    
         if not config.auto_time_offset_enabled:
             return
             
         current_date = datetime.now().strftime('%Y-%m-%d')
         
-        # 如果今天已经更新过，直接返回
+    
         if config.auto_time_offset_last_update == current_date:
             return
             
-        # 如果是第一次启用或者日期发生变化，更新时间偏移
+    
         if config.auto_time_offset_last_update != current_date:
-            # 计算新的时间偏移值（直接使用秒）
+        
             new_offset = config.time_offset + config.auto_time_offset_value
             
-            # 更新配置
+            
             config.time_offset = new_offset
             config.auto_time_offset_last_update = current_date
             
             logger.info(f"Auto time offset applied: {config.auto_time_offset_value} seconds. New offset: {new_offset} seconds")
             
-            # 保存配置
+            
             self.app_central.configs.save()
 
