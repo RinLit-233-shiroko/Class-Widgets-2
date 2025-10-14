@@ -145,6 +145,9 @@ class ScheduleRuntime(QObject):
         :param schedule:
         :return:
         """
+        # 处理自动时间偏移
+        self._handle_auto_time_offset()
+        
         self.time_offset = self.app_central.configs.schedule.time_offset  # 时间偏移
         self.current_time = datetime.now()
         self.current_offset_time = self.current_time + timedelta(seconds=self.time_offset)  # 内部计算时间
@@ -221,4 +224,35 @@ class ScheduleRuntime(QObject):
                     subject_dict,
                     next_entry.title if next_entry else None
                 )
+
+    def _handle_auto_time_offset(self):
+        """
+        处理自动时间偏移功能
+        每天自动调整时间偏移量
+        """
+        config = self.app_central.configs.schedule
+        
+        # 如果未启用自动时间偏移，直接返回
+        if not config.auto_time_offset_enabled:
+            return
+            
+        current_date = datetime.now().strftime('%Y-%m-%d')
+        
+        # 如果今天已经更新过，直接返回
+        if config.auto_time_offset_last_update == current_date:
+            return
+            
+        # 如果是第一次启用或者日期发生变化，更新时间偏移
+        if config.auto_time_offset_last_update != current_date:
+            # 计算新的时间偏移值（直接使用秒）
+            new_offset = config.time_offset + config.auto_time_offset_value
+            
+            # 更新配置
+            config.time_offset = new_offset
+            config.auto_time_offset_last_update = current_date
+            
+            logger.info(f"Auto time offset applied: {config.auto_time_offset_value} seconds. New offset: {new_offset} seconds")
+            
+            # 保存配置
+            self.app_central.configs.save()
 

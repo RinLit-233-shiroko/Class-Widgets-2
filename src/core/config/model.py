@@ -129,3 +129,8 @@ class ScheduleConfig(ConfigBaseModel):
     default_duration: ScheduleDefaultDurationConfig = Field(default_factory=ScheduleDefaultDurationConfig)  # 默认时长
     time_offset: int = 0  # 时差偏移
     reschedule_day: dict = {}  # 调整日程
+    
+    # 自动时间偏移功能
+    auto_time_offset_enabled: bool = False  # 是否启用自动时间偏移
+    auto_time_offset_value: int = 0  # 每天的时间偏移增减值（秒）
+    auto_time_offset_last_update: str = ""  # 上次更新日期（YYYY-MM-DD格式）
