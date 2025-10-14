@@ -145,6 +145,8 @@ class ScheduleRuntime(QObject):
         :param schedule:
         :return:
         """
+        self._handle_auto_time_offset()
+        
         self.time_offset = self.app_central.configs.schedule.time_offset  # 时间偏移
         self.current_time = datetime.now()
         self.current_offset_time = self.current_time + timedelta(seconds=self.time_offset)  # 内部计算时间
@@ -174,13 +176,13 @@ class ScheduleRuntime(QObject):
         if self.previous_entry != self.current_entry:
             self.currentsChanged.emit(self.current_status)
 
-    def _update_time(self):  # 更新时间
+    def _update_time(self):  
         self.current_day_of_week = self.current_offset_time.isoweekday()
         self.current_week = get_week_number(self.schedule.meta.startDate, self.current_offset_time)
         self.current_week_of_cycle = get_cycle_week(self.current_week, self.schedule.meta.maxWeekCycle)
 
     def get_progress_percent(self) -> float:
-        if not self.current_entry:  # 空
+        if not self.current_entry:  
             return 1
 
         now = self.current_offset_time
@@ -221,4 +223,35 @@ class ScheduleRuntime(QObject):
                     subject_dict,
                     next_entry.title if next_entry else None
                 )
+
+    def _handle_auto_time_offset(self):
+        """
+        处理自动时间偏移功能
+        每天自动调整时间偏移量
+        """
+        config = self.app_central.configs.schedule
+        
+    
+        if not config.auto_time_offset_enabled:
+            return
+            
+        current_date = datetime.now().strftime('%Y-%m-%d')
+        
+    
+        if config.auto_time_offset_last_update == current_date:
+            return
+            
+    
+        if config.auto_time_offset_last_update != current_date:
+        
+            new_offset = config.time_offset + config.auto_time_offset_value
+            
+            
+            config.time_offset = new_offset
+            config.auto_time_offset_last_update = current_date
+            
+            logger.info(f"Auto time offset applied: {config.auto_time_offset_value} seconds. New offset: {new_offset} seconds")
+            
+            
+            self.app_central.configs.save()
 

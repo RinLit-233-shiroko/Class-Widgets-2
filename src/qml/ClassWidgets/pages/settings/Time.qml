@@ -37,5 +37,41 @@ FluentPage {
                 Component.onCompleted: value = Configs.data.schedule.time_offset
             }
         }
+
+        SettingCard {
+            Layout.fillWidth: true
+            icon.name: "ic_fluent_clock_arrow_download_20_regular"
+            title: qsTr("Auto Time Offset")
+            description: qsTr(
+                "Automatically adjust time offset daily by a specified amount. " +
+                "This can help compensate for gradual timing drift in school schedules."
+            )
+
+            RowLayout {
+                spacing: 8
+                
+                SpinBox {
+                    id: autoOffsetValue
+                    visible: autoOffsetSwitch.checked
+                    from: -86400
+                    to: 86400
+                    property string suffix: qsTr("seconds/day")
+                    onValueChanged: {
+                        Configs.set("schedule.auto_time_offset_value", value)
+                    }
+                    Component.onCompleted: value = Configs.data.schedule.auto_time_offset_value
+                }
+                
+                Item {
+                    Layout.fillWidth: true
+                }
+                
+                Switch {
+                    id: autoOffsetSwitch
+                    onCheckedChanged: Configs.set("schedule.auto_time_offset_enabled", checked)
+                    Component.onCompleted: checked = Configs.data.schedule.auto_time_offset_enabled
+                }
+            }
+        }
     }
 }

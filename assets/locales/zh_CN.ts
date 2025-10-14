@@ -1847,6 +1847,21 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <source>minutes</source>
         <translation>分钟</translation>
     </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Time.qml" line="45"/>
+        <source>Auto Time Offset</source>
+        <translation>自动时间偏移</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Time.qml" line="46"/>
+        <source>Automatically adjust time offset daily by a specified amount. This can help compensate for gradual timing drift in school schedules.</source>
+        <translation>每天按指定数值自动调整时间偏移。这有助于补偿学校课程表的逐渐时间偏差。</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Time.qml" line="65"/>
+        <source>seconds/day</source>
+        <translation>秒/天</translation>
+    </message>
 </context>
 <context>
     <name>TrayPanel</name>
