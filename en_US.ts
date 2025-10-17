@@ -2628,6 +2628,26 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <source>Update Completed ヾ(≧▽≦*)o</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../../src/core/updater/bridge.py" line="163"/>
+        <source>Update Downloaded</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/updater/bridge.py" line="168"/>
+        <source>Ready to install anytime. Go to &quot;Settings&quot; → &quot;Update&quot; to proceed with installation.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/updater/bridge.py" line="205"/>
+        <source>Applying Update Soon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/updater/bridge.py" line="209"/>
+        <source>The update may take several seconds to complete. (●&apos;◡&apos;●)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WeekSelector</name>

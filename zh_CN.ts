@@ -2724,12 +2724,33 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="89"/>
         <source>Class Widgets has been updated to the latest version: {version}</source>
-        <translation type="unfinished">Class Widgets 已更新至最新版本：{version}</translation>
+        <translation>Class Widgets 已更新至最新版本：{version}</translation>
     </message>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="90"/>
         <source>Update Completed ヾ(≧▽≦*)o</source>
         <translation>更新完成 ヾ(≧▽≦*)o</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/updater/bridge.py" line="163"/>
+        <source>Update Downloaded</source>
+        <translation>已下载更新</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/updater/bridge.py" line="168"/>
+        <source>Ready to install anytime. Go to &quot;Settings&quot; → &quot;Update&quot; to proceed with installation.</source>
+        <translation>随时可以安装。
+前往“设置”→“更新”以安装。</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/updater/bridge.py" line="205"/>
+        <source>Applying Update Soon</source>
+        <translation>即将应用更新</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/updater/bridge.py" line="209"/>
+        <source>The update may take several seconds to complete. (●&apos;◡&apos;●)</source>
+        <translation>本更新可能会耗时数十秒，请稍后 (●&apos;◡&apos;●)</translation>
     </message>
 </context>
 <context>
