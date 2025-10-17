@@ -2721,6 +2721,16 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <source>Class Widgets Update Available</source>
         <translation>Class Widgets 更新速递</translation>
     </message>
+    <message>
+        <location filename="../../src/core/updater/bridge.py" line="89"/>
+        <source>Class Widgets has been updated to the latest version: {version}</source>
+        <translation type="unfinished">Class Widgets 已更新至最新版本：{version}</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/updater/bridge.py" line="90"/>
+        <source>Update Completed ヾ(≧▽≦*)o</source>
+        <translation>更新完成 ヾ(≧▽≦*)o</translation>
+    </message>
 </context>
 <context>
     <name>WeekSelector</name>

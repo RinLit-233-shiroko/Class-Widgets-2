@@ -2618,6 +2618,16 @@ If it takes place in another location, such as a sport field, lab, or another cl
 Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../../src/core/updater/bridge.py" line="89"/>
+        <source>Class Widgets has been updated to the latest version: {version}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/updater/bridge.py" line="90"/>
+        <source>Update Completed ヾ(≧▽≦*)o</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WeekSelector</name>
