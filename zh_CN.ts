@@ -1214,12 +1214,12 @@ Please try again later.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="24"/>
         <source>Hover to make the widget transparent and let clicks go through, move away to bring it back</source>
-        <translation type="unfinished"></translation>
+        <translation>悬停使部件透明并允许点击穿透，移开后恢复显示</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="40"/>
         <source>Click on the widget to hide it, click it again to bring it back</source>
-        <translation type="unfinished"></translation>
+        <translation>点击小组件以隐藏，再次点击以恢复显示</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="52"/>
@@ -2305,7 +2305,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Time.qml" line="27"/>
         <source>Adjust schedule time to match your school&apos;s broadcast; Increase the offset to compensate for early bells, decrease to compensate for late bells</source>
-        <translation type="unfinished"></translation>
+        <translation>调整时差偏移以匹配学校的广播提醒；增加偏移量以抵消提前时间，减少偏移量以抵消晚点时间</translation>
     </message>
     <message>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/Time.qml" line="27"/>
