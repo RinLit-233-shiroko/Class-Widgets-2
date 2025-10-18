@@ -21,6 +21,11 @@ on:
         required: true
         default: false
         type: boolean
+      prerelease:
+        description: 'Mark as Pre-release'
+        required: false
+        default: true
+        type: boolean
 
 permissions:
   contents: write
@@ -147,7 +152,7 @@ jobs:
           name: Class Widgets ${{ github.ref_name }}
           tag_name: ${{ github.ref_name }}
           body_path: CHANGELOG.md
-          prerelease: true
+          prerelease: ${{ github.event_name == 'push' || github.event.inputs.prerelease }}
           files: |
             dist/ClassWidgets-2-Windows.zip
             dist/ClassWidgets-2-macOS.zip
