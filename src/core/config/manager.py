@@ -55,17 +55,21 @@ class ConfigManager(QObject):
     def _clean_useless_configs(self):
         """
         清理无用的配置项
+        使用UTC时间避免时区变化导致的问题
         """
         outdated_reschedule_days = []
 
+        # 使用UTC时间进行日期比较，避免时区变化导致的问题
+        current_date_utc = datetime.utcnow().strftime('%Y-%m-%d')
+        
         for day in self._config.schedule.reschedule_day:
-            if datetime.now().strftime('%Y-%m-%d') > day:
+            if current_date_utc > day:
                 outdated_reschedule_days.append(day)
 
         for day in outdated_reschedule_days:
             self._config.schedule.reschedule_day.pop(day)
 
-        logger.info(f"Cleaned useless configs.")
+        logger.info(f"Cleaned useless configs using UTC time: {current_date_utc}.")
 
     def load_config(self):
         if self.full_path.exists():
