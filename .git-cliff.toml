@@ -7,6 +7,11 @@ body = """
 > 目前 Class Widgets 2 仍然处于开发阶段，可能不适用于生产环境。
 > 欢迎反馈意见和建议谢谢喵
 
+> [!WARNING]
+> macOS 版本只能在搭载 Apple M 芯片的 Mac 上使用。  
+> 使用搭载了 Intel 处理器的 Mac 的用户，请等待后续适配。  
+> 点按左上角的苹果图标 -> 关于本机，可查看这台电脑的处理器。
+
 ## Class Widgets 2 更新速递
 > [!NOTE]
 > 当前版本：`{% if version %}({{ version }}){%- endif -%}`
@@ -50,8 +55,9 @@ body = """
 {%- endmacro -%}
 
 > [!TIP]
-> 对于不方便使用 GitHub 的用户，欢迎使用 123 网盘来下载测试版本
-> [Class Widgets 2 下载](https://www.123912.com/s/DCyBTd-3iWxH) （无密码，以后的测试版也会持续同步至本链）
+> 对于不方便使用 GitHub 的用户，欢迎使用 123 网盘和 OneDrive 来下载测试版本  
+> [123 网盘下载](https://www.123912.com/s/DCyBTd-3iWxH) （无密码，以后的测试版也会持续同步至本链）  
+> [OneDrive 下载](https://dl.gemen.pp.ua)
 
 """
 trim = true
