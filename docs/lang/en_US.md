@@ -7,7 +7,7 @@
 <!--[![当前版本](https://img.shields.io/github/v/release/rinlit-233-shiroko/class-widgets-2?style=for-the-badge&color=purple&label=%E5%BD%93%E5%89%8D%E7%89%88%E6%9C%AC)](https://github.com/rinlit-233-shiroko/class-widgets-2/releases/latest)--->
 
 [![Stars](https://img.shields.io/github/stars/rinlit-233-shiroko/class-widgets-2?style=for-the-badge&color=orange&label=Stars)](https://github.com/rinlit-233-shiroko/class-widgets-2)
-[![Version](https://img.shields.io/github/v/tag/rinlit-233-shiroko/class-widgets-2?include_prereleases&label=Version&color=yellow&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2/actions)
+[![Version](https://img.shields.io/github/v/tag/rinlit-233-shiroko/class-widgets-2?include_prereleases&label=Version&color=yellow&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2/releases)
 [![Open-Source License](https://img.shields.io/badge/license-GPLv3-blue.svg?label=Open-Source%20License&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2?tab=GPL-3.0-1-ov-file)
 [![Download Volume](https://img.shields.io/github/downloads/rinlit-233-shiroko/class-widgets-2/total.svg?label=Download%20Volume&color=green&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2)
 
