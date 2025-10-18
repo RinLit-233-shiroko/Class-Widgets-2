@@ -7,12 +7,12 @@ import ClassWidgets.Components
 
 Window {
     id: panel
-    title: "Control Panel"
+    title: Configs.data.app.version
     width: 375
-    height: 500
+    height: 550
     minimumWidth: 375
     // maximumWidth: width
-    minimumHeight: 500
+    minimumHeight: 550
     // maximumHeight: height
 
     minimizeVisible: false
@@ -111,6 +111,35 @@ Window {
 
             Text {
                 typography: Typography.BodyStrong
+                text: qsTr("Shortcuts")
+            }
+
+            RowLayout {
+                Layout.fillWidth: true
+                spacing: 8
+
+                Button {
+                    Layout.maximumWidth: parent.width / 2
+                    Layout.fillWidth: true
+                    icon.name: "ic_fluent_calendar_arrow_counterclockwise_20_regular"
+                    text: qsTr("Reschedule Day")
+                    onClicked: rescheduleDayDialog.open()
+                }
+                Button {
+                    enabled: false
+                    Layout.maximumWidth: parent.width / 2
+                    Layout.fillWidth: true
+                    icon.name: "ic_fluent_arrow_swap_20_regular"
+                    text: qsTr("Class Swap")
+                }
+            }
+        }
+
+        ColumnLayout {
+            Layout.fillWidth: true
+
+            Text {
+                typography: Typography.BodyStrong
                 text: qsTr("Switch your schedule")
             }
 
@@ -191,6 +220,18 @@ Window {
                 visible: parent.hovered
             }
             onClicked: AppCentral.quit()
+        }
+    }
+
+    // dialogs
+    RescheduleDayDialog {
+        id: rescheduleDayDialog
+        title: qsTr("Reschedule Day")
+        width: panel.width * 0.8
+
+        ButtonGroup {
+            id: buttonGroup
+            exclusive: true
         }
     }
 

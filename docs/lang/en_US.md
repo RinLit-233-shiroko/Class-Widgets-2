@@ -2,7 +2,7 @@
 <img src="../../assets/images/logo.png" width="15%" alt="Class Widgets 2">
 <h1>Class Widgets 2</h1>
 
-<p>The New Is a Natural Difference.</p>
+<p>Rewritten. Reimagined.</p>
 
 <!--[![当前版本](https://img.shields.io/github/v/release/rinlit-233-shiroko/class-widgets-2?style=for-the-badge&color=purple&label=%E5%BD%93%E5%89%8D%E7%89%88%E6%9C%AC)](https://github.com/rinlit-233-shiroko/class-widgets-2/releases/latest)--->
 
@@ -65,7 +65,7 @@ More information is in the [LICENSE](LICENSE) file.
 ### Contributors
 [![Contributors](http://contrib.nn.ci/api?repo=rinlit-233-shiroko/class-widgets-2)](https://github.com/rinlit-233-shiroko/class-widgets-2/graphs/contributors)
 
-![Repobeats](https://repobeats.axiom.co/api/embed/9d06f1435d1b14cb7837d1e863e55f24cc98df23.svg)
+![Repobeats](https://repobeats.axiom.co/api/embed/804be9d62a4ed9c120de1e7b6e3919e8a3dd3c92.svg "Repobeats analytics image")
 
 ## Star History
 

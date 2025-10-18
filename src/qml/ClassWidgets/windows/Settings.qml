@@ -57,6 +57,11 @@ FluentWindow {
             page: PathManager.qml("pages/settings/About.qml"),
             icon: "ic_fluent_info_20_regular",
         },
+        {
+            title: qsTr("Update"),
+            page: PathManager.qml("pages/settings/Update.qml"),
+            icon: "ic_fluent_arrow_sync_20_regular",
+        }
     ]
 
     // 测试水印

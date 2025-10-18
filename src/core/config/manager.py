@@ -1,10 +1,11 @@
+from datetime import datetime
 from pathlib import Path
 from loguru import logger
 from pydantic import Field, PrivateAttr
 from PySide6.QtCore import QObject, QTimer, Signal, Property, Slot
 
 from .model import AppConfig, ScheduleConfig, PreferencesConfig, PluginsConfig, LocaleConfig, InteractionsConfig, \
-    ConfigBaseModel
+    ConfigBaseModel, NetworkConfig
 from src import __version__, __version_type__
 
 
@@ -15,6 +16,7 @@ class RootConfig(ConfigBaseModel):
     preferences: PreferencesConfig = Field(default_factory=PreferencesConfig)
     interactions: InteractionsConfig = Field(default_factory=InteractionsConfig)
     plugins: PluginsConfig = Field(default_factory=PluginsConfig)
+    network: NetworkConfig = Field(default_factory=NetworkConfig)
 
     _on_change: callable = PrivateAttr(default=None)
 
@@ -51,6 +53,21 @@ class ConfigManager(QObject):
             if isinstance(value, ConfigBaseModel):
                 self._bind_nested_on_change(value)
 
+    def _clean_useless_configs(self):
+        """
+        清理无用的配置项
+        """
+        outdated_reschedule_days = []
+
+        for day in self._config.schedule.reschedule_day:
+            if datetime.now().strftime('%Y-%m-%d') > day:
+                outdated_reschedule_days.append(day)
+
+        for day in outdated_reschedule_days:
+            self._config.schedule.reschedule_day.pop(day)
+
+        logger.info(f"Cleaned useless configs.")
+
     def load_config(self):
         if self.full_path.exists():
             try:
@@ -65,6 +82,7 @@ class ConfigManager(QObject):
                     self._config.app.channel = __version_type__
 
                 self._bind_nested_on_change(self._config)
+                self._clean_useless_configs()
             except Exception as e:
                 logger.warning(f"Load config failed: {e}, use default config")
         self.save()
@@ -89,12 +107,20 @@ class ConfigManager(QObject):
     def data(self):
         return self._config.model_dump()  # 整个配置转 dict
 
-    @Slot(str, 'QVariant')
+    @Slot(str, "QVariant")
     def set(self, key: str, value):
         keys = key.split('.')  # 支持点分层，如 "preferences.current_theme"
         cfg = self._config
         for k in keys[:-1]:
             cfg = getattr(cfg, k)
-        setattr(cfg, keys[-1], value)
+
+        last_key = keys[-1]
+
+        # 如果最后一级是 dict，就赋值到 dict 的键
+        if isinstance(cfg, dict):
+            cfg[last_key] = value
+        else:
+            setattr(cfg, last_key, value)
+
         self._config._on_change()
         self.configChanged.emit()

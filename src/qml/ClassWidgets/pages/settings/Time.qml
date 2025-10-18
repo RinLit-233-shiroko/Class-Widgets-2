@@ -25,8 +25,8 @@ FluentPage {
             icon.name: "ic_fluent_timer_20_regular"
             title: qsTr("Time Offset (minutes)")
             description: qsTr(
-                "Adjust schedule time to match your school's broadcast. " +
-                "Increase the offset to compensate for early bells, decrease to compensate for late bells."
+                "Adjust schedule time to match your school's broadcast; " +
+                "Increase the offset to compensate for early bells, decrease to compensate for late bells"
             )
 
             SpinBox {

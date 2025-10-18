@@ -28,6 +28,26 @@ FluentWindow {
         anchors.fill: parent
         spacing: 24
 
+        Shortcut {
+            sequence: "Ctrl+S"
+            onActivated: {
+                let result = AppCentral.scheduleManager.save()
+                if (result) {
+                    floatLayer.createInfoBar({
+                        title: qsTr("Saved"),
+                        severity: Severity.Success,
+                        text: qsTr("Schedule saved successfully")
+                    })
+                } else {
+                    floatLayer.createInfoBar({
+                        title: qsTr("Save Failed"),
+                        severity: Severity.Error,
+                        text: qsTr("Failed to save schedule, see log for details")
+                    })
+                }
+            }
+        }
+
         ToolButton {
             flat: true
             Layout.alignment: Qt.AlignRight

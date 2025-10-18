@@ -7,18 +7,21 @@ from src.core.schedule.model import Entry, EntryType, Timeline, Subject, Schedul
 class ScheduleServices:
     def __init__(self, app_central):
         self.app_central = app_central
-        self.configs = self.app_central.configs
-        self.reschedule_map: dict = {}
+
+    def _get_reschedule_map(self) -> dict:
+        return self.app_central.configs.schedule.reschedule_day
 
     def get_day_entries(self, schedule: ScheduleData, now: datetime) -> Optional[Timeline]:
         """
         返回当前日期对应的 DayEntry（深拷贝，应用 override，不修改原始数据）
         """
         current_week = self._get_week_index(schedule, now)  # 当前第几周
+        reschedule_map = self._get_reschedule_map()
+
         # 调休处理：优先使用调休映射表
         date_str = now.strftime("%Y-%m-%d")
-        if date_str in self.reschedule_map:
-            weekday = self.reschedule_map[date_str]  # 1-7
+        if date_str in reschedule_map:
+            weekday = reschedule_map[date_str]  # 1-7
         else:
             weekday = now.isoweekday()  # 默认 1-7
 

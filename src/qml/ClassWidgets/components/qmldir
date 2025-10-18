@@ -8,6 +8,7 @@ Introduction 1.0 Introduction.qml
 # Dialogs
 AddWidgetsDialog 1.0 dialogs/AddWidgetsDialog.qml
 WidgetSettingsDialog 1.0 dialogs/WidgetSettingsDialog.qml
+RescheduleDayDialog 1.0 dialogs/RescheduleDayDialog.qml
 
 # Settings
 DayListView 1.0 editor/DayListView.qml

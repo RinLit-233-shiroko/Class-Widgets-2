@@ -1,6 +1,6 @@
 [project]
 name = "ClassWidgets-2"
-version = "2.0.0.dev20251011"
+version = "2.0.0.dev20251018"
 description = "Class Widgets 2, The Next Class Schedule."
 authors = [
     {name = "RinLit",email = "lintusup@foxmail.com"}
@@ -9,7 +9,8 @@ license = {text = "MIT"}
 readme = "README.md"
 requires-python = ">=3.12,<3.14"
 dependencies = [
-    "PySide6",
+    "requests",
+    "PySide6~=6.9.3",
     "RinUI>=0.1.8.1.post1",
     "pydantic",
     "loguru"

@@ -3,6 +3,7 @@ from loguru import logger
 
 from .base import AutomationTask
 from .builtin_tasks import AutoHideTask
+from .update_check import UpdateCheckTask
 
 
 class AutomationManager(QObject):
@@ -12,13 +13,13 @@ class AutomationManager(QObject):
         super().__init__()
         self.app_central = app_central
         self.tasks: dict[str, AutomationTask] = {}
+        # self._init_builtin_tasks()
 
-        self._init_builtin_tasks()
-
-    def _init_builtin_tasks(self):
+    def init_builtin_tasks(self):
         """Instantiate and register all built-in tasks"""
         builtin_tasks = [
-            AutoHideTask
+            AutoHideTask,
+            UpdateCheckTask
         ]
         for task_cls in builtin_tasks:
             task_instance = task_cls(self.app_central)

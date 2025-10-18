@@ -17,6 +17,7 @@ from src.core.schedule import ScheduleRuntime, ScheduleManager
 from src.core.schedule.editor import ScheduleEditor
 from src.core.themes import ThemeManager
 from src.core.timer import UnionUpdateTimer
+from src.core.updater import UpdaterBridge
 from src.core.utils import TrayIcon, AppTranslator, UtilsBackend
 from src.core.utils.debugger import DebuggerWindow
 from src.core.widgets import WidgetsWindow, WidgetListModel
@@ -32,8 +33,9 @@ class AppCentral(QObject):  # Class Widgets 的中枢
 
     def __init__(self):  # 初始化
         super().__init__()
-        self._initialize_schedule_components()
         self._initialize_cores()
+        self._initialize_schedule_components()
+        self._initialize_utils()
         self._initialize_ui_components()
 
     def _initialize_cores(self):
@@ -43,16 +45,16 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.configs = ConfigManager(path=CONFIGS_PATH, filename="configs.json")
         self.theme_manager = ThemeManager(self)
         self.widgets_model = WidgetListModel(self)
+        # debugger
+        self.debugger = None
+
+    def _initialize_utils(self):
         self.plugin_api = PluginAPI(self)
         self.plugin_manager = PluginManager(self.plugin_api, self)
         self.app_translator = AppTranslator(self)
         self.utils_backend = UtilsBackend()
-        
-        # 交互管理器
         self.automation_manager = AutomationManager(self)
-
-        # debugger
-        self.debugger = None
+        self.updater_bridge = UpdaterBridge(self)
 
     def _initialize_schedule_components(self):
         """初始化调度相关组件"""
@@ -84,6 +86,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self._load_schedule()  # 加载课程表
         self._load_runtime()  # 加载运行时
         self._init_tray_icon()  # 初始化托盘图标
+        self._run_utils()
         self.initialized.emit()  # 发送信号
         logger.info(f"Configs loaded.")
 
@@ -166,13 +169,9 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.app_translator.setLanguage(self.configs.locale.language)
 
     def _load_runtime(self):
-        if self.configs.app.debug_mode:  # 调试模式
-            self.debugger = DebuggerWindow(self)
-
         self.runtime.refresh(self.schedule_manager.schedule)
         self._setup_runtime_connections()
         self._load_theme_and_plugins()
-        self.widgets_window.run()
 
     def _setup_runtime_connections(self):
         """设置runtime连接"""
@@ -184,6 +183,16 @@ class AppCentral(QObject):  # Class Widgets 的中枢
 
         self.union_update_timer.start()
 
+    def _run_utils(self):
+        if self.configs.app.debug_mode:  # 调试模式
+            self.debugger = DebuggerWindow(self)
+
+        self.automation_manager.init_builtin_tasks()
+        self.widgets_window.run()
+
+        if "--update-done" in sys.argv:
+            self.updater_bridge.update_complete()
+
     def _load_theme_and_plugins(self):
         """主题和插件"""
         self.theme_manager.load()
@@ -193,7 +202,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.plugin_manager.load_plugins()
 
     def _init_tray_icon(self):
-        self.tray_icon = TrayIcon(self)
+        self.tray_icon = TrayIcon()
         self.tray_icon.togglePanel.connect(self._on_tray_toggle)
 
     def _setup_logging(self):
@@ -276,6 +285,7 @@ class Settings(RinUIWindow):
         self.engine.addImportPath(DEFAULT_THEME)
         self.central.setup_qml_context(self)
         self.engine.rootContext().setContextProperty("UtilsBackend", self.central.utils_backend)
+        self.engine.rootContext().setContextProperty("UpdaterBridge", self.central.updater_bridge)
         self.central.retranslate.connect(self.engine.retranslate)
 
         self.load(CW_PATH / "windows" / "Settings.qml")

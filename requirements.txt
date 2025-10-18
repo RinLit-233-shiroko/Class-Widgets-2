@@ -1,4 +1,5 @@
-PySide6~=6.9.1
+PySide6~=6.9.3
 RinUI>=0.1.8.1.post1
-loguru~=0.7.3
-pydantic~=2.11.7
+loguru
+pydantic
+requests
