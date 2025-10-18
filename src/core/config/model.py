@@ -123,6 +123,11 @@ class InteractionsConfig(ConfigBaseModel):
 class PluginsConfig(ConfigBaseModel):
     enabled: List[str] = ["builtin.classwidgets.widgets"]
 
+class AutoTimeOffsetConfig(ConfigBaseModel):
+    enabled: bool = False
+    value: int = 0
+    last_update: str = ""
+
 class ScheduleConfig(ConfigBaseModel):
     current_schedule: str = QCoreApplication.translate("Configs", "New Schedule 1")
     preparation_time: int = 2  # min
@@ -130,7 +135,4 @@ class ScheduleConfig(ConfigBaseModel):
     time_offset: int = 0  # 时差偏移
     reschedule_day: dict = {}  # 调整日程
     
-    # 自动时间偏移功能
-    auto_time_offset_enabled: bool = False  # 是否启用自动时间偏移
-    auto_time_offset_value: int = 0  # 每天的时间偏移增减值（秒）
-    auto_time_offset_last_update: str = ""  # 上次更新日期（YYYY-MM-DD格式）
+    auto_time_offset: AutoTimeOffsetConfig = Field(default_factory=AutoTimeOffsetConfig)
