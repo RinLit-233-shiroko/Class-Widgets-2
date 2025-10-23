@@ -197,17 +197,17 @@ jobs:
           ENCODED_VERSION=$(echo "$VERSION" | sed 's/ /%20/g')
 
           # Create directory
-          curl -v -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" `
+          curl -v -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
                -X MKCOL "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}"
 
-          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" `
-            -T "CHANGELOG.md" `
+          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
+            -T "CHANGELOG.md" \
             "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/CHANGELOG.md"
 
-          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" `
-            -T "dist/ClassWidgets-2-Windows.zip" `
+          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
+            -T "dist/ClassWidgets-2-Windows.zip" \
             "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
 
-          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" `
-            -T "dist/ClassWidgets-2-macOS.zip" `
+          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
+            -T "dist/ClassWidgets-2-macOS.zip" \
             "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-macOS.zip"
