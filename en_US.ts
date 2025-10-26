@@ -222,7 +222,7 @@ Licensed under the GPL-3 license</source>
 <context>
     <name>Configs</name>
     <message>
-        <location filename="../../src/core/config/model.py" line="134"/>
+        <location filename="../../src/core/config/model.py" line="140"/>
         <source>New Schedule 1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -904,13 +904,13 @@ Licensed under the GPL-3 license</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/EntryListView.qml" line="240"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryListView.qml" line="241"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/EntryListView.qml" line="240"/>
         <source>Conflict with existing schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/EntryListView.qml" line="242"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/EntryListView.qml" line="243"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/EntryListView.qml" line="242"/>
         <source>This time overlaps with an existing schedule (%1 – %2)</source>
         <translation type="unfinished"></translation>
@@ -1686,13 +1686,23 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>Schedule</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="46"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="27"/>
+        <source>Preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="32"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="101"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/editor/Schedule.qml" line="46"/>
         <source>Week Cycle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="69"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="124"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/editor/Schedule.qml" line="69"/>
         <source>Quick Add Subject</source>
         <translation type="unfinished"></translation>
@@ -1860,7 +1870,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>ScheduleConverter</name>
     <message>
-        <location filename="../../src/core/convertor/converter.py" line="241"/>
+        <location filename="../../src/core/convertor/converter.py" line="252"/>
         <source>Class</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2841,13 +2851,13 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <name>WeekSelector</name>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/WeekSelector.qml" line="42"/>
-        <location filename="../../src/src/qml/ClassWidgets/components/editor/WeekSelector.qml" line="42"/>
+        <location filename="../../src/src/qml/ClassWidgets/components/editor/WeekSelector.qml" line="47"/>
         <source>Every Week</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/WeekSelector.qml" line="47"/>
-        <location filename="../../src/src/qml/ClassWidgets/components/editor/WeekSelector.qml" line="47"/>
+        <location filename="../../src/src/qml/ClassWidgets/components/editor/WeekSelector.qml" line="42"/>
         <source>Round</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2937,31 +2947,111 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="125"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="122"/>
+        <source>Font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="123"/>
+        <source>Choose a font for the widgets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="149"/>
+        <source>Font weight</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="150"/>
+        <source>Set the thickness of the font</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="155"/>
+        <source>Thin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="156"/>
+        <source>Extra Light</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="157"/>
+        <source>Light</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="158"/>
+        <source>Regular</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="159"/>
+        <source>Medium</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="160"/>
+        <source>Semi Bold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="161"/>
+        <source>Bold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="162"/>
+        <source>Extra Bold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="163"/>
+        <source>Black</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="164"/>
+        <source>Custom</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="195"/>
+        <source>Preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="197"/>
+        <source>The quick brown fox jumps over the lazy dog</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="212"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="125"/>
         <source>Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="131"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="218"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="131"/>
         <source>Display</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="132"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="219"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="132"/>
         <source>Set which screen to display widgets on, and adjust their position</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="240"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="327"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="240"/>
         <source>X-axis offset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="254"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="341"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="254"/>
         <source>Y-axis offset</source>
         <translation type="unfinished"></translation>
