@@ -240,22 +240,22 @@ Licensed under the GPL-3 license</source>
     <message>
         <location filename="../../src/RinUI/windows/CtrlBtn.qml" line="19"/>
         <source>Maximize</source>
-        <translation type="unfinished"></translation>
+        <translation>最大化</translation>
     </message>
     <message>
         <location filename="../../src/RinUI/windows/CtrlBtn.qml" line="19"/>
         <source>Minimize</source>
-        <translation type="unfinished"></translation>
+        <translation>最小化</translation>
     </message>
     <message>
         <location filename="../../src/RinUI/windows/CtrlBtn.qml" line="19"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭</translation>
     </message>
     <message>
         <location filename="../../src/RinUI/windows/CtrlBtn.qml" line="19"/>
         <source>Unknown</source>
-        <translation type="unfinished">未知</translation>
+        <translation>未知</translation>
     </message>
 </context>
 <context>
@@ -263,17 +263,17 @@ Licensed under the GPL-3 license</source>
     <message>
         <location filename="../../src/RinUI/components/DateAndTime/DatePicker.qml" line="122"/>
         <source>year</source>
-        <translation type="unfinished"></translation>
+        <translation>年</translation>
     </message>
     <message>
         <location filename="../../src/RinUI/components/DateAndTime/DatePicker.qml" line="123"/>
         <source>month</source>
-        <translation type="unfinished"></translation>
+        <translation>月</translation>
     </message>
     <message>
         <location filename="../../src/RinUI/components/DateAndTime/DatePicker.qml" line="124"/>
         <source>day</source>
-        <translation type="unfinished"></translation>
+        <translation>天</translation>
     </message>
 </context>
 <context>
@@ -935,25 +935,28 @@ You can click the save button in the title bar.</source>
     <message>
         <location filename="../../src/RinUI/components/Navigation/ErrorPage.qml" line="21"/>
         <source>Sorry, something went wrong!</source>
-        <translation type="unfinished"></translation>
+        <translation>抱歉，出错了！</translation>
     </message>
     <message>
         <location filename="../../src/RinUI/components/Navigation/ErrorPage.qml" line="30"/>
         <source> load failed! 
 
  Because of </source>
-        <translation type="unfinished"></translation>
+        <translation> 加载失败！ 
+
+由于 </translation>
     </message>
     <message>
         <location filename="../../src/RinUI/components/Navigation/ErrorPage.qml" line="30"/>
         <source>
 Please try again later.</source>
-        <translation type="unfinished"></translation>
+        <translation>
+请稍后再试。</translation>
     </message>
     <message>
         <location filename="../../src/RinUI/components/Navigation/ErrorPage.qml" line="41"/>
         <source>Retry</source>
-        <translation type="unfinished"></translation>
+        <translation>重试</translation>
     </message>
 </context>
 <context>
@@ -1288,7 +1291,7 @@ Please try again later.</source>
     <message>
         <location filename="../../src/RinUI/components/StatusAndInfo/InfoBar.qml" line="176"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭</translation>
     </message>
 </context>
 <context>
@@ -1387,17 +1390,17 @@ Please try again later.</source>
     <message>
         <location filename="../../src/RinUI/components/Navigation/NavigationBar.qml" line="98"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>返回</translation>
     </message>
     <message>
         <location filename="../../src/RinUI/components/Navigation/NavigationBar.qml" line="137"/>
         <source>Open Navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>打开导航</translation>
     </message>
     <message>
         <location filename="../../src/RinUI/components/Navigation/NavigationBar.qml" line="137"/>
         <source>Close Navigation</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭导航</translation>
     </message>
 </context>
 <context>
@@ -1468,12 +1471,12 @@ Please try again later.</source>
     <message>
         <location filename="../../src/RinUI/components/DateAndTime/PickerView.qml" line="26"/>
         <source>AM</source>
-        <translation type="unfinished"></translation>
+        <translation>上午</translation>
     </message>
     <message>
         <location filename="../../src/RinUI/components/DateAndTime/PickerView.qml" line="26"/>
         <source>PM</source>
-        <translation type="unfinished"></translation>
+        <translation>下午</translation>
     </message>
 </context>
 <context>
@@ -2440,12 +2443,12 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/RinUI/components/BasicInput/Switch.qml" line="15"/>
         <source>On</source>
-        <translation type="unfinished"></translation>
+        <translation>开</translation>
     </message>
     <message>
         <location filename="../../src/RinUI/components/BasicInput/Switch.qml" line="16"/>
         <source>Off</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭</translation>
     </message>
 </context>
 <context>
@@ -2462,22 +2465,22 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/RinUI/components/MenusAndToolbars/TextInputMenu.qml" line="13"/>
         <source>Cut</source>
-        <translation type="unfinished"></translation>
+        <translation>剪切</translation>
     </message>
     <message>
         <location filename="../../src/RinUI/components/MenusAndToolbars/TextInputMenu.qml" line="20"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>复制</translation>
     </message>
     <message>
         <location filename="../../src/RinUI/components/MenusAndToolbars/TextInputMenu.qml" line="27"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>粘贴</translation>
     </message>
     <message>
         <location filename="../../src/RinUI/components/MenusAndToolbars/TextInputMenu.qml" line="34"/>
         <source>Select All</source>
-        <translation type="unfinished"></translation>
+        <translation>全选</translation>
     </message>
 </context>
 <context>
@@ -2522,22 +2525,22 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/RinUI/components/DateAndTime/TimePicker.qml" line="10"/>
         <source>AM</source>
-        <translation type="unfinished"></translation>
+        <translation>上午</translation>
     </message>
     <message>
         <location filename="../../src/RinUI/components/DateAndTime/TimePicker.qml" line="11"/>
         <source>PM</source>
-        <translation type="unfinished"></translation>
+        <translation>下午</translation>
     </message>
     <message>
         <location filename="../../src/RinUI/components/DateAndTime/TimePicker.qml" line="12"/>
         <source>hour</source>
-        <translation type="unfinished"></translation>
+        <translation>1小时</translation>
     </message>
     <message>
         <location filename="../../src/RinUI/components/DateAndTime/TimePicker.qml" line="13"/>
         <source>minute</source>
-        <translation type="unfinished"></translation>
+        <translation>分钟</translation>
     </message>
 </context>
 <context>
@@ -2545,7 +2548,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/RinUI/windows/TitleBar.qml" line="116"/>
         <source>Fluent TitleBar</source>
-        <translation type="unfinished"></translation>
+        <translation>流线型标题栏</translation>
     </message>
 </context>
 <context>
@@ -2553,7 +2556,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/RinUI/components/StatusAndInfo/Toast.qml" line="156"/>
         <source>Close</source>
-        <translation type="unfinished"></translation>
+        <translation>关闭</translation>
     </message>
 </context>
 <context>
@@ -2937,8 +2940,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="168"/>
         <source>Ready to install anytime. Go to &quot;Settings&quot; → &quot;Update&quot; to proceed with installation.</source>
-        <translation>随时可以安装。
-前往“设置”→“更新”以安装。</translation>
+        <translation>随时可以安装。前往“设置”→“更新”以安装。</translation>
     </message>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="205"/>
