@@ -23,7 +23,7 @@
 > The files in the online storage will be automatically updated with the release of the version.
 > 
 > <div align="center">
-> <a href="https://github.com/RinLit-233-shiroko/Class-Widgets-2/releases">Release Page</a> | <a href="https://www.123865.com/s/DCyBTd-3iWxH">123 Cloud Storage</a>
+> <a href="https://github.com/RinLit-233-shiroko/Class-Widgets-2/releases">Release Page</a> | <a href="https://dl.gemen.pp.ua">OneDrive</a> | <a href="https://www.123865.com/s/DCyBTd-3iWxH">123 Cloud Storage</a>
 > </div>
 
 

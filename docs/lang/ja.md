@@ -20,11 +20,11 @@
 > 
 > 問題やフィードバックがございましたら、GitHub ページまでお気軽にお寄せください。
 >
-> GitHub からのダウンロードが遅い方は、下記のクラウドストレージリンクから必要なバージョンをダウンロードしていただけます。
+> GitHubでのダウンロード速度が遅い場合、下記の他のサードパーティリンクから必要なバージョンをダウンロードできます。
 > クラウドストレージのファイルは、リリースに合わせて自動的に更新されます。
 > 
 > <div align="center">
-> <a href="https://github.com/RinLit-233-shiroko/Class-Widgets-2/releases">リリースページ</a> | <a href="https://www.123865.com/s/DCyBTd-3iWxH">123 クラウドストレージ</a>
+> <a href="https://github.com/RinLit-233-shiroko/Class-Widgets-2/releases">リリースページ</a> | <a href="https://dl.gemen.pp.ua">OneDrive</a> | <a href="https://www.123865.com/s/DCyBTd-3iWxH">123 クラウドストレージ</a>
 > </div>
 
 
