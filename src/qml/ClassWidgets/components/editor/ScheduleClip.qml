@@ -142,6 +142,55 @@ Clip {
                     title: qsTr("Export")
                     MenuItem {
                         text: qsTr("Export to JSON")
+                        onClicked: {
+                            if (AppCentral.scheduleManager.export(filename)) {
+                                floatLayer.createInfoBar(
+                                    {
+                                        severity: Severity.Success,
+                                        title: qsTr("Export Success"),
+                                        text: qsTr("The schedule has been exported")
+                                    }
+                                )
+                            } else {
+                                floatLayer.createInfoBar(
+                                    {
+                                        severity: Severity.Error,
+                                        title: qsTr("Export Failed"),
+                                        text: qsTr(
+                                            "Failed to export the schedule. " +
+                                            "Please change the output directory "+
+                                            "or send the log file to the developer or community to help us sort it out."
+                                        )
+                                    }
+                                )
+                            }
+                        }
+                    }
+                    MenuItem {
+                        text: qsTr("Export to CSES")
+                        onClicked: {
+                            if (AppCentral.scheduleManager.scheduleIO.exportToCSES(filename)) {
+                                floatLayer.createInfoBar(
+                                    {
+                                        severity: Severity.Success,
+                                        title: qsTr("Export Success"),
+                                        text: qsTr("The schedule has been exported as CSES format")
+                                    }
+                                )
+                            } else {
+                                floatLayer.createInfoBar(
+                                    {
+                                        severity: Severity.Error,
+                                        title: qsTr("Export Failed"),
+                                        text: qsTr(
+                                            "Failed to export the schedule as CSES format. " +
+                                            "Please change the output directory "+
+                                            "or send the log file to the developer or community to help us sort it out."
+                                        )
+                                    }
+                                )
+                            }
+                        }
                     }
                 }
             }

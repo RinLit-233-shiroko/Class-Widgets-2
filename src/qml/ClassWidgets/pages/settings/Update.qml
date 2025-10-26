@@ -304,7 +304,10 @@ FluentPage {
                 spacing: 4
                 ToolButton {
                     icon.name: "ic_fluent_arrow_reset_20_regular"
-                    onClicked: urlField.text = "https://classwidgets.rinlit.cn/2/releases.json/"
+                    onClicked: {
+                        urlField.text = "https://classwidgets.rinlit.cn/2/releases.json/"
+                        Configs.set("network.releases_url", "https://classwidgets.rinlit.cn/2/releases.json/")
+                    }
 
                     ToolTip {
                         text: qsTr("Reset to default")

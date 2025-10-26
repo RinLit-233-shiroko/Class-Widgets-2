@@ -81,7 +81,7 @@ ColumnLayout {
 
     SettingCard {
         Layout.fillWidth: true
-        title: qsTr("Set Start Date")
+        title: qsTr("Set start date and max weeks")
         description: qsTr("Set the first day of school to calculate week numbers accurately")
         icon.name: "ic_fluent_calendar_arrow_counterclockwise_20_regular"
 
@@ -90,6 +90,8 @@ ColumnLayout {
             onClicked: {
                 const currentDate = AppCentral.scheduleEditor.getStartDate()
                 datePicker.setDate(currentDate)
+                const maxWeekCycle = AppCentral.scheduleEditor.getMaxWeekCycle()
+                maxWeekCycleBox.value = maxWeekCycle
                 datePickerDialog.open()
             }
         }
@@ -97,7 +99,7 @@ ColumnLayout {
 
     SettingCard {
         Layout.fillWidth: true
-        title: qsTr("Set Default Duration")
+        title: qsTr("Set default duration")
         description: qsTr("Set the default duration for new classes, breaks, or activities.")
         icon.name: "ic_fluent_calendar_arrow_counterclockwise_20_regular"
 
@@ -112,21 +114,39 @@ ColumnLayout {
     Dialog {
         id: datePickerDialog
         modal: true
-        title: qsTr("Select Date")
-        width: 300
-        height: 200
+        title: qsTr("Set date and max weeks")
+        width: 325
+
+        Text {
+            Layout.fillWidth: true
+            text: qsTr("Start date:")
+        }
         DatePicker {
+            Layout.fillWidth: true
             locale: Qt.locale()
             id: datePicker
         }
+
+        Text {
+            Layout.fillWidth: true
+            text: qsTr("Max week cycle:")
+        }
+        SpinBox {
+            Layout.fillWidth: true
+            id: maxWeekCycleBox
+            from: 1
+            to: 12
+        }
+
         standardButtons: Dialog.Ok | Dialog.Cancel
 
         onAccepted: {
             const newDate = datePicker.date // 形如 "2025-9-1"
-            if (!AppCentral.scheduleEditor.setStartDate(newDate)) {
+            if (!AppCentral.scheduleEditor.setStartDate(newDate)
+                && !AppCentral.scheduleEditor.setMaxWeekCycle(maxWeekCycleBox.value)) {
                 floatLayer.createInfoBar({
                     title: qsTr("Failed"),
-                    text: qsTr("Failed to set start date. Please report this issue to the community or the developer.") ,
+                    text: qsTr("Failed to set start date or max week cycle. Please report this issue to the community or the developer.") ,
                     severity: Severity.Error,
                     duration: 5000,
                 })

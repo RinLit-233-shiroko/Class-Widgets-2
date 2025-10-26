@@ -108,8 +108,8 @@
         },
         {
             "id": "art",
-            "name": "艺术",
-            "simplifiedName": "艺术",
+            "name": "美术",
+            "simplifiedName": "美",
             "teacher": "",
             "icon": "ic_fluent_draw_shape_20_regular",
             "color": "#F44336",
@@ -159,7 +159,7 @@
         {
             "id": "elective",
             "name": "选修",
-            "simplifiedName": "选修",
+            "simplifiedName": "选",
             "teacher": "",
             "icon": "ic_fluent_sign_out_20_regular",
             "color": "#9E9E9E",
@@ -178,7 +178,7 @@
         },
         {
             "id": "club",
-            "name": "社",
+            "name": "社团",
             "simplifiedName": "社",
             "teacher": "",
             "icon": "ic_fluent_people_team_20_regular",
@@ -308,10 +308,18 @@
                     "title": ""
                 },
                 {
+                    "id": "entry_3c2b227956e54498958e104c738d45ef",
+                    "type": "break",
+                    "startTime": "16:30",
+                    "endTime": "16:45",
+                    "subjectId": "",
+                    "title": ""
+                },
+                {
                     "id": "entry_3ae4d4b8a250459d9e48d0c0815b9eb2",
                     "type": "class",
-                    "startTime": "16:30",
-                    "endTime": "17:25",
+                    "startTime": "16:45",
+                    "endTime": "17:40",
                     "subjectId": "",
                     "title": ""
                 }
@@ -321,9 +329,7 @@
                 2,
                 3,
                 4,
-                5,
-                6,
-                7
+                5
             ],
             "weeks": "all",
             "date": null
@@ -878,6 +884,16 @@
             ],
             "weeks": "all",
             "subjectId": "it",
+            "title": null
+        },
+        {
+            "id": "override_8ada470c0ab14ab89504f9797cb7196d",
+            "entryId": "entry_42f2f513d1c5458b9afea10d9eb786e0",
+            "dayOfWeek": [
+                1
+            ],
+            "weeks": 2,
+            "subjectId": "art",
             "title": null
         }
     ]

@@ -199,6 +199,7 @@ ColumnLayout {
             to: 5
             stepSize: 0.05
             value: 1.25
+            showTooltip: false
         }
     }
 

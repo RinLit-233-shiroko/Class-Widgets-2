@@ -11,13 +11,13 @@ Clip {
     onClicked: openEditDialog()
 
     property string subjectId: modelData.id
-    property string subjectIcon: modelData.icon
-    property string subjectSimplifiedNameText: modelData.simplifiedName
+    property string subjectIcon: modelData.icon || ""
+    property string subjectSimplifiedNameText: modelData.simplifiedName || ""
     property string subjectNameText: modelData.name
-    property string subjectTeacherText: modelData.teacher
-    property string subjectLocationText: modelData.location
-    property string subjectColorText: modelData.color
-    property bool subjectIsLocal: modelData.isLocalClassroom
+    property string subjectTeacherText: modelData.teacher || ""
+    property string subjectLocationText: modelData.location || ""
+    property string subjectColorText: modelData.color || ""
+    property bool subjectIsLocal: modelData.isLocalClassroom || true
 
     function openEditDialog() {
         // 初始化编辑框

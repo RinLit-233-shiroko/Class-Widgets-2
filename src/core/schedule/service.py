@@ -25,10 +25,12 @@ class ScheduleServices:
         else:
             weekday = now.isoweekday()  # 默认 1-7
 
+        max_week_cycle = schedule.meta.maxWeekCycle or 1
+
         for day in schedule.days:
             day_of_week_list = [day.dayOfWeek] if isinstance(day.dayOfWeek, int) else day.dayOfWeek
             if day_of_week_list and weekday in day_of_week_list:
-                if self._is_in_week(day.weeks, current_week):
+                if self._is_in_week(day.weeks, current_week, max_week_cycle):
                     # 深拷贝 day 和 entries
                     day_copy = day.model_copy()
                     day_copy.entries = [entry.model_copy() for entry in day.entries]
@@ -47,12 +49,12 @@ class ScheduleServices:
                     return day_copy
         return None
 
-    def _override_applies(self, override: Timetable, weekday: int, current_week: int) -> bool:
+    def _override_applies(self, override: Timetable, weekday: int, current_week: int, max_week_cycle: int = 1) -> bool:
         if override.dayOfWeek:
             if weekday not in override.dayOfWeek:
                 return False
         if override.weeks:
-            if not self._is_in_week(override.weeks, current_week):
+            if not self._is_in_week(override.weeks, current_week, max_week_cycle):
                 return False
         return True
 
@@ -143,7 +145,7 @@ class ScheduleServices:
         return delta // 7 + 1
 
     @staticmethod
-    def _is_in_week(weeks: Union[str, int, list[int], None], current_week: int) -> bool:
+    def _is_in_week(weeks: Union[str, int, list[int], None], current_week: int, max_week_cycle: int = 1) -> bool:
         """
         判断某个 weeks 字段是否包含当前周
         - "all" 或 WeekType.ALL → 永远 True
@@ -159,7 +161,7 @@ class ScheduleServices:
         if isinstance(weeks, str):
             return weeks == WeekType.ALL.value
         if isinstance(weeks, int):
-            return current_week == weeks
+            return current_week >= weeks and ((current_week - weeks) % max_week_cycle == 0)  # 补做
         if isinstance(weeks, list):
             return current_week in weeks
 

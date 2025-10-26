@@ -3,3 +3,4 @@ RinUI>=0.1.8.1.post1
 loguru
 pydantic
 requests
+pyyaml

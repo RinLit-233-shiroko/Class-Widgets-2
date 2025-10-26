@@ -1,6 +1,8 @@
 from pydantic import BaseModel
-from typing import Optional, List, Dict, Union
+from typing import Optional, List, Union
 from enum import Enum
+
+from src import __SCHEDULE_SCHEMA_VERSION__
 
 
 class EntryType(str, Enum):
@@ -45,7 +47,7 @@ class Timeline(BaseModel):
 
 class MetaInfo(BaseModel):
     id: str
-    version: int
+    version: int = __SCHEDULE_SCHEMA_VERSION__
     maxWeekCycle: int
     startDate: str  # yyyy-mm-dd
 

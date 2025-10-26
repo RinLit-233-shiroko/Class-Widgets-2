@@ -19,20 +19,77 @@ FluentPage {
             "2. Quickly fill in courses at a glance;\n" +
             "3. Done in just 3 steps — editing your schedule has never been easier!"
         )
-        Button {
-            flat: true
+        RowLayout {
             Layout.alignment: Qt.AlignRight
-            icon.name: "ic_fluent_folder_open_20_regular"
-            text: qsTr("Open schedules folder")
-            onClicked: AppCentral.scheduleManager.openSchedulesFolder()
-        }
-        Button {
-            flat: true
-            highlighted: true
-            Layout.alignment: Qt.AlignRight
-            icon.name: "ic_fluent_add_20_regular"
-            text: qsTr("Create a new schedule")
-            onClicked: createScheduleDialog.open()
+
+            Button {
+                flat: true
+                Layout.alignment: Qt.AlignRight
+                icon.name: "ic_fluent_folder_open_20_regular"
+                text: qsTr("Open schedules folder")
+                onClicked: AppCentral.scheduleManager.openSchedulesFolder()
+            }
+
+            DropDownButton {
+                flat: true
+                icon.name: "ic_fluent_arrow_enter_20_regular"
+                text: qsTr("Import Schedule")
+
+                MenuItem {
+                    icon.name: "ic_fluent_checkmark_starburst_20_regular"
+                    text: qsTr("Import from Class Widgets 2")
+                    onTriggered: {
+                        if (!AppCentral.scheduleManager.importSchedule()) {
+                            floatLayer.createInfoBar(
+                            {
+                                severity: Severity.Error,
+                                title: qsTr("Import Failed"),
+                                text: qsTr(
+                                    "Failed to import the schedule." +
+                                    "Please check if the schedule file is valid."
+                                )
+                            }
+                        )
+                        }
+                    }
+                }
+                MenuSeparator {}
+                MenuItem {
+                    icon.source: PathManager.images("icons/smart_teach.svg")
+                    text: qsTr("Import from CSES")
+                    onTriggered: {
+                        if (AppCentral.scheduleManager.scheduleIO.importCSES()) {
+                            floatLayer.createInfoBar({
+                                severity: Severity.Success,
+                                title: qsTr("Import Success"),
+                                text: qsTr("The schedule has been imported successfully.")
+                            })
+                        } else {
+                            floatLayer.createInfoBar({
+                                severity: Severity.Error,
+                                title: qsTr("Import Failed"),
+                                text: qsTr("Failed to import the schedule. Please check if the schedule file is valid.")
+                            })
+                        }
+                    }
+                }
+                MenuItem {
+                    icon.name: " "
+                    text: qsTr("Import from Class Widgets 1")
+                    enabled: false
+                }
+            }
+
+            ToolSeparator {
+                Layout.fillHeight: true
+            }
+            Button {
+                flat: true
+                highlighted: true
+                icon.name: "ic_fluent_add_20_regular"
+                text: qsTr("Create a new schedule")
+                onClicked: createScheduleDialog.open()
+            }
         }
     }
 

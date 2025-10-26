@@ -101,7 +101,6 @@ class WidgetListModel(QAbstractListModel):
         # 保存时直接赋值 WidgetEntry 列表，Pydantic 可以处理
         self._app_central.configs.preferences.widgets_presets = self.presets
         self._app_central.configs.preferences.current_preset = self._current_preset
-        self._app_central.configs.save()
         logger.info("Widget presets saved")
 
     def syncCurrentPreset(self):

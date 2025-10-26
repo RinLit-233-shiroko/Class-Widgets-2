@@ -4,8 +4,7 @@ from typing import Union, Optional
 
 from src.core.schedule.model import ScheduleData
 from src.core.utils.json_loader import JsonLoader
-
-SCHEMA_VERSION = 1
+from src import __SCHEDULE_SCHEMA_VERSION__
 
 
 class ScheduleParser:
@@ -40,7 +39,7 @@ class ScheduleParser:
 
         schedule = ScheduleData.model_validate(data)
 
-        if schedule.meta.version != SCHEMA_VERSION:
+        if schedule.meta.version != __SCHEDULE_SCHEMA_VERSION__:
             raise ValueError(f"Unsupported schema version: {schedule.meta.version}")
 
         self.schedule = schedule

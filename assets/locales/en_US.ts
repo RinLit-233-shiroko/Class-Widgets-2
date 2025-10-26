@@ -475,6 +475,35 @@ Licensed under the GPL-3 license</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="84"/>
+        <source>Set start date and max weeks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="102"/>
+        <source>Set default duration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="117"/>
+        <source>Set date and max weeks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="122"/>
+        <source>Start date:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="132"/>
+        <source>Max week cycle:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="149"/>
+        <source>Failed to set start date or max week cycle. Please report this issue to the community or the developer.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/DayListView.qml" line="84"/>
         <source>Set Start Date</source>
         <translation type="unfinished"></translation>
@@ -487,98 +516,95 @@ Licensed under the GPL-3 license</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="89"/>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="105"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="107"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/DayListView.qml" line="89"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/DayListView.qml" line="105"/>
         <source>Set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="100"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/DayListView.qml" line="100"/>
         <source>Set Default Duration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="101"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="103"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/DayListView.qml" line="101"/>
         <source>Set the default duration for new classes, breaks, or activities.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="115"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/DayListView.qml" line="115"/>
         <source>Select Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="128"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="148"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/DayListView.qml" line="128"/>
         <source>Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="129"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/DayListView.qml" line="129"/>
         <source>Failed to set start date. Please report this issue to the community or the developer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="140"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="160"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/DayListView.qml" line="140"/>
         <source>Select Default Duration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="146"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="166"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/DayListView.qml" line="146"/>
         <source>Class</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="160"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="180"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/DayListView.qml" line="160"/>
         <source>Break</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="173"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="193"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/DayListView.qml" line="173"/>
         <source>Activity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="224"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="244"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/DayListView.qml" line="224"/>
         <source>No timelines yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="230"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="250"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/DayListView.qml" line="230"/>
         <source>No timelines yet. Click &quot;New Timeline&quot; to get started.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="271"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="291"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/DayListView.qml" line="271"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="276"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="296"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/DayListView.qml" line="276"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="300"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="320"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/DayListView.qml" line="300"/>
         <source>New Timeline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="304"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/DayListView.qml" line="324"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/DayListView.qml" line="304"/>
         <source>Duplicate</source>
         <translation type="unfinished"></translation>
@@ -593,73 +619,77 @@ Licensed under the GPL-3 license</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="38"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="58"/>
         <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="38"/>
         <source>Save Changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="46"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="37"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="66"/>
         <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="46"/>
         <source>Saved</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="48"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="39"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="68"/>
         <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="48"/>
         <source>Schedule saved successfully</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="52"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="43"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="72"/>
         <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="52"/>
         <source>Save Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="54"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="45"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="74"/>
         <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="54"/>
         <source>Failed to save schedule, see log for details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="68"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="88"/>
         <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="68"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="73"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="93"/>
         <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="73"/>
         <source>Timeline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="78"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="98"/>
         <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="78"/>
         <source>Schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="84"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="104"/>
         <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="84"/>
         <source>Subjects</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="97"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="117"/>
         <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="97"/>
         <source>Unsaved Changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="98"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="118"/>
         <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="98"/>
         <source>Don&apos;t forget to save your changes before closing the editor or switching schedule. You can click the save button in the title bar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="104"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="124"/>
         <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="104"/>
         <source>OK</source>
         <translation type="unfinished"></translation>
@@ -913,6 +943,25 @@ Please try again later.</source>
     </message>
 </context>
 <context>
+    <name>ExportScheduleDialog</name>
+    <message>
+        <location filename="../../src/core/convertor/slots.py" line="24"/>
+        <location filename="../../src/core/schedule/manager.py" line="257"/>
+        <source>Export Schedule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/convertor/slots.py" line="27"/>
+        <source>CSES Format (*.yaml *.yml)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/manager.py" line="260"/>
+        <source>Class Widgets 2 JSON Files (*.json)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Home</name>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="10"/>
@@ -937,51 +986,97 @@ Please try again later.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="26"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="29"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/editor/Home.qml" line="26"/>
         <source>Open schedules folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="34"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="36"/>
+        <source>Import Schedule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="40"/>
+        <source>Import from Class Widgets 2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="46"/>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="70"/>
+        <source>Import Failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="47"/>
+        <source>Failed to import the schedule.Please check if the schedule file is valid.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="59"/>
+        <source>Import from CSES</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="64"/>
+        <source>Import Success</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="65"/>
+        <source>The schedule has been imported successfully.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="71"/>
+        <source>Failed to import the schedule. Please check if the schedule file is valid.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="78"/>
+        <source>Import from Class Widgets 1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="90"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="127"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/editor/Home.qml" line="34"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/editor/Home.qml" line="70"/>
         <source>Create a new schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="43"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="100"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/editor/Home.qml" line="43"/>
         <source>Your schedules</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="73"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="130"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/editor/Home.qml" line="73"/>
         <source>Enter a name for your new schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="81"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="138"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/editor/Home.qml" line="81"/>
         <source>Schedule name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="105"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="162"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/editor/Home.qml" line="105"/>
         <source>Cannot be empty (⊙x⊙;)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="108"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="165"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/editor/Home.qml" line="108"/>
         <source>Cannot duplicate existing name (⊙x⊙;)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="110"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="167"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/editor/Home.qml" line="110"/>
         <source>Great! That&apos;s it. ヾ(≧▽≦*)o</source>
         <translation type="unfinished"></translation>
@@ -1023,6 +1118,29 @@ Please try again later.</source>
         <location filename="../../src/qml/ClassWidgets/components/editor/dialogs/IconPicker.qml" line="34"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/dialogs/IconPicker.qml" line="34"/>
         <source>Search icon in English... (e.g. &apos;run&apos; or &apos;book&apos;)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ImportScheduleDialog</name>
+    <message>
+        <location filename="../../src/core/convertor/slots.py" line="42"/>
+        <source>Import CSES Schedule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/convertor/slots.py" line="45"/>
+        <source>CSES YAML Files (*.yaml *.yml)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/manager.py" line="208"/>
+        <source>Import Schedule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/manager.py" line="211"/>
+        <source>Class Widgets 2 JSON Files (*.json)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1579,6 +1697,21 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <source>Quick Add Subject</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../../src/core/convertor/converter.py" line="63"/>
+        <source>All Weeks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/convertor/converter.py" line="65"/>
+        <source>Odd Weeks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/convertor/converter.py" line="67"/>
+        <source>Even Weeks</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ScheduleClip</name>
@@ -1619,71 +1752,116 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="156"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="150"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="176"/>
+        <source>Export Success</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="151"/>
+        <source>The schedule has been exported</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="158"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="184"/>
+        <source>Export Failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="159"/>
+        <source>Failed to export the schedule. Please change the output directory or send the log file to the developer or community to help us sort it out.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="170"/>
+        <source>Export to CSES</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="177"/>
+        <source>The schedule has been exported as CSES format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="185"/>
+        <source>Failed to export the schedule as CSES format. Please change the output directory or send the log file to the developer or community to help us sort it out.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="205"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="156"/>
         <source>Rename Schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="159"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="208"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="159"/>
         <source>Rename this schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="167"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="216"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="167"/>
         <source>New name ╰(*°▽°*)╯</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="191"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="240"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="191"/>
         <source>Cannot be empty (⊙x⊙;)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="194"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="243"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="194"/>
         <source>Cannot duplicate existing name (⊙x⊙;)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="196"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="245"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="196"/>
         <source>Great! That&apos;s it. ヾ(≧▽≦*)o</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="221"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="270"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="221"/>
         <source>Are you sure to delete this schedule?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="224"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="273"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="224"/>
         <source>This action cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="232"/>
-        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="242"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="281"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="291"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="232"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="242"/>
         <source>Failed to delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="233"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="282"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="233"/>
         <source>Cannot delete the current schedule. Please switch to another schedule first.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="243"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="292"/>
         <location filename="../../src/src/qml/ClassWidgets/components/editor/ScheduleClip.qml" line="243"/>
         <source>Please send the log file to the developer or community to help us sort it out.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ScheduleConverter</name>
+    <message>
+        <location filename="../../src/core/convertor/converter.py" line="241"/>
+        <source>Class</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2135,6 +2313,16 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/core/utils/subjects.py" line="93"/>
         <source>CS</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/utils/subjects.py" line="94"/>
+        <source>Meeting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/utils/subjects.py" line="95"/>
+        <source>Test</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2595,12 +2783,12 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="310"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="313"/>
         <source>Reset to default</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="318"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="321"/>
         <source>https://example.com/releases.json/</source>
         <translation type="unfinished"></translation>
     </message>

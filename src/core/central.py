@@ -99,6 +99,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.updated.emit()  # 发送信号
 
     def cleanup(self):
+        self.configs.save()
         self.union_update_timer.stop()
         logger.info("Clean up.")
 
@@ -129,13 +130,10 @@ class AppCentral(QObject):  # Class Widgets 的中枢
 
     @Slot()
     def quit(self):
-        self.configs.save()
-        self.cleanup()
         self.app_instance.quit()
 
     @Slot()
     def restart(self):
-        self.configs.save()
         self.cleanup()
         os.execl(sys.executable, sys.executable, *sys.argv)
 
@@ -170,16 +168,17 @@ class AppCentral(QObject):  # Class Widgets 的中枢
 
     def _load_runtime(self):
         self.runtime.refresh(self.schedule_manager.schedule)
-        self._setup_runtime_connections()
+        self._setup_connections()
         self._load_theme_and_plugins()
 
-    def _setup_runtime_connections(self):
+    def _setup_connections(self):
         """设置runtime连接"""
         self.runtime.notify.connect(self._notification.push_activity)
-
         self.union_update_timer.tick.connect(self.update)
         self.union_update_timer.tick.connect(self.automation_manager.update)
         self.schedule_manager.scheduleModified.connect(self.runtime.refresh)
+
+        self.app_instance.aboutToQuit.connect(self.cleanup)
 
         self.union_update_timer.start()
 

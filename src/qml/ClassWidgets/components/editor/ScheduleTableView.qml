@@ -23,23 +23,34 @@ Item {
     // 根据列号找到 day
     function getDayByColumn(columnIndex) {
         var weekday = columnIndex + 1;
-        var week = table.currentWeek;
 
-        for (var i = 0; i < AppCentral.scheduleEditor.days.length; i++) {
+        for (let i = 0; i < AppCentral.scheduleEditor.days.length; i++) {
             var day = AppCentral.scheduleEditor.days[i];
             if (day.date) continue; // 跳过指定日期
 
-            var validDay = !day.dayOfWeek || day.dayOfWeek.indexOf(weekday) !== -1;
-
-            var validWeek = false;
-            if (!day.weeks || day.weeks === "all") validWeek = true;
-            else if (Array.isArray(day.weeks) && day.weeks.indexOf(week) !== -1) validWeek = true;
-            else if (typeof day.weeks === "number" && day.weeks === week) validWeek = true;
+            let validDay = !day.dayOfWeek || day.dayOfWeek.indexOf(weekday) !== -1;
+            let validWeek = isWeekActive(day.weeks);
 
             if (validDay && validWeek) return day;
         }
         return null;
     }
+
+    function isWeekActive(weeks) {
+        if (!weeks || weeks === "all") return true;
+
+        let maxWeekCycle = AppCentral.scheduleEditor.meta.maxWeekCycle;
+
+        if (Array.isArray(weeks)) {
+            return weeks.indexOf(currentWeek) !== -1;
+        }
+        if (typeof weeks === "number") {
+            return currentWeek >= weeks && (currentWeek - weeks) % maxWeekCycle === 0;
+        }
+
+        return false;
+    }
+
 
     // 根据 day 和 row 找 entry，并应用 overrides
     function getEntryByDayAndRow(day, row, columnIndex) {
@@ -49,10 +60,9 @@ Item {
         if (row >= classEntries.length) return null;
 
         let e = classEntries[row];
-        let week = table.currentWeek;
-        let weekday = columnIndex + 1;
+        let dayOfWeek = columnIndex + 1;
 
-        return AppCentral.scheduleEditor.getEntryOverride(e.id, week, weekday);
+        return AppCentral.scheduleEditor.getEntryOverride(e.id, currentWeek, dayOfWeek);
     }
 
     // 表头
@@ -86,7 +96,7 @@ Item {
         rowSpacing: 0
         columnSpacing: 0
 
-        property int currentWeek: -1 // -1 表示全周
+        property var currentWeek: -1 // -1 表示全周
         property var selectedCell: ({ row: -1, column: -1 })
         property var currentEntry: null
 

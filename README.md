@@ -19,11 +19,11 @@
 > 请注意，本项目仍然在积极开发中，大多数功能还未补完。若要在教学环境中使用，请三思而后行。
 > 欢迎到我们的 GitHub 页面提交问题反馈，谢谢！
 >
-> 对于在 GitHub 下载过慢的用户，可以在下方的 123 网盘链接下载您需要的版本，
+> 对于在 GitHub 下载过慢的用户，可以在下方的其他第三方链接下载您需要的版本，
 > 网盘中的文件会自动随版本发行而更新。
 > 
 > <div align="center">
-> <a href="https://github.com/RinLit-233-shiroko/Class-Widgets-2/releases">Release 页面</a> | <a href="https://www.123865.com/s/DCyBTd-3iWxH">123 网盘</a>
+> <a href="https://github.com/RinLit-233-shiroko/Class-Widgets-2/releases">Release 页面</a> | <a href="https://dl.gemen.pp.ua">OneDrive</a> | <a href="https://www.123865.com/s/DCyBTd-3iWxH">123 网盘</a>
 > </div>
 
 

@@ -13,7 +13,7 @@ ColumnLayout {
     property int customWeek: 1
 
     // 核心：对外暴露统一的 currentWeek
-    property int currentWeek: -1
+    property var currentWeek: -1
     onSelectedTypeChanged: updateCurrentWeek()
     onRoundWeekChanged: updateCurrentWeek()
     onCustomWeekChanged: updateCurrentWeek()
@@ -24,7 +24,7 @@ ColumnLayout {
         } else if (selectedType === "round") {
             currentWeek = roundWeek
         } else if (selectedType === "custom") {
-            currentWeek = customWeek
+            currentWeek = [customWeek]
         }
     }
     spacing: 12
