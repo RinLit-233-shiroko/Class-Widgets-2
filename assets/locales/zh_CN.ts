@@ -3131,7 +3131,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="197"/>
         <source>The quick brown fox jumps over the lazy dog</source>
-        <translation type="unfinished">愿世界和平 &lt;br&gt; The quick brown fox jumps over the lazy dog</translation>
+        <translation>我能吞下玻璃而不伤身体</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="212"/>
