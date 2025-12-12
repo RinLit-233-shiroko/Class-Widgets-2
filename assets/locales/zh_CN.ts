@@ -2905,7 +2905,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="321"/>
         <source>https://example.com/releases.json/</source>
-        <translation></translation>
+        <translation>https://example.com/releases.json/</translation>
     </message>
 </context>
 <context>
