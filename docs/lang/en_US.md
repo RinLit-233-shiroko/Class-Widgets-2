@@ -19,7 +19,7 @@
 > This project is under development.Please think twice before using it in a teaching environment.
 > Welcome to submit some feedback in our Github Page!
 >
-> For users who download slowly on GitHub, you can download the version you need from the cloud storage link below，
+> For users who download slowly on GitHub, you can download the version you need from the cloud storage link below, 
 > The files in the online storage will be automatically updated with the release of the version.
 > 
 > <div align="center">
@@ -81,7 +81,7 @@ This is just my practice work as a newcomer, welcome to provide more opinions!
 
 ## For this English version docs
 
-This English version of the document has been translated by [furinafirefly(bbdqz)](https://github.com/furinafirefly) Responsible for translation.
+This English version of the document has been translated by [bbdqz](https://github.com/bbdqz) Responsible for translation.
 
 And [RinLit](https://github.com/RinLit-233-shiroko) is a good developer!
 You can follow him! (and follow me please :))
