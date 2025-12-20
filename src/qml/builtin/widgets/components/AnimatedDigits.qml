@@ -1,11 +1,13 @@
 // AnimatedDigit.qml
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-import Qt5Compat.GraphicalEffects
+import ClassWidgets.Easing
 
 Rectangle {
     id: root
     color: "transparent"
+
+    property real scaleFactor: Configs.data.preferences.scale_factor || 1.0
 
     property string value: ""
     property string oldValue: ""
@@ -20,51 +22,47 @@ Rectangle {
         id: oldDigit
         text: root.oldValue
         anchors.centerIn: parent
-        opacity: 0
-    }
-
-    LinearGradient  {
-        id: oldDigitGradient
-        anchors.fill: oldDigit
-        source: oldDigit
-        gradient: Gradient {
-            GradientStop { position: 0; color: oldDigit.color }
-            GradientStop {
-                position: 0.8 - progress;
-                color: Qt.alpha(oldDigit.color, Math.max(0, 1 - progress * 2))
-            }
-            GradientStop { position: 0.9 - progress; color: Qt.alpha(oldDigit.color, 0) }
-            GradientStop { position: 1 - progress; color: Qt.alpha(oldDigit.color, 0) }
-        }
+        layer.enabled: true
+        visible: false // 隐藏原始项，只让 Shader 显示
+        layer.textureSize: Qt.size(width * scaleFactor, 
+                               height * scaleFactor)
     }
 
     Title {
         id: newDigit
         text: root.value
         anchors.centerIn: parent
-        opacity: 0
-        font: oldDigit.font
+        layer.enabled: true
+        visible: false
+        layer.textureSize: Qt.size(width * scaleFactor, 
+                               height * scaleFactor)
     }
 
-    LinearGradient  {
-        id: newDigitGradient
-        anchors.fill: newDigit
-        opacity: progress * 3
-        source: newDigit
-        gradient: Gradient {
-            GradientStop { position: 0.85 - progress; color: Qt.alpha(newDigit.color, 0) }
-            GradientStop {
-                position: 1 - progress;
-                color: Qt.alpha(newDigit.color, Math.min(1, Math.max(0, progress * 2 - 0.5)))
-            }
-            GradientStop { position: 1; color: newDigit.color }
-        }
+    ShaderEffect {
+        id: combinedShader
+        anchors.fill: parent
+        
+        // 传入两个纹理
+        property variant sourceOld: oldDigit
+        property variant sourceNew: newDigit
+        
+        // 传入进度
+        property real progress: root.progress
+        
+        fragmentShader: "digit.frag.qsb"
+        
+        // 只有在动画运行或数值不同时显示
+        visible: true 
     }
 
+    Title {
+        text: root.value
+        anchors.centerIn: parent
+        visible: root.progress === 1.0
+    }
 
     onValueChanged: {
-        newDigitGradient.visible = true
-        progressAnimation.start()
+        progressAnimation.restart()
     }
 
     SequentialAnimation {
@@ -82,7 +80,6 @@ Rectangle {
         ScriptAction {
             script: {
                 root.oldValue = root.value
-                newDigitGradient.visible = false
             }
         }
     }
