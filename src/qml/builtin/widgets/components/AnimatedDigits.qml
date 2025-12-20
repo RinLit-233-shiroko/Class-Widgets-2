@@ -55,12 +55,6 @@ Rectangle {
         visible: true 
     }
 
-    Title {
-        text: root.value
-        anchors.centerIn: parent
-        visible: root.progress === 1.0
-    }
-
     onValueChanged: {
         progressAnimation.restart()
     }
