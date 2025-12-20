@@ -13,8 +13,8 @@ body:
 
         在提出建议之前，请先确认以下所有事项：
 
-        1. 我已更新到最新版 ![GitHub Release](https://img.shields.io/github/v/release/RinLit-233-shiroko/Class-Widgets?include_prereleases)，并看过[最新提交](https://github.com/Class-Widgets/Class-Widgets/commits/main/)，确认我想要的功能还没有实现。
-        2. 我已在 [Discussions](https://github.com/Class-Widgets/Class-Widgets/discussions/categories/Feature) 中检索，确认这一类似的建议 **未被提交过**。
+        1. 我已更新到最新版 ![GitHub Release](https://img.shields.io/github/v/release/RinLit-233-shiroko/Class-Widgets?include_prereleases)，并看过[最新提交](https://github.com/RinLit-233-shiroko/Class-Widgets-2/commits/main/)，确认我想要的功能还没有实现。
+        2. 我已在 [Discussions](https://github.com/RinLit-233-shiroko/Class-Widgets-2/discussions/categories/Feature) 中检索，确认这一类似的建议 **未被提交过**。
         3. 我认为我想要的功能是用户广泛需要的，插件不能替代的，且没有超出 **软件本来** 的开发目标，而非 **添加与课表及教学辅助无关的内容** 。
         4. 我已知晓由于开发者时间精力有限，我提交的功能请求可能需要比较久的时间才能实现。
 
@@ -45,25 +45,32 @@ body:
       label: 需要改进的位置
       options:
         - 小组件
-        - 设置 → 课表预览
-        - 设置 → 时间线编辑
-        - 设置 → 课程表编辑
-        - 设置 → 配置文件
-        - 设置 → 帮助
-        - 设置 → 插件
-        - 设置 → 提醒
-        - 设置 → 高级选项
-        - 设置 → 关于本产品
-        - 错误跟踪窗口
-        - 关闭 / 重启
+        - RinUI 与 窗口
         - 插件
-        - 单双周课表
-        - 时间线
-        - 节点
-        - 上下课提醒
+        - 课表编辑器
+        - 课表编辑器 → 保存更改
+        - 课表编辑器 → 首页
+        - 课表编辑器 → 时间线
+        - 课表编辑器 → 课程表
+        - 课表编辑器 → 科目
         - 插件广场
-        - 额外选项
-        - 浮窗
+        - 快捷方式
+        - 调休
+        - 换课
+        - 切换课程表
+        - 调试器
+        - 重启与退出
+        - 托盘菜单
+        - 小组件编辑
+        - 设置
+        - 设置 → 首页
+        - 设置 → 通用
+        - 设置 → 通用 → 小组件
+        - 设置 → 通用 → 互动
+        - 设置 → 通知与时间
+        - 设置 → 插件
+        - 设置 → 关于
+        - 设置 → 更新
         - 其他
       description: 选择需要改进的位置，以便于我们更好发现实现该功能。
     validations:

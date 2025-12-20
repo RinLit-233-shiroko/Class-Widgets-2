@@ -18,8 +18,8 @@ body:
 
         在反馈此问题之前，请先确认一下事项是否满足：
 
-        1. 我已更新到最新版 ![GitHub Release](https://img.shields.io/github/v/release/RinLit-233-shiroko/Class-Widgets?include_prereleases)，并看过[最新提交](https://github.com/Class-Widgets/Class-Widgets/commits)。
-        2. 我已在 [Issues](https://github.com/Class-Widgets/Class-Widgets/issues?q=label%3ABug) 中检索，确认这一 Bug 未被提交过。
+        1. 我已更新到最新版 ![GitHub Release](https://img.shields.io/github/v/release/RinLit-233-shiroko/Class-Widgets?include_prereleases)，并看过[最新提交](https://github.com/RinLit-233-shiroko/Class-Widgets-2/commits)。
+        2. 我已在 [Issues](https://github.com/RinLit-233-shiroko/Class-Widgets-2/issues?q=label%3ABug) 中检索，确认这一 Bug 未被提交过。
         3. 我已知晓并同意，此处仅用于汇报程序中存在的问题（关于其他非程序本身的问题应当在 Discussion 板块提出）。
 
   - type: checkboxes
@@ -49,25 +49,32 @@ body:
       label: 问题发生的位置
       options:
         - 小组件
-        - 设置 → 课表预览
-        - 设置 → 时间线编辑
-        - 设置 → 课程表编辑
-        - 设置 → 配置文件
-        - 设置 → 帮助
-        - 设置 → 插件
-        - 设置 → 提醒
-        - 设置 → 高级选项
-        - 设置 → 关于本产品
-        - 错误跟踪窗口
-        - 关闭 / 重启
+        - RinUI 与 窗口
         - 插件
-        - 单双周课表
-        - 时间线
-        - 节点
-        - 上下课提醒
+        - 课表编辑器
+        - 课表编辑器 → 保存更改
+        - 课表编辑器 → 首页
+        - 课表编辑器 → 时间线
+        - 课表编辑器 → 课程表
+        - 课表编辑器 → 科目
         - 插件广场
-        - 额外选项
-        - 浮窗
+        - 快捷方式
+        - 调休
+        - 换课
+        - 切换课程表
+        - 调试器
+        - 重启与退出
+        - 托盘菜单
+        - 小组件编辑
+        - 设置
+        - 设置 → 首页
+        - 设置 → 通用
+        - 设置 → 通用 → 小组件
+        - 设置 → 通用 → 互动
+        - 设置 → 通知与时间
+        - 设置 → 插件
+        - 设置 → 关于
+        - 设置 → 更新
         - 其他
       description: 选择问题发生的位置，以便于我们更好发现问题。
     validations:
@@ -113,8 +120,8 @@ body:
     id: app_version
     attributes:
       label: 应用版本
-      description: 您当前使用的 Class Widgets 版本号，可以在【设置】->【关于本产品】中查看。
-      placeholder: 如：1.2.3
+      description: 您当前使用的 Class Widgets 版本号，可以在【设置】->【关于】中查看。
+      placeholder: 如：2.0.0
     validations:
       required: true
 

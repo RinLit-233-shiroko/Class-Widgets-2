@@ -16,11 +16,11 @@ body:
         在提出建议之前，请先确认以下所有事项：
         > Before suggesting, please confirm:
 
-        1. 我已更新到最新版 ![GitHub Release](https://img.shields.io/github/v/release/Class-Widgets/Class-Widgets?include_prereleases)，并看过[最新提交](https://github.com/Class-Widgets/Class-Widgets/commits/main/)
-        > 1. Updated to the latest version ![GitHub Release](https://img.shields.io/github/v/release/Class-Widgets/Class-Widgets?include_prereleases) and checked [latest commits](https://github.com/Class-Widgets/Class-Widgets/commits/main/).
+        1. 我已更新到最新版 ![GitHub Release](https://img.shields.io/github/v/release/RinLit-233-shiroko/Class-Widgets-2?include_prereleases)，并看过[最新提交](https://github.com/RinLit-233-shiroko/Class-Widgets-2/commits/main/)
+        > 1. Updated to the latest version ![GitHub Release](https://img.shields.io/github/v/release/RinLit-233-shiroko/Class-Widgets-2?include_prereleases) and checked [latest commits](https://github.com/RinLit-233-shiroko/Class-Widgets-2/commits/main/).
 
-        2. 我已在 [Issues](https://github.com/Class-Widgets/Class-Widgets/issues?q=label:i18n) 中检索，确认这一类似的建议 / 问题 **未被提交过**。
-        > 2. Searched [Issues](https://github.com/Class-Widgets/Class-Widgets/issues?q=label:i18n) to ensure this hasn't been suggested/reported before.
+        2. 我已在 [Issues](https://github.com/RinLit-233-shiroko/Class-Widgets-2/issues?q=label:i18n) 中检索，确认这一类似的建议 / 问题 **未被提交过**。
+        > 2. Searched [Issues](https://github.com/RinLit-233-shiroko/Class-Widgets-2/issues?q=label:i18n) to ensure this hasn't been suggested/reported before.
 
   - type: checkboxes
     id: checklist
