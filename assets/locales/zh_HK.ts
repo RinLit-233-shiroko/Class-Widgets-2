@@ -828,17 +828,17 @@ Licensed under the GPL-3 license.</source>
     <name>Notification</name>
     <message>
         <location filename="../../src/core/notification/notify.py" line="24"/>
-        <source>活动开始</source>
+        <source>Class begins</source>
         <translation type="unfinished">活動開始</translation>
     </message>
     <message>
         <location filename="../../src/core/notification/notify.py" line="25"/>
-        <source>放学提醒</source>
+        <source>School is over</source>
         <translation type="unfinished">放學提醒</translation>
     </message>
     <message>
         <location filename="../../src/core/notification/notify.py" line="26"/>
-        <source>活动结束</source>
+        <source>Class is over</source>
         <translation type="unfinished">活動結束</translation>
     </message>
 </context>
