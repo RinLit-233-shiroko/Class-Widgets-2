@@ -21,8 +21,8 @@ class Notification(QObject):
 
     def push_activity(self, entry_type, subject: dict, event_title):
         sub_title = event_title if event_title else subject.get("name")
-        title = self.tr("活动开始") if entry_type in [EntryType.ACTIVITY.value, EntryType.CLASS.value] else \
-            self.tr("放学提醒") if entry_type == EntryType.FREE.value else self.tr("活动结束")
+        title = self.tr("Class begins") if entry_type in [EntryType.ACTIVITY.value, EntryType.CLASS.value] else \
+            self.tr("School is over") if entry_type == EntryType.FREE.value else self.tr("Class is over")
         message: str = sub_title if entry_type in [EntryType.ACTIVITY.value, EntryType.CLASS.value] else None
 
         self.push(icon="ic_fluent_alert_20_regular", level=NotificationLevel.INFO, title=title, message=message)

@@ -24,7 +24,8 @@ body:
       label: 确认检查清单
       description: 请确认您已阅读以上清单并确认。
       options:
-        - label: 我已阅读以上清单并确认。
+        - label: |
+            我已阅读以上清单并确认。
           required: true
 
   - type: markdown

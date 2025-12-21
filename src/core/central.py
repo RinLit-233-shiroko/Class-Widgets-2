@@ -75,6 +75,12 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.whatsnew = WhatsNew(self)
         self.widgets_window: WidgetsWindow = WidgetsWindow(self)  # 简化参数传递
 
+        import platform
+        # win11 except
+        if platform.system() == "Windows" and platform.release() == "10" and platform.version() < "22000":
+            from RinUI import BackdropEffect
+            self.settings.setBackdropEffect(BackdropEffect.None_)
+
     def run(self):  # 运行
         self._load_config()  # 加载配置
         self._load_translator()  # 加载翻译

@@ -18,6 +18,16 @@ FluentPage {
             text: qsTr("Locale")
         }
 
+        InfoBar {
+            severity: Severity.Warning
+            title: qsTr("Translation notice / 翻译提示")
+            text: qsTr(
+                "Some translations may be auto-generated and could be inaccurate. " +
+                "Help us improve them on <a href='https://hosted.weblate.org/projects/class-widgets/cw2/'>Weblate</a>. <br>" +
+                "部分翻译可能由自动翻译生成，存在不准确之处。欢迎在 <a href='https://hosted.weblate.org/projects/class-widgets/cw2/'>Weblate</a> 上参与改进"
+            )
+        }
+
         SettingCard {
             Layout.fillWidth: true
             title: qsTr("Language")
@@ -25,12 +35,14 @@ FluentPage {
             icon.name: "ic_fluent_globe_20_regular"
 
             ComboBox {
-                property var data: [AppCentral.translator.getSystemLanguage(), "en_US", "zh_CN"]
+                property var data: [AppCentral.translator.getSystemLanguage(), "en_US", "ja_JP", "zh_CN", "zh_HK"]
                 property bool initialized: false
                 model: ListModel {
                     ListElement { text: qsTr("Use System Language") }
                     ListElement { text: "English (US)" }
+                    ListElement { text: "日本語" }
                     ListElement { text: "简体中文" }
+                    ListElement { text: "繁體中文（香港）" }
                 }
 
                 Component.onCompleted: {
