@@ -202,42 +202,8 @@ Licensed under the GPL-3 license</source>
 <context>
     <name>CtrlBtn</name>
     <message>
-        <location filename="../../src/RinUI/windows/CtrlBtn.qml" line="19"/>
-        <source>Maximize</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/RinUI/windows/CtrlBtn.qml" line="19"/>
-        <source>Minimize</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/RinUI/windows/CtrlBtn.qml" line="19"/>
-        <source>Close</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/RinUI/windows/CtrlBtn.qml" line="19"/>
         <source>Unknown</source>
-        <translation type="unfinished">不明</translation>
-    </message>
-</context>
-<context>
-    <name>DatePicker</name>
-    <message>
-        <location filename="../../src/RinUI/components/DateAndTime/DatePicker.qml" line="122"/>
-        <source>year</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/RinUI/components/DateAndTime/DatePicker.qml" line="123"/>
-        <source>month</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/RinUI/components/DateAndTime/DatePicker.qml" line="124"/>
-        <source>day</source>
-        <translation type="unfinished"></translation>
+        <translation type="obsolete">不明</translation>
     </message>
 </context>
 <context>
@@ -767,32 +733,6 @@ Licensed under the GPL-3 license</source>
     </message>
 </context>
 <context>
-    <name>ErrorPage</name>
-    <message>
-        <location filename="../../src/RinUI/components/Navigation/ErrorPage.qml" line="21"/>
-        <source>Sorry, something went wrong!</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/RinUI/components/Navigation/ErrorPage.qml" line="30"/>
-        <source> load failed! 
-
- Because of </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/RinUI/components/Navigation/ErrorPage.qml" line="30"/>
-        <source>
-Please try again later.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/RinUI/components/Navigation/ErrorPage.qml" line="41"/>
-        <source>Retry</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>ExportScheduleDialog</name>
     <message>
         <location filename="../../src/core/convertor/slots.py" line="24"/>
@@ -991,100 +931,102 @@ Please try again later.</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="23"/>
+        <source>Translation notice / 翻译提示</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="24"/>
+        <source>Some translations may be auto-generated and could be inaccurate. Help us improve them on &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt;. &lt;br&gt;部分翻译可能由自动翻译生成，存在不准确之处。欢迎在 &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt; 上参与改进</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="33"/>
         <source>Language</source>
         <translation>言語</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="24"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="34"/>
         <source>Set the language of Class Widgets</source>
         <translation>Class Widgetsの言語を設定する</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="31"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="41"/>
         <source>Use System Language</source>
         <translation>システム言語を使用する</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="55"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="67"/>
         <source>Customize</source>
         <translation>カスタマイズ</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="60"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="72"/>
         <source>App Theme</source>
         <translation>アプリケーションテーマ</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="61"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="73"/>
         <source>Select which app theme to display</source>
         <translation>表示するアプリケーションテーマを選択する</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="67"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="79"/>
         <source>Light</source>
         <translation>ライト</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="68"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="80"/>
         <source>Dark</source>
         <translation>ダーク</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="69"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="81"/>
         <source>Use system setting</source>
         <translation>システム設定を使用する</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="81"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="93"/>
         <source>Window Layer</source>
         <translation>ウインドウレイヤー</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="82"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="94"/>
         <source>Let your widgets floating on top, or tuck them neatly behind other windows</source>
         <translation>ウィジェットを他のウインドウの裏に静かに隠すか、上部に浮かせるかを選択できます</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="87"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="99"/>
         <source>Pin on Top</source>
         <translation>上部にピン留め</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="90"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="102"/>
         <source>Send to Back</source>
         <translation>後ろに送る</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="109"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="121"/>
         <source>Mini Mode</source>
         <translation>ミニモード</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="110"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="122"/>
         <source>Use a more compact layout for smaller widgets</source>
         <translation>小さなウィジェット用にコンパクトなレイアウトを使用します</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="128"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="140"/>
         <source>Actions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="133"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="145"/>
         <source>Run at Startup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="134"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="146"/>
         <source>Run Class Widgets on startup</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>InfoBar</name>
-    <message>
-        <location filename="../../src/RinUI/components/StatusAndInfo/InfoBar.qml" line="176"/>
-        <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1167,24 +1109,6 @@ Please try again later.</source>
     </message>
 </context>
 <context>
-    <name>NavigationBar</name>
-    <message>
-        <location filename="../../src/RinUI/components/Navigation/NavigationBar.qml" line="98"/>
-        <source>Back</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/RinUI/components/Navigation/NavigationBar.qml" line="137"/>
-        <source>Open Navigation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/RinUI/components/Navigation/NavigationBar.qml" line="137"/>
-        <source>Close Navigation</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Notification</name>
     <message>
         <location filename="../../src/core/notification/notify.py" line="24"/>
@@ -1238,19 +1162,6 @@ Please try again later.</source>
         <location filename="../../src/qml/debugger/contents/Overview.qml" line="95"/>
         <source>Do not save logs to local storage.</source>
         <translation>ローカルストレージにログを保存しません。</translation>
-    </message>
-</context>
-<context>
-    <name>PickerView</name>
-    <message>
-        <location filename="../../src/RinUI/components/DateAndTime/PickerView.qml" line="26"/>
-        <source>AM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/RinUI/components/DateAndTime/PickerView.qml" line="26"/>
-        <source>PM</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2145,19 +2056,6 @@ If it takes place in another location, such as a sport field, lab, or another cl
     </message>
 </context>
 <context>
-    <name>Switch</name>
-    <message>
-        <location filename="../../src/RinUI/components/BasicInput/Switch.qml" line="15"/>
-        <source>On</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/RinUI/components/BasicInput/Switch.qml" line="16"/>
-        <source>Off</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>TableEntryDelegate</name>
     <message>
         <source>Unset</source>
@@ -2166,29 +2064,6 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/TableEntryDelegate.qml" line="21"/>
         <source>Class</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>TextInputMenu</name>
-    <message>
-        <location filename="../../src/RinUI/components/MenusAndToolbars/TextInputMenu.qml" line="13"/>
-        <source>Cut</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/RinUI/components/MenusAndToolbars/TextInputMenu.qml" line="20"/>
-        <source>Copy</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/RinUI/components/MenusAndToolbars/TextInputMenu.qml" line="27"/>
-        <source>Paste</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/RinUI/components/MenusAndToolbars/TextInputMenu.qml" line="34"/>
-        <source>Select All</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2217,45 +2092,6 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Time.qml" line="35"/>
         <source>minutes</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>TimePicker</name>
-    <message>
-        <location filename="../../src/RinUI/components/DateAndTime/TimePicker.qml" line="10"/>
-        <source>AM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/RinUI/components/DateAndTime/TimePicker.qml" line="11"/>
-        <source>PM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/RinUI/components/DateAndTime/TimePicker.qml" line="12"/>
-        <source>hour</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/RinUI/components/DateAndTime/TimePicker.qml" line="13"/>
-        <source>minute</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>TitleBar</name>
-    <message>
-        <location filename="../../src/RinUI/windows/TitleBar.qml" line="116"/>
-        <source>Fluent TitleBar</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Toast</name>
-    <message>
-        <location filename="../../src/RinUI/components/StatusAndInfo/Toast.qml" line="156"/>
-        <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

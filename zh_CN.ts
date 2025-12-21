@@ -204,35 +204,42 @@ Licensed under the GPL-3 license</source>
 <context>
     <name>CtrlBtn</name>
     <message>
+        <location filename="../../src/RinUI/windows/CtrlBtn.qml" line="19"/>
         <source>Maximize</source>
-        <translation type="vanished">最大化</translation>
+        <translation>最大化</translation>
     </message>
     <message>
+        <location filename="../../src/RinUI/windows/CtrlBtn.qml" line="19"/>
         <source>Minimize</source>
-        <translation type="vanished">最小化</translation>
+        <translation>最小化</translation>
     </message>
     <message>
+        <location filename="../../src/RinUI/windows/CtrlBtn.qml" line="19"/>
         <source>Close</source>
-        <translation type="vanished">关闭</translation>
+        <translation>关闭</translation>
     </message>
     <message>
+        <location filename="../../src/RinUI/windows/CtrlBtn.qml" line="19"/>
         <source>Unknown</source>
-        <translation type="vanished">未知</translation>
+        <translation>未知</translation>
     </message>
 </context>
 <context>
     <name>DatePicker</name>
     <message>
+        <location filename="../../src/RinUI/components/DateAndTime/DatePicker.qml" line="122"/>
         <source>year</source>
-        <translation type="vanished">年</translation>
+        <translation>年</translation>
     </message>
     <message>
+        <location filename="../../src/RinUI/components/DateAndTime/DatePicker.qml" line="123"/>
         <source>month</source>
-        <translation type="vanished">月</translation>
+        <translation>月</translation>
     </message>
     <message>
+        <location filename="../../src/RinUI/components/DateAndTime/DatePicker.qml" line="124"/>
         <source>day</source>
-        <translation type="vanished">天</translation>
+        <translation>天</translation>
     </message>
 </context>
 <context>
@@ -786,26 +793,30 @@ You can click the save button in the title bar.</source>
 <context>
     <name>ErrorPage</name>
     <message>
+        <location filename="../../src/RinUI/components/Navigation/ErrorPage.qml" line="21"/>
         <source>Sorry, something went wrong!</source>
-        <translation type="vanished">抱歉，出错了！</translation>
+        <translation>抱歉，出错了！</translation>
     </message>
     <message>
+        <location filename="../../src/RinUI/components/Navigation/ErrorPage.qml" line="30"/>
         <source> load failed! 
 
  Because of </source>
-        <translation type="vanished"> 加载失败！ 
+        <translation> 加载失败！ 
 
 由于 </translation>
     </message>
     <message>
+        <location filename="../../src/RinUI/components/Navigation/ErrorPage.qml" line="30"/>
         <source>
 Please try again later.</source>
-        <translation type="vanished">
+        <translation>
 请稍后再试。</translation>
     </message>
     <message>
+        <location filename="../../src/RinUI/components/Navigation/ErrorPage.qml" line="41"/>
         <source>Retry</source>
-        <translation type="vanished">重试</translation>
+        <translation>重试</translation>
     </message>
 </context>
 <context>
@@ -1007,101 +1018,91 @@ Please try again later.</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="23"/>
-        <source>Translation notice / 翻译提示</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="24"/>
-        <source>Some translations may be auto-generated and could be inaccurate. Help us improve them on &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt;. &lt;br&gt;部分翻译可能由自动翻译生成，存在不准确之处。欢迎在 &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt; 上参与改进</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="33"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="34"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="24"/>
         <source>Set the language of Class Widgets</source>
         <translation>设置 Class Widgets 的语言</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="41"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="31"/>
         <source>Use System Language</source>
         <translation>使用系统语言</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="67"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="55"/>
         <source>Customize</source>
         <translation>自定义</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="72"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="60"/>
         <source>App Theme</source>
         <translation>应用主题</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="73"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="61"/>
         <source>Select which app theme to display</source>
         <translation>选择显示的应用主题</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="79"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="67"/>
         <source>Light</source>
         <translation>浅色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="80"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="68"/>
         <source>Dark</source>
         <translation>深色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="81"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="69"/>
         <source>Use system setting</source>
         <translation>使用系统设置</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="93"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="81"/>
         <source>Window Layer</source>
         <translation>窗口图层</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="94"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="82"/>
         <source>Let your widgets floating on top, or tuck them neatly behind other windows</source>
         <translation>让您的小组件浮在顶部，或整齐地隐藏在其他窗口后面</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="99"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="87"/>
         <source>Pin on Top</source>
         <translation>置顶</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="102"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="90"/>
         <source>Send to Back</source>
         <translation>置底</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="121"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="109"/>
         <source>Mini Mode</source>
         <translation>迷你模式</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="122"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="110"/>
         <source>Use a more compact layout for smaller widgets</source>
         <translation>使用更紧凑的布局以适配小型小组件</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="140"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="128"/>
         <source>Actions</source>
         <translation>行动</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="145"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="133"/>
         <source>Run at Startup</source>
         <translation>开机自启动</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="146"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="134"/>
         <source>Run Class Widgets on startup</source>
         <translation>开机后自动运行 Class Widgets</translation>
     </message>
@@ -1109,8 +1110,9 @@ Please try again later.</source>
 <context>
     <name>InfoBar</name>
     <message>
+        <location filename="../../src/RinUI/components/StatusAndInfo/InfoBar.qml" line="176"/>
         <source>Close</source>
-        <translation type="vanished">关闭</translation>
+        <translation>关闭</translation>
     </message>
 </context>
 <context>
@@ -1194,16 +1196,19 @@ Please try again later.</source>
 <context>
     <name>NavigationBar</name>
     <message>
+        <location filename="../../src/RinUI/components/Navigation/NavigationBar.qml" line="98"/>
         <source>Back</source>
-        <translation type="vanished">返回</translation>
+        <translation>返回</translation>
     </message>
     <message>
+        <location filename="../../src/RinUI/components/Navigation/NavigationBar.qml" line="137"/>
         <source>Open Navigation</source>
-        <translation type="vanished">打开导航</translation>
+        <translation>打开导航</translation>
     </message>
     <message>
+        <location filename="../../src/RinUI/components/Navigation/NavigationBar.qml" line="137"/>
         <source>Close Navigation</source>
-        <translation type="vanished">关闭导航</translation>
+        <translation>关闭导航</translation>
     </message>
 </context>
 <context>
@@ -1265,12 +1270,14 @@ Please try again later.</source>
 <context>
     <name>PickerView</name>
     <message>
+        <location filename="../../src/RinUI/components/DateAndTime/PickerView.qml" line="26"/>
         <source>AM</source>
-        <translation type="vanished">上午</translation>
+        <translation>上午</translation>
     </message>
     <message>
+        <location filename="../../src/RinUI/components/DateAndTime/PickerView.qml" line="26"/>
         <source>PM</source>
-        <translation type="vanished">下午</translation>
+        <translation>下午</translation>
     </message>
 </context>
 <context>
@@ -2171,12 +2178,14 @@ If it takes place in another location, such as a sport field, lab, or another cl
 <context>
     <name>Switch</name>
     <message>
+        <location filename="../../src/RinUI/components/BasicInput/Switch.qml" line="15"/>
         <source>On</source>
-        <translation type="vanished">开</translation>
+        <translation>开</translation>
     </message>
     <message>
+        <location filename="../../src/RinUI/components/BasicInput/Switch.qml" line="16"/>
         <source>Off</source>
-        <translation type="vanished">关闭</translation>
+        <translation>关闭</translation>
     </message>
 </context>
 <context>
@@ -2194,20 +2203,24 @@ If it takes place in another location, such as a sport field, lab, or another cl
 <context>
     <name>TextInputMenu</name>
     <message>
+        <location filename="../../src/RinUI/components/MenusAndToolbars/TextInputMenu.qml" line="13"/>
         <source>Cut</source>
-        <translation type="vanished">剪切</translation>
+        <translation>剪切</translation>
     </message>
     <message>
+        <location filename="../../src/RinUI/components/MenusAndToolbars/TextInputMenu.qml" line="20"/>
         <source>Copy</source>
-        <translation type="vanished">复制</translation>
+        <translation>复制</translation>
     </message>
     <message>
+        <location filename="../../src/RinUI/components/MenusAndToolbars/TextInputMenu.qml" line="27"/>
         <source>Paste</source>
-        <translation type="vanished">粘贴</translation>
+        <translation>粘贴</translation>
     </message>
     <message>
+        <location filename="../../src/RinUI/components/MenusAndToolbars/TextInputMenu.qml" line="34"/>
         <source>Select All</source>
-        <translation type="vanished">全选</translation>
+        <translation>全选</translation>
     </message>
 </context>
 <context>
@@ -2245,34 +2258,40 @@ If it takes place in another location, such as a sport field, lab, or another cl
 <context>
     <name>TimePicker</name>
     <message>
+        <location filename="../../src/RinUI/components/DateAndTime/TimePicker.qml" line="10"/>
         <source>AM</source>
-        <translation type="vanished">上午</translation>
+        <translation>上午</translation>
     </message>
     <message>
+        <location filename="../../src/RinUI/components/DateAndTime/TimePicker.qml" line="11"/>
         <source>PM</source>
-        <translation type="vanished">下午</translation>
+        <translation>下午</translation>
     </message>
     <message>
+        <location filename="../../src/RinUI/components/DateAndTime/TimePicker.qml" line="12"/>
         <source>hour</source>
-        <translation type="vanished">1小时</translation>
+        <translation>1小时</translation>
     </message>
     <message>
+        <location filename="../../src/RinUI/components/DateAndTime/TimePicker.qml" line="13"/>
         <source>minute</source>
-        <translation type="vanished">分钟</translation>
+        <translation>分钟</translation>
     </message>
 </context>
 <context>
     <name>TitleBar</name>
     <message>
+        <location filename="../../src/RinUI/windows/TitleBar.qml" line="116"/>
         <source>Fluent TitleBar</source>
-        <translation type="vanished">流线型标题栏</translation>
+        <translation>流线型标题栏</translation>
     </message>
 </context>
 <context>
     <name>Toast</name>
     <message>
+        <location filename="../../src/RinUI/components/StatusAndInfo/Toast.qml" line="156"/>
         <source>Close</source>
-        <translation type="vanished">关闭</translation>
+        <translation>关闭</translation>
     </message>
 </context>
 <context>
