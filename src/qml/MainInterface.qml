@@ -12,7 +12,7 @@ import ClassWidgets.Windows
 QQW.Window {
     id: root
     visible: true
-    flags: Qt.FramelessWindowHint | Qt.Tool
+    flags: Qt.FramelessWindowHint | Qt.Window | Qt.NoDropShadow
     color: "transparent"
 
     property string screenName: Configs.data.preferences.display || Qt.application.screens[0].name
@@ -34,12 +34,11 @@ QQW.Window {
     property bool mouseHovered: false
 
     onMouseHoveredChanged: {
-        root.flags = mouseHovered
-            ? root.flags | Qt.WindowTransparentForInput
-            : root.flags & ~Qt.WindowTransparentForInput
+        // 仅保留状态属性，移除对 root.flags 的动态修改
+        // 依靠 Python 端的 setMask 实现物理层面的点击穿透
     }
 
-    //background
+    // background
     Rectangle {
         id: background
         anchors.fill: parent
@@ -62,9 +61,9 @@ QQW.Window {
         onTriggered: root.initialized = true
     }
 
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
+    // 全局点击拦截（仅用于关闭菜单）
+    TapHandler {
+        onTapped: {
             if (widgetsLoader.menuVisible) {
                 widgetsLoader.menuVisible = false
             }
@@ -90,23 +89,12 @@ QQW.Window {
         id: widgetsLoader
         objectName: "widgetsLoader"
 
-        // 坐标控制迁移到WidgetsContainer
-
-        // 鼠标悬浮隐藏
+        // 鼠标悬浮感应控制透明度
         opacity: mouseHovered ? 0.25
             : hide ? 0.75 : 1
 
         Behavior on x { NumberAnimation { duration: 400 * root.initialized; easing.type: Easing.OutQuint } }
         Behavior on y { NumberAnimation { duration: 500 * root.initialized; easing.type: Easing.OutQuint } }
-
-        TapHandler {
-            id: hideTapHandler
-            onTapped: {
-                if (Configs.data.interactions.hide.clicked) {
-                    Configs.set("interactions.hide.state", !Configs.data.interactions.hide.state)
-                }
-            }
-        }
 
         signal geometryChanged()
         onXChanged: geometryChanged()
@@ -121,8 +109,9 @@ QQW.Window {
         id: trayPanel
     }
 
-    Component.onCompleted: updateLayer()
-
+    Component.onCompleted: {
+        updateLayer()
+    }
 
     Connections {
         target: Configs
@@ -134,12 +123,10 @@ QQW.Window {
     function updateLayer() {
         switch (Configs.data.preferences.widgets_layer) {
             case "top":
-                root.flags &= ~Qt.WindowStaysOnBottomHint
-                root.flags |= Qt.WindowStaysOnTopHint
+                root.flags = (root.flags & ~Qt.WindowStaysOnBottomHint) | Qt.WindowStaysOnTopHint
                 break
             case "bottom":
-                root.flags &= ~Qt.WindowStaysOnTopHint
-                root.flags |= Qt.WindowStaysOnBottomHint
+                root.flags = (root.flags & ~Qt.WindowStaysOnTopHint) | Qt.WindowStaysOnBottomHint
                 break
         }
     }
