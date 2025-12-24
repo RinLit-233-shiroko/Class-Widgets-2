@@ -186,7 +186,7 @@ Licensed under the GPL-3 license</source>
         <translation type="unfinished">未選取小工具</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/dialogs/AddWidgetsDialog.qml" line="140"/>
+        <location filename="../../src/qml/ClassWidgets/components/dialogs/AddWidgetsDialog.qml" line="141"/>
         <source>Add</source>
         <translation type="unfinished">添加</translation>
     </message>
@@ -1244,13 +1244,13 @@ Licensed under the GPL-3 license</source>
 <context>
     <name>NotificationProviders</name>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="47"/>
+        <location filename="../../src/core/schedule/runtime.py" line="58"/>
         <location filename="../../src/core/utils/translations.py" line="92"/>
         <source>Schedule Runtime</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/backend.py" line="33"/>
+        <location filename="../../src/core/utils/backend.py" line="51"/>
         <location filename="../../src/core/utils/translations.py" line="95"/>
         <source>Debug Notification</source>
         <translation type="unfinished"></translation>

@@ -189,7 +189,7 @@ Licensed under the GPL-3 license</source>
         <translation>未选择小组件</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/dialogs/AddWidgetsDialog.qml" line="140"/>
+        <location filename="../../src/qml/ClassWidgets/components/dialogs/AddWidgetsDialog.qml" line="141"/>
         <source>Add</source>
         <translation>添加</translation>
     </message>
@@ -1344,16 +1344,16 @@ Please try again later.</source>
 <context>
     <name>NotificationProviders</name>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="47"/>
+        <location filename="../../src/core/schedule/runtime.py" line="58"/>
         <location filename="../../src/core/utils/translations.py" line="92"/>
         <source>Schedule Runtime</source>
-        <translation type="unfinished"></translation>
+        <translation>日程运行时</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/backend.py" line="33"/>
+        <location filename="../../src/core/utils/backend.py" line="51"/>
         <location filename="../../src/core/utils/translations.py" line="95"/>
         <source>Debug Notification</source>
-        <translation type="unfinished"></translation>
+        <translation>调试通知</translation>
     </message>
 </context>
 <context>
@@ -1880,7 +1880,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="55"/>
         <source>Time</source>
-        <translation type="unfinished">时间</translation>
+        <translation>时间</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="62"/>
@@ -1900,6 +1900,26 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 </context>
 <context>
     <name>Status</name>
+    <message>
+        <source>Class</source>
+        <translation type="vanished">上课提醒</translation>
+    </message>
+    <message>
+        <source>Break</source>
+        <translation type="vanished">课间休息</translation>
+    </message>
+    <message>
+        <source>Free Time</source>
+        <translation type="vanished">自由时间</translation>
+    </message>
+    <message>
+        <source>Preparation</source>
+        <translation type="vanished">预备铃</translation>
+    </message>
+    <message>
+        <source>Activity</source>
+        <translation type="vanished">活动提醒</translation>
+    </message>
     <message>
         <location filename="../../src/core/utils/translations.py" line="96"/>
         <source>上课提醒</source>
@@ -3057,7 +3077,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/core/utils/translations.py" line="85"/>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="29"/>
         <source>Current Activity</source>
-        <translation type="unfinished">当前活动</translation>
+        <translation>当前活动</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/translations.py" line="86"/>
@@ -3069,19 +3089,19 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/core/utils/translations.py" line="87"/>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="41"/>
         <source>Event Countdown</source>
-        <translation type="unfinished"></translation>
+        <translation>事件倒计时</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/translations.py" line="88"/>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="47"/>
         <source>Upcoming Activities</source>
-        <translation type="unfinished"></translation>
+        <translation>即将到来的活动</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/translations.py" line="91"/>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="59"/>
         <source>Dynamic Notification</source>
-        <translation type="unfinished"></translation>
+        <translation>动态通知</translation>
     </message>
 </context>
 <context>
@@ -3140,7 +3160,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/dynamicNotification.qml" line="259"/>
         <source>Dynamic Notification</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">动态通知</translation>
     </message>
 </context>
 <context>
