@@ -1344,14 +1344,12 @@ Please try again later.</source>
 <context>
     <name>NotificationProviders</name>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="58"/>
-        <location filename="../../src/core/utils/translations.py" line="92"/>
+        <location filename="../../src/core/schedule/runtime.py" line="57"/>
         <source>Schedule Runtime</source>
         <translation>日程运行时</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/backend.py" line="51"/>
-        <location filename="../../src/core/utils/translations.py" line="95"/>
+        <location filename="../../src/core/utils/backend.py" line="48"/>
         <source>Debug Notification</source>
         <translation>调试通知</translation>
     </message>
@@ -1633,27 +1631,27 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>Schedule</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="27"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="76"/>
         <source>Preview</source>
         <translation>预览</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="32"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="81"/>
         <source>Edit</source>
         <translation>编辑</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="53"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="102"/>
         <source>Week</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="99"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="148"/>
         <source>Week Cycle</source>
         <translation>多周轮换</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="122"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="171"/>
         <source>Quick Add Subject</source>
         <translation>快速添加课程</translation>
     </message>
@@ -1919,31 +1917,6 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <source>Activity</source>
         <translation type="vanished">活动提醒</translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/translations.py" line="96"/>
-        <source>上课提醒</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/translations.py" line="97"/>
-        <source>课间休息</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/translations.py" line="98"/>
-        <source>自由时间</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/translations.py" line="99"/>
-        <source>预备铃</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/translations.py" line="99"/>
-        <source>活动提醒</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3136,31 +3109,26 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation>Y 轴偏移</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/translations.py" line="85"/>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="29"/>
         <source>Current Activity</source>
         <translation>当前活动</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/translations.py" line="86"/>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="35"/>
         <source>Time</source>
         <translation type="unfinished">时间</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/translations.py" line="87"/>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="41"/>
         <source>Event Countdown</source>
         <translation>事件倒计时</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/translations.py" line="88"/>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="47"/>
         <source>Upcoming Activities</source>
         <translation>即将到来的活动</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/translations.py" line="91"/>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="59"/>
         <source>Dynamic Notification</source>
         <translation>动态通知</translation>
@@ -3220,7 +3188,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
 <context>
     <name>dynamicNotification</name>
     <message>
-        <location filename="../../src/qml/widgets/dynamicNotification.qml" line="259"/>
+        <location filename="../../src/qml/widgets/dynamicNotification.qml" line="257"/>
         <source>Dynamic Notification</source>
         <translation type="unfinished">动态通知</translation>
     </message>
