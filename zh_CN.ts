@@ -1344,14 +1344,38 @@ Please try again later.</source>
 <context>
     <name>NotificationProviders</name>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="57"/>
         <source>Schedule Runtime</source>
-        <translation>日程运行时</translation>
+        <translation type="vanished">日程运行时</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/backend.py" line="48"/>
         <source>Debug Notification</source>
         <translation>调试通知</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="64"/>
+        <source>Class Notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="73"/>
+        <source>Activity Notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="82"/>
+        <source>Break Notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="91"/>
+        <source>Free Time Notifications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="100"/>
+        <source>Preparation Bell</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1836,6 +1860,90 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <location filename="../../src/qml/ClassWidgets/components/editor/ScheduleFlyout.qml" line="148"/>
         <source>Clear</source>
         <translation>清除</translation>
+    </message>
+</context>
+<context>
+    <name>ScheduleRuntime</name>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="287"/>
+        <source>Class Started</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="304"/>
+        <source>Activity Started</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="313"/>
+        <source>Intermission</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="329"/>
+        <location filename="../../src/core/schedule/runtime.py" line="339"/>
+        <location filename="../../src/core/schedule/runtime.py" line="365"/>
+        <location filename="../../src/core/schedule/runtime.py" line="375"/>
+        <source>Next: {}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="333"/>
+        <location filename="../../src/core/schedule/runtime.py" line="369"/>
+        <source>Next: {} at {}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="335"/>
+        <location filename="../../src/core/schedule/runtime.py" line="371"/>
+        <source>Next: {} (Off-site)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="349"/>
+        <source>Recess</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="384"/>
+        <source>Enjoy your break</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="386"/>
+        <source>Free Time</source>
+        <translation type="unfinished">自由时间</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="391"/>
+        <source>Status Changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="391"/>
+        <source>Current status: {}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="445"/>
+        <location filename="../../src/core/schedule/runtime.py" line="455"/>
+        <source>Coming up: {}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="449"/>
+        <source>Coming up: {} at {}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="451"/>
+        <source>Coming up: {} (Off-site)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="463"/>
+        <source>Preparation Bell</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3109,27 +3217,27 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation>Y 轴偏移</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="29"/>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="26"/>
         <source>Current Activity</source>
         <translation>当前活动</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="35"/>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="32"/>
         <source>Time</source>
         <translation type="unfinished">时间</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="41"/>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="38"/>
         <source>Event Countdown</source>
         <translation>事件倒计时</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="47"/>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="44"/>
         <source>Upcoming Activities</source>
         <translation>即将到来的活动</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="59"/>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="56"/>
         <source>Dynamic Notification</source>
         <translation>动态通知</translation>
     </message>
@@ -3188,7 +3296,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
 <context>
     <name>dynamicNotification</name>
     <message>
-        <location filename="../../src/qml/widgets/dynamicNotification.qml" line="257"/>
+        <location filename="../../src/qml/widgets/dynamicNotification.qml" line="237"/>
+        <source>No notification yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/dynamicNotification.qml" line="259"/>
         <source>Dynamic Notification</source>
         <translation type="unfinished">动态通知</translation>
     </message>
