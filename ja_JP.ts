@@ -187,7 +187,7 @@ Licensed under the GPL-3 license</source>
         <translation>選択されたウィジェットがありません</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/dialogs/AddWidgetsDialog.qml" line="141"/>
+        <location filename="../../src/qml/ClassWidgets/components/dialogs/AddWidgetsDialog.qml" line="140"/>
         <source>Add</source>
         <translation>追加</translation>
     </message>
@@ -2695,14 +2695,76 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/WhatsNew.qml" line="44"/>
-        <source>Under development</source>
+        <location filename="../../src/qml/ClassWidgets/windows/WhatsNew.qml" line="173"/>
+        <source>Feature Title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/WhatsNew.qml" line="53"/>
+        <location filename="../../src/qml/ClassWidgets/windows/WhatsNew.qml" line="182"/>
+        <source>Feature description will appear here...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Get started</source>
-        <translation type="unfinished">始める</translation>
+        <translation type="obsolete">始める</translation>
+    </message>
+</context>
+<context>
+    <name>WhatsNewData</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="11"/>
+        <source>Brand New What&apos;s New Feature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="12"/>
+        <source>Introducing our brand new feature introduction page that allows users to quickly learn about the latest features of Class Widgets 2.0. Supports multi-page display, smooth animations, and smart navigation for a better new user experience.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="17"/>
+        <source>Comprehensive Notification System Upgrade</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="18"/>
+        <source>A completely rebuilt notification system that supports in-app notification toggles, intelligent ringtone configuration, and customizable notification providers. Bringing users a more flexible and intelligent notification experience.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="21"/>
+        <source>Configure Notifications on Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="25"/>
+        <source>Enhanced Plugin System</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="26"/>
+        <source>A comprehensive plugin system architecture that supports third-party library imports, web-based plugin plaza, PluginAPI and UIAPI. Added edit mode detection properties to make plugin development more convenient.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="29"/>
+        <source>Visit Extension Plaza</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="33"/>
+        <source>Extended Multi-language Support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="34"/>
+        <source>Added Japanese and Traditional Chinese (Hong Kong) language support, improved internationalization (i18n) system. Translation management through Weblate platform allows more users to enjoy the convenience of Class Widgets.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="37"/>
+        <source>Change Language</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
