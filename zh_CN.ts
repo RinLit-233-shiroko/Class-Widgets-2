@@ -3020,9 +3020,13 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation>全新重构的通知系统，支持应用内通知开关、智能提示音配置，以及可自定义通知提供者，为用户带来更灵活、更智能的通知体验。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="21"/>
         <source>Configure Notifications on Settings</source>
-        <translation>在“设置”调整通知设置</translation>
+        <translation type="vanished">在“设置”调整通知设置</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="21"/>
+        <source>Add &quot;Dynamic Notifications&quot; to Widgets Screen</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="25"/>
@@ -3050,9 +3054,8 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation>新增日语和繁体中文（香港）语言支持，通过 Weblate 平台进行翻译管理。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="37"/>
         <source>Change Language</source>
-        <translation>修改当前语言</translation>
+        <translation type="vanished">修改当前语言</translation>
     </message>
 </context>
 <context>

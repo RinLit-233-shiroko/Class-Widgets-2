@@ -2803,7 +2803,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="21"/>
-        <source>Configure Notifications on Settings</source>
+        <source>Add &quot;Dynamic Notifications&quot; to Widgets Screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2829,11 +2829,6 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="34"/>
         <source>Added Japanese and Traditional Chinese (Hong Kong) language support, improved internationalization (i18n) system. Translation management through Weblate platform allows more users to enjoy the convenience of Class Widgets.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="37"/>
-        <source>Change Language</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
