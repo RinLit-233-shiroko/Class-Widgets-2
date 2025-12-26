@@ -1666,9 +1666,8 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation>编辑</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="102"/>
         <source>Week</source>
-        <translation type="unfinished">一周</translation>
+        <translation type="obsolete">一周</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="148"/>
