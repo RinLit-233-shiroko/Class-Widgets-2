@@ -1668,7 +1668,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="102"/>
         <source>Week %1</source>
-        <translation type="unfinished"></translation>
+        <translation>第 %1 周</translation>
     </message>
     <message>
         <source>Week</source>
