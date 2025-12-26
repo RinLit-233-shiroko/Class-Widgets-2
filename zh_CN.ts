@@ -125,7 +125,7 @@ Licensed under the GPL-3 license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="187"/>
         <source>All logs have been cleared about </source>
-        <translation type="unfinished">所有标识均已清除完毕 </translation>
+        <translation>所有日志均已清除完毕 </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="193"/>
@@ -280,7 +280,7 @@ Licensed under the GPL-3 license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/dialogs/DayEditor.qml" line="122"/>
         <source>Days of Week</source>
-        <translation>周几</translation>
+        <translation>星期</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/dialogs/DayEditor.qml" line="129"/>
@@ -1228,7 +1228,7 @@ Please try again later.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="13"/>
         <source>Notification</source>
-        <translation type="unfinished">通知</translation>
+        <translation>通知</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="20"/>
@@ -1259,7 +1259,7 @@ Please try again later.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="52"/>
         <source>Information</source>
-        <translation type="unfinished">信息</translation>
+        <translation>信息</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="53"/>
@@ -1293,7 +1293,7 @@ Please try again later.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="93"/>
         <source>Announcement</source>
-        <translation type="unfinished">通知</translation>
+        <translation>通知</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="94"/>
@@ -1303,22 +1303,22 @@ Please try again later.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="134"/>
         <source>Warning</source>
-        <translation type="unfinished">警告</translation>
+        <translation>警告</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="135"/>
         <source>Notification sounds for warnings and important alerts</source>
-        <translation type="unfinished">警告通知和重要警报</translation>
+        <translation>警告通知和重要警报</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="175"/>
         <source>System</source>
-        <translation type="unfinished">系统</translation>
+        <translation>系统</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="176"/>
         <source>Notification sounds for system messages and updates</source>
-        <translation type="unfinished">系统信息通知和最新情况</translation>
+        <translation>系统信息通知和最新情况</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="222"/>
@@ -1338,7 +1338,7 @@ Please try again later.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="390"/>
         <source>Use System Notification</source>
-        <translation type="unfinished">使用系统通知</translation>
+        <translation>使用系统通知</translation>
     </message>
 </context>
 <context>
@@ -1360,7 +1360,7 @@ Please try again later.</source>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="73"/>
         <source>Activity Notifications</source>
-        <translation type="unfinished">活动通知</translation>
+        <translation>活动通知</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="82"/>
@@ -1370,7 +1370,7 @@ Please try again later.</source>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="91"/>
         <source>Free Time Notifications</source>
-        <translation type="unfinished">自由时间通知</translation>
+        <translation>自由时间通知</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="100"/>
@@ -1912,7 +1912,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="386"/>
         <source>Free Time</source>
-        <translation type="unfinished">自由时间</translation>
+        <translation>自由时间</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="391"/>
@@ -1981,7 +1981,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="50"/>
         <source>Notification</source>
-        <translation type="unfinished">通知</translation>
+        <translation>通知</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="55"/>
@@ -2474,7 +2474,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/components/editor/TableEntryDelegate.qml" line="21"/>
         <source>Class</source>
-        <translation type="unfinished">课程</translation>
+        <translation>课程</translation>
     </message>
 </context>
 <context>
@@ -2984,12 +2984,12 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/WhatsNew.qml" line="173"/>
         <source>Feature Title</source>
-        <translation type="unfinished">专题</translation>
+        <translation>专题</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/WhatsNew.qml" line="182"/>
         <source>Feature description will appear here...</source>
-        <translation type="unfinished">特征说明见本文.......</translation>
+        <translation>特征说明见本文.......</translation>
     </message>
     <message>
         <source>Get started</source>
@@ -3192,7 +3192,8 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="198"/>
         <source>The quick brown fox jumps over the lazy dog</source>
-        <translation type="unfinished">快速的ox英跳出 la狗</translation>
+        <translation>The quick brown fox jumps over the lazy dog
+愿世界和平</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="216"/>
@@ -3227,7 +3228,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="32"/>
         <source>Time</source>
-        <translation type="unfinished">时间</translation>
+        <translation>时间</translation>
     </message>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="38"/>
