@@ -2364,6 +2364,13 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="unfinished">調整類別小工具的設定</translation>
     </message>
     <message>
+        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="82"/>
+        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="96"/>
+        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="110"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="93"/>
         <source>Schedules</source>
         <translation type="unfinished">時程表</translation>

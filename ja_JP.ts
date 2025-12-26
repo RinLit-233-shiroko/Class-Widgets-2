@@ -2368,6 +2368,13 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation>Class Widgetsの設定を調整する</translation>
     </message>
     <message>
+        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="82"/>
+        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="96"/>
+        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="110"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="93"/>
         <source>Schedules</source>
         <translation>スケジュール</translation>
