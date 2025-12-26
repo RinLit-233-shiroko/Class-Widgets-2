@@ -3007,7 +3007,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="12"/>
         <source>Introducing our brand new feature introduction page that allows users to quickly learn about the latest features of Class Widgets 2.0. Supports multi-page display, smooth animations, and smart navigation for a better new user experience.</source>
-        <translation type="unfinished">介绍我们的品牌新特色介绍网页,使用户能够迅速了解2.0类动物的最新特征。 • 支持多页展示、平滑的动画和智能导航,以取得更好的新用户经验.</translation>
+        <translation>全新更新摘要功能登场！在此快速了解 Class Widgets 2.0 的最新功能。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="17"/>
@@ -3017,7 +3017,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="18"/>
         <source>A completely rebuilt notification system that supports in-app notification toggles, intelligent ringtone configuration, and customizable notification providers. Bringing users a more flexible and intelligent notification experience.</source>
-        <translation>全新重构的通知系统，支持应用内通知开关、智能提示音配置，以及可自定义通知提供者，为用户带来更灵活、更智能的通知体验。</translation>
+        <translation>全新重构的通知系统，支持应用内通知开关、智能提示音配置，以及可自定义通知推送方，为用户带来更灵活、更智能的通知体验。</translation>
     </message>
     <message>
         <source>Configure Notifications on Settings</source>
@@ -3026,7 +3026,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="21"/>
         <source>Add &quot;Dynamic Notifications&quot; to Widgets Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>在小组件屏幕中添加“灵动通知”</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/data/WhatsNewData.qml" line="25"/>
@@ -3243,7 +3243,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="56"/>
         <source>Dynamic Notification</source>
-        <translation>动态通知</translation>
+        <translation>灵动通知</translation>
     </message>
 </context>
 <context>
@@ -3302,12 +3302,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/dynamicNotification.qml" line="237"/>
         <source>No notification yet</source>
-        <translation type="unfinished">尚未通知</translation>
+        <translation>尚无通知</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/dynamicNotification.qml" line="259"/>
         <source>Dynamic Notification</source>
-        <translation type="unfinished">动态通知</translation>
+        <translation>灵动通知</translation>
     </message>
 </context>
 <context>
