@@ -1013,12 +1013,12 @@ Please try again later.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="23"/>
         <source>Translation notice / 翻译提示</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="24"/>
         <source>Some translations may be auto-generated and could be inaccurate. Help us improve them on &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt;. &lt;br&gt;部分翻译可能由自动翻译生成，存在不准确之处。欢迎在 &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt; 上参与改进</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="33"/>
@@ -1664,6 +1664,11 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="81"/>
         <source>Edit</source>
         <translation>编辑</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="102"/>
+        <source>Week %1</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Week</source>

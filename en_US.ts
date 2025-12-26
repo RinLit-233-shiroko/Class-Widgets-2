@@ -1484,6 +1484,11 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="102"/>
+        <source>Week %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="148"/>
         <source>Week Cycle</source>
         <translation type="unfinished"></translation>
