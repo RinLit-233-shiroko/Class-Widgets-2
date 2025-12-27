@@ -92,6 +92,8 @@ jobs:
         shell: pwsh
         run: |
           Compress-Archive -Path "dist/Class Widgets 2/*" -DestinationPath "dist/ClassWidgets-2-Windows.zip"
+          $h = Get-FileHash -Algorithm SHA256 "dist/ClassWidgets-2-Windows.zip"
+          "$($h.Hash) ClassWidgets-2-Windows.zip" > "dist/ClassWidgets-2-Windows.zip.sha256"
 
       - name: 📦 Zip build (macOS)
         if: runner.os == 'macOS'
@@ -99,20 +101,25 @@ jobs:
         run: |
           cd dist
           ditto -c -k --sequesterRsrc --keepParent "Class Widgets 2".app ClassWidgets-2-macOS.zip
+          shasum -a 256 ClassWidgets-2-macOS.zip > ClassWidgets-2-macOS.zip.sha256
 
       - name: ☁️ Upload artifact (Windows)
         if: runner.os == 'Windows'
         uses: actions/upload-artifact@v4
         with:
           name: ClassWidgets-2-Windows
-          path: dist/ClassWidgets-2-Windows.zip
+          path: |
+            dist/ClassWidgets-2-Windows.zip
+            dist/ClassWidgets-2-Windows.zip.sha256
 
       - name: ☁️ Upload artifact (macOS)
         if: runner.os == 'macOS'
         uses: actions/upload-artifact@v4
         with:
           name: ClassWidgets-2-macOS
-          path: dist/ClassWidgets-2-macOS.zip
+          path: |
+            dist/ClassWidgets-2-macOS.zip
+            dist/ClassWidgets-2-macOS.zip.sha256
 
   release:
     needs: [build]
@@ -135,7 +142,9 @@ jobs:
           ls -R dist/
           echo "::endgroup::"
           mv dist/ClassWidgets-2-Windows/*.zip dist/
+          mv dist/ClassWidgets-2-Windows/*.sha256 dist/
           mv dist/ClassWidgets-2-macOS/*.zip dist/
+          mv dist/ClassWidgets-2-macOS/*.sha256 dist/
 
       - name: 🧱 Set up git-cliff
         uses: kenji-miyake/setup-git-cliff@v2
@@ -155,13 +164,15 @@ jobs:
           prerelease: ${{ github.event_name == 'push' || github.event.inputs.prerelease }}
           files: |
             dist/ClassWidgets-2-Windows.zip
+            dist/ClassWidgets-2-Windows.zip.sha256
             dist/ClassWidgets-2-macOS.zip
+            dist/ClassWidgets-2-macOS.zip.sha256
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 📤 Upload CHANGELOG & packages to 123Pan
         # 推送/手动+上传 ==> 上传
-        if: success() && 
+        if: success() &&
           ( github.event_name == 'push' ||
            github.event.inputs.upload2webdav == '123Pan' ||
            github.event.inputs.upload2webdav == 'Both')
@@ -183,8 +194,16 @@ jobs:
             "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
 
           curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
+            -T "dist/ClassWidgets-2-Windows.zip.sha256" \
+            "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip.sha256"
+
+          curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
             -T "dist/ClassWidgets-2-macOS.zip" \
             "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-macOS.zip"
+
+          curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
+            -T "dist/ClassWidgets-2-macOS.zip.sha256" \
+            "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-macOS.zip.sha256"
 
       - name: 📤 Upload CHANGELOG & packages to OneDrive
         if: success() &&
@@ -209,5 +228,13 @@ jobs:
             "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
 
           curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
+            -T "dist/ClassWidgets-2-Windows.zip.sha256" \
+            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip.sha256"
+
+          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
             -T "dist/ClassWidgets-2-macOS.zip" \
             "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-macOS.zip"
+
+          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
+            -T "dist/ClassWidgets-2-macOS.zip.sha256" \
+            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-macOS.zip.sha256"

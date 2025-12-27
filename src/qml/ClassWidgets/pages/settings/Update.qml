@@ -231,17 +231,12 @@ FluentPage {
         SettingExpander {
             Layout.fillWidth: true
             icon.name: "ic_fluent_network_check_20_regular"
-            title: qsTr("Use Mirror Source")
-            description: qsTr("If GitHub is slow or unavailable in your region, use a mirror to download updates faster")
-
-            action: Switch {
-                onCheckedChanged: Configs.set("network.mirror_enabled", checked)
-                Component.onCompleted: checked = Configs.data.network.mirror_enabled
-            }
+            title: qsTr("Update Source")
+            description: qsTr("Select the source used to download update packages")
 
             SettingItem {
-                title: qsTr("Select Mirror")
-                description: qsTr("Choose a mirror source for downloading updates")
+                title: qsTr("Select Update Source")
+                description: qsTr("Choose a source for downloading update packages")
 
                 ComboBox {
                     Layout.fillWidth: true
@@ -259,9 +254,29 @@ FluentPage {
                         }
                     }
 
-                    delegate: ItemDelegate {
-                        text: modelData + " (" + Configs.data.network.mirrors[modelData] + ")"
+                    function mirrorText(key) {
+                        if (key === "auto")
+                            return qsTr("Auto-select")
+
+                        const name = Configs.data.network.mirrors[key]
+                        return name
+                            ? qsTr("%1（%2）").arg(qsTr(key)).arg(name)
+                            : qsTr(key)
                     }
+
+                    delegate: ItemDelegate {
+                        text: root.mirrorText(modelData)
+                    }
+                }
+            }
+
+            SettingItem {
+                title: qsTr("Ignore SSL Verification")
+                description: qsTr("Disables certificate verification and may reduce connection security")
+
+                Switch {
+                    onCheckedChanged: Configs.set("network.ignore_ssl_verify", checked)
+                    Component.onCompleted: checked = Configs.data.network.ignore_ssl_verify
                 }
             }
         }
