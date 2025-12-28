@@ -70,5 +70,13 @@ ApplicationWindow {
 
         // 概览
         Overview {}
+
+
+    }
+
+    // fix
+    onClosing: function(event) {
+        event.accepted = false
+        mainWindow.hide()
     }
 }

@@ -184,9 +184,7 @@ FluentPage {
                         if (resultTuple[0]) {
                             floatLayer.createInfoBar({
                                 title: qsTr("Cleared"),
-                                text: qsTr(
-                                    `All logs have been cleared about ${resultTuple[1]} KB.`
-                                ),
+                                text: qsTr("All logs have been cleared about ") + resultTuple[1] + " KB.",
                                 severity: Severity.Success,
                                 duration: 2000,
                             })

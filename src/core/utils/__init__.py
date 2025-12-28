@@ -9,7 +9,6 @@ from .subjects import DEFAULT_SUBJECTS, get_default_subjects, translate_sources
 from .translator import AppTranslator
 from .backend import UtilsBackend
 from uuid import uuid4
-from src.core.plugin.api import __version__ as __API_VERSION__
 
 
 # Parser

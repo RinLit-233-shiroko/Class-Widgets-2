@@ -121,7 +121,11 @@ QQW.Window {
         id: trayPanel
     }
 
-    Component.onCompleted: updateLayer()
+    Component.onCompleted: {
+        updateLayer()
+        Theme.setThemeColor("#4099b2")
+        // origin #5CDCFF; 因为RinUI自带在暗色模式中的主题色补偿（这不夸夸（bushi），所以这里改成了更深的色调
+    }
 
 
     Connections {

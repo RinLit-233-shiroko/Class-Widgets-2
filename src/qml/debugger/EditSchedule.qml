@@ -22,16 +22,21 @@ ApplicationWindow {
     //     }
     // }
 
-    // notification signal from AppCentral.notification.notify
+    // notification signal from AppCentral.notification.notified
     Item {
         id: notificationLayer
         property var level: [Severity.Info, Severity.Success, Severity.Warning, Severity.Error]
 
         Connections {
             target: AppCentral.notification
-            onNotify: (icon, level, title, message) => {
+            onNotified: (payload) => {
+                // 处理通知数据
+                var levelIndex = payload.level || 0
+                var title = payload.title || "通知"
+                var message = payload.message || ""
+                
                 floatLayer.createInfoBar({
-                    severity: notificationLayer.level[level],
+                    severity: notificationLayer.level[levelIndex],
                     title: title,
                     text: message
                 })

@@ -41,13 +41,25 @@ ColumnLayout {
                     highlighted: true
                     text: "Send"
                     onClicked: {
-                        AppCentral.notification.push(
-                            "ic_fluent_alert_20_regular",  // icon
-                            notificationLevel.currentIndex,  // level
-                            notificationTitle.text,  // title
-                            notificationText.text  // text
-                        )
+                        let provider = UtilsBackend.debugNotificationProvider
+                        if (provider) {
+                            provider.push(
+                                notificationLevel.currentIndex,                  // level, 对应 NotificationLevel.ANNOUNCEMENT
+                                notificationTitle.text || qsTr("Debug"), // title
+                                notificationText.text || qsTr("Debug message"),    // message
+                                4000,
+                                true
+                            )
+                        }
                     }
+                    // onClicked: {
+                    //     AppCentral.notification.push(
+                    //         "ic_fluent_alert_20_regular",  // icon
+                    //         notificationLevel.currentIndex,  // level
+                    //         notificationTitle.text,  // title
+                    //         notificationText.text  // text
+                    //     )
+                    // }
                 }
             }
         }

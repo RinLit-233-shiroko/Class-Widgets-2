@@ -9,7 +9,7 @@ from pydantic import Field, PrivateAttr
 from PySide6.QtCore import QObject, QTimer, Signal, Property, Slot
 
 from .model import AppConfig, ScheduleConfig, PreferencesConfig, PluginsConfig, LocaleConfig, InteractionsConfig, \
-    ConfigBaseModel, NetworkConfig
+    ConfigBaseModel, NetworkConfig, NotificationsConfig
 from src import __version__, __version_type__
 
 
@@ -21,6 +21,7 @@ class RootConfig(ConfigBaseModel):
     interactions: InteractionsConfig = Field(default_factory=InteractionsConfig)
     plugins: PluginsConfig = Field(default_factory=PluginsConfig)
     network: NetworkConfig = Field(default_factory=NetworkConfig)
+    notifications: NotificationsConfig = Field(default_factory=NotificationsConfig)
 
     _on_change: callable = PrivateAttr(default=None)
 

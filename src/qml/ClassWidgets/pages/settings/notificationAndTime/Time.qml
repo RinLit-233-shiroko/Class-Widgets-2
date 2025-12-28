@@ -10,7 +10,7 @@ FluentPage {
     horizontalPadding: 0
     wrapperWidth: width - 42*2
 
-    title: qsTr("Notification & Time")
+    title: qsTr("Time")
 
     ColumnLayout {
         Layout.fillWidth: true
@@ -33,6 +33,7 @@ FluentPage {
                 from: -86400
                 to: 86400
                 property string suffix: qsTr("minutes")
+                Layout.preferredWidth: 200
                 onValueChanged: Configs.set("schedule.time_offset", value)
                 Component.onCompleted: value = Configs.data.schedule.time_offset
             }

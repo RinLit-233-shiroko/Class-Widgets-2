@@ -1,0 +1,32 @@
+from enum import IntEnum
+from pathlib import Path
+from typing import Optional, Union, Dict
+from pydantic import BaseModel, Field
+
+
+class NotificationLevel(IntEnum):
+    INFO = 0          # 普通提示
+    ANNOUNCEMENT = 1  # 上下课 / 状态
+    WARNING = 2       # 更新 / 风险
+    SYSTEM = 3        # 内部
+
+
+class NotificationData(BaseModel):
+    provider_id: str          # 来源 Provider ID
+    level: int                # 实际由前端映射样式
+    title: str
+    message: Optional[str] = None
+    icon: Optional[Union[str, Path]] = None  # 图标，支持字体图标名称或图片URI
+
+    # 行为 & 展示
+    duration: int = 4000      # ms，0 = 常驻
+    closable: bool = True
+    silent: bool = False      # 是否无声音
+    use_system: bool = False # 系统通知 or 应用内
+
+
+
+class NotificationProviderConfig(BaseModel):
+    enabled: bool = True
+    use_system_notify: bool = False
+    use_app_notify: bool = True

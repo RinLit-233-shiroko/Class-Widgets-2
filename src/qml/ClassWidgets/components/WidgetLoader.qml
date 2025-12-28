@@ -15,6 +15,9 @@ Loader {
             if (item && model.settings) {
                 item.settings = model.settings
             }
+            if (item && item.hasOwnProperty('editMode')) {
+                item.editMode = widgetsContainer.editMode
+            }
             anim.start()
         }
     }
@@ -24,6 +27,15 @@ Loader {
         function onModelChanged() {
             if (loader.item && model.settings) {
                 loader.item.settings = model.settings
+            }
+        }
+    }
+
+    Connections {
+        target: widgetsContainer
+        function onEditModeChanged() {
+            if (loader.item && loader.item.hasOwnProperty('editMode')) {
+                loader.item.editMode = widgetsContainer.editMode
             }
         }
     }

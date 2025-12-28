@@ -6,6 +6,7 @@ from PySide6.QtCore import QLocale, QCoreApplication
 
 from ..directories import DEFAULT_THEME
 from src import __version__, __version_type__
+from ..notification import NotificationProviderConfig
 
 GITHUB_MIRRORS: Dict[str, str] = {
     "gh_proxy": "https://gh-proxy.com/",
@@ -106,6 +107,7 @@ class PreferencesConfig(ConfigBaseModel):
         default_factory=lambda: {
             "default": [
                 WidgetEntry(type_id="classwidgets.time", instance_id="8ee721ef-ab36-4c23-834d-2c666a6739a3"),
+                WidgetEntry(type_id="classwidgets.dynamicNotification", instance_id="4ccfdd24-eac1-4be0-8a09-7271af818327"),
                 WidgetEntry(type_id="classwidgets.currentActivity", instance_id="87985398-2844-4c9e-b27d-6ea81cd0a2c6"),
             ]
         }
@@ -152,3 +154,25 @@ class NetworkConfig(ConfigBaseModel):
     mirror_enabled: bool = True  # 是否启用网络功能
     releases_url: str = "https://classwidgets.rinlit.cn/2/releases.json"  # 版本更新地址
     auto_check_updates: bool = True  # 自动检查更新
+
+class NotificationsConfig(ConfigBaseModel):
+    """
+    所有通知配置，包括全局设置和各提供者配置
+    """
+    enabled: bool = True  # 全局通知开关
+    default_sound: Optional[str] = None  # 默认铃声
+    volume: float = 0.7  # 通知音量 (0.0-1.0)
+    providers: Dict[str, NotificationProviderConfig] = Field(default_factory=dict)
+    
+    # 按通知级别设置的默认音频文件（默认为空字符串）
+    level_sounds: Dict[int, str] = Field(default_factory=lambda: {
+        0: "",     # INFO - 普通提示音
+        1: "",     # ANNOUNCEMENT - 上下课提醒音
+        2: "",     # WARNING - 警告音
+        3: ""      # SYSTEM - 系统音
+    })
+
+    class Config:
+        extra = Extra.allow
+        validate_assignment = True
+

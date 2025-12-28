@@ -51,7 +51,7 @@ We are currently activated
 and [Discord Server](https://discord.gg/EFF4PpqpqZ)。
 
 ## Open-Source License
-This project is open source licensed under the GNU General Public License version 3 (GPL-3.0).
+This project is open source licensed under the MIT license.
 
 More information is in the [LICENSE](LICENSE) file.
 

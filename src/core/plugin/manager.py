@@ -150,14 +150,22 @@ class PluginManager(QObject):
             from src.core.plugin.api import PluginAPI as RealPluginAPI
             from src.core.plugin import CW2Plugin as RealCW2Plugin
             from src.core.config.model import ConfigBaseModel as RealConfigBaseModel
+
+            # 通知相关类型
+            from src.core.notification.provider import NotificationProvider as RealNotificationProvider
+            from src.core.notification.model import NotificationLevel, NotificationData
+
+            # 批量注入
+            fake_mod.PluginAPI = RealPluginAPI
+            fake_mod.CW2Plugin = RealCW2Plugin
+            fake_mod.ConfigBaseModel = RealConfigBaseModel
+            fake_mod.NotificationProvider = RealNotificationProvider
+            fake_mod.NotificationLevel = NotificationLevel
+            fake_mod.NotificationData = NotificationData
+
         except Exception as e:
             logger.exception(f"Failed to import runtime API classes for injection: {e}")
             return
-
-        # 挂载核心类型
-        fake_mod.PluginAPI = RealPluginAPI
-        fake_mod.CW2Plugin = RealCW2Plugin
-        fake_mod.ConfigBaseModel = RealConfigBaseModel
 
         sys.modules[module_name] = fake_mod
         logger.debug(f"Injected {module_name} into sys.modules (runtime-backed).")

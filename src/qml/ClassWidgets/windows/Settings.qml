@@ -44,8 +44,19 @@ FluentWindow {
         },
         {
             title: qsTr("Notification & Time"),
-            page: PathManager.qml("pages/settings/Time.qml"),
             icon: "ic_fluent_alert_badge_20_regular",
+            subItems: [
+                {
+                    title: qsTr("Notification"),
+                    page: PathManager.qml("pages/settings/notificationAndTime/Notification.qml"),
+                    icon: "ic_fluent_alert_badge_20_regular"
+                },
+                {
+                    title: qsTr("Time"),
+                    page: PathManager.qml("pages/settings/notificationAndTime/Time.qml"),
+                    icon: "ic_fluent_clock_20_regular"
+                }
+            ]
         },
         {
             title: qsTr("Plugins"),

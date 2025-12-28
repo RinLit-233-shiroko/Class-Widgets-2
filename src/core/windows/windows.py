@@ -53,6 +53,7 @@ class WhatsNew(RinUIWindow):
 
         self.central.setup_qml_context(self)
         self.central.retranslate.connect(self.engine.retranslate)
+        self.engine.rootContext().setContextProperty("UtilsBackend", self.central.utils_backend)
 
         self.load(CW_PATH / "windows" / "WhatsNew.qml")
 

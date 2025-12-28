@@ -9,10 +9,59 @@ import QtQuick.Effects  // shadow
 Item {
     id: root
     // SaveFlyout { id: saveFlyout }
+    function quickAddSubject(subjectid) {
+        let row = scheduleTable.selectedCell.row
+        let column = scheduleTable.selectedCell.column
+
+        // 如果没有选中单元格，默认选择第一行第一列
+        if (row < 0 || column < 0) {
+            row = 0
+            column = 0
+        }
+
+        let day = scheduleTable.getDayByColumn(column)
+        let entry = scheduleTable.getEntryByDayAndRow(day, row, column)
+        if (!entry) return;
+
+        let weeks;
+        if (scheduleTable.currentWeek === -1) {
+            weeks = "all"; // 字符串
+        } else if (Array.isArray(scheduleTable.currentWeek)) {
+            weeks = scheduleTable.currentWeek.map(w => Number(w)); // 强制 int
+        } else {
+            weeks = Number(scheduleTable.currentWeek); // 单 int
+        }
+
+        let dayOfWeek = [column + 1]
+
+        // 调用 scheduleEditor 的逻辑
+        const existingId = AppCentral.scheduleEditor.findOverride(entry.id, dayOfWeek, weeks)
+        if (existingId) {
+            AppCentral.scheduleEditor.updateOverride(existingId, subjectid, null)
+        } else {
+            AppCentral.scheduleEditor.addOverride(entry.id, dayOfWeek, weeks, subjectid, null)
+        }
+
+        // 更新表格显示
+        scheduleTable.currentEntry = scheduleTable.getEntryByDayAndRow(day, row, column)
+
+        // 移动焦点到下一行
+        let nextRow = row + 1
+        let nextColumn = column
+
+        if (nextRow === scheduleTable.maxRows) {
+            nextRow = 0
+            nextColumn = column + 1
+            if (nextColumn >= 7) nextColumn = 0 // 超出一周列就回到第一列
+        }
+
+        scheduleTable.selectedCell = { row: nextRow, column: nextColumn }
+    }
 
     property bool editable: segmented.currentIndex === 1  // 是否可编辑
 
     ColumnLayout {
+        id: mainLayout
         anchors.fill: parent
         anchors.margins: 24
         // anchors.topMargin: 24 + saveFlyout.height
@@ -50,9 +99,7 @@ Item {
 
             Text {
                 id: weekText
-                text: qsTr(
-                    `Week ${scheduleViewer.currentWeek}`
-                )
+                text: qsTr("Week %1").arg(scheduleViewer.currentWeek)
             }
 
             ToolButton {
@@ -151,55 +198,6 @@ Item {
                     }
                 }
             }
-        }
-
-        function quickAddSubject(subjectid) {
-            let row = scheduleTable.selectedCell.row
-            let column = scheduleTable.selectedCell.column
-
-            // 如果没有选中单元格，默认选择第一行第一列
-            if (row < 0 || column < 0) {
-                row = 0
-                column = 0
-            }
-
-            let day = scheduleTable.getDayByColumn(column)
-            let entry = scheduleTable.getEntryByDayAndRow(day, row, column)
-            if (!entry) return;
-
-            let weeks;
-            if (scheduleTable.currentWeek === -1) {
-                weeks = "all"; // 字符串
-            } else if (Array.isArray(scheduleTable.currentWeek)) {
-                weeks = scheduleTable.currentWeek.map(w => Number(w)); // 强制 int
-            } else {
-                weeks = Number(scheduleTable.currentWeek); // 单 int
-            }
-
-            let dayOfWeek = [column + 1]
-
-            // 调用 scheduleEditor 的逻辑
-            const existingId = AppCentral.scheduleEditor.findOverride(entry.id, dayOfWeek, weeks)
-            if (existingId) {
-                AppCentral.scheduleEditor.updateOverride(existingId, subjectid, null)
-            } else {
-                AppCentral.scheduleEditor.addOverride(entry.id, dayOfWeek, weeks, subjectid, null)
-            }
-
-            // 更新表格显示
-            scheduleTable.currentEntry = scheduleTable.getEntryByDayAndRow(day, row, column)
-
-            // 移动焦点到下一行
-            let nextRow = row + 1
-            let nextColumn = column
-
-            if (nextRow === scheduleTable.maxRows) {
-                nextRow = 0
-                nextColumn = column + 1
-                if (nextColumn >= 7) nextColumn = 0 // 超出一周列就回到第一列
-            }
-
-            scheduleTable.selectedCell = { row: nextRow, column: nextColumn }
         }
     }
 }

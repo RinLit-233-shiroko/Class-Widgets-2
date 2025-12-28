@@ -12,6 +12,7 @@ Item {
     // 最小宽度 = 内容 + 边距，默认可以被拉伸
     readonly property bool miniMode: Configs.data.preferences.mini_mode
     readonly property bool hide: Configs.data.interactions.hide.state
+    property bool editMode: false
 
     implicitWidth: Math.max(headerRow.implicitWidth, contentArea.childrenRect.width) + 48
     height: miniMode ? 56 : 100

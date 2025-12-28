@@ -79,7 +79,7 @@ Window {
                 title: qsTr("Settings")
                 description: qsTr("Adjust the settings of Class Widgets")
                 Hyperlink {
-                    text: "Open"
+                    text: qsTr("Open")
                     onClicked: {
                         panel.hide()
                         AppCentral.openSettings()
@@ -93,7 +93,7 @@ Window {
                 title: qsTr("Schedules")
                 description: qsTr("Edit your schedule profile")
                 Hyperlink {
-                    text: "Open"
+                    text: qsTr("Open")
                     onClicked: {
                         panel.hide()
                         AppCentral.openEditor()
@@ -107,7 +107,7 @@ Window {
                 title: qsTr("Extension Plaza (WEB)")
                 description: qsTr("Discover and download plugins and themes")
                 Hyperlink {
-                    text: "Open"
+                    text: qsTr("Open")
                     // enabled: false
                     onClicked: {
                         Qt.openUrlExternally("https://plaza.cw.rinlit.cn")

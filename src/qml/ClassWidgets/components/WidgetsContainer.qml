@@ -255,6 +255,7 @@ Flow {
                 }
             }
 
+            // 入场动画
             SequentialAnimation {
                 id: anim
                 NumberAnimation { target: widgetContainer; property: "opacity"; from: 0; to: 0; duration: 1 }
