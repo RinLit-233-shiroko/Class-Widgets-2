@@ -56,3 +56,13 @@ class WhatsNew(RinUIWindow):
 
         self.load(CW_PATH / "windows" / "WhatsNew.qml")
 
+class CheckSingleInstanceDialog(RinUIWindow):
+    def __init__(self, parent):
+        super().__init__()
+        self.central = parent
+
+        self.central.setup_qml_context(self)
+        self.engine.rootContext().setContextProperty("AppCentral", self.central)
+        self.central.retranslate.connect(self.engine.retranslate)
+
+        self.load(CW_PATH / "components" / "dialogs" / "CheckSingleInstanceDialog.qml")

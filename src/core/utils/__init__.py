@@ -8,7 +8,6 @@ from .tray import TrayIcon
 from .subjects import DEFAULT_SUBJECTS, get_default_subjects, translate_sources
 from .translator import AppTranslator
 from .backend import UtilsBackend
-from .process import ensure_single_instance
 from uuid import uuid4
 from src.core.plugin.api import __version__ as __API_VERSION__
 
