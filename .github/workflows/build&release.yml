@@ -35,7 +35,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest, macos-15-intel]
+        os: [windows-latest, macos-15-intel, macos-latest]
 
     steps:
       - name: ⬇️ Checkout code
@@ -98,7 +98,7 @@ jobs:
         shell: bash
         run: |
           cd dist
-          ditto -c -k --sequesterRsrc --keepParent "Class Widgets 2".app ClassWidgets-2-macOS.zip
+          ditto -c -k --sequesterRsrc --keepParent "Class Widgets 2".app ClassWidgets-2-macOS-${{ runner.arch }}.zip
 
       - name: ☁️ Upload artifact (Windows)
         if: runner.os == 'Windows'
@@ -112,7 +112,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ClassWidgets-2-macOS
-          path: dist/ClassWidgets-2-macOS.zip
+          path: dist/ClassWidgets-2-macOS-${{ runner.arch }}.zip
 
   release:
     needs: [build]
@@ -128,14 +128,7 @@ jobs:
         uses: actions/download-artifact@v5
         with:
           path: dist/
-
-      - name: 🗃 Move release files to root dist/
-        run: |
-          echo "::group::Show downloaded structure"
-          ls -R dist/
-          echo "::endgroup::"
-          mv dist/ClassWidgets-2-Windows/*.zip dist/
-          mv dist/ClassWidgets-2-macOS/*.zip dist/
+          merge-multiple: true
 
       - name: 🧱 Set up git-cliff
         uses: kenji-miyake/setup-git-cliff@v2
@@ -155,7 +148,8 @@ jobs:
           prerelease: ${{ github.event_name == 'push' || github.event.inputs.prerelease }}
           files: |
             dist/ClassWidgets-2-Windows.zip
-            dist/ClassWidgets-2-macOS.zip
+            dist/ClassWidgets-2-macOS-X64.zip
+            dist/ClassWidgets-2-macOS-ARM64.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
 
@@ -183,8 +177,11 @@ jobs:
             "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
 
           curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
-            -T "dist/ClassWidgets-2-macOS.zip" \
-            "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-macOS.zip"
+            -T "dist/ClassWidgets-2-macOS-X64.zip" \
+            "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-macOS-X64.zip"
+          curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
+            -T "dist/ClassWidgets-2-macOS-ARM64.zip" \
+            "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-macOS-ARM64.zip"
 
       - name: 📤 Upload CHANGELOG & packages to OneDrive
         if: success() &&
@@ -209,5 +206,8 @@ jobs:
             "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
 
           curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
-            -T "dist/ClassWidgets-2-macOS.zip" \
-            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-macOS.zip"
+            -T "dist/ClassWidgets-2-macOS-X64.zip" \
+            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-macOS-X64.zip"
+          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
+            -T "dist/ClassWidgets-2-macOS-ARM64.zip" \
+            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-macOS-ARM64.zip"
