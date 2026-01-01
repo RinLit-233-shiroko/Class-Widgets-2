@@ -97,8 +97,8 @@ jobs:
         if: runner.os == 'macOS'
         shell: bash
         run: |
-          cd dist
-          ditto -c -k --sequesterRsrc --keepParent "Class Widgets 2".app ClassWidgets-2-macOS-${{ runner.arch }}.zip
+          hdiutil create -volname "Class Widgets 2" -srcfolder dist -ov -format UDZO ClassWidgets-2-macOS-${{ runner.arch }}.dmg
+        # ditto -c -k --sequesterRsrc --keepParent "Class Widgets 2".app ClassWidgets-2-macOS-${{ runner.arch }}.zip
 
       - name: ☁️ Upload artifact (Windows)
         if: runner.os == 'Windows'
@@ -112,7 +112,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ClassWidgets-2-macOS-${{ runner.arch }}
-          path: dist/ClassWidgets-2-macOS-${{ runner.arch }}.zip
+          path: ClassWidgets-2-macOS-${{ runner.arch }}.dmg
 
   release:
     needs: [build]
@@ -148,8 +148,8 @@ jobs:
           prerelease: ${{ github.event_name == 'push' || github.event.inputs.prerelease }}
           files: |
             dist/ClassWidgets-2-Windows.zip
-            dist/ClassWidgets-2-macOS-X64.zip
-            dist/ClassWidgets-2-macOS-ARM64.zip
+            dist/ClassWidgets-2-macOS-X64.dmg
+            dist/ClassWidgets-2-macOS-ARM64.dmg
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
 
@@ -177,11 +177,11 @@ jobs:
             "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
 
           curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
-            -T "dist/ClassWidgets-2-macOS-X64.zip" \
-            "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-macOS-X64.zip"
+            -T "dist/ClassWidgets-2-macOS-X64.dmg" \
+            "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-macOS-X64.dmg"
           curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
-            -T "dist/ClassWidgets-2-macOS-ARM64.zip" \
-            "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-macOS-ARM64.zip"
+            -T "dist/ClassWidgets-2-macOS-ARM64.dmg" \
+            "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-macOS-ARM64.dmg"
 
       - name: 📤 Upload CHANGELOG & packages to OneDrive
         if: success() &&
@@ -206,8 +206,8 @@ jobs:
             "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
 
           curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
-            -T "dist/ClassWidgets-2-macOS-X64.zip" \
-            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-macOS-X64.zip"
+            -T "dist/ClassWidgets-2-macOS-X64.dmg" \
+            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-macOS-X64.dmg"
           curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
-            -T "dist/ClassWidgets-2-macOS-ARM64.zip" \
-            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-macOS-ARM64.zip"
+            -T "dist/ClassWidgets-2-macOS-ARM64.dmg" \
+            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-macOS-ARM64.dmg"
