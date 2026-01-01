@@ -111,7 +111,7 @@ jobs:
         if: runner.os == 'macOS'
         uses: actions/upload-artifact@v4
         with:
-          name: ClassWidgets-2-macOS
+          name: ClassWidgets-2-macOS-${{ runner.arch }}
           path: dist/ClassWidgets-2-macOS-${{ runner.arch }}.zip
 
   release:
