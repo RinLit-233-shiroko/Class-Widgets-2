@@ -26,11 +26,17 @@ Licensed under the GPL-3 license.</source>
 根据GPL-3许可证授权。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="74"/>
         <source>© 2024-2025 RinLit. All rights reserved 
 Licensed under the GPL-3 license</source>
-        <translation>© 2024-2025 RinLit. 保留所有权利 
+        <translation type="vanished">© 2024-2025 RinLit. 保留所有权利 
 根据GPL-3许可证授权</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="74"/>
+        <source>© 2024-2026 RinLit. All rights reserved 
+Licensed under the MIT license</source>
+        <translation>© 2024-2026 RinLit. 保留所有权利 
+根据 MIT 许可证授权</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="91"/>
@@ -192,6 +198,35 @@ Licensed under the GPL-3 license</source>
         <location filename="../../src/qml/ClassWidgets/components/dialogs/AddWidgetsDialog.qml" line="140"/>
         <source>Add</source>
         <translation>添加</translation>
+    </message>
+</context>
+<context>
+    <name>CheckSingleInstanceDialog</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/dialogs/CheckSingleInstanceDialog.qml" line="23"/>
+        <source>Already running</source>
+        <translation>Class Widgets 已正在运行</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/dialogs/CheckSingleInstanceDialog.qml" line="36"/>
+        <source>Class Widgets is already running.
+
+Looks like it was opened twice.
+You can continue to open another one, or close this window.</source>
+        <translation>Class Widgets 已正在运行。
+
+看起来可能是启动了两次，
+你可以选择继续启动另一个进程，或者退出。</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/dialogs/CheckSingleInstanceDialog.qml" line="49"/>
+        <source>Exit</source>
+        <translation>退出</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/dialogs/CheckSingleInstanceDialog.qml" line="59"/>
+        <source>Open anyway</source>
+        <translation>仍然打开</translation>
     </message>
 </context>
 <context>
@@ -1438,14 +1473,81 @@ Please try again later.</source>
     </message>
 </context>
 <context>
+    <name>PluginManager</name>
+    <message>
+        <location filename="../../src/core/plugin/manager.py" line="83"/>
+        <source>Incompatible</source>
+        <translation>不兼容</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/manager.py" line="84"/>
+        <source>{count} incompatible plugin(s) have been loaded, which may cause unknown issues.</source>
+        <translation>发现 {count} 个插件可能不兼容，运行过程中可能出现异常。</translation>
+    </message>
+</context>
+<context>
+    <name>PluginReplaceConfirmDialog</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/dialogs/PluginReplaceConfirmDialog.qml" line="15"/>
+        <source>Update Plugin</source>
+        <translation>更新插件</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/dialogs/PluginReplaceConfirmDialog.qml" line="15"/>
+        <source>Replace Plugin</source>
+        <translation>替换插件</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/dialogs/PluginReplaceConfirmDialog.qml" line="43"/>
+        <source>A newer version of &apos;%1&apos; is available.</source>
+        <translation>“%1” 有可用的新版本。</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/dialogs/PluginReplaceConfirmDialog.qml" line="44"/>
+        <source>A plugin with the same ID &apos;%1&apos; already exists.</source>
+        <translation>已存在 ID 为 “%1” 的插件。</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/dialogs/PluginReplaceConfirmDialog.qml" line="45"/>
+        <source>Plugin Replacement</source>
+        <translation>插件替换</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/dialogs/PluginReplaceConfirmDialog.qml" line="53"/>
+        <source>Current version: %1
+New version: %2
+
+Do you want to %3 this plugin?</source>
+        <translation>当前版本：%1
+新版本：%2
+
+是否要 %3 此插件？</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/dialogs/PluginReplaceConfirmDialog.qml" line="55"/>
+        <source>update</source>
+        <translation>更新</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/dialogs/PluginReplaceConfirmDialog.qml" line="55"/>
+        <source>replace</source>
+        <translation>替换</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/dialogs/PluginReplaceConfirmDialog.qml" line="71"/>
+        <source>Note: Replacing a plugin will remove the old version completely.</source>
+        <translation>注意：替换插件将会完全移除旧版本。</translation>
+    </message>
+</context>
+<context>
     <name>Plugins</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="10"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="11"/>
         <source>Plugins</source>
         <translation>插件</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="14"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="15"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
@@ -1454,33 +1556,33 @@ Please try again later.</source>
         <translation type="vanished">插件系统仍在开发中，尚未经过测试。使用插件可能导致严重问题。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="24"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="83"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="25"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="158"/>
         <source>Success</source>
         <translation>成功</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="25"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="26"/>
         <source>The plugin has been uninstalled successfully. Restart to take effect.</source>
         <translation>插件已成功卸载。重启以生效。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="34"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="35"/>
         <source>Uninstall Failed</source>
         <translation>卸载失败</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="35"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="36"/>
         <source>Failed to uninstall the plugin. Please try again later.</source>
         <translation>未能卸载插件。请稍后重试。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="47"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="122"/>
         <source>Your plugins</source>
         <translation>您的插件</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="52"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="127"/>
         <source>Get Plugins</source>
         <translation>获取插件</translation>
     </message>
@@ -1497,44 +1599,44 @@ Please try again later.</source>
         <translation type="vanished">前往插件广场</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="73"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="148"/>
         <source>Search for plugins</source>
         <translation>搜索插件</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="93"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="168"/>
         <source>The selected plugin could not be imported.
 </source>
         <translation>当前选定的插件无法导入
 </translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="102"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="177"/>
         <source>Import</source>
         <translation>导入</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="84"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="159"/>
         <source>The plugin has been imported successfully.</source>
         <translation>插件已成功导入。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="15"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="16"/>
         <source>The plugin system is still under development. </source>
         <translation>插件系统仍在开发中. </translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="53"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="128"/>
         <source>Find and install plugins from the Extension Plaza (WEB)</source>
         <translation>在“插件广场”(网页)中寻找和安装插件</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="56"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="131"/>
         <source>Go to Extension Plaza</source>
         <translation>前往“插件广场”</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="92"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="167"/>
         <source>Import Failed</source>
         <translation>导入失败</translation>
     </message>
@@ -1553,66 +1655,72 @@ Please try again later.</source>
         <translation>正在导入所选插件。请稍后……</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="120"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="189"/>
         <source>All</source>
         <translation>全部</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="123"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="257"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="192"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="326"/>
         <source>Enabled</source>
         <translation>启用</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="126"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="257"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="195"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="326"/>
         <source>Disabled</source>
         <translation>已禁用</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="201"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="270"/>
         <source>Built-in</source>
         <translation>内置</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="247"/>
         <source>This plugin requires API version %1, but current app version is %2. 
 It&apos;s incompatible and may cause unexpected issues.</source>
-        <translation>此插件需要API版本%1，但当前应用版本为%2。
+        <translation type="vanished">此插件需要API版本%1，但当前应用版本为%2。
 不兼容可能导致意外问题。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="278"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="316"/>
+        <source>This plugin requires API version %1, but current API version is %2. 
+It&apos;s incompatible and may cause unexpected issues.</source>
+        <translation>此插件需要API版本%1，但当前API版本为%2。
+不兼容可能导致意外问题。</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="347"/>
         <source>Open In</source>
         <translation>在…中打开</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="281"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="350"/>
         <source>Finder</source>
         <translation>访达</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="281"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="350"/>
         <source>File Explorer</source>
         <translation>文件资源管理器</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="286"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="355"/>
         <source>Open Failed</source>
         <translation>打开失败</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="287"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="356"/>
         <source>Failed to open the plugin folder.</source>
         <translation>无法打开插件文件夹。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="296"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="365"/>
         <source>External Online Repository</source>
         <translation>外部在线仓库</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="304"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="373"/>
         <source>Uninstall</source>
         <translation>卸载</translation>
     </message>
@@ -3312,12 +3420,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
 <context>
     <name>dynamicNotification</name>
     <message>
-        <location filename="../../src/qml/widgets/dynamicNotification.qml" line="237"/>
+        <location filename="../../src/qml/widgets/dynamicNotification.qml" line="242"/>
         <source>No notification yet</source>
         <translation>尚无通知</translation>
     </message>
     <message>
-        <location filename="../../src/qml/widgets/dynamicNotification.qml" line="259"/>
+        <location filename="../../src/qml/widgets/dynamicNotification.qml" line="264"/>
         <source>Dynamic Notification</source>
         <translation>灵动通知</translation>
     </message>
