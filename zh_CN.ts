@@ -1534,7 +1534,7 @@ Do you want to %3 this plugin?</source>
         <translation>替换</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/dialogs/PluginReplaceConfirmDialog.qml" line="71"/>
+        <location filename="../../src/qml/ClassWidgets/components/dialogs/PluginReplaceConfirmDialog.qml" line="69"/>
         <source>Note: Replacing a plugin will remove the old version completely.</source>
         <translation>注意：替换插件将会完全移除旧版本。</translation>
     </message>
