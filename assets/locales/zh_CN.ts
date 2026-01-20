@@ -1004,12 +1004,12 @@ Please try again later.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Home.qml" line="29"/>
         <source>插件</source>
-        <translation type="unfinished"></translation>
+        <translation>Plugins</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Home.qml" line="34"/>
         <source>为你推荐</source>
-        <translation type="unfinished"></translation>
+        <translation>Recommendations</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Home.qml" line="46"/>
