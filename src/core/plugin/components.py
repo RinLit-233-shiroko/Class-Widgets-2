@@ -9,12 +9,15 @@ from src.core.config.model import ConfigBaseModel, PluginsConfig
 from src.core.plugin.bridge import PluginBackendBridge
 from src.core.notification import NotificationProvider
 from src.core.schedule.model import EntryType
+from src.core.plugin.api import PluginAPI
+
+from src.core.notification.model import NotificationPayload
 
 
 class BaseAPI(QObject):
     """所有API类的基类，提供通用的方法和属性"""
     
-    def __init__(self, plugin_api):
+    def __init__(self, plugin_api: PluginAPI):
         super().__init__()
         self._plugin_api = plugin_api
     
@@ -61,25 +64,11 @@ class WidgetsAPI(BaseAPI):
 
 
 class NotificationAPI(BaseAPI):
-    pushed = Signal(str)  # 给插件监听的信号
+    pushed = Signal(NotificationPayload)  # 给插件监听的信号
 
-    def __init__(self, plugin_api):
+    def __init__(self, plugin_api: PluginAPI):
         super().__init__(plugin_api)
-        self._plugin_api._app.notification.notified.connect(self._on_notification)
-    
-    def _on_notification(self, payload):
-        """处理通知信号并发射给插件"""
-        try:
-            title = payload.get('title', '通知')
-            message = payload.get('message', '')
-            if message:
-                notification_text = f"{title}: {message}"
-            else:
-                notification_text = title
-            self.pushed.emit(notification_text)
-        except Exception as e:
-            logger.error(f"Error processing notification: {e}")
-            self.pushed.emit("通知")
+        self._plugin_api._app.notification.notified.connect(self.pushed)
 
     def get_provider(
             self, provider_id: str, name: str = None,

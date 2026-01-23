@@ -4,7 +4,7 @@ import json
 import sys
 from contextlib import contextmanager
 from pathlib import Path
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from PySide6.QtCore import QCoreApplication
 from loguru import logger
@@ -162,7 +162,7 @@ class PluginLoader:
                 return False
         return True
     
-    def load_plugin(self, meta: dict) -> CW2Plugin or None:
+    def load_plugin(self, meta: dict) -> Optional[CW2Plugin]:
         """加载单个插件实例"""
         if meta["_type"] == "builtin":
             return self._load_builtin_plugin(meta)
@@ -188,7 +188,7 @@ class PluginLoader:
                 
         return loaded_plugins
     
-    def _load_builtin_plugin(self, meta: dict) -> CW2Plugin or None:
+    def _load_builtin_plugin(self, meta: dict) -> Optional[CW2Plugin]:
         """加载内置插件"""
         plugin_id = meta["id"]
         
@@ -217,7 +217,7 @@ class PluginLoader:
             logger.exception(f"Failed to load builtin plugin {plugin_id}: {e}")
             return None
     
-    def _load_external_plugin(self, meta: dict) -> CW2Plugin or None:
+    def _load_external_plugin(self, meta: dict) -> Optional[CW2Plugin]:
         """加载外部插件"""
         plugin_dir: Path = meta["_path"]
         plugin_id = meta["id"]

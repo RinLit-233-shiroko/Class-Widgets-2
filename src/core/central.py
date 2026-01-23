@@ -170,6 +170,8 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     def notification(self):
         return self._notification
 
+    notification: NotificationManager[ConfigManager]
+
     @Property(QObject, notify=initialized)
     def scheduleEditor(self):  # 课程表编辑器
         return self._schedule_editor
