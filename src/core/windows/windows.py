@@ -3,7 +3,10 @@ from PySide6.QtCore import QObject, Signal
 
 from src.core.directories import DEFAULT_THEME, CW_PATH
 from src.core.plugin.bridge import PluginBackendBridge
+from src.core.plaza import PlazaBridge
 
+
+from loguru import logger
 
 class Settings(RinUIWindow, QObject):
     extraSettingsChanged = Signal()
@@ -22,6 +25,7 @@ class Settings(RinUIWindow, QObject):
         self.extra_settings = []
 
         self.load(CW_PATH / "windows" / "Settings.qml")
+        logger.info("Settings window initialized")
 
 
 class Editor(RinUIWindow):
@@ -34,6 +38,18 @@ class Editor(RinUIWindow):
 
         self.load(CW_PATH / "windows" / "Editor.qml")
 
+
+class PluginPlaza(RinUIWindow):
+    def __init__(self, parent ):
+        super().__init__()
+        self.central = parent
+        self.plaza_bridge = PlazaBridge()
+
+        self.central.setup_qml_context(self)
+        self.engine.rootContext().setContextProperty("PlazaBridge", self.plaza_bridge)
+        self.central.retranslate.connect(self.engine.retranslate)
+
+        self.load(CW_PATH / "windows" / "PluginPlaza.qml")
 
 class Tutorial(RinUIWindow):
     def __init__(self, parent):

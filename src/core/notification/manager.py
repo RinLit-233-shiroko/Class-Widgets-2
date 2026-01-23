@@ -51,13 +51,14 @@ class NotificationManager(QObject):
         设置 QML 是否已准备就绪
         当 QML 准备好后，会自动发送所有待处理的通知
         """
+        pending = None
         with self._lock:
             self._qml_ready = ready
             if ready and self._pending_notifications:
                 logger.info(f"QML ready, flushing {len(self._pending_notifications)} pending notifications")
                 pending = list(self._pending_notifications)
                 self._pending_notifications.clear()
-        
+
         if ready and pending:
             for payload in pending:
                 self.notified.emit(payload)

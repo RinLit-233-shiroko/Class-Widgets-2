@@ -15,7 +15,7 @@ requires-python = ">=3.12,<3.14"
 dependencies = [
     "requests",
     "PySide6~=6.9.3",
-    "RinUI>=0.1.9.1",
+    "RinUI>=0.2.0",
     "pydantic",
     "loguru",
     "pyyaml",

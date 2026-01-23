@@ -6,6 +6,7 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import List, Dict
 
+from PySide6.QtCore import QCoreApplication
 from loguru import logger
 from packaging.specifiers import SpecifierSet
 from packaging.version import Version
@@ -102,6 +103,7 @@ class PluginLoader:
         # 内置插件
         for item in BUILTIN_PLUGINS:
             meta = item["meta"].copy()
+            meta["name"] = QCoreApplication.translate("Plugins", meta["name"])
             meta["_type"] = "builtin"
             meta["_class"] = item["class"]
             meta["_path"] = None

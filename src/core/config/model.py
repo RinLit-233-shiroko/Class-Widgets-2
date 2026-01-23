@@ -102,6 +102,7 @@ class PreferencesConfig(ConfigBaseModel):
 
     display: Optional[str] = None  # 指定显示器
     mini_mode: bool = False  # 迷你
+    lighting_effect: bool = True  # 光影效果
 
     widgets_presets: Dict[str, List[WidgetEntry]] = Field(
         default_factory=lambda: {

@@ -2,13 +2,11 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import RinUI
+import ClassWidgets.Theme 1.0
 
 
 Text {
     id: text
-
-    // font.family: [Configs.data.preferences.font, Utils.fontFamily]
-    // font.weight: Configs.data.preferences.font_weight || 400
 
     font: {
         var f = AppCentral.getQFont(Configs.data.preferences.font, Utils.fontFamily)

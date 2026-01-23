@@ -8,7 +8,7 @@ from src.core.plugin import CW2Plugin
 
 META = {
     "id": "builtin.classwidgets.widgets",
-    "name": "Built-in Widgets",
+    "name": QCoreApplication.translate("Plugins", "Built-in Widgets"),
     "author": "Class Widgets Official",
     "version": "1.0.0",
     "api_version": "*",
@@ -19,8 +19,9 @@ META = {
 class Plugin(CW2Plugin):
     def __init__(self, plugin_api):
         super().__init__(plugin_api)
-        
-        self.widgets_list = [
+
+    def get_widgets_list(self):
+        return [
             {
                 "widget_id": "classwidgets.currentActivity",
                 "name": QCoreApplication.translate("Widgets", "Current Activity"),
@@ -70,7 +71,7 @@ class Plugin(CW2Plugin):
         self.register_widgets()
 
     def register_widgets(self):
-        for widget in self.widgets_list:
+        for widget in self.get_widgets_list():
             self.api.widgets.register(
                 widget_id=widget["widget_id"],
                 name=widget["name"],

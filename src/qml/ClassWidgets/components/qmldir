@@ -4,6 +4,7 @@ WidgetsContainer 1.0 WidgetsContainer.qml
 WidgetLoader 1.0 WidgetLoader.qml
 Watermark 1.0 Watermark.qml
 Introduction 1.0 Introduction.qml
+Skeleton 1.0 Skeleton.qml
 
 # Dialogs
 AddWidgetsDialog 1.0 dialogs/AddWidgetsDialog.qml
@@ -30,3 +31,9 @@ ScheduleClip 1.0 editor/ScheduleClip.qml
 ## dialogs
 DayEditor 1.0 editor/dialogs/DayEditor.qml
 IconPicker 1.0 editor/dialogs/IconPicker.qml
+
+# Plaza
+BannerCarousel 1.0 plaza/BannerCarousel.qml
+PluginSection 1.0 plaza/PluginSection.qml
+PluginGrid 1.0 plaza/PluginGrid.qml
+PluginCard 1.0 plaza/PluginCard.qml

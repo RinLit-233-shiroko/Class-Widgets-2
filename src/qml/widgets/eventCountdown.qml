@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import RinUI
-import Widgets
+import ClassWidgets.Theme
 import Qt5Compat.GraphicalEffects
 
 Widget {

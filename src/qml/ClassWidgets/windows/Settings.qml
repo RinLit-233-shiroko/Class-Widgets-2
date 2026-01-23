@@ -43,6 +43,11 @@ FluentWindow {
             ]
         },
         {
+            title: qsTr("Personalization"),
+            icon: "ic_fluent_paint_brush_sparkle_20_regular",
+            page: PathManager.qml("pages/settings/Personalization.qml"),
+        },
+        {
             title: qsTr("Notification & Time"),
             icon: "ic_fluent_alert_badge_20_regular",
             subItems: [
@@ -62,7 +67,7 @@ FluentWindow {
             title: qsTr("Plugins"),
             page: PathManager.qml("pages/settings/Plugins.qml"),
             icon: "ic_fluent_apps_add_in_20_regular",
-            subItems: UtilsBackend.extraSettings.length > 0 ? UtilsBackend.extraSettings : null
+            subItems: UtilsBackend && UtilsBackend.extraSettings && UtilsBackend.extraSettings.length > 0 ? UtilsBackend.extraSettings : null
         },
         {
             title: qsTr("About"),

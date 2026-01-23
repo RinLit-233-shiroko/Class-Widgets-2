@@ -5,7 +5,7 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import List, Dict
 
-from PySide6.QtCore import Slot, QObject, Signal, Property, QUrl, QThread
+from PySide6.QtCore import Slot, QObject, Signal, Property, QUrl, QThread, QCoreApplication
 from PySide6.QtGui import QDesktopServices
 from PySide6.QtWidgets import QApplication, QFileDialog
 from loguru import logger
@@ -43,6 +43,9 @@ class PluginManager(QObject):
         # 创建 PluginLoader 实例
         self.loader = PluginLoader(plugin_api, self.external_path)
 
+        # 连接到 retranslate 信号
+        app_central.retranslate.connect(self._on_retranslate)
+        
         # 扫描并初始化（延迟到翻译器加载之后）
         # self.scan()
         logger.info("Plugin Manager initialized.")
@@ -58,6 +61,9 @@ class PluginManager(QObject):
         for meta in self.metas:
             if meta.get("icon"):
                 meta["icon"] = QUrl.fromLocalFile(str(Path(meta["_path"]) / meta["icon"]))
+            # 动态翻译内置插件的名称
+            if meta.get("_type") == "builtin":
+                meta["name"] = QCoreApplication.translate("Plugins", meta["name"])
 
         # 检查不兼容插件并发送通知
         self._check_incompatible_plugins()
@@ -111,6 +117,21 @@ class PluginManager(QObject):
     def load_plugins(self):
         """加载已启用的插件实例（批量）"""
         self._plugins = self.loader.load_plugins(self.metas, list(self.enabled_plugins))
+
+    def _on_retranslate(self):
+        """翻译变更时重新扫描插件以更新翻译"""
+        logger.info("Retranslating plugins...")
+        self.scan()
+        self.pluginListChanged.emit()
+        
+        # 重新注册已加载插件的 widgets 以更新翻译
+        for plugin_id, plugin in self._plugins.items():
+            if hasattr(plugin, 'register_widgets'):
+                try:
+                    plugin.register_widgets()
+                    logger.debug(f"Re-registered widgets for plugin {plugin_id}")
+                except Exception as e:
+                    logger.warning(f"Failed to re-register widgets for plugin {plugin_id}: {e}")
 
     def _initialized_plugin(self, meta: dict):
         """

@@ -1001,6 +1001,26 @@ Please try again later.</source>
         <source>https://discord.gg/nNZxaCBh</source>
         <translation>https://discord.gg/nNZxaCBh</translation>
     </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/plaza/Home.qml" line="29"/>
+        <source>插件</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/plaza/Home.qml" line="34"/>
+        <source>为你推荐</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/plaza/Home.qml" line="46"/>
+        <source>所有扩展</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/plaza/Home.qml" line="52"/>
+        <source>查看全部</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>IconPicker</name>
@@ -1462,6 +1482,89 @@ Please try again later.</source>
     </message>
 </context>
 <context>
+    <name>Personalization</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="11"/>
+        <source>Personalization</source>
+        <translation>个性化</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="16"/>
+        <source>Warning</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="17"/>
+        <source>The theme system is still under development. 
+
+If translations are missing after a theme change, please restart</source>
+        <translation>主题系统正在开发。
+
+若在切换主题后应用翻译丢失，请重新启动</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="30"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="35"/>
+        <source>Accent Color</source>
+        <translation>主题色</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="36"/>
+        <source>Pick the color which app highlighted color</source>
+        <translation>选用一个用于应用的主题色</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="56"/>
+        <source>Themes</source>
+        <translation>主题</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="211"/>
+        <source>Incompatible Theme</source>
+        <translation>此主题不兼容</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="216"/>
+        <source>This theme requires the app version %1, but current app version is %2. 
+
+Applying an incompatible theme may cause serious errors, crashes, or unexpected behavior.</source>
+        <translation>此主题需应用版本%1，但当前应用版本为%2。
+
+应用不兼容的主题可能会导致严重错误。</translation>
+    </message>
+    <message>
+        <source>This theme requires API version %1, but current API version is %2. 
+
+Applying an incompatible theme may cause serious errors, crashes, or unexpected behavior.</source>
+        <translation type="obsolete">此主题需要API版本%1，但当前API版本为%2。
+不兼容可能导致意外问题。</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="227"/>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="234"/>
+        <source>Apply anyway</source>
+        <translation>仍然应用</translation>
+    </message>
+    <message>
+        <source>Built-in</source>
+        <translation type="obsolete">内置</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="165"/>
+        <source>No description</source>
+        <translation>无描述</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="150"/>
+        <source>Incompatible</source>
+        <translation>不兼容</translation>
+    </message>
+</context>
+<context>
     <name>PickerView</name>
     <message>
         <source>AM</source>
@@ -1473,16 +1576,53 @@ Please try again later.</source>
     </message>
 </context>
 <context>
+    <name>PluginCard</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/components/plaza/PluginCard.qml" line="113"/>
+        <location filename="../../src/qml/ClassWidgets/components/plaza/PluginCard.qml" line="121"/>
+        <source>Unknown</source>
+        <translation>未知</translation>
+    </message>
+</context>
+<context>
     <name>PluginManager</name>
     <message>
-        <location filename="../../src/core/plugin/manager.py" line="83"/>
+        <location filename="../../src/core/plugin/manager.py" line="82"/>
         <source>Incompatible</source>
         <translation>不兼容</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/manager.py" line="84"/>
+        <location filename="../../src/core/plugin/manager.py" line="83"/>
         <source>{count} incompatible plugin(s) have been loaded, which may cause unknown issues.</source>
         <translation>发现 {count} 个插件可能不兼容，运行过程中可能出现异常。</translation>
+    </message>
+</context>
+<context>
+    <name>PluginPlaza</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/windows/PluginPlaza.qml" line="12"/>
+        <source>Plugin Plaza</source>
+        <translation>插件广场</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/windows/PluginPlaza.qml" line="35"/>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/windows/PluginPlaza.qml" line="53"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/windows/PluginPlaza.qml" line="63"/>
+        <source>Home</source>
+        <translation type="unfinished">首页</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/windows/PluginPlaza.qml" line="68"/>
+        <source>Plugins</source>
+        <translation type="unfinished">插件</translation>
     </message>
 </context>
 <context>
@@ -1599,9 +1739,20 @@ Do you want to %3 this plugin?</source>
         <translation type="vanished">前往插件广场</translation>
     </message>
     <message>
+        <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugins.qml" line="25"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="148"/>
         <source>Search for plugins</source>
         <translation>搜索插件</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugins.qml" line="38"/>
+        <source>Popular</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugins.qml" line="41"/>
+        <source>Latest</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="168"/>
@@ -1655,6 +1806,7 @@ Do you want to %3 this plugin?</source>
         <translation>正在导入所选插件。请稍后……</translation>
     </message>
     <message>
+        <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugins.qml" line="35"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="189"/>
         <source>All</source>
         <translation>全部</translation>
@@ -1723,6 +1875,11 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="373"/>
         <source>Uninstall</source>
         <translation>卸载</translation>
+    </message>
+    <message>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="11"/>
+        <source>Built-in Widgets</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2088,31 +2245,36 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="46"/>
+        <source>Personalization</source>
+        <translation>个性化</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="51"/>
         <source>Notification &amp; Time</source>
         <translation>通知与时间</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="50"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="55"/>
         <source>Notification</source>
         <translation>通知</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="55"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="60"/>
         <source>Time</source>
         <translation>时间</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="62"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="67"/>
         <source>Plugins</source>
         <translation>插件</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="68"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="73"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="73"/>
+        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="78"/>
         <source>Update</source>
         <translation>更新</translation>
     </message>
@@ -2198,22 +2360,21 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation>颜色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/SubjectClip.qml" line="165"/>
         <source>e.g. #FF0000, blue, #197, etc.</source>
-        <translation>例如：#39C5BB、blue、#197 等</translation>
+        <translation type="vanished">例如：#39C5BB、blue、#197 等</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/SubjectClip.qml" line="169"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/SubjectClip.qml" line="175"/>
         <source>Held in homeroom</source>
         <translation>在当前教室授课</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/SubjectClip.qml" line="181"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/SubjectClip.qml" line="187"/>
         <source>Icon</source>
         <translation>图标</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/components/editor/SubjectClip.qml" line="204"/>
+        <location filename="../../src/qml/ClassWidgets/components/editor/SubjectClip.qml" line="210"/>
         <source>Enable if the subject is taught in your homeroom classroom.  
 If it takes place in another location, such as a sport field, lab, or another classroom, leave it off.</source>
         <translation>若课程在本班教室进行，请启用。
@@ -2607,6 +2768,19 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <source>Select All</source>
         <translation type="vanished">全选</translation>
+    </message>
+</context>
+<context>
+    <name>Theme</name>
+    <message>
+        <location filename="../../src/themes/__init__.py" line="10"/>
+        <source>Default</source>
+        <translation>默认</translation>
+    </message>
+    <message>
+        <location filename="../../src/themes/__init__.py" line="11"/>
+        <source>Class Widgets Builtin Default Theme</source>
+        <translation>Class Widgets 内置默认主题</translation>
     </message>
 </context>
 <context>
@@ -3420,12 +3594,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
 <context>
     <name>dynamicNotification</name>
     <message>
-        <location filename="../../src/qml/widgets/dynamicNotification.qml" line="242"/>
+        <location filename="../../src/qml/widgets/dynamicNotification.qml" line="244"/>
         <source>No notification yet</source>
         <translation>尚无通知</translation>
     </message>
     <message>
-        <location filename="../../src/qml/widgets/dynamicNotification.qml" line="264"/>
+        <location filename="../../src/qml/widgets/dynamicNotification.qml" line="266"/>
         <source>Dynamic Notification</source>
         <translation>灵动通知</translation>
     </message>

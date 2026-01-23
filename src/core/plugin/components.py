@@ -32,8 +32,11 @@ class BaseAPI(QObject):
         path = Path(path)
         if not path.is_absolute():
             plugin = self.current_plugin
-            if plugin:
+            if plugin and plugin.PATH:
                 path = plugin.PATH / path
+            else:
+                # 对于内置插件，使用相对路径
+                logger.debug(f"Built-in plugin path resolution: using relative path {path}")
         return path
 
 
@@ -132,10 +135,15 @@ class ThemeAPI(BaseAPI):
 
     def __init__(self, plugin_api):
         super().__init__(plugin_api)
-        self._plugin_api._app.theme_manager.themeChanged.connect(self.changed.emit)
+        # 连接主题变更信号，传递主题ID
+        def on_theme_changed():
+            theme_id = self._plugin_api._app.themeManager.currentTheme
+            self.changed.emit(theme_id)
+        
+        self._plugin_api._app.themeManager.themeChanged.connect(on_theme_changed)
 
     def current(self) -> Optional[str]:
-        return self._app.theme_manager.current_theme
+        return self._app.themeManager.current_theme
 
 
 class RuntimeAPI(BaseAPI):

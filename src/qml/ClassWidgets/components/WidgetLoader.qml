@@ -1,14 +1,14 @@
 import QtQuick
-import RinUI
-
 
 Loader {
     id: loader
-    source: model.qmlPath
+    property string widgetSource: model.qmlPath
+    property bool reloading: false
+    source: widgetSource
     asynchronous: true
-    anchors.centerIn: parent
     onStatusChanged: {
         if (status === Loader.Ready) {
+            reloading = false
             if (item && model.backendObj) {
                 item.backend = model.backendObj
             }
@@ -37,6 +37,37 @@ Loader {
             if (loader.item && loader.item.hasOwnProperty('editMode')) {
                 loader.item.editMode = widgetsContainer.editMode
             }
+        }
+    }
+
+    // Connections {
+    //     target: CWThemeManager
+    //     function onThemeChanged() {
+    //         if (reloading) {
+    //             console.log("WidgetLoader: Already reloading, skip:", model.name)
+    //             return
+    //         }
+    //         console.log("WidgetLoader: Theme changed signal received, will reload:", model.name)
+    //     }
+    // }
+
+    Connections {
+        target: CWThemeManager
+        // 感谢gemini的超强research，要不然我一辈子都solve不了
+        function onThemeReadyToReload() {
+            // reload()
+            if (reloading) return
+
+            reloading = true
+            var oldSource = widgetSource.toString()
+            source = ""
+
+            Qt.callLater(function() {
+                // 关键：添加时间戳参数强制引擎重新扫描 importPathList
+                // 即使是本地文件，QML 也会因为 URL 变化而重新加载解析上下文
+                var cacheBuster = (oldSource.indexOf("?") >= 0 ? "&" : "?") + "t=" + Date.now()
+                source = oldSource + cacheBuster
+            })
         }
     }
 }

@@ -3,7 +3,6 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Window
 import RinUI
-import Widgets
 import ClassWidgets.Easing
 
 

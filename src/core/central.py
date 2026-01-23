@@ -5,7 +5,6 @@ from pathlib import Path
 from PySide6.QtCore import QObject, Property, Signal, Slot, QPoint
 from PySide6.QtGui import QFont
 from PySide6.QtWidgets import QApplication
-from RinUI import RinUIWindow
 from loguru import logger
 
 from src.core import CONFIGS_PATH, QML_PATH
@@ -13,9 +12,6 @@ from src.core.config import ConfigManager
 from src.core.directories import PathManager, LOGS_PATH
 from src.core.notification import (
     NotificationManager,
-    NotificationProvider,
-    NotificationProviderConfig,
-    NotificationLevel,
     NotificationService,
 )
 from src.core.plugin.api import PluginAPI
@@ -30,9 +26,7 @@ from src.core.utils.debugger import DebuggerWindow
 from src.core.utils.instance_locker import SingleInstanceGuard
 from src.core.widgets import WidgetsWindow, WidgetListModel
 from src.core.automations.manager import AutomationManager
-from src.core.windows import Settings, Editor, Tutorial, WhatsNew, CheckSingleInstanceDialog
-
-
+from src.core.windows import Settings, Editor, Tutorial, WhatsNew, CheckSingleInstanceDialog, PluginPlaza
 
 
 class AppCentral(QObject):  # Class Widgets 的中枢
@@ -58,6 +52,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self._initialize_schedule_components()
         self._initialize_utils()
         self._initialize_ui_components()
+        logger.info("AppCentral initialization completed")
 
     def _check_single_instance(self):
         """确保单实例运行"""
@@ -113,6 +108,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.editor = Editor(self)
         self.whatsnew = WhatsNew(self)
         self.widgets_window: WidgetsWindow = WidgetsWindow(self)  # 简化参数传递
+        self.plugin_plaza = PluginPlaza(self)
         if self.multi_instances:
             self.single_dialog_window = CheckSingleInstanceDialog(self)
 
@@ -186,6 +182,10 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     def translator(self):
         return self.app_translator
 
+    @Property(QObject, notify=initialized)
+    def themeManager(self):
+        return self.theme_manager
+
     @Property(dict, notify=initialized)
     def globalConfig(self):  # 旧接口（仅 Debugger 使用）
         return self.configs.data
@@ -210,7 +210,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         window.engine.addImportPath(QML_PATH)
         context.setContextProperty("WidgetsModel", self.widgets_model)
         context.setContextProperty("Configs", self.configs)
-        context.setContextProperty("ThemeManager", self.theme_manager)
+        context.setContextProperty("CWThemeManager", self.theme_manager)
         context.setContextProperty("PluginManager", self.plugin_manager)
         context.setContextProperty("AppCentral", self)
         context.setContextProperty("PathManager", self.path_manager)
@@ -269,7 +269,9 @@ class AppCentral(QObject):  # Class Widgets 的中枢
 
     def _load_theme_and_plugins(self):
         """主题和插件"""
+        logger.info("Loading themes and plugins...")
         self.theme_manager.load()
+        logger.info("Themes loaded successfully")
 
         self.plugin_manager.set_enabled_plugins(self.configs.plugins.enabled)
         # 加载插件（内置+外部）
@@ -320,6 +322,16 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             self.editor.root_window.show()
             self.editor.root_window.raise_()
             self.editor.root_window.requestActivate()
+        else:
+            logger.error("Editor window not initialized correctly.")
+
+    @Slot()
+    def openPlaza(self):
+        """显示课程表编辑器"""
+        if self.plugin_plaza and self.plugin_plaza.root_window:
+            self.plugin_plaza.root_window.show()
+            self.plugin_plaza.root_window.raise_()
+            self.plugin_plaza.root_window.requestActivate()
         else:
             logger.error("Editor window not initialized correctly.")
 

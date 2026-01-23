@@ -110,9 +110,9 @@ Window {
                     text: qsTr("Open")
                     // enabled: false
                     onClicked: {
-                        Qt.openUrlExternally("https://plaza.cw.rinlit.cn")
+                        // Qt.openUrlExternally("https://plaza.cw.rinlit.cn")
                         panel.hide()
-                        // AppCentral.openSettings()
+                        AppCentral.openPlaza()
                     }
                 }
             }

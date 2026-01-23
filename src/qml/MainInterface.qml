@@ -4,7 +4,6 @@ import QtQuick as QQ
 import QtQuick.Controls as QQC
 import QtQuick.Layouts
 import QtQuick.Window as QQW
-import Widgets
 import RinUI
 import ClassWidgets.Components
 import ClassWidgets.Windows
@@ -12,7 +11,17 @@ import ClassWidgets.Windows
 QQW.Window {
     id: root
     visible: true
-    flags: Qt.FramelessWindowHint | Qt.Tool
+    // 动态判断平台
+    flags: {
+        let result = Qt.FramelessWindowHint | Qt.Window | Qt.WindowStaysOnTopHint;
+
+        if (Qt.platform.os === "osx" || Qt.platform.os === "macos") {  // 修复macOS窗口问题
+            return result;
+        } else {
+            // Windows：小组件页面不会被alt+tab截获
+            return  Qt.Tool | result;
+        }
+    }
     color: "transparent"
 
     property string screenName: Configs.data.preferences.display || Qt.application.screens[0].name
@@ -123,8 +132,14 @@ QQW.Window {
 
     Component.onCompleted: {
         updateLayer()
-        Theme.setThemeColor("#4099b2")
-        // origin #5CDCFF; 因为RinUI自带在暗色模式中的主题色补偿（这不夸夸（bushi），所以这里改成了更深的色调
+        // 应用当前主题的主题色
+        var currentTheme = CWThemeManager.getThemeById(CWThemeManager.currentTheme)
+        if (currentTheme && currentTheme.color) {
+            // Theme.setThemeColor(currentTheme.color)
+        } else {
+            // origin #5CDCFF; 因为RinUI自带在暗色模式中的主题色补偿（这不夸夸（bushi），所以这里改成了更深的色调
+            Theme.setThemeColor("#4099b2")
+        }
     }
 
 
@@ -132,6 +147,17 @@ QQW.Window {
         target: Configs
         function onDataChanged() {
             updateLayer()
+        }
+    }
+
+    Connections {
+        target: CWThemeManager
+        function onThemeChanged() {
+            // 主题切换时应用主题色
+            var currentTheme = CWThemeManager.getThemeById(CWThemeManager.currentTheme)
+            if (currentTheme && currentTheme.color) {
+                Theme.setThemeColor(currentTheme.color)
+            }
         }
     }
 

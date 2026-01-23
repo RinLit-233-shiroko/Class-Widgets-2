@@ -3,7 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
 import RinUI
-import Widgets
+import ClassWidgets.Theme 1.0
 import ClassWidgets.Easing
 
 
@@ -13,19 +13,20 @@ Item {
     readonly property bool miniMode: Configs.data.preferences.mini_mode
     readonly property bool hide: Configs.data.interactions.hide.state
     property bool editMode: false
+    property bool lightingEffect: Configs.data.preferences.lighting_effect || true
 
     implicitWidth: Math.max(headerRow.implicitWidth, contentArea.childrenRect.width) + 48
     height: miniMode ? 56 : 100
     clip: true
-    opacity: widgetHoverHandler.hovered? 0.8 : 1
+    opacity: widgetHoverHandler.hovered? 0.9 : 1
 
     // colors
     property color backgroundColor: Theme.isDark()
-        ? Qt.alpha("#1E1D22", 0.65)
-        : Qt.alpha("#FBFAFF", 0.7)
+        ? Qt.alpha("#0F1216", 0.85)
+        : Qt.alpha("#FFFFFF", 0.85)
     property color borderColor: Theme.isDark()
-        ? Qt.alpha("#fff", 0.4)
-        : Qt.alpha("#fff", 1)
+        ? Qt.alpha("#000000", 0.36)
+        : Qt.alpha("#000000", 0.14)
 
     // backend
     property var backend: null
@@ -59,45 +60,11 @@ Item {
         }
     }
 
-    // 渐变边框
-    Item {
-        anchors.fill: parent
-        Rectangle {
-            id: borderRect
-            anchors.fill: parent
-            radius: background.radius
-            layer.enabled: true
-            layer.effect: LinearGradient {
-                start: Qt.point(0, 0)
-                end: Qt.point(width, height)
-                gradient: Gradient {
-                    GradientStop { position: 0; color: borderColor }
-                    GradientStop { position: 0.5; color: Qt.alpha("#fff", 0) }
-                    GradientStop { position: 0.6; color: Qt.alpha("#fff", 0) }
-                    GradientStop { position: 1; color: borderColor }
-                }
-            }
-        }
-        layer.enabled: true
-        layer.effect: OpacityMask {
-            maskSource: Rectangle {
-                width: borderRect.width
-                height: borderRect.height
-                radius: borderRect.radius
-                color: "transparent"
-                border.width: borderWidth
-            }
-        }
-        opacity: Configs.data.preferences.opacity * 2
-        z: 1
-    }
-
     // 内部背景矩形
     Rectangle {
         id: background
         anchors.fill: parent
-        // radius: 12
-        radius: height * 0.22
+        radius: 8
         color: backgroundColor
         opacity: Configs.data.preferences.opacity
     }
@@ -132,6 +99,9 @@ Item {
 
                 Subtitle {
                     id: subtitleLabel
+                    Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignCenter
+                    horizontalAlignment: Text.AlignHCenter
                 }
             }
 
