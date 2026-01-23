@@ -2,6 +2,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import Qt5Compat.GraphicalEffects
+import ClassWidgets.Easing
 
 Rectangle {
     id: root
@@ -11,6 +12,7 @@ Rectangle {
     property string oldValue: ""
     property double progress: 1  // 0-1
     property int duration: 700
+    property real scaleFactor: Configs.data.preferences.scale_factor || 1.0
 
     property alias font: oldDigit.font
     implicitWidth: Math.max(oldDigit.width, newDigit.width)
@@ -21,6 +23,9 @@ Rectangle {
         text: root.oldValue
         anchors.centerIn: parent
         opacity: 0
+        layer.enabled: true
+        layer.textureSize: Qt.size(width * scaleFactor * 4, 
+                               height * scaleFactor * 4)
     }
 
     LinearGradient  {
@@ -44,6 +49,9 @@ Rectangle {
         anchors.centerIn: parent
         opacity: 0
         font: oldDigit.font
+        layer.enabled: true
+        layer.textureSize: Qt.size(width * scaleFactor * 4, 
+                               height * scaleFactor * 4)
     }
 
     LinearGradient  {
