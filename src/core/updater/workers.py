@@ -63,7 +63,8 @@ class DownloadWorker(QThread):
             if success:
                 self.finished.emit(True, "", False)
             else:
-                self.finished.emit(False, "Download cancelled or failed.", self.downloader.manual_stop)
+                err = getattr(self.downloader, "error_msg", "Download cancelled or failed.")
+                self.finished.emit(False, err, self.downloader.manual_stop)
         except Exception as e:
             self.finished.emit(False, str(e), False)
 
