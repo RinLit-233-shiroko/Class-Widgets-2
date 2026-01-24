@@ -9,15 +9,19 @@ from src.core.config.model import ConfigBaseModel, PluginsConfig
 from src.core.plugin.bridge import PluginBackendBridge
 from src.core.notification import NotificationProvider
 from src.core.schedule.model import EntryType
-from src.core.plugin.api import PluginAPI
 
 from src.core.notification.model import NotificationPayload
+
+# 用于 type hint 避免循环导入
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from src.core.plugin.api import PluginAPI
 
 
 class BaseAPI(QObject):
     """所有API类的基类，提供通用的方法和属性"""
-    
-    def __init__(self, plugin_api: PluginAPI):
+
+    def __init__(self, plugin_api: "PluginAPI"):
         super().__init__()
         self._plugin_api = plugin_api
     
@@ -66,7 +70,7 @@ class WidgetsAPI(BaseAPI):
 class NotificationAPI(BaseAPI):
     pushed = Signal(NotificationPayload)  # 给插件监听的信号
 
-    def __init__(self, plugin_api: PluginAPI):
+    def __init__(self, plugin_api: "PluginAPI"):
         super().__init__(plugin_api)
         self._plugin_api._app.notification.notified.connect(self.pushed)
 
