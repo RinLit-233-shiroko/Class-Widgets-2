@@ -68,7 +68,7 @@ class WidgetsAPI(BaseAPI):
 
 
 class NotificationAPI(BaseAPI):
-    pushed = Signal(NotificationPayload)  # 给插件监听的信号
+    pushed = Signal(dict)  # 给插件监听的信号
 
     def __init__(self, plugin_api: "PluginAPI"):
         super().__init__(plugin_api)
