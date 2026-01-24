@@ -9,14 +9,19 @@ from .components import (
     RuntimeAPI, ConfigAPI, AutomationAPI, UiAPI
 )
 
+# 用于 type hint 避免循环导入
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from src.core import AppCentral
 
-__version__ = "0.3.0"
+
+__version__ = "0.4.0"
 
 
 class PluginAPI:
     """插件API核心类，管理所有插件可用的API功能"""
     
-    def __init__(self, app):
+    def __init__(self, app: "AppCentral"):
         self._app = app
         self._current_plugin = None  # 当前插件上下文
         
