@@ -9,6 +9,7 @@ from loguru import logger
 from src.core import QML_PATH, SRC_PATH
 from src.core.directories import CW_PATH
 
+from src.core.themes.manager import DEFAULT_THEME_ID
 
 from src.core.themes.interceptor import ThemeUrlInterceptor
 
@@ -58,9 +59,9 @@ class WidgetsWindow(RinUI.RinUIWindow, QObject):
             # 验证主题是否存在
             if not self.app_central.theme_manager.isThemePathValid(current_theme_id):
                 logger.error(f"Current theme '{current_theme_id}' path is invalid during initial load")
-                logger.info(f"Falling back to default theme: {self.app_central.theme_manager.DEFAULT_THEME_ID}")
+                logger.info(f"Falling back to default theme: {DEFAULT_THEME_ID}")
                 # 切换到默认主题
-                self.app_central.theme_manager.themeChange(self.app_central.theme_manager.DEFAULT_THEME_ID)
+                self.app_central.theme_manager.themeChange(DEFAULT_THEME_ID)
                 current_theme_id = self.app_central.theme_manager.currentTheme
 
             current_theme_path = self.app_central.theme_manager.getThemePath(current_theme_id)
