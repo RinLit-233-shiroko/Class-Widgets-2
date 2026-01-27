@@ -1,0 +1,212 @@
+{
+    "meta": {
+        "id": "meta_b49816e743e749a6b786a28344507a20",
+        "version": 1,
+        "maxWeekCycle": 2,
+        "startDate": "2026-09-01"
+    },
+    "subjects": [
+        {
+            "id": "chinese",
+            "name": "语文",
+            "simplifiedName": "语",
+            "teacher": "",
+            "icon": "ic_fluent_book_20_regular",
+            "color": "#FF5722",
+            "location": "",
+            "isLocalClassroom": true
+        },
+        {
+            "id": "math",
+            "name": "数学",
+            "simplifiedName": "数",
+            "teacher": "",
+            "icon": "ic_fluent_ruler_20_regular",
+            "color": "#3F51B5",
+            "location": "",
+            "isLocalClassroom": true
+        },
+        {
+            "id": "english",
+            "name": "英语",
+            "simplifiedName": "英",
+            "teacher": "",
+            "icon": "ic_fluent_text_list_abc_uppercase_ltr_20_filled",
+            "color": "#2196F3",
+            "location": "",
+            "isLocalClassroom": true
+        },
+        {
+            "id": "politics",
+            "name": "政治",
+            "simplifiedName": "政",
+            "teacher": "",
+            "icon": "ic_fluent_book_globe_20_regular",
+            "color": "#9C27B0",
+            "location": "",
+            "isLocalClassroom": true
+        },
+        {
+            "id": "history",
+            "name": "历史",
+            "simplifiedName": "史",
+            "teacher": "",
+            "icon": "ic_fluent_clock_20_regular",
+            "color": "#795548",
+            "location": "",
+            "isLocalClassroom": true
+        },
+        {
+            "id": "physics",
+            "name": "物理",
+            "simplifiedName": "物",
+            "teacher": "",
+            "icon": "ic_fluent_lightbulb_filament_20_regular",
+            "color": "#00BCD4",
+            "location": "",
+            "isLocalClassroom": true
+        },
+        {
+            "id": "chemistry",
+            "name": "化学",
+            "simplifiedName": "化",
+            "teacher": "",
+            "icon": "ic_fluent_hexagon_three_20_regular",
+            "color": "#4CAF50",
+            "location": "",
+            "isLocalClassroom": true
+        },
+        {
+            "id": "biology",
+            "name": "生物",
+            "simplifiedName": "生",
+            "teacher": "",
+            "icon": "ic_fluent_leaf_three_20_regular",
+            "color": "#8BC34A",
+            "location": "",
+            "isLocalClassroom": true
+        },
+        {
+            "id": "geography",
+            "name": "地理",
+            "simplifiedName": "地",
+            "teacher": "",
+            "icon": "ic_fluent_earth_20_regular",
+            "color": "#009688",
+            "location": "",
+            "isLocalClassroom": true
+        },
+        {
+            "id": "music",
+            "name": "音乐",
+            "simplifiedName": "音",
+            "teacher": "",
+            "icon": "ic_fluent_music_note_2_20_regular",
+            "color": "#E91E63",
+            "location": "",
+            "isLocalClassroom": true
+        },
+        {
+            "id": "art",
+            "name": "美术",
+            "simplifiedName": "美",
+            "teacher": "",
+            "icon": "ic_fluent_draw_shape_20_regular",
+            "color": "#F44336",
+            "location": "",
+            "isLocalClassroom": true
+        },
+        {
+            "id": "psychology",
+            "name": "心理",
+            "simplifiedName": "心",
+            "teacher": "",
+            "icon": "ic_fluent_brain_sparkle_20_regular",
+            "color": "#FF9800",
+            "location": "",
+            "isLocalClassroom": true
+        },
+        {
+            "id": "pe",
+            "name": "体育",
+            "simplifiedName": "体",
+            "teacher": "",
+            "icon": "ic_fluent_person_running_20_regular",
+            "color": "#CDDC39",
+            "location": "",
+            "isLocalClassroom": false
+        },
+        {
+            "id": "it",
+            "name": "信息技术",
+            "simplifiedName": "信",
+            "teacher": "",
+            "icon": "ic_fluent_laptop_20_regular",
+            "color": "#607D8B",
+            "location": "",
+            "isLocalClassroom": true
+        },
+        {
+            "id": "generaltech",
+            "name": "通用技术",
+            "simplifiedName": "通",
+            "teacher": "",
+            "icon": "ic_fluent_wrench_settings_20_regular",
+            "color": "#FF9800",
+            "location": "",
+            "isLocalClassroom": true
+        },
+        {
+            "id": "elective",
+            "name": "选修",
+            "simplifiedName": "选",
+            "teacher": "",
+            "icon": "ic_fluent_sign_out_20_regular",
+            "color": "#9E9E9E",
+            "location": "",
+            "isLocalClassroom": false
+        },
+        {
+            "id": "selfstudy",
+            "name": "自学",
+            "simplifiedName": "自",
+            "teacher": "",
+            "icon": "ic_fluent_notebook_20_regular",
+            "color": "#607D8B",
+            "location": "",
+            "isLocalClassroom": true
+        },
+        {
+            "id": "club",
+            "name": "社团",
+            "simplifiedName": "社",
+            "teacher": "",
+            "icon": "ic_fluent_people_team_20_regular",
+            "color": "#673AB7",
+            "location": "",
+            "isLocalClassroom": true
+        },
+        {
+            "id": "classmeeting",
+            "name": "班会",
+            "simplifiedName": "会",
+            "teacher": "",
+            "icon": "ic_fluent_chat_20_regular",
+            "color": "#3F51B5",
+            "location": "",
+            "isLocalClassroom": true
+        },
+        {
+            "id": "weeklytest",
+            "name": "周测",
+            "simplifiedName": "测",
+            "teacher": "",
+            "icon": "ic_fluent_clipboard_20_regular",
+            "color": "#FF5722",
+            "location": "",
+            "isLocalClassroom": true
+        }
+    ],
+    "days": [],
+    "overrides": []
+}

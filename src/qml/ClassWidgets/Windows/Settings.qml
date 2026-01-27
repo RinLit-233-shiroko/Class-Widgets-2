@@ -28,16 +28,16 @@ FluentWindow {
         {
             title: qsTr("General"),
             icon: "ic_fluent_settings_20_regular",
-            page: PathManager.qml("pages/settings/general/Index.qml"),
+            page: PathManager.qml("pages/settings/General/Index.qml"),
             subItems: [
                 {
                     title: qsTr("Widgets"),
-                    page: PathManager.qml("pages/settings/general/Widgets.qml"),
+                    page: PathManager.qml("pages/settings/General/Widgets.qml"),
                     icon: "ic_fluent_apps_20_regular"
                 },
                 {
                     title: qsTr("Interactions"),
-                    page: PathManager.qml("pages/settings/general/Interactions.qml"),
+                    page: PathManager.qml("pages/settings/General/Interactions.qml"),
                     icon: "ic_fluent_hand_draw_20_regular"
                 }
             ]
