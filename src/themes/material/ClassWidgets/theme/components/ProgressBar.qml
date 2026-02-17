@@ -9,8 +9,8 @@ ProgressBar {
     id: root
 
     property color backgroundColor: MaterialColor.secondaryContainer
-    property color primaryColor: MaterialColor.onPrimaryContainer
-    property int radius: 0
+    property color primaryColor: MaterialColor.primaryContainer
+    property int radius: 99
     property int state: ProgressBar.Running
 
     enum State {
@@ -24,7 +24,7 @@ ProgressBar {
     // 背景轨道
     background: Rectangle {
         anchors.verticalCenter: parent.verticalCenter
-        width: parent.width
+        width: indicator.width ? parent.width - (indicator.width + 4) : parent.width
         height: parent.height
         radius: root.radius
         color: backgroundColor
