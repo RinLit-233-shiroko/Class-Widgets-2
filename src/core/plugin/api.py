@@ -54,14 +54,14 @@ class CW2Plugin(QObject):
         self._load_plugin_libs()  # 插件库加载
 
     def _load_plugin_libs(self):
-        """Automatically adds the plugin's 'lib' subdirectory to sys.path."""
+        """Automatically adds the plugin's 'libs' subdirectory to sys.path."""
         # 如果 self.PATH 是空的，我们需要更可靠的方式获取根目录
         plugin_root = self.PATH if self.PATH.is_absolute() else (
             Path(__file__).parent.resolve()
         )
-        lib_dir = plugin_root / 'lib'
-        if lib_dir.is_dir() and str(lib_dir) not in sys.path:
-            sys.path.insert(0, str(lib_dir))
+        libs_dir = plugin_root / 'libs'
+        if libs_dir.is_dir() and str(libs_dir) not in sys.path:
+            sys.path.insert(0, str(libs_dir))
 
     def on_load(self):
         self.pid = self.meta.get("id")

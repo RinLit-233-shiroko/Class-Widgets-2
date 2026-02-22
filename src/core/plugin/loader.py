@@ -243,6 +243,7 @@ class PluginLoader:
             
             cleanup()
             
+            plugin_instance = None
             with self.plugin_import_context(plugin_dir):
                 spec = importlib.util.spec_from_file_location(module_name, str(entry_file))
                 if not spec or not spec.loader:
@@ -289,13 +290,25 @@ class PluginLoader:
                         pass
                     cleanup()
                     raise
-                
-                logger.success(f"Loaded plugin {meta['name']} ({plugin_id}) v{meta['version']}")
-                return plugin_instance
+
+            # with 块结束后 sys.path 已恢复，此时持久化插件路径供运行时使用
+            self._persist_plugin_paths(plugin_dir)
+
+            logger.success(f"Loaded plugin {meta['name']} ({plugin_id}) v{meta['version']}")
+            return plugin_instance
                 
         except Exception as e:
             logger.exception(f"Failed to load plugin {plugin_id}: {e}")
             return None
+
+    @staticmethod
+    def _persist_plugin_paths(plugin_dir: Path):
+        """将插件目录及其 libs/ 持久化到 sys.path，供运行时延迟导入使用"""
+        for p in [plugin_dir / "libs", plugin_dir]:
+            ps = str(p)
+            if p.is_dir() and ps not in sys.path:
+                sys.path.append(ps)
+                logger.debug(f"Persisted plugin path: {ps}")
     
     @contextmanager
     def plugin_import_context(self, plugin_dir: Path):
