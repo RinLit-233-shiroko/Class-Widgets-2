@@ -9,14 +9,18 @@ from .components import (
     RuntimeAPI, ConfigAPI, AutomationAPI, UiAPI
 )
 
+# 用于 type hint 避免循环导入
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from src.core import AppCentral
 
-__version__ = "0.3.0"
+__version__ = "0.4.1"
 
 
 class PluginAPI:
     """插件API核心类，管理所有插件可用的API功能"""
     
-    def __init__(self, app):
+    def __init__(self, app: "AppCentral"):
         self._app = app
         self._current_plugin = None  # 当前插件上下文
         
@@ -54,14 +58,14 @@ class CW2Plugin(QObject):
         self._load_plugin_libs()  # 插件库加载
 
     def _load_plugin_libs(self):
-        """Automatically adds the plugin's 'lib' subdirectory to sys.path."""
+        """Automatically adds the plugin's 'libs' subdirectory to sys.path."""
         # 如果 self.PATH 是空的，我们需要更可靠的方式获取根目录
         plugin_root = self.PATH if self.PATH.is_absolute() else (
             Path(__file__).parent.resolve()
         )
-        lib_dir = plugin_root / 'lib'
-        if lib_dir.is_dir() and str(lib_dir) not in sys.path:
-            sys.path.insert(0, str(lib_dir))
+        libs_dir = plugin_root / 'libs'
+        if libs_dir.is_dir() and str(libs_dir) not in sys.path:
+            sys.path.insert(0, str(libs_dir))
 
     def on_load(self):
         self.pid = self.meta.get("id")

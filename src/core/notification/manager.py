@@ -5,6 +5,7 @@ from PySide6.QtCore import Signal, QObject, Slot
 from loguru import logger
 
 from src.core.notification import NotificationData, NotificationLevel, NotificationProviderConfig
+from src.core.notification.model import NotificationPayload
 
 
 class NotificationManager(QObject):
@@ -92,6 +93,7 @@ class NotificationManager(QObject):
             return
 
         payload = data.model_dump()
+        payload: NotificationPayload
         use_system_notify = getattr(cfg, "use_system_notify", False)
         use_app_notify = getattr(cfg, "use_app_notify", True)
         payload["useSystem"] = use_system_notify

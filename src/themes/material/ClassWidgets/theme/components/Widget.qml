@@ -22,7 +22,7 @@ Item {
     opacity: widgetHoverHandler.hovered? 0.8 : 1
 
     // colors
-    property color backgroundColor: MaterialColor.primaryContainer
+    property color backgroundColor: MaterialColor.surfaceBright
     // property color borderColor: Theme.isDark()
     //     ? Qt.alpha("#fff", 0.4)
     //     : Qt.alpha("#fff", 1)

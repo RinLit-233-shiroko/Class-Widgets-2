@@ -613,84 +613,84 @@ Licensed under the GPL-3 license</source>
 <context>
     <name>Editor</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="11"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="11"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="11"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Editor.qml" line="11"/>
         <source>Schedule Editor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="58"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="38"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="58"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Editor.qml" line="38"/>
         <source>Save Changes</source>
         <translation type="unfinished">Salva modifiche</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="37"/>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="66"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="46"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="37"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="66"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Editor.qml" line="46"/>
         <source>Saved</source>
         <translation type="unfinished">Salvato</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="39"/>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="68"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="48"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="39"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="68"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Editor.qml" line="48"/>
         <source>Schedule saved successfully</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="43"/>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="72"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="52"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="43"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="72"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Editor.qml" line="52"/>
         <source>Save Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="45"/>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="74"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="54"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="45"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="74"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Editor.qml" line="54"/>
         <source>Failed to save schedule, see log for details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="88"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="68"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="88"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Editor.qml" line="68"/>
         <source>Home</source>
         <translation type="unfinished">Homepage</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="93"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="73"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="93"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Editor.qml" line="73"/>
         <source>Timeline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="98"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="78"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="98"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Editor.qml" line="78"/>
         <source>Schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="104"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="84"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="104"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Editor.qml" line="84"/>
         <source>Subjects</source>
         <translation type="unfinished">Soggetti</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="117"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="97"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="117"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Editor.qml" line="97"/>
         <source>Unsaved Changes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="118"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="98"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="118"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Editor.qml" line="98"/>
         <source>Don&apos;t forget to save your changes before closing the editor or switching schedule. You can click the save button in the title bar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Editor.qml" line="124"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Editor.qml" line="104"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="124"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Editor.qml" line="104"/>
         <source>OK</source>
         <translation type="unfinished">OK</translation>
     </message>
@@ -1147,121 +1147,121 @@ Please try again later.</source>
 <context>
     <name>Index</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="10"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="10"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="10"/>
         <source>General</source>
         <translation type="unfinished">Generali</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="18"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="18"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="18"/>
         <source>Locale</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="23"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="23"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="23"/>
         <source>Language</source>
         <translation type="unfinished">Lingua</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="24"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="24"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="24"/>
         <source>Set the language of Class Widgets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="31"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="31"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="31"/>
         <source>Use System Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="55"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="55"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="55"/>
         <source>Customize</source>
         <translation type="unfinished">Personalizza</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="60"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="60"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="60"/>
         <source>App Theme</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="61"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="61"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="61"/>
         <source>Select which app theme to display</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="67"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="67"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="67"/>
         <source>Light</source>
         <translation type="unfinished">Chiaro</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="68"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="68"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="68"/>
         <source>Dark</source>
         <translation type="unfinished">Scuro</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="69"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="69"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="69"/>
         <source>Use system setting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="81"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="81"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="81"/>
         <source>Window Layer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="82"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="82"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="82"/>
         <source>Let your widgets floating on top, or tuck them neatly behind other windows</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="87"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="87"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="87"/>
         <source>Pin on Top</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="90"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="90"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="90"/>
         <source>Send to Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="109"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="109"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="109"/>
         <source>Mini Mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="110"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="110"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="110"/>
         <source>Use a more compact layout for smaller widgets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="128"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="128"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="128"/>
         <source>Actions</source>
         <translation type="unfinished">Azioni</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="133"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="133"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="133"/>
         <source>Run at Startup</source>
         <translation type="unfinished">Esegui all&apos;avvio</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Index.qml" line="134"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="134"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Index.qml" line="134"/>
         <source>Run Class Widgets on startup</source>
         <translation type="unfinished"></translation>
@@ -1278,19 +1278,19 @@ Please try again later.</source>
 <context>
     <name>Interactions</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="10"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="10"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="10"/>
         <source>Interactions &amp; Actions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="18"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="18"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="18"/>
         <source>Widgets</source>
         <translation type="unfinished">&amp;Widgets</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="23"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="23"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="23"/>
         <source>Hover fade</source>
         <translation type="unfinished"></translation>
@@ -1301,7 +1301,7 @@ Please try again later.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="39"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="39"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="39"/>
         <source>Tap to hide</source>
         <translation type="unfinished"></translation>
@@ -1313,53 +1313,53 @@ Please try again later.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="24"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="24"/>
         <source>Hover to make the widget transparent and let clicks go through, move away to bring it back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="40"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="40"/>
         <source>Click on the widget to hide it, click it again to bring it back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="52"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="52"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="53"/>
         <source>More hide behavior</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="54"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="54"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="55"/>
         <source>Choose whether widgets hide or switch to Mini Mode when triggered</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="60"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="60"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="61"/>
         <source>Hide Widgets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="61"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="61"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="62"/>
         <source>Switch to mini mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="77"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="77"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="78"/>
         <source>Hide when in class</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="83"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="83"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="84"/>
         <source>Hide when a window is maximized</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Interactions.qml" line="90"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="90"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="91"/>
         <source>Hide when a window enters fullscreen</source>
         <translation type="unfinished"></translation>
@@ -1917,55 +1917,55 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>Settings</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="11"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Settings.qml" line="11"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="11"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Settings.qml" line="11"/>
         <source>Settings</source>
         <translation type="unfinished">Impostazioni</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="24"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Settings.qml" line="24"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="24"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Settings.qml" line="24"/>
         <source>Home</source>
         <translation type="unfinished">Homepage</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="29"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Settings.qml" line="29"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="29"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Settings.qml" line="29"/>
         <source>General</source>
         <translation type="unfinished">Generali</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="34"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Settings.qml" line="34"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="34"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Settings.qml" line="34"/>
         <source>Widgets</source>
         <translation type="unfinished">&amp;Widgets</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="39"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Settings.qml" line="39"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="39"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Settings.qml" line="39"/>
         <source>Interactions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="46"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Settings.qml" line="46"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="46"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Settings.qml" line="46"/>
         <source>Notification &amp; Time</source>
         <translation type="unfinished">Orario notifica:</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="51"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Settings.qml" line="51"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="51"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Settings.qml" line="51"/>
         <source>Plugins</source>
         <translation type="unfinished">Plugin</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="56"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Settings.qml" line="56"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="56"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Settings.qml" line="56"/>
         <source>About</source>
         <translation type="unfinished">Informazioni</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Settings.qml" line="61"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="61"/>
         <source>Update</source>
         <translation type="unfinished">Aggiorna</translation>
     </message>
@@ -2460,82 +2460,82 @@ If it takes place in another location, such as a sport field, lab, or another cl
 <context>
     <name>TrayPanel</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="68"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/TrayPanel.qml" line="68"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="68"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/TrayPanel.qml" line="68"/>
         <source>Settings</source>
         <translation type="unfinished">Impostazioni</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="69"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/TrayPanel.qml" line="69"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="69"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/TrayPanel.qml" line="69"/>
         <source>Adjust the settings of Class Widgets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="82"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/TrayPanel.qml" line="82"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="82"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/TrayPanel.qml" line="82"/>
         <source>Schedules</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="83"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/TrayPanel.qml" line="83"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="83"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/TrayPanel.qml" line="83"/>
         <source>Edit your schedule profile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="96"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/TrayPanel.qml" line="96"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="96"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/TrayPanel.qml" line="96"/>
         <source>Plugin Plaza</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="97"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/TrayPanel.qml" line="97"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="97"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/TrayPanel.qml" line="97"/>
         <source>Discover and download plugins</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="114"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/TrayPanel.qml" line="114"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="114"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/TrayPanel.qml" line="114"/>
         <source>Shortcuts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="125"/>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="229"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/TrayPanel.qml" line="125"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/TrayPanel.qml" line="229"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="125"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="229"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/TrayPanel.qml" line="125"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/TrayPanel.qml" line="229"/>
         <source>Reschedule Day</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="133"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/TrayPanel.qml" line="133"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="133"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/TrayPanel.qml" line="133"/>
         <source>Class Swap</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="143"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/TrayPanel.qml" line="143"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="143"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/TrayPanel.qml" line="143"/>
         <source>Switch your schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="196"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/TrayPanel.qml" line="196"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="196"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/TrayPanel.qml" line="196"/>
         <source>Debugger</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="209"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/TrayPanel.qml" line="209"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="209"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/TrayPanel.qml" line="209"/>
         <source>Restart</source>
         <translation type="unfinished">Riavvia</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/TrayPanel.qml" line="219"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/TrayPanel.qml" line="219"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="219"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/TrayPanel.qml" line="219"/>
         <source>Exit</source>
         <translation type="unfinished">Esci</translation>
     </message>
@@ -2543,52 +2543,52 @@ If it takes place in another location, such as a sport field, lab, or another cl
 <context>
     <name>Tutorial</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Tutorial.qml" line="11"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Tutorial.qml" line="11"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="11"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Tutorial.qml" line="11"/>
         <source>Welcome ╰(*°▽°*)╯</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Tutorial.qml" line="33"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Tutorial.qml" line="33"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="33"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Tutorial.qml" line="33"/>
         <source>Welcome to Class Widgets 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Tutorial.qml" line="43"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Tutorial.qml" line="43"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="43"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Tutorial.qml" line="43"/>
         <source>注意</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Tutorial.qml" line="44"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Tutorial.qml" line="44"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="44"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Tutorial.qml" line="44"/>
         <source>初始引导窗口还未完工，在做啦在做啦 
 目前版本为测试版，大多数功能还未补完。若要在教学环境中使用，请三思而后行。
 欢迎到我们的 GitHub 页面提交反馈或建议，谢谢！</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Tutorial.qml" line="54"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Tutorial.qml" line="54"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="54"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Tutorial.qml" line="54"/>
         <source>Select a language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Tutorial.qml" line="60"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Tutorial.qml" line="60"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="60"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Tutorial.qml" line="60"/>
         <source>Use System Language</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Tutorial.qml" line="81"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Tutorial.qml" line="81"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="81"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Tutorial.qml" line="81"/>
         <source>Exit</source>
         <translation type="unfinished">Esci</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/windows/Tutorial.qml" line="86"/>
-        <location filename="../../src/src/qml/ClassWidgets/windows/Tutorial.qml" line="86"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="86"/>
+        <location filename="../../src/src/qml/ClassWidgets/Windows/Tutorial.qml" line="86"/>
         <source>Get started</source>
         <translation type="unfinished">Inizia</translation>
     </message>
@@ -2892,166 +2892,166 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
 <context>
     <name>Widgets</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="10"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="10"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="10"/>
         <source>Widgets</source>
         <translation type="unfinished">&amp;Widgets</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="62"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="62"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="62"/>
         <source>The new way to edit widgets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="63"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="63"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="63"/>
         <source>Right-click or long press any widget, 
 then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="72"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="72"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="72"/>
         <source>Edit Widgets Screen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="82"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="82"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="82"/>
         <source>Appearances</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="88"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="88"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="88"/>
         <source>Widgets Scale</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="89"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="89"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="89"/>
         <source>Make widgets look bigger or stay compact</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="105"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="105"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="105"/>
         <source>Opacity</source>
         <translation type="unfinished">Opacità</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="106"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="106"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="106"/>
         <source>Change the opacity of the background of widgets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="122"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="122"/>
         <source>Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="123"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="123"/>
         <source>Choose a font for the widgets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="149"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="149"/>
         <source>Font weight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="150"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="150"/>
         <source>Set the thickness of the font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="155"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="155"/>
         <source>Thin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="156"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="156"/>
         <source>Extra Light</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="157"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="157"/>
         <source>Light</source>
         <translation type="unfinished">Chiaro</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="158"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="158"/>
         <source>Regular</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="159"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="159"/>
         <source>Medium</source>
         <translation type="unfinished">Media</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="160"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="160"/>
         <source>Semi Bold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="161"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="161"/>
         <source>Bold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="162"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="162"/>
         <source>Extra Bold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="163"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="163"/>
         <source>Black</source>
         <translation type="unfinished">Nero</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="164"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="164"/>
         <source>Custom</source>
         <translation type="unfinished">Personalizzato</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="195"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="195"/>
         <source>Preview</source>
         <translation type="unfinished">Anteprima</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="197"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="197"/>
         <source>The quick brown fox jumps over the lazy dog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="212"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="212"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="125"/>
         <source>Window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="218"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="218"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="131"/>
         <source>Display</source>
         <translation type="unfinished">Visualizza</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="219"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="219"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="132"/>
         <source>Set which screen to display widgets on, and adjust their position</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="327"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="327"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="240"/>
         <source>X-axis offset</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/general/Widgets.qml" line="341"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="341"/>
         <location filename="../../src/src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="254"/>
         <source>Y-axis offset</source>
         <translation type="unfinished"></translation>

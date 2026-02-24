@@ -12,7 +12,7 @@ class DebuggerWindow(RinUIWindow):
         self.engine.rootContext().setContextProperty("UtilsBackend", instance.utils_backend)
 
         self.engine.addImportPath(QML_PATH)
-        self.load(QML_PATH / "debugger" / "MainWindow.qml")
+        self.load(QML_PATH / "Debugger" / "MainWindow.qml")
 
 
 if __name__ == "__main__":
