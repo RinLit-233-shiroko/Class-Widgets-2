@@ -12,6 +12,7 @@ BUILTIN_THEMES = [
             "author": "Class Widgets Official",
             "version": "1.0.0",
             "api_version": "*",
+            "delta": 6,
             "preview": ASSETS_PATH / "images" / "themes" / "default.png",
             "color": "#4099b2",
         }
@@ -24,6 +25,7 @@ BUILTIN_THEMES = [
             "author": "Class Widgets Official",
             "version": "1.0.0",
             "api_version": "*",
+            "delta": 10,
             "preview": ASSETS_PATH / "images" / "themes" / "cw1.png",
             "color": "#58CED7",
         }
@@ -36,6 +38,7 @@ BUILTIN_THEMES = [
             "author": "Class Widgets Official",
             "version": "1.0.0",
             "api_version": "*",
+            "delta": 10,
             "preview": ASSETS_PATH / "images" / "themes" / "win10.png",
             "color": "#0078d7",
         }
@@ -48,6 +51,7 @@ BUILTIN_THEMES = [
             "author": "Class Widgets Official",
             "version": "1.0.0",
             "api_version": "*",
+            "delta": 8,
             "preview": ASSETS_PATH / "images" / "themes" / "material.png",
             "color": "#6750A4",
         }
