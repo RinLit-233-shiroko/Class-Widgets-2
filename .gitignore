@@ -175,3 +175,8 @@ cython_debug/
 
 # VS Code
 .vscode/
+
+# Class-Widgets-2
+/configs
+!/configs/schedules/default.json
+/RinUI

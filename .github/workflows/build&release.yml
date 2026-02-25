@@ -63,14 +63,14 @@ jobs:
         run: |
           uv run pyinstaller --noconsole \
             --icon "assets/images/logo.ico" \
-            --add-data "src/qml:src/qml" \
-            --add-data "src/plugins:src/plugins" \
+            --add-data "class_widgets_2/qml:class_widgets_2/qml" \
+            --add-data "class_widgets_2/plugins:class_widgets_2/plugins" \
             --add-data "assets:assets" \
             --add-data "LICENSE:." \
             --paths=. \
             --contents-directory . \
             --name="Class Widgets 2" \
-            src/app.py
+            class_widgets_2/__main__.py
 
       - name: 🔨 Build ClassWidgets-2 (macOS)
         if: runner.os == 'macOS'
@@ -78,14 +78,14 @@ jobs:
         run: |
           uv run pyinstaller --noconsole \
             --icon "assets/images/logo.icns" \
-            --add-data "src/qml:src/qml" \
-            --add-data "src/plugins:src/plugins" \
+            --add-data "class_widgets_2/qml:class_widgets_2/qml" \
+            --add-data "class_widgets_2/plugins:class_widgets_2/plugins" \
             --add-data "assets:assets" \
             --add-data "LICENSE:." \
             --paths=. \
             --contents-directory . \
             --name="Class Widgets 2" \
-            src/app.py
+            class_widgets_2/__main__.py
 
       - name: 📦 Zip build (Windows)
         if: runner.os == 'Windows'

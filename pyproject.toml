@@ -3,7 +3,7 @@ requires = ["hatchling>=1.20.0"]
 build-backend = "hatchling.build"
 
 [project]
-name = "ClassWidgets-2"
+name = "Class-Widgets-2"
 dynamic = ["version"]
 description = "Class Widgets 2, The Next Class Schedule."
 authors = [
@@ -22,11 +22,14 @@ dependencies = [
     "packaging"
 ]
 
+[project.gui-scripts]
+"Class-Widgets-2" = "class_widgets_2.__main__:main"
+
 [tool.hatch.version]
-path = "src/__init__.py"
+path = "class_widgets_2/__init__.py"
 match = "__version__ = '([^']+)'"
 
 [tool.hatch.build.targets.wheel]
 packages = [
-    "src"
+    "class_widgets_2"
 ]
