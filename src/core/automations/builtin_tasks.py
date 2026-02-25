@@ -41,6 +41,10 @@ class AutoHideTask(AutomationTask):
 
         self._window_states = {}
         self.previous_state = False
+        
+        # Check initial state on startup
+        if self.app_central.configs.interactions.hide.in_class:
+            self.on_schedule_changed(self.runtime.current_status)
 
     def _hide(self, state: bool):
         """隐藏窗口"""
