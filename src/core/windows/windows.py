@@ -113,3 +113,20 @@ class ClassSwapWindow(RinUIWindow):
             / "dialogs"
             / "ClassSwapDialog.qml"
         )
+
+
+class ClassSwapRestoreDialog(RinUIWindow):
+    def __init__(self, parent):
+        super().__init__()
+        self.central = parent
+
+        self.central.setup_qml_context(self)
+        self.engine.rootContext().setContextProperty("AppCentral", self.central)
+        self.central.retranslate.connect(self.engine.retranslate)
+
+        self.load(
+            CW_PATH
+            / "Components"
+            / "dialogs"
+            / "ClassSwapRestoreDialog.qml"
+        )
