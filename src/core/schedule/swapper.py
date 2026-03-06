@@ -247,6 +247,7 @@ class ClassSwapManager(QObject):
 
         self._swap_records = swap_data.get("records", [])
         self._swap_date = saved_date
+        self._rebuild_overrides_from_records(self._swap_records)
         logger.info(f"Loaded {len(self._swap_records)} swap records for today")
 
     @Slot(result=bool)
@@ -414,6 +415,64 @@ class ClassSwapManager(QObject):
             schedule.overrides = [o for o in schedule.overrides if o.id not in swap_ids]
             self.app_central.schedule_manager.modify(schedule)
             logger.info(f"Cleaned up {len(swap_ids)} swap overrides")
+
+    def _rebuild_overrides_from_records(self, records: list):
+        """根据持久化换课记录重建当天临时 override（应用启动后内存恢复）"""
+        if not records:
+            return
+
+        schedule = self.app_central.schedule_manager.schedule
+        if not schedule:
+            return
+
+        # 先清理已有 swap override，避免重复叠加
+        self._cleanup_swap_overrides(records)
+
+        max_cycle = schedule.meta.maxWeekCycle or 1
+
+        for record in records:
+            try:
+                swap_type = record.get("type")
+                day_of_week = int(record.get("day_of_week"))
+                week_of_cycle = int(record.get("week_of_cycle"))
+                weeks_val = week_of_cycle if max_cycle > 1 else "all"
+
+                if swap_type == "swap":
+                    entry_a = record.get("entry_a", "")
+                    entry_b = record.get("entry_b", "")
+                    old_subject = record.get("old_subject", "")
+                    new_subject = record.get("new_subject", "")
+
+                    if entry_a and new_subject:
+                        self._set_or_update_override(
+                            entry_a,
+                            [day_of_week],
+                            weeks_val,
+                            new_subject,
+                            ""
+                        )
+                    if entry_b and old_subject:
+                        self._set_or_update_override(
+                            entry_b,
+                            [day_of_week],
+                            weeks_val,
+                            old_subject,
+                            ""
+                        )
+
+                elif swap_type == "replace":
+                    entry_id = record.get("entry_a", "")
+                    new_subject = record.get("new_subject", "")
+                    if entry_id and new_subject:
+                        self._set_or_update_override(
+                            entry_id,
+                            [day_of_week],
+                            weeks_val,
+                            new_subject,
+                            ""
+                        )
+            except Exception as e:
+                logger.warning(f"[ClassSwap] Failed to rebuild override from record: {record}, error: {e}")
 
     @staticmethod
     def _is_in_week(weeks, current_week: int, max_week_cycle: int = 1) -> bool:
