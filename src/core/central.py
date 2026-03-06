@@ -48,6 +48,8 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         AppCentral._instance = self
        
         self._check_single_instance()
+        self._editor_swap_block_prompted = False
+        self._startup_swap_restore_pending = False
         self._initialize_cores()
         self._initialize_notification()
         self._initialize_schedule_components()
@@ -149,6 +151,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
 
         # 启动时：若检测到今天存在临时课表，先询问用户是否继续使用
         if self._class_swap_manager.checkAndPromptRestore():
+            self._startup_swap_restore_pending = True
             self.openClassSwapRestoreDialog()
             return
 
@@ -343,6 +346,13 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     @Slot()
     def openEditor(self):
         """显示课程表编辑器"""
+        if self._class_swap_manager.hasTodaySwaps():
+            logger.warning("Blocked opening editor because temporary class swaps exist today")
+            if not self._editor_swap_block_prompted:
+                self._editor_swap_block_prompted = True
+                self.openClassSwapRestoreDialog()
+            return
+
         if self.editor and self.editor.root_window:
             self.editor.root_window.show()
             self.editor.root_window.raise_()
@@ -405,15 +415,20 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         """继续使用今天的临时课表"""
         if self.class_swap_restore_dialog_window and self.class_swap_restore_dialog_window.root_window:
             self.class_swap_restore_dialog_window.root_window.hide()
-        self._continue_init()
+        if self._startup_swap_restore_pending:
+            self._startup_swap_restore_pending = False
+            self._continue_init()
 
     @Slot()
     def classSwapRestoreDiscard(self):
         """丢弃今天的临时课表并继续启动"""
         self._class_swap_manager.discardTodaySwaps()
+        self._editor_swap_block_prompted = False
         if self.class_swap_restore_dialog_window and self.class_swap_restore_dialog_window.root_window:
             self.class_swap_restore_dialog_window.root_window.hide()
-        self._continue_init()
+        if self._startup_swap_restore_pending:
+            self._startup_swap_restore_pending = False
+            self._continue_init()
 
     @Slot()
     def openDebugger(self):
