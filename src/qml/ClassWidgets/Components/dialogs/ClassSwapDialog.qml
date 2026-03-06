@@ -261,30 +261,30 @@ Window {
                     id: dailyScheduleView
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    orientation: ListView.Horizontal
+                    orientation: ListView.Vertical
                     clip: true
                     spacing: 6
                     model: ListModel { id: dailyModel }
 
                     delegate: Button {
                         id: entryDelegate
-                        width: 100
-                        height: dailyScheduleView.height
+                        width: dailyScheduleView.width
+                        height: 44
 
                         property bool isSource: sourceIndex === index
                         property bool isTarget: isSwap && targetEntry && targetEntry.entryId === model.entryId
 
                         highlighted: isSource || isTarget
 
-                        contentItem: ColumnLayout {
-                            spacing: 4
+                        contentItem: RowLayout {
+                            spacing: 8
                             anchors.fill: parent
                             anchors.margins: 8
 
                             // 科目色条
                             Rectangle {
-                                Layout.fillWidth: true
-                                Layout.preferredHeight: 4
+                                Layout.preferredWidth: 4
+                                Layout.preferredHeight: 20
                                 radius: 2
                                 color: model.subjectColor
                             }
@@ -294,17 +294,15 @@ Window {
                                 typography: Typography.BodyStrong
                                 text: model.subjectName || model.title || qsTr("(Empty)")
                                 elide: Text.ElideRight
-                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
                             }
 
                             Text {
-                                Layout.fillWidth: true
                                 typography: Typography.Caption
                                 text: model.startTime + " - " + model.endTime
-                                horizontalAlignment: Text.AlignHCenter
+                                elide: Text.ElideRight
+                                verticalAlignment: Text.AlignVCenter
                             }
-
-                            Item { Layout.fillHeight: true }
                         }
 
                         onClicked: {
@@ -328,7 +326,7 @@ Window {
                         }
                     }
 
-                    ScrollBar.horizontal: ScrollBar {}
+                    ScrollBar.vertical: ScrollBar {}
                 }
             }
 
