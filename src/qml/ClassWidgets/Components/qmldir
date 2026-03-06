@@ -11,6 +11,7 @@ AddWidgetsDialog 1.0 dialogs/AddWidgetsDialog.qml
 CheckSingleInstanceDialog 1.0 dialogs/CheckSingleInstanceDialog.qml
 WidgetSettingsDialog 1.0 dialogs/WidgetSettingsDialog.qml
 RescheduleDayDialog 1.0 dialogs/RescheduleDayDialog.qml
+ClassSwapDialog 1.0 dialogs/ClassSwapDialog.qml
 PluginReplaceConfirmDialog 1.0 dialogs/PluginReplaceConfirmDialog.qml
 
 # Settings

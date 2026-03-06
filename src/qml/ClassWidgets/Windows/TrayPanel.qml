@@ -138,11 +138,14 @@ Window {
                     onClicked: rescheduleDayDialog.open()
                 }
                 Button {
-                    enabled: false
                     Layout.maximumWidth: parent.width / 2
                     Layout.fillWidth: true
                     icon.name: "ic_fluent_arrow_swap_20_regular"
                     text: qsTr("Class Swap")
+                    onClicked: {
+                        panel.hide()
+                        AppCentral.openClassSwap()
+                    }
                 }
             }
         }

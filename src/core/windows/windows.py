@@ -97,3 +97,19 @@ class CheckSingleInstanceDialog(RinUIWindow):
             / "dialogs"
             / "CheckSingleInstanceDialog.qml"
         )
+
+
+class ClassSwapWindow(RinUIWindow):
+    def __init__(self, parent):
+        super().__init__()
+        self.central = parent
+
+        self.central.setup_qml_context(self)
+        self.central.retranslate.connect(self.engine.retranslate)
+
+        self.load(
+            CW_PATH
+            / "Components"
+            / "dialogs"
+            / "ClassSwapDialog.qml"
+        )

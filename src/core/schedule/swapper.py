@@ -1,0 +1,439 @@
+"""
+Class Swap Manager - 换课管理器
+
+临时换课功能核心逻辑：
+- 通过操作 schedule 的 overrides 实现换课
+- 持久化换课记录到 configs.json
+- 跨天时自动清理临时课表
+"""
+import json
+from copy import deepcopy
+from datetime import datetime
+from typing import Optional, List, Dict
+
+from PySide6.QtCore import QObject, Signal, Slot, Property
+from loguru import logger
+
+from src.core.schedule.model import (
+    ScheduleData, Timeline, Entry, EntryType, Subject, Timetable, WeekType
+)
+from src.core.schedule.service import ScheduleServices
+from src.core.utils import generate_id, get_week_number, get_cycle_week
+
+
+class ClassSwapManager(QObject):
+    """换课管理器，管理临时换课操作"""
+    updated = Signal()
+    swapCommitted = Signal()  # 换课提交成功
+
+    def __init__(self, app_central):
+        super().__init__()
+        self.app_central = app_central
+        self.services = ScheduleServices(app_central)
+
+        # 换课操作记录（用于持久化）
+        self._swap_records: List[Dict] = []
+        # 当前换课日期
+        self._swap_date: str = ""
+
+    # ── 数据查询 ────────────────────────────────────────────
+
+    @Slot(int, int, result=list)
+    def getDayEntries(self, day_of_week: int, week_of_cycle: int) -> list:
+        """
+        获取指定 星期+周次 的当日课程列表（已应用 override）
+        只返回 class/activity 类型条目
+
+        Args:
+            day_of_week: 星期几 (1-7)
+            week_of_cycle: 周期内第几周 (1-based)
+        Returns:
+            list[dict]: 当日课程条目
+        """
+        schedule = self.app_central.schedule_manager.schedule
+        if not schedule:
+            logger.warning("[ClassSwap] getDayEntries: schedule is None")
+            return []
+
+        max_cycle = schedule.meta.maxWeekCycle or 1
+        logger.info(
+            f"[ClassSwap] getDayEntries request day={day_of_week}, week={week_of_cycle}, "
+            f"days={len(schedule.days)}, overrides={len(schedule.overrides)}"
+        )
+
+        # 找到匹配的 Timeline
+        for day in schedule.days:
+            day_of_week_list = (
+                [day.dayOfWeek] if isinstance(day.dayOfWeek, int) else day.dayOfWeek
+            )
+            if day_of_week_list and day_of_week not in day_of_week_list:
+                continue
+            if not self._is_in_week(day.weeks, week_of_cycle, max_cycle):
+                continue
+
+            logger.info(
+                f"[ClassSwap] matched timeline id={day.id}, entries={len(day.entries)}, "
+                f"dayOfWeek={day.dayOfWeek}, weeks={day.weeks}"
+            )
+
+            # 深拷贝 + 应用 override
+            day_copy = day.model_copy()
+            day_copy.entries = [entry.model_copy() for entry in day.entries]
+
+            for entry in day_copy.entries:
+                for override in schedule.overrides:
+                    if override.entryId != entry.id:
+                        continue
+                    if self._override_applies(override, day_of_week, week_of_cycle, max_cycle):
+                        if override.subjectId:
+                            entry.subjectId = override.subjectId
+                        if override.title:
+                            entry.title = override.title
+
+            # 只返回 class / activity
+            result = []
+            for e in day_copy.entries:
+                entry_type = e.type.value if isinstance(e.type, EntryType) else str(e.type)
+                if entry_type in {EntryType.CLASS.value, EntryType.ACTIVITY.value}:
+                    d = e.model_dump()
+                    # 附带科目名称方便 QML 显示
+                    subj = self._find_subject(e.subjectId)
+                    d["subjectName"] = subj.name if subj else (e.title or "")
+                    d["subjectColor"] = subj.color if subj else ""
+                    d["subjectIcon"] = subj.icon if subj else ""
+                    result.append(d)
+
+            logger.info(f"[ClassSwap] return entries={len(result)}")
+            return result
+
+        logger.warning(
+            f"[ClassSwap] no timeline matched for day={day_of_week}, week={week_of_cycle}, max_cycle={max_cycle}"
+        )
+        return []
+
+    @Slot(result=list)
+    def getAllSubjects(self) -> list:
+        """获取所有科目列表（用于课程选择池）"""
+        schedule = self.app_central.schedule_manager.schedule
+        if not schedule:
+            return []
+        return [s.model_dump() for s in schedule.subjects]
+
+    @Slot(result=int)
+    def getCurrentDayOfWeek(self) -> int:
+        """获取当前星期几"""
+        return datetime.now().isoweekday()
+
+    @Slot(result=int)
+    def getCurrentWeekOfCycle(self) -> int:
+        """获取当前周期内第几周"""
+        schedule = self.app_central.schedule_manager.schedule
+        if not schedule or not schedule.meta.startDate:
+            return 1
+        week = get_week_number(schedule.meta.startDate, datetime.now())
+        return get_cycle_week(week, schedule.meta.maxWeekCycle or 1)
+
+    @Slot(result=int)
+    def getMaxWeekCycle(self) -> int:
+        """获取最大周期"""
+        schedule = self.app_central.schedule_manager.schedule
+        if not schedule:
+            return 1
+        return schedule.meta.maxWeekCycle or 1
+
+    @Slot(str, result=str)
+    def getSubjectName(self, subject_id: str) -> str:
+        """根据 subjectId 获取科目名"""
+        subj = self._find_subject(subject_id)
+        return subj.name if subj else ""
+
+    # ── 换课操作 ─────────────────────────────────────────────
+
+    @Slot(str, str, int, int, result=bool)
+    def swapTwoEntries(self, entry_id_a: str, entry_id_b: str,
+                       day_of_week: int, week_of_cycle: int) -> bool:
+        """
+        : 交换两节课的科目（dailyScheduleView 内互换）
+        """
+        schedule = self.app_central.schedule_manager.schedule
+        if not schedule:
+            return False
+
+        editor = self.app_central._schedule_editor
+        max_cycle = schedule.meta.maxWeekCycle or 1
+
+        # 获取两个 entry 当前应用 override 后的真实 subjectId
+        real_a = self._get_effective_subject(entry_id_a, day_of_week, week_of_cycle, max_cycle)
+        real_b = self._get_effective_subject(entry_id_b, day_of_week, week_of_cycle, max_cycle)
+
+        if real_a is None or real_b is None:
+            logger.warning("Cannot swap: one of the entries not found")
+            return False
+
+        weeks_val = week_of_cycle if max_cycle > 1 else "all"
+
+        # 为 entry_a 设置 override → real_b
+        self._set_or_update_override(entry_id_a, [day_of_week], weeks_val, real_b["subjectId"], real_b.get("title", ""))
+        # 为 entry_b 设置 override → real_a
+        self._set_or_update_override(entry_id_b, [day_of_week], weeks_val, real_a["subjectId"], real_a.get("title", ""))
+
+        # 记录
+        self._add_swap_record("swap", entry_id_a, entry_id_b, day_of_week, week_of_cycle,
+                              real_a["subjectId"], real_b["subjectId"])
+
+        self.swapCommitted.emit()
+        self.updated.emit()
+        return True
+
+    @Slot(str, str, int, int, result=bool)
+    def replaceEntry(self, entry_id: str, new_subject_id: str,
+                     day_of_week: int, week_of_cycle: int) -> bool:
+        """
+        : 将某节课替换为指定科目
+        """
+        schedule = self.app_central.schedule_manager.schedule
+        if not schedule:
+            return False
+
+        max_cycle = schedule.meta.maxWeekCycle or 1
+        old_info = self._get_effective_subject(entry_id, day_of_week, week_of_cycle, max_cycle)
+        old_subject_id = old_info["subjectId"] if old_info else ""
+
+        weeks_val = week_of_cycle if max_cycle > 1 else "all"
+
+        self._set_or_update_override(entry_id, [day_of_week], weeks_val, new_subject_id, "")
+
+        self._add_swap_record("replace", entry_id, "", day_of_week, week_of_cycle,
+                              old_subject_id, new_subject_id)
+
+        self.swapCommitted.emit()
+        self.updated.emit()
+        return True
+
+    # ── 持久化 ─────────────────────────────────────────────
+
+    @Slot()
+    def saveSwapRecords(self):
+        """保存换课记录到配置"""
+        today = datetime.now().strftime("%Y-%m-%d")
+        swap_data = {
+            "date": today,
+            "records": self._swap_records
+        }
+        self.app_central.configs.set("schedule.class_swap", swap_data)
+        logger.info(f"Swap records saved: {len(self._swap_records)} records")
+
+    @Slot()
+    def loadSwapRecords(self):
+        """加载换课记录"""
+        swap_data = getattr(self.app_central.configs.schedule, "class_swap", None)
+        if not swap_data or not isinstance(swap_data, dict):
+            self._swap_records = []
+            self._swap_date = ""
+            return
+
+        saved_date = swap_data.get("date", "")
+        today = datetime.now().strftime("%Y-%m-%d")
+
+        if saved_date != today:
+            # 跨天，清理临时课表
+            logger.info(f"Swap records expired (saved: {saved_date}, today: {today}), cleaning up")
+            self._cleanup_swap_overrides(swap_data.get("records", []))
+            self._swap_records = []
+            self._swap_date = ""
+            # 清空配置
+            self.app_central.configs.set("schedule.class_swap", {})
+            return
+
+        self._swap_records = swap_data.get("records", [])
+        self._swap_date = saved_date
+        logger.info(f"Loaded {len(self._swap_records)} swap records for today")
+
+    @Slot(result=bool)
+    def hasTodaySwaps(self) -> bool:
+        """今天是否有换课记录"""
+        return len(self._swap_records) > 0
+
+    @Slot(result=list)
+    def getSwapRecords(self) -> list:
+        """获取今天的换课记录"""
+        return self._swap_records
+
+    @Slot(result=bool)
+    def checkAndPromptRestore(self) -> bool:
+        """
+        启动时检查：是否有未过期的换课记录
+        返回 True 表示有记录需要用户确认
+        """
+        swap_data = getattr(self.app_central.configs.schedule, "class_swap", None)
+        if not swap_data or not isinstance(swap_data, dict):
+            return False
+
+        saved_date = swap_data.get("date", "")
+        today = datetime.now().strftime("%Y-%m-%d")
+
+        if saved_date == today and swap_data.get("records"):
+            return True  # 有今天的记录，需要提示用户
+        elif saved_date and saved_date != today:
+            # 跨天，自动清理
+            self._cleanup_swap_overrides(swap_data.get("records", []))
+            self.app_central.configs.set("schedule.class_swap", {})
+            return False
+        return False
+
+    @Slot()
+    def discardTodaySwaps(self):
+        """丢弃今天的换课（撤销所有换课 override）"""
+        self._cleanup_swap_overrides(self._swap_records)
+        self._swap_records = []
+        self._swap_date = ""
+        self.app_central.configs.set("schedule.class_swap", {})
+        self.updated.emit()
+        logger.info("All today's swaps discarded")
+
+    # ── 内部方法 ─────────────────────────────────────────────
+
+    def _find_subject(self, subject_id: str) -> Optional[Subject]:
+        """查找科目"""
+        schedule = self.app_central.schedule_manager.schedule
+        if not schedule or not subject_id:
+            return None
+        for s in schedule.subjects:
+            if s.id == subject_id:
+                return s
+        return None
+
+    def _get_effective_subject(self, entry_id: str, day_of_week: int,
+                               week_of_cycle: int, max_cycle: int) -> Optional[dict]:
+        """获取某个 entry 在指定日期的实际科目（含 override）"""
+        schedule = self.app_central.schedule_manager.schedule
+        if not schedule:
+            return None
+
+        # 找原始 entry
+        entry = None
+        for day in schedule.days:
+            for e in day.entries:
+                if e.id == entry_id:
+                    entry = e
+                    break
+            if entry:
+                break
+
+        if not entry:
+            return None
+
+        data = {"subjectId": entry.subjectId or "", "title": entry.title or ""}
+
+        # 应用 override
+        best_priority = -1
+        for o in schedule.overrides:
+            if o.entryId != entry_id:
+                continue
+            if o.dayOfWeek and day_of_week not in o.dayOfWeek:
+                continue
+
+            priority = self._get_override_priority(o.weeks, week_of_cycle, max_cycle)
+            if priority > best_priority:
+                best_priority = priority
+                if o.subjectId:
+                    data["subjectId"] = o.subjectId
+                if o.title:
+                    data["title"] = o.title
+
+        return data
+
+    def _get_override_priority(self, weeks, week_of_cycle: int, max_cycle: int) -> int:
+        """计算 override 优先级"""
+        if isinstance(weeks, list) and week_of_cycle in weeks:
+            return 3
+        elif isinstance(weeks, int) and week_of_cycle >= weeks and (week_of_cycle - weeks) % max_cycle == 0:
+            return 2
+        elif weeks == "all" or weeks is None:
+            return 1
+        return -1
+
+    def _set_or_update_override(self, entry_id: str, day_of_week: list,
+                                 weeks, subject_id: str, title: str):
+        """设置或更新 override"""
+        schedule = self.app_central.schedule_manager.schedule
+        if not schedule:
+            return
+
+        # 查找已有 override
+        for o in schedule.overrides:
+            if o.entryId == entry_id and o.dayOfWeek == day_of_week:
+                # 检查 weeks 匹配
+                if o.weeks == weeks or (isinstance(weeks, str) and weeks == "all" and o.weeks is None):
+                    o.subjectId = subject_id or None
+                    o.title = title or None
+                    self.app_central.schedule_manager.modify(schedule)
+                    return
+
+        # 新建 override
+        override = Timetable(
+            id=generate_id("swap"),
+            entryId=entry_id,
+            dayOfWeek=day_of_week,
+            weeks=weeks,
+            subjectId=subject_id or None,
+            title=title or None
+        )
+        schedule.overrides.append(override)
+        self.app_central.schedule_manager.modify(schedule)
+
+    def _add_swap_record(self, swap_type: str, entry_a: str, entry_b: str,
+                          day_of_week: int, week_of_cycle: int,
+                          old_subject: str, new_subject: str):
+        """添加换课记录"""
+        record = {
+            "type": swap_type,
+            "entry_a": entry_a,
+            "entry_b": entry_b,
+            "day_of_week": day_of_week,
+            "week_of_cycle": week_of_cycle,
+            "old_subject": old_subject,
+            "new_subject": new_subject,
+            "timestamp": datetime.now().isoformat()
+        }
+        self._swap_records.append(record)
+        self.saveSwapRecords()
+
+    def _cleanup_swap_overrides(self, records: list):
+        """清理换课产生的 override"""
+        schedule = self.app_central.schedule_manager.schedule
+        if not schedule or not records:
+            return
+
+        swap_ids = set()
+        for o in schedule.overrides:
+            if o.id.startswith("swap_"):
+                swap_ids.add(o.id)
+
+        if swap_ids:
+            schedule.overrides = [o for o in schedule.overrides if o.id not in swap_ids]
+            self.app_central.schedule_manager.modify(schedule)
+            logger.info(f"Cleaned up {len(swap_ids)} swap overrides")
+
+    @staticmethod
+    def _is_in_week(weeks, current_week: int, max_week_cycle: int = 1) -> bool:
+        if weeks is None:
+            return True
+        if isinstance(weeks, str):
+            return weeks == WeekType.ALL.value
+        if isinstance(weeks, int):
+            return current_week >= weeks and ((current_week - weeks) % max_week_cycle == 0)
+        if isinstance(weeks, list):
+            return current_week in weeks
+        return False
+
+    @staticmethod
+    def _override_applies(override: Timetable, weekday: int, current_week: int,
+                          max_week_cycle: int = 1) -> bool:
+        if override.dayOfWeek:
+            if weekday not in override.dayOfWeek:
+                return False
+        if override.weeks:
+            if not ClassSwapManager._is_in_week(override.weeks, current_week, max_week_cycle):
+                return False
+        return True

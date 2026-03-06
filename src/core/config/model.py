@@ -144,6 +144,7 @@ class ScheduleConfig(ConfigBaseModel):
     default_duration: ScheduleDefaultDurationConfig = Field(default_factory=ScheduleDefaultDurationConfig)  # 默认时长
     time_offset: int = 0  # 时差偏移
     reschedule_day: dict = {}  # 调整日程
+    class_swap: dict = Field(default_factory=dict)  # 临时换课记录
 
 
 class NetworkConfig(ConfigBaseModel):
