@@ -38,8 +38,8 @@ Window {
     property string lastSwapText: ""
 
     // ComboBox 当前值
-    property int selectedDayOfWeek: ClassSwapManager.getCurrentDayOfWeek()
-    property int selectedWeekCycle: ClassSwapManager.getCurrentWeekOfCycle()
+    property int selectedDayOfWeek: ClassSwapManager.getPreferredDayOfWeek()
+    property int selectedWeekCycle: ClassSwapManager.getPreferredWeekOfCycle()
 
     Component.onCompleted: {
         // 加载科目列表
@@ -224,6 +224,7 @@ Window {
                                 return
 
                             selectedDayOfWeek = dayModel.get(currentIndex).value
+                            ClassSwapManager.setSwapPickerContext(selectedDayOfWeek, selectedWeekCycle)
                             resetSelection()
                             refreshDailyEntries()
                         }
@@ -241,6 +242,7 @@ Window {
                                 return
 
                             selectedWeekCycle = weekCycleModel.get(currentIndex).value
+                            ClassSwapManager.setSwapPickerContext(selectedDayOfWeek, selectedWeekCycle)
                             resetSelection()
                             refreshDailyEntries()
                         }

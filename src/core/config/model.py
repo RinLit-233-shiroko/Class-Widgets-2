@@ -145,6 +145,7 @@ class ScheduleConfig(ConfigBaseModel):
     time_offset: int = 0  # 时差偏移
     reschedule_day: dict = {}  # 调整日程
     class_swap: dict = Field(default_factory=dict)  # 临时换课记录
+    class_swap_picker: dict = Field(default_factory=dict)  # 换课界面上次选择的星期/周次
 
 
 class NetworkConfig(ConfigBaseModel):
