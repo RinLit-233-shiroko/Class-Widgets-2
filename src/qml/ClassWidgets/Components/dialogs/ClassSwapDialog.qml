@@ -225,6 +225,7 @@ Window {
 
                             selectedDayOfWeek = dayModel.get(currentIndex).value
                             ClassSwapManager.setSwapPickerContext(selectedDayOfWeek, selectedWeekCycle)
+                            ClassSwapManager.applyPickerToToday(selectedDayOfWeek, selectedWeekCycle)
                             resetSelection()
                             refreshDailyEntries()
                         }
@@ -243,6 +244,7 @@ Window {
 
                             selectedWeekCycle = weekCycleModel.get(currentIndex).value
                             ClassSwapManager.setSwapPickerContext(selectedDayOfWeek, selectedWeekCycle)
+                            ClassSwapManager.applyPickerToToday(selectedDayOfWeek, selectedWeekCycle)
                             resetSelection()
                             refreshDailyEntries()
                         }
