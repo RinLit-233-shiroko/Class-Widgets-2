@@ -115,6 +115,97 @@ FluentPage {
                 Component.onCompleted: value = Configs.data.preferences.opacity || 1.0
             }
         }
+
+        SettingExpander {
+            Layout.fillWidth: true
+            icon.name: "ic_fluent_resize_20_regular"
+            title: qsTr("Font")
+            description: qsTr("Choose a font for the widgets")
+
+
+            action: ComboBox {
+                Layout.fillWidth: true
+                Layout.preferredWidth: 200
+                model: Qt.fontFamilies().sort()
+                editable: true
+
+                onCurrentTextChanged: {
+                    if (Qt.fontFamilies().indexOf(currentText) === 0) {
+                        return
+                    }
+                    console.log("currentText", currentText)
+                    if (focus) Configs.set("preferences.font", currentText)
+                }
+                font.family: Configs.data.preferences.font
+
+                Component.onCompleted: {
+                    const saved = Configs.data.preferences.font
+                    const i = model.indexOf(saved)
+                    currentIndex = i >= 0 ? i : 0
+                }
+            }
+
+            SettingItem {
+                title: qsTr("Font weight")
+                description: qsTr("Set the thickness of the font")
+
+                Text {
+                    text: {
+                        switch (Math.round(weightSlider.value)) {
+                            case 100: return qsTr("Thin")
+                            case 200: return qsTr("Extra Light")
+                            case 300: return qsTr("Light")
+                            case 400: return qsTr("Regular")
+                            case 500: return qsTr("Medium")
+                            case 600: return qsTr("Semi Bold")
+                            case 700: return qsTr("Bold")
+                            case 800: return qsTr("Extra Bold")
+                            case 900: return qsTr("Black")
+                            default: return qsTr("Custom")
+                        }
+                    }
+                }
+
+                Slider {
+                    id: weightSlider
+                    from: 100
+                    to: 900
+                    stepSize: 100
+                    snapMode: Slider.SnapAlways
+                    tickmarks: true
+                    tickFrequency: 100
+                    Layout.fillWidth: true
+                    showTooltip: false
+
+                    // 初始化
+                    Component.onCompleted: {
+                        const saved = Configs.data.preferences.font_weight
+                        value = saved > 0 ? saved : 400
+                    }
+
+                    // 更新
+                    onMoved: {
+                        let v = parseInt (weightSlider.value)
+                        if (focus) Configs.set("preferences.font_weight", v)
+                    }
+                }
+            }
+
+            SettingItem {
+                title: qsTr("Preview")
+                TextArea {
+                    textFormat: TextEdit.RichText
+                    text: qsTr(
+                        "The quick brown fox jumps over the lazy dog"
+                    )
+                    font: {
+                        var f = AppCentral.getQFont(Configs.data.preferences.font, Utils.fontFamily)
+                        f.weight = Configs.data.preferences.font_weight || 400
+                        return f
+                    }
+                }
+            }
+        }
     }
 
     ColumnLayout {

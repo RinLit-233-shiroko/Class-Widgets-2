@@ -41,6 +41,13 @@ class AutoHideTask(AutomationTask):
 
         self._window_states = {}
         self.previous_state = False
+        
+        # Check initial state on startup
+        if self.app_central.configs.interactions.hide.in_class:
+            self.on_schedule_changed(self.runtime.current_status)
+
+        # Check initial maximize/fullscreen state on startup
+        self.update()
 
     def _hide(self, state: bool):
         """隐藏窗口"""
@@ -55,9 +62,9 @@ class AutoHideTask(AutomationTask):
                 and not self.app_central.configs.interactions.hide.fullscreen):
             return
 
-        if (self.app_central.configs.interactions.hide.in_class
-                and self.app_central.runtime.current_status == EntryType.CLASS
-                or self.app_central.runtime.current_status == EntryType.ACTIVITY):
+        if (self.app_central.configs.interactions.hide.in_class and (
+                self.app_central.runtime.current_status == EntryType.CLASS
+                or self.app_central.runtime.current_status == EntryType.ACTIVITY)):
             return  # 课堂内隐藏优先级
 
         # 遍历全部窗口，检查最大化/全屏

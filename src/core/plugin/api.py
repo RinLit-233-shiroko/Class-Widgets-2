@@ -1,94 +1,84 @@
-from datetime import datetime
+import sys
+from pathlib import Path
+from loguru import logger
+from PySide6.QtCore import QObject, Signal
 
-from PySide6.QtCore import QObject, Signal, QUrl
-from typing import List, Optional, Union
+# 导入所有API功能组件
+from .components import (
+    BaseAPI, WidgetsAPI, NotificationAPI, ScheduleAPI, ThemeAPI,
+    RuntimeAPI, ConfigAPI, AutomationAPI, UiAPI
+)
+
+# 用于 type hint 避免循环导入
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from src.core import AppCentral
+
+__version__ = "0.4.1"
 
 
-class PluginAPI(QObject):
-    """
-    安全的插件 API 层
-    暴露给插件的所有功能都通过这里
-    """
+class PluginAPI:
+    """插件API核心类，管理所有插件可用的API功能"""
+    
+    def __init__(self, app: "AppCentral"):
+        self._app = app
+        self._current_plugin = None  # 当前插件上下文
+        
+        self.widgets: WidgetsAPI = WidgetsAPI(self)
+        self.notification: NotificationAPI = NotificationAPI(self)
+        self.schedule: ScheduleAPI = ScheduleAPI(self)
+        self.theme: ThemeAPI = ThemeAPI(self)
+        self.runtime: RuntimeAPI = RuntimeAPI(self)
+        self.config: ConfigAPI = ConfigAPI(self)
+        self.automation: AutomationAPI = AutomationAPI(self)
+        self.ui: 'UiAPI' = UiAPI(self)
 
-    # 可以定义插件可监听的全局信号
-    scheduleUpdated = Signal()       # 课表更新
-    themeChanged = Signal(str)       # 主题变化
-    notify = Signal(str, int, str, str)  # icon, level, title, message # 通知被推送
-
-    def __init__(self, app_central):
-        super().__init__()
-        self._app = app_central
-        self._runtime = app_central.runtime
-
-        # 转接 AppCentral 的信号
-        self._app.updated.connect(self.scheduleUpdated.emit)
-        self._app.theme_manager.themeChanged.connect(self.themeChanged.emit)
-        self._app.notification.notify.connect(self.notify.emit)
-
-        # self._runtime = self._app.schedule_runtime
-
-    # ================== 对外 API ==================
-
-    ### 控制
-    # 注册小组件
-    def register_widget(
-            self,
-            widget_id: str,
-            name: str,
-            qml_path: Union[str, QUrl],
-            backend_obj: QObject = None,
-            settings_qml: Optional[Union[str, QUrl]] = None,
-            default_settings: Optional[dict] = None
-    ):
-        """通过AppCentral统一注册widget"""
-        self._app.widgets_model.add_widget(widget_id, name, qml_path, backend_obj, settings_qml, default_settings)
-
-    def register_task(self, task_instance):
-        self._app.automation_manager.add_task(task_instance)
-
-    # 发通知
-    def push_notification(self, message: str):
-        self._app.notification.push_activity(message)
-
-    ### 获取
-    # 课表
-    def get_schedule(self):
-        return self._app.schedule
-
-    @property
-    def runtime(self):
-        return self._runtime
-
-    def get_datetime(self) -> datetime:
-        return self._app.runtime.current_time
-
-    # 获取当前主题
-    def get_theme(self) -> Optional[str]:
-        return self._app.theme_manager.current_theme
-
-    # 获取配置
-    def get_config(self) -> Optional[dict]:
-        return self._app.globalConfig
-
-    # 更新课表
-    def reload_schedule(self):
-        self._app.reloadSchedule()
+    def set_current_plugin(self, plugin):
+        """设置当前插件上下文"""
+        self._current_plugin = plugin
+    
+    @property 
+    def current_plugin(self) -> 'CW2Plugin':
+        """获取当前插件"""
+        return self._current_plugin
 
 
 class CW2Plugin(QObject):
-    """
-    Class Widgets 2 插件基类
-    插件写法推荐继承这个
-    """
-    def __init__(self, plugin_api: PluginAPI):
+    """所有插件的基类"""
+    initialized = Signal()
+
+    def __init__(self, api: PluginAPI):
         super().__init__()
-        self.api = plugin_api  # 插件API实例
+
+        self.PATH = Path()
+        self.meta = {}
+        self.pid = None
+        self.api = api
+
+        self._load_plugin_libs()  # 插件库加载
+
+    def _load_plugin_libs(self):
+        """Automatically adds the plugin's 'libs' subdirectory to sys.path."""
+        # 如果 self.PATH 是空的，我们需要更可靠的方式获取根目录
+        plugin_root = self.PATH if self.PATH.is_absolute() else (
+            Path(__file__).parent.resolve()
+        )
+        libs_dir = plugin_root / 'libs'
+        if libs_dir.is_dir() and str(libs_dir) not in sys.path:
+            sys.path.insert(0, str(libs_dir))
 
     def on_load(self):
-        """插件加载时调用"""
-        pass
+        self.pid = self.meta.get("id")
+        if self.pid:
+            from src.core.plugin.bridge import PluginBackendBridge
+            PluginBackendBridge.register_backend(self.meta.get("id"), self)
+            # 设置插件上下文
+            self.api.set_current_plugin(self)
+            logger.debug(self.meta)
+        else:
+            logger.warning(f"Plugin {self.meta.get('name')} missing meta.id")
+        self.initialized.emit()
 
     def on_unload(self):
-        """插件卸载时调用"""
         pass
 

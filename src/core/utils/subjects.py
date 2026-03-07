@@ -90,3 +90,5 @@ def translate_sources():
     QCoreApplication.translate("SubjectsSimplified", "Econ")
     QCoreApplication.translate("SubjectsSimplified", "Philos")
     QCoreApplication.translate("SubjectsSimplified", "CS")
+    QCoreApplication.translate("SubjectsSimplified", "Meeting")
+    QCoreApplication.translate("SubjectsSimplified", "Test")

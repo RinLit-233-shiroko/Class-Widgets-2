@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import RinUI
-import Widgets
+import ClassWidgets.Theme
 import Qt5Compat.GraphicalEffects
 
 Widget {
@@ -50,15 +50,15 @@ Widget {
     }
 
     MarqueeTitle {
-        visible: settings.marquee
+        visible: settings && settings.marquee
         anchors.centerIn: parent
         width: 275
         text: root.title
     }
 
     Title {
-        width: !settings.marquee ? implicitWidth : 0
-        visible: !settings.marquee
+        width: !settings || !settings.marquee ? implicitWidth : 0
+        visible: !settings || !settings.marquee
         anchors.centerIn: parent
         text: root.title
     }

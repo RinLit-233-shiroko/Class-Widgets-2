@@ -22,7 +22,7 @@ FluentPage {
             Layout.fillWidth: true
             title: qsTr("Hover fade")
             description: qsTr(
-                "Hover to make the widget transparent and let clicks go through, move away to bring it back."
+                "Hover to make the widget transparent and let clicks go through, move away to bring it back"
             )
             icon.name: "ic_fluent_cursor_20_regular"
 
@@ -38,8 +38,7 @@ FluentPage {
             icon.name: "ic_fluent_tap_single_20_regular"
             title: qsTr("Tap to hide")
             description: qsTr(
-                "Click on the widget to hide it, click it again to bring it back. \n" +
-                "* Some interactive elements may not respond to clicks"
+                "Click on the widget to hide it, click it again to bring it back"
             )
             Switch {
                 id: tapToHideSwitch

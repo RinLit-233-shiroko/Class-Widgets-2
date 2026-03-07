@@ -1,0 +1,4 @@
+module ClassWidgets.Plugins
+
+SettingsLayout 1.0 SettingsLayout.qml
+PluginPage 1.0 PluginPage.qml

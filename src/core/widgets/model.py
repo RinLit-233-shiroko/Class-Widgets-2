@@ -101,7 +101,6 @@ class WidgetListModel(QAbstractListModel):
         # 保存时直接赋值 WidgetEntry 列表，Pydantic 可以处理
         self._app_central.configs.preferences.widgets_presets = self.presets
         self._app_central.configs.preferences.current_preset = self._current_preset
-        self._app_central.configs.save()
         logger.info("Widget presets saved")
 
     def syncCurrentPreset(self):
@@ -165,7 +164,7 @@ class WidgetListModel(QAbstractListModel):
             settings_qml: str | QUrl = None,
             default_settings: dict | None = None
     ):
-        if not type_id or type_id in self._definitions:
+        if not type_id:
             logger.warning(f"Cannot register widget: Invalid type_id \"{type_id}\"")
             return
 
@@ -179,7 +178,13 @@ class WidgetListModel(QAbstractListModel):
             "default_settings": default_settings or {}
         }
 
-        self._definitions[type_id] = definition
+        # 如果 widget 已存在，更新其名称（用于翻译更新）
+        if type_id in self._definitions:
+            self._definitions[type_id]["name"] = name
+            logger.debug(f"Updated widget name for {type_id}: {name}")
+        else:
+            self._definitions[type_id] = definition
+        
         self.definitionChanged.emit()
 
     @Slot(str)

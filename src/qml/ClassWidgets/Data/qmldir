@@ -1,0 +1,3 @@
+module ClassWidgets.Data
+
+singleton WhatsNewData 1.0 WhatsNewData.qml

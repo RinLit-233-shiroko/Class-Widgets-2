@@ -1,4 +1,6 @@
 from loguru import logger
+from packaging.specifiers import SpecifierSet
+from packaging.version import Version
 
 from .json_loader import JsonLoader
 from .calculator import get_cycle_week, get_week_number
@@ -6,7 +8,6 @@ from .tray import TrayIcon
 from .subjects import DEFAULT_SUBJECTS, get_default_subjects, translate_sources
 from .translator import AppTranslator
 from .backend import UtilsBackend
-from .process import ensure_single_instance
 from uuid import uuid4
 
 
@@ -16,27 +17,6 @@ def generate_id(prefix: str = "id") -> str:
 
 def _parse_version(v: str):
     return tuple(int(p) for p in v.split('.') if p.isdigit())
-
-def check_api_version(plugin_api_version: str, app_version: str) -> bool:
-    if not plugin_api_version or plugin_api_version == "*":
-        return True
-
-    app_v = _parse_version(app_version)
-
-    try:
-        if plugin_api_version.startswith(">="):
-            required = _parse_version(plugin_api_version[2:].strip())
-            return app_v >= required
-        elif plugin_api_version.startswith("<="):
-            required = _parse_version(plugin_api_version[2:].strip())
-            return app_v <= required
-        else:
-            # 精确匹配
-            required = _parse_version(plugin_api_version.strip())
-            return app_v == required
-    except Exception as e:
-        logger.debug(f"Invalid plugin api version: {plugin_api_version}, {e}")
-        return False
 
 
 import re

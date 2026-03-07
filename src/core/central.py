@@ -3,27 +3,36 @@ import sys
 from pathlib import Path
 
 from PySide6.QtCore import QObject, Property, Signal, Slot, QPoint
+from PySide6.QtGui import QFont
 from PySide6.QtWidgets import QApplication
-from RinUI import RinUIWindow
 from loguru import logger
 
 from src.core import CONFIGS_PATH, QML_PATH
 from src.core.config import ConfigManager
-from src.core.directories import PathManager, DEFAULT_THEME, CW_PATH, LOGS_PATH
-from src.core.notification import Notification
+from src.core.directories import PathManager, LOGS_PATH
+from src.core.notification import (
+    NotificationManager,
+    NotificationService,
+)
 from src.core.plugin.api import PluginAPI
 from src.core.plugin.manager import PluginManager
 from src.core.schedule import ScheduleRuntime, ScheduleManager
 from src.core.schedule.editor import ScheduleEditor
+from src.core.schedule.swapper import ClassSwapManager
 from src.core.themes import ThemeManager
 from src.core.timer import UnionUpdateTimer
+from src.core.updater import UpdaterBridge
 from src.core.utils import TrayIcon, AppTranslator, UtilsBackend
 from src.core.utils.debugger import DebuggerWindow
+from src.core.utils.instance_locker import SingleInstanceGuard
 from src.core.widgets import WidgetsWindow, WidgetListModel
 from src.core.automations.manager import AutomationManager
+from src.core.windows import Settings, Editor, Tutorial, WhatsNew, CheckSingleInstanceDialog, PluginPlaza, ClassSwapWindow, ClassSwapRestoreDialog
 
 
 class AppCentral(QObject):  # Class Widgets 的中枢
+    _instance = None
+    
     updated = Signal()
     initialized = Signal()
     togglePanel = Signal(QPoint)
@@ -32,10 +41,37 @@ class AppCentral(QObject):  # Class Widgets 的中枢
 
     def __init__(self):  # 初始化
         super().__init__()
+        
+        # Singleton pattern - store instance
+        if AppCentral._instance is not None:
+            raise RuntimeError("AppCentral is a singleton. Use AppCentral.instance() instead.")
+        AppCentral._instance = self
+       
+        self._check_single_instance()
+        self._startup_swap_restore_pending = False
         self._initialize_cores()
+        self._initialize_notification()
         self._initialize_schedule_components()
         self._initialize_utils()
         self._initialize_ui_components()
+        logger.info("AppCentral initialization completed")
+
+    def _check_single_instance(self):
+        """确保单实例运行"""
+        self.instance_guard = SingleInstanceGuard()
+        if not self.instance_guard.try_acquire():
+            lock_info = self.instance_guard.get_lock_info()
+            logger.error(f"Another instance is already running: {lock_info}")
+            self.multi_instances = True
+            return 
+        self.multi_instances = False
+
+    @classmethod
+    def instance(cls):
+        """获取 AppCentral 单例实例"""
+        if cls._instance is None:
+            raise RuntimeError("AppCentral instance not created. Create an instance first.")
+        return cls._instance
 
     def _initialize_cores(self):
         """初始化核心"""
@@ -47,32 +83,60 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         # debugger
         self.debugger = None
 
+    def _initialize_notification(self):
+        """初始化通知系统"""
+        self._notification = NotificationManager(config_manager=self.configs, app_central=self)
+        self.notification_service = NotificationService(self._notification, self.configs)
+
     def _initialize_utils(self):
         self.plugin_api = PluginAPI(self)
         self.plugin_manager = PluginManager(self.plugin_api, self)
         self.app_translator = AppTranslator(self)
-        self.utils_backend = UtilsBackend()
+        self.utils_backend = UtilsBackend(self)
         self.automation_manager = AutomationManager(self)
+        self.updater_bridge = UpdaterBridge(self)
 
     def _initialize_schedule_components(self):
         """初始化调度相关组件"""
         self.union_update_timer = UnionUpdateTimer()
-        self._notification = Notification()
         self.schedule_manager = ScheduleManager(Path(CONFIGS_PATH / "schedules"), self)
 
         self.runtime = ScheduleRuntime(self)
         self._schedule_editor: ScheduleEditor = ScheduleEditor(self.schedule_manager)
+        self._class_swap_manager = ClassSwapManager(self)
 
     def _initialize_ui_components(self):
         """初始化UI组件"""
         self.settings = Settings(self)
         self.editor = Editor(self)
+        self.whatsnew = WhatsNew(self)
         self.widgets_window: WidgetsWindow = WidgetsWindow(self)  # 简化参数传递
+        self.plugin_plaza = PluginPlaza(self)
+        self.class_swap_window = ClassSwapWindow(self)
+        self.class_swap_restore_dialog_window = ClassSwapRestoreDialog(self)
+        if self.multi_instances:
+            self.single_dialog_window = CheckSingleInstanceDialog(self)
+
+        import platform
+        # win11 except
+        if platform.system() == "Windows" and platform.release() == "10" and platform.version() < "22000":
+            from RinUI import BackdropEffect
+            self.settings.setBackdropEffect(BackdropEffect.None_)
 
     def run(self):  # 运行
         self._load_config()  # 加载配置
         self._load_translator()  # 加载翻译
 
+        if self.multi_instances:
+            if not (getattr(sys, "frozen", False) and sys.platform == "darwin"):
+                logger.info("Not running in a frozen macOS app. Skipped single instance check.")
+                self.quit()
+            self.openSingleInstanceDialog()
+        else:
+            self.init()
+
+    @Slot()
+    def init(self):
         # 如果教程未完成，先显示引导窗口
         if not getattr(self.configs.app, "tutorial_completed", False):
             logger.info("Tutorial not completed, showing tutorial window first.")
@@ -82,24 +146,42 @@ class AppCentral(QObject):  # Class Widgets 的中枢
 
         self._setup_logging()  # 设置日志
         self._load_schedule()  # 加载课程表
-        self._load_runtime()  # 加载运行时
+        self._load_class_swap()  # 加载换课记录（跨天清理）
+
+        # 启动时：若检测到今天存在临时课表，先询问用户是否继续使用
+        if self._class_swap_manager.checkAndPromptRestore():
+            self._startup_swap_restore_pending = True
+            self.openClassSwapRestoreDialog()
+            return
+
+        self._continue_init()
+
+    def _continue_init(self):
+        self._load_runtime()  # 加载运行时(以及插件)
         self._init_tray_icon()  # 初始化托盘图标
+        self._run_utils()
         self.initialized.emit()  # 发送信号
-        logger.info(f"Configs loaded.")
+        logger.info(f"Initialization completed.")
+        
+
 
     def _load_config(self):
         """加载和验证配置"""
         self.configs.load_config()
+
+    def _load_class_swap(self):
+        """加载换课记录，跨天时自动清理"""
+        self._class_swap_manager.loadSwapRecords()
 
     def update(self):
         self.runtime.refresh()
         self.updated.emit()  # 发送信号
 
     def cleanup(self):
+        self.configs.save()
         self.union_update_timer.stop()
         logger.info("Clean up.")
 
-    # for qml
     @Property(QObject, notify=initialized)
     def scheduleRuntime(self):  # 运行时
         return self.runtime
@@ -108,9 +190,15 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     def notification(self):
         return self._notification
 
+    notification: "NotificationManager[ConfigManager]"
+
     @Property(QObject, notify=initialized)
     def scheduleEditor(self):  # 课程表编辑器
         return self._schedule_editor
+
+    @Property(QObject, notify=initialized)
+    def classSwapManager(self):  # 换课管理器
+        return self._class_swap_manager
 
     @Property(QObject, notify=updated)
     def scheduleManager(self):  # 课程表管理器
@@ -120,19 +208,20 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     def translator(self):
         return self.app_translator
 
+    @Property(QObject, notify=initialized)
+    def themeManager(self):
+        return self.theme_manager
+
     @Property(dict, notify=initialized)
     def globalConfig(self):  # 旧接口（仅 Debugger 使用）
         return self.configs.data
 
     @Slot()
     def quit(self):
-        self.configs.save()
-        self.cleanup()
         self.app_instance.quit()
 
     @Slot()
     def restart(self):
-        self.configs.save()
         self.cleanup()
         os.execl(sys.executable, sys.executable, *sys.argv)
 
@@ -147,11 +236,25 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         window.engine.addImportPath(QML_PATH)
         context.setContextProperty("WidgetsModel", self.widgets_model)
         context.setContextProperty("Configs", self.configs)
-        context.setContextProperty("ThemeManager", self.theme_manager)
+        context.setContextProperty("CWThemeManager", self.theme_manager)
         context.setContextProperty("PluginManager", self.plugin_manager)
         context.setContextProperty("AppCentral", self)
         context.setContextProperty("PathManager", self.path_manager)
-        # context.setContextProperty("Translator", self.translator)
+        context.setContextProperty("ClassSwapManager", self._class_swap_manager)
+
+    @staticmethod
+    def clean_qml_context(window):
+        """
+        为窗口设置标准的QML上下文属性
+        """
+        context = window.engine.rootContext()
+        context.setContextProperty("WidgetsModel", None)
+        context.setContextProperty("Configs", None)
+        context.setContextProperty("ThemeManager", None)
+        context.setContextProperty("PluginManager", None)
+        context.setContextProperty("AppCentral", None)
+        context.setContextProperty("PathManager", None)
+        context.setContextProperty("backend", None)
 
     def _load_schedule(self):
         """加载课程表"""
@@ -166,30 +269,41 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.app_translator.setLanguage(self.configs.locale.language)
 
     def _load_runtime(self):
-        if self.configs.app.debug_mode:  # 调试模式
-            self.debugger = DebuggerWindow(self)
-
         self.runtime.refresh(self.schedule_manager.schedule)
-        self._setup_runtime_connections()
+        self._setup_connections()
         self._load_theme_and_plugins()
-        self.widgets_window.run()
 
-    def _setup_runtime_connections(self):
+    def _setup_connections(self):
         """设置runtime连接"""
-        self.runtime.notify.connect(self._notification.push_activity)
-
         self.union_update_timer.tick.connect(self.update)
         self.union_update_timer.tick.connect(self.automation_manager.update)
         self.schedule_manager.scheduleModified.connect(self.runtime.refresh)
+        self._class_swap_manager.updated.connect(self.update)
+
+        self.app_instance.aboutToQuit.connect(self.cleanup)
 
         self.union_update_timer.start()
 
+    def _run_utils(self):
+        if self.configs.app.debug_mode:  # 调试模式
+            self.debugger = DebuggerWindow(self)
+
+        self.automation_manager.init_builtin_tasks()
+        self.widgets_window.run()
+
+        if "--update-done" in sys.argv:
+            self.openWhatsNew()
+            self.updater_bridge.update_complete()
+
     def _load_theme_and_plugins(self):
         """主题和插件"""
+        logger.info("Loading themes and plugins...")
         self.theme_manager.load()
+        logger.info("Themes loaded successfully")
 
         self.plugin_manager.set_enabled_plugins(self.configs.plugins.enabled)
         # 加载插件（内置+外部）
+        self.plugin_manager.scan()  # 延迟扫描插件，确保翻译器已加载
         self.plugin_manager.load_plugins()
 
     def _init_tray_icon(self):
@@ -232,12 +346,86 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     @Slot()
     def openEditor(self):
         """显示课程表编辑器"""
+        if self._class_swap_manager.hasTodaySwaps():
+            logger.warning("Blocked opening editor because temporary class swaps exist today")
+            self.openClassSwapRestoreDialog()
+            return
+
         if self.editor and self.editor.root_window:
             self.editor.root_window.show()
             self.editor.root_window.raise_()
             self.editor.root_window.requestActivate()
         else:
             logger.error("Editor window not initialized correctly.")
+
+    @Slot()
+    def openPlaza(self):
+        """显示课程表编辑器"""
+        if self.plugin_plaza and self.plugin_plaza.root_window:
+            self.plugin_plaza.root_window.show()
+            self.plugin_plaza.root_window.raise_()
+            self.plugin_plaza.root_window.requestActivate()
+        else:
+            logger.error("Editor window not initialized correctly.")
+
+    @Slot()
+    def openWhatsNew(self):
+        """显示课程表编辑器"""
+        if self.whatsnew and self.whatsnew.root_window:
+            self.whatsnew.root_window.show()
+            self.whatsnew.root_window.raise_()
+            self.whatsnew.root_window.requestActivate()
+        else:
+            logger.error("WhatsNew window not initialized correctly.")
+
+    @Slot()
+    def openSingleInstanceDialog(self):
+        """显示多实例提示对话框"""
+        if self.single_dialog_window and self.single_dialog_window.root_window:
+            self.single_dialog_window.root_window.show()
+            self.single_dialog_window.root_window.raise_()
+            self.single_dialog_window.root_window.requestActivate()
+        else:
+            logger.error("Single Instance Dialog not initialized correctly.")
+
+    @Slot()
+    def openClassSwap(self):
+        """显示换课窗口"""
+        if self.class_swap_window and self.class_swap_window.root_window:
+            self.class_swap_window.root_window.show()
+            self.class_swap_window.root_window.raise_()
+            self.class_swap_window.root_window.requestActivate()
+        else:
+            logger.error("ClassSwap window not initialized correctly.")
+
+    @Slot()
+    def openClassSwapRestoreDialog(self):
+        """显示启动时的临时课表恢复确认窗口"""
+        if self.class_swap_restore_dialog_window and self.class_swap_restore_dialog_window.root_window:
+            self.class_swap_restore_dialog_window.root_window.show()
+            self.class_swap_restore_dialog_window.root_window.raise_()
+            self.class_swap_restore_dialog_window.root_window.requestActivate()
+        else:
+            logger.error("ClassSwap restore dialog window not initialized correctly.")
+
+    @Slot()
+    def classSwapRestoreContinue(self):
+        """继续使用今天的临时课表"""
+        if self.class_swap_restore_dialog_window and self.class_swap_restore_dialog_window.root_window:
+            self.class_swap_restore_dialog_window.root_window.hide()
+        if self._startup_swap_restore_pending:
+            self._startup_swap_restore_pending = False
+            self._continue_init()
+
+    @Slot()
+    def classSwapRestoreDiscard(self):
+        """丢弃今天的临时课表并继续启动"""
+        self._class_swap_manager.discardTodaySwaps()
+        if self.class_swap_restore_dialog_window and self.class_swap_restore_dialog_window.root_window:
+            self.class_swap_restore_dialog_window.root_window.hide()
+        if self._startup_swap_restore_pending:
+            self._startup_swap_restore_pending = False
+            self._continue_init()
 
     @Slot()
     def openDebugger(self):
@@ -267,37 +455,16 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             current = widgets_loader.property("editMode")
             widgets_loader.setProperty("editMode", not current)
 
+    @Slot(str, str, result=QFont)
+    def getQFont(self, target_font: str, fallback_font: str = "Microsoft YaHei") -> QFont:
+        """
+        构造一个带 fallback 的 QFont 对象。
 
-class Settings(RinUIWindow):
-    def __init__(self, parent: AppCentral):
-        super().__init__()
-        self.central = parent
-
-        self.engine.addImportPath(DEFAULT_THEME)
-        self.central.setup_qml_context(self)
-        self.engine.rootContext().setContextProperty("UtilsBackend", self.central.utils_backend)
-        self.central.retranslate.connect(self.engine.retranslate)
-
-        self.load(CW_PATH / "windows" / "Settings.qml")
-
-
-class Editor(RinUIWindow):
-    def __init__(self, parent: AppCentral):
-        super().__init__()
-        self.central = parent
-
-        self.central.setup_qml_context(self)
-        self.central.retranslate.connect(self.engine.retranslate)
-
-        self.load(CW_PATH / "windows" / "Editor.qml")
-
-
-class Tutorial(RinUIWindow):
-    def __init__(self, parent: AppCentral):
-        super().__init__()
-        self.central = parent
-
-        self.central.setup_qml_context(self)
-        self.central.retranslate.connect(self.engine.retranslate)
-
-        self.load(CW_PATH / "windows" / "Tutorial.qml")
+        :param target_font: 用户选择的主字体
+        :param fallback_font: fallback 字体
+        :return: QFont 对象
+        """
+        f = QFont(target_font)
+        f.setFamilies([target_font, fallback_font])
+        f.setStyleHint(QFont.StyleHint.SansSerif)
+        return f

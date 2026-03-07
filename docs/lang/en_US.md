@@ -2,12 +2,12 @@
 <img src="../../assets/images/logo.png" width="15%" alt="Class Widgets 2">
 <h1>Class Widgets 2</h1>
 
-<p>The New Is a Natural Difference.</p>
+<p>Rewritten. Reimagined.</p>
 
 <!--[![当前版本](https://img.shields.io/github/v/release/rinlit-233-shiroko/class-widgets-2?style=for-the-badge&color=purple&label=%E5%BD%93%E5%89%8D%E7%89%88%E6%9C%AC)](https://github.com/rinlit-233-shiroko/class-widgets-2/releases/latest)--->
 
 [![Stars](https://img.shields.io/github/stars/rinlit-233-shiroko/class-widgets-2?style=for-the-badge&color=orange&label=Stars)](https://github.com/rinlit-233-shiroko/class-widgets-2)
-[![Version](https://img.shields.io/github/v/tag/rinlit-233-shiroko/class-widgets-2?include_prereleases&label=Version&color=yellow&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2/actions)
+[![Version](https://img.shields.io/github/v/tag/rinlit-233-shiroko/class-widgets-2?include_prereleases&label=Version&color=yellow&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2/releases)
 [![Open-Source License](https://img.shields.io/badge/license-GPLv3-blue.svg?label=Open-Source%20License&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2?tab=GPL-3.0-1-ov-file)
 [![Download Volume](https://img.shields.io/github/downloads/rinlit-233-shiroko/class-widgets-2/total.svg?label=Download%20Volume&color=green&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2)
 
@@ -19,11 +19,11 @@
 > This project is under development.Please think twice before using it in a teaching environment.
 > Welcome to submit some feedback in our Github Page!
 >
-> For users who download slowly on GitHub, you can download the version you need from the cloud storage link below，
+> For users who download slowly on GitHub, you can download the version you need from the cloud storage link below, 
 > The files in the online storage will be automatically updated with the release of the version.
 > 
 > <div align="center">
-> <a href="https://github.com/RinLit-233-shiroko/Class-Widgets-2/releases">Release Page</a> | <a href="https://www.123865.com/s/DCyBTd-3iWxH">123 Cloud Storage</a>
+> <a href="https://github.com/RinLit-233-shiroko/Class-Widgets-2/releases">Release Page</a> | <a href="https://dl.gemen.pp.ua">OneDrive</a> | <a href="https://www.123865.com/s/DCyBTd-3iWxH">123 Cloud Storage</a>
 > </div>
 
 
@@ -51,7 +51,7 @@ We are currently activated
 and [Discord Server](https://discord.gg/EFF4PpqpqZ)。
 
 ## Open-Source License
-This project is open source licensed under the GNU General Public License version 3 (GPL-3.0).
+This project is open source licensed under the MIT license.
 
 More information is in the [LICENSE](LICENSE) file.
 
@@ -81,7 +81,7 @@ This is just my practice work as a newcomer, welcome to provide more opinions!
 
 ## For this English version docs
 
-This English version of the document has been translated by [furinafirefly(bbdqz)](https://github.com/furinafirefly) Responsible for translation.
+This English version of the document has been translated by [bbdqz](https://github.com/bbdqz) Responsible for translation.
 
 And [RinLit](https://github.com/RinLit-233-shiroko) is a good developer!
 You can follow him! (and follow me please :))

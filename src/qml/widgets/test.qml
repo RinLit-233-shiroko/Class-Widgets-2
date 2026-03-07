@@ -3,7 +3,7 @@ import QtQuick.Controls
 import QtQuick.Window as QQW
 import QtQuick.Layouts
 import RinUI
-import Widgets
+import ClassWidgets.Theme
 
 
 Widget {

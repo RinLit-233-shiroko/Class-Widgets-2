@@ -9,95 +9,6 @@ import QtQuick.Effects  // shadow
 Item {
     id: root
     // SaveFlyout { id: saveFlyout }
-
-    RowLayout {
-        id: rowLayout
-        anchors.fill: parent
-        anchors.margins: 24
-        // anchors.topMargin: 24 + saveFlyout.height
-        spacing: 10
-
-        ScheduleTableView {
-            id: scheduleTable
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            currentWeek: weekSelector.currentWeek
-
-            onCellClicked: (row, column, entry, delegate) => {
-                entryFlyout.entry = entry
-                entryFlyout.selectedCell = selectedCell
-                entryFlyout.weekSelector = weekSelector
-                entryFlyout.parent = delegate   // 定位到点击的 cell
-                entryFlyout.open()
-            }
-        }
-
-        ScheduleFlyout {
-            id: entryFlyout
-        }
-
-        ColumnLayout {
-            Layout.maximumWidth: Math.max(root.width * 0.32, 275)
-            spacing: 12
-            SettingExpander {
-                Layout.fillWidth: true
-                // Layout.fillHeight: true
-                expanded: true
-                title: qsTr("Week Cycle")
-                icon.name: "ic_fluent_calendar_week_numbers_20_regular"
-
-                WeekSelector {
-                    Layout.margins: 18
-                    id: weekSelector    
-                    onCurrentWeekChanged: {
-                        scheduleTable.currentWeek = currentWeek
-                    }
-                }
-            }
-
-            // 快速添加学科
-            Frame {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                padding: 16
-
-                ColumnLayout {
-                    anchors.fill: parent
-                    spacing: 8
-                    Text {
-                        typography: Typography.BodyStrong
-                        text: qsTr("Quick Add Subject")
-                    }
-
-                    Flickable {
-                        Layout.fillWidth: true
-                        Layout.fillHeight: true
-                        contentHeight: subjectsFlow.height
-                        clip: true
-
-                        ScrollBar.vertical: ScrollBar {}
-
-                        Flow {
-                            id: subjectsFlow
-                            width: parent.width
-                            Repeater {
-                                model: AppCentral.scheduleRuntime.subjects
-                                Button {
-                                    flat: true
-                                    icon.name: modelData.icon
-                                    text: modelData.name
-                                    onClicked: {
-                                        quickAddSubject(modelData.id)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     function quickAddSubject(subjectid) {
         let row = scheduleTable.selectedCell.row
         let column = scheduleTable.selectedCell.column
@@ -145,5 +56,148 @@ Item {
         }
 
         scheduleTable.selectedCell = { row: nextRow, column: nextColumn }
+    }
+
+    property bool editable: segmented.currentIndex === 1  // 是否可编辑
+
+    ColumnLayout {
+        id: mainLayout
+        anchors.fill: parent
+        anchors.margins: 24
+        // anchors.topMargin: 24 + saveFlyout.height
+        spacing: 10
+
+        Segmented {
+            id: segmented
+            Layout.alignment: Qt.AlignCenter
+
+            SegmentedItem {
+                icon.name: "ic_fluent_content_view_20_regular"
+                text: qsTr("Preview")
+            }
+
+            SegmentedItem {
+                icon.name: "ic_fluent_calendar_edit_20_regular"
+                text: qsTr("Edit")
+            }
+        }
+
+        RowLayout {
+            id: scheduleViewer
+            visible: !editable
+            Layout.alignment: Qt.AlignCenter
+
+            property int currentWeek: 1  // 当前周数
+
+            ToolButton {
+                id: previousButton
+                icon.name: "ic_fluent_chevron_left_20_regular"
+                flat: true
+                enabled: scheduleViewer.currentWeek > 1
+                onClicked: scheduleViewer.currentWeek--
+            }
+
+            Text {
+                id: weekText
+                text: qsTr("Week %1").arg(scheduleViewer.currentWeek)
+            }
+
+            ToolButton {
+                id: nextButton
+                icon.name: "ic_fluent_chevron_right_20_regular"
+                flat: true
+                onClicked: scheduleViewer.currentWeek++
+            }
+        }
+
+        RowLayout {
+            id: rowLayout
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            ScheduleTableView {
+                id: scheduleTable
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                currentWeek: editable ? weekSelector.currentWeek : scheduleViewer.currentWeek || 1
+
+                onCellClicked: (row, column, entry, delegate) => {
+                    if (!editable) {
+                        return
+                    }
+                    entryFlyout.entry = entry
+                    entryFlyout.selectedCell = selectedCell
+                    entryFlyout.weekSelector = weekSelector
+                    entryFlyout.parent = delegate   // 定位到点击的 cell
+                    entryFlyout.open()
+                }
+            }
+
+            ScheduleFlyout {
+                id: entryFlyout
+            }
+
+            ColumnLayout {
+                visible: editable
+                Layout.maximumWidth: Math.max(root.width * 0.32, 275)
+                spacing: 12
+                SettingExpander {
+                    Layout.fillWidth: true
+                    // Layout.fillHeight: true
+                    expanded: true
+                    title: qsTr("Week Cycle")
+                    icon.name: "ic_fluent_calendar_week_numbers_20_regular"
+
+                    WeekSelector {
+                        Layout.margins: 18
+                        id: weekSelector
+                        onCurrentWeekChanged: {
+                            scheduleTable.currentWeek = currentWeek
+                        }
+                    }
+                }
+
+                // 快速添加学科
+                Frame {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                    padding: 16
+
+                    ColumnLayout {
+                        anchors.fill: parent
+                        spacing: 8
+                        Text {
+                            typography: Typography.BodyStrong
+                            text: qsTr("Quick Add Subject")
+                        }
+
+                        Flickable {
+                            Layout.fillWidth: true
+                            Layout.fillHeight: true
+                            contentHeight: subjectsFlow.height
+                            clip: true
+
+                            ScrollBar.vertical: ScrollBar {}
+
+                            Flow {
+                                id: subjectsFlow
+                                width: parent.width
+                                Repeater {
+                                    model: AppCentral.scheduleRuntime.subjects
+                                    Button {
+                                        flat: true
+                                        icon.name: modelData.icon
+                                        text: modelData.name
+                                        onClicked: {
+                                            quickAddSubject(modelData.id)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -4,8 +4,10 @@ from datetime import datetime
 from pathlib import Path
 from PySide6.QtCore import QObject, Signal, Slot, Property, QUrl
 from PySide6.QtGui import QDesktopServices
+from PySide6.QtWidgets import QFileDialog, QApplication
 from loguru import logger
 
+from src.core.convertor.slots import ScheduleIO
 from src.core.directories import SCHEDULES_PATH
 from src.core.schedule.model import ScheduleData, MetaInfo
 from src.core.parser import ScheduleParser
@@ -16,7 +18,6 @@ def _create_empty_schedule():
     return ScheduleData(
         meta=MetaInfo(
             id=generate_id("meta"),
-            version=1,
             maxWeekCycle=2,
             startDate=f"{datetime.now().year}-09-01"
         ),
@@ -26,17 +27,26 @@ def _create_empty_schedule():
 
 
 class ScheduleManager(QObject):
+    initialized = Signal()
     scheduleSwitched = Signal(ScheduleData)
     scheduleModified = Signal(ScheduleData)
 
     def __init__(self, schedules_dir: Path, app_central):
         super().__init__()
         self.app_central = app_central
+        self._converter = ScheduleIO(self)
+
         self.schedules_dir = schedules_dir
         self.schedules_dir.mkdir(parents=True, exist_ok=True)
         self.schedule_path: Path = Path(self.schedules_dir) / "schedule.json"
         self.schedule: ScheduleData = _create_empty_schedule()
         self.current_schedule_name: str | None = None  # 当前选中的课程表
+
+        self.initialized.emit()
+
+    @Property(QObject, notify=initialized)
+    def scheduleIO(self):
+        return self._converter
 
     @Slot(str, result=bool)
     def load(self, name: str, force: bool = False) -> bool:
@@ -188,6 +198,75 @@ class ScheduleManager(QObject):
             return True
         except Exception as e:
             logger.error(f"Failed to rename schedule: {e}")
+            return False
+
+    @Slot(result=bool)
+    def importSchedule(self) -> bool:
+        """导入课程表"""
+        file_path, _ = QFileDialog.getOpenFileName(
+            None,
+            QApplication.translate("ImportScheduleDialog", "Import Schedule"),
+            str(self.schedules_dir),
+            QApplication.translate("ImportScheduleDialog", "Class Widgets 2 JSON Files (*.json)")
+        )
+        if not file_path:
+            logger.info("User cancelled import.")
+            return False
+
+        src_path = Path(file_path)
+        if not src_path.exists():
+            logger.error(f"Selected file does not exist: {file_path}")
+            return False
+
+        try:
+            # 读取 JSON
+            with open(src_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+
+            # 解析
+            imported_schedule = ScheduleData.model_validate(data)
+
+            # 设置当前 schedule 并保存
+            self.schedule = imported_schedule
+            self.current_schedule_name = src_path.stem
+            self.schedule_path = self.schedules_dir / f"{self.current_schedule_name}.json"
+            self.save()  # 保存到本地
+
+            self.scheduleSwitched.emit(self.schedule)
+            self.scheduleModified.emit(self.schedule)
+            logger.success(f"Schedule imported from {src_path.name}")
+            return True
+        except Exception as e:
+            logger.exception(f"Failed to import schedule: {e}")
+            return False
+
+    @Slot(str, result=bool)
+    def export(self, filename: str) -> bool:
+        """导出指定课程表"""
+        if not filename:
+            logger.warning("未指定课程表名，无法导出")
+            return False
+
+        src_path = self.schedules_dir / f"{filename}.json"
+        if not src_path.exists():
+            logger.error(f"课程表不存在: {filename}")
+            return False
+
+        file_path, _ = QFileDialog.getSaveFileName(
+            None,
+            QApplication.translate("ExportScheduleDialog","Export Schedule"),
+            f"{filename}.json",
+            QApplication.translate("ExportScheduleDialog","Class Widgets 2 JSON Files (*.json)")
+        )
+        if not file_path:
+            return False  # 用户取消
+
+        try:
+            shutil.copy(src_path, file_path)
+            logger.success(f"Schedule '{filename}' exported to: {file_path}")
+            return True
+        except Exception as e:
+            logger.error(f"Export failed: {e}")
             return False
 
     @Slot(str, result=bool)

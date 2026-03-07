@@ -1,0 +1,40 @@
+module ClassWidgets.Components
+
+WidgetsContainer 1.0 WidgetsContainer.qml
+WidgetLoader 1.0 WidgetLoader.qml
+Watermark 1.0 Watermark.qml
+Introduction 1.0 Introduction.qml
+Skeleton 1.0 Skeleton.qml
+
+# Dialogs
+AddWidgetsDialog 1.0 dialogs/AddWidgetsDialog.qml
+CheckSingleInstanceDialog 1.0 dialogs/CheckSingleInstanceDialog.qml
+WidgetSettingsDialog 1.0 dialogs/WidgetSettingsDialog.qml
+RescheduleDayDialog 1.0 dialogs/RescheduleDayDialog.qml
+ClassSwapDialog 1.0 dialogs/ClassSwapDialog.qml
+PluginReplaceConfirmDialog 1.0 dialogs/PluginReplaceConfirmDialog.qml
+
+# Settings
+DayListView 1.0 editor/DayListView.qml
+EntryDetailView 1.0 editor/EntryDetailView.qml
+EntryListView 1.0 editor/EntryListView.qml
+EntryDelegate 1.0 editor/EntryDelegate.qml
+
+ScheduleTableView 1.0 editor/ScheduleTableView.qml
+TableEntryDelegate 1.0 editor/TableEntryDelegate.qml
+WeekSelector 1.0 editor/WeekSelector.qml
+ScheduleFlyout 1.0 editor/ScheduleFlyout.qml
+SubjectClip 1.0 editor/SubjectClip.qml
+
+SaveFlyout 1.0 editor/SaveFlyout.qml
+ScheduleClip 1.0 editor/ScheduleClip.qml
+
+## dialogs
+DayEditor 1.0 editor/dialogs/DayEditor.qml
+IconPicker 1.0 editor/dialogs/IconPicker.qml
+
+# Plaza
+BannerCarousel 1.0 plaza/BannerCarousel.qml
+PluginSection 1.0 plaza/PluginSection.qml
+PluginGrid 1.0 plaza/PluginGrid.qml
+PluginCard 1.0 plaza/PluginCard.qml

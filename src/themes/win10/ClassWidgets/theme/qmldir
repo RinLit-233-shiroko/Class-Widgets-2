@@ -1,0 +1,3 @@
+module ClassWidgets.Theme
+
+ProgressBar 1.0 components/ProgressBar.qml

@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import RinUI
-import Widgets
+import ClassWidgets.Theme
 import Qt5Compat.GraphicalEffects
 
 Widget {
@@ -32,6 +32,7 @@ Widget {
         y: (parent.height - height) / 2 + 8
         radius: height / 2
         color: currentColor
+        visible: lightingEffect
 
         layer.enabled: true
         layer.effect: FastBlur {

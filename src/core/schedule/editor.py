@@ -3,12 +3,33 @@ from datetime import datetime
 from typing import Optional, List, Dict, Union
 
 from PySide6.QtCore import QObject, Property, Signal, Slot
+from PySide6.QtQml import QJSValue
 from loguru import logger
 
 from src.core.schedule import ScheduleData, Subject, Timeline, Entry, EntryType
 from src.core.schedule import ScheduleManager
 from src.core.schedule.model import WeekType, Timetable
 from src.core.utils import generate_id, get_default_subjects
+
+
+def _jsvalue_to_python(value):
+    """
+    将 QML 传来的 QVariant / QJSValue 转成 Python 原生类型
+    支持 int, str, list[int], list[str] 等
+    """
+    if isinstance(value, QJSValue):
+        if value.isArray():
+            length = value.property("length").toInt()
+            return [value.property(str(i)).toVariant() for i in range(length)]
+        elif value.isString():
+            return value.toString()
+        elif value.isNumber():
+            return int(value.toNumber())
+        elif value.isBool():
+            return value.toBool()
+        else:
+            return None
+    return value
 
 
 class ScheduleEditor(QObject):
@@ -119,7 +140,7 @@ class ScheduleEditor(QObject):
             id=generate_id("day"),
             entries=[],
             dayOfWeek=day_of_week or None,
-            weeks=weeks,
+            weeks=_jsvalue_to_python(weeks),
             date=date or None
         )
         self.schedule.days.append(day)
@@ -137,14 +158,11 @@ class ScheduleEditor(QObject):
         if day_of_week:
             day.dayOfWeek = day_of_week
         if weeks is not None:
-            if isinstance(weeks, int):
-                day.weeks = weeks
-            elif isinstance(weeks, str) and weeks == WeekType.ALL.value:
+            weeks = _jsvalue_to_python(weeks)
+            if isinstance(weeks, str) and weeks == WeekType.ALL.value:
                 day.weeks = WeekType.ALL
-            elif isinstance(weeks, list):
-                day.weeks = weeks
             else:
-                day.weeks = None
+                day.weeks = weeks
         if date:
             day.date = date
         self.updated.emit()
@@ -275,6 +293,7 @@ class ScheduleEditor(QObject):
         查找已有 override，返回其 id，如不存在返回空字符串
         """
         day_of_week_list = day_of_week or None
+        weeks = _jsvalue_to_python(weeks)
         for o in self.schedule.overrides:
             if o.entryId != entry_id:
                 continue
@@ -287,7 +306,7 @@ class ScheduleEditor(QObject):
 
     @Slot(str, list, "QVariant", str, str, result=bool)
     def addOverride(self, entry_id: str, day_of_week, weeks, subject_id="", title=""):
-
+        weeks = _jsvalue_to_python(weeks)
         override = Timetable(
             id=generate_id("override"),
             entryId=entry_id,
@@ -330,37 +349,38 @@ class ScheduleEditor(QObject):
         return None
 
     @Slot(str, int, int, result="QVariant")
-    def getEntryOverride(self, entry_id: str, week: int, weekday: int):
-        """
-        返回套用 overrides 的 entry 对象
-        """
+    def getEntryOverride(self, entry_id: str, week: int, day_of_week: int):
         entry = self.getEntry(entry_id)
         if not entry:
             return None
+        week = _jsvalue_to_python(week)
 
-        # 先转 dict
         data = entry.model_dump()
         applicable = None
+        best_priority = -1
 
         for o in self.schedule.overrides:
             if o.entryId != entry_id:
                 continue
 
-            valid_day = not o.dayOfWeek or weekday in o.dayOfWeek
-            valid_week = (
-                    week == -1
-                    or not o.weeks
-                    or o.weeks == "all"
-                    or (isinstance(o.weeks, list) and week in o.weeks)
-                    or (isinstance(o.weeks, int) and o.weeks == week)
-            )
+            valid_day = not o.dayOfWeek or day_of_week in o.dayOfWeek
+            if not valid_day:
+                continue
 
-            if valid_day and valid_week:
-                if o.weeks != "all":
-                    applicable = o
-                    break  # 优先具体周
-                elif applicable is None:
-                    applicable = o  # 没有具体周才用 all
+            # 判断优先级
+            if isinstance(o.weeks, list) and week in o.weeks:
+                priority = 3  # 特定周最高
+            elif isinstance(o.weeks, int) and week >= o.weeks and (
+                    week - o.weeks) % self.schedule.meta.maxWeekCycle == 0:
+                priority = 2  # 单/双周
+            elif o.weeks == "all" or o.weeks is None:
+                priority = 1  # all 最低
+            else:
+                continue  # 不匹配
+
+            if priority > best_priority:
+                applicable = o
+                best_priority = priority
 
         if applicable:
             if applicable.subjectId:
@@ -407,6 +427,24 @@ class ScheduleEditor(QObject):
         for subj in default_subjects:
             self.schedule.subjects.append(subj)
         self.updated.emit()
+
+    @Slot(int, result=bool)
+    def setMaxWeekCycle(self, max_weeks: int):
+        """设置最大周数"""
+        if not self.schedule or not self.schedule.meta:
+            logger.warning("No schedule or meta data available.")
+            return False
+
+        self.schedule.meta.maxWeeks = max_weeks
+        self.updated.emit()
+        return True
+
+    @Slot(result=int)
+    def getMaxWeekCycle(self) -> int:
+        """获取最大周数"""
+        if not self.schedule or not self.schedule.meta:
+            return 1
+        return getattr(self.schedule.meta, "maxWeekCycle", 1)
 
     # 数据访问
     @Property("QVariant", notify=updated)

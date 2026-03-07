@@ -5,6 +5,27 @@ on:
     tags:
       - "*"
   workflow_dispatch:
+    inputs:
+      upload2webdav:
+        description: 'Upload to...'
+        required: true
+        default: 'None'
+        type: choice
+        options:
+          - None
+          - 123Pan
+          - OneDrive
+          - Both
+      release:
+        description: 'Create GitHub Release'
+        required: true
+        default: false
+        type: boolean
+      prerelease:
+        description: 'Mark as Pre-release'
+        required: false
+        default: true
+        type: boolean
 
 permissions:
   contents: write
@@ -14,7 +35,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest, macos-latest]
+        os: [windows-latest, macos-15-intel, macos-latest]
 
     steps:
       - name: ⬇️ Checkout code
@@ -76,8 +97,8 @@ jobs:
         if: runner.os == 'macOS'
         shell: bash
         run: |
-          cd dist
-          ditto -c -k --sequesterRsrc --keepParent "Class Widgets 2".app ClassWidgets-2-macOS.zip
+          hdiutil create -volname "Class Widgets 2" -srcfolder dist -ov -format UDZO ClassWidgets-2-macOS-${{ runner.arch }}.dmg
+        # ditto -c -k --sequesterRsrc --keepParent "Class Widgets 2".app ClassWidgets-2-macOS-${{ runner.arch }}.zip
 
       - name: ☁️ Upload artifact (Windows)
         if: runner.os == 'Windows'
@@ -90,30 +111,8 @@ jobs:
         if: runner.os == 'macOS'
         uses: actions/upload-artifact@v4
         with:
-          name: ClassWidgets-2-macOS
-          path: dist/ClassWidgets-2-macOS.zip
-
-      - name: 📤 Upload Windows package & CHANGELOG to 123Pan WebDAV
-        if: runner.os == 'Windows'
-        shell: pwsh
-        run: |
-          $VERSION = "${{ github.ref_name }}"
-          $ENCODED_VERSION = $VERSION -replace ' ', '%20'
-
-          curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" `
-               -T "dist/ClassWidgets-2-Windows.zip" `
-               "https://webdav.123pan.cn/webdav/$ENCODED_VERSION/ClassWidgets-2-Windows.zip"
-
-      - name: 📤 Upload macOS package & CHANGELOG to 123Pan WebDAV
-        if: runner.os == 'macOS'
-        shell: bash
-        run: |
-          VERSION="${{ github.ref_name }}"
-          ENCODED_VERSION=$(echo "$VERSION" | sed 's/ /%20/g')
-
-          curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
-               -T "dist/ClassWidgets-2-macOS.zip" \
-               "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-macOS.zip"
+          name: ClassWidgets-2-macOS-${{ runner.arch }}
+          path: ClassWidgets-2-macOS-${{ runner.arch }}.dmg
 
   release:
     needs: [build]
@@ -129,14 +128,7 @@ jobs:
         uses: actions/download-artifact@v5
         with:
           path: dist/
-
-      - name: 🗃 Move release files to root dist/
-        run: |
-          echo "::group::Show downloaded structure"
-          ls -R dist/
-          echo "::endgroup::"
-          mv dist/ClassWidgets-2-Windows/*.zip dist/
-          mv dist/ClassWidgets-2-macOS/*.zip dist/
+          merge-multiple: true
 
       - name: 🧱 Set up git-cliff
         uses: kenji-miyake/setup-git-cliff@v2
@@ -147,23 +139,84 @@ jobs:
 
       - name: 🚀 Create GitHub Release
         uses: softprops/action-gh-release@v2
+        # 推送/手动+发布 ==> 发布
+        if: ${{  github.event_name == 'push' || github.event.inputs.release == 'true' }}
         with:
-          name: Class Widgets 2 ${{ github.ref_name }}
+          name: Class Widgets ${{ github.ref_name }}
           tag_name: ${{ github.ref_name }}
           body_path: CHANGELOG.md
-          prerelease: true
+          prerelease: ${{ github.event_name == 'push' || github.event.inputs.prerelease }}
           files: |
             dist/ClassWidgets-2-Windows.zip
-            dist/ClassWidgets-2-macOS.zip
+            dist/ClassWidgets-2-macOS-X64.dmg
+            dist/ClassWidgets-2-macOS-ARM64.dmg
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
 
-      - name: 📤 Upload CHANGELOG to 123Pan WebDAV
-        if: success()
+      - name: 📤 Upload CHANGELOG & packages to 123Pan
+        # 推送/手动+上传 ==> 上传
+        if: success() && 
+          ( github.event_name == 'push' ||
+           github.event.inputs.upload2webdav == '123Pan' ||
+           github.event.inputs.upload2webdav == 'Both')
         run: |
           VERSION="${{ github.ref_name }}"
           ENCODED_VERSION=$(echo "$VERSION" | sed 's/ /%20/g')
-          
+
+          # Create directory
+          curl -v -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
+               -X MKCOL "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}"
+
+          # Upload files
           curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
             -T "CHANGELOG.md" \
             "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/CHANGELOG.md"
+
+          curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
+            -T "dist/ClassWidgets-2-Windows.zip" \
+            "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
+
+          curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
+            -T "dist/ClassWidgets-2-macOS-X64.dmg" \
+            "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-macOS-X64.dmg"
+          curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
+            -T "dist/ClassWidgets-2-macOS-ARM64.dmg" \
+            "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-macOS-ARM64.dmg"
+
+      - name: 🔔 Trigger Update Class Widgets 2 Releases JSON
+        if: success()  # 只有前面成功才触发
+        run: |
+          curl -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/RinLit-233-shiroko/Class-Widgets-2/dispatches \
+            -d '{"event_type": "update-version"}'
+
+      - name: 📤 Upload CHANGELOG & packages to OneDrive
+        if: success() &&
+          (github.event_name == 'push' ||
+          github.event.inputs.upload2webdav == 'OneDrive' ||
+          github.event.inputs.upload2webdav == 'Both')
+        run: |
+          VERSION="${{ github.ref_name }}"
+          ENCODED_VERSION=$(echo "$VERSION" | sed 's/ /%20/g')
+
+          # Create directory
+          curl -v -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
+               -X MKCOL "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}"
+
+          # Upload files
+          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
+            -T "CHANGELOG.md" \
+            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/CHANGELOG.md"
+
+          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
+            -T "dist/ClassWidgets-2-Windows.zip" \
+            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
+
+          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
+            -T "dist/ClassWidgets-2-macOS-X64.dmg" \
+            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-macOS-X64.dmg"
+          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
+            -T "dist/ClassWidgets-2-macOS-ARM64.dmg" \
+            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-macOS-ARM64.dmg"
