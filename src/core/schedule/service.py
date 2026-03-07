@@ -48,6 +48,10 @@ class ScheduleServices:
                                     entry.subjectId = override.subjectId
                                 if override.title:
                                     entry.title = override.title
+                                if override.startTime:
+                                    entry.startTime = override.startTime
+                                if override.endTime:
+                                    entry.endTime = override.endTime
 
                     return day_copy
         return None

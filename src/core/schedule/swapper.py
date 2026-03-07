@@ -89,6 +89,10 @@ class ClassSwapManager(QObject):
                             entry.subjectId = override.subjectId
                         if override.title:
                             entry.title = override.title
+                        if override.startTime:
+                            entry.startTime = override.startTime
+                        if override.endTime:
+                            entry.endTime = override.endTime
 
             # 只返回 class / activity
             result = []
@@ -205,6 +209,14 @@ class ClassSwapManager(QObject):
         # 记录用户在换课界面的选择
         self.setSwapPickerContext(day_of_week, week_of_cycle)
 
+        # 先把「所选星期+周次」课表整体应用到今天，再在今天执行换课
+        self._apply_day_schedule_to_today(
+            day_of_week,
+            week_of_cycle,
+            apply_day_of_week,
+            apply_week_of_cycle,
+        )
+
         # 将“基准日课表”的 entry 映射到“今天临时课表”对应位置
         apply_entry_id_a = self._map_entry_to_day(
             entry_id_a,
@@ -284,6 +296,14 @@ class ClassSwapManager(QObject):
 
         # 记录用户在换课界面的选择
         self.setSwapPickerContext(day_of_week, week_of_cycle)
+
+        # 先把「所选星期+周次」课表整体应用到今天，再在今天执行替换
+        self._apply_day_schedule_to_today(
+            day_of_week,
+            week_of_cycle,
+            apply_day_of_week,
+            apply_week_of_cycle,
+        )
 
         # 将“基准日课表”的 entry 映射到“今天临时课表”对应位置
         apply_entry_id = self._map_entry_to_day(
@@ -435,6 +455,8 @@ class ClassSwapManager(QObject):
             return None
 
         data = {"subjectId": entry.subjectId or "", "title": entry.title or ""}
+        data["startTime"] = entry.startTime or ""
+        data["endTime"] = entry.endTime or ""
 
         # 应用 override
         best_priority = -1
@@ -451,6 +473,10 @@ class ClassSwapManager(QObject):
                     data["subjectId"] = o.subjectId
                 if o.title:
                     data["title"] = o.title
+                if o.startTime:
+                    data["startTime"] = o.startTime
+                if o.endTime:
+                    data["endTime"] = o.endTime
 
         return data
 
@@ -465,7 +491,9 @@ class ClassSwapManager(QObject):
         return -1
 
     def _set_or_update_override(self, entry_id: str, day_of_week: list,
-                                 weeks, subject_id: str, title: str):
+                                 weeks, subject_id: str, title: str,
+                                 start_time: Optional[str] = None,
+                                 end_time: Optional[str] = None):
         """设置或更新 override"""
         schedule = self.app_central.schedule_manager.schedule
         if not schedule:
@@ -478,6 +506,10 @@ class ClassSwapManager(QObject):
                 if o.weeks == weeks or (isinstance(weeks, str) and weeks == "all" and o.weeks is None):
                     o.subjectId = subject_id or None
                     o.title = title or None
+                    if start_time is not None:
+                        o.startTime = start_time or None
+                    if end_time is not None:
+                        o.endTime = end_time or None
                     self.app_central.schedule_manager.modify(schedule)
                     return
 
@@ -488,7 +520,9 @@ class ClassSwapManager(QObject):
             dayOfWeek=day_of_week,
             weeks=weeks,
             subjectId=subject_id or None,
-            title=title or None
+            title=title or None,
+            startTime=start_time,
+            endTime=end_time,
         )
         schedule.overrides.append(override)
         self.app_central.schedule_manager.modify(schedule)
@@ -539,6 +573,48 @@ class ClassSwapManager(QObject):
             return None
 
         return target_entries[source_idx].get("id")
+
+    def _apply_day_schedule_to_today(
+            self,
+            source_day_of_week: int,
+            source_week_of_cycle: int,
+            target_day_of_week: int,
+            target_week_of_cycle: int,
+    ):
+        """将 source(星期+周次) 的课表按顺序投影到 target(今天)"""
+        schedule = self.app_central.schedule_manager.schedule
+        if not schedule:
+            return
+
+        max_cycle = schedule.meta.maxWeekCycle or 1
+        weeks_val = target_week_of_cycle if max_cycle > 1 else "all"
+
+        source_entries = self.getDayEntries(source_day_of_week, source_week_of_cycle)
+        target_entries = self.getDayEntries(target_day_of_week, target_week_of_cycle)
+
+        if not source_entries or not target_entries:
+            logger.warning(
+                f"[ClassSwap] apply day schedule failed: source={len(source_entries)}, target={len(target_entries)}"
+            )
+            return
+
+        size = min(len(source_entries), len(target_entries))
+        for idx in range(size):
+            src = source_entries[idx]
+            tgt = target_entries[idx]
+            target_entry_id = tgt.get("id")
+            if not target_entry_id:
+                continue
+
+            self._set_or_update_override(
+                target_entry_id,
+                [target_day_of_week],
+                weeks_val,
+                src.get("subjectId", "") or "",
+                src.get("title", "") or "",
+                src.get("startTime", "") or "",
+                src.get("endTime", "") or "",
+            )
 
     def _cleanup_swap_overrides(self, records: list):
         """清理换课产生的 override"""

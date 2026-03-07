@@ -59,6 +59,8 @@ class Timetable(BaseModel):  # 覆盖Entry信息以方便设置课表
     weeks: Union[WeekType, List[int], int, None] = None  # all, custom, round
     subjectId: Optional[str] = None
     title: Optional[str] = None
+    startTime: Optional[str] = None
+    endTime: Optional[str] = None
 
 
 class ScheduleData(BaseModel):
