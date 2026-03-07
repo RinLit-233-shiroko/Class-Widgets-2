@@ -40,7 +40,7 @@ class ScheduleServices:
                         for override in schedule.overrides:
                             if override.entryId != entry.id:
                                 continue
-                            if self._override_applies(override, weekday, current_week):
+                            if self._override_applies(override, weekday, current_week, max_week_cycle):
                                 if override.subjectId:
                                     entry.subjectId = override.subjectId
                                 if override.title:

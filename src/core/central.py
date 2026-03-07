@@ -48,7 +48,6 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         AppCentral._instance = self
        
         self._check_single_instance()
-        self._editor_swap_block_prompted = False
         self._startup_swap_restore_pending = False
         self._initialize_cores()
         self._initialize_notification()
@@ -279,6 +278,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.union_update_timer.tick.connect(self.update)
         self.union_update_timer.tick.connect(self.automation_manager.update)
         self.schedule_manager.scheduleModified.connect(self.runtime.refresh)
+        self._class_swap_manager.updated.connect(self.update)
 
         self.app_instance.aboutToQuit.connect(self.cleanup)
 
@@ -348,9 +348,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         """显示课程表编辑器"""
         if self._class_swap_manager.hasTodaySwaps():
             logger.warning("Blocked opening editor because temporary class swaps exist today")
-            if not self._editor_swap_block_prompted:
-                self._editor_swap_block_prompted = True
-                self.openClassSwapRestoreDialog()
+            self.openClassSwapRestoreDialog()
             return
 
         if self.editor and self.editor.root_window:
@@ -423,7 +421,6 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     def classSwapRestoreDiscard(self):
         """丢弃今天的临时课表并继续启动"""
         self._class_swap_manager.discardTodaySwaps()
-        self._editor_swap_block_prompted = False
         if self.class_swap_restore_dialog_window and self.class_swap_restore_dialog_window.root_window:
             self.class_swap_restore_dialog_window.root_window.hide()
         if self._startup_swap_restore_pending:
