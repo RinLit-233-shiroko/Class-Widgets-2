@@ -92,6 +92,8 @@ jobs:
         shell: pwsh
         run: |
           Compress-Archive -Path "dist/Class Widgets 2/*" -DestinationPath "dist/ClassWidgets-2-Windows.zip"
+          $h = Get-FileHash -Algorithm SHA256 "dist/ClassWidgets-2-Windows.zip"
+          "$($h.Hash) ClassWidgets-2-Windows.zip" > "dist/ClassWidgets-2-Windows.zip.sha256"
 
       - name: 📦 Zip build (macOS)
         if: runner.os == 'macOS'
@@ -105,7 +107,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ClassWidgets-2-Windows
-          path: dist/ClassWidgets-2-Windows.zip
+          path: |
+            dist/ClassWidgets-2-Windows.zip
+            dist/ClassWidgets-2-Windows.zip.sha256
 
       - name: ☁️ Upload artifact (macOS)
         if: runner.os == 'macOS'
@@ -151,11 +155,11 @@ jobs:
             dist/ClassWidgets-2-macOS-X64.dmg
             dist/ClassWidgets-2-macOS-ARM64.dmg
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 📤 Upload CHANGELOG & packages to 123Pan
         # 推送/手动+上传 ==> 上传
-        if: success() && 
+        if: success() &&
           ( github.event_name == 'push' ||
            github.event.inputs.upload2webdav == '123Pan' ||
            github.event.inputs.upload2webdav == 'Both')
@@ -213,6 +217,10 @@ jobs:
           curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
             -T "dist/ClassWidgets-2-Windows.zip" \
             "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
+
+          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
+            -T "dist/ClassWidgets-2-Windows.zip.sha256" \
+            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip.sha256"
 
           curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
             -T "dist/ClassWidgets-2-macOS-X64.dmg" \
