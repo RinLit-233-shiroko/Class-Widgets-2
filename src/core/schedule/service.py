@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from typing import Optional, List, Union
 
 from src.core.schedule.model import Entry, EntryType, Timeline, Subject, ScheduleData, Timetable, WeekType
+from src.core.utils import get_week_number, get_cycle_week
 
 
 class ScheduleServices:
@@ -15,7 +16,8 @@ class ScheduleServices:
         """
         返回当前日期对应的 DayEntry（深拷贝，应用 override，不修改原始数据）
         """
-        current_week = self._get_week_index(schedule, now)  # 当前第几周
+        # 当前是第几周（可为负）
+        raw_week_index = self._get_week_index(schedule, now)
         reschedule_map = self._get_reschedule_map()
 
         # 调休处理：优先使用调休映射表
@@ -26,6 +28,7 @@ class ScheduleServices:
             weekday = now.isoweekday()  # 默认 1-7
 
         max_week_cycle = schedule.meta.maxWeekCycle or 1
+        current_week = get_cycle_week(raw_week_index, max_week_cycle)
 
         for day in schedule.days:
             day_of_week_list = [day.dayOfWeek] if isinstance(day.dayOfWeek, int) else day.dayOfWeek
@@ -140,9 +143,7 @@ class ScheduleServices:
         if not schedule.meta or not schedule.meta.startDate:
             return 1  # fallback 默认第1周
 
-        start_date = datetime.fromisoformat(schedule.meta.startDate)
-        delta = (now.date() - start_date.date()).days
-        return delta // 7 + 1
+        return get_week_number(schedule.meta.startDate, now)
 
     @staticmethod
     def _is_in_week(weeks: Union[str, int, list[int], None], current_week: int, max_week_cycle: int = 1) -> bool:
