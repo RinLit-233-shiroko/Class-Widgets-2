@@ -138,12 +138,24 @@ class PluginsConfig(ConfigBaseModel):
     configs: Dict[str, Dict] = Field(default_factory=dict)
 
 
+class AutoTimeOffsetConfig(ConfigBaseModel):
+    enabled: bool = False
+    value: int = 0
+    last_update: str = ""
+
+class AutoTimeOffsetConfig(ConfigBaseModel):
+    enabled: bool = False
+    value: int = 0
+    last_update: str = ""
+
 class ScheduleConfig(ConfigBaseModel):
     current_schedule: str = QCoreApplication.translate("Configs", "New Schedule 1")
     preparation_time: int = 2  # min
     default_duration: ScheduleDefaultDurationConfig = Field(default_factory=ScheduleDefaultDurationConfig)  # 默认时长
     time_offset: int = 0  # 时差偏移
     reschedule_day: dict = {}  # 调整日程
+    
+    auto_time_offset: AutoTimeOffsetConfig = Field(default_factory=AutoTimeOffsetConfig)
     class_swap: dict = Field(default_factory=dict)  # 临时换课记录
 
 
