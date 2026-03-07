@@ -40,6 +40,7 @@ Window {
     // ComboBox 当前值
     property int selectedDayOfWeek: ClassSwapManager.getPreferredDayOfWeek()
     property int selectedWeekCycle: ClassSwapManager.getPreferredWeekOfCycle()
+    property bool pickerSyncing: false
 
     Component.onCompleted: {
         // 加载科目列表
@@ -68,9 +69,24 @@ Window {
 
         // 这个窗口在 App 启动时就会被创建，Component.onCompleted 只触发一次。
         // 因此每次显示窗口时都主动刷新，确保 schedule 已加载后能拿到数据。
+        syncPickerOnShow()
         refreshWeekCycleModel()
         refreshDailyEntries()
         loadSwapRecords()
+    }
+
+    function syncPickerOnShow() {
+        if (ClassSwapManager.hasTodaySwaps()) {
+            selectedDayOfWeek = ClassSwapManager.getPreferredDayOfWeek()
+            selectedWeekCycle = ClassSwapManager.getPreferredWeekOfCycle()
+        } else {
+            selectedDayOfWeek = ClassSwapManager.getCurrentDayOfWeek()
+            selectedWeekCycle = ClassSwapManager.getCurrentWeekOfCycle()
+        }
+
+        pickerSyncing = true
+        dayInWeekPicker.currentIndex = selectedDayOfWeek - 1
+        pickerSyncing = false
     }
 
     function loadSwapRecords() {
@@ -220,6 +236,9 @@ Window {
                         }
 
                         onCurrentIndexChanged: {
+                            if (pickerSyncing)
+                                return
+
                             if (currentIndex < 0 || currentIndex >= dayModel.count)
                                 return
 
@@ -239,6 +258,9 @@ Window {
                         model: ListModel { id: weekCycleModel }
 
                         onCurrentIndexChanged: {
+                            if (pickerSyncing)
+                                return
+
                             if (currentIndex < 0 || currentIndex >= weekCycleModel.count)
                                 return
 
