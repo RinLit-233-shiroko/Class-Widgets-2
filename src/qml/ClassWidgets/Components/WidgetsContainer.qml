@@ -17,13 +17,6 @@ Flow {
         return Configs.data.interactions.hide.state
     }
     property var preferences: Configs.data.preferences
-    property int themeHideDelta: {
-        let theme = CWThemeManager.getThemeById(CWThemeManager.currentTheme)
-        if (!theme || theme.delta === undefined || theme.delta === null)
-            return 0
-        let value = Number(theme.delta)
-        return Number.isFinite(value) ? Math.round(value) : 0
-    }
 
     property real dragOffsetX: 0
     property real dragOffsetY: 0
@@ -73,7 +66,7 @@ Flow {
                 y = (Screen.height - height) / 2
             } else {
                 y = preferences.widgets_offset_y
-                if (hide) y = -height + hideMargin - themeHideDelta  // 仅 center 生效，主题可追加上移偏移
+                if (hide) y = -height + hideMargin  // 仅 center 生效
             }
             break
         case "bottom_left":

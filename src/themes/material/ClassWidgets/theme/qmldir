@@ -1,0 +1,13 @@
+module ClassWidgets.Theme
+
+# customize
+ProgressBar 1.0 components/ProgressBar.qml
+Widget 1.0 components/Widget.qml
+Text 1.0 components/Text.qml
+Subtitle 1.0 components/Subtitle.qml
+
+# default
+Title 1.0 components/Title.qml
+Icon 1.0 components/Icon.qml
+AnimatedDigits 1.0 components/AnimatedDigits.qml
+MarqueeTitle 1.0 components/MarqueeTitle.qml
