@@ -6,7 +6,7 @@ from src.core import ASSETS_PATH
 BUILTIN_THEMES = [
     {
         "meta": {
-            "id": "default",
+            "id": "com.classwidgets.default",
             "name": QCoreApplication.translate("Theme", "Default"),
             "description": QCoreApplication.translate("Theme", "Class Widgets Builtin Default Theme"),
             "author": "Class Widgets Official",
