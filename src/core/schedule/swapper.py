@@ -363,16 +363,22 @@ class ClassSwapManager(QObject):
         if not isinstance(swap_data, dict):
             return False
 
+        logger.debug(f"Checking for today's swaps: swap_data={swap_data}")
+
         # 记录存在
         records = swap_data.get("records")
         if isinstance(records, list) and len(records) > 0:
+            logger.debug(f"Found {len(records)} swap records for today")
             return True
 
         # 仅 picker 上下文（day/week）也视为存在临时课表
         day_of_week = swap_data.get("day_of_week")
         week_of_cycle = swap_data.get("week_of_cycle")
         if isinstance(day_of_week, int) and isinstance(week_of_cycle, int):
+            logger.debug(f"Found swap picker context for today ({day_of_week}, {week_of_cycle})")
             return True
+
+        logger.debug(f"swap records {self._swap_records}")
 
         return len(self._swap_records) > 0
 
@@ -380,42 +386,6 @@ class ClassSwapManager(QObject):
     def getSwapRecords(self) -> list:
         """获取今天的换课记录"""
         return self._swap_records
-
-    @Slot(result=bool)
-    def checkAndPromptRestore(self) -> bool:
-        """
-        启动时检查：是否有未过期的换课记录
-        返回 True 表示有记录需要用户确认
-        """
-        swap_data = getattr(self.app_central.configs.schedule, "class_swap", None)
-        if not swap_data or not isinstance(swap_data, dict):
-            return False
-
-        saved_date = swap_data.get("date", "")
-        records = swap_data.get("records")
-        today = datetime.now().strftime("%Y-%m-%d")
-
-        day_of_week = swap_data.get("day_of_week")
-        week_of_cycle = swap_data.get("week_of_cycle")
-        has_picker_context = isinstance(day_of_week, int) and isinstance(week_of_cycle, int)
-
-        # 今天存在临时课表：有记录，或仅有 day/week 上下文
-        if saved_date == today and (
-                (isinstance(records, list) and len(records) > 0)
-                or has_picker_context
-        ):
-            return True
-
-        # 兼容无 date 的场景：只有 day/week 也提示
-        if not saved_date and has_picker_context:
-            return True
-
-        elif saved_date and saved_date != today:
-            # 跨天，自动清理
-            self._cleanup_swap_overrides(records if isinstance(records, list) else [])
-            self.app_central.configs.set("schedule.class_swap", {})
-            return False
-        return False
 
     @Slot()
     def discardTodaySwaps(self):

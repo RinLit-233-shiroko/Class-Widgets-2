@@ -143,7 +143,9 @@ Window {
         if (selectedWeekCycle < 1 || selectedWeekCycle > maxCycle) {
             selectedWeekCycle = 1
         }
+        pickerSyncing = true
         weekCyclePicker.currentIndex = selectedWeekCycle - 1
+        pickerSyncing = false
     }
 
     function resetSelection() {
@@ -232,11 +234,13 @@ Window {
                         }
 
                         Component.onCompleted: {
+                            pickerSyncing = true
                             currentIndex = selectedDayOfWeek - 1
+                            pickerSyncing = false
                         }
 
                         onCurrentIndexChanged: {
-                            if (pickerSyncing)
+                            if (pickerSyncing || !classSwapWindow.visible)
                                 return
 
                             if (currentIndex < 0 || currentIndex >= dayModel.count)
@@ -258,7 +262,7 @@ Window {
                         model: ListModel { id: weekCycleModel }
 
                         onCurrentIndexChanged: {
-                            if (pickerSyncing)
+                            if (pickerSyncing || !classSwapWindow.visible)
                                 return
 
                             if (currentIndex < 0 || currentIndex >= weekCycleModel.count)
