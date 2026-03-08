@@ -114,6 +114,7 @@ class ClassSwapManager(QObject):
 
         swap_data["day_of_week"] = day_of_week
         swap_data["week_of_cycle"] = week_of_cycle
+        swap_data["date"] = datetime.now().strftime("%Y-%m-%d")
         self.app_central.configs.set("schedule.class_swap", swap_data)
 
     @Slot(int, int, result=bool)
@@ -358,6 +359,21 @@ class ClassSwapManager(QObject):
     @Slot(result=bool)
     def hasTodaySwaps(self) -> bool:
         """今天是否有换课记录"""
+        swap_data = getattr(self.app_central.configs.schedule, "class_swap", None)
+        if not isinstance(swap_data, dict):
+            return False
+
+        # 记录存在
+        records = swap_data.get("records")
+        if isinstance(records, list) and len(records) > 0:
+            return True
+
+        # 仅 picker 上下文（day/week）也视为存在临时课表
+        day_of_week = swap_data.get("day_of_week")
+        week_of_cycle = swap_data.get("week_of_cycle")
+        if isinstance(day_of_week, int) and isinstance(week_of_cycle, int):
+            return True
+
         return len(self._swap_records) > 0
 
     @Slot(result=list)
@@ -376,13 +392,27 @@ class ClassSwapManager(QObject):
             return False
 
         saved_date = swap_data.get("date", "")
+        records = swap_data.get("records")
         today = datetime.now().strftime("%Y-%m-%d")
 
-        if saved_date == today and swap_data.get("records"):
-            return True  # 有今天的记录，需要提示用户
+        day_of_week = swap_data.get("day_of_week")
+        week_of_cycle = swap_data.get("week_of_cycle")
+        has_picker_context = isinstance(day_of_week, int) and isinstance(week_of_cycle, int)
+
+        # 今天存在临时课表：有记录，或仅有 day/week 上下文
+        if saved_date == today and (
+                (isinstance(records, list) and len(records) > 0)
+                or has_picker_context
+        ):
+            return True
+
+        # 兼容无 date 的场景：只有 day/week 也提示
+        if not saved_date and has_picker_context:
+            return True
+
         elif saved_date and saved_date != today:
             # 跨天，自动清理
-            self._cleanup_swap_overrides(swap_data.get("records", []))
+            self._cleanup_swap_overrides(records if isinstance(records, list) else [])
             self.app_central.configs.set("schedule.class_swap", {})
             return False
         return False
@@ -678,7 +708,7 @@ class ClassSwapManager(QObject):
     def _cleanup_swap_overrides(self, records: list):
         """清理换课产生的 override"""
         schedule = self.app_central.schedule_manager.schedule
-        if not schedule or not records:
+        if not schedule:
             return
 
         swap_ids = set()
