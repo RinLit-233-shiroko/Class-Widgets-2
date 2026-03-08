@@ -14,7 +14,6 @@ from src.core import CONFIGS_PATH, QML_PATH
 from src.core.directories import PathManager, LOGS_PATH
 
 if TYPE_CHECKING:
-    from src.core.config.manager import ConfigManager
     from src.core.notification.manager import NotificationManager, NotificationService
     from src.core.plugin.api import PluginAPI
     from src.core.plugin.manager import PluginManager
@@ -40,6 +39,7 @@ from src.core.notification import (
     NotificationManager,
     NotificationService,
 )
+from src.core.config.manager import ConfigManager
 from src.core.plugin.api import PluginAPI
 from src.core.plugin.manager import PluginManager
 from src.core.schedule import ScheduleRuntime, ScheduleManager

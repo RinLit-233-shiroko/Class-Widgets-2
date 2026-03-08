@@ -1,6 +1,6 @@
 from enum import IntEnum
 from pathlib import Path
-from typing import TypedDict
+from typing import TypedDict, Optional
 from pydantic import BaseModel
 
 

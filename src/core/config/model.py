@@ -150,7 +150,13 @@ class ScheduleConfig(ConfigBaseModel):
     default_duration: ScheduleDefaultDurationConfig = Field(default_factory=ScheduleDefaultDurationConfig)  # 默认时长
     time_offset: int = 0  # 时差偏移
     reschedule_day: dict[str, JsonData] = Field(default_factory=dict)  # 调整日程
-    class_swap: dict[str, JsonData] = Field(default_factory=dict)  # 临时换课记录
+    class_swap: dict[str, JsonData] = Field(  # 临时换课记录
+        default_factory=lambda: {
+            "day_of_week": 1,
+            "week_of_cycle": 1,
+            "records": [],
+        }
+    )
 
 
 class NetworkConfig(ConfigBaseModel):
