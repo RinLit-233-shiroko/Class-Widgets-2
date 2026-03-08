@@ -4,7 +4,7 @@ import json
 import sys
 from contextlib import contextmanager
 from pathlib import Path
-from typing import List, Dict, Optional
+from typing import Optional, TYPE_CHECKING
 
 from PySide6.QtCore import QCoreApplication
 from loguru import logger
@@ -14,7 +14,11 @@ from packaging.version import Version
 from src.core.directories import BUILTIN_PLUGINS_PATH
 from src.core.plugin import CW2Plugin, PluginAPI
 from src.core.plugin.api import __version__ as __API_VERSION__
+from src.core.plugin.models import PluginMeta
 from src.plugins import BUILTIN_PLUGINS
+
+if TYPE_CHECKING:
+    from src.core.config.model import ConfigBaseModel
 
 class PluginLoader:
     def __init__(self, plugin_api: PluginAPI, external_path: Path):
@@ -22,14 +26,14 @@ class PluginLoader:
         :param plugin_api: PluginAPI实例
         :param external_path: 外部插件目录路径
         """
-        self.api = plugin_api
-        self.external_path = external_path
-        self.builtin_path = BUILTIN_PLUGINS_PATH
+        self.api: PluginAPI = plugin_api
+        self.external_path: Path = external_path
+        self.builtin_path: Path = BUILTIN_PLUGINS_PATH
         
         # 注入运行时SDK
         self._inject_runtime_sdk()
     
-    def _inject_runtime_sdk(self):
+    def _inject_runtime_sdk(self) -> None:
         """注入运行时SDK，让插件能够导入 ClassWidgets.SDK"""
         import types
         module_name = "ClassWidgets.SDK"
@@ -96,7 +100,7 @@ class PluginLoader:
         sys.modules[module_name] = fake_mod
         logger.debug(f"Injected {module_name} into sys.modules (runtime-backed).")
     
-    def scan_plugins(self, external_path: Path) -> List[dict]:
+    def scan_plugins(self, external_path: Path) -> list[PluginMeta]:
         """扫描所有插件（外部插件 + 内置插件）"""
         metas = []
         
@@ -125,7 +129,7 @@ class PluginLoader:
         return metas
     
     @staticmethod
-    def discover_plugins_in_dir(base_dir: Path) -> List[Path]:
+    def discover_plugins_in_dir(base_dir: Path) -> list[Path]:
         """发现指定目录中的插件"""
         found = []
         if base_dir.exists() and base_dir.is_dir():
@@ -134,7 +138,7 @@ class PluginLoader:
                     found.append(plugin_dir)
         return found
     
-    def _load_meta(self, plugin_dir: Path, type: str = "external") -> dict:
+    def _load_meta(self, plugin_dir: Path, type: str = "external") -> Optional[PluginMeta]:
         """加载单个插件的meta信息"""
         try:
             meta_path = plugin_dir / "cwplugin.json"
@@ -152,7 +156,7 @@ class PluginLoader:
             return None
     
     @staticmethod
-    def validate_meta(meta: dict, plugin_dir: Path) -> bool:
+    def validate_meta(meta: PluginMeta, plugin_dir: Path) -> bool:
         """验证插件meta信息"""
         required_fields = ["id", "name", "version", "api_version", "entry", "author"]
         
@@ -162,14 +166,14 @@ class PluginLoader:
                 return False
         return True
     
-    def load_plugin(self, meta: dict) -> Optional[CW2Plugin]:
+    def load_plugin(self, meta: PluginMeta) -> Optional[CW2Plugin]:
         """加载单个插件实例"""
         if meta["_type"] == "builtin":
             return self._load_builtin_plugin(meta)
         else:
             return self._load_external_plugin(meta)
     
-    def load_plugins(self, metas: List[dict], enabled_plugins: List[str]) -> Dict[str, CW2Plugin]:
+    def load_plugins(self, metas: list[PluginMeta], enabled_plugins: list[str]) -> dict[str, CW2Plugin]:
         """加载多个插件实例"""
         loaded_plugins = {}
         
@@ -188,7 +192,7 @@ class PluginLoader:
                 
         return loaded_plugins
     
-    def _load_builtin_plugin(self, meta: dict) -> Optional[CW2Plugin]:
+    def _load_builtin_plugin(self, meta: PluginMeta) -> Optional[CW2Plugin]:
         """加载内置插件"""
         plugin_id = meta["id"]
         
@@ -217,7 +221,7 @@ class PluginLoader:
             logger.exception(f"Failed to load builtin plugin {plugin_id}: {e}")
             return None
     
-    def _load_external_plugin(self, meta: dict) -> Optional[CW2Plugin]:
+    def _load_external_plugin(self, meta: PluginMeta) -> Optional[CW2Plugin]:
         """加载外部插件"""
         plugin_dir: Path = meta["_path"]
         plugin_id = meta["id"]

@@ -9,7 +9,7 @@ Class Swap Manager - 换课管理器
 import json
 from copy import deepcopy
 from datetime import datetime
-from typing import Optional, List, Dict
+from typing import Optional, TYPE_CHECKING
 
 from PySide6.QtCore import QObject, Signal, Slot, Property
 from loguru import logger
@@ -20,19 +20,22 @@ from src.core.schedule.model import (
 from src.core.schedule.service import ScheduleServices
 from src.core.utils import generate_id, get_week_number, get_cycle_week
 
+if TYPE_CHECKING:
+    from src.core.central import AppCentral
+
 
 class ClassSwapManager(QObject):
     """换课管理器，管理临时换课操作"""
     updated = Signal()
     swapCommitted = Signal()  # 换课提交成功
 
-    def __init__(self, app_central):
+    def __init__(self, app_central: "AppCentral"):
         super().__init__()
-        self.app_central = app_central
-        self.services = ScheduleServices(app_central)
+        self.app_central: "AppCentral" = app_central
+        self.services: ScheduleServices = ScheduleServices(app_central)
 
         # 换课操作记录（用于持久化）
-        self._swap_records: List[Dict] = []
+        self._swap_records: list[dict[str, str | int]] = []
         # 当前换课日期
         self._swap_date: str = ""
 
@@ -513,7 +516,7 @@ class ClassSwapManager(QObject):
         self.saveSwapRecords()
 
     @staticmethod
-    def _normalize_swap_record(record: Dict) -> Dict:
+    def _normalize_swap_record(record: dict) -> dict:
         """规范化换课记录，移除历史 day/week 冗余字段"""
         return {
             "type": record.get("type", "replace"),

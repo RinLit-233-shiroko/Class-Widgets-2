@@ -6,6 +6,7 @@ from PySide6.QtCore import QObject, Signal, Slot, Property, QUrl
 from PySide6.QtGui import QDesktopServices
 from PySide6.QtWidgets import QFileDialog, QApplication
 from loguru import logger
+from typing import Optional, TYPE_CHECKING
 
 from src.core.convertor.slots import ScheduleIO
 from src.core.directories import SCHEDULES_PATH
@@ -40,7 +41,7 @@ class ScheduleManager(QObject):
         self.schedules_dir.mkdir(parents=True, exist_ok=True)
         self.schedule_path: Path = Path(self.schedules_dir) / "schedule.json"
         self.schedule: ScheduleData = _create_empty_schedule()
-        self.current_schedule_name: str | None = None  # 当前选中的课程表
+        self.current_schedule_name: Optional[str] = None  # 当前选中的课程表
 
         self.initialized.emit()
 
@@ -96,7 +97,7 @@ class ScheduleManager(QObject):
         self.scheduleModified.emit(self.schedule)
 
     @Slot(result=bool)
-    def save(self, path: Path | None = None):
+    def save(self, path: Optional[Path] = None):
         try:
             if path is None:
                 path = self.schedule_path
@@ -109,7 +110,7 @@ class ScheduleManager(QObject):
             return False
 
     @Property(str, notify=scheduleSwitched)
-    def currentScheduleName(self) -> str | None:
+    def currentScheduleName(self) -> Optional[str]:
         return self.current_schedule_name
 
     #slots

@@ -1,4 +1,7 @@
-from typing import Optional, TypedDict
+from pathlib import Path
+from typing import NotRequired, Optional, TypedDict
+
+from PySide6.QtCore import QUrl
 
 from src.core.notification.model import NotificationPayload
 
@@ -54,3 +57,32 @@ class SettingsPagePayload(TypedDict):
     page: str
     title: str
     icon: str
+
+
+class PluginMeta(TypedDict, total=False):
+    id: str
+    name: str
+    version: str
+    api_version: str
+    entry: str
+    author: str
+    icon: str | QUrl
+    _type: str
+    _class: type
+    _path: Optional[Path]
+    _compatible: bool
+
+
+class PluginConflict(TypedDict):
+    id: str
+    name: str
+    version: str
+    existing_version: str
+    meta: dict
+    zip_path: NotRequired[str]
+
+
+class PluginImportResult(TypedDict):
+    new_plugins: list[str]
+    updated_plugins: list[str]
+    all_imported: list[str]

@@ -4,7 +4,7 @@ from collections import defaultdict
 import yaml
 from pathlib import Path
 from datetime import date, datetime
-from typing import Union
+from typing import Optional, TYPE_CHECKING
 
 from PySide6.QtCore import QLocale
 from PySide6.QtWidgets import QApplication
@@ -30,7 +30,7 @@ class ScheduleConverter:
     def __init__(self, data: dict, source_format: str):
         self.data = data
         self.source_format = source_format  # 'cses' or 'cw2'
-        self.schedule: ScheduleData | None = None
+        self.schedule: Optional[ScheduleData] = None
 
         self._validate()  # run validation
 
@@ -69,7 +69,7 @@ class ScheduleConverter:
 
     # Factory Methods
     @classmethod
-    def from_cses(cls, path: Union[str, Path]) -> "ScheduleConverter":
+    def from_cses(cls, path: str | Path) -> "ScheduleConverter":
         try:
             with open(path, "r", encoding="utf-8") as f:
                 data = yaml.safe_load(f)
@@ -85,7 +85,7 @@ class ScheduleConverter:
             raise
 
     @classmethod
-    def from_cw2(cls, path: Union[str, Path]) -> "ScheduleConverter":
+    def from_cw2(cls, path: str | Path) -> "ScheduleConverter":
         try:
             with open(path, "r", encoding="utf-8") as f:
                 data = json.load(f)
@@ -127,7 +127,7 @@ class ScheduleConverter:
         return str(time_str + ":00")
 
     @staticmethod
-    def _to_cw_time(time: Union[str, int]) -> str:
+    def _to_cw_time(time: str | int) -> str:
         """统一时间为字符串，避免 YAML 解析问题"""
         # parse
         if isinstance(time, str):
@@ -322,7 +322,7 @@ class ScheduleConverter:
         }
 
     # Export
-    def to_cw2(self, output: Union[str, Path]) -> Path:
+    def to_cw2(self, output: str | Path) -> Path:
         if self.source_format != "cses":
             raise ValueError("Current data is not in CSES format, cannot export to CW2.")
         output = Path(output)
@@ -336,7 +336,7 @@ class ScheduleConverter:
             logger.error(f"Failed to export to CW2: {e}")
             raise
 
-    def to_cses(self, output: Union[str, Path]) -> Path:
+    def to_cses(self, output: str | Path) -> Path:
         if self.source_format != "cw2":
             raise ValueError("Current data is not in CW2 format, cannot export to CSES.")
         output = Path(output)

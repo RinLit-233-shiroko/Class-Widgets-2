@@ -6,11 +6,12 @@ from PySide6.QtQml import QQmlAbstractUrlInterceptor
 from loguru import logger
 from src.core.directories import QML_PATH
 import time
+from typing import Optional, TYPE_CHECKING
 
 class ThemeUrlInterceptor(QQmlAbstractUrlInterceptor):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self._current_theme_path: Path | None = None
+        self._current_theme_path: Optional[Path] = None
         self._nonce: str = str(int(time.time() * 1000))
         self._target_path = "ClassWidgets/theme"
 

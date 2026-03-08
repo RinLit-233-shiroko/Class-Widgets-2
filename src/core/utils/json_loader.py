@@ -1,15 +1,18 @@
 import json
 from pathlib import Path
-from typing import Any, Optional, Union
+from typing import Optional
+
+type JsonScalar = Optional[str | int | float | bool]
+type JsonData = JsonScalar | dict[str, "JsonData"] | list["JsonData"]
 
 
 class JsonLoader:
-    def __init__(self, path: Union[str, Path], default: Optional[Any] = None):
-        self.default = default
-        self.path = Path(path)
-        self.data = default
+    def __init__(self, path: str | Path, default: Optional[JsonData] = None):
+        self.default: Optional[JsonData] = default
+        self.path: Path = Path(path)
+        self.data: Optional[JsonData] = default
 
-    def load(self) -> Any:
+    def load(self) -> JsonData:
         if not self.path.exists():
             raise FileNotFoundError(f"Config file not exists: {self.path}")
 
@@ -29,10 +32,10 @@ class JsonLoader:
 
         return self.data
 
-    def get(self) -> Any:
+    def get(self) -> Optional[JsonData]:
         return self.data
 
-    def save(self, data: Any) -> None:
+    def save(self, data: JsonData) -> None:
         try:
             with open(self.path, "w", encoding="utf-8") as f:
                 json.dump(data, f, indent=4, ensure_ascii=False)

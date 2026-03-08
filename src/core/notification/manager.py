@@ -1,26 +1,34 @@
-from typing import Dict, List
+from __future__ import annotations
+
+from typing import Optional, TYPE_CHECKING
 from threading import Lock
 
 from PySide6.QtCore import Signal, QObject, Slot
 from loguru import logger
 
-from src.core.notification import NotificationData, NotificationLevel, NotificationProviderConfig
-from src.core.notification.model import NotificationPayload
+if TYPE_CHECKING:
+    from src.core import AppCentral
+    from src.core.config.manager import ConfigManager
+    from src.core.notification.provider import NotificationProvider
+    from src.core.notification import NotificationData, NotificationProviderConfig
+    from src.core.notification.model import NotificationPayload
+
+from src.core.notification import NotificationProviderConfig
 
 
 class NotificationManager(QObject):
     notified = Signal(dict)
 
-    def __init__(self, config_manager, app_central=None):
+    def __init__(self, config_manager: "ConfigManager", app_central: "AppCentral") -> None:
         super().__init__()
-        self.providers: Dict[str, object] = {}
-        self.configs = config_manager
-        self.app_central = app_central
-        self._qml_ready = False
-        self._pending_notifications: List[dict] = []
-        self._lock = Lock()
+        self.providers: dict[str, "NotificationProvider"] = {}
+        self.configs: "ConfigManager" = config_manager
+        self.app_central: "AppCentral" = app_central
+        self._qml_ready: bool = False
+        self._pending_notifications: list["NotificationPayload"] = []
+        self._lock: Lock = Lock()
 
-    def register_provider(self, provider):
+    def register_provider(self, provider: "NotificationProvider") -> None:
         if not hasattr(provider, "id") or not hasattr(provider, "name"):
             logger.warning(f"Invalid provider registration: {provider}")
             return
@@ -28,7 +36,7 @@ class NotificationManager(QObject):
         self.providers[provider.id] = provider
         _ = provider.get_config()
 
-    def unregister_provider(self, provider_id: str):
+    def unregister_provider(self, provider_id: str) -> None:
         """取消注册通知提供者"""
         if provider_id in self.providers:
             del self.providers[provider_id]
@@ -40,14 +48,14 @@ class NotificationManager(QObject):
 
     # qml 准备就绪后，自动发送所有待处理
     @Slot()
-    def notifyQmlReady(self):
+    def notifyQmlReady(self) -> None:
         """
         QML 调用此方法通知 Python 端 QML 已准备就绪
         此方法会自动刷新所有待处理的通知
         """
         self.set_qml_ready(True)
 
-    def set_qml_ready(self, ready: bool = True):
+    def set_qml_ready(self, ready: bool = True) -> None:
         """
         设置 QML 是否已准备就绪
         当 QML 准备好后，会自动发送所有待处理的通知
@@ -64,7 +72,7 @@ class NotificationManager(QObject):
             for payload in pending:
                 self.notified.emit(payload)
 
-    def flush_pending_notifications(self):
+    def flush_pending_notifications(self) -> None:
         """
         手动刷新待处理的通知
         """
@@ -77,7 +85,7 @@ class NotificationManager(QObject):
         for payload in pending:
             self.notified.emit(payload)
 
-    def dispatch(self, data: NotificationData, cfg=None):
+    def dispatch(self, data: "NotificationData", cfg: Optional["NotificationProviderConfig"] = None) -> None:
         # 记录通知分发信息
         logger.info(f"Dispatching notification: {data.provider_id} - {data.title} (Level: {data.level})")
 
@@ -92,17 +100,16 @@ class NotificationManager(QObject):
         if not getattr(cfg, "enabled", True):
             return
 
-        payload = data.model_dump()
-        payload: NotificationPayload
-        use_system_notify = getattr(cfg, "use_system_notify", False)
-        use_app_notify = getattr(cfg, "use_app_notify", True)
-        payload["useSystem"] = use_system_notify
+        payload: "NotificationPayload" = data.model_dump()
+        use_system_notify: bool = bool(getattr(cfg, "use_system_notify", False))
+        use_app_notify: bool = bool(getattr(cfg, "use_app_notify", True))
+        payload["use_system"] = use_system_notify
 
         # 如果既不使用系统通知也不使用应用内通知，则直接返回
         if not use_system_notify and not use_app_notify:
             return
 
-        provider = self.providers.get(data.provider_id)
+        provider: Optional[NotificationProvider] = self.providers.get(data.provider_id)
         provider_use_system = hasattr(provider, 'use_system_notify') and provider.use_system_notify if provider else False
 
         # 发送系统通知
@@ -136,11 +143,11 @@ class NotificationManager(QObject):
 
 
     
-    def get_providers(self):
+    def get_providers(self) -> list[dict[str, Optional[str | bool]]]:
         """
         获取所有已注册的通知提供者信息，用于前端展示
         """
-        providers_info = []
+        providers_info: list[dict[str, Optional[str | bool]]] = []
 
         for provider_id, provider in self.providers.items():
             # 获取提供者配置

@@ -1,6 +1,6 @@
 from copy import deepcopy
 from datetime import datetime
-from typing import Optional, List, Dict, Union
+from typing import Optional
 
 from PySide6.QtCore import QObject, Property, Signal, Slot
 from PySide6.QtQml import QJSValue
@@ -95,7 +95,7 @@ class ScheduleEditor(QObject):
         return subject.id
 
     @Slot(str, str, str, str, str, str, str, bool)
-    def updateSubject(self, subject_id: str, name: str = "", simplified_name = "", teacher: str = "",
+    def updateSubject(self, subject_id: str, name: str = "", simplified_name: str = "", teacher: str = "",
                       icon: str = "", color: str = "", location: str = "", is_local_classroom: bool = True) -> None:
         """更新科目"""
         subject = self.getSubject(subject_id)
@@ -134,7 +134,7 @@ class ScheduleEditor(QObject):
 
     # Day 操作
     @Slot(list, "QVariant", str, result=str)
-    def addDay(self, day_of_week: list = None, weeks = None, date: str = "") -> str:
+    def addDay(self, day_of_week: Optional[list[int]] = None, weeks=None, date: str = "") -> str:
         """添加日程"""
         day = Timeline(
             id=generate_id("day"),
@@ -148,8 +148,8 @@ class ScheduleEditor(QObject):
         return day.id
 
     @Slot(str, list, "QVariant", str)
-    def updateDay(self, day_id: str, day_of_week: list = None,
-                   weeks: Union[WeekType, str, List[int], str, int, None] = None, date: str = "") -> None:
+    def updateDay(self, day_id: str, day_of_week: Optional[list[int]] = None,
+                   weeks: WeekType | str | list[int] | Optional[int] = None, date: str = "") -> None:
         """更新日程"""
         day = self.getDay(day_id)
         if not day:
@@ -448,21 +448,21 @@ class ScheduleEditor(QObject):
 
     # 数据访问
     @Property("QVariant", notify=updated)
-    def meta(self) -> Dict:
+    def meta(self) -> dict:
         """获取课程表元数据"""
         if not self.schedule or not self.schedule.meta:
             return {}
         return self.schedule.meta.model_dump()
 
     @Property(list, notify=updated)
-    def subjects(self) -> List[Dict]:
+    def subjects(self) -> list[dict]:
         """获取所有科目"""
         if not self.schedule:
             return []
         return [subject.model_dump() for subject in self.schedule.subjects]
 
     @Property(list, notify=updated)
-    def days(self) -> List[Dict]:
+    def days(self) -> list[dict]:
         """获取所有日程"""
         if not self.schedule:
             return []
@@ -470,7 +470,7 @@ class ScheduleEditor(QObject):
         return [day.model_dump() for day in self.schedule.days]
 
     @Property(list, notify=updated)
-    def overrides(self) -> List[Timetable]:
+    def overrides(self) -> list[Timetable]:
         """获取所有条目"""
         if not self.schedule:
             return []
@@ -478,7 +478,7 @@ class ScheduleEditor(QObject):
         return [override.model_dump() for override in self.schedule.overrides]
 
     @Property("QVariant", notify=updated)
-    def scheduleData(self) -> Dict:
+    def scheduleData(self) -> dict:
         """获取完整的课程表数据"""
         if not self.schedule:
             return {}

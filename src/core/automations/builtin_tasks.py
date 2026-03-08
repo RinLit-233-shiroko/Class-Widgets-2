@@ -1,9 +1,16 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
 from loguru import logger
 
 from .base import AutomationTask
 from ..schedule import EntryType
 
 import platform
+
+if TYPE_CHECKING:
+    from src.core.central import AppCentral
 
 IS_WINDOWS = platform.system() == "Windows"
 
@@ -33,14 +40,14 @@ if IS_WINDOWS:
 
 
 class AutoHideTask(AutomationTask):
-    def __init__(self, app_central):
+    def __init__(self, app_central: "AppCentral") -> None:
         super().__init__(app_central)
 
         self.runtime = app_central.runtime
         self.runtime.currentsChanged.connect(self.on_schedule_changed)
 
-        self._window_states = {}
-        self.previous_state = False
+        self._window_states: dict[int, dict[str, bool]] = {}
+        self.previous_state: bool = False
         
         # Check initial state on startup
         if self.app_central.configs.interactions.hide.in_class:
@@ -49,14 +56,14 @@ class AutoHideTask(AutomationTask):
         # Check initial maximize/fullscreen state on startup
         self.update()
 
-    def _hide(self, state: bool):
+    def _hide(self, state: bool) -> None:
         """隐藏窗口"""
         if self.app_central.configs.interactions.hide.mini_mode:  # mini模式
             self.app_central.configs.preferences.mini_mode = state
         else:
             self.app_central.configs.interactions.hide.state = state
 
-    def update(self):
+    def update(self) -> None:
         """主循环"""
         if (not self.app_central.configs.interactions.hide.maximized
                 and not self.app_central.configs.interactions.hide.fullscreen):
@@ -86,7 +93,7 @@ class AutoHideTask(AutomationTask):
             self._hide(new_state)
         self.previous_state = new_state
 
-    def _enum_windows_callback(self, hwnd, _):
+    def _enum_windows_callback(self, hwnd: int, _) -> bool:
         if not win32gui.IsWindowVisible(hwnd):
             return True
 
@@ -105,7 +112,7 @@ class AutoHideTask(AutomationTask):
             logger.debug(f"Check window {hwnd} failed: {e}")
         return True
 
-    def on_schedule_changed(self, current_type: EntryType):
+    def on_schedule_changed(self, current_type: EntryType) -> None:
         """课程发生变化触发"""
         if not self.app_central.configs.interactions.hide.in_class:  # 未开启设置
             return

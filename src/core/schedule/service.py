@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from typing import Optional, List, Union
+from typing import Optional
 
 from src.core.schedule.model import Entry, EntryType, Timeline, Subject, ScheduleData, Timetable, WeekType
 from src.core.utils import get_week_number, get_cycle_week
@@ -80,7 +80,7 @@ class ScheduleServices:
         return None
 
     @staticmethod
-    def get_all_entries(day: Timeline) -> List[Entry]:
+    def get_all_entries(day: Timeline) -> list[Entry]:
         """
         返回当天所有可显示的条目
         """
@@ -91,7 +91,7 @@ class ScheduleServices:
         return sorted(entries, key=lambda e: datetime.strptime(e.startTime, "%H:%M").time())
 
     @staticmethod
-    def get_next_entries(day: Timeline, now: Optional[datetime] = None) -> List[Entry]:
+    def get_next_entries(day: Timeline, now: Optional[datetime] = None) -> list[Entry]:
         now = now or datetime.now()
         now_time = now.time()
         next_entries = [
@@ -121,8 +121,7 @@ class ScheduleServices:
         return ScheduleServices.get_current_entry(day, now).type if ScheduleServices.get_current_entry(day, now) else EntryType.FREE
 
     @staticmethod
-    def get_current_subject(day: Timeline, subjects: List[Subject], now: Optional[datetime] = None) -> Optional[
-        Subject]:
+    def get_current_subject(day: Timeline, subjects: list[Subject], now: Optional[datetime] = None) -> Optional[Subject]:
         current = ScheduleServices.get_current_entry(day, now)
         if current and current.subjectId:
             for s in subjects:
@@ -131,7 +130,7 @@ class ScheduleServices:
         return None
 
     @staticmethod
-    def get_subject(subject_id: str, subjects: List[Subject]) -> Optional[Subject]:
+    def get_subject(subject_id: str, subjects: list[Subject]) -> Optional[Subject]:
         if not subject_id and subjects:
             return None
         for s in subjects:
@@ -150,7 +149,7 @@ class ScheduleServices:
         return get_week_number(schedule.meta.startDate, now)
 
     @staticmethod
-    def _is_in_week(weeks: Union[str, int, list[int], None], current_week: int, max_week_cycle: int = 1) -> bool:
+    def _is_in_week(weeks: str | int | Optional[list[int]], current_week: int, max_week_cycle: int = 1) -> bool:
         """
         判断某个 weeks 字段是否包含当前周
         - "all" 或 WeekType.ALL → 永远 True

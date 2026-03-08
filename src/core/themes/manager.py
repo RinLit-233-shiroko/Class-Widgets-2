@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import List, Dict, Any, Optional
+from typing import TYPE_CHECKING, Optional
 from pathlib import Path
 
 from PySide6.QtCore import QObject, Signal, Slot, Property, QTimer, QThread, QUrl
@@ -9,8 +9,12 @@ from PySide6.QtWidgets import QFileDialog
 from loguru import logger
 
 from src.core.themes.loader import ThemeLoader, APP_API_VERSION
+from src.core.themes.model import ThemeMeta, ThemeConflict
 from src.core.themes.worker import ThemeImportWorker
 from src.core.directories import THEMES_PATH
+
+if TYPE_CHECKING:
+    from src.core.central import AppCentral
 
 DEFAULT_THEME_ID = "default"
 
@@ -22,10 +26,10 @@ class ThemeManager(QObject):
     themeImportSucceeded = Signal()
     themeImportFailed = Signal(str)
 
-    def __init__(self, app_central, parent: Optional[QObject] = None):
+    def __init__(self, app_central: "AppCentral", parent: Optional[QObject] = None):
         super().__init__(parent)
-        self._app_central = app_central
-        self._themes: List[Dict[str, Any]] = []
+        self._app_central: "AppCentral" = app_central
+        self._themes: list[ThemeMeta] = []
         self._currentTheme: str = ""
 
         self._cooldown = QTimer(self)
@@ -34,19 +38,19 @@ class ThemeManager(QObject):
         self._cooldown.timeout.connect(self._apply_pending)
         self._pending: Optional[str] = None
 
-        self.loader = ThemeLoader()
+        self.loader: ThemeLoader = ThemeLoader()
         
         # 连接到 retranslate 信号
         # app_central.retranslate.connect(self._on_retranslate)
         # self.scan()
 
     @Slot(result=list)
-    def load(self):
+    def load(self) -> list[ThemeMeta]:
         self.scan()
         return self._themes
 
     @Property('QVariant', notify=themeListChanged)
-    def themes(self) -> List[Dict[str, Any]]:
+    def themes(self) -> list[ThemeMeta]:
         return list(self._themes)
 
     @Property(str, notify=themeChanged)
@@ -65,7 +69,7 @@ class ThemeManager(QObject):
         return ""
 
     @Slot(str, result=dict)
-    def getThemeById(self, theme_id: str):
+    def getThemeById(self, theme_id: str) -> ThemeMeta:
         for theme in self._themes:
             if theme["id"] == theme_id:
                 return theme
@@ -173,7 +177,7 @@ class ThemeManager(QObject):
 
     # ---------------- 导入主题 ----------------
     @Slot(result='QVariant')
-    def importTheme(self) -> List[dict]:
+    def importTheme(self) -> list[ThemeConflict]:
         """从 ZIP 导入主题（带冲突检测）
         
         返回值：
@@ -207,7 +211,7 @@ class ThemeManager(QObject):
             self.importThemeWithPath(zip_path)
             return []
 
-    def get_conflicting_themes(self, zip_path: str) -> List[dict]:
+    def get_conflicting_themes(self, zip_path: str) -> list[ThemeConflict]:
         """检测ZIP文件中是否有与已安装主题冲突的主题"""
         import zipfile
         import json
@@ -255,7 +259,7 @@ class ThemeManager(QObject):
         return conflicting_themes
 
     @Slot(str, result='QVariant')
-    def checkThemeConflicts(self, zip_path: str) -> List[dict]:
+    def checkThemeConflicts(self, zip_path: str) -> list[ThemeConflict]:
         """QML接口：检测ZIP文件中是否有与已安装主题冲突的主题"""
         return self.get_conflicting_themes(zip_path)
 
@@ -265,8 +269,8 @@ class ThemeManager(QObject):
         if not zip_path:
             return False
 
-        self.thread = QThread()
-        self.worker = ThemeImportWorker(zip_path, THEMES_PATH, self.scan, self._themes)
+        self.thread: QThread = QThread()
+        self.worker: ThemeImportWorker = ThemeImportWorker(zip_path, THEMES_PATH, self.scan, self._themes)
         self.worker.moveToThread(self.thread)
 
         self.thread.started.connect(self.worker.run)

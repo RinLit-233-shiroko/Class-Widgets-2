@@ -118,7 +118,7 @@ class ConfigManager(QObject):
         except Exception as e:
             logger.error(f"Save config failed: {e}")
 
-    def __getattr__(self, name):
+    def __getattr__(self, name: str):
         """代理属性获取"""
         if name == '_config':
             return self.__dict__['_config']
@@ -130,7 +130,7 @@ class ConfigManager(QObject):
         return self._config.model_dump()  # 整个配置转 dict
 
     @Slot(str, "QVariant")
-    def set(self, key: str, value):
+    def set(self, key: str, value) -> None:
         keys = key.split('.')  # 支持点分层，如 "preferences.current_theme"
         cfg = self._config
         for k in keys[:-1]:
@@ -148,7 +148,7 @@ class ConfigManager(QObject):
         self.configChanged.emit()
 
     @Slot(str, str, "QVariant")
-    def setPlugin(self, plugin_id: str, key: str, value):
+    def setPlugin(self, plugin_id: str, key: str, value) -> None:
         """设置插件配置（同时更新运行时模型）"""
         # 先更新 dict 存储
         plugin_cfg: dict = self._config.plugins.configs.get(plugin_id)

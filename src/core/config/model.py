@@ -1,14 +1,20 @@
+from __future__ import annotations
+
 from enum import Enum
+from typing import Optional
+from collections.abc import Callable
 
 from pydantic import BaseModel, Field, Extra, PrivateAttr
-from typing import Dict, List, Optional, Any
 from PySide6.QtCore import QLocale, QCoreApplication, Property
 
 from ..directories import DEFAULT_THEME
 from src import __version__, __version_type__
 from ..notification import NotificationProviderConfig
 
-GITHUB_MIRRORS: Dict[str, str] = {
+type JsonScalar = Optional[str | int | float | bool]
+type JsonData = JsonScalar | dict[str, "JsonData"] | list["JsonData"]
+
+GITHUB_MIRRORS: dict[str, str] = {
     "gh_proxy": "https://gh-proxy.com/",
     "kkgithub": "https://kkgithub.com/",
     "gitfast": "https://gitfast.top/",
@@ -16,7 +22,7 @@ GITHUB_MIRRORS: Dict[str, str] = {
 
 
 class ConfigBaseModel(BaseModel):
-    _on_change: callable = PrivateAttr(default=None)
+    _on_change: Optional[Callable[[], None]] = PrivateAttr(default=None)
 
     def __init__(self, **data):
         super().__init__(**data)
@@ -49,7 +55,7 @@ class ZOrder(str, Enum):
 class WidgetEntry(ConfigBaseModel):
     type_id: str
     instance_id: str
-    settings: Optional[Dict[str, Any]] = {}
+    settings: Optional[dict[str, JsonData]] = Field(default_factory=dict)
 
 class LocaleConfig(ConfigBaseModel):
     """
@@ -104,7 +110,7 @@ class PreferencesConfig(ConfigBaseModel):
     mini_mode: bool = False  # 迷你
     lighting_effect: bool = True  # 光影效果
 
-    widgets_presets: Dict[str, List[WidgetEntry]] = Field(
+    widgets_presets: dict[str, list[WidgetEntry]] = Field(
         default_factory=lambda: {
             "default": [
                 WidgetEntry(type_id="classwidgets.time", instance_id="8ee721ef-ab36-4c23-834d-2c666a6739a3"),
@@ -134,8 +140,8 @@ class InteractionsConfig(ConfigBaseModel):
 
 
 class PluginsConfig(ConfigBaseModel):
-    enabled: List[str] = ["builtin.classwidgets.widgets"]
-    configs: Dict[str, Dict] = Field(default_factory=dict)
+    enabled: list[str] = ["builtin.classwidgets.widgets"]
+    configs: dict[str, dict[str, JsonData]] = Field(default_factory=dict)
 
 
 class ScheduleConfig(ConfigBaseModel):
@@ -143,15 +149,15 @@ class ScheduleConfig(ConfigBaseModel):
     preparation_time: int = 2  # min
     default_duration: ScheduleDefaultDurationConfig = Field(default_factory=ScheduleDefaultDurationConfig)  # 默认时长
     time_offset: int = 0  # 时差偏移
-    reschedule_day: dict = {}  # 调整日程
-    class_swap: dict = Field(default_factory=dict)  # 临时换课记录
+    reschedule_day: dict[str, JsonData] = Field(default_factory=dict)  # 调整日程
+    class_swap: dict[str, JsonData] = Field(default_factory=dict)  # 临时换课记录
 
 
 class NetworkConfig(ConfigBaseModel):
     """
     网络配置
     """
-    mirrors: Dict[str, str] = GITHUB_MIRRORS  # 镜像源
+    mirrors: dict[str, str] = GITHUB_MIRRORS  # 镜像源
     current_mirror: str = "gh_proxy"  # 当前镜像源
     mirror_enabled: bool = True  # 是否启用网络功能
     releases_url: str = "https://classwidgets.rinlit.cn/2/releases.json"  # 版本更新地址
@@ -164,10 +170,10 @@ class NotificationsConfig(ConfigBaseModel):
     enabled: bool = True  # 全局通知开关
     default_sound: Optional[str] = None  # 默认铃声
     volume: float = 0.7  # 通知音量 (0.0-1.0)
-    providers: Dict[str, NotificationProviderConfig] = Field(default_factory=dict)
+    providers: dict[str, NotificationProviderConfig] = Field(default_factory=dict)
     
     # 按通知级别设置的默认音频文件（默认为空字符串）
-    level_sounds: Dict[int, str] = Field(default_factory=lambda: {
+    level_sounds: dict[int, str] = Field(default_factory=lambda: {
         0: "",     # INFO - 普通提示音
         1: "",     # ANNOUNCEMENT - 上下课提醒音
         2: "",     # WARNING - 警告音

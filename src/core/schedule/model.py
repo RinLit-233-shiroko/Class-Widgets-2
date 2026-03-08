@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional, List, Union
+from typing import Optional
 from enum import Enum
 
 from src import __SCHEDULE_SCHEMA_VERSION__
@@ -39,9 +39,9 @@ class Entry(BaseModel):
 
 class Timeline(BaseModel):
     id: str
-    entries: List[Entry]
-    dayOfWeek: Optional[List[int]] = None  # 1~7
-    weeks: Union[WeekType, List[int], int, None] = None  # all, custom, round
+    entries: list[Entry]
+    dayOfWeek: Optional[list[int]] = None  # 1~7
+    weeks: WeekType | list[int] | Optional[int] = None  # all, custom, round
     date: Optional[str] = None
 
 
@@ -55,8 +55,8 @@ class MetaInfo(BaseModel):
 class Timetable(BaseModel):  # 覆盖Entry信息以方便设置课表
     id: str
     entryId: str
-    dayOfWeek: Optional[List[int]] = None  # 1~7
-    weeks: Union[WeekType, List[int], int, None] = None  # all, custom, round
+    dayOfWeek: Optional[list[int]] = None  # 1~7
+    weeks: WeekType | list[int] | Optional[int] = None  # all, custom, round
     subjectId: Optional[str] = None
     title: Optional[str] = None
     startTime: Optional[str] = None
@@ -65,6 +65,6 @@ class Timetable(BaseModel):  # 覆盖Entry信息以方便设置课表
 
 class ScheduleData(BaseModel):
     meta: MetaInfo
-    subjects: List[Subject] = []
-    days: List[Timeline] = []
-    overrides: List[Timetable] = []
+    subjects: list[Subject] = []
+    days: list[Timeline] = []
+    overrides: list[Timetable] = []

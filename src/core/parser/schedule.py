@@ -1,6 +1,11 @@
+from __future__ import annotations
+
 import json
 from pathlib import Path
-from typing import Union, Optional
+from typing import Optional, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from src.core.schedule.model import ScheduleData
 
 from src.core.schedule.model import ScheduleData
 from src.core.utils.json_loader import JsonLoader
@@ -8,9 +13,9 @@ from src import __SCHEDULE_SCHEMA_VERSION__
 
 
 class ScheduleParser:
-    def __init__(self, path: Union[Path, str]):
-        self.path = path
-        self.loader = JsonLoader(self.path)
+    def __init__(self, path: Path | str) -> None:
+        self.path: Path | str = path
+        self.loader: JsonLoader = JsonLoader(self.path)
         self.schedule: Optional[ScheduleData] = None
         self.schedule_dict: Optional[dict] = None
 

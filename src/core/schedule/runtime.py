@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from typing import Optional, List
+from typing import Optional, TYPE_CHECKING
 
 from PySide6.QtCore import QObject, Property, Signal, Slot, QCoreApplication
 from loguru import logger
@@ -9,17 +9,21 @@ from src.core.schedule.model import ScheduleData, MetaInfo, Timeline, Entry, Ent
 from src.core.schedule.service import ScheduleServices
 from src.core.utils import get_cycle_week, get_week_number
 
+if TYPE_CHECKING:
+    from src.core.central import AppCentral
+    from src.core.notification import NotificationManager
+
 
 class ScheduleRuntime(QObject):
     updated = Signal()  # 文件更新
     currentsChanged = Signal(EntryType)  # 日程更新
 
-    def __init__(self, app_central):
+    def __init__(self, app_central: "AppCentral"):
         super().__init__()
-        self.app_central = app_central
+        self.app_central: "AppCentral" = app_central
         # self.schedule_path = Path(schedule_path)
         self.schedule: Optional[ScheduleData] = None
-        self.services = ScheduleServices(app_central)
+        self.services: ScheduleServices = ScheduleServices(app_central)
         self.current_time = datetime.now()
         self.current_offset_time = datetime.now()
 
@@ -32,8 +36,8 @@ class ScheduleRuntime(QObject):
         self.current_day: Optional[Timeline] = None
         self.previous_entry: Optional[Entry] = None
         self.current_entry: Optional[Entry] = None
-        self.all_entries: Optional[List[Entry]] = None
-        self.next_entries: Optional[List[Entry]] = None
+        self.all_entries: Optional[list[Entry]] = None
+        self.next_entries: Optional[list[Entry]] = None
         self.remaining_time: Optional[timedelta] = None
         self._progress: Optional[float] = None
         self.current_status: Optional[EntryType] = None
@@ -42,18 +46,18 @@ class ScheduleRuntime(QObject):
         self.current_title: Optional[str] = None
 
         # Separate notification providers for different notification types
-        self.class_notification_provider = None
-        self.activity_notification_provider = None
-        self.break_notification_provider = None
-        self.free_notification_provider = None
-        self.preparation_bell_provider = None
+        self.class_notification_provider: Optional[NotificationProvider] = None
+        self.activity_notification_provider: Optional[NotificationProvider] = None
+        self.break_notification_provider: Optional[NotificationProvider] = None
+        self.free_notification_provider: Optional[NotificationProvider] = None
+        self.preparation_bell_provider: Optional[NotificationProvider] = None
         
         self._register_notification_providers()
 
         # 连接到retranslate信号，在翻译加载后更新通知提供者名称
         app_central.retranslate.connect(self._on_retranslate)
 
-    def _register_notification_providers(self):
+    def _register_notification_providers(self) -> None:
         """注册不同类型的通知提供者，确保在翻译加载后执行"""
         if self.class_notification_provider is not None:
             return
@@ -104,7 +108,7 @@ class ScheduleRuntime(QObject):
         )
 
     @Slot()
-    def _on_retranslate(self):
+    def _on_retranslate(self) -> None:
         """处理翻译信号，重新注册通知提供者"""
         # Unregister all existing providers
         providers = [
@@ -179,7 +183,7 @@ class ScheduleRuntime(QObject):
         return [entry.model_dump() for entry in self.next_entries]
 
     @Property(int, notify=updated)
-    def timeOffset(self):
+    def timeOffset(self) -> int:
         return self.time_offset
 
     @Property(dict, notify=updated)
@@ -202,21 +206,21 @@ class ScheduleRuntime(QObject):
         return self._progress
 
     @Property(str, notify=updated)
-    def currentStatus(self):
+    def currentStatus(self) -> str:
         if not self.current_status:
             return EntryType.FREE.value
         return self.current_status.value
 
     # SUBJECT
     @Property(dict, notify=updated)
-    def currentSubject(self) -> dict:
+    def currentSubject(self) -> Optional[dict]:
         return self.current_subject.model_dump() if self.current_subject else None
 
     @Property(str, notify=updated)
     def currentTitle(self) -> str:
         return self.current_title
 
-    def refresh(self, schedule: ScheduleData = None):
+    def refresh(self, schedule: Optional[ScheduleData] = None) -> None:
         if schedule is None and self.schedule is None:
             return
         self._update_schedule(schedule)
@@ -224,7 +228,7 @@ class ScheduleRuntime(QObject):
         self._update_notify()
         self.updated.emit()
 
-    def _update_schedule(self, schedule: ScheduleData):
+    def _update_schedule(self, schedule: Optional[ScheduleData]) -> None:
         """
         更新日程
         :param schedule:
@@ -259,7 +263,7 @@ class ScheduleRuntime(QObject):
         if self.previous_entry != self.current_entry:
             self.currentsChanged.emit(self.current_status)
 
-    def _update_time(self):  # 更新时间
+    def _update_time(self) -> None:  # 更新时间
         self.current_day_of_week = self.current_offset_time.isoweekday()
         self.current_week = get_week_number(self.schedule.meta.startDate, self.current_offset_time)
         self.current_week_of_cycle = get_cycle_week(self.current_week, self.schedule.meta.maxWeekCycle)
@@ -276,7 +280,7 @@ class ScheduleRuntime(QObject):
         if now >= end: return 1
         return round((now - start).total_seconds() / (end - start).total_seconds(), 2)
 
-    def _update_notify(self):
+    def _update_notify(self) -> None:
         if self.previous_entry != self.current_entry:
             self.previous_entry = self.current_entry
             status = self.current_status.value

@@ -1,8 +1,7 @@
 from enum import IntEnum
 from pathlib import Path
-from typing import Optional, Union, TypedDict
-from pydantic import BaseModel, Field
-from pathlib import Path
+from typing import TypedDict
+from pydantic import BaseModel
 
 
 class NotificationLevel(IntEnum):
@@ -17,7 +16,7 @@ class NotificationData(BaseModel):
     level: int                # 实际由前端映射样式
     title: str
     message: Optional[str] = None
-    icon: Optional[Union[str, Path]] = None  # 图标，支持字体图标名称或图片URI
+    icon: Optional[str | Path] = None  # 图标，支持字体图标名称或图片URI
 
     # 行为 & 展示
     duration: int = 4000      # ms，0 = 常驻
@@ -32,7 +31,7 @@ class NotificationPayload(TypedDict):
     level: int
     title: str
     message: Optional[str]
-    icon: Optional[Union[str, Path]]
+    icon: Optional[str | Path]
     duration: int
     closable: bool
     silent: bool

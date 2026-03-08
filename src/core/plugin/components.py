@@ -1,6 +1,6 @@
 import sys
 from pathlib import Path
-from typing import Optional, List, Dict, Union, cast
+from typing import Optional, cast
 from datetime import datetime
 from PySide6.QtCore import Signal, QObject
 from loguru import logger
@@ -42,7 +42,7 @@ class BaseAPI(QObject):
         """获取当前插件"""
         return self._plugin_api.current_plugin
     
-    def _resolve_path(self, path: Union[str, Path]) -> Path:
+    def _resolve_path(self, path: str | Path) -> Path:
         """统一的路径解析方法"""
         path = Path(path)
         if not path.is_absolute():
@@ -56,10 +56,10 @@ class BaseAPI(QObject):
 
 
 class WidgetsAPI(BaseAPI):
-    def register(self, widget_id: str, name: str, qml_path: Union[str, Path],
-                 backend_obj: QObject = None,
-                 settings_qml: Optional[Union[str, Path]] = None,
-                 default_settings: Optional[dict] = None):
+    def register(self, widget_id: str, name: str, qml_path: str | Path,
+                 backend_obj: Optional[QObject] = None,
+                 settings_qml: Optional[str | Path] = None,
+                 default_settings: Optional[dict] = None) -> None:
         if not self.current_plugin:
             raise ValueError("No plugin context available. Make sure this method is called within a plugin.")
             
@@ -84,7 +84,7 @@ class NotificationAPI(BaseAPI):
 
     def get_provider(
             self, provider_id: str, name: str = None,
-            icon: Union[str, Path] = None, use_system_notify: bool = False
+            icon: Optional[str | Path] = None, use_system_notify: bool = False
     ) -> NotificationProvider:
         return self.register_provider(
             provider_id, name, icon, use_system_notify
@@ -92,7 +92,7 @@ class NotificationAPI(BaseAPI):
 
     def register_provider(
             self, provider_id: str, name: str = None,
-            icon: Union[str, Path] = None, use_system_notify: bool = False
+            icon: Optional[str | Path] = None, use_system_notify: bool = False
     ) -> NotificationProvider:
         """
         为插件创建一个 NotificationProvider 实例
@@ -188,10 +188,10 @@ class RuntimeAPI(BaseAPI):
         return cast(RuntimeMetaPayload, self._runtime.schedule_meta.model_dump())
 
     @property
-    def current_day_entries(self) -> List[RuntimeEntryPayload]:
+    def current_day_entries(self) -> list[RuntimeEntryPayload]:
         if not self._runtime.current_day:
             return []
-        return cast(List[RuntimeEntryPayload], [e.model_dump() for e in self._runtime.current_day.entries])
+        return cast(list[RuntimeEntryPayload], [e.model_dump() for e in self._runtime.current_day.entries])
 
     @property
     def current_entry(self) -> Optional[RuntimeEntryPayload]:
@@ -200,10 +200,10 @@ class RuntimeAPI(BaseAPI):
         return cast(RuntimeEntryPayload, self._runtime.current_entry.model_dump())
 
     @property
-    def next_entries(self) -> List[RuntimeEntryPayload]:
+    def next_entries(self) -> list[RuntimeEntryPayload]:
         if not self._runtime.next_entries:
             return []
-        return cast(List[RuntimeEntryPayload], [e.model_dump() for e in self._runtime.next_entries])
+        return cast(list[RuntimeEntryPayload], [e.model_dump() for e in self._runtime.next_entries])
 
     @property
     def remaining_time(self) -> RuntimeRemainingTimePayload:
@@ -240,7 +240,7 @@ class ConfigAPI(BaseAPI):
     def __init__(self, plugin_api):
         super().__init__(plugin_api)
         self._cm = self._app.configs
-        self._plugin_models: Dict[str, ConfigBaseModel] = {}  # 运行时对象
+        self._plugin_models: dict[str, ConfigBaseModel] = {}  # 运行时对象
 
     def register_plugin_model(self, plugin_id: str, model: ConfigBaseModel):
         """
@@ -306,7 +306,7 @@ class UiAPI(BaseAPI):
     def pages(self):
         return self._registered_pages
 
-    def unregister_settings_page(self, qml_path: Union[str, Path]):
+    def unregister_settings_page(self, qml_path: str | Path) -> None:
         # 使用统一的路径解析方法
         qml_path = self._resolve_path(qml_path).as_uri()
 
@@ -319,8 +319,8 @@ class UiAPI(BaseAPI):
     def register_settings_page(
         self,
         qml_path: str | Path,
-        title: str | None = None,
-        icon: str | None = None
+        title: Optional[str] = None,
+        icon: Optional[str] = None
     ):
         """
         插件提供相对路径，可自定义 title 和 icon

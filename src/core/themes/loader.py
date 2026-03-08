@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import List, Dict, Any, Optional
+from typing import Optional
 
 from packaging.version import Version, InvalidVersion
 from packaging.specifiers import SpecifierSet
@@ -19,6 +19,7 @@ from PySide6.QtCore import QUrl, QCoreApplication
 from loguru import logger
 
 from src.core.directories import THEMES_PATH
+from src.core.themes.model import ThemeMeta
 from src.themes import BUILTIN_THEMES
 
 APP_API_VERSION = "2.0.0"
@@ -44,8 +45,8 @@ def is_compatible(theme_api_version: str, app_version: Version = APP_API_VERSION
 class ThemeLoader:
     """Theme metadata loader (builtin + external)."""
 
-    def scan_themes(self, external_path: Path = THEMES_PATH) -> List[Dict[str, Any]]:
-        metas: List[Dict[str, Any]] = []
+    def scan_themes(self, external_path: Path = THEMES_PATH) -> list[ThemeMeta]:
+        metas: list[ThemeMeta] = []
 
         # Built-in themes (authoritative, no fallback)
         logger.info("Loading built-in themes")
@@ -109,7 +110,7 @@ class ThemeLoader:
         logger.info(f"Total themes loaded: {len(metas)}")
         return metas
 
-    def _load_external_meta(self, theme_dir: Path) -> Optional[Dict[str, Any]]:
+    def _load_external_meta(self, theme_dir: Path) -> Optional[ThemeMeta]:
         meta_path = theme_dir / "cwtheme.json"
         if not meta_path.exists():
             return None
@@ -135,7 +136,7 @@ class ThemeLoader:
             return None
 
     @staticmethod
-    def _validate_meta(meta: Dict[str, Any], theme_dir: Path) -> bool:
+    def _validate_meta(meta: ThemeMeta, theme_dir: Path) -> bool:
         required = ["id", "name", "version", "api_version", "author"]
         for key in required:
             if not meta.get(key):

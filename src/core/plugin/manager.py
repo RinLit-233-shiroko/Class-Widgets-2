@@ -3,7 +3,7 @@ import shutil
 import sys
 from contextlib import contextmanager
 from pathlib import Path
-from typing import List, Dict
+from typing import Optional, TYPE_CHECKING
 
 from PySide6.QtCore import Slot, QObject, Signal, Property, QUrl, QThread, QCoreApplication
 from PySide6.QtGui import QDesktopServices
@@ -13,9 +13,13 @@ from loguru import logger
 from src.core.directories import PLUGINS_PATH
 from src.core.plugin import CW2Plugin, PluginAPI
 from src.core.plugin.loader import PluginLoader, check_api_version
+from src.core.plugin.models import PluginMeta, PluginConflict
 from src.core.plugin.worker import PluginImportWorker
 from src.core.plugin.api import __version__ as __API_VERSION__
 from src.core.notification import NotificationData, NotificationLevel
+
+if TYPE_CHECKING:
+    from src.core.central import AppCentral
 
 
 class PluginManager(QObject):
@@ -24,24 +28,24 @@ class PluginManager(QObject):
     pluginImportSucceeded = Signal()
     pluginImportFailed = Signal(str)
 
-    def __init__(self, plugin_api: PluginAPI, app_central):
+    def __init__(self, plugin_api: PluginAPI, app_central: "AppCentral"):
         """
         :param plugin_api: 由 AppCentral 创建的 PluginAPI 实例
         :param app_central: AppCentral
         """
         super().__init__()
-        self.api = plugin_api
-        self.app_central = app_central
+        self.api: PluginAPI = plugin_api
+        self.app_central: "AppCentral" = app_central
 
         # 存放 plugin_id -> plugin instance
-        self._plugins: Dict[str, CW2Plugin] = {}
-        self.metas: List[dict] = []  # 所有找到的插件 meta
-        self.enabled_plugins = set(getattr(self.app_central.configs.plugins, "enabled", []))
+        self._plugins: dict[str, CW2Plugin] = {}
+        self.metas: list[PluginMeta] = []  # 所有找到的插件 meta
+        self.enabled_plugins: set[str] = set(getattr(self.app_central.configs.plugins, "enabled", []))
 
-        self.external_path = PLUGINS_PATH
+        self.external_path: Path = PLUGINS_PATH
 
         # 创建 PluginLoader 实例
-        self.loader = PluginLoader(plugin_api, self.external_path)
+        self.loader: PluginLoader = PluginLoader(plugin_api, self.external_path)
 
         # 连接到 retranslate 信号
         app_central.retranslate.connect(self._on_retranslate)
@@ -52,7 +56,7 @@ class PluginManager(QObject):
         self.initialized.emit()
 
     # ---------------- discover / scan ----------------
-    def scan(self):
+    def scan(self) -> None:
         """扫描外部插件 + 加载内置插件 meta"""
         # 使用 PluginLoader 扫描插件
         self.metas = self.loader.scan_plugins(self.external_path)
@@ -70,7 +74,7 @@ class PluginManager(QObject):
         
         logger.info(f"Found {len(self.metas)} plugins (builtin + external).")
 
-    def _check_incompatible_plugins(self):
+    def _check_incompatible_plugins(self) -> None:
         """检查不兼容插件并发送通知"""
         incompatible_plugins = [
             meta for meta in self.metas 
@@ -114,11 +118,11 @@ class PluginManager(QObject):
             yield
     
     # 加载启用插件
-    def load_plugins(self):
+    def load_plugins(self) -> None:
         """加载已启用的插件实例（批量）"""
         self._plugins = self.loader.load_plugins(self.metas, list(self.enabled_plugins))
 
-    def _on_retranslate(self):
+    def _on_retranslate(self) -> None:
         """翻译变更时重新扫描插件以更新翻译"""
         logger.info("Retranslating plugins...")
         self.scan()
@@ -133,7 +137,7 @@ class PluginManager(QObject):
                 except Exception as e:
                     logger.warning(f"Failed to re-register widgets for plugin {plugin_id}: {e}")
 
-    def _initialized_plugin(self, meta: dict):
+    def _initialized_plugin(self, meta: PluginMeta) -> Optional[CW2Plugin]:
         """
         负责单个插件的加载、实例化与 on_load() 调用
         """
@@ -141,12 +145,12 @@ class PluginManager(QObject):
         return self.loader.load_plugin(meta)
 
     # ---------------- 管理 / 卸载 ----------------
-    def set_enabled_plugins(self, enabled_plugins: List[str]):
+    def set_enabled_plugins(self, enabled_plugins: list[str]) -> None:
         if not enabled_plugins:
             return
         self.enabled_plugins = set(enabled_plugins)
 
-    def cleanup(self):
+    def cleanup(self) -> None:
         """卸载全部插件（用于退出时）"""
         for pid, plugin in list(self._plugins.items()):
             try:
@@ -163,7 +167,7 @@ class PluginManager(QObject):
         self._plugins.clear()
 
     @Slot(result='QVariant')
-    def importPlugin(self) -> List[dict]:
+    def importPlugin(self) -> list[PluginConflict]:
         """从 ZIP 导入插件（带冲突检测）
         
         返回值：
@@ -197,7 +201,7 @@ class PluginManager(QObject):
             self.importPluginWithPath(zip_path)
             return []
 
-    def get_conflicting_plugins(self, zip_path: str) -> List[dict]:
+    def get_conflicting_plugins(self, zip_path: str) -> list[PluginConflict]:
         """检测ZIP文件中是否有与已安装插件冲突的插件"""
         import zipfile
         import json
@@ -245,7 +249,7 @@ class PluginManager(QObject):
         return conflicting_plugins
 
     @Slot(str, result='QVariant')
-    def checkPluginConflicts(self, zip_path: str) -> List[dict]:
+    def checkPluginConflicts(self, zip_path: str) -> list[PluginConflict]:
         """QML接口：检测ZIP文件中是否有与已安装插件冲突的插件"""
         return self.get_conflicting_plugins(zip_path)
 
@@ -255,8 +259,8 @@ class PluginManager(QObject):
         if not zip_path:
             return False
 
-        self.thread = QThread()
-        self.worker = PluginImportWorker(zip_path, self.external_path, self.scan, self.metas)
+        self.thread: QThread = QThread()
+        self.worker: PluginImportWorker = PluginImportWorker(zip_path, self.external_path, self.scan, self.metas)
         self.worker.moveToThread(self.thread)
 
         self.thread.started.connect(self.worker.run)

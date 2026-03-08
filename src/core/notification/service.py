@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from PySide6.QtCore import QObject, Signal, Slot, QUrl
 from PySide6.QtMultimedia import QSoundEffect
 from pathlib import Path
@@ -6,17 +9,21 @@ from loguru import logger
 from .model import NotificationProviderConfig
 from src.core.directories import ASSETS_PATH
 
+if TYPE_CHECKING:
+    from src.core.notification.manager import NotificationManager
+    from src.core.config.manager import ConfigManager
+
 
 class NotificationService(QObject):
     """通知服务类，管理所有通知相关功能"""
     
     notificationProvidersChanged = Signal()
     
-    def __init__(self, notification_manager, config_manager):
+    def __init__(self, notification_manager: "NotificationManager", config_manager: "ConfigManager") -> None:
         super().__init__()
-        self.notification_manager = notification_manager
-        self.config_manager = config_manager
-        self._sound_effects = {}
+        self.notification_manager: "NotificationManager" = notification_manager
+        self.config_manager: "ConfigManager" = config_manager
+        self._sound_effects: dict[str, QSoundEffect] = {}
         
     @property
     def notificationProviders(self):
@@ -26,7 +33,7 @@ class NotificationService(QObject):
         return self.notification_manager.get_providers()
 
     @Slot(str, bool)
-    def setNotificationProviderEnabled(self, provider_id, enabled):
+    def setNotificationProviderEnabled(self, provider_id: str, enabled: bool) -> None:
         """
         设置特定通知提供者的启用状态
         """
@@ -35,7 +42,7 @@ class NotificationService(QObject):
         self.config_manager.notifications.providers[provider_id].enabled = enabled
 
     @Slot(str, bool)
-    def setNotificationProviderSystemNotify(self, provider_id, use_system):
+    def setNotificationProviderSystemNotify(self, provider_id: str, use_system: bool) -> None:
         """
         设置特定通知提供者是否使用系统通知
         """
@@ -44,7 +51,7 @@ class NotificationService(QObject):
         self.config_manager.notifications.providers[provider_id].use_system_notify = use_system
 
     @Slot(str, bool)
-    def setNotificationProviderAppNotify(self, provider_id, use_app):
+    def setNotificationProviderAppNotify(self, provider_id: str, use_app: bool) -> None:
         """
         设置特定通知提供者是否使用应用内通知
         """
@@ -54,7 +61,7 @@ class NotificationService(QObject):
 
     # === 声音管理方法 ===
     @Slot(int, str)
-    def setLevelSound(self, level, sound):
+    def setLevelSound(self, level: int, sound: str) -> None:
         """设置通知级别对应的声音文件"""
         if not hasattr(self.config_manager.notifications, 'level_sounds'):
             self.config_manager.notifications.level_sounds = {}
@@ -62,60 +69,60 @@ class NotificationService(QObject):
         logger.debug(f"Set sound for level {level}: {sound}")
 
     @Slot(int, result=str)
-    def getLevelSound(self, level):
+    def getLevelSound(self, level: int) -> str:
         """获取通知级别对应的声音文件"""
         if not hasattr(self.config_manager.notifications, 'level_sounds'):
             return ""
         return self.config_manager.notifications.level_sounds.get(str(level), "")
 
     @Slot(int, result=float)
-    def getNotificationVolume(self):
+    def getNotificationVolume(self) -> float:
         """获取全局通知音量"""
         return getattr(self.config_manager.notifications, 'volume', 1.0)
 
     @Slot(float)
-    def setNotificationVolume(self, volume):
+    def setNotificationVolume(self, volume: float) -> None:
         """设置全局通知音量"""
         self.config_manager.notifications.volume = volume
 
     @Slot(bool)
-    def setNotificationsEnabled(self, enabled):
+    def setNotificationsEnabled(self, enabled: bool) -> None:
         """设置全局通知启用状态"""
         self.config_manager.notifications.enabled = enabled
 
     @Slot(result=bool)
-    def getNotificationsEnabled(self):
+    def getNotificationsEnabled(self) -> bool:
         """获取全局通知启用状态"""
         return getattr(self.config_manager.notifications, 'enabled', True)
 
     # === 全局级别声音控制 ===
     @Slot(str, int, result=str)
-    def getNotificationProviderLevelSound(self, provider_id, level):
+    def getNotificationProviderLevelSound(self, provider_id: str, level: int) -> str:
         """获取全局级别声音路径（忽略provider_id参数）"""
         return self.getLevelSound(level)
 
     @Slot(str, int, str)
-    def setNotificationProviderLevelSound(self, provider_id, level, sound):
+    def setNotificationProviderLevelSound(self, provider_id: str, level: int, sound: str) -> None:
         """设置全局级别声音路径（忽略provider_id参数）"""
         self.setLevelSound(level, sound)
 
     @Slot(int, result=str)
-    def getGlobalLevelSound(self, level):
+    def getGlobalLevelSound(self, level: int) -> str:
         """获取全局级别声音路径"""
         return self.getLevelSound(level)
 
     @Slot(int, str)
-    def setGlobalLevelSound(self, level, sound):
+    def setGlobalLevelSound(self, level: int, sound: str) -> None:
         """设置全局级别声音路径"""
         self.setLevelSound(level, sound)
 
     @Slot(result=float)
-    def getGlobalVolume(self):
+    def getGlobalVolume(self) -> float:
         """获取全局通知音量"""
         return getattr(self.config_manager.notifications, 'volume', 1.0)
 
     @Slot(float)
-    def setGlobalVolume(self, volume):
+    def setGlobalVolume(self, volume: float) -> None:
         """设置全局通知音量"""
         self.config_manager.notifications.volume = volume
 
@@ -136,7 +143,7 @@ class NotificationService(QObject):
         self.playNotificationSound("global", level)
 
     @Slot(str, int)
-    def playNotificationSound(self, provider_id, level):
+    def playNotificationSound(self, provider_id: str, level: int) -> None:
         """播放通知级别对应的铃声"""
         try:
             if not self.getNotificationsEnabled():
@@ -190,7 +197,7 @@ class NotificationService(QObject):
             logger.error(f"Failed to play notification sound for provider {provider_id}, level {level}: {e}")
 
     @Slot(result=bool)
-    def selectNotificationSound(self):
+    def selectNotificationSound(self) -> bool:
         """选择并设置通知声音文件"""
         try:
             from PySide6.QtWidgets import QFileDialog

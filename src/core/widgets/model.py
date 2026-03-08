@@ -1,9 +1,33 @@
 import uuid
-from typing import List, Dict, Union
+from typing import Optional, TYPE_CHECKING, TypedDict
 from PySide6.QtCore import QAbstractListModel, Qt, QModelIndex, QUrl, Signal, Property, Slot, QObject
 from loguru import logger
 
 from src.core.config.model import WidgetEntry
+
+type JsonScalar = Optional[str | int | float | bool]
+type JsonData = JsonScalar | dict[str, "JsonData"] | list["JsonData"]
+
+
+class PresetEntryInput(TypedDict, total=False):
+    type_id: str
+    instance_id: str
+    settings: dict[str, JsonData]
+
+
+class WidgetDefinition(TypedDict):
+    id: str
+    name: str
+    qml_path: str
+    backend_obj: Optional[QObject]
+    settings_qml: str | QUrl
+    default_settings: dict[str, JsonData]
+
+
+class WidgetInstance(WidgetDefinition):
+    instance_id: str
+    type_id: str
+    settings: dict[str, JsonData]
 
 
 class WidgetListModel(QAbstractListModel):
@@ -22,9 +46,9 @@ class WidgetListModel(QAbstractListModel):
     def __init__(self, app_central=None):
         super().__init__()
         self._app_central = app_central
-        self._definitions: Dict[str, dict] = {}
-        self._instances: List[dict] = []
-        self._presets: Dict[str, List[WidgetEntry]] = {}
+        self._definitions: dict[str, WidgetDefinition] = {}
+        self._instances: list[WidgetInstance] = []
+        self._presets: dict[str, list[WidgetEntry]] = {}
         self._current_preset: str = ""
 
         self.modelChanged.connect(self.save_config)
@@ -66,7 +90,7 @@ class WidgetListModel(QAbstractListModel):
             return w.get("settings_qml", self._definitions.get(w.get("type_id", ""), {}).get("settings_qml", ""))
         return None
 
-    def _normalize_preset_entries(self, entries: List[Union[str, dict, WidgetEntry]]) -> List[WidgetEntry]:
+    def _normalize_preset_entries(self, entries: list[str | PresetEntryInput | WidgetEntry]) -> list[WidgetEntry]:
         normalized = []
         for e in entries:
             if isinstance(e, WidgetEntry):
@@ -160,9 +184,9 @@ class WidgetListModel(QAbstractListModel):
             type_id: str,
             name: str,
             qml_path: str | QUrl,
-            backend_obj: QObject | None = None,
+            backend_obj: Optional[QObject] = None,
             settings_qml: str | QUrl = None,
-            default_settings: dict | None = None
+            default_settings: Optional[dict] = None
     ):
         if not type_id:
             logger.warning(f"Cannot register widget: Invalid type_id \"{type_id}\"")
