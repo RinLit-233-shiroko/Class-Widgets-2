@@ -81,9 +81,8 @@ class ClassSwapManager(QObject):
     def getPreferredDayOfWeek(self) -> int:
         """获取换课界面上次选择的星期（默认今天）"""
         swap_data = getattr(self.app_central.configs.schedule, "class_swap", None)
-        picker = swap_data.get("picker") if isinstance(swap_data, dict) else None
-        if isinstance(picker, dict):
-            val = picker.get("day_of_week")
+        if isinstance(swap_data, dict):
+            val = swap_data.get("day_of_week")
             if isinstance(val, int) and 1 <= val <= 7:
                 return val
         return self.getCurrentDayOfWeek()
@@ -92,10 +91,9 @@ class ClassSwapManager(QObject):
     def getPreferredWeekOfCycle(self) -> int:
         """获取换课界面上次选择的周期周（默认当前周期周）"""
         swap_data = getattr(self.app_central.configs.schedule, "class_swap", None)
-        picker = swap_data.get("picker") if isinstance(swap_data, dict) else None
         max_cycle = self.getMaxWeekCycle()
-        if isinstance(picker, dict):
-            val = picker.get("week_of_cycle")
+        if isinstance(swap_data, dict):
+            val = swap_data.get("week_of_cycle")
             if isinstance(val, int) and 1 <= val <= max_cycle:
                 return val
         return self.getCurrentWeekOfCycle()
@@ -114,10 +112,9 @@ class ClassSwapManager(QObject):
         if not isinstance(swap_data, dict):
             swap_data = {}
 
-        swap_data["picker"] = {
-            "day_of_week": day_of_week,
-            "week_of_cycle": week_of_cycle,
-        }
+        swap_data["day_of_week"] = day_of_week
+        swap_data["week_of_cycle"] = week_of_cycle
+        swap_data["date"] = datetime.now().strftime("%Y-%m-%d")
         self.app_central.configs.set("schedule.class_swap", swap_data)
 
     @Slot(int, int, result=bool)
@@ -302,11 +299,21 @@ class ClassSwapManager(QObject):
         """保存换课记录到配置"""
         today = datetime.now().strftime("%Y-%m-%d")
         current_swap_data = getattr(self.app_central.configs.schedule, "class_swap", None)
-        picker = current_swap_data.get("picker") if isinstance(current_swap_data, dict) else {}
+        day_of_week = self.getPreferredDayOfWeek()
+        week_of_cycle = self.getPreferredWeekOfCycle()
+        if isinstance(current_swap_data, dict):
+            stored_day = current_swap_data.get("day_of_week")
+            stored_week = current_swap_data.get("week_of_cycle")
+            if isinstance(stored_day, int):
+                day_of_week = stored_day
+            if isinstance(stored_week, int):
+                week_of_cycle = stored_week
+
         swap_data = {
             "date": today,
             "records": self._swap_records,
-            "picker": picker if isinstance(picker, dict) else {}
+            "day_of_week": day_of_week,
+            "week_of_cycle": week_of_cycle,
         }
         self.app_central.configs.set("schedule.class_swap", swap_data)
         logger.info(f"Swap records saved: {len(self._swap_records)} records")
@@ -320,15 +327,13 @@ class ClassSwapManager(QObject):
             self._swap_date = ""
             return
 
-        # 迁移旧配置：schedule.class_swap_picker -> schedule.class_swap.picker
-        picker = swap_data.get("picker") if isinstance(swap_data.get("picker"), dict) else {}
-        if not picker:
-            legacy_picker = getattr(self.app_central.configs.schedule, "class_swap_picker", None)
-            if isinstance(legacy_picker, dict):
-                picker = {
-                    "day_of_week": int(legacy_picker.get("day_of_week", self.getCurrentDayOfWeek())),
-                    "week_of_cycle": int(legacy_picker.get("week_of_cycle", self.getCurrentWeekOfCycle())),
-                }
+        day_of_week = swap_data.get("day_of_week") if isinstance(swap_data.get("day_of_week"), int) else self.getCurrentDayOfWeek()
+        if not (1 <= day_of_week <= 7):
+            day_of_week = self.getCurrentDayOfWeek()
+        max_cycle = self.getMaxWeekCycle()
+        week_of_cycle = swap_data.get("week_of_cycle") if isinstance(swap_data.get("week_of_cycle"), int) else self.getCurrentWeekOfCycle()
+        if not (1 <= week_of_cycle <= max_cycle):
+            week_of_cycle = self.getCurrentWeekOfCycle()
 
         saved_date = swap_data.get("date", "")
         today = datetime.now().strftime("%Y-%m-%d")
@@ -339,14 +344,14 @@ class ClassSwapManager(QObject):
             self._cleanup_swap_overrides(swap_data.get("records", []))
             self._swap_records = []
             self._swap_date = ""
-            # 清空配置
-            self.app_central.configs.set("schedule.class_swap", {"picker": picker})
+            # 清空配置（清理 day_of_week/week_of_cycle）
+            self.app_central.configs.set("schedule.class_swap", {})
             return
 
         records = swap_data.get("records", [])
         self._swap_records = [self._normalize_swap_record(r) for r in records if isinstance(r, dict)]
         self._swap_date = saved_date
-        # 回写一次，清理旧字段并统一新结构
+        self.setSwapPickerContext(day_of_week, week_of_cycle)
         self.saveSwapRecords()
         self._rebuild_overrides_from_records(self._swap_records)
         logger.info(f"Loaded {len(self._swap_records)} swap records for today")
@@ -354,6 +359,27 @@ class ClassSwapManager(QObject):
     @Slot(result=bool)
     def hasTodaySwaps(self) -> bool:
         """今天是否有换课记录"""
+        swap_data = getattr(self.app_central.configs.schedule, "class_swap", None)
+        if not isinstance(swap_data, dict):
+            return False
+
+        logger.debug(f"Checking for today's swaps: swap_data={swap_data}")
+
+        # 记录存在
+        records = swap_data.get("records")
+        if isinstance(records, list) and len(records) > 0:
+            logger.debug(f"Found {len(records)} swap records for today")
+            return True
+
+        # 仅 picker 上下文（day/week）也视为存在临时课表
+        day_of_week = swap_data.get("day_of_week")
+        week_of_cycle = swap_data.get("week_of_cycle")
+        if isinstance(day_of_week, int) and isinstance(week_of_cycle, int):
+            logger.debug(f"Found swap picker context for today ({day_of_week}, {week_of_cycle})")
+            return True
+
+        logger.debug(f"swap records {self._swap_records}")
+
         return len(self._swap_records) > 0
 
     @Slot(result=list)
@@ -361,38 +387,13 @@ class ClassSwapManager(QObject):
         """获取今天的换课记录"""
         return self._swap_records
 
-    @Slot(result=bool)
-    def checkAndPromptRestore(self) -> bool:
-        """
-        启动时检查：是否有未过期的换课记录
-        返回 True 表示有记录需要用户确认
-        """
-        swap_data = getattr(self.app_central.configs.schedule, "class_swap", None)
-        if not swap_data or not isinstance(swap_data, dict):
-            return False
-
-        saved_date = swap_data.get("date", "")
-        today = datetime.now().strftime("%Y-%m-%d")
-
-        if saved_date == today and swap_data.get("records"):
-            return True  # 有今天的记录，需要提示用户
-        elif saved_date and saved_date != today:
-            # 跨天，自动清理
-            self._cleanup_swap_overrides(swap_data.get("records", []))
-            picker = swap_data.get("picker") if isinstance(swap_data.get("picker"), dict) else {}
-            self.app_central.configs.set("schedule.class_swap", {"picker": picker})
-            return False
-        return False
-
     @Slot()
     def discardTodaySwaps(self):
         """丢弃今天的换课（撤销所有换课 override）"""
         self._cleanup_swap_overrides(self._swap_records)
         self._swap_records = []
         self._swap_date = ""
-        swap_data = getattr(self.app_central.configs.schedule, "class_swap", None)
-        picker = swap_data.get("picker") if isinstance(swap_data, dict) and isinstance(swap_data.get("picker"), dict) else {}
-        self.app_central.configs.set("schedule.class_swap", {"picker": picker})
+        self.app_central.configs.set("schedule.class_swap", {})
         self.updated.emit()
         logger.info("All today's swaps discarded")
 
@@ -677,7 +678,7 @@ class ClassSwapManager(QObject):
     def _cleanup_swap_overrides(self, records: list):
         """清理换课产生的 override"""
         schedule = self.app_central.schedule_manager.schedule
-        if not schedule or not records:
+        if not schedule:
             return
 
         swap_ids = set()

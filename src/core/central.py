@@ -14,7 +14,6 @@ from src.core import CONFIGS_PATH, QML_PATH
 from src.core.directories import PathManager, LOGS_PATH
 
 if TYPE_CHECKING:
-    from src.core.config.manager import ConfigManager
     from src.core.notification.manager import NotificationManager, NotificationService
     from src.core.plugin.api import PluginAPI
     from src.core.plugin.manager import PluginManager
@@ -40,6 +39,7 @@ from src.core.notification import (
     NotificationManager,
     NotificationService,
 )
+from src.core.config.manager import ConfigManager
 from src.core.plugin.api import PluginAPI
 from src.core.plugin.manager import PluginManager
 from src.core.schedule import ScheduleRuntime, ScheduleManager
@@ -143,7 +143,6 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.widgets_window: WidgetsWindow = WidgetsWindow(self)  # 简化参数传递
         self.plugin_plaza: PluginPlaza = PluginPlaza(self)
         self.class_swap_window: ClassSwapWindow = ClassSwapWindow(self)
-        self.class_swap_restore_dialog_window: ClassSwapRestoreDialog = ClassSwapRestoreDialog(self)
         if self.multi_instances:
             self.single_dialog_window: CheckSingleInstanceDialog = CheckSingleInstanceDialog(self)
 
@@ -179,8 +178,10 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self._load_class_swap()  # 加载换课记录（跨天清理）
 
         # 启动时：若检测到今天存在临时课表，先询问用户是否继续使用
-        if self._class_swap_manager.checkAndPromptRestore():
+        if self._class_swap_manager.hasTodaySwaps():
+            self.class_swap_restore_dialog_window: ClassSwapRestoreDialog = ClassSwapRestoreDialog(self)
             self._startup_swap_restore_pending = True
+            logger.warning("Detected temporary class swaps for today on startup, prompting user for action")
             self.openClassSwapRestoreDialog()
             return
 
