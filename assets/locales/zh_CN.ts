@@ -1004,12 +1004,12 @@ Please try again later.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Home.qml" line="29"/>
         <source>插件</source>
-        <translation type="unfinished"></translation>
+        <translation>Plugins</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Home.qml" line="34"/>
         <source>为你推荐</source>
-        <translation type="unfinished"></translation>
+        <translation>Recommendations</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Home.qml" line="46"/>
@@ -1607,22 +1607,22 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="35"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>刷新</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="53"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>错误</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="63"/>
         <source>Home</source>
-        <translation type="unfinished">首页</translation>
+        <translation>首页</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="68"/>
         <source>Plugins</source>
-        <translation type="unfinished">插件</translation>
+        <translation>插件</translation>
     </message>
 </context>
 <context>
@@ -1747,12 +1747,12 @@ Do you want to %3 this plugin?</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugins.qml" line="38"/>
         <source>Popular</source>
-        <translation type="unfinished"></translation>
+        <translation>热门频道</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugins.qml" line="41"/>
         <source>Latest</source>
-        <translation type="unfinished"></translation>
+        <translation>最新版本</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="168"/>
@@ -1879,7 +1879,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="11"/>
         <source>Built-in Widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>内置组件</translation>
     </message>
 </context>
 <context>
