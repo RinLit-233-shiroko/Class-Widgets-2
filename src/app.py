@@ -9,6 +9,8 @@ from src.core import AppCentral
 from PySide6.QtWidgets import QApplication
 
 if __name__ == "__main__":
+    os.environ["QT_ENABLE_HIGHDPI_SCALING"] = "1"
+    os.environ["QT_SCALE_FACTOR_ROUNDING_POLICY"] = "RoundPreferFloor"
     app = QApplication(sys.argv)
     instance = AppCentral()
     instance.run()
