@@ -125,10 +125,10 @@ class NotificationAPI(BaseAPI):
 
 class ScheduleAPI(BaseAPI):
     def get(self):
-        return self._app.schedule
+        return self._app.schedule_manager.schedule
 
     def reload(self):
-        self._app.reloadSchedule()
+        return self._app.schedule_manager.reload()
 
 
 class ThemeAPI(BaseAPI):
