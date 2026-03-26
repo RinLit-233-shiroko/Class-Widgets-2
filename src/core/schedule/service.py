@@ -118,7 +118,8 @@ class ScheduleServices:
 
     @staticmethod
     def get_current_status(day: Timeline, now: Optional[datetime] = None) -> EntryType:
-        return ScheduleServices.get_current_entry(day, now).type if ScheduleServices.get_current_entry(day, now) else EntryType.FREE
+        current = ScheduleServices.get_current_entry(day, now)
+        return current.type if current else EntryType.FREE
 
     @staticmethod
     def get_current_subject(day: Timeline, subjects: list[Subject], now: Optional[datetime] = None) -> Optional[Subject]:
