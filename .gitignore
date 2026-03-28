@@ -178,6 +178,7 @@ cython_debug/
 
 # Class Widgets 2
 configs
+plugins
 
 # RinUI
 RinUI
