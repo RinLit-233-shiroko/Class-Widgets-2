@@ -173,6 +173,9 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
+# Performance Analysis File
+*.pyspy
+
 # VS Code
 .vscode/
 
