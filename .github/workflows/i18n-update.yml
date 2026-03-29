@@ -1,0 +1,268 @@
+name: I18n Update
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/**/*.py"
+      - "src/**/*.qml"
+      - "assets/locales/*.ts"
+  workflow_dispatch:
+    inputs:
+      update_ts_files:
+        description: "是否更新 .ts 文件"
+        required: true
+        default: true
+        type: boolean
+      compile_to_qm:
+        description: "是否编译 .qm 文件"
+        required: true
+        default: true
+        type: boolean
+
+concurrency:
+  group: i18n-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  detect-changes:
+    name: Check File Changes
+    runs-on: ubuntu-latest
+    outputs:
+      has_py_changes: ${{ steps.detect.outputs.has_py_changes }}
+      has_qml_changes: ${{ steps.detect.outputs.has_qml_changes }}
+      has_ts_changes: ${{ steps.detect.outputs.has_ts_changes }}
+      should_update_ts: ${{ steps.detect.outputs.should_update_ts }}
+      should_compile_qm: ${{ steps.detect.outputs.should_compile_qm }}
+    steps:
+      - name: Check Repository
+        shell: bash
+        run: |
+          if [ "${{ github.repository }}" != "RinLit-233-shiroko/Class-Widgets-2" ]; then
+            echo "[DEBUG] 工作流不在目标仓库，跳过执行"
+            exit 1
+          fi
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect file changes
+        id: detect
+        shell: bash
+        run: |
+          has_py_changes="false"
+          has_qml_changes="false"
+          has_ts_changes="false"
+          should_update_ts="false"
+          should_compile_qm="false"
+
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+            if git rev-parse HEAD~1 >/dev/null 2>&1; then
+              changed_files=$(git diff --name-only HEAD~1 HEAD)
+            else
+              changed_files=$(git diff-tree --no-commit-id --name-only -r HEAD)
+            fi
+
+            echo "[DEBUG] Changed files:"
+            echo "$changed_files"
+
+            if echo "$changed_files" | grep -qE '^src/.+\.py$'; then
+              has_py_changes="true"
+            fi
+            if echo "$changed_files" | grep -qE '^src/.+\.qml$'; then
+              has_qml_changes="true"
+            fi
+            if echo "$changed_files" | grep -qE '^assets/locales/.+\.ts$'; then
+              has_ts_changes="true"
+            fi
+
+            if [[ "$has_py_changes" == "true" || "$has_qml_changes" == "true" || "$has_ts_changes" == "true" ]]; then
+              should_update_ts="true"
+              should_compile_qm="true"
+            fi
+          elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            should_update_ts="${{ github.event.inputs.update_ts_files }}"
+            should_compile_qm="${{ github.event.inputs.compile_to_qm }}"
+            echo "[DEBUG] 手动触发 - update_ts=$should_update_ts compile_qm=$should_compile_qm"
+          fi
+
+          echo "has_py_changes=$has_py_changes" >> "$GITHUB_OUTPUT"
+          echo "has_qml_changes=$has_qml_changes" >> "$GITHUB_OUTPUT"
+          echo "has_ts_changes=$has_ts_changes" >> "$GITHUB_OUTPUT"
+          echo "should_update_ts=$should_update_ts" >> "$GITHUB_OUTPUT"
+          echo "should_compile_qm=$should_compile_qm" >> "$GITHUB_OUTPUT"
+
+          {
+            echo "## 文件变更"
+            echo "| 文件类型 | 状态 |"
+            echo "|----------|------|"
+            echo "| .py | $has_py_changes |"
+            echo "| .qml | $has_qml_changes |"
+            echo "| .ts | $has_ts_changes |"
+            echo "| 更新 .ts | $should_update_ts |"
+            echo "| 编译 .qm | $should_compile_qm |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  update-translations:
+    name: Update .ts files
+    runs-on: ubuntu-latest
+    needs: detect-changes
+    if: needs.detect-changes.outputs.should_update_ts == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Rebase latest branch
+        shell: bash
+        run: |
+          git fetch origin
+          git rebase origin/${{ github.ref_name }}
+
+      - name: Set up Python & uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+          enable-cache: true
+          activate-environment: true
+
+      - name: Install PySide6 tools
+        shell: bash
+        run: |
+          uv pip install "PySide6~=6.9.3"
+
+      - name: Update translation source files
+        shell: bash
+        run: |
+          echo "[DEBUG] 更新 assets/locales/*.ts"
+          mapfile -t source_files < <(find src -type f \( -name "*.py" -o -name "*.qml" \) | sort)
+
+          if [ ${#source_files[@]} -eq 0 ]; then
+            echo "[DEBUG] 未找到可提取翻译的源文件"
+            exit 0
+          fi
+
+          for ts_file in assets/locales/*.ts; do
+            if [ -f "$ts_file" ]; then
+              echo "[DEBUG] 更新 $(basename "$ts_file")"
+              pyside6-lupdate "${source_files[@]}" -ts "$ts_file"
+            fi
+          done
+
+      - name: Commit updated .ts files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        continue-on-error: true
+        with:
+          commit_message: |
+            chore(i18n): update ts files
+
+            - actor: ${{ github.actor }}
+            - event: ${{ github.event_name }}
+            - sha: ${{ github.sha }}
+            - run: ${{ github.run_id }}
+          commit_options: "--no-verify --signoff"
+          file_pattern: "assets/locales/*.ts"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "41898282+github-actions[bot]@users.noreply.github.com"
+          commit_author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+
+  compile-translations:
+    name: Compile .qm files
+    runs-on: ubuntu-latest
+    needs: [detect-changes, update-translations]
+    if: |
+      always() &&
+      needs.detect-changes.outputs.should_compile_qm == 'true' &&
+      (needs.update-translations.result == 'success' || needs.update-translations.result == 'skipped')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Rebase latest branch
+        shell: bash
+        run: |
+          git fetch origin
+          git rebase origin/${{ github.ref_name }}
+
+      - name: Set up Python & uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+          enable-cache: true
+          activate-environment: true
+
+      - name: Install PySide6 tools
+        shell: bash
+        run: |
+          uv pip install "PySide6~=6.9.3"
+
+      - name: Compile .qm files
+        shell: bash
+        run: |
+          for ts_file in assets/locales/*.ts; do
+            if [ -f "$ts_file" ]; then
+              qm_file="${ts_file%.ts}.qm"
+              echo "[DEBUG] 编译 $(basename "$ts_file") -> $(basename "$qm_file")"
+              pyside6-lrelease "$ts_file" -qm "$qm_file"
+            fi
+          done
+
+      - name: Commit compiled .qm files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        continue-on-error: true
+        with:
+          commit_message: |
+            chore(i18n): compile qm files
+
+            - actor: ${{ github.actor }}
+            - event: ${{ github.event_name }}
+            - sha: ${{ github.sha }}
+            - run: ${{ github.run_id }}
+          commit_options: "--no-verify --signoff"
+          file_pattern: "assets/locales/*.qm"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "41898282+github-actions[bot]@users.noreply.github.com"
+          commit_author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+
+  summary:
+    name: Update Summary
+    runs-on: ubuntu-latest
+    needs: [detect-changes, update-translations, compile-translations]
+    if: always()
+    steps:
+      - name: Generate summary
+        shell: bash
+        run: |
+          {
+            echo "### 执行状态"
+            echo "| 任务 | 状态 |"
+            echo "|------|------|"
+            echo "| 检测变更 | ${{ needs.detect-changes.result }} |"
+            echo "| 更新翻译 | ${{ needs.update-translations.result }} |"
+            echo "| 编译翻译 | ${{ needs.compile-translations.result }} |"
+            echo ""
+            echo "### 触发信息"
+            echo "- **触发事件**: ${{ github.event_name }}"
+            echo "- **分支**: ${{ github.ref_name }}"
+            echo "- **提交**: ${{ github.sha }}"
+            echo "- **执行时间**: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+            if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+              echo "- **更新 .ts**: ${{ github.event.inputs.update_ts_files }}"
+              echo "- **编译 .qm**: ${{ github.event.inputs.compile_to_qm }}"
+            fi
+            echo ""
+            echo "### 变更结果"
+            echo "- **Python 文件变更**: ${{ needs.detect-changes.outputs.has_py_changes }}"
+            echo "- **QML 文件变更**: ${{ needs.detect-changes.outputs.has_qml_changes }}"
+            echo "- **翻译源文件变更**: ${{ needs.detect-changes.outputs.has_ts_changes }}"
+          } >> "$GITHUB_STEP_SUMMARY"
