@@ -131,7 +131,6 @@ class ScheduleServices:
                 case _:
                     return current.type
         return EntryType.FREE
-        return current.type if current else EntryType.FREE
 
     @staticmethod
     def get_current_subject(day: Timeline, subjects: list[Subject], now: Optional[datetime] = None) -> Optional[Subject]:
