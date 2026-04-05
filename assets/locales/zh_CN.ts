@@ -234,92 +234,92 @@ You can continue to open another one, or close this window.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="8"/>
         <source>Class Swap</source>
-        <translation type="unfinished">换课</translation>
+        <translation>换课</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="137"/>
         <source>Odd Week</source>
-        <translation type="unfinished"></translation>
+        <translation>单周</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="137"/>
         <source>Even Week</source>
-        <translation type="unfinished"></translation>
+        <translation>双周</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="138"/>
         <source>Week %1</source>
-        <translation type="unfinished">第 %1 周</translation>
+        <translation>第 %1 周</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="227"/>
         <source>Monday</source>
-        <translation type="unfinished"></translation>
+        <translation>周一</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="228"/>
         <source>Tuesday</source>
-        <translation type="unfinished"></translation>
+        <translation>周二</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="229"/>
         <source>Wednesday</source>
-        <translation type="unfinished"></translation>
+        <translation>周三</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="230"/>
         <source>Thursday</source>
-        <translation type="unfinished"></translation>
+        <translation>周四</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="231"/>
         <source>Friday</source>
-        <translation type="unfinished"></translation>
+        <translation>周五</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="232"/>
         <source>Saturday</source>
-        <translation type="unfinished"></translation>
+        <translation>周六</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="233"/>
         <source>Sunday</source>
-        <translation type="unfinished"></translation>
+        <translation>周日</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="285"/>
         <source>Click to select a class to swap</source>
-        <translation type="unfinished"></translation>
+        <translation>选择待换的课程</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="325"/>
         <source>(Empty)</source>
-        <translation type="unfinished"></translation>
+        <translation>（未设置）</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="371"/>
         <source>All Subjects</source>
-        <translation type="unfinished"></translation>
+        <translation>科目表</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="437"/>
         <source>Click a class to swap</source>
-        <translation type="unfinished"></translation>
+        <translation>选择更换到的课程</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="439"/>
         <source>Select target class</source>
-        <translation type="unfinished"></translation>
+        <translation>选择目标课程</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="451"/>
         <source>Confirm Swap</source>
-        <translation type="unfinished"></translation>
+        <translation>确认换课</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="480"/>
         <source>Cancel</source>
-        <translation type="unfinished">取消</translation>
+        <translation>取消</translation>
     </message>
 </context>
 <context>
@@ -327,24 +327,26 @@ You can continue to open another one, or close this window.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapRestoreDialog.qml" line="19"/>
         <source>Temporary schedule detected</source>
-        <translation type="unfinished"></translation>
+        <translation>检测到临时课表</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapRestoreDialog.qml" line="33"/>
         <source>Class Widgets found temporary class swaps for today.
 
 Do you want to continue using them, or discard and restore the original schedule?</source>
-        <translation type="unfinished"></translation>
+        <translation>Class Widgets 找到了用于今日的临时课表
+
+继续使用它们，或放弃并恢复原课程表？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapRestoreDialog.qml" line="47"/>
         <source>Discard</source>
-        <translation type="unfinished"></translation>
+        <translation>放弃</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapRestoreDialog.qml" line="57"/>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>继续使用</translation>
     </message>
 </context>
 <context>
@@ -1476,12 +1478,12 @@ Please try again later.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="218"/>
         <source>Default duration (ms)</source>
-        <translation type="unfinished"></translation>
+        <translation>默认持续时长（毫秒）</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="219"/>
         <source>Customize the notification duration (ms)</source>
-        <translation type="unfinished"></translation>
+        <translation>自定义通知持续时长（毫秒）</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="242"/>
@@ -1660,7 +1662,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="134"/>
         <source>Built-in</source>
-        <translation type="unfinished">内置</translation>
+        <translation>内置</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="163"/>
@@ -1976,7 +1978,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="11"/>
         <source>Built-in Widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>内置组件</translation>
     </message>
 </context>
 <context>
