@@ -1087,17 +1087,17 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="67"/>
         <source>Customize</source>
-        <translation>个性化</translation>
+        <translation>我说了算</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="72"/>
         <source>App Theme</source>
-        <translation>外观</translation>
+        <translation>皮肤</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="73"/>
         <source>Select which app theme to display</source>
-        <translation>选择显示的应用外观</translation>
+        <translation>变身</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="79"/>
@@ -1142,22 +1142,22 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="122"/>
         <source>Use a more compact layout for smaller widgets</source>
-        <translation>使用更紧凑的布局以适配小型小组件</translation>
+        <translation>小小小小小小小小小小小小小小小小</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="140"/>
         <source>Actions</source>
-        <translation>动作</translation>
+        <translation>喝喝哈嘿</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="145"/>
         <source>Run at Startup</source>
-        <translation>开机时启动</translation>
+        <translation>开机时引爆 Class Widgets 牌 GTX 690</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="146"/>
         <source>Run Class Widgets on startup</source>
-        <translation>电脑开机后Class Widgets 将自动和你打招呼</translation>
+        <translation>电脑开机后 Class Widgets 将自动和你打招呼</translation>
     </message>
 </context>
 <context>
@@ -1165,17 +1165,17 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="10"/>
         <source>Interactions &amp; Actions</source>
-        <translation>交互与操作</translation>
+        <translation>摆弄可爱 CW</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="18"/>
         <source>Widgets</source>
-        <translation>组件</translation>
+        <translation>显示用小方块</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="23"/>
         <source>Hover fade</source>
-        <translation>悬停渐隐</translation>
+        <translation>我放上去你就得死</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="39"/>
@@ -1190,12 +1190,12 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="40"/>
         <source>Click on the widget to hide it, click it again to bring it back</source>
-        <translation>点击小组件就会藏起来，再次点击就会出来</translation>
+        <translation>戳一戳戳出小方块</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="52"/>
         <source>More hide behavior</source>
-        <translation>更多隐藏行为</translation>
+        <translation>更多小方块死法</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="54"/>
@@ -1238,7 +1238,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="20"/>
         <source>General</source>
-        <translation>基础</translation>
+        <translation>将军</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="26"/>
@@ -1249,7 +1249,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="27"/>
         <source>Turn on or off all notifications from the application</source>
-        <translation>开启或关闭 Class Widgets 的所有提醒</translation>
+        <translation>决定 CW 能不能吸大鼻溜</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="38"/>
