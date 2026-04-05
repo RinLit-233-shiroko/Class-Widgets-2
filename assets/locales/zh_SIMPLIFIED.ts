@@ -113,7 +113,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="186"/>
         <source>Cleared</source>
-        <translation type="unfinished"></translation>
+        <translation>卖掉了~</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="187"/>
@@ -133,7 +133,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="207"/>
         <source>Debug Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>调教模式</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="208"/>
@@ -154,7 +154,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="237"/>
         <source>License Agreement</source>
-        <translation type="unfinished"></translation>
+        <translation>伊甸园条约</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="244"/>
@@ -167,17 +167,17 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddWidgetsDialog.qml" line="10"/>
         <source>Add Widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>添加大组件</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddWidgetsDialog.qml" line="77"/>
         <source>No Widget Selected</source>
-        <translation type="unfinished"></translation>
+        <translation>还没有选择大组件</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddWidgetsDialog.qml" line="139"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>加</translation>
     </message>
 </context>
 <context>
@@ -185,7 +185,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/CheckSingleInstanceDialog.qml" line="23"/>
         <source>Already running</source>
-        <translation type="unfinished"></translation>
+        <translation>Class Widgets 已活着</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/CheckSingleInstanceDialog.qml" line="36"/>
@@ -193,17 +193,20 @@ Licensed under the MIT license</source>
 
 Looks like it was opened twice.
 You can continue to open another one, or close this window.</source>
-        <translation type="unfinished"></translation>
+        <translation>Class Widgets 活着。
+
+看起来可能是启动了两次，
+你可以选择继续启动另一个西大不丢饿，或者杀死。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/CheckSingleInstanceDialog.qml" line="49"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>滚</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/CheckSingleInstanceDialog.qml" line="59"/>
         <source>Open anyway</source>
-        <translation type="unfinished"></translation>
+        <translation>无视风险继续退出</translation>
     </message>
 </context>
 <context>
