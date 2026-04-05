@@ -230,7 +230,7 @@ You can continue to open another one, or close this window.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="138"/>
         <source>Week %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">微弱的 %1</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="227"/>
@@ -477,12 +477,12 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="76"/>
         <source>Mon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">一</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="76"/>
         <source>Tue</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">2</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="76"/>
@@ -2110,7 +2110,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="467"/>
         <source>Preparation Bell</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">账单准备</translation>
     </message>
 </context>
 <context>
@@ -2143,7 +2143,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="46"/>
         <source>Personalization</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">学你</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="51"/>
@@ -2271,7 +2271,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="50"/>
         <source>Subject</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">傻逼杰克特</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="46"/>
@@ -2544,7 +2544,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Time.qml" line="13"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Time.qml" line="20"/>
         <source>Time</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tim Cook</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Time.qml" line="26"/>
@@ -3172,7 +3172,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="195"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">预习</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="198"/>
@@ -3212,7 +3212,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="33"/>
         <source>Time</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tim Cook</translation>
     </message>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="39"/>
@@ -3240,7 +3240,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="217"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">丢掉！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="226"/>
