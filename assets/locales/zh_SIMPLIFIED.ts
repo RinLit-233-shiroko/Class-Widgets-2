@@ -800,12 +800,12 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="223"/>
         <source>End Time</source>
-        <translation type="unfinished"></translation>
+        <translation>目的地</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="242"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>sudo rm</translation>
     </message>
 </context>
 <context>
