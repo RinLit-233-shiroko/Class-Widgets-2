@@ -1682,7 +1682,7 @@ Do you want to %3 this plugin?</source>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="316"/>
         <source>This plugin requires API version %1, but current API version is %2. 
 It&apos;s incompatible and may cause unexpected issues.</source>
-        <translation>此插件需要API版本%1，但当前API版本为%2。
+        <translation>这个屁股需要接口版本%1，但现在接口版本为%2。
 不兼容可能导致西大不丢饿原地爆炸。</translation>
     </message>
     <message>
@@ -1698,59 +1698,59 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="128"/>
         <source>Find and install plugins from the Extension Plaza (WEB)</source>
-        <translation type="unfinished"></translation>
+        <translation>在“屁股商城”(蜘蛛网)中寻找和安装屁股</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="131"/>
         <source>Go to Extension Plaza</source>
-        <translation type="unfinished"></translation>
+        <translation>前往“屁股商城”</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="167"/>
         <source>Import Failed</source>
-        <translation type="unfinished">导入不了</translation>
+        <translation>导入不了</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="106"/>
         <source>Importing</source>
-        <translation type="unfinished"></translation>
+        <translation>正在入</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="107"/>
         <source>Importing the selected plugin. Please wait...</source>
-        <translation type="unfinished"></translation>
+        <translation>正在入你选择的屁股。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="189"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation>我！全！都！要！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="192"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="326"/>
         <source>Enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>打开</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="195"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="326"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>关掉</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="270"/>
         <source>Built-in</source>
-        <translation type="unfinished"></translation>
+        <translation>内脏</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="347"/>
         <source>Open In</source>
-        <translation type="unfinished"></translation>
+        <translation>在别的地方用</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="350"/>
         <source>Finder</source>
-        <translation>发现者</translation>
+        <translation type="unfinished">访达</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="350"/>
@@ -1760,22 +1760,22 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="355"/>
         <source>Open Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>打不开</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="356"/>
         <source>Failed to open the plugin folder.</source>
-        <translation type="unfinished"></translation>
+        <translation>打不开屁股所在的文件袋。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="365"/>
         <source>External Online Repository</source>
-        <translation type="unfinished"></translation>
+        <translation>外面的线上裤子</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="373"/>
         <source>Uninstall</source>
-        <translation>统一不安装</translation>
+        <translation>全部丢掉</translation>
     </message>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="11"/>
@@ -1788,12 +1788,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/RescheduleDayDialog.qml" line="8"/>
         <source>Reschedule day</source>
-        <translation type="unfinished"></translation>
+        <translation>偷别人的配料表用</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/RescheduleDayDialog.qml" line="31"/>
         <source>Apply a day-of-week schedule to a specific date</source>
-        <translation type="unfinished"></translation>
+        <translation>强行替换配料表</translation>
     </message>
 </context>
 <context>
@@ -1816,7 +1816,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SaveFlyout.qml" line="64"/>
         <source>Failed to save schedule, see log for details</source>
-        <translation type="unfinished">失败去安全配料表，请观察对数来获取详细信息</translation>
+        <translation>失败去安全配料表，请观察对数来获取详细信息</translation>
     </message>
 </context>
 <context>
@@ -1829,37 +1829,37 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="81"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>写！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="102"/>
         <source>Week %1</source>
-        <translation type="unfinished"></translation>
+        <translation>微弱的 %1</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="148"/>
         <source>Week Cycle</source>
-        <translation type="unfinished"></translation>
+        <translation>微弱转圈</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="171"/>
         <source>Quick Add Subject</source>
-        <translation type="unfinished"></translation>
+        <translation>快捷加入主语</translation>
     </message>
     <message>
         <location filename="../../src/core/convertor/converter.py" line="63"/>
         <source>All Weeks</source>
-        <translation type="unfinished"></translation>
+        <translation>每次微弱</translation>
     </message>
     <message>
         <location filename="../../src/core/convertor/converter.py" line="65"/>
         <source>Odd Weeks</source>
-        <translation type="unfinished"></translation>
+        <translation>Week%2=1</translation>
     </message>
     <message>
         <location filename="../../src/core/convertor/converter.py" line="67"/>
         <source>Even Weeks</source>
-        <translation type="unfinished"></translation>
+        <translation>Week%2=0</translation>
     </message>
 </context>
 <context>
@@ -1867,7 +1867,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="105"/>
         <source>Local</source>
-        <translation type="unfinished"></translation>
+        <translation>本地人</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="119"/>
@@ -1877,44 +1877,44 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="126"/>
         <source>Rename</source>
-        <translation type="unfinished"></translation>
+        <translation>重新名字</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="133"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>丢掉！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="142"/>
         <source>Export</source>
-        <translation type="unfinished"></translation>
+        <translation>打包丢出去</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="144"/>
         <source>Export to JSON</source>
-        <translation type="unfinished"></translation>
+        <translation>打包成杰森并丢出</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="150"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="176"/>
         <source>Export Success</source>
-        <translation type="unfinished"></translation>
+        <translation>包裹丢出去了</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="151"/>
         <source>The schedule has been exported</source>
-        <translation type="unfinished"></translation>
+        <translation>配料表已经被打包丢出去了</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="158"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="184"/>
         <source>Export Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>没法打包</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="159"/>
         <source>Failed to export the schedule. Please change the output directory or send the log file to the developer or community to help us sort it out.</source>
-        <translation type="unfinished"></translation>
+        <translation>你选择的地方好像不能扔包裹，换一个地方或者去基特哈不上找进化人。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="170"/>
