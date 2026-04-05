@@ -800,12 +800,12 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="223"/>
         <source>End Time</source>
-        <translation type="unfinished"></translation>
+        <translation>目的地</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="242"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>sudo rm</translation>
     </message>
 </context>
 <context>
@@ -813,33 +813,33 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="91"/>
         <source> PM</source>
-        <translation type="unfinished"></translation>
+        <translation> 后午</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="93"/>
         <source> AM</source>
-        <translation type="unfinished"></translation>
+        <translation> 猫宁</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="165"/>
         <source>New Schedule</source>
-        <translation type="unfinished"></translation>
+        <translation>新建门牌号集合</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="141"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="170"/>
         <source>Class</source>
-        <translation type="unfinished"></translation>
+        <translation>门牌号</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="40"/>
         <source>No timeline selected</source>
-        <translation type="unfinished"></translation>
+        <translation>没有选择线</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="46"/>
         <source>Please select a timeline first to add a new schedule.</source>
-        <translation>选择一个时间线以添加新日程。</translation>
+        <translation>选择一根线来添加新的门牌号集合。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="149"/>
@@ -870,7 +870,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/core/convertor/slots.py" line="24"/>
         <location filename="../../src/core/schedule/manager.py" line="258"/>
         <source>Export Schedule</source>
-        <translation type="unfinished"></translation>
+        <translation>打包门牌号集合并丢出去</translation>
     </message>
     <message>
         <location filename="../../src/core/convertor/slots.py" line="27"/>
@@ -880,7 +880,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/core/schedule/manager.py" line="261"/>
         <source>Class Widgets 2 JSON Files (*.json)</source>
-        <translation type="unfinished"></translation>
+        <translation>2WC杰森文件 (*.json)</translation>
     </message>
 </context>
 <context>
@@ -894,7 +894,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="16"/>
         <source>The new way to edit schedules</source>
-        <translation type="unfinished"></translation>
+        <translation>新大陆！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="17"/>
@@ -906,17 +906,17 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="29"/>
         <source>Open schedules folder</source>
-        <translation type="unfinished"></translation>
+        <translation>寻找你的门牌号集合所在的文件袋</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="36"/>
         <source>Import Schedule</source>
-        <translation type="unfinished"></translation>
+        <translation>把打包好的门牌号集合丢进来</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="40"/>
         <source>Import from Class Widgets 2</source>
-        <translation type="unfinished"></translation>
+        <translation>在2WC里寻找你的门牌号集合</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="46"/>
@@ -927,7 +927,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="47"/>
         <source>Failed to import the schedule.Please check if the schedule file is valid.</source>
-        <translation>课程表文件是有效的吗。</translation>
+        <translation>这真的是一个门牌号集合吗？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="59"/>
@@ -937,53 +937,53 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="64"/>
         <source>Import Success</source>
-        <translation>导入了</translation>
+        <translation>打包丢进来了。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="65"/>
         <source>The schedule has been imported successfully.</source>
-        <translation>课程表已成功的导入了。</translation>
+        <translation>你的门牌号集合已经丢进来了。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="71"/>
         <source>Failed to import the schedule. Please check if the schedule file is valid.</source>
-        <translation type="unfinished"></translation>
+        <translation>这真的是一个门牌号集合吗？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="78"/>
         <source>Import from Class Widgets 1</source>
-        <translation type="unfinished"></translation>
+        <translation>在WC里寻找你的门牌号集合</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="90"/>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="127"/>
         <source>Create a new schedule</source>
-        <translation type="unfinished"></translation>
+        <translation>写一个新的配料表！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="100"/>
         <source>Your schedules</source>
-        <translation>你的课表</translation>
+        <translation>你的配料表</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="130"/>
         <source>Enter a name for your new schedule</source>
-        <translation>给新课表起个名吧</translation>
+        <translation>起个名字</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="138"/>
         <source>Schedule name</source>
-        <translation type="unfinished"></translation>
+        <translation>品名</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="162"/>
         <source>Cannot be empty (⊙x⊙;)</source>
-        <translation>狠狠地填满她！</translation>
+        <translation>不可以是滚木。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="165"/>
         <source>Cannot duplicate existing name (⊙x⊙;)</source>
-        <translation>重复了</translation>
+        <translation>集合里不应当有重复的元素。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="167"/>
@@ -998,7 +998,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="81"/>
         <source>This version is still under testing and may contain bugs or incomplete features. You are welcome to submit issues on GitHub</source>
-        <translation>还在测试，可能有问题。欢迎在全球最大的男性交友平台上提交问题</translation>
+        <translation>我是BETA。欢迎在全球最大的男性交友平台上提交问题</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="139"/>
@@ -1008,7 +1008,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="144"/>
         <source>Discord</source>
-        <translation>DC</translation>
+        <translation>一个游戏社区</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="145"/>
@@ -1021,7 +1021,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/IconPicker.qml" line="34"/>
         <source>Search icon in English... (e.g. &apos;run&apos; or &apos;book&apos;)</source>
-        <translation>用英国人的语言搜索图标（例如 &apos;run&apos; 或 &apos;book&apos; ）</translation>
+        <translation>用英国人的语言搜索icon（例如 &apos;run&apos; 或 &apos;book&apos; ）</translation>
     </message>
 </context>
 <context>
@@ -1039,12 +1039,12 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/core/schedule/manager.py" line="209"/>
         <source>Import Schedule</source>
-        <translation type="unfinished"></translation>
+        <translation>把打包好的门牌号集合丢进来</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/manager.py" line="212"/>
         <source>Class Widgets 2 JSON Files (*.json)</source>
-        <translation type="unfinished"></translation>
+        <translation>2WC杰森文件 (*.json)</translation>
     </message>
 </context>
 <context>
@@ -1052,7 +1052,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="10"/>
         <source>General</source>
-        <translation>通用的</translation>
+        <translation>将军</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="18"/>
@@ -1062,27 +1062,27 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="23"/>
         <source>Translation notice / 翻译提示</source>
-        <translation type="unfinished"></translation>
+        <translation>Translation notice / 八国语言教程</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="24"/>
         <source>Some translations may be auto-generated and could be inaccurate. Help us improve them on &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt;. &lt;br&gt;部分翻译可能由自动翻译生成，存在不准确之处。欢迎在 &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt; 上参与改进</source>
-        <translation type="unfinished"></translation>
+        <translation>Some translations may be auto-generated and could be inaccurate. Help us improve them on &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt;. &lt;br&gt;部分翻译可能由自动翻译生成，存在不准确之处。欢迎在 &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt; 上参与改进。哦但是如果你看到了这句话说明你现在正在使用梗体中文。这是我瞎译的。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="33"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>八国语言</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="34"/>
         <source>Set the language of Class Widgets</source>
-        <translation>你想让 Class Widgets 怎么和你说话</translation>
+        <translation>你精通八国语言吗？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="41"/>
         <source>Use System Language</source>
-        <translation>系统怎么说话我就怎么说话</translation>
+        <translation>学系统精。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="67"/>
@@ -1097,7 +1097,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="73"/>
         <source>Select which app theme to display</source>
-        <translation>变身</translation>
+        <translation>巴啦啦能量！乌卡拉卡！小魔仙魔力变！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="79"/>
