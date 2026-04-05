@@ -1453,12 +1453,12 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="30"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="35"/>
         <source>Accent Color</source>
-        <translation type="unfinished"></translation>
+        <translation>色色</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="36"/>
         <source>Pick the color which app highlighted color</source>
-        <translation type="unfinished"></translation>
+        <translation>选用一个你最喜欢的色色</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="56"/>
@@ -1468,7 +1468,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="134"/>
         <source>Built-in</source>
-        <translation type="unfinished"></translation>
+        <translation>内裤</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="211"/>
@@ -1480,7 +1480,9 @@ Do you want to continue using them, or discard and restore the original schedule
         <source>This theme requires the app version %1, but current app version is %2. 
 
 Applying an incompatible theme may cause serious errors, crashes, or unexpected behavior.</source>
-        <translation type="unfinished"></translation>
+        <translation>此主题需应用版本%1，但当前应用版本为%2。
+
+应用不兼容的主题可能会使西大不丢饿原地起飞。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="227"/>
@@ -1490,12 +1492,12 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="234"/>
         <source>Apply anyway</source>
-        <translation type="unfinished"></translation>
+        <translation>无视风险</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="163"/>
         <source>No description</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入文本。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="17"/>
@@ -1593,7 +1595,10 @@ If translations are missing after a theme change, please restart</source>
 New version: %2
 
 Do you want to %3 this plugin?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1
+%2
+
+%3</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="55"/>
@@ -1608,7 +1613,7 @@ Do you want to %3 this plugin?</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="69"/>
         <source>Note: Replacing a plugin will remove the old version completely.</source>
-        <translation type="unfinished"></translation>
+        <translation>看仔细：换掉插件将会完全移除旧版本。</translation>
     </message>
 </context>
 <context>
@@ -1642,7 +1647,7 @@ Do you want to %3 this plugin?</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="36"/>
         <source>Failed to uninstall the plugin. Please try again later.</source>
-        <translation type="unfinished"></translation>
+        <translation>卸载不了插件。更换电脑可以解决99%的问题。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="122"/>
