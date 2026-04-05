@@ -512,103 +512,103 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="84"/>
         <source>Set start date and max weeks</source>
-        <translation type="unfinished"></translation>
+        <translation>你什么时候开始上学？配料表几周一换？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="102"/>
         <source>Set default duration</source>
-        <translation type="unfinished"></translation>
+        <translation>你一般有多长？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="117"/>
         <source>Set date and max weeks</source>
-        <translation type="unfinished"></translation>
+        <translation>你什么时候开始上学？配料表几周一换？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="122"/>
         <source>Start date:</source>
-        <translation type="unfinished"></translation>
+        <translation>请输入出发地:</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="132"/>
         <source>Max week cycle:</source>
-        <translation type="unfinished"></translation>
+        <translation>最多转几圈:</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="149"/>
         <source>Failed to set start date or max week cycle. Please report this issue to the community or the developer.</source>
-        <translation>设置失败，可能是 Class Widgets 坏掉了。</translation>
+        <translation>在设置的时候出现了一些莫名其妙的问题。请联系社区黑奴。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="85"/>
         <source>Set the first day of school to calculate week numbers accurately</source>
-        <translation type="unfinished"></translation>
+        <translation>告诉我什么时候开始，然后我可以精确的更换配料表。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="89"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="107"/>
         <source>Set</source>
-        <translation type="unfinished"></translation>
+        <translation>齿轮</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="103"/>
         <source>Set the default duration for new classes, breaks, or activities.</source>
-        <translation type="unfinished"></translation>
+        <translation>在新的班级里当上帝。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="148"/>
         <source>Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>喔唷 出错啦！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="160"/>
         <source>Select Default Duration</source>
-        <translation type="unfinished"></translation>
+        <translation>你要多长？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="166"/>
         <source>Class</source>
-        <translation type="unfinished"></translation>
+        <translation>门牌号集合</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="180"/>
         <source>Break</source>
-        <translation type="unfinished"></translation>
+        <translation>坏掉</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="193"/>
         <source>Activity</source>
-        <translation type="unfinished"></translation>
+        <translation>运行</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="244"/>
         <source>No timelines yet</source>
-        <translation type="unfinished"></translation>
+        <translation>没有合适的线</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="250"/>
         <source>No timelines yet. Click &quot;New Timeline&quot; to get started.</source>
-        <translation type="unfinished"></translation>
+        <translation>单击此处添加标题。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="291"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>写！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="296"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>sudo rm</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="320"/>
         <source>New Timeline</source>
-        <translation type="unfinished"></translation>
+        <translation>创造新的线</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="324"/>
         <source>Duplicate</source>
-        <translation type="unfinished"></translation>
+        <translation>Control+C Control+V</translation>
     </message>
 </context>
 <context>
@@ -616,56 +616,56 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="11"/>
         <source>Schedule Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>配料表修改器</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="58"/>
         <source>Save Changes</source>
-        <translation type="unfinished"></translation>
+        <translation>保存你的设计</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="37"/>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="66"/>
         <source>Saved</source>
-        <translation type="unfinished"></translation>
+        <translation>安全</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="39"/>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="68"/>
         <source>Schedule saved successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>配料表安全成功</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="43"/>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="72"/>
         <source>Save Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>安全失败</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="45"/>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="74"/>
         <source>Failed to save schedule, see log for details</source>
-        <translation type="unfinished"></translation>
+        <translation>失败去安全配料表，请观察对数来获取详细信息</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="88"/>
         <source>Home</source>
-        <translation type="unfinished"></translation>
+        <translation>家</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="93"/>
         <source>Timeline</source>
-        <translation type="unfinished"></translation>
+        <translation>线</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="98"/>
         <source>Schedule</source>
-        <translation type="unfinished"></translation>
+        <translation>配料表</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="104"/>
         <source>Subjects</source>
-        <translation type="unfinished"></translation>
+        <translation>门牌</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="117"/>
@@ -675,12 +675,12 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="118"/>
         <source>Don&apos;t forget to save your changes before closing the editor or switching schedule. You can click the save button in the title bar.</source>
-        <translation>关闭编辑器或切换课程表之前，别忘了保存。点击标题栏的保存按钮可以保存。</translation>
+        <translation>保存了吗？保存了吗？保存了吗？不保存的全部达斯！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="124"/>
         <source>OK</source>
-        <translation>可</translation>
+        <translation>彳亍</translation>
     </message>
 </context>
 <context>
@@ -688,43 +688,43 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="52"/>
         <source>Remove</source>
-        <translation>不要了</translation>
+        <translation>移除</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="196"/>
         <source>Class</source>
-        <translation>课</translation>
+        <translation>门牌号</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="197"/>
         <source>Break</source>
-        <translation>下课</translation>
+        <translation>坏掉</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="198"/>
         <source>Activity</source>
-        <translation>活动</translation>
+        <translation>运行</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="199"/>
         <source>Unknown Type</source>
-        <translation>不知道</translation>
+        <translation>这啥我靠</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="207"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="216"/>
         <source> minutes</source>
-        <translation type="unfinished"></translation>
+        <translation> 最小</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="235"/>
         <source>Invalid Time Range</source>
-        <translation>无效的时间范围</translation>
+        <translation>不可用的时间限制</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="236"/>
         <source>End time must be later than start time.</source>
-        <translation>结束时间不能早于开始时间。</translation>
+        <translation>小明早上7:00起床但是6:00到了学校？？？</translation>
     </message>
 </context>
 <context>
@@ -732,12 +732,12 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="58"/>
         <source>Invalid Time Range</source>
-        <translation>无效的时间范围</translation>
+        <translation>不可用的时间限制</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="59"/>
         <source>End time must be later than start time.</source>
-        <translation>结束时间不能早于开始时间。</translation>
+        <translation>小明早上7:00起床但是6:00到了学校？？？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="103"/>
@@ -748,54 +748,54 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="113"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="128"/>
         <source>Class</source>
-        <translation>课</translation>
+        <translation>门牌号</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="114"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="129"/>
         <source>Break</source>
-        <translation>下课</translation>
+        <translation>坏掉</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="115"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="130"/>
         <source>Activity</source>
-        <translation type="unfinished"></translation>
+        <translation>运行</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="116"/>
         <source>Unknown Type</source>
-        <translation type="unfinished"></translation>
+        <translation>这啥我靠</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="135"/>
         <source>ID</source>
-        <translation type="unfinished"></translation>
+        <translation>词元</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="145"/>
         <source>Default Subject</source>
-        <translation type="unfinished"></translation>
+        <translation>未定义的配料</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="151"/>
         <source>Select Subject</source>
-        <translation type="unfinished"></translation>
+        <translation>挑选主语</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="180"/>
         <source>Set Subject</source>
-        <translation type="unfinished"></translation>
+        <translation>坐主语</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="197"/>
         <source>Title</source>
-        <translation type="unfinished"></translation>
+        <translation>抬头</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="210"/>
         <source>Start Time</source>
-        <translation type="unfinished"></translation>
+        <translation>起点</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="223"/>
