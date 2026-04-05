@@ -1676,23 +1676,24 @@ Do you want to %3 this plugin?</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="177"/>
         <source>Import</source>
-        <translation type="unfinished"></translation>
+        <translation>❤️插入❤️</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="316"/>
         <source>This plugin requires API version %1, but current API version is %2. 
 It&apos;s incompatible and may cause unexpected issues.</source>
-        <translation type="unfinished"></translation>
+        <translation>此插件需要API版本%1，但当前API版本为%2。
+不兼容可能导致西大不丢饿原地爆炸。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="159"/>
         <source>The plugin has been imported successfully.</source>
-        <translation type="unfinished"></translation>
+        <translation>入已成。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="16"/>
         <source>The plugin system is still under development. </source>
-        <translation type="unfinished"></translation>
+        <translation>Bug仍在制作. </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="128"/>
@@ -1749,12 +1750,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="350"/>
         <source>Finder</source>
-        <translation type="unfinished"></translation>
+        <translation>发现者</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="350"/>
         <source>File Explorer</source>
-        <translation type="unfinished"></translation>
+        <translation>桌面窗口管理器</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="355"/>
@@ -1774,12 +1775,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="373"/>
         <source>Uninstall</source>
-        <translation type="unfinished"></translation>
+        <translation>统一不安装</translation>
     </message>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="11"/>
         <source>Built-in Widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>内脏</translation>
     </message>
 </context>
 <context>
@@ -1823,7 +1824,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="76"/>
         <source>Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>预习</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="81"/>
@@ -2005,7 +2006,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleFlyout.qml" line="58"/>
         <source>Subject</source>
-        <translation type="unfinished"></translation>
+        <translation>傻逼杰克特</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleFlyout.qml" line="64"/>
