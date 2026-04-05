@@ -1728,12 +1728,12 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="63"/>
         <source>Home</source>
-        <translation type="unfinished">首页</translation>
+        <translation>首页</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="68"/>
         <source>Plugins</source>
-        <translation type="unfinished">插件</translation>
+        <translation>插件</translation>
     </message>
 </context>
 <context>
