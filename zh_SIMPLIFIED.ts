@@ -2034,17 +2034,17 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="291"/>
         <source>Class Started</source>
-        <translation type="unfinished"></translation>
+        <translation>睡觉！</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="308"/>
         <source>Activity Started</source>
-        <translation type="unfinished"></translation>
+        <translation>激活入门版</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="317"/>
         <source>Intermission</source>
-        <translation type="unfinished"></translation>
+        <translation>交互任务</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="333"/>
@@ -2052,19 +2052,19 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <location filename="../../src/core/schedule/runtime.py" line="369"/>
         <location filename="../../src/core/schedule/runtime.py" line="379"/>
         <source>Next: {}</source>
-        <translation type="unfinished"></translation>
+        <translation>下一位 {}</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="337"/>
         <location filename="../../src/core/schedule/runtime.py" line="373"/>
         <source>Next: {} at {}</source>
-        <translation type="unfinished"></translation>
+        <translation>下一位 {} 在 {} 等你</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="339"/>
         <location filename="../../src/core/schedule/runtime.py" line="375"/>
         <source>Next: {} (Off-site)</source>
-        <translation type="unfinished"></translation>
+        <translation>下一位 {}（不在本教室）</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="353"/>
@@ -2148,7 +2148,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="51"/>
         <source>Notification &amp; Time</source>
-        <translation type="unfinished"></translation>
+        <translation>no化和提姆</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="55"/>
@@ -2158,7 +2158,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="60"/>
         <source>Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Tim Cook</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="67"/>
@@ -2181,12 +2181,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="100"/>
         <source>Teacher: </source>
-        <translation type="unfinished"></translation>
+        <translation>sensei </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="100"/>
         <source>Location: </source>
-        <translation type="unfinished"></translation>
+        <translation>定位 </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="125"/>
