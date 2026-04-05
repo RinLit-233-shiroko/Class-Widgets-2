@@ -901,7 +901,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <source>1. Tap and drag to adjust class times;
 2. Quickly fill in courses at a glance;
 3. Done in just 3 steps — editing your schedule has never been easier!</source>
-        <translation type="unfinished"></translation>
+        <translation>只需三步完成——轻松设置课程！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="29"/>
@@ -1993,7 +1993,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/core/convertor/converter.py" line="252"/>
         <source>Class</source>
-        <translation type="unfinished"></translation>
+        <translation>类</translation>
     </message>
 </context>
 <context>
@@ -2074,12 +2074,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="388"/>
         <source>Enjoy your break</source>
-        <translation type="unfinished"></translation>
+        <translation>享受生活</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="390"/>
         <source>Free Time</source>
-        <translation type="unfinished"></translation>
+        <translation>免费花时间</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="395"/>
@@ -2201,7 +2201,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="143"/>
         <source>Simplified Name</source>
-        <translation type="unfinished"></translation>
+        <translation>简体名称</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="149"/>
@@ -2216,7 +2216,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="154"/>
         <source>Teacher</source>
-        <translation type="unfinished"></translation>
+        <translation>sensei</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="159"/>
@@ -2226,17 +2226,17 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="160"/>
         <source>e.g. Room 7813</source>
-        <translation type="unfinished"></translation>
+        <translation>例如：114514 号房</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="164"/>
         <source>Color</source>
-        <translation type="unfinished"></translation>
+        <translation>色</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="175"/>
         <source>Held in homeroom</source>
-        <translation type="unfinished"></translation>
+        <translation>别跑</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="187"/>
@@ -2321,7 +2321,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/core/utils/subjects.py" line="55"/>
         <source>Music</source>
-        <translation type="unfinished"></translation>
+        <translation>这才是真正的音乐！</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="56"/>
