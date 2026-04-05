@@ -1597,8 +1597,8 @@ If translations are missing after a theme change, please restart</source>
 New version: %2
 
 Do you want to %3 this plugin?</source>
-        <translation>你的版本：%1
-上游版本：%2
+        <translation>下面的：%1
+上面的：%2
 
 是否要 %3 此屁股？</translation>
     </message>
