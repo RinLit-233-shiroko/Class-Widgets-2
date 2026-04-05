@@ -1157,7 +1157,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="146"/>
         <source>Run Class Widgets on startup</source>
-        <translation type="unfinished"></translation>
+        <translation>电脑开机后Class Widgets 将自动和你打招呼</translation>
     </message>
 </context>
 <context>
@@ -1165,22 +1165,22 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="10"/>
         <source>Interactions &amp; Actions</source>
-        <translation type="unfinished"></translation>
+        <translation>交互与操作</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="18"/>
         <source>Widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>组件</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="23"/>
         <source>Hover fade</source>
-        <translation type="unfinished"></translation>
+        <translation>悬停渐隐</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="39"/>
         <source>Tap to hide</source>
-        <translation type="unfinished"></translation>
+        <translation>点一下就藏起来</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="24"/>
