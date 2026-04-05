@@ -383,12 +383,12 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="129"/>
         <source>Mon</source>
-        <translation type="unfinished"></translation>
+        <translation>一</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="129"/>
         <source>Tue</source>
-        <translation type="unfinished"></translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="129"/>
@@ -2173,7 +2173,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="78"/>
         <source>Update</source>
-        <translation type="unfinished"></translation>
+        <translation>上日期</translation>
     </message>
 </context>
 <context>
@@ -2577,7 +2577,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="93"/>
         <source>Schedules</source>
-        <translation type="unfinished"></translation>
+        <translation>日程表</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="94"/>
@@ -2625,7 +2625,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="158"/>
         <source>Switch your schedule</source>
-        <translation type="unfinished"></translation>
+        <translation>你的课程表switch</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="211"/>
@@ -2665,7 +2665,9 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <source>初始引导窗口还未完工，在做啦在做啦 
 目前版本为测试版，大多数功能还未补完。若要在教学环境中使用，请三思而后行。
 欢迎到我们的 GitHub 页面提交反馈或建议，谢谢！</source>
-        <translation type="unfinished"></translation>
+        <translation>初始引导窗口尚未完成，正在画饼中
+当前版本为测试版，大部分功能尚未完善。若要在教学环境中使用，请谨慎考虑。
+欢迎前往我们的 GitHub 页面提交反馈或建议，栓Q！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="54"/>
@@ -2739,7 +2741,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="75"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="132"/>
         <source>Check for updates</source>
-        <translation type="unfinished"></translation>
+        <translation>查查你的</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="88"/>
@@ -2764,17 +2766,17 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="97"/>
         <source>%1 MB/s</source>
-        <translation type="unfinished"></translation>
+        <translation>挺快的</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="98"/>
         <source>%1 KB/s</source>
-        <translation type="unfinished"></translation>
+        <translation>好慢，没吃饭吗</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="99"/>
         <source>Progress: %1% — %2</source>
-        <translation type="unfinished"></translation>
+        <translation>进度：99%</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="102"/>
@@ -2794,7 +2796,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="108"/>
         <source>Download was cancelled</source>
-        <translation type="unfinished"></translation>
+        <translation>下载孬</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="110"/>
@@ -2814,7 +2816,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="186"/>
         <source>Restart and Install</source>
-        <translation type="unfinished"></translation>
+        <translation>重开并安装</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="201"/>
@@ -2914,7 +2916,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="89"/>
         <source>Class Widgets has been updated to the latest version: {version}</source>
-        <translation>Class Widgets 已更新至最新版本：{version}</translation>
+        <translation>{version}</translation>
     </message>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="90"/>
@@ -2952,7 +2954,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="47"/>
         <source>Round</source>
-        <translation type="unfinished"></translation>
+        <translation>♾</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="51"/>
@@ -3008,7 +3010,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="18"/>
         <source>A completely rebuilt notification system that supports in-app notification toggles, intelligent ringtone configuration, and customizable notification providers. Bringing users a more flexible and intelligent notification experience.</source>
-        <translation type="unfinished"></translation>
+        <translation>嗯对</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="21"/>
@@ -3023,7 +3025,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="26"/>
         <source>A comprehensive plugin system architecture that supports third-party library imports, web-based plugin plaza, PluginAPI and UIAPI. Added edit mode detection properties to make plugin development more convenient.</source>
-        <translation type="unfinished"></translation>
+        <translation>全新架构，支持第三方库，基于网页与西大不丢SDK，开发者可以更加快乐的开发了。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="29"/>
@@ -3125,7 +3127,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="156"/>
         <source>Extra Light</source>
-        <translation type="unfinished"></translation>
+        <translation>细狗</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="157"/>
@@ -3185,27 +3187,27 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="222"/>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>迪斯玩</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="223"/>
         <source>Set which screen to display widgets on, and adjust their position</source>
-        <translation type="unfinished"></translation>
+        <translation>设置显示屏幕，和调整位置</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="331"/>
         <source>X-axis offset</source>
-        <translation type="unfinished"></translation>
+        <translation>X弹道偏移</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="345"/>
         <source>Y-axis offset</source>
-        <translation type="unfinished"></translation>
+        <translation>Y弹道偏移</translation>
     </message>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="27"/>
         <source>Current Activity</source>
-        <translation type="unfinished"></translation>
+        <translation>当前激活</translation>
     </message>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="33"/>
@@ -3215,12 +3217,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="39"/>
         <source>Event Countdown</source>
-        <translation type="unfinished"></translation>
+        <translation>幸福倒计时</translation>
     </message>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="45"/>
         <source>Upcoming Activities</source>
-        <translation type="unfinished"></translation>
+        <translation>即将激活</translation>
     </message>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="57"/>
@@ -3256,12 +3258,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="10"/>
         <source>Current Activity</source>
-        <translation type="unfinished"></translation>
+        <translation>当前激活</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="83"/>
         <source>Class</source>
-        <translation type="unfinished"></translation>
+        <translation>类</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="85"/>
@@ -3276,7 +3278,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="88"/>
         <source>Nothing right now</source>
-        <translation>没有课欸</translation>
+        <translation>放飞自我</translation>
     </message>
 </context>
 <context>
@@ -3305,7 +3307,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/test.qml" line="11"/>
         <source>测试组件</source>
-        <translation type="unfinished"></translation>
+        <translation>测试组件</translation>
     </message>
 </context>
 <context>
