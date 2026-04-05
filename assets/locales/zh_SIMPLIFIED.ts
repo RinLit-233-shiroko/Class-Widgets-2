@@ -12,7 +12,7 @@
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="58"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="73"/>
         <source>Class Widgets 2</source>
-        <translation type="unfinished"></translation>
+        <translation>西大不丢饿</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="68"/>
@@ -28,7 +28,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="91"/>
         <source>To view this repository</source>
-        <translation type="unfinished"></translation>
+        <translation>视奸此项目</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="108"/>
@@ -38,12 +38,12 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="111"/>
         <source>Create an issue on GitHub</source>
-        <translation type="unfinished"></translation>
+        <translation>在全球最大的男性交友平台创建问题</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="119"/>
         <source>Dependencies &amp; references</source>
-        <translation type="unfinished"></translation>
+        <translation>依赖项与参考</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="122"/>
@@ -53,12 +53,12 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="126"/>
         <source>Fluent Design System</source>
-        <translation type="unfinished"></translation>
+        <translation>流畅设计系统</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="130"/>
         <source>RinUI</source>
-        <translation type="unfinished"></translation>
+        <translation>琳丽塔UI</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="134"/>
@@ -73,7 +73,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="144"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>协议</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="145"/>
@@ -93,7 +93,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="168"/>
         <source>Log Storage Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>不写日记</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="169"/>
