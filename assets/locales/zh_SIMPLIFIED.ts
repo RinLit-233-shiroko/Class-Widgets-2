@@ -537,7 +537,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="149"/>
         <source>Failed to set start date or max week cycle. Please report this issue to the community or the developer.</source>
-        <translation type="unfinished"></translation>
+        <translation>设置失败，可能是 Class Widgets 坏掉了。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="85"/>
@@ -675,7 +675,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="118"/>
         <source>Don&apos;t forget to save your changes before closing the editor or switching schedule. You can click the save button in the title bar.</source>
-        <translation>关闭编辑器或切换课程表之前，不要忘记保存更改啊。点击标题栏的保存按钮可以保存。</translation>
+        <translation>关闭编辑器或切换课程表之前，别忘了保存。点击标题栏的保存按钮可以保存。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="124"/>
@@ -1399,7 +1399,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="49"/>
         <source>Debug message</source>
-        <translation type="unfinished"></translation>
+        <translation>调教信息</translation>
     </message>
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="85"/>
@@ -1507,7 +1507,7 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="141"/>
         <source>Incompatible</source>
-        <translation type="unfinished"></translation>
+        <translation>不合适</translation>
     </message>
 </context>
 <context>
@@ -1516,7 +1516,7 @@ If translations are missing after a theme change, please restart</source>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCard.qml" line="113"/>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCard.qml" line="121"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>不知道</translation>
     </message>
 </context>
 <context>
@@ -1524,12 +1524,12 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/core/plugin/manager.py" line="92"/>
         <source>Incompatible</source>
-        <translation type="unfinished"></translation>
+        <translation>不合适</translation>
     </message>
     <message>
         <location filename="../../src/core/plugin/manager.py" line="93"/>
         <source>{count} incompatible plugin(s) have been loaded, which may cause unknown issues.</source>
-        <translation type="unfinished"></translation>
+        <translation>发现 {count} 个插件可能不合适Class Widgets，运行过程中可能会把 Class Widgets 弄坏。</translation>
     </message>
 </context>
 <context>
@@ -1537,7 +1537,7 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="12"/>
         <source>Plugin Plaza</source>
-        <translation type="unfinished"></translation>
+        <translation>插件市场</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="35"/>
@@ -1552,12 +1552,12 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="63"/>
         <source>Home</source>
-        <translation type="unfinished"></translation>
+        <translation>家</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="68"/>
         <source>Plugins</source>
-        <translation type="unfinished"></translation>
+        <translation>插件</translation>
     </message>
 </context>
 <context>
@@ -1575,7 +1575,7 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="43"/>
         <source>A newer version of &apos;%1&apos; is available.</source>
-        <translation type="unfinished"></translation>
+        <translation>“%1” 不是最新的。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="44"/>
@@ -1598,12 +1598,12 @@ Do you want to %3 this plugin?</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="55"/>
         <source>update</source>
-        <translation type="unfinished"></translation>
+        <translation>升级</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="55"/>
         <source>replace</source>
-        <translation type="unfinished"></translation>
+        <translation>换掉</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="69"/>
@@ -1621,18 +1621,18 @@ Do you want to %3 this plugin?</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="15"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>注意</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="25"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="158"/>
         <source>Success</source>
-        <translation type="unfinished"></translation>
+        <translation>成功的</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="26"/>
         <source>The plugin has been uninstalled successfully. Restart to take effect.</source>
-        <translation type="unfinished"></translation>
+        <translation>插件已经清理掉了。重启后生效。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="35"/>
@@ -1663,7 +1663,8 @@ Do you want to %3 this plugin?</source>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="168"/>
         <source>The selected plugin could not be imported.
 </source>
-        <translation type="unfinished"></translation>
+        <translation>这个插件导入不了
+</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="177"/>
@@ -1955,18 +1956,18 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="270"/>
         <source>Are you sure to delete this schedule?</source>
-        <translation type="unfinished"></translation>
+        <translation>你要删掉它吗？怪可怜的</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="273"/>
         <source>This action cannot be undone.</source>
-        <translation type="unfinished"></translation>
+        <translation>没有后悔药。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="281"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="291"/>
         <source>Failed to delete</source>
-        <translation type="unfinished"></translation>
+        <translation>删除不了</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="282"/>
@@ -1976,7 +1977,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="292"/>
         <source>Please send the log file to the developer or community to help us sort it out.</source>
-        <translation type="unfinished"></translation>
+        <translation>请将日志文件给开发者或社区看看，以帮助我们解决问题。</translation>
     </message>
 </context>
 <context>
@@ -1992,7 +1993,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleFlyout.qml" line="40"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>修改</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleFlyout.qml" line="58"/>
@@ -2114,7 +2115,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="24"/>
         <source>Home</source>
-        <translation type="unfinished"></translation>
+        <translation>家</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="29"/>
@@ -2124,12 +2125,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="34"/>
         <source>Widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>大组件</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="39"/>
         <source>Interactions</source>
-        <translation type="unfinished"></translation>
+        <translation>交互</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="46"/>
@@ -2159,7 +2160,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="73"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>这是什么</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="78"/>
@@ -2526,7 +2527,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/themes/__init__.py" line="11"/>
         <source>Class Widgets Builtin Default Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>Class Widgets 自带的主题</translation>
     </message>
 </context>
 <context>
@@ -2621,17 +2622,17 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="211"/>
         <source>Debugger</source>
-        <translation type="unfinished"></translation>
+        <translation>调教器</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="224"/>
         <source>Restart</source>
-        <translation type="unfinished"></translation>
+        <translation>重开</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="234"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>离开</translation>
     </message>
 </context>
 <context>
@@ -2639,17 +2640,17 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="11"/>
         <source>Welcome ╰(*°▽°*)╯</source>
-        <translation type="unfinished"></translation>
+        <translation>欢迎光↓临↑→~</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="33"/>
         <source>Welcome to Class Widgets 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Class Widgets 2 欢迎你</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="43"/>
         <source>注意</source>
-        <translation type="unfinished"></translation>
+        <translation>注意</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="44"/>
@@ -2671,12 +2672,12 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="81"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>离开</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="86"/>
         <source>Get started</source>
-        <translation type="unfinished"></translation>
+        <translation>用</translation>
     </message>
 </context>
 <context>
@@ -2694,37 +2695,37 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="61"/>
         <source>You&apos;re up to date!</source>
-        <translation type="unfinished"></translation>
+        <translation>你是最新的！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="63"/>
         <source>New version available!</source>
-        <translation type="unfinished"></translation>
+        <translation>有更新的！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="65"/>
         <source>Downloading update...</source>
-        <translation type="unfinished"></translation>
+        <translation>下载中……</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="67"/>
         <source>Installing update...</source>
-        <translation type="unfinished"></translation>
+        <translation>安装中……</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="69"/>
         <source>Update ready to install</source>
-        <translation type="unfinished"></translation>
+        <translation>准备就绪</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="71"/>
         <source>Update failed</source>
-        <translation type="unfinished"></translation>
+        <translation>更新不了欸</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="73"/>
         <source>Download cancelled</source>
-        <translation type="unfinished"></translation>
+        <translation>已取消</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="75"/>
@@ -2735,12 +2736,12 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="88"/>
         <source>Waiting for response...</source>
-        <translation type="unfinished"></translation>
+        <translation>服务器怎么还不回应……</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="90"/>
         <source>You&apos;re on the latest version</source>
-        <translation type="unfinished"></translation>
+        <translation>你是最新的</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="92"/>
@@ -2750,7 +2751,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="92"/>
         <source>New version available</source>
-        <translation type="unfinished"></translation>
+        <translation>有更新的</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="97"/>
@@ -2775,12 +2776,12 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="104"/>
         <source>Ready to install now</source>
-        <translation type="unfinished"></translation>
+        <translation>准备就绪</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="106"/>
         <source>Something went wrong!</source>
-        <translation type="unfinished"></translation>
+        <translation>丸辣！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="108"/>
@@ -2790,7 +2791,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="110"/>
         <source>Click &quot;Check for updates&quot; to search for updates</source>
-        <translation type="unfinished"></translation>
+        <translation>戳“检查更新”以搜索新的版本</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="160"/>
@@ -2825,12 +2826,12 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="212"/>
         <source>Release</source>
-        <translation type="unfinished"></translation>
+        <translation>稳定的</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="213"/>
         <source>Alpha</source>
-        <translation type="unfinished"></translation>
+        <translation>测试版</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="234"/>
@@ -2866,7 +2867,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="292"/>
         <source>Advanced</source>
-        <translation type="unfinished"></translation>
+        <translation>搞基选项</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="298"/>
@@ -2905,12 +2906,12 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="89"/>
         <source>Class Widgets has been updated to the latest version: {version}</source>
-        <translation type="unfinished"></translation>
+        <translation>Class Widgets 已更新至最新版本：{version}</translation>
     </message>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="90"/>
         <source>Update Completed ヾ(≧▽≦*)o</source>
-        <translation type="unfinished"></translation>
+        <translation>好东西来了</translation>
     </message>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="163"/>
@@ -2930,7 +2931,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="209"/>
         <source>The update may take several seconds to complete. (●&apos;◡&apos;●)</source>
-        <translation type="unfinished"></translation>
+        <translation>正在更新 Class Widgets ，请勿 TM 关闭计算机</translation>
     </message>
 </context>
 <context>
@@ -2989,7 +2990,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="12"/>
         <source>Introducing our brand new feature introduction page that allows users to quickly learn about the latest features of Class Widgets 2.0. Supports multi-page display, smooth animations, and smart navigation for a better new user experience.</source>
-        <translation type="unfinished"></translation>
+        <translation>好东西来了！在此快速了解 Class Widgets 2.0 的最新 Bug。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="17"/>
@@ -3029,7 +3030,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="34"/>
         <source>Added Japanese and Traditional Chinese (Hong Kong) language support, improved internationalization (i18n) system. Translation management through Weblate platform allows more users to enjoy the convenience of Class Widgets.</source>
-        <translation type="unfinished"></translation>
+        <translation>新增 梗体中文 语言支持，通过 Weblate 平台进行翻译管理。</translation>
     </message>
 </context>
 <context>
@@ -3262,12 +3263,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="87"/>
         <source>Take a break</source>
-        <translation type="unfinished"></translation>
+        <translation>休息</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="88"/>
         <source>Nothing right now</source>
-        <translation type="unfinished"></translation>
+        <translation>没有课欸</translation>
     </message>
 </context>
 <context>
