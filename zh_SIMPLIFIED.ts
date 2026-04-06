@@ -23,7 +23,7 @@
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="74"/>
         <source>© 2024-2026 RinLit. All rights reserved 
 Licensed under the MIT license</source>
-        <translation type="unfinished">© 2024-2026 RinLit. 保留所有权利 
+        <translation>© 2024-2026 RinLit. 保留所有权利 
 根据 MIT 许可证授权</translation>
     </message>
     <message>
@@ -49,7 +49,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="122"/>
         <source>Qt &amp; Qt Quick</source>
-        <translation type="unfinished"></translation>
+        <translation>Qt &amp; Qt Quick</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="126"/>
@@ -64,12 +64,12 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="134"/>
         <source>Loguru</source>
-        <translation type="unfinished"></translation>
+        <translation>Loguru</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="138"/>
         <source>Pydantic</source>
-        <translation type="unfinished"></translation>
+        <translation>Pydantic</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="144"/>
@@ -79,7 +79,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="145"/>
         <source>This project is licensed under the GPL-3 license</source>
-        <translation type="unfinished">本项目根据 GPL-3 许可证授权</translation>
+        <translation>本项目根据 GPL-3 许可证授权</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="148"/>
@@ -2821,17 +2821,17 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="201"/>
         <source>More options</source>
-        <translation type="unfinished"></translation>
+        <translation>更多的观点</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="207"/>
         <source>Update Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>上日期管道</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="208"/>
         <source>Choose which update channel to use</source>
-        <translation type="unfinished"></translation>
+        <translation>选择哪一个上日期管道来用</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="212"/>
@@ -2846,33 +2846,33 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="234"/>
         <source>Use Mirror Source</source>
-        <translation type="unfinished"></translation>
+        <translation>用镜子源头</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="235"/>
         <source>If GitHub is slow or unavailable in your region, use a mirror to download updates faster</source>
-        <translation type="unfinished"></translation>
+        <translation>如果你在中国大陆你可以用镜子源头来快马加鞭</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="244"/>
         <source>Choose a mirror source for downloading updates</source>
-        <translation type="unfinished"></translation>
+        <translation>选择一个镜子源头给下加载上日期</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="243"/>
         <source>Select Mirror</source>
-        <translation type="unfinished"></translation>
+        <translation>选择镜子</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="272"/>
         <source>Auto check for updates</source>
-        <translation type="unfinished"></translation>
+        <translation>让奥拓先生检查上日期</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="273"/>
         <source>Automatically check for updates and download them when they are available 
 * Requires restart</source>
-        <translation type="unfinished"></translation>
+        <translation>你需要重新访问2WC在这个操作之后</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="292"/>
@@ -2882,22 +2882,22 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="298"/>
         <source>Updater Server URL</source>
-        <translation type="unfinished"></translation>
+        <translation>更改天线地址</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="299"/>
         <source>Set a custom URL to use for the updater server</source>
-        <translation type="unfinished"></translation>
+        <translation>我就要用自己的天线！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="313"/>
         <source>Reset to default</source>
-        <translation type="unfinished"></translation>
+        <translation>回炉重造</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="321"/>
         <source>https://example.com/releases.json/</source>
-        <translation type="unfinished"></translation>
+        <translation>https://example.com/releases.json/</translation>
     </message>
 </context>
 <context>
@@ -2905,13 +2905,14 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/core/automations/update_check.py" line="45"/>
         <source>Class Widgets Update Available</source>
-        <translation type="unfinished"></translation>
+        <translation>移除了Him，以及…</translation>
     </message>
     <message>
         <location filename="../../src/core/automations/update_check.py" line="43"/>
         <source>&quot;{version}&quot; is available!
 Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
-        <translation type="unfinished"></translation>
+        <translation>最新最热！：&quot;{version}&quot;！
+前往 齿轮 上日期 了解更多</translation>
     </message>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="89"/>
@@ -2926,17 +2927,17 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="163"/>
         <source>Update Downloaded</source>
-        <translation type="unfinished"></translation>
+        <translation>上日期已经被下加载了</translation>
     </message>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="168"/>
         <source>Ready to install anytime. Go to &quot;Settings&quot; → &quot;Update&quot; to proceed with installation.</source>
-        <translation type="unfinished"></translation>
+        <translation>你没事吧？没事的话更新一下。</translation>
     </message>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="205"/>
         <source>Applying Update Soon</source>
-        <translation type="unfinished"></translation>
+        <translation>我要更新了。</translation>
     </message>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="209"/>
@@ -2949,7 +2950,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="42"/>
         <source>Every Week</source>
-        <translation type="unfinished">漂亮的Week</translation>
+        <translation>漂亮的Week</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="47"/>
@@ -2959,17 +2960,17 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="51"/>
         <source>Custom</source>
-        <translation type="unfinished">我就要自己规定什么时候出门</translation>
+        <translation>我就要自己规定什么时候出门</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="59"/>
         <source>Week of Cycle:</source>
-        <translation type="unfinished"></translation>
+        <translation>周圆圈：</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="72"/>
         <source>Week Index:</source>
-        <translation type="unfinished"></translation>
+        <translation>现在虚弱：</translation>
     </message>
 </context>
 <context>
@@ -2977,17 +2978,17 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/WhatsNew.qml" line="11"/>
         <source>What&apos;s New ╰(*°▽°*)╯</source>
-        <translation type="unfinished"></translation>
+        <translation>省流</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/WhatsNew.qml" line="173"/>
         <source>Feature Title</source>
-        <translation type="unfinished"></translation>
+        <translation>专题强化</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/WhatsNew.qml" line="182"/>
         <source>Feature description will appear here...</source>
-        <translation type="unfinished"></translation>
+        <translation>注释</translation>
     </message>
 </context>
 <context>
@@ -2995,7 +2996,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="11"/>
         <source>Brand New What&apos;s New Feature</source>
-        <translation type="unfinished"></translation>
+        <translation>震！撼！首！发！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="12"/>
@@ -3005,7 +3006,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="17"/>
         <source>Comprehensive Notification System Upgrade</source>
-        <translation type="unfinished"></translation>
+        <translation>你QQ更新了！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="18"/>
@@ -3015,12 +3016,12 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="21"/>
         <source>Add &quot;Dynamic Notifications&quot; to Widgets Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>让小方块更加优雅的发送QQ消息</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="25"/>
         <source>Enhanced Plugin System</source>
-        <translation type="unfinished"></translation>
+        <translation>更强大的屁股</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="26"/>
@@ -3030,12 +3031,12 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="29"/>
         <source>Visit Extension Plaza</source>
-        <translation type="unfinished"></translation>
+        <translation>前往屁股商城</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="33"/>
         <source>Extended Multi-language Support</source>
-        <translation type="unfinished"></translation>
+        <translation>现在你可以选择八 国 语 言</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="34"/>
@@ -3048,7 +3049,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/WidgetSettingsDialog.qml" line="9"/>
         <source>Widget Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>规范小方块</translation>
     </message>
 </context>
 <context>
@@ -3056,73 +3057,73 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="10"/>
         <source>Widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>小方块</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="62"/>
         <source>The new way to edit widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>更好的小方块</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="63"/>
         <source>Right-click or long press any widget, 
 then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
-        <translation type="unfinished"></translation>
+        <translation>不译了。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="72"/>
         <source>Edit Widgets Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>调教小方块页面</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="82"/>
         <source>Appearances</source>
-        <translation type="unfinished"></translation>
+        <translation>你长什么样？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="88"/>
         <source>Widgets Scale</source>
-        <translation type="unfinished"></translation>
+        <translation>让小方块随地大小变</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="89"/>
         <source>Make widgets look bigger or stay compact</source>
-        <translation type="unfinished"></translation>
+        <translation>大大的❤️或者小小的💦</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="105"/>
         <source>Opacity</source>
-        <translation type="unfinished"></translation>
+        <translation>鬼魂设置</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="106"/>
         <source>Change the opacity of the background of widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>让小方块变成鬼魂</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="122"/>
         <source>Font</source>
-        <translation type="unfinished"></translation>
+        <translation>书法</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="123"/>
         <source>Choose a font for the widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>让小方块学习书法</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="149"/>
         <source>Font weight</source>
-        <translation type="unfinished"></translation>
+        <translation>重！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="150"/>
         <source>Set the thickness of the font</source>
-        <translation type="unfinished"></translation>
+        <translation>变得粗粗的💦或者细细的❤️</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="155"/>
         <source>Thin</source>
-        <translation type="unfinished"></translation>
+        <translation>小东西</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="156"/>
@@ -3132,57 +3133,58 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="157"/>
         <source>Light</source>
-        <translation type="unfinished">闪光弹</translation>
+        <translation>没那么小</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="158"/>
         <source>Regular</source>
-        <translation type="unfinished"></translation>
+        <translation>尺子</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="159"/>
         <source>Medium</source>
-        <translation type="unfinished"></translation>
+        <translation>微胖</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="160"/>
         <source>Semi Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>微月半</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="161"/>
         <source>Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>月半</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="162"/>
         <source>Extra Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>牛寺月半</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="163"/>
         <source>Black</source>
-        <translation type="unfinished"></translation>
+        <translation>黑人</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="164"/>
         <source>Custom</source>
-        <translation type="unfinished">我就要自己规定什么时候出门</translation>
+        <translation>我爱咋咋地</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="195"/>
         <source>Preview</source>
-        <translation type="unfinished">预习</translation>
+        <translation>预习</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="198"/>
         <source>The quick brown fox jumps over the lazy dog</source>
-        <translation type="unfinished"></translation>
+        <translation>PHP is the best language in the world 
+梗体中文由 Hongshi ⁧和 Lyang1273 翻译。由 IsHPDuwu 提供支持。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="216"/>
         <source>Window</source>
-        <translation type="unfinished"></translation>
+        <translation>窗户</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="222"/>
@@ -3212,7 +3214,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="33"/>
         <source>Time</source>
-        <translation type="unfinished">Tim Cook</translation>
+        <translation>Tim Cook</translation>
     </message>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="39"/>
@@ -3227,7 +3229,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="57"/>
         <source>Dynamic Notification</source>
-        <translation type="unfinished"></translation>
+        <translation>更优雅的QQ消息</translation>
     </message>
 </context>
 <context>
@@ -3235,22 +3237,22 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="202"/>
         <source>Edit </source>
-        <translation type="unfinished">修改 </translation>
+        <translation>修改 </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="217"/>
         <source>Delete</source>
-        <translation type="unfinished">丢掉！</translation>
+        <translation>丢掉！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="226"/>
         <source>Edit Widgets Screen</source>
-        <translation type="unfinished"></translation>
+        <translation>调教小方块页面</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="301"/>
         <source>Add</source>
-        <translation type="unfinished">咖啡不断加加加加到厌倦～</translation>
+        <translation>咖啡不断加加加加到厌倦～</translation>
     </message>
 </context>
 <context>
@@ -3268,7 +3270,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="85"/>
         <source>Activity</source>
-        <translation type="unfinished">运行</translation>
+        <translation>运行</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="87"/>
@@ -3286,12 +3288,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/dynamicNotification.qml" line="244"/>
         <source>No notification yet</source>
-        <translation type="unfinished"></translation>
+        <translation>无人在意</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/dynamicNotification.qml" line="266"/>
         <source>Dynamic Notification</source>
-        <translation type="unfinished"></translation>
+        <translation>更优雅的QQ消息</translation>
     </message>
 </context>
 <context>
@@ -3299,7 +3301,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/eventCountdown.qml" line="10"/>
         <source>Remaining</source>
-        <translation type="unfinished"></translation>
+        <translation>死期</translation>
     </message>
 </context>
 <context>
@@ -3315,52 +3317,52 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/settings/upcomingActivities.qml" line="12"/>
         <source>Marquee Title</source>
-        <translation type="unfinished"></translation>
+        <translation>马拉松样式</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/upcomingActivities.qml" line="13"/>
         <source>If enabled, the upcoming activities will scroll from left to right.</source>
-        <translation type="unfinished"></translation>
+        <translation>滚滚滚滚滚～</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/upcomingActivities.qml" line="29"/>
         <source>Max number of activities</source>
-        <translation type="unfinished"></translation>
+        <translation>马克思数量来自于运行</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/upcomingActivities.qml" line="30"/>
         <source>Set the maximum number of activities to display in the upcoming activities view</source>
-        <translation type="unfinished"></translation>
+        <translation>最多运行多少个？</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/upcomingActivities.qml" line="46"/>
         <source>Show full name of the activities</source>
-        <translation type="unfinished"></translation>
+        <translation>全拼</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="10"/>
         <source>Upcoming</source>
-        <translation type="unfinished"></translation>
+        <translation>死到临头</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="29"/>
         <source>Class</source>
-        <translation type="unfinished"></translation>
+        <translation>门牌号</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="30"/>
         <source>Activity</source>
-        <translation type="unfinished">运行</translation>
+        <translation>运行</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="35"/>
         <source>Nothing ahead</source>
-        <translation type="unfinished"></translation>
+        <translation>没事了，吃点溜溜梅吗？</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="31"/>
         <source>Unset</source>
-        <translation type="unfinished"></translation>
+        <translation>滚木</translation>
     </message>
 </context>
 </TS>
