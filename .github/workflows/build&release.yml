@@ -89,6 +89,19 @@ jobs:
             --name="Class Widgets 2" \
             src/app.py
 
+      - name: 🌳 Print tree of dist directory
+        shell: bash
+        run: |
+          echo "::group::Tree view of dist/"
+          if [[ "${{ runner.os }}" == "Windows" ]]; then
+            # Windows 的 tree 命令
+            tree /F /A dist
+          else
+            # macOS / Linux
+            tree dist
+          fi
+          echo "::endgroup::"
+
       - name: 📦 Zip build (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
