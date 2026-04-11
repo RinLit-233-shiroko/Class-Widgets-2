@@ -94,7 +94,7 @@ jobs:
         shell: bash
         run: |
           echo "::group::Tree view of dist/"
-          tree /F /A dist
+          cmd /c tree /F /A dist
           echo "::endgroup::"
 
       - name: 📦 Zip build (Windows)
