@@ -97,6 +97,44 @@ jobs:
           tree /F /A dist
           Write-Host "::endgroup::"
 
+      - name: 🧹 Remove unnecessary PySide6 files (Windows)
+        if: runner.os == 'Windows'
+        shell: bash
+        run: |
+          TARGET="dist/Class Widgets 2/PySide6"
+          if [ -d "$TARGET" ]; then
+            cd "$TARGET"
+            # 删除指定的单个 DLL 文件
+            rm -f opengl32sw.dll
+            # 删除 Qt6 3D 相关 DLL
+            rm -f Qt63DAnimation.dll Qt63DCore.dll Qt63DExtras.dll Qt63DInput.dll Qt63DLogic.dll
+            rm -f Qt63DQuick.dll Qt63DQuickAnimation.dll Qt63DQuickExtras.dll Qt63DQuickInput.dll
+            rm -f Qt63DQuickLogic.dll Qt63DQuickRender.dll Qt63DQuickScene2D.dll Qt63DQuickScene3D.dll
+            rm -f Qt63DRender.dll
+            # 删除其他不需要的 Qt6 模块
+            rm -f Qt6OpenGLWidgets.dll Qt6Pdf.dll Qt6PdfQuick.dll
+            rm -f Qt6Quick3D.dll Qt6Quick3DAssetImport.dll Qt6Quick3DAssetUtils.dll Qt6Quick3DEffects.dll
+            rm -f Qt6Quick3DHelpers.dll Qt6Quick3DHelpersImpl.dll Qt6Quick3DParticleEffects.dll
+            rm -f Qt6Quick3DParticles.dll Qt6Quick3DRuntimeRender.dll Qt6Quick3DSpatialAudio.dll
+            rm -f Qt6Quick3DUtils.dll Qt6Quick3DXr.dll
+            rm -f Qt6WebChannel.dll Qt6WebChannelQuick.dll
+            rm -f Qt6WebEngineCore.dll Qt6WebEngineQuick.dll Qt6WebEngineQuickDelegatesQml.dll
+            rm -f Qt6WebSockets.dll Qt6WebView.dll Qt6WebViewQuick.dll
+            # 删除不需要的目录
+            rm -rf Qt3D QtQuick3D QtWebChannel QtWebEngine QtWebSockets QtWebView
+            echo "Cleaned up PySide6 directory"
+          else
+            echo "PySide6 directory not found at $TARGET, skipping cleanup"
+          fi
+
+      - name: 🌳 Print tree of dist directory (Windows only)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          Write-Host "::group::Tree view of dist/"
+          tree /F /A dist
+          Write-Host "::endgroup::"
+
       - name: 📦 Zip build (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
