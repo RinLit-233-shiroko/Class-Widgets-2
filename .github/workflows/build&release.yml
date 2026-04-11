@@ -91,11 +91,11 @@ jobs:
 
       - name: 🌳 Print tree of dist directory (Windows only)
         if: runner.os == 'Windows'
-        shell: bash
+        shell: pwsh
         run: |
-          echo "::group::Tree view of dist/"
-          cmd /c tree /F /A dist
-          echo "::endgroup::"
+          Write-Host "::group::Tree view of dist/"
+          tree /F /A dist
+          Write-Host "::endgroup::"
 
       - name: 📦 Zip build (Windows)
         if: runner.os == 'Windows'
