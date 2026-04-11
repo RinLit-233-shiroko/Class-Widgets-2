@@ -4,7 +4,7 @@ from src.core.schedule.model import Subject
 DEFAULT_SUBJECTS = [
     {"id": "chinese", "name": "Chinese", "simplifiedName": "CHN", "icon": "ic_fluent_book_20_regular", "color": "#FF5722", "isLocalClassRoom": True},
     {"id": "math", "name": "Mathematics", "simplifiedName": "Math", "icon": "ic_fluent_ruler_20_regular", "color": "#3F51B5", "isLocalClassRoom": True},
-    {"id": "english", "name": "Foreign language", "simplifiedName": "FL", "icon": "ic_fluent_translate_20_regular", "color": "#2196F3", "isLocalClassRoom": True},
+    {"id": "fl", "name": "Foreign language", "simplifiedName": "FL", "icon": "ic_fluent_translate_20_regular", "color": "#2196F3", "isLocalClassRoom": True},
     {"id": "politics", "name": "Politics", "simplifiedName": "Civics", "icon": "ic_fluent_book_globe_20_regular", "color": "#9C27B0", "isLocalClassRoom": True},
     {"id": "history", "name": "History", "simplifiedName": "Hist", "icon": "ic_fluent_clock_20_regular", "color": "#795548", "isLocalClassRoom": True},
     {"id": "physics", "name": "Physics", "simplifiedName": "Phys", "icon": "ic_fluent_lightbulb_filament_20_regular", "color": "#00BCD4", "isLocalClassRoom": True},
