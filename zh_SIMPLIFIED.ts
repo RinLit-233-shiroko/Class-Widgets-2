@@ -23,8 +23,8 @@
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="74"/>
         <source>© 2024-2026 RinLit. All rights reserved 
 Licensed under the MIT license</source>
-        <translation>© 2024-2026 RinLit. 保留所有权利 
-根据 MIT 许可证授权</translation>
+        <translation>© 2024-2026 RinLit。保留所有权利
+根据MIT许可证获得许可</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="91"/>
