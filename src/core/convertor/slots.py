@@ -74,3 +74,42 @@ class ScheduleIO(QObject):
         except Exception as e:
             logger.exception(f"Import failed: {e}")
             return False
+
+    @Slot(result=bool)
+    def importCW1(self) -> bool:
+        """导入并转换 Class Widgets 1 课表"""
+        file_path, _ = QFileDialog.getOpenFileName(
+            None,
+            QApplication.translate("ImportScheduleDialog", "Import Class Widgets 1 Schedule"),
+            str(self.manager.schedules_dir),
+            QApplication.translate("ImportScheduleDialog", "Class Widgets 1 JSON Files (*.json)")
+        )
+        if not file_path:
+            logger.info("User cancelled import.")
+            return False
+
+        try:
+            path = Path(file_path)
+            if not path.exists():
+                logger.error(f"Selected file does not exist: {file_path}")
+                return False
+
+            dest_path = self.manager.schedules_dir / f"{path.stem} - CW1.json"
+            ScheduleConverter.from_cw1(path).to_cw2(dest_path)
+
+            with open(dest_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+
+            self.manager.schedule = ScheduleData.model_validate(data)
+            self.manager.current_schedule_name = dest_path.stem
+            self.manager.schedule_path = dest_path
+
+            self.manager.save()
+            self.manager.scheduleSwitched.emit(self.manager.schedule)
+            self.manager.scheduleModified.emit(self.manager.schedule)
+
+            logger.success(f"Imported CW1 schedule from {file_path}")
+            return True
+        except Exception as e:
+            logger.exception(f"Import failed: {e}")
+            return False
