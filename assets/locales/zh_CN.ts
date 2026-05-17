@@ -1149,12 +1149,12 @@ Please try again later.</source>
     <message>
         <location filename="../../src/core/convertor/slots.py" line="83"/>
         <source>Import Class Widgets 1 Schedule</source>
-        <translation type="unfinished"></translation>
+        <translation>导入 Class Widgets 1 课程表</translation>
     </message>
     <message>
         <location filename="../../src/core/convertor/slots.py" line="86"/>
         <source>Class Widgets 1 JSON Files (*.json)</source>
-        <translation type="unfinished"></translation>
+        <translation>Class Widgets 1 JSON 文件 (*.json)</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/manager.py" line="209"/>
