@@ -393,27 +393,27 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="129"/>
         <source>Wed</source>
-        <translation type="unfinished"></translation>
+        <translation>3️⃣</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="130"/>
         <source>Thu</source>
-        <translation type="unfinished"></translation>
+        <translation>亖</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="130"/>
         <source>Fri</source>
-        <translation type="unfinished"></translation>
+        <translation>🈚️</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="130"/>
         <source>Sat</source>
-        <translation type="unfinished"></translation>
+        <translation>🐮</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="130"/>
         <source>Sun</source>
-        <translation type="unfinished"></translation>
+        <translation>🌞</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="146"/>
@@ -433,7 +433,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="154"/>
         <source>Week of Cycle</source>
-        <translation type="unfinished"></translation>
+        <translation>虚弱的圆圈</translation>
     </message>
 </context>
 <context>
@@ -442,7 +442,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="24"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="48"/>
         <source>%1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="32"/>
@@ -472,42 +472,42 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="54"/>
         <source>Weeks %1</source>
-        <translation type="unfinished"></translation>
+        <translation>虚弱 %1</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="76"/>
         <source>Mon</source>
-        <translation type="unfinished">一</translation>
+        <translation>一</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="76"/>
         <source>Tue</source>
-        <translation type="unfinished">2</translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="76"/>
         <source>Wed</source>
-        <translation type="unfinished"></translation>
+        <translation>3️⃣</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="77"/>
         <source>Thu</source>
-        <translation type="unfinished"></translation>
+        <translation>亖</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="77"/>
         <source>Fri</source>
-        <translation type="unfinished"></translation>
+        <translation>🈚️</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="77"/>
         <source>Sat</source>
-        <translation type="unfinished"></translation>
+        <translation>🐮</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="77"/>
         <source>Sun</source>
-        <translation type="unfinished"></translation>
+        <translation>🌞</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="84"/>
@@ -845,7 +845,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="149"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="176"/>
         <source>Break</source>
-        <translation type="unfinished">坏掉</translation>
+        <translation>坏掉</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="157"/>
@@ -1043,12 +1043,12 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/core/convertor/slots.py" line="83"/>
         <source>Import Class Widgets 1 Schedule</source>
-        <translation type="unfinished"></translation>
+        <translation>把WC的配料表丢进来</translation>
     </message>
     <message>
         <location filename="../../src/core/convertor/slots.py" line="86"/>
         <source>Class Widgets 1 JSON Files (*.json)</source>
-        <translation type="unfinished"></translation>
+        <translation>WC的杰森文件</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/manager.py" line="209"/>
