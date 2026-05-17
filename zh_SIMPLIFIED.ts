@@ -921,6 +921,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="46"/>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="70"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="89"/>
         <source>Import Failed</source>
         <translation>导入不了</translation>
     </message>
@@ -936,16 +937,19 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="64"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="83"/>
         <source>Import Success</source>
         <translation>打包丢进来了。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="65"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="84"/>
         <source>The schedule has been imported successfully.</source>
         <translation>你的门牌号集合已经丢进来了。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="71"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="90"/>
         <source>Failed to import the schedule. Please check if the schedule file is valid.</source>
         <translation>这真的是一个门牌号集合吗？</translation>
     </message>
@@ -955,38 +959,38 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation>在WC里寻找你的门牌号集合</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="90"/>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="127"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="104"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="141"/>
         <source>Create a new schedule</source>
         <translation>写一个新的配料表！</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="100"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="114"/>
         <source>Your schedules</source>
         <translation>你的配料表</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="130"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="144"/>
         <source>Enter a name for your new schedule</source>
         <translation>起个名字</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="138"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="152"/>
         <source>Schedule name</source>
         <translation>品名</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="162"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="176"/>
         <source>Cannot be empty (⊙x⊙;)</source>
         <translation>不可以是滚木。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="165"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="179"/>
         <source>Cannot duplicate existing name (⊙x⊙;)</source>
         <translation>集合里不应当有重复的元素。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="167"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="181"/>
         <source>Great! That&apos;s it. ヾ(≧▽≦*)o</source>
         <translation>好了！</translation>
     </message>
@@ -1035,6 +1039,16 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/core/convertor/slots.py" line="45"/>
         <source>CSES YAML Files (*.yaml *.yml)</source>
         <translation>CSES YAML 文件 (*.yaml *.yml)</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/convertor/slots.py" line="83"/>
+        <source>Import Class Widgets 1 Schedule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/convertor/slots.py" line="86"/>
+        <source>Class Widgets 1 JSON Files (*.json)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/manager.py" line="209"/>
@@ -1991,7 +2005,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>ScheduleConverter</name>
     <message>
-        <location filename="../../src/core/convertor/converter.py" line="252"/>
+        <location filename="../../src/core/convertor/converter.py" line="490"/>
         <source>Class</source>
         <translation>类</translation>
     </message>
