@@ -2667,7 +2667,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="33"/>
         <source>Welcome to Class Widgets 2</source>
-        <translation>Class Widgets 2 欢迎你</translation>
+        <translation>嗨，别来无恙啊！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="43"/>
@@ -2806,7 +2806,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="106"/>
         <source>Something went wrong!</source>
-        <translation>丸辣！</translation>
+        <translation>这真是让人尴尬。目前，我们无法完成更新</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="108"/>
@@ -3016,7 +3016,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="12"/>
         <source>Introducing our brand new feature introduction page that allows users to quickly learn about the latest features of Class Widgets 2.0. Supports multi-page display, smooth animations, and smart navigation for a better new user experience.</source>
-        <translation>好东西来了！在此快速了解 Class Widgets 2.0 的最新 Bug。</translation>
+        <translation>全新 Class Widgets 现已问世，全新 Class Widgets 也已问世。在此快速了解 Class Widgets 2.0 的最新 Bug。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="17"/>
