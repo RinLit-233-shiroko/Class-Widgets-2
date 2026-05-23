@@ -901,7 +901,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <source>1. Tap and drag to adjust class times;
 2. Quickly fill in courses at a glance;
 3. Done in just 3 steps — editing your schedule has never been easier!</source>
-        <translation>做  轰！  擦-擦-擦  推-推  的事</translation>
+        <translation>轰！  擦-擦-擦  推-推</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="29"/>
@@ -3193,9 +3193,9 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="198"/>
         <source>The quick brown fox jumps over the lazy dog</source>
-        <translation>PHP is the best language in the world 
-梗体中文由 Hongshi ⁧和 Lyang1273 翻译。由 IsHPDuwu 提供支持。
-人生苦短，我用Python。</translation>
+        <translation>PHP is the best language in the world
+是红石菌吖 &amp; Lyang1273 99！
+人生苦短，我用Python</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="216"/>
