@@ -901,7 +901,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <source>1. Tap and drag to adjust class times;
 2. Quickly fill in courses at a glance;
 3. Done in just 3 steps — editing your schedule has never been easier!</source>
-        <translation>只需三步完成——轻松设置课程！</translation>
+        <translation>做  轰！  擦-擦-擦  推-推  的事</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="29"/>
@@ -2734,7 +2734,8 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="67"/>
         <source>Installing update...</source>
-        <translation>安装中……</translation>
+        <translation>头抬起
+你正在成功。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="69"/>
@@ -2749,7 +2750,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="73"/>
         <source>Download cancelled</source>
-        <translation>已取消</translation>
+        <translation>已急停</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="75"/>
@@ -2815,7 +2816,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="110"/>
         <source>Click &quot;Check for updates&quot; to search for updates</source>
-        <translation>戳“检查更新”以搜索新的版本</translation>
+        <translation>戳“检查更新”查查你是不是最新的</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="160"/>
@@ -3193,7 +3194,8 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="198"/>
         <source>The quick brown fox jumps over the lazy dog</source>
         <translation>PHP is the best language in the world 
-梗体中文由 Hongshi ⁧和 Lyang1273 翻译。由 IsHPDuwu 提供支持。</translation>
+梗体中文由 Hongshi ⁧和 Lyang1273 翻译。由 IsHPDuwu 提供支持。
+人生苦短，我用Python。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="216"/>
