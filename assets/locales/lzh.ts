@@ -704,7 +704,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="198"/>
         <source>Activity</source>
-        <translation type="unfinished"></translation>
+        <translation>动</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="199"/>
@@ -749,13 +749,13 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="113"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="128"/>
         <source>Class</source>
-        <translation type="unfinished"></translation>
+        <translation>课</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="114"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="129"/>
         <source>Break</source>
-        <translation type="unfinished"></translation>
+        <translation>课间</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="115"/>
@@ -771,7 +771,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="135"/>
         <source>ID</source>
-        <translation type="unfinished"></translation>
+        <translation>ID</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="145"/>
@@ -806,7 +806,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="242"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>删</translation>
     </message>
 </context>
 <context>
@@ -846,7 +846,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="149"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="176"/>
         <source>Break</source>
-        <translation type="unfinished"></translation>
+        <translation>课间</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="157"/>
