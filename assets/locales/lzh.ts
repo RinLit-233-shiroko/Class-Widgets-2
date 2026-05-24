@@ -6,7 +6,7 @@
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="52"/>
         <source>Reimagining Your Schedule.</source>
-        <translation type="unfinished"></translation>
+        <translation>覆君之制。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="58"/>
