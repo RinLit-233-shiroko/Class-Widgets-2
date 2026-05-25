@@ -1325,7 +1325,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="134"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>警</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="135"/>
@@ -1464,7 +1464,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="16"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>警</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="30"/>
@@ -1502,7 +1502,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="227"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>止</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="234"/>
@@ -1559,7 +1559,7 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="35"/>
         <source>Refresh</source>
-        <translation type="unfinished"></translation>
+        <translation>濯新(&amp;R)</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="53"/>
@@ -1638,7 +1638,7 @@ Do you want to %3 this plugin?</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="15"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>警</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="25"/>
@@ -1809,22 +1809,22 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SaveFlyout.qml" line="56"/>
         <source>Saved</source>
-        <translation type="unfinished"></translation>
+        <translation>已存</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SaveFlyout.qml" line="58"/>
         <source>Schedule saved successfully</source>
-        <translation type="unfinished"></translation>
+        <translation>课表已存</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SaveFlyout.qml" line="62"/>
         <source>Save Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>存败</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SaveFlyout.qml" line="64"/>
         <source>Failed to save schedule, see log for details</source>
-        <translation type="unfinished"></translation>
+        <translation>课表存败，详查日志</translation>
     </message>
 </context>
 <context>
@@ -1837,12 +1837,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="81"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>编</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="102"/>
         <source>Week %1</source>
-        <translation type="unfinished"></translation>
+        <translation>第 %1 周</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="148"/>
@@ -1880,7 +1880,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="119"/>
         <source>Duplicate</source>
-        <translation type="unfinished"></translation>
+        <translation>复</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="126"/>
@@ -2001,7 +2001,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/core/convertor/converter.py" line="490"/>
         <source>Class</source>
-        <translation type="unfinished"></translation>
+        <translation>课</translation>
     </message>
 </context>
 <context>
@@ -2009,7 +2009,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleFlyout.qml" line="40"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>编</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleFlyout.qml" line="58"/>
@@ -2029,12 +2029,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleFlyout.qml" line="124"/>
         <source>Set</source>
-        <translation type="unfinished"></translation>
+        <translation>设</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleFlyout.qml" line="148"/>
         <source>Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>清</translation>
     </message>
 </context>
 <context>
@@ -2204,7 +2204,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="138"/>
         <source>ID</source>
-        <translation type="unfinished"></translation>
+        <translation>ID</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="143"/>
@@ -2530,7 +2530,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/TableEntryDelegate.qml" line="21"/>
         <source>Class</source>
-        <translation type="unfinished"></translation>
+        <translation>课</translation>
     </message>
 </context>
 <context>
@@ -2538,7 +2538,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/themes/__init__.py" line="10"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>（默）</translation>
     </message>
     <message>
         <location filename="../../src/themes/__init__.py" line="11"/>
@@ -2628,7 +2628,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="144"/>
         <source>Class Swap</source>
-        <translation type="unfinished"></translation>
+        <translation>换课</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="158"/>
@@ -2643,12 +2643,12 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="224"/>
         <source>Restart</source>
-        <translation type="unfinished"></translation>
+        <translation>重启</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="234"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>退</translation>
     </message>
 </context>
 <context>
@@ -2688,7 +2688,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="81"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>退</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="86"/>
@@ -2812,12 +2812,12 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="160"/>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>攬取</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="174"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>止</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="186"/>
@@ -2955,7 +2955,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="42"/>
         <source>Every Week</source>
-        <translation type="unfinished"></translation>
+        <translation>每周</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="47"/>
@@ -2965,12 +2965,12 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="51"/>
         <source>Custom</source>
-        <translation type="unfinished"></translation>
+        <translation>自定周</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="59"/>
         <source>Week of Cycle:</source>
-        <translation type="unfinished"></translation>
+        <translation>周序</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="72"/>
@@ -3173,7 +3173,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="164"/>
         <source>Custom</source>
-        <translation type="unfinished"></translation>
+        <translation>自定周</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="195"/>
@@ -3241,7 +3241,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="202"/>
         <source>Edit </source>
-        <translation type="unfinished"></translation>
+        <translation>编 </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="217"/>
@@ -3256,7 +3256,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="301"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>增</translation>
     </message>
 </context>
 <context>
@@ -3269,12 +3269,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="83"/>
         <source>Class</source>
-        <translation type="unfinished"></translation>
+        <translation>课</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="85"/>
         <source>Activity</source>
-        <translation type="unfinished"></translation>
+        <translation>动</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="87"/>
