@@ -17,7 +17,7 @@
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="68"/>
         <source>About</source>
-        <translation>于</translation>
+        <translation>原</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="74"/>
@@ -74,7 +74,7 @@ RinLit 保留一切权利。依 MIT 许可授之</translation>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="144"/>
         <source>License</source>
-        <translation>许可证</translation>
+        <translation>符許</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="145"/>
@@ -458,7 +458,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="41"/>
         <source>Unknown</source>
-        <translation>未详</translation>
+        <translation>闕如</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="52"/>
@@ -1533,7 +1533,7 @@ If translations are missing after a theme change, please restart</source>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCard.qml" line="113"/>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCard.qml" line="121"/>
         <source>Unknown</source>
-        <translation type="unfinished"></translation>
+        <translation>闕如</translation>
     </message>
 </context>
 <context>
@@ -1564,7 +1564,7 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="53"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>舛</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="63"/>
@@ -1743,7 +1743,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="195"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="326"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>隳</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="270"/>
@@ -2126,7 +2126,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="11"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>設</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="24"/>
@@ -2176,7 +2176,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="73"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>原</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="78"/>
