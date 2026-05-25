@@ -134,7 +134,7 @@ RinLit 保留一切权利。依 MIT 许可授之</translation>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="207"/>
         <source>Debug Mode</source>
-        <translation>调试模式</translation>
+        <translation>尽调试只用</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="208"/>
@@ -1480,24 +1480,26 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="56"/>
         <source>Themes</source>
-        <translation type="unfinished"></translation>
+        <translation>表徵</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="134"/>
         <source>Built-in</source>
-        <translation type="unfinished"></translation>
+        <translation>含</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="211"/>
         <source>Incompatible Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>表徵不適君之制</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="216"/>
         <source>This theme requires the app version %1, but current app version is %2. 
 
 Applying an incompatible theme may cause serious errors, crashes, or unexpected behavior.</source>
-        <translation type="unfinished"></translation>
+        <translation>君當使用%1範以用其表徵，而今之範為%2。
+
+不適之表徵將引患也。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="227"/>
@@ -1507,24 +1509,26 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="234"/>
         <source>Apply anyway</source>
-        <translation type="unfinished"></translation>
+        <translation>吾欲求之</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="163"/>
         <source>No description</source>
-        <translation type="unfinished"></translation>
+        <translation>素白也</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="17"/>
         <source>The theme system is still under development. 
 
 If translations are missing after a theme change, please restart</source>
-        <translation type="unfinished"></translation>
+        <translation>工H仍改進表徵中。
+
+若君失之表徵，請以器重啟</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="141"/>
         <source>Incompatible</source>
-        <translation type="unfinished"></translation>
+        <translation>不適</translation>
     </message>
 </context>
 <context>
@@ -1541,12 +1545,12 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/core/plugin/manager.py" line="92"/>
         <source>Incompatible</source>
-        <translation type="unfinished"></translation>
+        <translation>不適</translation>
     </message>
     <message>
         <location filename="../../src/core/plugin/manager.py" line="93"/>
         <source>{count} incompatible plugin(s) have been loaded, which may cause unknown issues.</source>
-        <translation type="unfinished"></translation>
+        <translation>吾尋之，有 {count} 附不適，運時將有異象頻出。</translation>
     </message>
 </context>
 <context>
@@ -1554,12 +1558,12 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="12"/>
         <source>Plugin Plaza</source>
-        <translation type="unfinished"></translation>
+        <translation>附集</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="35"/>
         <source>Refresh</source>
-        <translation>濯新(&amp;R)</translation>
+        <translation>新</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="53"/>
@@ -1569,12 +1573,12 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="63"/>
         <source>Home</source>
-        <translation type="unfinished"></translation>
+        <translation>首</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="68"/>
         <source>Plugins</source>
-        <translation type="unfinished"></translation>
+        <translation>附</translation>
     </message>
 </context>
 <context>
@@ -1582,27 +1586,27 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="15"/>
         <source>Update Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>使附之新</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="15"/>
         <source>Replace Plugin</source>
-        <translation type="unfinished"></translation>
+        <translation>以附替之先附</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="43"/>
         <source>A newer version of &apos;%1&apos; is available.</source>
-        <translation type="unfinished"></translation>
+        <translation>“%1” 尋之新。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="44"/>
         <source>A plugin with the same ID &apos;%1&apos; already exists.</source>
-        <translation type="unfinished"></translation>
+        <translation>仍尋有 “%1” 之附。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="45"/>
         <source>Plugin Replacement</source>
-        <translation type="unfinished"></translation>
+        <translation>以附替之</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="53"/>
