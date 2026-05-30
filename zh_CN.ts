@@ -692,61 +692,61 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation>课表编辑器</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="58"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="60"/>
         <source>Save Changes</source>
         <translation>保存更改</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="37"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="66"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="39"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="68"/>
         <source>Saved</source>
         <translation>已保存</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="39"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="68"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="41"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="70"/>
         <source>Schedule saved successfully</source>
         <translation>课程表已成功保存</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="43"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="72"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="45"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="74"/>
         <source>Save Failed</source>
         <translation>保存失败</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="45"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="74"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="47"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="76"/>
         <source>Failed to save schedule, see log for details</source>
         <translation>无法保存课程表，请查看日志以获取详细信息</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="88"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="90"/>
         <source>Home</source>
         <translation>首页</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="93"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="95"/>
         <source>Timeline</source>
         <translation>时间线</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="98"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="100"/>
         <source>Schedule</source>
         <translation>课程表</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="104"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="106"/>
         <source>Subjects</source>
         <translation>科目</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="117"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="119"/>
         <source>Unsaved Changes</source>
         <translation>未保存的更改</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="118"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="120"/>
         <source>Don&apos;t forget to save your changes before closing the editor or switching schedule. You can click the save button in the title bar.</source>
         <translation>关闭编辑器或切换课程表之前，请不要忘记保存更改。您可以点击标题栏中的“保存”按钮。</translation>
     </message>
@@ -757,7 +757,7 @@ You can click the save button in the title bar.</source>
 可以在标题栏点击保存按钮。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="124"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="126"/>
         <source>OK</source>
         <translation>好</translation>
     </message>

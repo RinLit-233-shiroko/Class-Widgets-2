@@ -643,66 +643,66 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation>スケジュールエディタ</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="37"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="66"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="39"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="68"/>
         <source>Saved</source>
         <translation type="unfinished">保存済み</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="39"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="68"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="41"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="70"/>
         <source>Schedule saved successfully</source>
         <translation type="unfinished">スケジュールが正常に保存されました</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="43"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="72"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="45"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="74"/>
         <source>Save Failed</source>
         <translation type="unfinished">保存失敗</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="45"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="74"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="47"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="76"/>
         <source>Failed to save schedule, see log for details</source>
         <translation type="unfinished">スケジュールの保存に失敗しました。詳細はログをご確認ください。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="58"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="60"/>
         <source>Save Changes</source>
         <translation type="unfinished">変更を保存</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="88"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="90"/>
         <source>Home</source>
         <translation>ホーム</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="93"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="95"/>
         <source>Timeline</source>
         <translation>タイムライン</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="98"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="100"/>
         <source>Schedule</source>
         <translation>スケジュール</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="104"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="106"/>
         <source>Subjects</source>
         <translation>科目</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="117"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="119"/>
         <source>Unsaved Changes</source>
         <translation type="unfinished">保存されていない変更</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="118"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="120"/>
         <source>Don&apos;t forget to save your changes before closing the editor or switching schedule. You can click the save button in the title bar.</source>
         <translation type="unfinished">編集を閉じるかスケジュールを切り替える前に、変更内容を保存することを忘れないでください。タイトルバーにある保存ボタンをクリックできます。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="124"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="126"/>
         <source>OK</source>
         <translation type="unfinished">OK</translation>
     </message>

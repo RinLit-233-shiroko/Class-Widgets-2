@@ -619,66 +619,66 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation>配料表修改器</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="58"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="60"/>
         <source>Save Changes</source>
         <translation>保存你的设计</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="37"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="66"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="39"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="68"/>
         <source>Saved</source>
         <translation>安全</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="39"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="68"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="41"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="70"/>
         <source>Schedule saved successfully</source>
         <translation>配料表安全成功</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="43"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="72"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="45"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="74"/>
         <source>Save Failed</source>
         <translation>安全失败</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="45"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="74"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="47"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="76"/>
         <source>Failed to save schedule, see log for details</source>
         <translation>失败去安全配料表，请观察对数来获取详细信息</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="88"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="90"/>
         <source>Home</source>
         <translation>家</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="93"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="95"/>
         <source>Timeline</source>
         <translation>线</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="98"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="100"/>
         <source>Schedule</source>
         <translation>配料表</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="104"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="106"/>
         <source>Subjects</source>
         <translation>门牌</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="117"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="119"/>
         <source>Unsaved Changes</source>
         <translation>还没保存呢</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="118"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="120"/>
         <source>Don&apos;t forget to save your changes before closing the editor or switching schedule. You can click the save button in the title bar.</source>
         <translation>保存了吗？保存了吗？保存了吗？不保存的全部达斯！</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="124"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="126"/>
         <source>OK</source>
         <translation>彳亍</translation>
     </message>
