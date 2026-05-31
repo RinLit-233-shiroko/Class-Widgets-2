@@ -23,7 +23,7 @@
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="74"/>
         <source>© 2024-2026 RinLit. All rights reserved 
 Licensed under the MIT license</source>
-        <translation>右自二零二四至二零二六· 
+        <translation type="unfinished">右自二零二四至二零二六· 
 RinLit 保留一切权利。依 MIT 许可授之</translation>
     </message>
     <message>
@@ -39,7 +39,7 @@ RinLit 保留一切权利。依 MIT 许可授之</translation>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="111"/>
         <source>Create an issue on GitHub</source>
-        <translation>于 GitHub 建议</translation>
+        <translation type="unfinished">于 GitHub 建议</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="119"/>
@@ -84,7 +84,7 @@ RinLit 保留一切权利。依 MIT 许可授之</translation>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="148"/>
         <source>GPL-3 License</source>
-        <translation>GPL-3 许可证</translation>
+        <translation type="unfinished">GPL-3 许可证</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="162"/>
