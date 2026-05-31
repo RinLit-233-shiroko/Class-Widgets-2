@@ -6,6 +6,20 @@ on:
       - "*"
   workflow_dispatch:
     inputs:
+      version:
+        description: 'Version'
+        required: true
+        default: '2.0.0.dev000000000'
+        type: string
+      version_type:
+        description: 'Type'
+        required: true
+        default: 'alpha'
+        type: choice
+        options:
+          - alpha
+          - beta
+          - stable
       upload2webdav:
         description: 'Upload to...'
         required: true
@@ -43,6 +57,76 @@ jobs:
 
       - name: 📦 Set up Python & Install uv
         uses: astral-sh/setup-uv@v6
+
+      - name: 🏷️ Resolve build version
+        id: version
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            VERSION="${{ inputs.version }}"
+            VERSION_TYPE="${{ inputs.version_type }}"
+            VERSION_TAG="v${VERSION}"
+          else
+            VERSION_TAG="${{ github.ref_name }}"
+            VERSION="${VERSION_TAG#v}"
+            VERSION_TYPE="stable"
+
+            if [[ "$VERSION" =~ (^|[-._])alpha([-.0-9]*)?$ ]]; then
+              VERSION_TYPE="alpha"
+              VERSION="${VERSION%%-alpha*}"
+              VERSION="${VERSION%%.alpha*}"
+              VERSION="${VERSION%%_alpha*}"
+            elif [[ "$VERSION" =~ (^|[-._])beta([-.0-9]*)?$ ]]; then
+              VERSION_TYPE="beta"
+              VERSION="${VERSION%%-beta*}"
+              VERSION="${VERSION%%.beta*}"
+              VERSION="${VERSION%%_beta*}"
+            fi
+          fi
+
+          if [[ ! "$VERSION_TYPE" =~ ^(alpha|beta|stable)$ ]]; then
+            echo "Invalid version_type: $VERSION_TYPE" >&2
+            exit 1
+          fi
+
+          if [[ ! "$VERSION" =~ ^[0-9][0-9A-Za-z.+_-]*$ ]]; then
+            echo "Invalid version: $VERSION" >&2
+            exit 1
+          fi
+
+          PRERELEASE="true"
+          if [[ "$VERSION_TYPE" == "stable" ]]; then
+            PRERELEASE="false"
+          fi
+
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "version_type=$VERSION_TYPE" >> "$GITHUB_OUTPUT"
+          echo "version_tag=$VERSION_TAG" >> "$GITHUB_OUTPUT"
+          echo "prerelease=$PRERELEASE" >> "$GITHUB_OUTPUT"
+
+          echo "Resolved version: $VERSION"
+          echo "Resolved version type: $VERSION_TYPE"
+          echo "Resolved version tag: $VERSION_TAG"
+
+      - name: 📝 Write version to source
+        shell: bash
+        env:
+          CW_VERSION: ${{ steps.version.outputs.version }}
+          CW_VERSION_TYPE: ${{ steps.version.outputs.version_type }}
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os
+          import re
+
+          path = Path('src/__init__.py')
+          content = path.read_text(encoding='utf-8')
+          content = re.sub(r'__version__ = ["\'][^"\']*["\']', f'__version__ = "{os.environ["CW_VERSION"]}"', content)
+          content = re.sub(r'__version_type__ = ["\'][^"\']*["\']', f'__version_type__ = "{os.environ["CW_VERSION_TYPE"]}"', content)
+          path.write_text(content, encoding='utf-8')
+          PY
+
+          grep -E '^__version__|^__version_type__' src/__init__.py
 
       - name: 📦 Cache dependencies
         uses: actions/cache@v4
@@ -126,6 +210,42 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: 🏷️ Resolve release version
+        id: version
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            VERSION="${{ inputs.version }}"
+            VERSION_TYPE="${{ inputs.version_type }}"
+            VERSION_TAG="v${VERSION}"
+          else
+            VERSION_TAG="${{ github.ref_name }}"
+            VERSION="${VERSION_TAG#v}"
+            VERSION_TYPE="stable"
+
+            if [[ "$VERSION" =~ (^|[-._])alpha([-.0-9]*)?$ ]]; then
+              VERSION_TYPE="alpha"
+              VERSION="${VERSION%%-alpha*}"
+              VERSION="${VERSION%%.alpha*}"
+              VERSION="${VERSION%%_alpha*}"
+            elif [[ "$VERSION" =~ (^|[-._])beta([-.0-9]*)?$ ]]; then
+              VERSION_TYPE="beta"
+              VERSION="${VERSION%%-beta*}"
+              VERSION="${VERSION%%.beta*}"
+              VERSION="${VERSION%%_beta*}"
+            fi
+          fi
+
+          PRERELEASE="true"
+          if [[ "$VERSION_TYPE" == "stable" ]]; then
+            PRERELEASE="false"
+          fi
+
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "version_type=$VERSION_TYPE" >> "$GITHUB_OUTPUT"
+          echo "version_tag=$VERSION_TAG" >> "$GITHUB_OUTPUT"
+          echo "prerelease=$PRERELEASE" >> "$GITHUB_OUTPUT"
+
       - name: ⬇️ Download artifacts
         uses: actions/download-artifact@v5
         with:
@@ -137,17 +257,17 @@ jobs:
 
       - name: 📜 Generate CHANGELOG.md
         run: |
-          git cliff --latest --tag "${{ github.ref_name }}" --config .git-cliff.toml > CHANGELOG.md
+          git cliff --latest --tag "${{ steps.version.outputs.version_tag }}" --config .git-cliff.toml > CHANGELOG.md
 
       - name: 🚀 Create GitHub Release
         uses: softprops/action-gh-release@v2
         # 推送/手动+发布 ==> 发布
         if: ${{  github.event_name == 'push' || github.event.inputs.release == 'true' }}
         with:
-          name: Class Widgets ${{ github.ref_name }}
-          tag_name: ${{ github.ref_name }}
+          name: Class Widgets ${{ steps.version.outputs.version_tag }}
+          tag_name: ${{ steps.version.outputs.version_tag }}
           body_path: CHANGELOG.md
-          prerelease: ${{ github.event_name == 'push' || github.event.inputs.prerelease }}
+          prerelease: ${{ steps.version.outputs.prerelease }}
           files: |
             dist/ClassWidgets-2-Windows.zip
             dist/ClassWidgets-2-macOS-X64.dmg
@@ -162,7 +282,7 @@ jobs:
            github.event.inputs.upload2webdav == '123Pan' ||
            github.event.inputs.upload2webdav == 'Both')
         run: |
-          VERSION="${{ github.ref_name }}"
+          VERSION="${{ steps.version.outputs.version_tag }}"
           ENCODED_VERSION=$(echo "$VERSION" | sed 's/ /%20/g')
 
           # Create directory
@@ -202,7 +322,7 @@ jobs:
           github.event.inputs.upload2webdav == 'OneDrive' ||
           github.event.inputs.upload2webdav == 'Both')
         run: |
-          VERSION="${{ github.ref_name }}"
+          VERSION="${{ steps.version.outputs.version_tag }}"
           ENCODED_VERSION=$(echo "$VERSION" | sed 's/ /%20/g')
 
           # Create directory

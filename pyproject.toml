@@ -33,7 +33,7 @@ packages = [
 ]
 
 [tool.hatch.version]
-match = "__version__ = '([^']+)'"
+match = "__version__ = [\"']([^\"']+)[\"']"
 path = "src/__init__.py"
 
 [tool.pyright]
