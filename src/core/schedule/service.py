@@ -30,6 +30,16 @@ class ScheduleServices:
         max_week_cycle = schedule.meta.maxWeekCycle or 1
         current_week = get_cycle_week(raw_week_index, max_week_cycle)
 
+        # 临时换课
+        class_swap = getattr(self.app_central.configs.schedule, "class_swap", None)
+        if isinstance(class_swap, dict) and class_swap.get("date") == date_str:
+            swap_weekday = class_swap.get("day_of_week")
+            swap_week = class_swap.get("week_of_cycle")
+            if isinstance(swap_weekday, int) and 1 <= swap_weekday <= 7:
+                weekday = swap_weekday
+            if isinstance(swap_week, int) and 1 <= swap_week <= max_week_cycle:
+                current_week = swap_week
+
         for day in schedule.days:
             day_of_week_list = [day.dayOfWeek] if isinstance(day.dayOfWeek, int) else day.dayOfWeek
             if day_of_week_list and weekday in day_of_week_list:
