@@ -56,12 +56,9 @@ class ClassSwapManager(QObject):
         return self._get_day_entries(day_of_week, week_of_cycle, include_non_class=False)
 
     @Slot(result=list)
-    def getAllSubjects(self) -> list:
-        """获取所有科目列表（用于课程选择池）"""
-        schedule = self.app_central.schedule_manager.schedule
-        if not schedule:
-            return []
-        return [s.model_dump() for s in schedule.subjects]
+    def getAllSubjects(self) -> list[dict]:
+        """获取所有科目"""
+        return [subject.model_dump() for subject in self.app_central.schedule_manager.schedule.subjects]  
 
     @Slot(result=int)
     def getCurrentDayOfWeek(self) -> int:

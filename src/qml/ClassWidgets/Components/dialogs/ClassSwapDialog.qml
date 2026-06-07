@@ -44,16 +44,7 @@ Window {
 
     Component.onCompleted: {
         // 加载科目列表
-        let subjects = ClassSwapManager.getAllSubjects()
-        subjectsModel.clear()
-        for (let i = 0; i < subjects.length; i++) {
-            subjectsModel.append({
-                sid: subjects[i].id,
-                name: subjects[i].name,
-                color: subjects[i].color || "",
-                icon: subjects[i].icon || ""
-            })
-        }
+        refreshSubjects()
 
         // 加载周次列表
         refreshWeekCycleModel()
@@ -69,6 +60,7 @@ Window {
 
         // 这个窗口在 App 启动时就会被创建，Component.onCompleted 只触发一次。
         // 因此每次显示窗口时都主动刷新，确保 schedule 已加载后能拿到数据。
+        refreshSubjects()
         syncPickerOnShow()
         refreshWeekCycleModel()
         refreshDailyEntries()
@@ -123,6 +115,19 @@ Window {
                 endTime: e.endTime || "",
                 subjectColor: e.subjectColor || "",
                 subjectIcon: e.subjectIcon || ""
+            })
+        }
+    }
+
+    function refreshSubjects() {
+        let subjects = ClassSwapManager.getAllSubjects()
+        subjectsModel.clear()
+        for (let i = 0; i < subjects.length; i++) {
+            subjectsModel.append({
+                sid: subjects[i].id,
+                name: subjects[i].name,
+                color: subjects[i].color || "",
+                icon: subjects[i].icon || ""
             })
         }
     }
