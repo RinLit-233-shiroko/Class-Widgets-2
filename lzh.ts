@@ -1624,7 +1624,7 @@ Do you want to %3 this plugin?</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="55"/>
         <source>replace</source>
-        <translation type="unfinished"></translation>
+        <translation>替</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="69"/>
@@ -1735,13 +1735,13 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="189"/>
         <source>All</source>
-        <translation type="unfinished"></translation>
+        <translation>万物</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="192"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="326"/>
         <source>Enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>启</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="195"/>
@@ -1752,12 +1752,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="270"/>
         <source>Built-in</source>
-        <translation type="unfinished"></translation>
+        <translation>自置</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="347"/>
         <source>Open In</source>
-        <translation type="unfinished"></translation>
+        <translation>开于</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="350"/>
