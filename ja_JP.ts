@@ -231,87 +231,87 @@ You can continue to open another one, or close this window.</source>
         <translation type="unfinished">クラス交換</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="137"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="142"/>
         <source>Odd Week</source>
         <translation type="unfinished">奇数週</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="137"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="142"/>
         <source>Even Week</source>
         <translation type="unfinished">偶数週</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="138"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="143"/>
         <source>Week %1</source>
         <translation type="unfinished">週 %1</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="227"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="232"/>
         <source>Monday</source>
         <translation type="unfinished">月曜日</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="228"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="233"/>
         <source>Tuesday</source>
         <translation type="unfinished">火曜日</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="229"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="234"/>
         <source>Wednesday</source>
         <translation type="unfinished">水曜日</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="230"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="235"/>
         <source>Thursday</source>
         <translation type="unfinished">木曜日</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="231"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="236"/>
         <source>Friday</source>
         <translation type="unfinished">金曜日</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="232"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="237"/>
         <source>Saturday</source>
         <translation type="unfinished">土曜日</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="233"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="238"/>
         <source>Sunday</source>
         <translation type="unfinished">日曜日</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="285"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="290"/>
         <source>Click to select a class to swap</source>
         <translation type="unfinished">クラスを切り替えるにはクリックしてください</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="325"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="330"/>
         <source>(Empty)</source>
         <translation type="unfinished">(空)</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="371"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="376"/>
         <source>All Subjects</source>
         <translation type="unfinished">すべての科目</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="437"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="442"/>
         <source>Click a class to swap</source>
         <translation type="unfinished">クラスをクリックして切り替えます</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="439"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="444"/>
         <source>Select target class</source>
         <translation type="unfinished">ターゲットクラスを選択</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="451"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="456"/>
         <source>Confirm Swap</source>
         <translation type="unfinished">スワップを確認</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="480"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="485"/>
         <source>Cancel</source>
         <translation type="unfinished">キャンセル</translation>
     </message>
@@ -2116,83 +2116,83 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>ScheduleRuntime</name>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="291"/>
+        <location filename="../../src/core/schedule/runtime.py" line="293"/>
         <source>Class Started</source>
         <translation type="unfinished">授業が始まりました</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="308"/>
+        <location filename="../../src/core/schedule/runtime.py" line="310"/>
         <source>Activity Started</source>
         <translation type="unfinished">アクティビティが始まりました</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="317"/>
+        <location filename="../../src/core/schedule/runtime.py" line="319"/>
         <source>Intermission</source>
         <translation type="unfinished">休憩中</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="333"/>
-        <location filename="../../src/core/schedule/runtime.py" line="343"/>
-        <location filename="../../src/core/schedule/runtime.py" line="369"/>
-        <location filename="../../src/core/schedule/runtime.py" line="379"/>
+        <location filename="../../src/core/schedule/runtime.py" line="335"/>
+        <location filename="../../src/core/schedule/runtime.py" line="345"/>
+        <location filename="../../src/core/schedule/runtime.py" line="371"/>
+        <location filename="../../src/core/schedule/runtime.py" line="381"/>
         <source>Next: {}</source>
         <translation type="unfinished">次: {}</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="337"/>
-        <location filename="../../src/core/schedule/runtime.py" line="373"/>
+        <location filename="../../src/core/schedule/runtime.py" line="339"/>
+        <location filename="../../src/core/schedule/runtime.py" line="375"/>
         <source>Next: {} at {}</source>
         <translation type="unfinished">次: {} に {}</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="339"/>
-        <location filename="../../src/core/schedule/runtime.py" line="375"/>
+        <location filename="../../src/core/schedule/runtime.py" line="341"/>
+        <location filename="../../src/core/schedule/runtime.py" line="377"/>
         <source>Next: {} (Off-site)</source>
         <translation type="unfinished">次: {} (オフサイト)</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="353"/>
+        <location filename="../../src/core/schedule/runtime.py" line="355"/>
         <source>Recess</source>
         <translation type="unfinished">休憩</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="388"/>
+        <location filename="../../src/core/schedule/runtime.py" line="390"/>
         <source>Enjoy your break</source>
         <translation type="unfinished">休憩を楽しんでください</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="390"/>
+        <location filename="../../src/core/schedule/runtime.py" line="392"/>
         <source>Free Time</source>
         <translation type="unfinished">自由時間</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="395"/>
+        <location filename="../../src/core/schedule/runtime.py" line="397"/>
         <source>Status Changed</source>
         <translation type="unfinished">ステータスが変更されました</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="395"/>
+        <location filename="../../src/core/schedule/runtime.py" line="397"/>
         <source>Current status: {}</source>
         <translation type="unfinished">現在のステータス: {}</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="449"/>
-        <location filename="../../src/core/schedule/runtime.py" line="459"/>
+        <location filename="../../src/core/schedule/runtime.py" line="451"/>
+        <location filename="../../src/core/schedule/runtime.py" line="461"/>
         <source>Coming up: {}</source>
         <translation type="unfinished">次に予定: {}</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="453"/>
+        <location filename="../../src/core/schedule/runtime.py" line="455"/>
         <source>Coming up: {} at {}</source>
         <translation type="unfinished">次に予定: {} に {}</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="455"/>
+        <location filename="../../src/core/schedule/runtime.py" line="457"/>
         <source>Coming up: {} (Off-site)</source>
         <translation type="unfinished">次に予定: {} (オフサイト)</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="467"/>
+        <location filename="../../src/core/schedule/runtime.py" line="469"/>
         <source>Preparation Bell</source>
         <translation type="unfinished">準備チャイム</translation>
     </message>

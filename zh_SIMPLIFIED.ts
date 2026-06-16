@@ -218,87 +218,87 @@ You can continue to open another one, or close this window.</source>
         <translation>洗牌！</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="137"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="142"/>
         <source>Odd Week</source>
         <translation>Week%2=1</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="137"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="142"/>
         <source>Even Week</source>
         <translation>Week%2=0</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="138"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="143"/>
         <source>Week %1</source>
         <translation>微弱的 %1</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="227"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="232"/>
         <source>Monday</source>
         <translation>绝望星期一</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="228"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="233"/>
         <source>Tuesday</source>
         <translation>死亡星期二</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="229"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="234"/>
         <source>Wednesday</source>
         <translation>崩溃星期三</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="230"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="235"/>
         <source>Thursday</source>
         <translation>vivo50</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="231"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="236"/>
         <source>Friday</source>
         <translation>明天周末！</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="232"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="237"/>
         <source>Saturday</source>
         <translation>今天你也在？</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="233"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="238"/>
         <source>Sunday</source>
         <translation>你不会是返校上晚自习来的吧。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="285"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="290"/>
         <source>Click to select a class to swap</source>
         <translation>找到你马上要更换的门牌号</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="325"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="330"/>
         <source>(Empty)</source>
         <translation>滚木</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="371"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="376"/>
         <source>All Subjects</source>
         <translation>配料表</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="437"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="442"/>
         <source>Click a class to swap</source>
         <translation>选择你要替换的门牌号</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="439"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="444"/>
         <source>Select target class</source>
         <translation>选择正确的门</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="451"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="456"/>
         <source>Confirm Swap</source>
         <translation>你真的要更换这个门牌号吗？</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="480"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="485"/>
         <source>Cancel</source>
         <translation>嫑</translation>
     </message>
@@ -2046,83 +2046,83 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>ScheduleRuntime</name>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="291"/>
+        <location filename="../../src/core/schedule/runtime.py" line="293"/>
         <source>Class Started</source>
         <translation>睡觉！</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="308"/>
+        <location filename="../../src/core/schedule/runtime.py" line="310"/>
         <source>Activity Started</source>
         <translation>激活入门版</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="317"/>
+        <location filename="../../src/core/schedule/runtime.py" line="319"/>
         <source>Intermission</source>
         <translation>交互任务</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="333"/>
-        <location filename="../../src/core/schedule/runtime.py" line="343"/>
-        <location filename="../../src/core/schedule/runtime.py" line="369"/>
-        <location filename="../../src/core/schedule/runtime.py" line="379"/>
+        <location filename="../../src/core/schedule/runtime.py" line="335"/>
+        <location filename="../../src/core/schedule/runtime.py" line="345"/>
+        <location filename="../../src/core/schedule/runtime.py" line="371"/>
+        <location filename="../../src/core/schedule/runtime.py" line="381"/>
         <source>Next: {}</source>
         <translation>下一位 {}</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="337"/>
-        <location filename="../../src/core/schedule/runtime.py" line="373"/>
+        <location filename="../../src/core/schedule/runtime.py" line="339"/>
+        <location filename="../../src/core/schedule/runtime.py" line="375"/>
         <source>Next: {} at {}</source>
         <translation>下一位 {} 在 {} 等你</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="339"/>
-        <location filename="../../src/core/schedule/runtime.py" line="375"/>
+        <location filename="../../src/core/schedule/runtime.py" line="341"/>
+        <location filename="../../src/core/schedule/runtime.py" line="377"/>
         <source>Next: {} (Off-site)</source>
         <translation>下一位 {}（不在本教室）</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="353"/>
+        <location filename="../../src/core/schedule/runtime.py" line="355"/>
         <source>Recess</source>
         <translation>滚木时间</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="388"/>
+        <location filename="../../src/core/schedule/runtime.py" line="390"/>
         <source>Enjoy your break</source>
         <translation>享受生活</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="390"/>
+        <location filename="../../src/core/schedule/runtime.py" line="392"/>
         <source>Free Time</source>
         <translation>免费花时间</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="395"/>
+        <location filename="../../src/core/schedule/runtime.py" line="397"/>
         <source>Status Changed</source>
         <translation>变了！</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="395"/>
+        <location filename="../../src/core/schedule/runtime.py" line="397"/>
         <source>Current status: {}</source>
         <translation>现在是 {}</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="449"/>
-        <location filename="../../src/core/schedule/runtime.py" line="459"/>
+        <location filename="../../src/core/schedule/runtime.py" line="451"/>
+        <location filename="../../src/core/schedule/runtime.py" line="461"/>
         <source>Coming up: {}</source>
         <translation>接下来 {}</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="453"/>
+        <location filename="../../src/core/schedule/runtime.py" line="455"/>
         <source>Coming up: {} at {}</source>
         <translation>马上{} 在 {}</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="455"/>
+        <location filename="../../src/core/schedule/runtime.py" line="457"/>
         <source>Coming up: {} (Off-site)</source>
         <translation>接下来 {} (滚去别的课程房间)</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="467"/>
+        <location filename="../../src/core/schedule/runtime.py" line="469"/>
         <source>Preparation Bell</source>
         <translation>账单准备</translation>
     </message>
