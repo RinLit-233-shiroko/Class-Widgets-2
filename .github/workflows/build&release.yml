@@ -255,6 +255,11 @@ jobs:
       - name: 🧱 Set up git-cliff
         uses: kenji-miyake/setup-git-cliff@v2
 
+      - name: 🏷️ Create local tag for CHANGELOG
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        run: |
+          git tag "${{ steps.version.outputs.version_tag }}"
+
       - name: 📜 Generate CHANGELOG.md
         run: |
           git cliff --latest --tag "${{ steps.version.outputs.version_tag }}" --config .git-cliff.toml > CHANGELOG.md
