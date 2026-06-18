@@ -18,7 +18,8 @@ dependencies = [
   "packaging",
   "pydantic",
   "pyyaml",
-  "requests"
+  "requests",
+  "markdown-it-py~=4.2.0"
 ]
 description = "Class Widgets 2, The Next Class Schedule."
 dynamic = ["version"]
