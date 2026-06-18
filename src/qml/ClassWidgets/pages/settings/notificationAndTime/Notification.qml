@@ -45,6 +45,7 @@ FluentPage {
                 stepSize: 0.05
                 from: 0
                 to: 1
+                toolTip.text: (value * 100).toString() + " %"
                 onValueChanged: UtilsBackend.setGlobalVolume(value)
             }
 
