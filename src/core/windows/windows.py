@@ -82,6 +82,9 @@ class Tutorial(RinUIWindow):
         self.central = parent
 
         self.central.setup_qml_context(self)
+        self.engine.rootContext().setContextProperty(
+            "UtilsBackend", self.central.utils_backend
+        )
         self.central.retranslate.connect(self.engine.retranslate)
 
         self.load(CW_PATH / "Windows" / "Tutorial.qml")
