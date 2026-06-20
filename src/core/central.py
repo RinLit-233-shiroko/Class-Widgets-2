@@ -172,6 +172,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             from src.core.windows import Tutorial
 
             logger.info("Tutorial not completed, showing tutorial window first.")
+            self._load_schedule()
             self.theme_manager.load()
             self.tutorial_window = Tutorial(self)
             self.tutorial_window.root_window.show()
