@@ -6,6 +6,15 @@ Watermark 1.0 Watermark.qml
 Introduction 1.0 Introduction.qml
 Skeleton 1.0 Skeleton.qml
 
+# OOBE
+OobeLanguagePage 1.0 oobe/OobeLanguagePage.qml
+OobeGeneralPage 1.0 oobe/OobeGeneralPage.qml
+OobeWidgetsPage 1.0 oobe/OobeWidgetsPage.qml
+OobeInteractionsPage 1.0 oobe/OobeInteractionsPage.qml
+OobePersonalizationPage 1.0 oobe/OobePersonalizationPage.qml
+OobeSubjectsPage 1.0 oobe/OobeSubjectsPage.qml
+OobeFinishPage 1.0 oobe/OobeFinishPage.qml
+
 # Dialogs
 AddWidgetsDialog 1.0 dialogs/AddWidgetsDialog.qml
 CheckSingleInstanceDialog 1.0 dialogs/CheckSingleInstanceDialog.qml
