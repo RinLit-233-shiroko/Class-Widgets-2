@@ -8,7 +8,7 @@ ColumnLayout {
     id: root
     spacing: 12
 
-    property alias customSubjectsModel: customSubjectsModel
+    property alias customSubjectsModel: customModel
     property var defaultSubjects: AppCentral.scheduleEditor.defaultSubjects || []
 
     function selectedSubjects() {
@@ -28,8 +28,8 @@ ColumnLayout {
                 })
             }
         }
-        for (let j = 0; j < customSubjectsModel.count; j++) {
-            const custom = customSubjectsModel.get(j)
+        for (let j = 0; j < customModel.count; j++) {
+            const custom = customModel.get(j)
             result.push({
                 id: custom.subjectId,
                 name: custom.name,
@@ -51,8 +51,8 @@ ColumnLayout {
     function addCustomSubject() {
         const name = customNameField.text.trim()
         if (!name) return
-        const subjectId = "custom_" + Date.now().toString() + "_" + customSubjectsModel.count
-        customSubjectsModel.append({
+        const subjectId = "custom_" + Date.now().toString() + "_" + customModel.count
+        customModel.append({
             subjectId: subjectId,
             name: name,
             simplifiedName: customShortField.text.trim(),
@@ -69,7 +69,7 @@ ColumnLayout {
     }
 
     ListModel { id: defaultSubjectsModel }
-    ListModel { id: customSubjectsModel }
+    ListModel { id: customModel }
 
     Component.onCompleted: {
         defaultSubjectsModel.clear()
@@ -157,7 +157,7 @@ ColumnLayout {
                     clip: true
 
                     ListView {
-                        model: customSubjectsModel
+                        model: customModel
                         spacing: 6
                         delegate: RowLayout {
                             width: ListView.view.width
@@ -165,14 +165,14 @@ ColumnLayout {
                             TextField {
                                 Layout.fillWidth: true
                                 text: name
-                                onEditingFinished: customSubjectsModel.setProperty(index, "name", text.trim())
+                                onEditingFinished: customModel.setProperty(index, "name", text.trim())
                             }
                             TextField {
                                 Layout.preferredWidth: 90
                                 text: simplifiedName
-                                onEditingFinished: customSubjectsModel.setProperty(index, "simplifiedName", text.trim())
+                                onEditingFinished: customModel.setProperty(index, "simplifiedName", text.trim())
                             }
-                            Button { text: qsTr("Delete"); onClicked: customSubjectsModel.remove(index) }
+                            Button { text: qsTr("Delete"); onClicked: customModel.remove(index) }
                         }
                     }
                 }
