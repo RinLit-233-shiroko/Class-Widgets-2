@@ -110,20 +110,22 @@ ColumnLayout {
             ColumnLayout {
                 anchors.fill: parent
                 Text { typography: Typography.BodyStrong; text: qsTr("Default Subjects") }
-                ScrollView {
+                ListView {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
+                    Layout.minimumHeight: 160
                     clip: true
+                    boundsBehavior: Flickable.StopAtBounds
+                    flickableDirection: Flickable.VerticalFlick
+                    model: defaultSubjectsModel
+                    spacing: 4
+                    ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
 
-                    ListView {
-                        model: defaultSubjectsModel
-                        spacing: 4
-                        delegate: CheckBox {
-                            width: ListView.view.width
-                            text: name + (simplifiedName ? " (" + simplifiedName + ")" : "")
-                            checked: selected
-                            onCheckedChanged: defaultSubjectsModel.setProperty(index, "selected", checked)
-                        }
+                    delegate: CheckBox {
+                        width: ListView.view.width
+                        text: name + (simplifiedName ? " (" + simplifiedName + ")" : "")
+                        checked: selected
+                        onCheckedChanged: defaultSubjectsModel.setProperty(index, "selected", checked)
                     }
                 }
             }
@@ -151,29 +153,31 @@ ColumnLayout {
                     Button { text: qsTr("Add"); highlighted: true; onClicked: root.addCustomSubject() }
                 }
 
-                ScrollView {
+                ListView {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
+                    Layout.minimumHeight: 120
                     clip: true
+                    boundsBehavior: Flickable.StopAtBounds
+                    flickableDirection: Flickable.VerticalFlick
+                    model: customModel
+                    spacing: 6
+                    ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
 
-                    ListView {
-                        model: customModel
-                        spacing: 6
-                        delegate: RowLayout {
-                            width: ListView.view.width
-                            Rectangle { width: 12; height: 12; radius: 6; color: subjectColor }
-                            TextField {
-                                Layout.fillWidth: true
-                                text: name
-                                onEditingFinished: customModel.setProperty(index, "name", text.trim())
-                            }
-                            TextField {
-                                Layout.preferredWidth: 90
-                                text: simplifiedName
-                                onEditingFinished: customModel.setProperty(index, "simplifiedName", text.trim())
-                            }
-                            Button { text: qsTr("Delete"); onClicked: customModel.remove(index) }
+                    delegate: RowLayout {
+                        width: ListView.view.width
+                        Rectangle { width: 12; height: 12; radius: 6; color: subjectColor }
+                        TextField {
+                            Layout.fillWidth: true
+                            text: name
+                            onEditingFinished: customModel.setProperty(index, "name", text.trim())
                         }
+                        TextField {
+                            Layout.preferredWidth: 90
+                            text: simplifiedName
+                            onEditingFinished: customModel.setProperty(index, "simplifiedName", text.trim())
+                        }
+                        Button { text: qsTr("Delete"); onClicked: customModel.remove(index) }
                     }
                 }
             }

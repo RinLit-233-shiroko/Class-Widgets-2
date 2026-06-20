@@ -9,8 +9,8 @@ ApplicationWindow {
     id: tutorialWindow
     icon: PathManager.assets("images/icons/cw2_settings.png")
     title: qsTr("Welcome ╰(*°▽°*)╯")
-    width: Math.min(Screen.width * 0.72, 1120)
-    height: Math.min(Screen.height * 0.78, 820)
+    width: Math.min(Screen.width * 0.48, 820)
+    height: Math.min(Screen.height * 0.62, 640)
 
     property int currentPage: 0
     property var pages: [
@@ -36,7 +36,7 @@ ApplicationWindow {
     }
 
     function finishSetup() {
-        if (!subjectsPageItem.applySubjects()) {
+        if (!subjectsPageLoader.item || !subjectsPageLoader.item.applySubjects()) {
             finishError.visible = true
             return
         }
@@ -47,8 +47,8 @@ ApplicationWindow {
 
     ColumnLayout {
         anchors.fill: parent
-        anchors.margins: 24
-        spacing: 20
+        anchors.margins: 20
+        spacing: 14
 
         RowLayout {
             Layout.fillWidth: true
@@ -104,19 +104,48 @@ ApplicationWindow {
         Frame {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            padding: 20
+            padding: 14
 
             StackLayout {
+                id: pageStack
                 anchors.fill: parent
                 currentIndex: tutorialWindow.currentPage
 
-                OobeLanguagePage {}
-                OobeGeneralPage {}
-                OobeWidgetsPage {}
-                OobeInteractionsPage {}
-                OobePersonalizationPage {}
-                OobeSubjectsPage { id: subjectsPageItem }
-                OobeFinishPage {}
+                Loader {
+                    active: tutorialWindow.currentPage === 0
+                    sourceComponent: OobeLanguagePage {}
+                }
+
+                Loader {
+                    active: tutorialWindow.currentPage === 1
+                    sourceComponent: OobeGeneralPage {}
+                }
+
+                Loader {
+                    active: tutorialWindow.currentPage === 2
+                    sourceComponent: OobeWidgetsPage {}
+                }
+
+                Loader {
+                    active: tutorialWindow.currentPage === 3
+                    sourceComponent: OobeInteractionsPage {}
+                }
+
+                Loader {
+                    active: tutorialWindow.currentPage === 4
+                    sourceComponent: OobePersonalizationPage {}
+                }
+
+                Loader {
+                    id: subjectsPageLoader
+                    active: tutorialWindow.currentPage >= 5
+                    sourceComponent: OobeSubjectsPage {}
+                }
+
+                Loader {
+                    active: tutorialWindow.currentPage === 6
+                    sourceComponent: OobeFinishPage {}
+                }
             }
         }
 

@@ -4,127 +4,152 @@ import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
 import RinUI
 
-
-ColumnLayout {
+Item {
     id: root
-    spacing: 12
     property string pendingThemeId: ""
 
-    InfoBar {
-        Layout.fillWidth: true
-        title: qsTr("Warning")
-        text: qsTr("The theme system is still under development. If translations are missing after a theme change, please restart.")
-        severity: Severity.Warning
-    }
+    ScrollView {
+        id: scrollView
+        anchors.fill: parent
+        clip: true
+        contentWidth: availableWidth
 
-    Text {
-        typography: Typography.BodyStrong
-        text: qsTr("Accent Color")
-    }
+        ColumnLayout {
+            width: scrollView.availableWidth
+            spacing: 12
 
-    SettingCard {
-        Layout.fillWidth: true
-        title: qsTr("Accent Color")
-        description: qsTr("Pick the color which app highlighted color")
-        icon.name: "ic_fluent_paint_brush_20_regular"
+            InfoBar {
+                Layout.fillWidth: true
+                title: qsTr("Warning")
+                text: qsTr("The theme system is still under development. If translations are missing after a theme change, please restart.")
+                severity: Severity.Warning
+            }
 
-        DropDownColorPicker {
-            position: Position.Left
-            color: Utils.primaryColor
-            onColorChanged: Theme.setThemeColor(color)
-        }
-    }
+            Text {
+                typography: Typography.BodyStrong
+                text: qsTr("Accent Color")
+            }
 
-    Text {
-        typography: Typography.BodyStrong
-        text: qsTr("Themes")
-    }
+            SettingCard {
+                Layout.fillWidth: true
+                title: qsTr("Accent Color")
+                description: qsTr("Pick the color which app highlighted color")
+                icon.name: "ic_fluent_paint_brush_20_regular"
 
-    Flow {
-        Layout.fillWidth: true
-        spacing: 8
-
-        Repeater {
-            model: CWThemeManager.themes
-
-            delegate: Item {
-                id: themeCard
-                width: 200
-                height: 150
-                property int radius: Theme.currentTheme.appearance.buttonRadius
-                clip: true
-
-                Image {
-                    id: themeImage
-                    anchors.fill: parent
-                    source: modelData.preview || ""
-                    fillMode: Image.PreserveAspectCrop
-                    asynchronous: true
-                    cache: true
-                    layer.enabled: true
-                    layer.effect: OpacityMask {
-                        width: themeImage.width
-                        height: themeImage.height
-                        maskSource: Rectangle { width: themeImage.width; height: themeImage.height; radius: themeCard.radius }
-                    }
+                DropDownColorPicker {
+                    position: Position.Left
+                    color: Utils.primaryColor
+                    onColorChanged: Theme.setThemeColor(color)
                 }
+            }
 
-                Rectangle {
-                    id: overlay
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.bottom: parent.bottom
-                    height: 80
-                    radius: themeCard.radius
-                    property real highlightedOpacity: hoverHandler.hovered ? 0.5 : 0.4
-                    gradient: Gradient {
-                        GradientStop { position: 0.6; color: "transparent" }
-                        GradientStop { position: 1.0; color: Qt.alpha("black", overlay.highlightedOpacity) }
-                    }
+            Text {
+                typography: Typography.BodyStrong
+                text: qsTr("Themes")
+            }
 
-                    ColumnLayout {
-                        anchors.left: parent.left
-                        anchors.right: parent.right
-                        anchors.bottom: parent.bottom
-                        anchors.margins: 8
-                        spacing: 2
+            Flow {
+                Layout.fillWidth: true
+                spacing: 8
 
-                        Text {
-                            text: modelData.name || ""
-                            typography: Typography.BodyStrong
-                            color: "white"
-                            elide: Text.ElideRight
-                            maximumLineCount: 1
+                Repeater {
+                    model: CWThemeManager.themes
+
+                    delegate: Item {
+                        id: themeCard
+                        width: 200
+                        height: 150
+                        property int radius: Theme.currentTheme.appearance.buttonRadius
+                        clip: true
+
+                        Rectangle {
+                            anchors.fill: parent
+                            radius: themeCard.radius
+                            color: modelData.color || Colors.proxy.controlFillColorDefault
                         }
 
-                        RowLayout {
-                            InfoBadge { severity: Severity.Info; text: qsTr("Built-in"); visible: modelData._type === "builtin"; solid: false }
-                            InfoBadge { severity: Severity.Error; text: qsTr("Incompatible"); visible: !modelData._compatible; solid: false }
-                            Text { text: modelData.author || ""; typography: Typography.Caption; color: "#DDFFFFFF"; elide: Text.ElideRight; maximumLineCount: 1 }
+                        Image {
+                            id: themeImage
+                            anchors.fill: parent
+                            source: modelData.preview || ""
+                            fillMode: Image.PreserveAspectCrop
+                            asynchronous: true
+                            cache: true
+                            layer.enabled: true
+                            layer.effect: OpacityMask {
+                                width: themeImage.width
+                                height: themeImage.height
+                                maskSource: Rectangle { width: themeImage.width; height: themeImage.height; radius: themeCard.radius }
+                            }
+                        }
+
+                        Rectangle {
+                            id: overlay
+                            anchors.left: parent.left
+                            anchors.right: parent.right
+                            anchors.bottom: parent.bottom
+                            height: 80
+                            radius: themeCard.radius
+                            property real highlightedOpacity: hoverHandler.hovered ? 0.5 : 0.4
+                            gradient: Gradient {
+                                GradientStop { position: 0.6; color: "transparent" }
+                                GradientStop { position: 1.0; color: Qt.alpha("black", overlay.highlightedOpacity) }
+                            }
+
+                            ColumnLayout {
+                                anchors.left: parent.left
+                                anchors.right: parent.right
+                                anchors.bottom: parent.bottom
+                                anchors.margins: 8
+                                spacing: 2
+
+                                Text {
+                                    text: modelData.name || ""
+                                    typography: Typography.BodyStrong
+                                    color: "white"
+                                    elide: Text.ElideRight
+                                    maximumLineCount: 1
+                                }
+
+                                RowLayout {
+                                    InfoBadge { severity: Severity.Info; text: qsTr("Built-in"); visible: modelData._type === "builtin"; solid: false }
+                                    InfoBadge { severity: Severity.Error; text: qsTr("Incompatible"); visible: !modelData._compatible; solid: false }
+                                    Text { text: modelData.author || ""; typography: Typography.Caption; color: "#DDFFFFFF"; elide: Text.ElideRight; maximumLineCount: 1 }
+                                }
+                            }
+                        }
+
+                        HoverHandler { id: hoverHandler }
+
+                        TapHandler {
+                            onTapped: {
+                                if (modelData._compatible) {
+                                    CWThemeManager.themeChange(modelData.id)
+                                    if (modelData.color) Theme.setThemeColor(modelData.color)
+                                } else {
+                                    root.pendingThemeId = modelData.id
+                                    incompatibleDialog.open()
+                                }
+                            }
+                        }
+
+                        Rectangle {
+                            anchors.fill: parent
+                            radius: themeCard.radius
+                            color: "transparent"
+                            border.width: modelData.id === CWThemeManager.currentTheme ? 3 : 1
+                            border.color: modelData.id === CWThemeManager.currentTheme ? Colors.proxy.primaryColor : Colors.proxy.controlSolidColor
+
+                            Rectangle {
+                                anchors.fill: parent
+                                anchors.margins: 2
+                                radius: themeCard.radius
+                                color: "transparent"
+                                visible: modelData.id === CWThemeManager.currentTheme
+                                border.color: Colors.proxy.controlSolidColor
+                            }
                         }
                     }
-                }
-
-                HoverHandler { id: hoverHandler }
-
-                TapHandler {
-                    onTapped: {
-                        if (modelData._compatible) {
-                            CWThemeManager.themeChange(modelData.id)
-                            if (modelData.color) Theme.setThemeColor(modelData.color)
-                        } else {
-                            root.pendingThemeId = modelData.id
-                            incompatibleDialog.open()
-                        }
-                    }
-                }
-
-                Rectangle {
-                    anchors.fill: parent
-                    radius: themeCard.radius
-                    color: "transparent"
-                    border.width: modelData.id === CWThemeManager.currentTheme ? 3 : 1
-                    border.color: modelData.id === CWThemeManager.currentTheme ? Colors.proxy.primaryColor : Colors.proxy.controlSolidColor
                 }
             }
         }
