@@ -9,85 +9,145 @@ ApplicationWindow {
     id: tutorialWindow
     icon: PathManager.assets("images/icons/cw2_settings.png")
     title: qsTr("Welcome ╰(*°▽°*)╯")
-    width: Screen.width * 0.4
-    height: Screen.height * 0.5
+    width: Math.min(Screen.width * 0.72, 1120)
+    height: Math.min(Screen.height * 0.78, 820)
+
+    property int currentPage: 0
+    property var pages: [
+        { title: qsTr("Language"), description: qsTr("Choose the language used by Class Widgets.") },
+        { title: qsTr("General"), description: qsTr("Set theme, window behavior, Mini Mode and startup.") },
+        { title: qsTr("Widgets"), description: qsTr("Adjust widget scale, opacity, font and display position.") },
+        { title: qsTr("Interactions"), description: qsTr("Choose how widgets react to clicks, hover and window state.") },
+        { title: qsTr("Personalization"), description: qsTr("Pick accent color and a visual theme.") },
+        { title: qsTr("Subjects"), description: qsTr("Select default subjects and add your custom courses.") },
+        { title: qsTr("Finish"), description: qsTr("Save setup and start using Class Widgets.") }
+    ]
+
+    function nextPage() {
+        if (currentPage < pages.length - 1) {
+            currentPage += 1
+        }
+    }
+
+    function previousPage() {
+        if (currentPage > 0) {
+            currentPage -= 1
+        }
+    }
+
+    function finishSetup() {
+        if (!subjectsPageItem.applySubjects()) {
+            finishError.visible = true
+            return
+        }
+        AppCentral.scheduleManager.save()
+        Configs.set("app.tutorial_completed", true)
+        AppCentral.restart()
+    }
 
     ColumnLayout {
         anchors.fill: parent
-        anchors.margins: 32
-        anchors.topMargin: 16
-        anchors.bottomMargin: 48
+        anchors.margins: 24
+        spacing: 20
 
+        RowLayout {
+            Layout.fillWidth: true
+            spacing: 16
 
-        ColumnLayout {
-            Layout.alignment: Qt.AlignHCenter | Qt.AlignCenter
             Icon {
-                Layout.alignment: Qt.AlignHCenter
                 source: PathManager.images("logo.png")
-                size: 72
+                size: 40
             }
-            Text {
+
+            ColumnLayout {
                 Layout.fillWidth: true
-                typography: Typography.Subtitle
-                horizontalAlignment: Text.AlignHCenter
-                text: qsTr("Welcome to Class Widgets 2")
+                spacing: 2
+
+                Text {
+                    Layout.fillWidth: true
+                    typography: Typography.BodyStrong
+                    text: tutorialWindow.pages[tutorialWindow.currentPage].title
+                    elide: Text.ElideRight
+                }
+
+                Text {
+                    Layout.fillWidth: true
+                    text: tutorialWindow.pages[tutorialWindow.currentPage].description
+                    color: Colors.proxy.textFillColorSecondary
+                    elide: Text.ElideRight
+                }
             }
+
+            Text {
+                text: qsTr("%1 / %2").arg(tutorialWindow.currentPage + 1).arg(tutorialWindow.pages.length)
+                color: Colors.proxy.textFillColorSecondary
+            }
+        }
+
+        ProgressBar {
+            Layout.fillWidth: true
+            from: 1
+            to: tutorialWindow.pages.length
+            value: tutorialWindow.currentPage + 1
         }
 
         InfoBar {
-            Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
-            closable: false
-            Layout.fillWidth: false
-            Layout.preferredWidth: tutorialWindow.width * 0.7
-            severity: Severity.Warning
-            title: qsTr("注意")
-            text: qsTr(
-                "初始引导窗口还未完工，在做啦在做啦 \n" +
-                "目前版本为测试版，大多数功能还未补完。若要在教学环境中使用，请三思而后行。\n" +
-                "欢迎到我们的 GitHub 页面提交反馈或建议，谢谢！"
-            )
+            id: finishError
+            Layout.fillWidth: true
+            visible: false
+            closable: true
+            severity: Severity.Error
+            title: qsTr("Unable to finish setup")
+            text: qsTr("Please select or add at least one subject before starting.")
         }
 
-        RowLayout {
-            Layout.alignment: Qt.AlignHCenter
-            Text {
-                text: qsTr("Select a language")
-            }
-            ComboBox {
-                property var data: [AppCentral.translator.getSystemLanguage(), "en_US", "zh_CN"]
-                property bool initialized: false
-                model: ListModel {
-                    ListElement { text: qsTr("Use System Language") }
-                    ListElement { text: "English (US)" }
-                    ListElement { text: "简体中文" }
-                }
+        Frame {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            padding: 20
 
-                Component.onCompleted: {
-                    currentIndex = data.indexOf(AppCentral.translator.getLanguage())
-                    console.log("Language: " + AppCentral.translator.getLanguage())
-                    initialized = true
-                }
+            StackLayout {
+                anchors.fill: parent
+                currentIndex: tutorialWindow.currentPage
 
-                onCurrentIndexChanged: {
-                    if (!initialized) return
-                    AppCentral.translator.setLanguage(data[currentIndex])
-                }
+                OobeLanguagePage {}
+                OobeGeneralPage {}
+                OobeWidgetsPage {}
+                OobeInteractionsPage {}
+                OobePersonalizationPage {}
+                OobeSubjectsPage { id: subjectsPageItem }
+                OobeFinishPage {}
             }
         }
 
         RowLayout {
-            Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
+            Layout.fillWidth: true
+
             Button {
                 text: qsTr("Exit")
                 onClicked: Qt.quit()
             }
+
+            Item { Layout.fillWidth: true }
+
+            Button {
+                text: qsTr("Back")
+                enabled: tutorialWindow.currentPage > 0
+                onClicked: tutorialWindow.previousPage()
+            }
+
+            Button {
+                highlighted: tutorialWindow.currentPage < tutorialWindow.pages.length - 1
+                visible: tutorialWindow.currentPage < tutorialWindow.pages.length - 1
+                text: qsTr("Next")
+                onClicked: tutorialWindow.nextPage()
+            }
+
             Button {
                 highlighted: true
-                text: qsTr("Get started")
-                onClicked: {
-                    Configs.set("app.tutorial_completed", true)
-                    AppCentral.restart()
-                }
+                visible: tutorialWindow.currentPage === tutorialWindow.pages.length - 1
+                text: qsTr("Start using")
+                onClicked: tutorialWindow.finishSetup()
             }
         }
     }
