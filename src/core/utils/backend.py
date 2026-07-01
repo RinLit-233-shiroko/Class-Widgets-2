@@ -312,9 +312,9 @@ class UtilsBackend(QObject):
         """
         self.notification_service.playNotificationSound(provider_id, level)
 
-    @Slot(result=str)
-    def selectNotificationSound(self):
+    @Slot(int, result=str)
+    def selectNotificationSound(self, level: int):
         """
         打开文件选择器，让用户选择音频文件，并将其复制到应用配置目录下
         """
-        return self.notification_service.selectNotificationSound()
+        return self.notification_service.selectNotificationSound(level)

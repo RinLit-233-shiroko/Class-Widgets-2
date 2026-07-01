@@ -81,10 +81,7 @@ FluentPage {
                     icon.name: "ic_fluent_folder_open_20_regular"
                     text: qsTr("Select sound")
                     onClicked: {
-                        let soundPath = UtilsBackend.selectNotificationSound()
-                        if (soundPath) {
-                            UtilsBackend.setGlobalLevelSound(0, soundPath)
-                        }
+                        UtilsBackend.selectNotificationSound(0)
                     }
                 }
             }
@@ -122,10 +119,7 @@ FluentPage {
                     icon.name: "ic_fluent_folder_open_20_regular"
                     text: qsTr("Select sound")
                     onClicked: {
-                        let soundPath = UtilsBackend.selectNotificationSound()
-                        if (soundPath) {
-                            UtilsBackend.setGlobalLevelSound(1, soundPath)
-                        }
+                        UtilsBackend.selectNotificationSound(1)
                     }
                 }
             }
@@ -163,10 +157,7 @@ FluentPage {
                     icon.name: "ic_fluent_folder_open_20_regular"
                     text: qsTr("Select sound")
                     onClicked: {
-                        let soundPath = UtilsBackend.selectNotificationSound()
-                        if (soundPath) {
-                            UtilsBackend.setGlobalLevelSound(2, soundPath)
-                        }
+                        UtilsBackend.selectNotificationSound(2)
                     }
                 }
             }
@@ -204,10 +195,7 @@ FluentPage {
                     icon.name: "ic_fluent_folder_open_20_regular"
                     text: qsTr("Select sound")
                     onClicked: {
-                        let soundPath = UtilsBackend.selectNotificationSound()
-                        if (soundPath) {
-                            UtilsBackend.setGlobalLevelSound(3, soundPath)
-                        }
+                        UtilsBackend.selectNotificationSound(3)
                     }
                 }
             }
