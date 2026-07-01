@@ -202,8 +202,8 @@ class NotificationService(QObject):
         except Exception as e:
             logger.error(f"Failed to play notification sound for provider {provider_id}, level {level}: {e}")
 
-    @Slot(result=bool)
-    def selectNotificationSound(self) -> bool:
+    @Slot(int, result=bool)
+    def selectNotificationSound(self, level: int) -> bool:
         """选择并设置通知声音文件"""
         try:
             from PySide6.QtWidgets import QFileDialog
@@ -225,7 +225,7 @@ class NotificationService(QObject):
                     
                     # 设置为默认声音（使用相对路径）
                     relative_path = target_path.relative_to(ASSETS_PATH / "audio")
-                    self.setLevelSound(1, str(relative_path))
+                    self.setLevelSound(level, str(relative_path))
                     logger.debug(f"Copied notification sound from {source_path} to {target_path}, saved as relative path: {relative_path}")
                     return True
             return False
