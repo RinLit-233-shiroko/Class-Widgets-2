@@ -14,13 +14,13 @@ ApplicationWindow {
 
     property int currentPage: 0
     property var pages: [
-        { title: qsTr("Language"), description: qsTr("Choose the language used by Class Widgets.") },
+        { title: qsTr("Language"), description: qsTr("Choose the language used by Class Widgets 2.") },
         { title: qsTr("General"), description: qsTr("Set theme, window behavior, Mini Mode and startup.") },
         { title: qsTr("Widgets"), description: qsTr("Adjust widget scale, opacity, font and display position.") },
         { title: qsTr("Interactions"), description: qsTr("Choose how widgets react to clicks, hover and window state.") },
         { title: qsTr("Personalization"), description: qsTr("Pick accent color and a visual theme.") },
         { title: qsTr("Subjects"), description: qsTr("Select default subjects and add your custom courses.") },
-        { title: qsTr("Finish"), description: qsTr("Save setup and start using Class Widgets.") }
+        { title: qsTr("Finish"), description: qsTr("Save setup and start using Class Widgets 2.") }
     ]
 
     function nextPage() {
@@ -73,14 +73,12 @@ ApplicationWindow {
                 Text {
                     Layout.fillWidth: true
                     text: tutorialWindow.pages[tutorialWindow.currentPage].description
-                    color: Colors.proxy.textFillColorSecondary
                     elide: Text.ElideRight
                 }
             }
 
             Text {
                 text: qsTr("%1 / %2").arg(tutorialWindow.currentPage + 1).arg(tutorialWindow.pages.length)
-                color: Colors.proxy.textFillColorSecondary
             }
         }
 

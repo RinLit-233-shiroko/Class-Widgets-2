@@ -8,14 +8,18 @@ Item {
     id: root
     property string pendingThemeId: ""
 
-    ScrollView {
-        id: scrollView
+    Flickable {
+        id: flickable
         anchors.fill: parent
         clip: true
-        contentWidth: availableWidth
+        boundsBehavior: Flickable.StopAtBounds
+        contentWidth: width
+        contentHeight: container.implicitHeight
+        ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
 
         ColumnLayout {
-            width: scrollView.availableWidth
+            id: container
+            width: flickable.width
             spacing: 12
 
             InfoBar {

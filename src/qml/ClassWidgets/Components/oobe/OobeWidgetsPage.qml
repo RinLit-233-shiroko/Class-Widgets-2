@@ -3,13 +3,17 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import RinUI
 
-ScrollView {
+Flickable {
     id: root
     clip: true
-    contentWidth: availableWidth
+    boundsBehavior: Flickable.StopAtBounds
+    contentWidth: width
+    contentHeight: container.implicitHeight
+    ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
 
     ColumnLayout {
-        width: root.availableWidth
+        id: container
+        width: root.width
         spacing: 12
 
         Text {

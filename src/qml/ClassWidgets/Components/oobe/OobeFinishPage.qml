@@ -5,13 +5,17 @@ import RinUI
 import ClassWidgets.Components
 
 
-ScrollView {
+Flickable {
     id: root
     clip: true
-    contentWidth: availableWidth
+    boundsBehavior: Flickable.StopAtBounds
+    contentWidth: width
+    contentHeight: container.implicitHeight
+    ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
 
     ColumnLayout {
-        width: root.availableWidth
+        id: container
+        width: root.width
         spacing: 24
 
         Item { Layout.preferredHeight: Math.max(0, (root.height - 260) / 2) }

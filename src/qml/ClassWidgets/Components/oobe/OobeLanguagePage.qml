@@ -5,14 +5,19 @@ import RinUI
 import ClassWidgets.Components
 
 
-ScrollView {
+Flickable {
     id: root
     clip: true
-    contentWidth: availableWidth
-    property real cardWidth: Math.min(root.availableWidth - 32, 520)
+    boundsBehavior: Flickable.StopAtBounds
+    contentWidth: width
+    contentHeight: container.implicitHeight
+    ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
+
+    property real cardWidth: Math.min(root.width - 32, 520)
 
     ColumnLayout {
-        width: root.availableWidth
+        id: container
+        width: root.width
         spacing: 18
 
         Item {
