@@ -1,166 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_SIMPLIFIED">
+<TS version="2.1" language="ta">
 <context>
     <name>About</name>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="52"/>
         <source>Reimagining Your Schedule.</source>
-        <translation>还是你喜爱的课程表，只是更好了。</translation>
+        <translation>உங்கள் அட்டவணையை மறுவடிவமைத்தல்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="58"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="73"/>
         <source>Class Widgets 2</source>
-        <translation>西大不丢饿</translation>
+        <translation>வகுப்பு விட்செட்டுகள் 2</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="68"/>
         <source>About</source>
-        <translation>让我们看看这是什么？</translation>
+        <translation>பற்றி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="74"/>
         <source>© 2024-2026 RinLit. All rights reserved 
 Licensed under the MIT license</source>
-        <translation>© 2024-2026 RinLit。保留所有权利
-根据MIT许可证获得许可</translation>
+        <translation>© 2024-2026 RinLit. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை 
+MIT உரிமத்தின் கீழ் உரிமம் பெற்றது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="91"/>
         <source>To view this repository</source>
-        <translation>视奸此项目</translation>
+        <translation>இந்தக் களஞ்சியத்தைப் பார்க்க</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="108"/>
         <source>File a bug or request new sample</source>
-        <translation>提交你失败的药水</translation>
+        <translation>பிழையைப் பதிவு செய்யவும் அல்லது புதிய மாதிரியைக் கோரவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="111"/>
         <source>Create an issue on GitHub</source>
-        <translation>在全球最大的男性交友平台创建问题</translation>
+        <translation>GitHub இல் சிக்கலை உருவாக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="119"/>
         <source>Dependencies &amp; references</source>
-        <translation>依赖项与参考</translation>
+        <translation>சார்புகள் மற்றும் குறிப்புகள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="122"/>
         <source>Qt &amp; Qt Quick</source>
-        <translation>Qt &amp; Qt Quick</translation>
+        <translation>கியுடி மற்றும் கியுடி விரைவு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="126"/>
         <source>Fluent Design System</source>
-        <translation>流畅设计系统</translation>
+        <translation>சரளமான வடிவமைப்பு அமைப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="130"/>
         <source>RinUI</source>
-        <translation>琳丽塔UI</translation>
+        <translation>ரினுய்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="134"/>
         <source>Loguru</source>
-        <translation>Loguru</translation>
+        <translation>உள்நுழையவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="138"/>
         <source>Pydantic</source>
-        <translation>Pydantic</translation>
+        <translation>பிடான்டிக்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="144"/>
         <source>License</source>
-        <translation>协议</translation>
+        <translation>உரிமம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="145"/>
         <source>This project is licensed under the GPL-3 license</source>
-        <translation>本项目根据 GPL-3 许可证授权</translation>
+        <translation>இந்த திட்டம் GPL-3 உரிமத்தின் கீழ் உரிமம் பெற்றது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="148"/>
         <source>GPL-3 License</source>
-        <translation>GPL-3 许可证</translation>
+        <translation>GPL-3 உரிமம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="162"/>
         <source>Advances</source>
-        <translation>我能做什么？</translation>
+        <translation>முன்னேற்றங்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="168"/>
         <source>Log Storage Disabled</source>
-        <translation>不写死亡笔记</translation>
+        <translation>பதிவுச் சேமிப்பகம் முடக்கப்பட்டது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="169"/>
         <source>When enabled, the app will &lt;b&gt;not&lt;/b&gt; save logs.</source>
-        <translation>启用后，2WC将&lt;b&gt;完全放飞自我。&lt;/b&gt;</translation>
+        <translation>இயக்கப்பட்டால், பயன்பாடு பதிவுகளை &lt;b&gt;இல்லை&lt;/b&gt; சேமிக்கும்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="177"/>
         <source>Clear Logs</source>
-        <translation>删掉！删掉！全部都要删掉！</translation>
+        <translation>பதிவுகளை அழிக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="181"/>
         <source>Clear</source>
-        <translation>弄死它</translation>
+        <translation>தெளிவு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="186"/>
         <source>Cleared</source>
-        <translation>卖掉了~</translation>
+        <translation>அழிக்கப்பட்டது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="187"/>
         <source>All logs have been cleared about </source>
-        <translation>全都被卖掉了！ </translation>
+        <translation>அனைத்து பதிவுகளும் அழிக்கப்பட்டன </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="193"/>
         <source>Failed</source>
-        <translation>TRACK LOST</translation>
+        <translation>தோல்வியடைந்தது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="194"/>
         <source>Failed to clear logs.</source>
-        <translation>卡车丢失。</translation>
+        <translation>பதிவுகளை அழிக்க முடியவில்லை.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="207"/>
         <source>Debug Mode</source>
-        <translation>调教模式</translation>
+        <translation>பிழைத்திருத்த முறை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="208"/>
         <source>Enable Debug Mode to access core widget information, and debugging tools 
 * Requires restart</source>
-        <translation>你需要重新打开2WC来使用妙妙工具</translation>
+        <translation>முக்கிய விட்செட் செய்தி மற்றும் பிழைத்திருத்த கருவிகளை அணுக பிழைத்திருத்த பயன்முறையை இயக்கவும் 
+* மறுதொடக்கம் தேவை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="223"/>
         <source>Show Tutorials again</source>
-        <translation>我重生了，这一次，我要夺回属于我的一切！…当然你需要重新看一次新手教程。</translation>
+        <translation>டுடோரியல்களை மீண்டும் காட்டு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="226"/>
         <source>Restart</source>
-        <translation>重新访问2WC</translation>
+        <translation>மறுதொடக்கம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="237"/>
         <source>License Agreement</source>
-        <translation>伊甸园条约</translation>
+        <translation>உரிம ஒப்பந்தத்தின்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="244"/>
         <source>This project (Class Widgets 2) is licensed under the GPL-3 license. For details, see:</source>
-        <translation>本项目（Class Widgets 2）采用 GPL-3 许可证。详细信息请参见：</translation>
+        <translation>இந்த திட்டம் (வகுப்பு விட்செட்டுகள் 2) GPL-3 உரிமத்தின் கீழ் உரிமம் பெற்றது. விவரங்களுக்கு, பார்க்கவும்:</translation>
     </message>
 </context>
 <context>
@@ -168,17 +169,17 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddWidgetsDialog.qml" line="10"/>
         <source>Add Widgets</source>
-        <translation>添加小型桌宠</translation>
+        <translation>விட்செட்களைச் சேர்க்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddWidgetsDialog.qml" line="77"/>
         <source>No Widget Selected</source>
-        <translation>还没有选择小型桌宠</translation>
+        <translation>விட்செட் எதுவும் தேர்ந்தெடுக்கப்படவில்லை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddWidgetsDialog.qml" line="139"/>
         <source>Add</source>
-        <translation>咖啡不断加加加加到厌倦～</translation>
+        <translation>கூட்டு</translation>
     </message>
 </context>
 <context>
@@ -186,7 +187,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/CheckSingleInstanceDialog.qml" line="23"/>
         <source>Already running</source>
-        <translation>Class Widgets 还活着呢，望周知。</translation>
+        <translation>ஏற்கனவே இயங்குகிறது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/CheckSingleInstanceDialog.qml" line="36"/>
@@ -194,20 +195,20 @@ Licensed under the MIT license</source>
 
 Looks like it was opened twice.
 You can continue to open another one, or close this window.</source>
-        <translation>Class Widgets 活着。
+        <translation>வகுப்பு விட்செட்டுகள் ஏற்கனவே இயங்குகின்றன. 
 
-看起来可能是启动了两次，
-你可以选择继续启动另一个西大不丢饿，或者弄死其中一个。</translation>
+இரண்டு முறை திறக்கப்பட்டது போல் தெரிகிறது. 
+நீங்கள் இன்னொன்றைத் தொடர்ந்து திறக்கலாம் அல்லது இந்தச் சாளரத்தை மூடலாம்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/CheckSingleInstanceDialog.qml" line="49"/>
         <source>Exit</source>
-        <translation>滚</translation>
+        <translation>வெளியேறு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/CheckSingleInstanceDialog.qml" line="59"/>
         <source>Open anyway</source>
-        <translation>让！我！访！问！</translation>
+        <translation>எப்படியும் திறக்கவும்</translation>
     </message>
 </context>
 <context>
@@ -215,92 +216,92 @@ You can continue to open another one, or close this window.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="8"/>
         <source>Class Swap</source>
-        <translation>洗牌！</translation>
+        <translation>வகுப்பு இடமாற்று</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="142"/>
         <source>Odd Week</source>
-        <translation>Week%2=1</translation>
+        <translation>ஒற்றைப்படை வாரம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="142"/>
         <source>Even Week</source>
-        <translation>Week%2=0</translation>
+        <translation>வாரம் கூட</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="143"/>
         <source>Week %1</source>
-        <translation>微弱的 %1</translation>
+        <translation>வாரம்% 1</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="232"/>
         <source>Monday</source>
-        <translation>绝望星期一</translation>
+        <translation>திங்கட்கிழமை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="233"/>
         <source>Tuesday</source>
-        <translation>死亡星期二</translation>
+        <translation>செவ்வாய்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="234"/>
         <source>Wednesday</source>
-        <translation>崩溃星期三</translation>
+        <translation>அறிவன்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="235"/>
         <source>Thursday</source>
-        <translation>vivo50</translation>
+        <translation>வியாழன்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="236"/>
         <source>Friday</source>
-        <translation>明天周末！</translation>
+        <translation>வெள்ளிக்கிழமை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="237"/>
         <source>Saturday</source>
-        <translation>今天你也在？</translation>
+        <translation>காரிக்கிழமை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="238"/>
         <source>Sunday</source>
-        <translation>你不会是返校上晚自习来的吧。</translation>
+        <translation>ஞாயிறு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="290"/>
         <source>Click to select a class to swap</source>
-        <translation>找到你马上要更换的门牌号</translation>
+        <translation>மாற்றுவதற்கு வகுப்பைத் தேர்ந்தெடுக்க சொடுக்கு செய்யவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="330"/>
         <source>(Empty)</source>
-        <translation>滚木</translation>
+        <translation>(காலி)</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="376"/>
         <source>All Subjects</source>
-        <translation>配料表</translation>
+        <translation>அனைத்து பாடங்களும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="442"/>
         <source>Click a class to swap</source>
-        <translation>选择你要替换的门牌号</translation>
+        <translation>இடமாற்றம் செய்ய ஒரு வகுப்பைக் சொடுக்கு செய்யவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="444"/>
         <source>Select target class</source>
-        <translation>选择正确的门</translation>
+        <translation>இலக்கு வகுப்பைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="456"/>
         <source>Confirm Swap</source>
-        <translation>你真的要更换这个门牌号吗？</translation>
+        <translation>மாற்றத்தை உறுதிப்படுத்தவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="485"/>
         <source>Cancel</source>
-        <translation>嫑</translation>
+        <translation>ரத்துசெய்</translation>
     </message>
 </context>
 <context>
@@ -308,26 +309,26 @@ You can continue to open another one, or close this window.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapRestoreDialog.qml" line="19"/>
         <source>Temporary schedule detected</source>
-        <translation>我找到了零食配料表</translation>
+        <translation>தற்காலிக அட்டவணை கண்டறியப்பட்டது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapRestoreDialog.qml" line="33"/>
         <source>Class Widgets found temporary class swaps for today.
 
 Do you want to continue using them, or discard and restore the original schedule?</source>
-        <translation>2WC找到了今天新鲜的零食配料表
+        <translation>இன்றைய வகுப்பு விட்செட்டுகள் தற்காலிக வகுப்பு மாற்றங்களைக் கண்டறிந்துள்ளன. 
 
-继续使用它们，或放弃并恢复老旧的配料表？</translation>
+அவற்றைத் தொடர்ந்து பயன்படுத்த விரும்புகிறீர்களா அல்லது அசல் அட்டவணையை நிராகரித்து மீட்டமைக்க விரும்புகிறீர்களா?</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapRestoreDialog.qml" line="47"/>
         <source>Discard</source>
-        <translation>嫑</translation>
+        <translation>நிராகரி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapRestoreDialog.qml" line="57"/>
         <source>Continue</source>
-        <translation>我批准了</translation>
+        <translation>தொடரவும்</translation>
     </message>
 </context>
 <context>
@@ -335,7 +336,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/core/config/model.py" line="149"/>
         <source>New Schedule 1</source>
-        <translation>新的配料表1</translation>
+        <translation>புதிய அட்டவணை 1</translation>
     </message>
 </context>
 <context>
@@ -343,97 +344,97 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="10"/>
         <source>Edit Timeline</source>
-        <translation>穿针引线</translation>
+        <translation>காலவரிசையைத் திருத்தவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="10"/>
         <source>New Timeline</source>
-        <translation>新的线</translation>
+        <translation>புதிய காலவரிசை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="31"/>
         <source>(auto)</source>
-        <translation>sudo 电脑自己干活</translation>
+        <translation>(தானாக)</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="96"/>
         <source>By Week</source>
-        <translation>购买Week</translation>
+        <translation>வாரத்தின்படி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="97"/>
         <source>By Date</source>
-        <translation>购买Date</translation>
+        <translation>தேதியின்படி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="101"/>
         <source>ID</source>
-        <translation>词元</translation>
+        <translation>ஐடி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="107"/>
         <source>Date</source>
-        <translation>今天是什么时候？</translation>
+        <translation>திகதி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="122"/>
         <source>Days of Week</source>
-        <translation>这是哪一周？</translation>
+        <translation>வாரத்தின் நாட்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="129"/>
         <source>Mon</source>
-        <translation>一</translation>
+        <translation>தி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="129"/>
         <source>Tue</source>
-        <translation>2</translation>
+        <translation>செவ்வாய்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="129"/>
         <source>Wed</source>
-        <translation>3️⃣</translation>
+        <translation>அறிவன்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="130"/>
         <source>Thu</source>
-        <translation>亖</translation>
+        <translation>வியாழன்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="130"/>
         <source>Fri</source>
-        <translation>🈚️</translation>
+        <translation>வெள்ளி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="130"/>
         <source>Sat</source>
-        <translation>🐮</translation>
+        <translation>காரி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="130"/>
         <source>Sun</source>
-        <translation>🌞</translation>
+        <translation>சூரியன்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="146"/>
         <source>Every Week</source>
-        <translation>漂亮的Week</translation>
+        <translation>ஒவ்வொரு வாரமும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="147"/>
         <source>Specific Round</source>
-        <translation>每周拉出来逛一圈</translation>
+        <translation>குறிப்பிட்ட சுற்று</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="148"/>
         <source>Custom</source>
-        <translation>我就要自己规定什么时候出门</translation>
+        <translation>தனிப்பயன்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="154"/>
         <source>Week of Cycle</source>
-        <translation>虚弱的圆圈</translation>
+        <translation>சுழற்சியின் வாரம்</translation>
     </message>
 </context>
 <context>
@@ -442,173 +443,173 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="24"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="48"/>
         <source>%1</source>
-        <translation>%1</translation>
+        <translation>% 1</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="32"/>
         <source>Weekdays</source>
-        <translation>上班的日子。</translation>
+        <translation>வார நாட்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="34"/>
         <source>Weekends</source>
-        <translation>放假！</translation>
+        <translation>வார இறுதி நாட்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="41"/>
         <source>Unknown</source>
-        <translation>这啥？</translation>
+        <translation>தெரியவில்லை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="52"/>
         <source>Every Week</source>
-        <translation>漂亮的Week</translation>
+        <translation>ஒவ்வொரு வாரமும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="53"/>
         <source>week %1 of the cycle</source>
-        <translation>轮子里的第 %1 Week</translation>
+        <translation>சுழற்சியின் வாரம்% 1</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="54"/>
         <source>Weeks %1</source>
-        <translation>虚弱 %1</translation>
+        <translation>வாரங்கள்% 1</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="76"/>
         <source>Mon</source>
-        <translation>一</translation>
+        <translation>தி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="76"/>
         <source>Tue</source>
-        <translation>2</translation>
+        <translation>செவ்வாய்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="76"/>
         <source>Wed</source>
-        <translation>3️⃣</translation>
+        <translation>அறிவன்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="77"/>
         <source>Thu</source>
-        <translation>亖</translation>
+        <translation>வியாழன்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="77"/>
         <source>Fri</source>
-        <translation>🈚️</translation>
+        <translation>வெள்ளி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="77"/>
         <source>Sat</source>
-        <translation>🐮</translation>
+        <translation>காரி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="77"/>
         <source>Sun</source>
-        <translation>🌞</translation>
+        <translation>சூரியன்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="84"/>
         <source>Set start date and max weeks</source>
-        <translation>你什么时候开始上学？配料表几周一换？</translation>
+        <translation>தொடக்க தேதி மற்றும் அதிகபட்ச வாரங்களை அமைக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="102"/>
         <source>Set default duration</source>
-        <translation>你一般有多长？</translation>
+        <translation>இயல்புநிலை கால அளவை அமைக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="117"/>
         <source>Set date and max weeks</source>
-        <translation>你什么时候开始上学？配料表几周一换？</translation>
+        <translation>தேதி மற்றும் அதிகபட்ச வாரங்களை அமைக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="122"/>
         <source>Start date:</source>
-        <translation>请输入出发地:</translation>
+        <translation>தொடக்க தேதி:</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="132"/>
         <source>Max week cycle:</source>
-        <translation>最多转几圈:</translation>
+        <translation>அதிகபட்ச வார சுழற்சி:</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="149"/>
         <source>Failed to set start date or max week cycle. Please report this issue to the community or the developer.</source>
-        <translation>在设置的时候出现了一些莫名其妙的问题。请联系社区黑奴。</translation>
+        <translation>தொடக்க தேதி அல்லது அதிகபட்ச வார சுழற்சியை அமைக்க முடியவில்லை. இந்தச் சிக்கலைச் சமூகம் அல்லது டெவலப்பரிடம் புகாரளிக்கவும்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="85"/>
         <source>Set the first day of school to calculate week numbers accurately</source>
-        <translation>告诉我什么时候开始，然后我可以精确的更换配料表。</translation>
+        <translation>வார எண்களைத் துல்லியமாகக் கணக்கிட பள்ளியின் முதல் நாளை அமைக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="89"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="107"/>
         <source>Set</source>
-        <translation>齿轮</translation>
+        <translation>கணம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="103"/>
         <source>Set the default duration for new classes, breaks, or activities.</source>
-        <translation>在新的班级里当上帝。</translation>
+        <translation>புதிய வகுப்புகள், இடைவேளைகள் அல்லது செயல்பாடுகளுக்கான இயல்புநிலை கால அளவை அமைக்கவும்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="148"/>
         <source>Failed</source>
-        <translation>喔唷 出错啦！</translation>
+        <translation>தோல்வியடைந்தது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="160"/>
         <source>Select Default Duration</source>
-        <translation>你要多长？</translation>
+        <translation>இயல்புநிலை கால அளவைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="166"/>
         <source>Class</source>
-        <translation>门牌号集合</translation>
+        <translation>வகுப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="180"/>
         <source>Break</source>
-        <translation>坏掉</translation>
+        <translation>இடைவேளை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="193"/>
         <source>Activity</source>
-        <translation>运行</translation>
+        <translation>செய்கைப்பாடு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="244"/>
         <source>No timelines yet</source>
-        <translation>没有合适的线</translation>
+        <translation>இதுவரை காலக்கெடு இல்லை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="250"/>
         <source>No timelines yet. Click &quot;New Timeline&quot; to get started.</source>
-        <translation>单击此处添加标题。</translation>
+        <translation>இதுவரை காலக்கெடு இல்லை. தொடங்குவதற்கு &quot;புதிய காலவரிசை&quot; என்பதைக் சொடுக்கு செய்யவும்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="291"/>
         <source>Edit</source>
-        <translation>写！</translation>
+        <translation>தொகு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="296"/>
         <source>Remove</source>
-        <translation>sudo rm</translation>
+        <translation>அகற்று</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="320"/>
         <source>New Timeline</source>
-        <translation>创造新的线</translation>
+        <translation>புதிய காலவரிசை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="324"/>
         <source>Duplicate</source>
-        <translation>Control+C Control+V</translation>
+        <translation>நகல்</translation>
     </message>
 </context>
 <context>
@@ -616,71 +617,71 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="11"/>
         <source>Schedule Editor</source>
-        <translation>配料表修改器</translation>
+        <translation>அட்டவணை ஆசிரியர்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="60"/>
         <source>Save Changes</source>
-        <translation>保存你的设计</translation>
+        <translation>மாற்றங்களைச் சேமிக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="39"/>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="68"/>
         <source>Saved</source>
-        <translation>安全</translation>
+        <translation>சேமிக்கப்பட்டது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="41"/>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="70"/>
         <source>Schedule saved successfully</source>
-        <translation>配料表安全成功</translation>
+        <translation>அட்டவணை வெற்றிகரமாக சேமிக்கப்பட்டது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="45"/>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="74"/>
         <source>Save Failed</source>
-        <translation>安全失败</translation>
+        <translation>சேமிக்க முடியவில்லை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="47"/>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="76"/>
         <source>Failed to save schedule, see log for details</source>
-        <translation>失败去安全配料表，请观察对数来获取详细信息</translation>
+        <translation>அட்டவணையைச் சேமிக்க முடியவில்லை, விவரங்களுக்கு பதிவைப் பார்க்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="90"/>
         <source>Home</source>
-        <translation>家</translation>
+        <translation>வீடு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="95"/>
         <source>Timeline</source>
-        <translation>线</translation>
+        <translation>காலவரிசை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="100"/>
         <source>Schedule</source>
-        <translation>配料表</translation>
+        <translation>அட்டவணை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="106"/>
         <source>Subjects</source>
-        <translation>门牌</translation>
+        <translation>பாடங்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="119"/>
         <source>Unsaved Changes</source>
-        <translation>还没保存呢</translation>
+        <translation>சேமிக்கப்படாத மாற்றங்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="120"/>
         <source>Don&apos;t forget to save your changes before closing the editor or switching schedule. You can click the save button in the title bar.</source>
-        <translation>保存了吗？保存了吗？保存了吗？不保存的全部达斯！</translation>
+        <translation>எடிட்டரை மூடுவதற்கு முன் அல்லது அட்டவணையை மாற்றுவதற்கு முன் உங்கள் மாற்றங்களைச் சேமிக்க மறக்காதீர்கள். தலைப்புப் பட்டியில் உள்ள சேமி பொத்தானைக் சொடுக்கு செய்யலாம்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="126"/>
         <source>OK</source>
-        <translation>彳亍</translation>
+        <translation>சரி</translation>
     </message>
 </context>
 <context>
@@ -688,43 +689,43 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="52"/>
         <source>Remove</source>
-        <translation>移除</translation>
+        <translation>அகற்று</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="196"/>
         <source>Class</source>
-        <translation>门牌号</translation>
+        <translation>வகுப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="197"/>
         <source>Break</source>
-        <translation>坏掉</translation>
+        <translation>இடைவேளை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="198"/>
         <source>Activity</source>
-        <translation>运行</translation>
+        <translation>செய்கைப்பாடு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="199"/>
         <source>Unknown Type</source>
-        <translation>这啥我靠</translation>
+        <translation>தெரியாத வகை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="207"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="216"/>
         <source> minutes</source>
-        <translation> 最小</translation>
+        <translation> நிமிடங்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="235"/>
         <source>Invalid Time Range</source>
-        <translation>不可用的时间限制</translation>
+        <translation>தவறான நேர வரம்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="236"/>
         <source>End time must be later than start time.</source>
-        <translation>小明早上7:00起床但是6:00到了学校？？？</translation>
+        <translation>தொடக்க நேரத்தை விட முடிவு நேரம் தாமதமாக இருக்க வேண்டும்.</translation>
     </message>
 </context>
 <context>
@@ -732,80 +733,80 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="58"/>
         <source>Invalid Time Range</source>
-        <translation>不可用的时间限制</translation>
+        <translation>தவறான நேர வரம்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="59"/>
         <source>End time must be later than start time.</source>
-        <translation>小明早上7:00起床但是6:00到了学校？？？</translation>
+        <translation>தொடக்க நேரத்தை விட முடிவு நேரம் தாமதமாக இருக்க வேண்டும்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="103"/>
         <source>Edit </source>
-        <translation>修改 </translation>
+        <translation>திருத்தவும் </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="113"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="128"/>
         <source>Class</source>
-        <translation>门牌号</translation>
+        <translation>வகுப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="114"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="129"/>
         <source>Break</source>
-        <translation>坏掉</translation>
+        <translation>இடைவேளை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="115"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="130"/>
         <source>Activity</source>
-        <translation>运行</translation>
+        <translation>செய்கைப்பாடு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="116"/>
         <source>Unknown Type</source>
-        <translation>这啥我靠</translation>
+        <translation>தெரியாத வகை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="135"/>
         <source>ID</source>
-        <translation>词元</translation>
+        <translation>ஐடி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="145"/>
         <source>Default Subject</source>
-        <translation>未定义的配料</translation>
+        <translation>இயல்புநிலை பொருள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="151"/>
         <source>Select Subject</source>
-        <translation>挑选主语</translation>
+        <translation>பாடத்தைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="180"/>
         <source>Set Subject</source>
-        <translation>坐主语</translation>
+        <translation>பொருள் அமைக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="197"/>
         <source>Title</source>
-        <translation>抬头</translation>
+        <translation>தலைப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="210"/>
         <source>Start Time</source>
-        <translation>起点</translation>
+        <translation>தொடக்க நேரம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="223"/>
         <source>End Time</source>
-        <translation>目的地</translation>
+        <translation>முடிவு நேரம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="242"/>
         <source>Remove</source>
-        <translation>sudo rm</translation>
+        <translation>அகற்று</translation>
     </message>
 </context>
 <context>
@@ -813,55 +814,55 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="91"/>
         <source> PM</source>
-        <translation> 后午</translation>
+        <translation> பி.எம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="93"/>
         <source> AM</source>
-        <translation> 猫宁</translation>
+        <translation> AM</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="165"/>
         <source>New Schedule</source>
-        <translation>新建门牌号集合</translation>
+        <translation>புதிய அட்டவணை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="141"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="170"/>
         <source>Class</source>
-        <translation>门牌号</translation>
+        <translation>வகுப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="40"/>
         <source>No timeline selected</source>
-        <translation>没有选择线</translation>
+        <translation>காலவரிசை எதுவும் தேர்ந்தெடுக்கப்படவில்லை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="46"/>
         <source>Please select a timeline first to add a new schedule.</source>
-        <translation>选择一根线来添加新的门牌号集合。</translation>
+        <translation>புதிய அட்டவணையைச் சேர்க்க, முதலில் காலவரிசையைத் தேர்ந்தெடுக்கவும்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="149"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="176"/>
         <source>Break</source>
-        <translation>坏掉</translation>
+        <translation>இடைவேளை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="157"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="182"/>
         <source>Activity</source>
-        <translation>运行</translation>
+        <translation>செய்கைப்பாடு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="241"/>
         <source>Conflict with existing schedule</source>
-        <translation>和现有的日程打架了</translation>
+        <translation>ஏற்கனவே உள்ள அட்டவணையுடன் முரண்பாடு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="243"/>
         <source>This time overlaps with an existing schedule (%1 – %2)</source>
-        <translation>这个安排和之前的安排 (%1 – %2) 有冲突</translation>
+        <translation>இந்த நேரம் ஏற்கனவே உள்ள அட்டவணையுடன் மேலெழுகிறது (% 1 - %2)</translation>
     </message>
 </context>
 <context>
@@ -870,17 +871,17 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/core/convertor/slots.py" line="24"/>
         <location filename="../../src/core/schedule/manager.py" line="258"/>
         <source>Export Schedule</source>
-        <translation>打包门牌号集合并丢出去</translation>
+        <translation>ஏற்றுமதி அட்டவணை</translation>
     </message>
     <message>
         <location filename="../../src/core/convertor/slots.py" line="27"/>
         <source>CSES Format (*.yaml *.yml)</source>
-        <translation>CSES 格式 (*.yaml *.yml)</translation>
+        <translation>CSES வடிவம் (*.yaml *.yml)</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/manager.py" line="261"/>
         <source>Class Widgets 2 JSON Files (*.json)</source>
-        <translation>2WC杰森文件 (*.json)</translation>
+        <translation>வகுப்பு விட்செட்டுகள் 2 சாதொபொகு கோப்புகள் (*.json)</translation>
     </message>
 </context>
 <context>
@@ -889,130 +890,132 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="10"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="58"/>
         <source>Home</source>
-        <translation>家</translation>
+        <translation>வீடு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="16"/>
         <source>The new way to edit schedules</source>
-        <translation>新大陆！</translation>
+        <translation>அட்டவணைகளைத் திருத்துவதற்கான புதிய வழி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="17"/>
         <source>1. Tap and drag to adjust class times;
 2. Quickly fill in courses at a glance;
 3. Done in just 3 steps — editing your schedule has never been easier!</source>
-        <translation>轰！  擦-擦-擦  推-推</translation>
+        <translation>1. வகுப்பு நேரங்களை சரிசெய்ய தட்டவும் மற்றும் இழுக்கவும்; 
+2. ஒரு பார்வையில் படிப்புகளை விரைவாக நிரப்பவும்; 
+3. வெறும் 3 படிகளில் முடிந்தது - உங்கள் அட்டவணையைத் திருத்துவது எப்போதும் எளிதாக இருந்ததில்லை!</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="29"/>
         <source>Open schedules folder</source>
-        <translation>寻找你的门牌号集合所在的文件袋</translation>
+        <translation>அட்டவணை கோப்புறையைத் திறக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="36"/>
         <source>Import Schedule</source>
-        <translation>把打包好的门牌号集合丢进来</translation>
+        <translation>இறக்குமதி அட்டவணை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="40"/>
         <source>Import from Class Widgets 2</source>
-        <translation>在2WC里寻找你的门牌号集合</translation>
+        <translation>வகுப்பு விட்செட்டுகள் 2 இலிருந்து இறக்குமதி செய்யவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="46"/>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="70"/>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="89"/>
         <source>Import Failed</source>
-        <translation>导入不了</translation>
+        <translation>இறக்குமதி தோல்வி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="47"/>
         <source>Failed to import the schedule.Please check if the schedule file is valid.</source>
-        <translation>这真的是一个门牌号集合吗？</translation>
+        <translation>அட்டவணையை இறக்குமதி செய்ய முடியவில்லை. அட்டவணை கோப்பு சரியானதா என சரிபார்க்கவும்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="59"/>
         <source>Import from CSES</source>
-        <translation>从 CSES 入</translation>
+        <translation>CSES இலிருந்து இறக்குமதி செய்யவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="64"/>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="83"/>
         <source>Import Success</source>
-        <translation>打包丢进来了。</translation>
+        <translation>இறக்குமதி செய்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="65"/>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="84"/>
         <source>The schedule has been imported successfully.</source>
-        <translation>你的门牌号集合已经丢进来了。</translation>
+        <translation>அட்டவணை வெற்றிகரமாக இறக்குமதி செய்யப்பட்டது.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="71"/>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="90"/>
         <source>Failed to import the schedule. Please check if the schedule file is valid.</source>
-        <translation>这真的是一个门牌号集合吗？</translation>
+        <translation>அட்டவணையை இறக்குமதி செய்ய முடியவில்லை. அட்டவணை கோப்பு சரியானதா என சரிபார்க்கவும்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="78"/>
         <source>Import from Class Widgets 1</source>
-        <translation>在WC里寻找你的门牌号集合</translation>
+        <translation>வகுப்பு விட்செட்டுகள் 1 இலிருந்து இறக்குமதி செய்யவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="104"/>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="141"/>
         <source>Create a new schedule</source>
-        <translation>写一个新的配料表！</translation>
+        <translation>புதிய அட்டவணையை உருவாக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="114"/>
         <source>Your schedules</source>
-        <translation>你的配料表</translation>
+        <translation>உங்கள் அட்டவணைகள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="144"/>
         <source>Enter a name for your new schedule</source>
-        <translation>起个名字</translation>
+        <translation>உங்கள் புதிய அட்டவணைக்கு ஒரு பெயரை உள்ளிடவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="152"/>
         <source>Schedule name</source>
-        <translation>品名</translation>
+        <translation>அட்டவணை பெயர்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="176"/>
         <source>Cannot be empty (⊙x⊙;)</source>
-        <translation>不可以是滚木。</translation>
+        <translation>காலியாக இருக்க முடியாது (⊙x⊙;)</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="179"/>
         <source>Cannot duplicate existing name (⊙x⊙;)</source>
-        <translation>集合里不应当有重复的元素。</translation>
+        <translation>ஏற்கனவே உள்ள பெயரை நகலெடுக்க முடியாது (⊙x⊙;)</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="181"/>
         <source>Great! That&apos;s it. ヾ(≧▽≦*)o</source>
-        <translation>好了！</translation>
+        <translation>அருமை! அவ்வளவுதான். ヾ(≧▽≦*)o</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="80"/>
         <source>Warning</source>
-        <translation>FBI Warning</translation>
+        <translation>எச்சரிக்கை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="81"/>
         <source>This version is still under testing and may contain bugs or incomplete features. You are welcome to submit issues on GitHub</source>
-        <translation>我是BETA。欢迎在全球最大的男性交友平台上提交问题</translation>
+        <translation>இந்தப் பதிப்பு இன்னும் சோதனையில் உள்ளது மற்றும் பிழைகள் அல்லது முழுமையற்ற அம்சங்களைக் கொண்டிருக்கலாம். GitHub இல் சிக்கல்களைச் சமர்ப்பிக்க உங்களை வரவேற்கிறோம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="139"/>
         <source>GitHub</source>
-        <translation>全球最大的男性交友平台</translation>
+        <translation>அறிவிலிமையம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="144"/>
         <source>Discord</source>
-        <translation>一个游戏社区</translation>
+        <translation>கருத்து வேறுபாடு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="145"/>
@@ -1025,7 +1028,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/IconPicker.qml" line="34"/>
         <source>Search icon in English... (e.g. &apos;run&apos; or &apos;book&apos;)</source>
-        <translation>用英国人的语言搜索icon（例如 &apos;run&apos; 或 &apos;book&apos; ）</translation>
+        <translation>ஆங்கிலத்தில் தேடல் ஐகான்... (எ.கா. &apos;ரன்&apos; அல்லது &apos;புக்&apos;)</translation>
     </message>
 </context>
 <context>
@@ -1033,32 +1036,32 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/core/convertor/slots.py" line="42"/>
         <source>Import CSES Schedule</source>
-        <translation>让 CSES 的配料表入</translation>
+        <translation>CSES அட்டவணையை இறக்குமதி செய்யவும்</translation>
     </message>
     <message>
         <location filename="../../src/core/convertor/slots.py" line="45"/>
         <source>CSES YAML Files (*.yaml *.yml)</source>
-        <translation>CSES YAML 文件 (*.yaml *.yml)</translation>
+        <translation>CSES YAML கோப்புகள் (*.yaml *.yml)</translation>
     </message>
     <message>
         <location filename="../../src/core/convertor/slots.py" line="83"/>
         <source>Import Class Widgets 1 Schedule</source>
-        <translation>把WC的配料表丢进来</translation>
+        <translation>வகுப்பு விட்செட்டுகள் 1 அட்டவணையை இறக்குமதி செய்யவும்</translation>
     </message>
     <message>
         <location filename="../../src/core/convertor/slots.py" line="86"/>
         <source>Class Widgets 1 JSON Files (*.json)</source>
-        <translation>WC的杰森文件</translation>
+        <translation>வகுப்பு விட்செட்டுகள் 1 சாதொபொகு கோப்புகள் (*.json)</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/manager.py" line="209"/>
         <source>Import Schedule</source>
-        <translation>把打包好的门牌号集合丢进来</translation>
+        <translation>இறக்குமதி அட்டவணை</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/manager.py" line="212"/>
         <source>Class Widgets 2 JSON Files (*.json)</source>
-        <translation>2WC杰森文件 (*.json)</translation>
+        <translation>வகுப்பு விட்செட்டுகள் 2 சாதொபொகு கோப்புகள் (*.json)</translation>
     </message>
 </context>
 <context>
@@ -1066,112 +1069,112 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="10"/>
         <source>General</source>
-        <translation>将军</translation>
+        <translation>பொது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="18"/>
         <source>Locale</source>
-        <translation>你在哪个地方</translation>
+        <translation>மொழி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="23"/>
         <source>Translation notice / 翻译提示</source>
-        <translation>Translation notice / 八国语言教程</translation>
+        <translation>மொழிபெயர்ப்பு அறிவிப்பு / மொழிபெயர்ப்பு குறிப்புகள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="24"/>
         <source>Some translations may be auto-generated and could be inaccurate. Help us improve them on &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt;. &lt;br&gt;部分翻译可能由自动翻译生成，存在不准确之处。欢迎在 &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt; 上参与改进</source>
-        <translation>Some translations may be auto-generated and could be inaccurate. Help us improve them on &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt;. &lt;br&gt;部分翻译可能由自动翻译生成，存在不准确之处。欢迎在 &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt; 上参与改进。哦但是如果你看到了这句话说明你现在正在使用梗体中文。这是我瞎译的。</translation>
+        <translation>சில மொழிபெயர்ப்புகள் தானாக உருவாக்கப்படலாம் மற்றும் துல்லியமற்றதாக இருக்கலாம். &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt; இல் அவற்றை மேம்படுத்த எங்களுக்கு உதவுங்கள். &lt;br&gt;சில மொழிபெயர்ப்புகள் தானாக உருவாக்கப்படலாம் மற்றும் துல்லியமற்றதாக இருக்கலாம். &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt; இல் மேம்பாடுகளுக்கு பங்களிக்க தயங்க வேண்டாம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="33"/>
         <source>Language</source>
-        <translation>八国语言</translation>
+        <translation>மொழி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="34"/>
         <source>Set the language of Class Widgets</source>
-        <translation>你精通八国语言吗？</translation>
+        <translation>வகுப்பு விட்செட்களின் மொழியை அமைக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="41"/>
         <source>Use System Language</source>
-        <translation>学系统精。</translation>
+        <translation>கணினி மொழியைப் பயன்படுத்தவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="67"/>
         <source>Customize</source>
-        <translation>我说了算</translation>
+        <translation>தனிப்பயனாக்கு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="72"/>
         <source>App Theme</source>
-        <translation>皮肤</translation>
+        <translation>பயன்பாட்டு கருப்பொருள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="73"/>
         <source>Select which app theme to display</source>
-        <translation>巴啦啦能量！乌卡拉卡！小魔仙魔力变！</translation>
+        <translation>எந்த ஆப்ச் கருப்பொருள் காட்ட வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="79"/>
         <source>Light</source>
-        <translation>闪光弹</translation>
+        <translation>ஒளி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="80"/>
         <source>Dark</source>
-        <translation>五彩斑斓的黑</translation>
+        <translation>இருள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="81"/>
         <source>Use system setting</source>
-        <translation>学系统精。</translation>
+        <translation>கணினி அமைப்பைப் பயன்படுத்தவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="93"/>
         <source>Window Layer</source>
-        <translation>你和我好像不在同一个图层。</translation>
+        <translation>சாளர அடுக்கு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="94"/>
         <source>Let your widgets floating on top, or tuck them neatly behind other windows</source>
-        <translation>顶天立地，或者老鹰捉小鸡</translation>
+        <translation>உங்கள் விட்செட்டுகளை மேலே மிதக்க அனுமதிக்கவும் அல்லது மற்ற சன்னல்களுக்குப் பின்னால் அவற்றை நேர்த்தியாக ஒட்டவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="99"/>
         <source>Pin on Top</source>
-        <translation>.top</translation>
+        <translation>மேலே பின்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="102"/>
         <source>Send to Back</source>
-        <translation>我在床底</translation>
+        <translation>பின்னுக்கு அனுப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="121"/>
         <source>Mini Mode</source>
-        <translation>小小的也很可爱</translation>
+        <translation>மினி பயன்முறை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="122"/>
         <source>Use a more compact layout for smaller widgets</source>
-        <translation>空间管理大师</translation>
+        <translation>சிறிய விட்செட்டுகளுக்கு மிகவும் கச்சிதமான அமைப்பைப் பயன்படுத்தவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="140"/>
         <source>Actions</source>
-        <translation>gogogo出发咯～</translation>
+        <translation>செயல்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="145"/>
         <source>Run at Startup</source>
-        <translation>开机时自动引爆 Class Widgets 牌 GTX 690</translation>
+        <translation>தொடக்கத்தில் இயக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="146"/>
         <source>Run Class Widgets on startup</source>
-        <translation>电脑开机后 Class Widgets 将自动和你打招呼</translation>
+        <translation>தொடக்கத்தில் வகுப்பு விட்செட்களை இயக்கவும்</translation>
     </message>
 </context>
 <context>
@@ -1179,67 +1182,67 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="10"/>
         <source>Interactions &amp; Actions</source>
-        <translation>摆弄可爱 CW</translation>
+        <translation>தொடர்புகள் மற்றும் செயல்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="18"/>
         <source>Widgets</source>
-        <translation>显示用小方块</translation>
+        <translation>நிரல்பலகை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="23"/>
         <source>Hover fade</source>
-        <translation>我放上去你就得死</translation>
+        <translation>மறைந்துவிடும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="39"/>
         <source>Tap to hide</source>
-        <translation>含羞草</translation>
+        <translation>மறைக்க தட்டவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="24"/>
         <source>Hover to make the widget transparent and let clicks go through, move away to bring it back</source>
-        <translation>薛定谔的minecraft:barrier</translation>
+        <translation>விட்செட்டை வெளிப்படையானதாக மாற்ற வட்டமிடவும் மற்றும் கிளிக்குகள் செல்ல அனுமதிக்கவும், அதை மீண்டும் கொண்டு வர நகர்த்தவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="40"/>
         <source>Click on the widget to hide it, click it again to bring it back</source>
-        <translation>戳一戳戳出小方块</translation>
+        <translation>அதை மறைக்க விட்செட்டை சொடுக்கு செய்யவும், அதை மீண்டும் கொண்டு வர மீண்டும் சொடுக்கு செய்யவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="52"/>
         <source>More hide behavior</source>
-        <translation>更多小方块死法</translation>
+        <translation>மேலும் மறை நடத்தை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="54"/>
         <source>Choose whether widgets hide or switch to Mini Mode when triggered</source>
-        <translation>选择触发时部件躲起来或变得小小的</translation>
+        <translation>தூண்டப்படும்போது விட்செட்டுகள் மறைக்க வேண்டுமா அல்லது மினி பயன்முறைக்கு மாற வேண்டுமா என்பதைத் தேர்வுசெய்யவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="60"/>
         <source>Hide Widgets</source>
-        <translation>捉迷藏</translation>
+        <translation>விட்செட்களை மறை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="61"/>
         <source>Switch to mini mode</source>
-        <translation>变得小小的</translation>
+        <translation>மினி பயன்முறைக்கு மாறவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="77"/>
         <source>Hide when in class</source>
-        <translation>上课时藏起来</translation>
+        <translation>வகுப்பில் இருக்கும்போது மறைக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="83"/>
         <source>Hide when a window is maximized</source>
-        <translation>允许被挤掉</translation>
+        <translation>ஒரு சாளரம் பெரிதாக்கப்படும் போது மறை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="90"/>
         <source>Hide when a window enters fullscreen</source>
-        <translation>允许被挤掉（严格）</translation>
+        <translation>ஒரு சாளரம் முழுத்திரையில் நுழையும் போது மறை</translation>
     </message>
 </context>
 <context>
@@ -1247,43 +1250,43 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="13"/>
         <source>Notification</source>
-        <translation>你QQ响了</translation>
+        <translation>அறிவிப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="20"/>
         <source>General</source>
-        <translation>将军</translation>
+        <translation>பொது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="26"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="361"/>
         <source>Enable notifications</source>
-        <translation>静音模式OFF</translation>
+        <translation>அறிவிப்புகளை இயக்கு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="27"/>
         <source>Turn on or off all notifications from the application</source>
-        <translation>神权禁言</translation>
+        <translation>பயன்பாட்டிலிருந்து அனைத்து அறிவிப்புகளையும் இயக்கவும் அல்லது முடக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="38"/>
         <source>Ringtone</source>
-        <translation>音量键</translation>
+        <translation>ரிங்டோன்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="39"/>
         <source>Configure sounds for different types of notifications</source>
-        <translation>更多音量键</translation>
+        <translation>பல்வேறு வகையான அறிவிப்புகளுக்கு ஒலிகளை உள்ளமைக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="52"/>
         <source>Information</source>
-        <translation>iMessage</translation>
+        <translation>தகவல்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="53"/>
         <source>Notification sounds for general information</source>
-        <translation>普通的声音</translation>
+        <translation>பொதுவான தகவலுக்கான அறிவிப்பு ஒலிகள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="62"/>
@@ -1291,7 +1294,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="144"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="185"/>
         <source>Default sound</source>
-        <translation>未定义的声音</translation>
+        <translation>இயல்பு ஒலி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="75"/>
@@ -1299,7 +1302,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="156"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="197"/>
         <source>Play sound</source>
-        <translation>玩声音</translation>
+        <translation>ஒலியை இயக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="82"/>
@@ -1307,67 +1310,67 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="164"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="205"/>
         <source>Select sound</source>
-        <translation>挑选音频</translation>
+        <translation>ஒலியைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="93"/>
         <source>Announcement</source>
-        <translation>QQ消息</translation>
+        <translation>அறிவிப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="94"/>
         <source>Notification sounds for class and break announcements</source>
-        <translation>更复杂的QQ消息</translation>
+        <translation>வகுப்பு மற்றும் இடைவேளை அறிவிப்புகளுக்கான அறிவிப்பு ஒலிகள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="134"/>
         <source>Warning</source>
-        <translation>FBI Warning</translation>
+        <translation>எச்சரிக்கை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="135"/>
         <source>Notification sounds for warnings and important alerts</source>
-        <translation>更多的FBI Warning</translation>
+        <translation>எச்சரிக்கைகள் மற்றும் முக்கியமான விழிப்பூட்டல்களுக்கான அறிவிப்பு ஒலிகள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="175"/>
         <source>System</source>
-        <translation>你的电脑</translation>
+        <translation>மண்டலம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="176"/>
         <source>Notification sounds for system messages and updates</source>
-        <translation>你电脑的更多QQ消息</translation>
+        <translation>கணினி செய்திகள் மற்றும் புதுப்பிப்புகளுக்கான அறிவிப்பு ஒலிகள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="218"/>
         <source>Default duration (ms)</source>
-        <translation>你一般有多长？（毫秒）</translation>
+        <translation>இயல்பு கால அளவு (மிவி)</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="219"/>
         <source>Customize the notification duration (ms)</source>
-        <translation>你想有多长？（毫秒）</translation>
+        <translation>அறிவிப்பு காலத்தைத் தனிப்பயனாக்குக (மிசி)</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="242"/>
         <source>Providers</source>
-        <translation>提供商</translation>
+        <translation>வழங்குபவர்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="362"/>
         <source>Turn on or off notifications from this provider</source>
-        <translation>安装或者砸烂收件箱</translation>
+        <translation>இந்த வழங்குநரிடமிருந்து அறிவிப்புகளை இயக்கவும் அல்லது முடக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="387"/>
         <source>Use Dynamic Notification</source>
-        <translation>让你的邮件更加漂亮</translation>
+        <translation>மாறும் அறிவிப்பைப் பயன்படுத்தவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="410"/>
         <source>Use System Notification</source>
-        <translation>让你爹通知你</translation>
+        <translation>கணினி அறிவிப்பைப் பயன்படுத்தவும்</translation>
     </message>
 </context>
 <context>
@@ -1375,32 +1378,32 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/core/utils/backend.py" line="48"/>
         <source>Debug Notification</source>
-        <translation>你不会用</translation>
+        <translation>பிழைத்திருத்த அறிவிப்பு</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="68"/>
         <source>Class Notifications</source>
-        <translation>上课叫一下</translation>
+        <translation>வகுப்பு அறிவிப்புகள்</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="77"/>
         <source>Activity Notifications</source>
-        <translation>运行叫一下</translation>
+        <translation>செயல்பாட்டு அறிவிப்புகள்</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="86"/>
         <source>Break Notifications</source>
-        <translation>坏掉叫一下</translation>
+        <translation>அறிவிப்புகளை உடைக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="95"/>
         <source>Free Time Notifications</source>
-        <translation>免费时间叫一下</translation>
+        <translation>இலவச நேர அறிவிப்புகள்</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="104"/>
         <source>Preparation Bell</source>
-        <translation>账单准备</translation>
+        <translation>தயாரிப்பு மணி</translation>
     </message>
 </context>
 <context>
@@ -1408,47 +1411,47 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="48"/>
         <source>Debug</source>
-        <translation>你不会用</translation>
+        <translation>பிழைத்திருத்தம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="49"/>
         <source>Debug message</source>
-        <translation>你不会用输出的消息</translation>
+        <translation>பிழைத்திருத்த செய்தி</translation>
     </message>
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="85"/>
         <source>App Theme</source>
-        <translation>皮肤</translation>
+        <translation>பயன்பாட்டு கருப்பொருள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="86"/>
         <source>Select which app theme to display</source>
-        <translation>巴啦啦能量！乌卡拉卡！小魔仙魔力变！</translation>
+        <translation>எந்த ஆப்ச் கருப்பொருள் காட்ட வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="92"/>
         <source>Light</source>
-        <translation>闪光弹</translation>
+        <translation>ஒளி</translation>
     </message>
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="93"/>
         <source>Dark</source>
-        <translation>五彩斑斓的黑</translation>
+        <translation>இருள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="94"/>
         <source>Use system setting</source>
-        <translation>学系统精。</translation>
+        <translation>கணினி அமைப்பைப் பயன்படுத்தவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="106"/>
         <source>No Logs</source>
-        <translation>不要保存作案记录</translation>
+        <translation>பதிவுகள் இல்லை</translation>
     </message>
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="107"/>
         <source>Do not save logs to local storage.</source>
-        <translation>不要占我硬盘空间。</translation>
+        <translation>உள்ளக சேமிப்பகத்தில் பதிவுகளைச் சேமிக்க வேண்டாம்.</translation>
     </message>
 </context>
 <context>
@@ -1456,76 +1459,76 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="11"/>
         <source>Personalization</source>
-        <translation>学你</translation>
+        <translation>தனிப்பயனாக்கம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="16"/>
         <source>Warning</source>
-        <translation>FBI Warning</translation>
+        <translation>எச்சரிக்கை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="30"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="35"/>
         <source>Accent Color</source>
-        <translation>色色</translation>
+        <translation>உச்சரிப்பு நிறம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="36"/>
         <source>Pick the color which app highlighted color</source>
-        <translation>选用一个你最喜欢的色色</translation>
+        <translation>ஆப்ச் ஐலைட் செய்த வண்ணத்தைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="56"/>
         <source>Themes</source>
-        <translation>肤色</translation>
+        <translation>தீம்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="134"/>
         <source>Built-in</source>
-        <translation>内裤</translation>
+        <translation>உள்ளமைக்கப்பட்ட</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="211"/>
         <source>Incompatible Theme</source>
-        <translation>你不能色色</translation>
+        <translation>பொருந்தாத கருப்பொருள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="216"/>
         <source>This theme requires the app version %1, but current app version is %2. 
 
 Applying an incompatible theme may cause serious errors, crashes, or unexpected behavior.</source>
-        <translation>此主题需应用版本%1，但当前应用版本为%2。
+        <translation>இந்தத் தீமுக்கு ஆப்ச் பதிப்பு %1 தேவைப்படுகிறது, ஆனால் தற்போதைய ஆப்ச் பதிப்பு %2 ஆகும். 
 
-应用不兼容的主题可能会使西大不丢饿原地起飞。</translation>
+பொருந்தாத தீமினைப் பயன்படுத்துவதால் கடுமையான பிழைகள், செயலிழப்புகள் அல்லது எதிர்பாராத நடத்தை ஏற்படலாம்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="227"/>
         <source>Cancel</source>
-        <translation>嫑</translation>
+        <translation>ரத்துசெய்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="234"/>
         <source>Apply anyway</source>
-        <translation>无视风险</translation>
+        <translation>எப்படியும் விண்ணப்பிக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="163"/>
         <source>No description</source>
-        <translation>请输入文本。</translation>
+        <translation>விளக்கம் இல்லை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="17"/>
         <source>The theme system is still under development. 
 
 If translations are missing after a theme change, please restart</source>
-        <translation>BETA。
+        <translation>கருப்பொருள் அமைப்பு இன்னும் வளர்ச்சியில் உள்ளது. 
 
-东西丢了我建议你用重启大法</translation>
+தீம் மாற்றத்திற்குப் பிறகு மொழிபெயர்ப்புகள் இல்லை என்றால், மீண்டும் தொடங்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="141"/>
         <source>Incompatible</source>
-        <translation>不合适</translation>
+        <translation>பொருந்தாதது</translation>
     </message>
 </context>
 <context>
@@ -1534,7 +1537,7 @@ If translations are missing after a theme change, please restart</source>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCard.qml" line="113"/>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCard.qml" line="121"/>
         <source>Unknown</source>
-        <translation>这啥？</translation>
+        <translation>தெரியவில்லை</translation>
     </message>
 </context>
 <context>
@@ -1542,12 +1545,12 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/core/plugin/manager.py" line="92"/>
         <source>Incompatible</source>
-        <translation>不合适</translation>
+        <translation>பொருந்தாதது</translation>
     </message>
     <message>
         <location filename="../../src/core/plugin/manager.py" line="93"/>
         <source>{count} incompatible plugin(s) have been loaded, which may cause unknown issues.</source>
-        <translation>发现 {count} 个屁股可能不合适Class Widgets，运行过程中可能会把 Class Widgets 弄坏。</translation>
+        <translation>{count} பொருந்தாத செருகுநிரல்கள் (கள்) ஏற்றப்பட்டுள்ளன, இது அறியப்படாத சிக்கல்களை ஏற்படுத்தக்கூடும்.</translation>
     </message>
 </context>
 <context>
@@ -1555,27 +1558,27 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="12"/>
         <source>Plugin Plaza</source>
-        <translation>屁股超市</translation>
+        <translation>செருகுநிரல் பிளாசா</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="35"/>
         <source>Refresh</source>
-        <translation>更新鲜</translation>
+        <translation>புதுப்பிப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="53"/>
         <source>Error</source>
-        <translation>不兑！</translation>
+        <translation>பிழை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="63"/>
         <source>Home</source>
-        <translation>家</translation>
+        <translation>வீடு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="68"/>
         <source>Plugins</source>
-        <translation>屁股</translation>
+        <translation>செருகுநிரல்கள்</translation>
     </message>
 </context>
 <context>
@@ -1583,27 +1586,27 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="15"/>
         <source>Update Plugin</source>
-        <translation>更新屁股</translation>
+        <translation>செருகுநிரலைப் புதுப்பிக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="15"/>
         <source>Replace Plugin</source>
-        <translation>更换屁股</translation>
+        <translation>செருகுநிரலை மாற்றவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="43"/>
         <source>A newer version of &apos;%1&apos; is available.</source>
-        <translation>“%1” 老掉牙了。</translation>
+        <translation>&apos;% 1&apos; இன் புதிய பதிப்பு உள்ளது.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="44"/>
         <source>A plugin with the same ID &apos;%1&apos; already exists.</source>
-        <translation>已经有词元为 “%1” 的屁股了。</translation>
+        <translation>அதே அடையாளம் &apos;% 1&apos; உடன் ஒரு செருகுநிரல் ஏற்கனவே உள்ளது.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="45"/>
         <source>Plugin Replacement</source>
-        <translation>更换屁股的名词形式</translation>
+        <translation>செருகுநிரல் மாற்று</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="53"/>
@@ -1611,25 +1614,25 @@ If translations are missing after a theme change, please restart</source>
 New version: %2
 
 Do you want to %3 this plugin?</source>
-        <translation>下面的：%1
-上面的：%2
+        <translation>தற்போதைய பதிப்பு:% 1 
+புதிய பதிப்பு:% 2 
 
-是否要 %3 此屁股？</translation>
+இந்தச் செருகுநிரலை %3 செய்ய விரும்புகிறீர்களா?</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="55"/>
         <source>update</source>
-        <translation>我要新的！</translation>
+        <translation>புதுப்பிப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="55"/>
         <source>replace</source>
-        <translation>换掉</translation>
+        <translation>மாற்றவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="69"/>
         <source>Note: Replacing a plugin will remove the old version completely.</source>
-        <translation>看仔细：换掉屁股将会完全移除旧版本。</translation>
+        <translation>குறிப்பு: செருகுநிரலை மாற்றுவது பழைய பதிப்பை முழுவதுமாக அகற்றும்.</translation>
     </message>
 </context>
 <context>
@@ -1637,164 +1640,164 @@ Do you want to %3 this plugin?</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="11"/>
         <source>Plugins</source>
-        <translation>屁股</translation>
+        <translation>செருகுநிரல்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="15"/>
         <source>Warning</source>
-        <translation>FBI Warning</translation>
+        <translation>எச்சரிக்கை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="25"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="158"/>
         <source>Success</source>
-        <translation>成功人士</translation>
+        <translation>செய்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="26"/>
         <source>The plugin has been uninstalled successfully. Restart to take effect.</source>
-        <translation>屁股已经清除掉了。重启后生效。</translation>
+        <translation>செருகுநிரல் வெற்றிகரமாக நிறுவல் நீக்கப்பட்டது. நடைமுறைக்கு வர மீண்டும் தொடங்கவும்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="35"/>
         <source>Uninstall Failed</source>
-        <translation>哦不！它怎么粘在洗大不溜上了！</translation>
+        <translation>நிறுவல் நீக்கம் தோல்வியடைந்தது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="36"/>
         <source>Failed to uninstall the plugin. Please try again later.</source>
-        <translation>丢不掉这个屁股。更换电脑可以解决99%的问题。</translation>
+        <translation>செருகுநிரலை நிறுவல் நீக்குவதில் தோல்வி. பிறகு முயற்சிக்கவும்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="122"/>
         <source>Your plugins</source>
-        <translation>你的屁股们</translation>
+        <translation>உங்கள் செருகுநிரல்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="127"/>
         <source>Get Plugins</source>
-        <translation>获取屁股</translation>
+        <translation>செருகுநிரல்களைப் பெறுங்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="148"/>
         <source>Search for plugins</source>
-        <translation>寻找心仪的屁股</translation>
+        <translation>செருகுநிரல்களைத் தேடுங்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="168"/>
         <source>The selected plugin could not be imported.
 </source>
-        <translation>这个屁股没法用
+        <translation>தேர்ந்தெடுக்கப்பட்ட செருகுநிரலை இறக்குமதி செய்ய முடியவில்லை.
 </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="177"/>
         <source>Import</source>
-        <translation>❤️插入❤️</translation>
+        <translation>இறக்குமதி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="316"/>
         <source>This plugin requires API version %1, but current API version is %2. 
 It&apos;s incompatible and may cause unexpected issues.</source>
-        <translation>这个屁股需要接口版本%1，但现在接口版本为%2。
-不兼容可能导致西大不丢饿原地爆炸。</translation>
+        <translation>இந்த செருகுநிரலுக்கு பநிஇ பதிப்பு %1 தேவைப்படுகிறது, ஆனால் தற்போதைய பநிஇ பதிப்பு %2 ஆகும். 
+இது இணக்கமற்றது மற்றும் எதிர்பாராத சிக்கல்களை ஏற்படுத்தலாம்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="159"/>
         <source>The plugin has been imported successfully.</source>
-        <translation>入已成。</translation>
+        <translation>செருகுநிரல் வெற்றிகரமாக இறக்குமதி செய்யப்பட்டது.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="16"/>
         <source>The plugin system is still under development. </source>
-        <translation>Bug仍在制作. </translation>
+        <translation>செருகுநிரல் அமைப்பு இன்னும் வளர்ச்சியில் உள்ளது. </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="128"/>
         <source>Find and install plugins from the Extension Plaza (WEB)</source>
-        <translation>在“屁股商城”(蜘蛛网)中寻找和安装屁股</translation>
+        <translation>நீட்டிப்பு பிளாசாவில் (WEB) செருகுநிரல்களைக் கண்டுபிடித்து நிறுவவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="131"/>
         <source>Go to Extension Plaza</source>
-        <translation>前往“屁股商城”</translation>
+        <translation>நீட்டிப்பு பிளாசாவுக்குச் செல்லவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="167"/>
         <source>Import Failed</source>
-        <translation>导入不了</translation>
+        <translation>இறக்குமதி தோல்வி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="106"/>
         <source>Importing</source>
-        <translation>正在入</translation>
+        <translation>இறக்குமதி செய்கிறது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="107"/>
         <source>Importing the selected plugin. Please wait...</source>
-        <translation>正在入你选择的屁股。</translation>
+        <translation>தேர்ந்தெடுக்கப்பட்ட செருகுநிரலை இறக்குமதி செய்கிறது. தயவுசெய்து காத்திருங்கள்...</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="189"/>
         <source>All</source>
-        <translation>我！全！都！要！</translation>
+        <translation>அனைத்தும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="192"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="326"/>
         <source>Enabled</source>
-        <translation>打开</translation>
+        <translation>இயக்கப்பட்டது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="195"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="326"/>
         <source>Disabled</source>
-        <translation>关掉</translation>
+        <translation>முடக்கப்பட்டது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="270"/>
         <source>Built-in</source>
-        <translation>内脏</translation>
+        <translation>உள்ளமைக்கப்பட்ட</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="347"/>
         <source>Open In</source>
-        <translation>在别的地方用</translation>
+        <translation>உள்ளே திற</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="350"/>
         <source>Finder</source>
-        <translation>访达</translation>
+        <translation>கண்டுபிடிப்பாளர்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="350"/>
         <source>File Explorer</source>
-        <translation>桌面窗口管理器</translation>
+        <translation>கோப்பு எக்ச்ப்ளோரர்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="355"/>
         <source>Open Failed</source>
-        <translation>打不开</translation>
+        <translation>திறக்க முடியவில்லை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="356"/>
         <source>Failed to open the plugin folder.</source>
-        <translation>打不开屁股所在的文件袋。</translation>
+        <translation>செருகுநிரல் கோப்புறையைத் திறக்க முடியவில்லை.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="365"/>
         <source>External Online Repository</source>
-        <translation>外面的线上裤子</translation>
+        <translation>வெளிப்புற நிகழ்நிலை களஞ்சியம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="373"/>
         <source>Uninstall</source>
-        <translation>全部丢掉</translation>
+        <translation>நிறுவல் நீக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="11"/>
         <source>Built-in Widgets</source>
-        <translation>内脏</translation>
+        <translation>உள்ளமைக்கப்பட்ட விட்செட்டுகள்</translation>
     </message>
 </context>
 <context>
@@ -1802,12 +1805,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/RescheduleDayDialog.qml" line="8"/>
         <source>Reschedule day</source>
-        <translation>偷别人的配料表用</translation>
+        <translation>மறு அட்டவணை நாள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/RescheduleDayDialog.qml" line="31"/>
         <source>Apply a day-of-week schedule to a specific date</source>
-        <translation>强行替换配料表</translation>
+        <translation>ஒரு குறிப்பிட்ட தேதிக்கு வாரத்தின் நாள் அட்டவணையைப் பயன்படுத்தவும்</translation>
     </message>
 </context>
 <context>
@@ -1815,22 +1818,22 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SaveFlyout.qml" line="56"/>
         <source>Saved</source>
-        <translation>安全</translation>
+        <translation>சேமிக்கப்பட்டது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SaveFlyout.qml" line="58"/>
         <source>Schedule saved successfully</source>
-        <translation>配料表安全成功</translation>
+        <translation>அட்டவணை வெற்றிகரமாக சேமிக்கப்பட்டது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SaveFlyout.qml" line="62"/>
         <source>Save Failed</source>
-        <translation>安全失败</translation>
+        <translation>சேமிக்க முடியவில்லை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SaveFlyout.qml" line="64"/>
         <source>Failed to save schedule, see log for details</source>
-        <translation>失败去安全配料表，请观察对数来获取详细信息</translation>
+        <translation>அட்டவணையைச் சேமிக்க முடியவில்லை, விவரங்களுக்கு பதிவைப் பார்க்கவும்</translation>
     </message>
 </context>
 <context>
@@ -1838,42 +1841,42 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="76"/>
         <source>Preview</source>
-        <translation>预习</translation>
+        <translation>முன்னோட்டம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="81"/>
         <source>Edit</source>
-        <translation>写！</translation>
+        <translation>தொகு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="102"/>
         <source>Week %1</source>
-        <translation>微弱的 %1</translation>
+        <translation>வாரம்% 1</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="148"/>
         <source>Week Cycle</source>
-        <translation>微弱转圈</translation>
+        <translation>வார சுழற்சி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="171"/>
         <source>Quick Add Subject</source>
-        <translation>快捷加入主语</translation>
+        <translation>விரைவு பொருள் சேர்</translation>
     </message>
     <message>
         <location filename="../../src/core/convertor/converter.py" line="63"/>
         <source>All Weeks</source>
-        <translation>每次微弱</translation>
+        <translation>அனைத்து வாரங்களும்</translation>
     </message>
     <message>
         <location filename="../../src/core/convertor/converter.py" line="65"/>
         <source>Odd Weeks</source>
-        <translation>Week%2=1</translation>
+        <translation>ஒற்றைப்படை வாரங்கள்</translation>
     </message>
     <message>
         <location filename="../../src/core/convertor/converter.py" line="67"/>
         <source>Even Weeks</source>
-        <translation>Week%2=0</translation>
+        <translation>வாரங்கள் கூட</translation>
     </message>
 </context>
 <context>
@@ -1881,125 +1884,125 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="105"/>
         <source>Local</source>
-        <translation>本地人</translation>
+        <translation>உள்ளக</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="119"/>
         <source>Duplicate</source>
-        <translation>Control+C Control+V</translation>
+        <translation>நகல்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="126"/>
         <source>Rename</source>
-        <translation>重新名字</translation>
+        <translation>மறுபெயரிடவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="133"/>
         <source>Delete</source>
-        <translation>丢掉！</translation>
+        <translation>நீக்கு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="142"/>
         <source>Export</source>
-        <translation>打包丢出去</translation>
+        <translation>ஏற்றுமதி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="144"/>
         <source>Export to JSON</source>
-        <translation>打包成杰森并丢出</translation>
+        <translation>சாதொபொகு க்கு ஏற்றுமதி செய்யவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="150"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="176"/>
         <source>Export Success</source>
-        <translation>包裹丢出去了</translation>
+        <translation>ஏற்றுமதி செய்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="151"/>
         <source>The schedule has been exported</source>
-        <translation>配料表已经被打包丢出去了</translation>
+        <translation>அட்டவணை ஏற்றுமதி செய்யப்பட்டுள்ளது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="158"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="184"/>
         <source>Export Failed</source>
-        <translation>没法打包</translation>
+        <translation>ஏற்றுமதி தோல்வியடைந்தது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="159"/>
         <source>Failed to export the schedule. Please change the output directory or send the log file to the developer or community to help us sort it out.</source>
-        <translation>你选择的地方好像不能扔包裹，换一个地方或者去基特哈不上找进化人。</translation>
+        <translation>அட்டவணையை ஏற்றுமதி செய்ய முடியவில்லை. வெளியீட்டு கோப்பகத்தை மாற்றவும் அல்லது பதிவுக் கோப்பை உருவாக்குபவர் அல்லது சமூகத்திற்கு அனுப்பவும்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="170"/>
         <source>Export to CSES</source>
-        <translation>打包为为 CSES 并丢出去</translation>
+        <translation>CSES க்கு ஏற்றுமதி செய்யவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="177"/>
         <source>The schedule has been exported as CSES format</source>
-        <translation>已将配料表由 CSES 打包丢出去</translation>
+        <translation>அட்டவணை CSES வடிவமாக ஏற்றுமதி செய்யப்பட்டது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="185"/>
         <source>Failed to export the schedule as CSES format. Please change the output directory or send the log file to the developer or community to help us sort it out.</source>
-        <translation>你选择的地方好像不能扔包裹，换一个地方或者去基特哈不上找进化人。</translation>
+        <translation>அட்டவணையை CSES வடிவமாக ஏற்றுமதி செய்ய முடியவில்லை. வெளியீட்டு கோப்பகத்தை மாற்றவும் அல்லது பதிவுக் கோப்பை உருவாக்குபவர் அல்லது சமூகத்திற்கு அனுப்பவும்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="205"/>
         <source>Rename Schedule</source>
-        <translation>重新名字配料表</translation>
+        <translation>அட்டவணையை மறுபெயரிடவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="208"/>
         <source>Rename this schedule</source>
-        <translation>重新名字这个配料表</translation>
+        <translation>இந்த அட்டவணையை மறுபெயரிடவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="216"/>
         <source>New name ╰(*°▽°*)╯</source>
-        <translation>新的名字</translation>
+        <translation>புதிய பெயர் ╰(*°▽°*)╯</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="240"/>
         <source>Cannot be empty (⊙x⊙;)</source>
-        <translation>不可以是滚木</translation>
+        <translation>காலியாக இருக்க முடியாது (⊙x⊙;)</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="243"/>
         <source>Cannot duplicate existing name (⊙x⊙;)</source>
-        <translation>重复了</translation>
+        <translation>ஏற்கனவே உள்ள பெயரை நகலெடுக்க முடியாது (⊙x⊙;)</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="245"/>
         <source>Great! That&apos;s it. ヾ(≧▽≦*)o</source>
-        <translation>好了！</translation>
+        <translation>அருமை! அவ்வளவுதான். ヾ(≧▽≦*)o</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="270"/>
         <source>Are you sure to delete this schedule?</source>
-        <translation>你要删掉它吗？怪可怜的</translation>
+        <translation>இந்த அட்டவணையை நிச்சயமாக நீக்கவா?</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="273"/>
         <source>This action cannot be undone.</source>
-        <translation>没有后悔药。</translation>
+        <translation>இந்தச் செயலைச் செயல்தவிர்க்க முடியாது.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="281"/>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="291"/>
         <source>Failed to delete</source>
-        <translation>删除不了</translation>
+        <translation>நீக்குவதில் தோல்வி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="282"/>
         <source>Cannot delete the current schedule. Please switch to another schedule first.</source>
-        <translation>你不可以作为孙子穿越回去杀死祖父。</translation>
+        <translation>தற்போதைய அட்டவணையை நீக்க முடியாது. முதலில் வேறு அட்டவணைக்கு மாறவும்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleClip.qml" line="292"/>
         <source>Please send the log file to the developer or community to help us sort it out.</source>
-        <translation>请将日志文件给开发者或社区看看，以帮助我们解决问题。</translation>
+        <translation>வரிசைப்படுத்த எங்களுக்கு உதவ, பதிவு கோப்பை உருவாக்குபவர் அல்லது சமூகத்திற்கு அனுப்பவும்.</translation>
     </message>
 </context>
 <context>
@@ -2007,7 +2010,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/core/convertor/converter.py" line="490"/>
         <source>Class</source>
-        <translation>类</translation>
+        <translation>வகுப்பு</translation>
     </message>
 </context>
 <context>
@@ -2015,32 +2018,32 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleFlyout.qml" line="40"/>
         <source>Edit</source>
-        <translation>修改</translation>
+        <translation>தொகு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleFlyout.qml" line="58"/>
         <source>Subject</source>
-        <translation>傻逼杰克特</translation>
+        <translation>பொருள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleFlyout.qml" line="64"/>
         <source>Select Subject</source>
-        <translation>挑选主语</translation>
+        <translation>பாடத்தைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleFlyout.qml" line="104"/>
         <source>Title</source>
-        <translation>抬头</translation>
+        <translation>தலைப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleFlyout.qml" line="124"/>
         <source>Set</source>
-        <translation>齿轮</translation>
+        <translation>கணம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/ScheduleFlyout.qml" line="148"/>
         <source>Clear</source>
-        <translation>弄死它</translation>
+        <translation>தெளிவு</translation>
     </message>
 </context>
 <context>
@@ -2048,17 +2051,17 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="293"/>
         <source>Class Started</source>
-        <translation>睡觉！</translation>
+        <translation>வகுப்பு துவங்கியது</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="310"/>
         <source>Activity Started</source>
-        <translation>激活入门版</translation>
+        <translation>செயல்பாடு தொடங்கியது</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="319"/>
         <source>Intermission</source>
-        <translation>交互任务</translation>
+        <translation>இடைவேளை</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="335"/>
@@ -2066,65 +2069,65 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <location filename="../../src/core/schedule/runtime.py" line="371"/>
         <location filename="../../src/core/schedule/runtime.py" line="381"/>
         <source>Next: {}</source>
-        <translation>下一位 {}</translation>
+        <translation>அடுத்து: {}</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="339"/>
         <location filename="../../src/core/schedule/runtime.py" line="375"/>
         <source>Next: {} at {}</source>
-        <translation>下一位 {} 在 {} 等你</translation>
+        <translation>அடுத்து: {} மணிக்கு {}</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="341"/>
         <location filename="../../src/core/schedule/runtime.py" line="377"/>
         <source>Next: {} (Off-site)</source>
-        <translation>下一位 {}（不在本教室）</translation>
+        <translation>அடுத்து: {} (ஆஃப்-சைட்)</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="355"/>
         <source>Recess</source>
-        <translation>滚木时间</translation>
+        <translation>இடைவேளை</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="390"/>
         <source>Enjoy your break</source>
-        <translation>享受生活</translation>
+        <translation>உங்கள் இடைவேளையை அனுபவிக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="392"/>
         <source>Free Time</source>
-        <translation>免费花时间</translation>
+        <translation>இலவச நேரம்</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="397"/>
         <source>Status Changed</source>
-        <translation>变了！</translation>
+        <translation>நிலை மாற்றப்பட்டது</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="397"/>
         <source>Current status: {}</source>
-        <translation>现在是 {}</translation>
+        <translation>தற்போதைய நிலை: {}</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="451"/>
         <location filename="../../src/core/schedule/runtime.py" line="461"/>
         <source>Coming up: {}</source>
-        <translation>接下来 {}</translation>
+        <translation>வரவிருக்கிறது: {}</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="455"/>
         <source>Coming up: {} at {}</source>
-        <translation>马上{} 在 {}</translation>
+        <translation>வரவிருக்கிறது: {} மணிக்கு {}</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="457"/>
         <source>Coming up: {} (Off-site)</source>
-        <translation>接下来 {} (滚去别的课程房间)</translation>
+        <translation>வரவிருக்கிறது: {} (ஆஃப்-சைட்)</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="469"/>
         <source>Preparation Bell</source>
-        <translation>账单准备</translation>
+        <translation>தயாரிப்பு மணி</translation>
     </message>
 </context>
 <context>
@@ -2132,62 +2135,62 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="11"/>
         <source>Settings</source>
-        <translation>齿轮</translation>
+        <translation>அமைப்புகள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="24"/>
         <source>Home</source>
-        <translation>家</translation>
+        <translation>வீடு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="29"/>
         <source>General</source>
-        <translation>将军</translation>
+        <translation>பொது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="34"/>
         <source>Widgets</source>
-        <translation>大组件</translation>
+        <translation>நிரல்பலகை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="39"/>
         <source>Interactions</source>
-        <translation>交互</translation>
+        <translation>தொடர்புகள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="46"/>
         <source>Personalization</source>
-        <translation>学你</translation>
+        <translation>தனிப்பயனாக்கம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="51"/>
         <source>Notification &amp; Time</source>
-        <translation>no化和提姆</translation>
+        <translation>அறிவிப்பு &amp; நேரம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="55"/>
         <source>Notification</source>
-        <translation>QQ消息</translation>
+        <translation>அறிவிப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="60"/>
         <source>Time</source>
-        <translation>Tim Cook</translation>
+        <translation>நேரம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="67"/>
         <source>Plugins</source>
-        <translation>屁股</translation>
+        <translation>செருகுநிரல்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="73"/>
         <source>About</source>
-        <translation>这是什么</translation>
+        <translation>பற்றி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="78"/>
         <source>Update</source>
-        <translation>上日期</translation>
+        <translation>புதுப்பிப்பு</translation>
     </message>
 </context>
 <context>
@@ -2195,73 +2198,74 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="100"/>
         <source>Teacher: </source>
-        <translation>sensei </translation>
+        <translation>ஆசிரியர்: </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="100"/>
         <source>Location: </source>
-        <translation>定位 </translation>
+        <translation>இடம்: </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="125"/>
         <source>Edit Subject</source>
-        <translation>编辑主语</translation>
+        <translation>தலைப்பைத் திருத்து</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="138"/>
         <source>ID</source>
-        <translation>词元</translation>
+        <translation>ஐடி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="143"/>
         <source>Simplified Name</source>
-        <translation>简体名称</translation>
+        <translation>எளிமைப்படுத்தப்பட்ட பெயர்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="149"/>
         <source>Subject Name</source>
-        <translation>主语名字</translation>
+        <translation>பொருள் பெயர்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="150"/>
         <source>e.g. Science</source>
-        <translation>蛋：科学家</translation>
+        <translation>எ.கா. அறிவியல்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="154"/>
         <source>Teacher</source>
-        <translation>sensei</translation>
+        <translation>ஆசிரியர்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="159"/>
         <source>Location</source>
-        <translation>本地人</translation>
+        <translation>இடம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="160"/>
         <source>e.g. Room 7813</source>
-        <translation>例如：114514 号房</translation>
+        <translation>எ.கா. அறை 7813</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="164"/>
         <source>Color</source>
-        <translation>色</translation>
+        <translation>நிறம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="175"/>
         <source>Held in homeroom</source>
-        <translation>别跑</translation>
+        <translation>வீட்டு அறையில் நடைபெற்றது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="187"/>
         <source>Icon</source>
-        <translation>艾科</translation>
+        <translation>படவுரு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="210"/>
         <source>Enable if the subject is taught in your homeroom classroom.  
 If it takes place in another location, such as a sport field, lab, or another classroom, leave it off.</source>
-        <translation>在这里吗？在这里就打开不在这里就关掉。</translation>
+        <translation>உங்கள் வீட்டு வகுப்பறையில் பாடம் கற்பிக்கப்படுகிறதா என்பதை இயக்கவும். 
+விளையாட்டு மைதானம், ஆய்வகம் அல்லது வேறு வகுப்பறை போன்ற வேறொரு இடத்தில் இது நடந்தால், அதை விட்டுவிடவும்.</translation>
     </message>
 </context>
 <context>
@@ -2270,137 +2274,137 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="22"/>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="29"/>
         <source>Restore Defaults</source>
-        <translation>从头来过</translation>
+        <translation>இயல்புநிலைகளை மீட்டமை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="32"/>
         <source>Are you sure you want to restore the default subjects?</source>
-        <translation>你真的要让主语从头来过吗？</translation>
+        <translation>இயல்புநிலை பாடங்களை நிச்சயமாக மீட்டெடுக்க விரும்புகிறீர்களா?</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="47"/>
         <source>Add Subject</source>
-        <translation>增加主语</translation>
+        <translation>பொருள் சேர்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="50"/>
         <source>Subject</source>
-        <translation>主语</translation>
+        <translation>பொருள்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="46"/>
         <source>Chinese</source>
-        <translation>中国人</translation>
+        <translation>சீன</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="47"/>
         <source>Mathematics</source>
-        <translation>X</translation>
+        <translation>கணிதம்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="48"/>
         <source>English</source>
-        <translation>外国人</translation>
+        <translation>ஆங்கிலம்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="49"/>
         <source>Politics</source>
-        <translation>文科大杂烩</translation>
+        <translation>அரசியல்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="50"/>
         <source>History</source>
-        <translation>找老辈子</translation>
+        <translation>வரலாறு</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="51"/>
         <source>Physics</source>
-        <translation>牛顿</translation>
+        <translation>இயற்பியல்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="52"/>
         <source>Chemistry</source>
-        <translation>BOOM！</translation>
+        <translation>வேதியியல்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="53"/>
         <source>Biology</source>
-        <translation>造土豆</translation>
+        <translation>உயிரியல்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="54"/>
         <source>Geography</source>
-        <translation>没有天理</translation>
+        <translation>புவியியல்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="55"/>
         <source>Music</source>
-        <translation>这才是真正的音乐！</translation>
+        <translation>இசை</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="56"/>
         <source>Art</source>
-        <translation>美！</translation>
+        <translation>கலை</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="57"/>
         <source>Psychology</source>
-        <translation>心理委员！我不得劲！</translation>
+        <translation>உளவியல்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="58"/>
         <source>Physical Education</source>
-        <translation>体育老师请假了吗？</translation>
+        <translation>உடற்கல்வி</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="59"/>
         <source>Information Technology</source>
-        <translation>弄死极域</translation>
+        <translation>செய்தி தொழில்நுட்பம்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="60"/>
         <source>General Technology</source>
-        <translation>据木头</translation>
+        <translation>பொது தொழில்நுட்பம்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="61"/>
         <source>Elective</source>
-        <translation>不是必修</translation>
+        <translation>தேர்ந்தெடுக்கப்பட்ட</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="62"/>
         <source>Self Study</source>
-        <translation>唠嗑</translation>
+        <translation>தன்வய ஆய்வு</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="63"/>
         <source>Club</source>
-        <translation>校本</translation>
+        <translation>கிளப்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="64"/>
         <source>Class Meeting</source>
-        <translation>班级会议</translation>
+        <translation>வகுப்பு கூட்டம்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="65"/>
         <source>Weekly Test</source>
-        <translation>周考试</translation>
+        <translation>வாராந்திர சோதனை</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="66"/>
         <source>Economics</source>
-        <translation>赚钱！</translation>
+        <translation>பொருளாதாரம்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="67"/>
         <source>Philosophy</source>
-        <translation>亚里士多德</translation>
+        <translation>உண்மை</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="70"/>
         <source>Computer Science</source>
-        <translation>图灵&amp;冯诺伊曼</translation>
+        <translation>கணினி அறிவியல்</translation>
     </message>
 </context>
 <context>
@@ -2408,127 +2412,127 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/core/utils/subjects.py" line="71"/>
         <source>CHN</source>
-        <translation>🦟</translation>
+        <translation>சிஎச்என்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="72"/>
         <source>Math</source>
-        <translation>X</translation>
+        <translation>கணிதம்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="73"/>
         <source>Eng</source>
-        <translation>📄</translation>
+        <translation>இன்சி</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="74"/>
         <source>Civics</source>
-        <translation>🎓</translation>
+        <translation>குடிமையியல்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="75"/>
         <source>Hist</source>
-        <translation>🪨</translation>
+        <translation>வரலாறு</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="76"/>
         <source>Phys</source>
-        <translation>🍎</translation>
+        <translation>இயற்பியல்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="77"/>
         <source>Chem</source>
-        <translation>🧪</translation>
+        <translation>செம்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="78"/>
         <source>Bio</source>
-        <translation>🥔</translation>
+        <translation>உயிர்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="79"/>
         <source>Geo</source>
-        <translation>🗺️</translation>
+        <translation>சியோ</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="80"/>
         <source>Mus</source>
-        <translation>🎵</translation>
+        <translation>முச்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="81"/>
         <source>Art</source>
-        <translation>🧑‍🎨</translation>
+        <translation>கலை</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="82"/>
         <source>Psy</source>
-        <translation>💖</translation>
+        <translation>சை</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="83"/>
         <source>PE</source>
-        <translation>⚽️</translation>
+        <translation>பீ</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="84"/>
         <source>IT</source>
-        <translation>💻</translation>
+        <translation>ஐ.டி</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="85"/>
         <source>GenTech</source>
-        <translation>🪵</translation>
+        <translation>சென்டெக்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="86"/>
         <source>Elective</source>
-        <translation>✅</translation>
+        <translation>தேர்ந்தெடுக்கப்பட்ட</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="87"/>
         <source>Study</source>
-        <translation>📖</translation>
+        <translation>படிப்பு</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="88"/>
         <source>Club</source>
-        <translation>🏃</translation>
+        <translation>கிளப்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="89"/>
         <source>ClassMtg</source>
-        <translation>📅</translation>
+        <translation>வகுப்புMtg</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="90"/>
         <source>Weekly</source>
-        <translation>🖊️</translation>
+        <translation>வாரந்தோறும்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="91"/>
         <source>Econ</source>
-        <translation>💵</translation>
+        <translation>பொருளாதாரம்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="92"/>
         <source>Philos</source>
-        <translation>🧓</translation>
+        <translation>பிலோச்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="93"/>
         <source>CS</source>
-        <translation>⚡️</translation>
+        <translation>சிஎச்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="94"/>
         <source>Meeting</source>
-        <translation>📱</translation>
+        <translation>கூட்டம்</translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="95"/>
         <source>Test</source>
-        <translation>📝</translation>
+        <translation>தேர்வு</translation>
     </message>
 </context>
 <context>
@@ -2536,7 +2540,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/TableEntryDelegate.qml" line="21"/>
         <source>Class</source>
-        <translation>门牌号</translation>
+        <translation>வகுப்பு</translation>
     </message>
 </context>
 <context>
@@ -2544,12 +2548,12 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/themes/__init__.py" line="10"/>
         <source>Default</source>
-        <translation>不定义</translation>
+        <translation>இயல்புநிலை</translation>
     </message>
     <message>
         <location filename="../../src/themes/__init__.py" line="11"/>
         <source>Class Widgets Builtin Default Theme</source>
-        <translation>Class Widgets 自带的主题</translation>
+        <translation>கிளாச் விட்செட்டுகள் பில்டின் இயல்புநிலை கருப்பொருள்</translation>
     </message>
 </context>
 <context>
@@ -2558,22 +2562,22 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Time.qml" line="13"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Time.qml" line="20"/>
         <source>Time</source>
-        <translation>Tim Cook</translation>
+        <translation>நேரம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Time.qml" line="26"/>
         <source>Time Offset (minutes)</source>
-        <translation>Tim Cook老了多少？（秒）</translation>
+        <translation>நேர ஆஃப்செட் (நிமிடங்கள்)</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Time.qml" line="27"/>
         <source>Adjust schedule time to match your school&apos;s broadcast; Increase the offset to compensate for early bells, decrease to compensate for late bells</source>
-        <translation>让我们校准Tim Cook的年龄。</translation>
+        <translation>உங்கள் பள்ளியின் ஒலிபரப்புடன் பொருந்த, அட்டவணை நேரத்தைச் சரிசெய்யவும்; ஆரம்ப மணிகளுக்கு ஈடுசெய்ய ஆஃப்செட்டை அதிகரிக்கவும், தாமதமான மணிகளுக்கு ஈடுசெய்ய குறைக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Time.qml" line="35"/>
         <source>minutes</source>
-        <translation>最小</translation>
+        <translation>நிமிடங்கள்</translation>
     </message>
 </context>
 <context>
@@ -2581,80 +2585,80 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="79"/>
         <source>Settings</source>
-        <translation>齿轮</translation>
+        <translation>அமைப்புகள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="80"/>
         <source>Adjust the settings of Class Widgets</source>
-        <translation>乾坤大挪移！</translation>
+        <translation>வகுப்பு விட்செட்களின் அமைப்புகளைச் சரிசெய்யவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="93"/>
         <source>Schedules</source>
-        <translation>日程表</translation>
+        <translation>அட்டவணைகள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="94"/>
         <source>Edit your schedule profile</source>
-        <translation>更改配料表</translation>
+        <translation>உங்கள் அட்டவணை சுயவிவரத்தை திருத்தவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="65"/>
         <source>What&apos;s New</source>
-        <translation>有什么新的？</translation>
+        <translation>புதியது என்ன</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="82"/>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="96"/>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="110"/>
         <source>Open</source>
-        <translation>开！</translation>
+        <translation>திற</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="107"/>
         <source>Extension Plaza (WEB)</source>
-        <translation>屁股超市（蜘蛛网）</translation>
+        <translation>நீட்டிப்பு பிளாசா (WEB)</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="108"/>
         <source>Discover and download plugins and themes</source>
-        <translation>浏览并抓取心仪的屁股和皮肤</translation>
+        <translation>செருகுநிரல்கள் மற்றும் தீம்களைக் கண்டறிந்து பதிவிறக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="126"/>
         <source>Shortcuts</source>
-        <translation>快快快！</translation>
+        <translation>குறுக்குவழிகள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="137"/>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="244"/>
         <source>Reschedule Day</source>
-        <translation>傻逼调休</translation>
+        <translation>மறு அட்டவணை நாள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="144"/>
         <source>Class Swap</source>
-        <translation>洗牌！</translation>
+        <translation>வகுப்பு இடமாற்று</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="158"/>
         <source>Switch your schedule</source>
-        <translation>你的课程表switch</translation>
+        <translation>உங்கள் அட்டவணையை மாற்றவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="211"/>
         <source>Debugger</source>
-        <translation>调教器</translation>
+        <translation>பிழைத்திருத்தி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="224"/>
         <source>Restart</source>
-        <translation>重开</translation>
+        <translation>மறுதொடக்கம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="234"/>
         <source>Exit</source>
-        <translation>离开</translation>
+        <translation>வெளியேறு</translation>
     </message>
 </context>
 <context>
@@ -2662,46 +2666,46 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="11"/>
         <source>Welcome ╰(*°▽°*)╯</source>
-        <translation>欢迎光↓临↑→~</translation>
+        <translation>வரவேற்கிறோம் ╰(*°▽°*)╯</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="33"/>
         <source>Welcome to Class Widgets 2</source>
-        <translation>嗨，别来无恙啊！</translation>
+        <translation>வகுப்பு விட்செட்டுகள் 2 க்கு வரவேற்கிறோம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="43"/>
         <source>注意</source>
-        <translation>注意</translation>
+        <translation>கவனிக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="44"/>
         <source>初始引导窗口还未完工，在做啦在做啦 
 目前版本为测试版，大多数功能还未补完。若要在教学环境中使用，请三思而后行。
 欢迎到我们的 GitHub 页面提交反馈或建议，谢谢！</source>
-        <translation>初始引导窗口尚未完成，正在画饼中
-当前版本为测试版，大部分功能尚未完善。若要在教学环境中使用，请谨慎考虑。
-欢迎前往我们的 GitHub 页面提交反馈或建议，栓Q！</translation>
+        <translation>ஆரம்ப துவக்க சாளரம் இன்னும் முடிவடையவில்லை, அது வேலை செய்கிறது.
+தற்போதைய பதிப்பு பீட்டா பதிப்பாகும், மேலும் பெரும்பாலான நற்பொருத்தங்கள் இன்னும் முடிக்கப்படவில்லை. கற்பிக்கும் சூழலில் பயன்படுத்துவதற்கு முன் ஒருமுறைக்கு இருமுறை யோசிக்கவும். 
+எங்கள் GitHub பக்கத்தில் கருத்து அல்லது பரிந்துரைகளை சமர்ப்பிக்க தயங்க வேண்டாம், நன்றி!</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="54"/>
         <source>Select a language</source>
-        <translation>寻找适合你的八国语言</translation>
+        <translation>ஒரு மொழியைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="60"/>
         <source>Use System Language</source>
-        <translation>学系统精。</translation>
+        <translation>கணினி மொழியைப் பயன்படுத்தவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="81"/>
         <source>Exit</source>
-        <translation>离开</translation>
+        <translation>வெளியேறு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="86"/>
         <source>Get started</source>
-        <translation>用</translation>
+        <translation>தொடங்குங்கள்</translation>
     </message>
 </context>
 <context>
@@ -2709,205 +2713,205 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="11"/>
         <source>Class Widgets Update</source>
-        <translation>西大不留上日期</translation>
+        <translation>வகுப்பு விட்செட்கள் புதுப்பிப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="59"/>
         <source>Checking for updates...</source>
-        <translation>看去上日期们…</translation>
+        <translation>புதுப்பிப்புகளைச் சரிபார்க்கிறது...</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="61"/>
         <source>You&apos;re up to date!</source>
-        <translation>你是最新的！</translation>
+        <translation>நீங்கள் புதுப்பித்த நிலையில் உள்ளீர்கள்!</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="63"/>
         <source>New version available!</source>
-        <translation>有更新的！</translation>
+        <translation>புதிய பதிப்பு கிடைக்கிறது!</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="65"/>
         <source>Downloading update...</source>
-        <translation>下载中……</translation>
+        <translation>புதுப்பிப்பைப் பதிவிறக்குகிறது...</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="67"/>
         <source>Installing update...</source>
-        <translation>头抬起
-你正在成功。</translation>
+        <translation>புதுப்பிப்பை நிறுவுகிறது...</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="69"/>
         <source>Update ready to install</source>
-        <translation>准备就绪</translation>
+        <translation>புதுப்பிப்பு நிறுவ தயாராக உள்ளது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="71"/>
         <source>Update failed</source>
-        <translation>更新不了欸</translation>
+        <translation>புதுப்பிப்பு தோல்வியடைந்தது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="73"/>
         <source>Download cancelled</source>
-        <translation>已急停</translation>
+        <translation>பதிவிறக்கம் ரத்து செய்யப்பட்டது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="75"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="132"/>
         <source>Check for updates</source>
-        <translation>查查你的</translation>
+        <translation>புதுப்பிப்புகளை சரிபார்க்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="88"/>
         <source>Waiting for response...</source>
-        <translation>服务器怎么还不回应……</translation>
+        <translation>பதிலுக்காக காத்திருக்கிறது...</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="90"/>
         <source>You&apos;re on the latest version</source>
-        <translation>你是最新的</translation>
+        <translation>அண்மைக் கால பதிப்பில் உள்ளீர்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="92"/>
         <source>Latest version: %1</source>
-        <translation>最新最热！：%1</translation>
+        <translation>அண்மைக் கால பதிப்பு: % 1</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="92"/>
         <source>New version available</source>
-        <translation>有更新的</translation>
+        <translation>புதிய பதிப்பு கிடைக்கிறது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="97"/>
         <source>%1 MB/s</source>
-        <translation>挺快的</translation>
+        <translation>% 1 MB/s</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="98"/>
         <source>%1 KB/s</source>
-        <translation>好慢，没吃饭吗</translation>
+        <translation>% 1 KB/s</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="99"/>
         <source>Progress: %1% — %2</source>
-        <translation>进度：99%</translation>
+        <translation>முன்னேற்றம்:% 1% —% 2</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="102"/>
         <source>Applying the update...</source>
-        <translation>接受这个上日期…</translation>
+        <translation>புதுப்பிப்பைப் பயன்படுத்துகிறது...</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="104"/>
         <source>Ready to install now</source>
-        <translation>准备就绪</translation>
+        <translation>இப்போது நிறுவ தயாராக உள்ளது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="106"/>
         <source>Something went wrong!</source>
-        <translation>这真是让人尴尬。目前，我们无法完成更新</translation>
+        <translation>ஏதோ தவறாகிவிட்டது!</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="108"/>
         <source>Download was cancelled</source>
-        <translation>下载孬</translation>
+        <translation>பதிவிறக்கம் ரத்து செய்யப்பட்டது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="110"/>
         <source>Click &quot;Check for updates&quot; to search for updates</source>
-        <translation>戳“检查更新”查查你是不是最新的</translation>
+        <translation>புதுப்பிப்புகளைத் தேட, &quot;புதுப்பிப்புகளைச் சரிபார்க்கவும்&quot; என்பதைக் சொடுக்கு செய்யவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="160"/>
         <source>Download</source>
-        <translation>下加载</translation>
+        <translation>பதிவிறக்கம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="174"/>
         <source>Cancel</source>
-        <translation>嫑</translation>
+        <translation>ரத்துசெய்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="186"/>
         <source>Restart and Install</source>
-        <translation>重开并安装</translation>
+        <translation>மறுதொடக்கம் செய்து நிறுவவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="201"/>
         <source>More options</source>
-        <translation>更多的观点</translation>
+        <translation>மேலும் விருப்பங்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="207"/>
         <source>Update Channel</source>
-        <translation>上日期管道</translation>
+        <translation>சேனலைப் புதுப்பிக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="208"/>
         <source>Choose which update channel to use</source>
-        <translation>选择哪一个上日期管道来用</translation>
+        <translation>எந்த புதுப்பிப்பு சேனலைப் பயன்படுத்த வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="212"/>
         <source>Release</source>
-        <translation>稳定的</translation>
+        <translation>வெளியீடு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="213"/>
         <source>Alpha</source>
-        <translation>测试版</translation>
+        <translation>அகர</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="234"/>
         <source>Use Mirror Source</source>
-        <translation>用镜子源头</translation>
+        <translation>மிரர் மூலத்தைப் பயன்படுத்தவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="235"/>
         <source>If GitHub is slow or unavailable in your region, use a mirror to download updates faster</source>
-        <translation>如果你在中国大陆你可以用镜子源头来快马加鞭</translation>
+        <translation>GitHub மெதுவாக இருந்தால் அல்லது உங்கள் பகுதியில் கிடைக்கவில்லை என்றால், புதுப்பிப்புகளை வேகமாகப் பதிவிறக்க கண்ணாடியைப் பயன்படுத்தவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="244"/>
         <source>Choose a mirror source for downloading updates</source>
-        <translation>选择一个镜子源头给下加载上日期</translation>
+        <translation>புதுப்பிப்புகளைப் பதிவிறக்குவதற்கு கண்ணாடி மூலத்தைத் தேர்வுசெய்யவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="243"/>
         <source>Select Mirror</source>
-        <translation>选择镜子</translation>
+        <translation>கண்ணாடியைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="272"/>
         <source>Auto check for updates</source>
-        <translation>让奥拓先生检查上日期</translation>
+        <translation>புதுப்பிப்புகளைத் தானாகச் சரிபார்க்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="273"/>
         <source>Automatically check for updates and download them when they are available 
 * Requires restart</source>
-        <translation>你需要重新访问2WC在这个操作之后</translation>
+        <translation>புதுப்பிப்புகளைத் தானாகச் சரிபார்த்து, அவை கிடைக்கும்போது அவற்றைப் பதிவிறக்கவும் 
+* மறுதொடக்கம் தேவை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="292"/>
         <source>Advanced</source>
-        <translation>搞基选项</translation>
+        <translation>மேம்பட்ட</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="298"/>
         <source>Updater Server URL</source>
-        <translation>更改天线地址</translation>
+        <translation>புதுப்பிப்பு சேவையக முகவரி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="299"/>
         <source>Set a custom URL to use for the updater server</source>
-        <translation>我就要用自己的天线！</translation>
+        <translation>புதுப்பிப்பு சேவையகத்தைப் பயன்படுத்த தனிப்பயன் முகவரி ஐ அமைக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="313"/>
         <source>Reset to default</source>
-        <translation>回炉重造</translation>
+        <translation>இயல்புநிலைக்கு மீட்டமைக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="321"/>
@@ -2920,44 +2924,44 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/core/automations/update_check.py" line="45"/>
         <source>Class Widgets Update Available</source>
-        <translation>移除了Him，以及…</translation>
+        <translation>வகுப்பு விட்செட்கள் புதுப்பிப்பு கிடைக்கிறது</translation>
     </message>
     <message>
         <location filename="../../src/core/automations/update_check.py" line="43"/>
         <source>&quot;{version}&quot; is available!
 Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
-        <translation>最新最热！：&quot;{version}&quot;！
-前往 齿轮 上日期 了解更多</translation>
+        <translation>&quot;{version}&quot; உள்ளது! 
+மேலும் விவரங்களுக்கு &quot;அமைப்புகள்&quot; → &quot;புதுப்பிப்பு&quot; என்பதற்குச் செல்லவும்.</translation>
     </message>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="89"/>
         <source>Class Widgets has been updated to the latest version: {version}</source>
-        <translation>{version}</translation>
+        <translation>வகுப்பு விட்செட்டுகள் அண்மைக் கால பதிப்பிற்கு புதுப்பிக்கப்பட்டுள்ளன: {version}</translation>
     </message>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="90"/>
         <source>Update Completed ヾ(≧▽≦*)o</source>
-        <translation>好东西来了</translation>
+        <translation>புதுப்பிப்பு முடிந்தது ヾ(≧▽≦*)o</translation>
     </message>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="163"/>
         <source>Update Downloaded</source>
-        <translation>上日期已经被下加载了</translation>
+        <translation>புதுப்பிப்பு பதிவிறக்கப்பட்டது</translation>
     </message>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="168"/>
         <source>Ready to install anytime. Go to &quot;Settings&quot; → &quot;Update&quot; to proceed with installation.</source>
-        <translation>你没事吧？没事的话更新一下。</translation>
+        <translation>எந்த நேரத்திலும் நிறுவ தயாராக உள்ளது. நிறுவலைத் தொடர, &quot;அமைப்புகள்&quot; → &quot;புதுப்பிப்பு&quot; என்பதற்குச் செல்லவும்.</translation>
     </message>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="205"/>
         <source>Applying Update Soon</source>
-        <translation>我要更新了。</translation>
+        <translation>புதுப்பிப்பை விரைவில் பயன்படுத்துகிறது</translation>
     </message>
     <message>
         <location filename="../../src/core/updater/bridge.py" line="209"/>
         <source>The update may take several seconds to complete. (●&apos;◡&apos;●)</source>
-        <translation>正在更新 Class Widgets ，请勿 TM 关闭计算机</translation>
+        <translation>புதுப்பிப்பு முடிவதற்கு சில வினாடிகள் ஆகலாம். (●&apos;◡&apos;●)</translation>
     </message>
 </context>
 <context>
@@ -2965,27 +2969,27 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="42"/>
         <source>Every Week</source>
-        <translation>漂亮的Week</translation>
+        <translation>ஒவ்வொரு வாரமும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="47"/>
         <source>Round</source>
-        <translation>♾</translation>
+        <translation>சுற்று</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="51"/>
         <source>Custom</source>
-        <translation>我就要自己规定什么时候出门</translation>
+        <translation>தனிப்பயன்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="59"/>
         <source>Week of Cycle:</source>
-        <translation>周圆圈：</translation>
+        <translation>சுழற்சியின் வாரம்:</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="72"/>
         <source>Week Index:</source>
-        <translation>现在虚弱：</translation>
+        <translation>வார அட்டவணை:</translation>
     </message>
 </context>
 <context>
@@ -2993,17 +2997,17 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/WhatsNew.qml" line="11"/>
         <source>What&apos;s New ╰(*°▽°*)╯</source>
-        <translation>省流</translation>
+        <translation>புதியது என்ன ╰(*°▽°*)╯</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/WhatsNew.qml" line="173"/>
         <source>Feature Title</source>
-        <translation>专题强化</translation>
+        <translation>அம்ச தலைப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/WhatsNew.qml" line="182"/>
         <source>Feature description will appear here...</source>
-        <translation>注释</translation>
+        <translation>அம்ச விளக்கம் இங்கே தோன்றும்...</translation>
     </message>
 </context>
 <context>
@@ -3011,52 +3015,52 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="11"/>
         <source>Brand New What&apos;s New Feature</source>
-        <translation>震！撼！首！发！</translation>
+        <translation>புத்தம் புதியது என்ன புதிய நற்பொருத்தம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="12"/>
         <source>Introducing our brand new feature introduction page that allows users to quickly learn about the latest features of Class Widgets 2.0. Supports multi-page display, smooth animations, and smart navigation for a better new user experience.</source>
-        <translation>全新 Class Widgets 现已问世，全新 Class Widgets 也已问世。在此快速了解 Class Widgets 2.0 的最新 Bug。</translation>
+        <translation>கிளாச் விட்செட்டுகள் 2.0 இன் அண்மைக் கால அம்சங்களைப் பற்றி விரைவாக அறிந்துகொள்ள பயனர்களை அனுமதிக்கும் எங்கள் புத்தம் புதிய அம்ச அறிமுகப் பக்கத்தை அறிமுகப்படுத்துகிறோம். சிறந்த புதிய பயனர் அனுபவத்திற்காக பல பக்க காட்சி, மென்மையான அனிமேசன் மற்றும் அறிவுள்ள நேவிகேசன் ஆகியவற்றை ஆதரிக்கிறது.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="17"/>
         <source>Comprehensive Notification System Upgrade</source>
-        <translation>你QQ更新了！</translation>
+        <translation>விரிவான அறிவிப்பு அமைப்பு மேம்படுத்தல்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="18"/>
         <source>A completely rebuilt notification system that supports in-app notification toggles, intelligent ringtone configuration, and customizable notification providers. Bringing users a more flexible and intelligent notification experience.</source>
-        <translation>嗯对</translation>
+        <translation>முற்றிலும் மறுகட்டமைக்கப்பட்ட அறிவிப்பு அமைப்பு, பயன்பாட்டில் உள்ள அறிவிப்பு நிலைமாற்றங்கள், அறிவார்ந்த ரிங்டோன் உள்ளமைவு மற்றும் தனிப்பயனாக்கக்கூடிய அறிவிப்பு வழங்குநர்களை ஆதரிக்கிறது. பயனர்களுக்கு மிகவும் நெகிழ்வான மற்றும் அறிவார்ந்த அறிவிப்பு அனுபவத்தைத் தருகிறது.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="21"/>
         <source>Add &quot;Dynamic Notifications&quot; to Widgets Screen</source>
-        <translation>让小方块更加优雅的发送QQ消息</translation>
+        <translation>விட்செட்கள் திரையில் &quot;மாறும் அறிவிப்புகளை&quot; சேர்க்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="25"/>
         <source>Enhanced Plugin System</source>
-        <translation>更强大的屁股</translation>
+        <translation>மேம்படுத்தப்பட்ட செருகுநிரல் அமைப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="26"/>
         <source>A comprehensive plugin system architecture that supports third-party library imports, web-based plugin plaza, PluginAPI and UIAPI. Added edit mode detection properties to make plugin development more convenient.</source>
-        <translation>全新架构，支持第三方库，基于网页与西大不丢SDK，开发者可以更加快乐的开发了。</translation>
+        <translation>மூன்றாம் தரப்பு நூலக இறக்குமதிகள், இணைய அடிப்படையிலான செருகுநிரல் பிளாசா, PluginAPI மற்றும் UIAPI ஆகியவற்றை ஆதரிக்கும் ஒரு விரிவான செருகுநிரல் அமைப்பு கட்டமைப்பு. செருகுநிரல் மேம்பாட்டை மிகவும் வசதியாக மாற்ற, திருத்த முறை கண்டறிதல் பண்புகள் சேர்க்கப்பட்டது.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="29"/>
         <source>Visit Extension Plaza</source>
-        <translation>前往屁股商城</translation>
+        <translation>நீட்டிப்பு பிளாசாவைப் பார்வையிடவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="33"/>
         <source>Extended Multi-language Support</source>
-        <translation>现在你可以选择八 国 语 言</translation>
+        <translation>விரிவாக்கப்பட்ட பல மொழி உதவி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="34"/>
         <source>Added Japanese and Traditional Chinese (Hong Kong) language support, improved internationalization (i18n) system. Translation management through Weblate platform allows more users to enjoy the convenience of Class Widgets.</source>
-        <translation>新增 梗体中文 语言支持，通过 Weblate 平台进行翻译管理。</translation>
+        <translation>சப்பானிய மற்றும் பாரம்பரிய சீன (ஆங்காங்) மொழி உதவி, மேம்படுத்தப்பட்ட பன்னாட்டுமயமாக்கல் (i18n) அமைப்பு சேர்க்கப்பட்டது. வலைபெயர்ப்பு இயங்குதளத்தின் மூலம் மொழிபெயர்ப்பு மேலாண்மை வகுப்பு விட்செட்களின் வசதியை அதிக பயனர்கள் அனுபவிக்க அனுமதிக்கிறது.</translation>
     </message>
 </context>
 <context>
@@ -3064,7 +3068,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/WidgetSettingsDialog.qml" line="9"/>
         <source>Widget Settings</source>
-        <translation>规范小方块</translation>
+        <translation>விட்செட் அமைப்புகள்</translation>
     </message>
 </context>
 <context>
@@ -3072,180 +3076,179 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="10"/>
         <source>Widgets</source>
-        <translation>小方块</translation>
+        <translation>நிரல்பலகை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="62"/>
         <source>The new way to edit widgets</source>
-        <translation>更好的小方块</translation>
+        <translation>விட்செட்களைத் திருத்துவதற்கான புதிய வழி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="63"/>
         <source>Right-click or long press any widget, 
 then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
-        <translation>不译了。</translation>
+        <translation>எந்த விட்செட்டையும் வலது சொடுக்கு செய்யவும் அல்லது நீண்ட நேரம் அழுத்தவும், 
+அதை அனுபவிக்க, பட்டியலில் உள்ள &quot;விட்செட் திரையைத் திருத்து&quot; என்பதைத் தட்டவும்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="72"/>
         <source>Edit Widgets Screen</source>
-        <translation>调教小方块页面</translation>
+        <translation>விட்செட்கள் திரையைத் திருத்து</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="82"/>
         <source>Appearances</source>
-        <translation>你长什么样？</translation>
+        <translation>தோற்றங்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="88"/>
         <source>Widgets Scale</source>
-        <translation>让小方块随地大小变</translation>
+        <translation>விட்செட்டுகள் அளவுகோல்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="89"/>
         <source>Make widgets look bigger or stay compact</source>
-        <translation>大大的❤️或者小小的💦</translation>
+        <translation>விட்செட்களை பெரிதாக்கவும் அல்லது சிறியதாக இருக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="105"/>
         <source>Opacity</source>
-        <translation>鬼魂设置</translation>
+        <translation>ஒளிபுகாநிலை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="106"/>
         <source>Change the opacity of the background of widgets</source>
-        <translation>让小方块变成鬼魂</translation>
+        <translation>விட்செட்களின் பின்னணியின் ஒளிபுகாநிலையை மாற்றவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="122"/>
         <source>Font</source>
-        <translation>书法</translation>
+        <translation>எழுத்துரு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="123"/>
         <source>Choose a font for the widgets</source>
-        <translation>让小方块学习书法</translation>
+        <translation>விட்செட்டுகளுக்கான எழுத்துருவைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="149"/>
         <source>Font weight</source>
-        <translation>重！</translation>
+        <translation>எழுத்துரு எடை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="150"/>
         <source>Set the thickness of the font</source>
-        <translation>变得粗粗的💦或者细细的❤️</translation>
+        <translation>எழுத்துருவின் தடிமன் அமைக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="155"/>
         <source>Thin</source>
-        <translation>小东西</translation>
+        <translation>மெல்லிய</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="156"/>
         <source>Extra Light</source>
-        <translation>细狗</translation>
+        <translation>கூடுதல் ஒளி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="157"/>
         <source>Light</source>
-        <translation>没那么小</translation>
+        <translation>ஒளி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="158"/>
         <source>Regular</source>
-        <translation>尺子</translation>
+        <translation>வழக்கமான</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="159"/>
         <source>Medium</source>
-        <translation>微胖</translation>
+        <translation>சராசரி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="160"/>
         <source>Semi Bold</source>
-        <translation>微月半</translation>
+        <translation>அரை தடித்த</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="161"/>
         <source>Bold</source>
-        <translation>月半</translation>
+        <translation>தடிமான</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="162"/>
         <source>Extra Bold</source>
-        <translation>牛寺月半</translation>
+        <translation>கூடுதல் தடித்த</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="163"/>
         <source>Black</source>
-        <translation>黑人</translation>
+        <translation>கருப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="164"/>
         <source>Custom</source>
-        <translation>我爱咋咋地</translation>
+        <translation>தனிப்பயன்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="195"/>
         <source>Preview</source>
-        <translation>预习</translation>
+        <translation>முன்னோட்டம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="198"/>
         <source>The quick brown fox jumps over the lazy dog</source>
-        <translation>PHP is the best language in the world
-是红石菌吖 &amp; Lyang1273 99！
-人生苦短，我用Python</translation>
+        <translation>விரைவான பழுப்பு நரி சோம்பேறி நாய் மீது குதிக்கிறது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="216"/>
         <source>Window</source>
-        <translation>窗户</translation>
+        <translation>சாளரம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="222"/>
         <source>Display</source>
-        <translation>迪斯玩</translation>
+        <translation>காட்சி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="223"/>
         <source>Set which screen to display widgets on, and adjust their position</source>
-        <translation>设置显示屏幕，和调整位置</translation>
+        <translation>எந்தத் திரையில் விட்செட்களைக் காண்பிக்க வேண்டும் என்பதை அமைத்து, அவற்றின் நிலையைச் சரிசெய்யவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="331"/>
         <source>X-axis offset</source>
-        <translation>X弹道偏移</translation>
+        <translation>எக்ச்-அச்சு ஆஃப்செட்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="345"/>
         <source>Y-axis offset</source>
-        <translation>Y弹道偏移</translation>
+        <translation>ஒய்-அச்சு ஆஃப்செட்</translation>
     </message>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="27"/>
         <source>Current Activity</source>
-        <translation>当前激活</translation>
+        <translation>தற்போதைய செயல்பாடு</translation>
     </message>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="33"/>
         <source>Time</source>
-        <translation>Tim Cook</translation>
+        <translation>நேரம்</translation>
     </message>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="39"/>
         <source>Event Countdown</source>
-        <translation>幸福倒计时</translation>
+        <translation>நிகழ்வு கவுண்டவுன்</translation>
     </message>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="45"/>
         <source>Upcoming Activities</source>
-        <translation>即将激活</translation>
+        <translation>வரவிருக்கும் செயல்பாடுகள்</translation>
     </message>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="57"/>
         <source>Dynamic Notification</source>
-        <translation>更优雅的QQ消息</translation>
+        <translation>மாறும் அறிவிப்பு</translation>
     </message>
 </context>
 <context>
@@ -3253,22 +3256,22 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="202"/>
         <source>Edit </source>
-        <translation>修改 </translation>
+        <translation>திருத்தவும் </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="217"/>
         <source>Delete</source>
-        <translation>丢掉！</translation>
+        <translation>நீக்கு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="226"/>
         <source>Edit Widgets Screen</source>
-        <translation>调教小方块页面</translation>
+        <translation>விட்செட்கள் திரையைத் திருத்து</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="301"/>
         <source>Add</source>
-        <translation>咖啡不断加加加加到厌倦～</translation>
+        <translation>கூட்டு</translation>
     </message>
 </context>
 <context>
@@ -3276,27 +3279,27 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="10"/>
         <source>Current Activity</source>
-        <translation>当前激活</translation>
+        <translation>தற்போதைய செயல்பாடு</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="83"/>
         <source>Class</source>
-        <translation>类</translation>
+        <translation>வகுப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="85"/>
         <source>Activity</source>
-        <translation>运行</translation>
+        <translation>செய்கைப்பாடு</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="87"/>
         <source>Take a break</source>
-        <translation>休息</translation>
+        <translation>ஓய்வு எடுங்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="88"/>
         <source>Nothing right now</source>
-        <translation>放飞自我</translation>
+        <translation>இப்போது எதுவும் இல்லை</translation>
     </message>
 </context>
 <context>
@@ -3304,12 +3307,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/dynamicNotification.qml" line="244"/>
         <source>No notification yet</source>
-        <translation>无人在意</translation>
+        <translation>இதுவரை எந்த அறிவிப்பும் இல்லை</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/dynamicNotification.qml" line="266"/>
         <source>Dynamic Notification</source>
-        <translation>更优雅的QQ消息</translation>
+        <translation>மாறும் அறிவிப்பு</translation>
     </message>
 </context>
 <context>
@@ -3317,7 +3320,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/eventCountdown.qml" line="10"/>
         <source>Remaining</source>
-        <translation>死期</translation>
+        <translation>மீதமுள்ளவை</translation>
     </message>
 </context>
 <context>
@@ -3325,7 +3328,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/test.qml" line="11"/>
         <source>测试组件</source>
-        <translation>测试组件</translation>
+        <translation>சோதனை கூறு</translation>
     </message>
 </context>
 <context>
@@ -3333,52 +3336,52 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/settings/upcomingActivities.qml" line="12"/>
         <source>Marquee Title</source>
-        <translation>马拉松样式</translation>
+        <translation>மார்க்யூ தலைப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/upcomingActivities.qml" line="13"/>
         <source>If enabled, the upcoming activities will scroll from left to right.</source>
-        <translation>滚滚滚滚滚～</translation>
+        <translation>இயக்கப்பட்டால், வரவிருக்கும் செயல்பாடுகள் இடமிருந்து வலமாக உருட்டும்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/upcomingActivities.qml" line="29"/>
         <source>Max number of activities</source>
-        <translation>马克思数量来自于运行</translation>
+        <translation>செயல்பாடுகளின் அதிகபட்ச எண்ணிக்கை</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/upcomingActivities.qml" line="30"/>
         <source>Set the maximum number of activities to display in the upcoming activities view</source>
-        <translation>最多运行多少个？</translation>
+        <translation>வரவிருக்கும் செயல்பாடுகளின் பார்வையில் காட்டப்படும் அதிகபட்ச செயல்பாடுகளின் எண்ணிக்கையை அமைக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/upcomingActivities.qml" line="46"/>
         <source>Show full name of the activities</source>
-        <translation>全拼</translation>
+        <translation>செயல்பாடுகளின் முழுப் பெயரைக் காட்டு</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="10"/>
         <source>Upcoming</source>
-        <translation>死到临头</translation>
+        <translation>வரவிருக்கிறது</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="29"/>
         <source>Class</source>
-        <translation>门牌号</translation>
+        <translation>வகுப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="30"/>
         <source>Activity</source>
-        <translation>运行</translation>
+        <translation>செய்கைப்பாடு</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="35"/>
         <source>Nothing ahead</source>
-        <translation>没事了，吃点溜溜梅吗？</translation>
+        <translation>முன்னால் எதுவும் இல்லை</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="31"/>
         <source>Unset</source>
-        <translation>滚木</translation>
+        <translation>அமைக்கப்படவில்லை</translation>
     </message>
 </context>
 </TS>
