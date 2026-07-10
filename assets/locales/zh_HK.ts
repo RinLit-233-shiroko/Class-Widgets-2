@@ -1295,7 +1295,7 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="26"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="361"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="362"/>
         <source>Enable notifications</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1315,96 +1315,96 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="52"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="53"/>
         <source>Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="53"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="54"/>
         <source>Notification sounds for general information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="62"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="103"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="144"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="185"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="63"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="104"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="145"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="186"/>
         <source>Default sound</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="75"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="115"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="156"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="197"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="76"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="116"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="157"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="198"/>
         <source>Play sound</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="82"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="123"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="164"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="205"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="83"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="124"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="165"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="206"/>
         <source>Select sound</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="93"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="94"/>
         <source>Announcement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="94"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="95"/>
         <source>Notification sounds for class and break announcements</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="134"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="135"/>
         <source>Warning</source>
         <translation type="unfinished">警告</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="135"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="136"/>
         <source>Notification sounds for warnings and important alerts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="175"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="176"/>
         <source>System</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="176"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="177"/>
         <source>Notification sounds for system messages and updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="218"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="219"/>
         <source>Default duration (ms)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="219"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="220"/>
         <source>Customize the notification duration (ms)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="242"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="243"/>
         <source>Providers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="362"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="363"/>
         <source>Turn on or off notifications from this provider</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="387"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="388"/>
         <source>Use Dynamic Notification</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="410"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="411"/>
         <source>Use System Notification</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3266,107 +3266,107 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation type="unfinished">更改小工具背景的不透明度</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="122"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="123"/>
         <source>Font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="123"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="124"/>
         <source>Choose a font for the widgets</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="149"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="150"/>
         <source>Font weight</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="150"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="151"/>
         <source>Set the thickness of the font</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="155"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="156"/>
         <source>Thin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="156"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="157"/>
         <source>Extra Light</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="157"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="158"/>
         <source>Light</source>
         <translation type="unfinished">淺色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="158"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="159"/>
         <source>Regular</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="159"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="160"/>
         <source>Medium</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="160"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="161"/>
         <source>Semi Bold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="161"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="162"/>
         <source>Bold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="162"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="163"/>
         <source>Extra Bold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="163"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="164"/>
         <source>Black</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="164"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="165"/>
         <source>Custom</source>
         <translation type="unfinished">自訂</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="195"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="196"/>
         <source>Preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="198"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="199"/>
         <source>The quick brown fox jumps over the lazy dog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="216"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="217"/>
         <source>Window</source>
         <translation type="unfinished">視窗</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="222"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="223"/>
         <source>Display</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="223"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="224"/>
         <source>Set which screen to display widgets on, and adjust their position</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="331"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="332"/>
         <source>X-axis offset</source>
         <translation type="unfinished">X軸偏移</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="345"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="346"/>
         <source>Y-axis offset</source>
         <translation type="unfinished">Y軸偏移</translation>
     </message>
