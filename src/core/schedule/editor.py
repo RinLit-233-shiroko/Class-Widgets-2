@@ -32,6 +32,27 @@ def _jsvalue_to_python(value):
     return value
 
 
+def _subject_from_dict(data: dict, fallback_index: int) -> Optional[Subject]:
+    name = str(data.get("name", "")).strip()
+    if not name:
+        return None
+
+    subject_id = str(data.get("id", "")).strip() or generate_id("subj")
+    if subject_id.startswith("custom_"):
+        subject_id = subject_id.strip()
+
+    return Subject(
+        id=subject_id or generate_id(f"subj_{fallback_index}"),
+        name=name,
+        simplifiedName=str(data.get("simplifiedName", "")).strip() or None,
+        teacher=str(data.get("teacher", "")).strip() or None,
+        icon=str(data.get("icon", "")).strip() or None,
+        color=str(data.get("color", "")).strip() or None,
+        location=str(data.get("location", "")).strip() or None,
+        isLocalClassroom=bool(data.get("isLocalClassroom", True))
+    )
+
+
 class ScheduleEditor(QObject):
     updated = Signal()
 
@@ -428,6 +449,40 @@ class ScheduleEditor(QObject):
             self.schedule.subjects.append(subj)
         self.updated.emit()
 
+    @Slot("QVariant", result=bool)
+    def overwriteSubjects(self, subjects) -> bool:
+        """使用 QML 传入的科目列表覆盖当前课表科目"""
+        subjects_data = _jsvalue_to_python(subjects)
+        if not isinstance(subjects_data, list):
+            logger.warning("Invalid subjects data, expected a list.")
+            return False
+
+        new_subjects = []
+        used_ids = set()
+        for index, subject_data in enumerate(subjects_data):
+            if not isinstance(subject_data, dict):
+                continue
+
+            subject = _subject_from_dict(subject_data, index)
+            if not subject:
+                continue
+
+            base_id = subject.id
+            suffix = 2
+            while subject.id in used_ids:
+                subject.id = f"{base_id}_{suffix}"
+                suffix += 1
+            used_ids.add(subject.id)
+            new_subjects.append(subject)
+
+        if not new_subjects:
+            logger.warning("Cannot overwrite subjects with an empty list.")
+            return False
+
+        self.schedule.subjects = new_subjects
+        self.updated.emit()
+        return True
+
     @Slot(int, result=bool)
     def setMaxWeekCycle(self, max_weeks: int):
         """设置最大周数"""
@@ -453,6 +508,11 @@ class ScheduleEditor(QObject):
         if not self.schedule or not self.schedule.meta:
             return {}
         return self.schedule.meta.model_dump()
+
+    @Property(list, notify=updated)
+    def defaultSubjects(self) -> list[dict]:
+        """获取默认科目候选列表"""
+        return [subject.model_dump() for subject in get_default_subjects()]
 
     @Property(list, notify=updated)
     def subjects(self) -> list[dict]:
