@@ -43,6 +43,8 @@ class ScheduleManager(QObject):
         self.schedule: ScheduleData = _create_empty_schedule()
         self.current_schedule_name: Optional[str] = None  # 当前选中的课程表
 
+        self.readonly: bool = False  # 是否只读模式
+
         self.initialized.emit()
 
     @Property(QObject, notify=initialized)
@@ -93,8 +95,25 @@ class ScheduleManager(QObject):
 
     def modify(self, schedule: ScheduleData):
         """ 接受外部修改（如编辑器）"""
-        self.schedule = schedule
-        self.scheduleModified.emit(self.schedule)
+        if self.readonly:
+            logger.warning("Attempt to modify schedule while in read-only mode. Blocked.")
+            return False
+        try:
+            self.schedule = schedule
+            self.scheduleModified.emit(self.schedule)
+            return True
+        except Exception as e:
+            logger.error(f"Failed to modify schedule: {e}")
+            return False
+
+    def modify_by_dict(self, schedule_dict: dict) -> bool:
+        """通过字典修改课表"""
+        try:
+            schedule = ScheduleData.model_validate(schedule_dict)
+            return self.modify(schedule)
+        except Exception as e:
+            logger.error(f"Failed to modify schedule: {e}")
+            return False
 
     @Slot(result=bool)
     def save(self, path: Optional[Path] = None):
@@ -287,3 +306,13 @@ class ScheduleManager(QObject):
         if not success:
             logger.error(f"Failed to open plugin folder: {SCHEDULES_PATH}")
         return success
+    
+    def set_readonly(self, readonly: bool) -> None:
+        """设置课表是否只读"""
+        self.readonly = readonly
+        logger.info(f"Schedule read-only mode set to: {readonly}")
+
+    @Slot(result=bool)
+    def isReadonly(self) -> bool:
+        """检查课表是否只读"""
+        return self.readonly

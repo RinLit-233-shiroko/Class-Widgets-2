@@ -48,6 +48,8 @@ class ConfigManager(QObject):
         self.save_timer.setInterval(1000 * 60)  # 1分钟保存一次
         self.save_timer.timeout.connect(self.save)
 
+        self.locked_keys: set[str] = set()
+
     def _bind_nested_on_change(self, obj):
         """
         递归绑定 _on_change 给所有嵌套的 ConfigBaseModel
@@ -125,12 +127,35 @@ class ConfigManager(QObject):
 
         return getattr(self._config, name)
 
+    def lock(self, keys: str | list[str] | set[str]):
+        """锁定配置项"""
+        if isinstance(keys, str):
+            keys = {keys}
+        self.locked_keys.update(keys)
+        logger.info(f"Locked config keys: {keys}")
+
+    def unlock(self, keys: str | list[str] | set[str]):
+        """解锁配置项"""
+        if isinstance(keys, str):
+            keys = {keys}
+        self.locked_keys.difference_update(keys)
+        logger.info(f"Unlocked config keys: {keys}")
+
+    @Slot(str, result=bool)
+    def isKeyLocked(self, key: str) -> bool:
+        """检查配置项是否被锁定"""
+        return key in self.locked_keys
+
     @Property('QVariant', notify=configChanged)
     def data(self):
         return self._config.model_dump()  # 整个配置转 dict
 
     @Slot(str, "QVariant")
     def set(self, key: str, value) -> None:
+        if self.isKeyLocked(key):
+            logger.warning(f"Attempt to modify locked config key: {key}. Blocked.")
+            return
+
         keys = key.split('.')  # 支持点分层，如 "preferences.current_theme"
         cfg = self._config
         for k in keys[:-1]:
