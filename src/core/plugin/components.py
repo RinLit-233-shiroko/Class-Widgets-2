@@ -123,21 +123,6 @@ class NotificationAPI(BaseAPI):
         logger.debug(f"Created notification provider: {provider_id} with icon: {icon}")
         return provider
 
-
-# # ScheduleAPI
-# class ScheduleAPI:
-#     def __init__(self, app: Any) -> None: ...
-
-#     def get(self) -> Any: ...  # 返回 Schedule 对象
-
-#     def reload(self) -> None: ...
-
-#     def update(self, schedule_dict: Dict[str, Any], *, save: bool = True) -> bool: ...
-
-#     def set_readonly(self, readonly: bool) -> None: ...
-#     @property
-#     def readonly(self) -> bool: ...
-
 class ScheduleAPI(BaseAPI):
     def get(self):
         return self._app.schedule_manager.schedule
