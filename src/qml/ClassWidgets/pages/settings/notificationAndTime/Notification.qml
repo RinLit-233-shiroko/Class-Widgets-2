@@ -228,6 +228,7 @@ FluentPage {
                 //     durationSlider.value = Configs.data.notifications.default_duration
                 // }
                 value: Configs.data.notifications.default_duration
+                enabled: !Configs.isKeyLocked("notifications.default_duration")
                 onValueChanged: {
                     Configs.set("notifications.default_duration", value)
                 }

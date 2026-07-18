@@ -104,6 +104,7 @@ FluentPage {
                 }
                 textRole: "text"
 
+                enabled: !Configs.isKeyLocked("preferences.widgets_layer")
                 onCurrentIndexChanged: if (focus) Configs.set("preferences.widgets_layer", model.get(currentIndex).value)
                 Component.onCompleted: {
                     for (var i = 0; i < model.count; i++) {
@@ -124,6 +125,7 @@ FluentPage {
 
             Switch {
                 id: miniModeSwitch
+                enabled: !Configs.isKeyLocked("preferences.mini_mode")
                 onCheckedChanged: Configs.set("preferences.mini_mode", checked)
                 Component.onCompleted: {
                     checked = Configs.data.preferences.mini_mode
@@ -147,6 +149,7 @@ FluentPage {
             icon.name: "ic_fluent_open_20_regular"
 
             Switch {
+                enabled: !Configs.isKeyLocked("app.auto_startup")
                 onCheckedChanged: {
                     Configs.set("app.auto_startup", checked)
                     UtilsBackend.setAutostart(checked)
@@ -154,6 +157,7 @@ FluentPage {
                 enabled: UtilsBackend.autostartSupported()
                 Component.onCompleted: {
                     if (!UtilsBackend.autostartEnabled()) {
+                        enabled: !Configs.isKeyLocked("app.auto_startup")
                         checked = false
                         Configs.set("app.auto_startup", checked)
                         return

@@ -58,7 +58,7 @@ Item {
         scheduleTable.selectedCell = { row: nextRow, column: nextColumn }
     }
 
-    property bool editable: segmented.currentIndex === 1  // 是否可编辑
+    property bool editable: !Schedule.isReadonly() && segmented.currentIndex === 1  // 是否可编辑
 
     ColumnLayout {
         id: mainLayout
@@ -79,6 +79,7 @@ Item {
             SegmentedItem {
                 icon.name: "ic_fluent_calendar_edit_20_regular"
                 text: qsTr("Edit")
+                enabled: !Schedule.isReadonly()
             }
         }
 
