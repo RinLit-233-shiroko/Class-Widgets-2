@@ -149,15 +149,13 @@ FluentPage {
             icon.name: "ic_fluent_open_20_regular"
 
             Switch {
-                enabled: !Configs.isKeyLocked("app.auto_startup")
+                enabled: !Configs.isKeyLocked("app.auto_startup") && UtilsBackend.autostartSupported()
                 onCheckedChanged: {
                     Configs.set("app.auto_startup", checked)
                     UtilsBackend.setAutostart(checked)
                 }
-                enabled: UtilsBackend.autostartSupported()
                 Component.onCompleted: {
                     if (!UtilsBackend.autostartEnabled()) {
-                        enabled: !Configs.isKeyLocked("app.auto_startup")
                         checked = false
                         Configs.set("app.auto_startup", checked)
                         return

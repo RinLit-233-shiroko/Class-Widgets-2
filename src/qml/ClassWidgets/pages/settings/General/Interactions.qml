@@ -85,18 +85,16 @@ FluentPage {
                     CheckBox {
                         Layout.fillWidth: true
                         text: qsTr("Hide when a window is maximized")
-                        enabled: !Configs.isKeyLocked("interactions.hide.maximized")
+                        enabled: !Configs.isKeyLocked("interactions.hide.maximized") && Qt.platform.os === "windows"
                         onCheckedChanged: Configs.set("interactions.hide.maximized", checked)
                         Component.onCompleted: checked = Configs.data.interactions.hide.maximized
-                        enabled: Qt.platform.os === "windows"
                     }
                     CheckBox {
                         Layout.fillWidth: true
                         text: qsTr("Hide when a window enters fullscreen")
-                        enabled: !Configs.isKeyLocked("interactions.hide.fullscreen")
+                        enabled: !Configs.isKeyLocked("interactions.hide.fullscreen") && Qt.platform.os === "windows"
                         onCheckedChanged: Configs.set("interactions.hide.fullscreen", checked)
                         Component.onCompleted: checked = Configs.data.interactions.hide.fullscreen
-                        enabled: Qt.platform.os === "windows"
                     }
                 }
             }
