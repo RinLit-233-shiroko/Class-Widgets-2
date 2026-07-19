@@ -35,6 +35,7 @@ FluentPage {
             icon.name: "ic_fluent_globe_20_regular"
 
             ComboBox {
+                enabled: !Configs.isKeyLocked("locale.language")
                 property var data: [AppCentral.translator.getSystemLanguage(), "en_US", "ja_JP", "zh_CN", "zh_HK"]
                 property bool initialized: false
                 model: ListModel {
@@ -74,6 +75,7 @@ FluentPage {
             icon.name: "ic_fluent_paint_brush_20_regular"
 
             ComboBox {
+                enabled: !Configs.isKeyLocked("preferences.current_theme")
                 property var data: [Theme.mode.Light, Theme.mode.Dark, Theme.mode.Auto]
                 model: ListModel {
                     ListElement { text: qsTr("Light") }

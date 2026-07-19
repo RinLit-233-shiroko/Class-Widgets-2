@@ -130,6 +130,7 @@ FluentPage {
                 Layout.fillWidth: true
                 Layout.preferredWidth: 200
                 model: Qt.fontFamilies().sort()
+                enabled: !Configs.isKeyLocked("preferences.font")
                 editable: true
 
                 onCurrentTextChanged: {
@@ -137,7 +138,6 @@ FluentPage {
                         return
                     }
                     console.log("currentText", currentText)
-                    enabled: !Configs.isKeyLocked("preferences.font")
                     if (focus) Configs.set("preferences.font", currentText)
                 }
                 font.family: Configs.data.preferences.font
@@ -180,6 +180,7 @@ FluentPage {
                     tickFrequency: 100
                     Layout.fillWidth: true
                     showTooltip: false
+                    enabled: !Configs.isKeyLocked("preferences.font_weight")
 
                     // 初始化
                     Component.onCompleted: {

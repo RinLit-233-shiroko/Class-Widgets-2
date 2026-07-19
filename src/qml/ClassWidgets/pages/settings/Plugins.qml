@@ -175,6 +175,7 @@ FluentPage {
             Button {
                 icon.name: "ic_fluent_add_20_regular"
                 text: qsTr("Import")
+                enabled: !Configs.isKeyLocked("plugins.enabled")
                 onClicked: {
                     importPluginWithConflictCheck()
                 }
@@ -292,6 +293,7 @@ FluentPage {
                         RowLayout {
                             Layout.alignment: Qt.AlignRight
                             spacing: 18
+                            enabled: !Configs.isKeyLocked("plugins.enabled")
 
                             // 兼容警告
                             Icon {
