@@ -144,7 +144,7 @@ class ConfigManager(QObject):
     @Slot(str, result=bool)
     def isKeyLocked(self, key: str) -> bool:
         """检查配置项是否被锁定"""
-        logger.debug(f"Checking if config key is locked: {key}, locked_keys={self.locked_keys}")
+        # logger.debug(f"Checking if config key is locked: {key}, locked_keys={self.locked_keys}")
         return key in self.locked_keys
 
     @Property('QVariant', notify=configChanged)
