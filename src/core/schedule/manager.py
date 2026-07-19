@@ -57,6 +57,9 @@ class ScheduleManager(QObject):
     @Slot(str, result=bool)
     def load(self, name: str, force: bool = False) -> bool:
         """加载课程表"""
+        if self.app_central.configs.isKeyLocked("schedule.current_schedule"):
+            logger.warning("Attempt to modify locked config key: schedule.current_schedule. Blocked.")
+            return False
         if name == self.current_schedule_name and not force:
             return True
 
@@ -196,6 +199,9 @@ class ScheduleManager(QObject):
     @Slot(str, str, result=bool)
     def rename(self, old_name: str, new_name: str) -> bool:
         """重命名课程表文件"""
+        if self.app_central.configs.isKeyLocked("schedule.current_schedule"): 
+            logger.warning("Attempt to modify locked config key: schedule.current_schedule. Blocked.")
+            return False
         old_path = self.schedules_dir / f"{old_name}.json"
         new_path = self.schedules_dir / f"{new_name}.json"
 

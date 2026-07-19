@@ -157,6 +157,9 @@ class ThemeManager(QObject):
 
     def _apply(self, theme_id: str) -> None:
         """应用主题"""
+        if self._app_central.configs.isKeyLocked("preferences.current_theme"): 
+            logger.warning("Attempt to modify locked config key: preferences.current_theme. Blocked.")
+            return
         if not self._is_theme_valid(theme_id):
             logger.warning(f"Theme '{theme_id}' is invalid, falling back to default theme")
             theme_id = DEFAULT_THEME_ID

@@ -59,9 +59,11 @@ class AutoHideTask(AutomationTask):
     def _hide(self, state: bool) -> None:
         """隐藏窗口"""
         if self.app_central.configs.interactions.hide.mini_mode:  # mini模式
-            self.app_central.configs.preferences.mini_mode = state
+            if not self.app_central.configs.isKeyLocked("preferences.mini_mode"):
+                self.app_central.configs.preferences.mini_mode = state
         else:
-            self.app_central.configs.interactions.hide.state = state
+            if not self.app_central.configs.isKeyLocked("interactions.hide.state"):
+                self.app_central.configs.interactions.hide.state = state
 
     def update(self) -> None:
         """主循环"""
