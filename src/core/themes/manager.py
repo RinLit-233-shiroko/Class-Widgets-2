@@ -160,7 +160,7 @@ class ThemeManager(QObject):
         if not self._is_theme_valid(theme_id):
             logger.warning(f"Theme '{theme_id}' is invalid, falling back to default theme")
             theme_id = DEFAULT_THEME_ID
-        
+            
         # 验证主题路径是否存在
         if not self.isThemePathValid(theme_id):
             logger.error(f"Theme '{theme_id}' path is invalid, falling back to default theme")
