@@ -1,13 +1,12 @@
 import sys
 from pathlib import Path
-from typing import Optional, cast
+from typing import Optional, cast, TYPE_CHECKING
 from datetime import datetime
 from PySide6.QtCore import Signal, QObject
 from loguru import logger
 
 from src.core.config.model import ConfigBaseModel, PluginsConfig
 from src.core.config.manager import ConfigManager
-from src.core.plugin.api import PluginAPI
 from src.core.plugin.bridge import PluginBackendBridge
 from src.core.notification import NotificationProvider
 from src.core.schedule.model import EntryType
@@ -21,6 +20,9 @@ from src.core.plugin.models import (
     RuntimeRemainingTimePayload,
     SettingsPagePayload,
 )
+
+if TYPE_CHECKING:
+    from src.core.plugin.api import PluginAPI
 
 
 
@@ -363,7 +365,7 @@ class UiAPI(BaseAPI):
         logger.debug(f"Plugin: {pid} register settings page: {qml_path}")
 
 class ScheduleManagementAPI(BaseAPI):
-    def __init__(self, plugin_api: PluginAPI):
+    def __init__(self, plugin_api: "PluginAPI"):
         super().__init__(plugin_api)
 
     def switch(self, name: str) -> bool:
@@ -374,7 +376,7 @@ class ScheduleManagementAPI(BaseAPI):
 
 class GlobalConfigAPI(BaseAPI):
 
-    def __init__(self, plugin_api: PluginAPI):
+    def __init__(self, plugin_api: "PluginAPI"):
         super().__init__(plugin_api)
 
     @property
