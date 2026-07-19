@@ -22,6 +22,7 @@ FluentPage {
 
         SettingCard {
             Layout.fillWidth: true
+            enabled: !Configs.isKeyLocked("notifications.enabled")
             icon.name: "ic_fluent_alert_on_20_regular"
             title: qsTr("Enable notifications")
             description: qsTr("Turn on or off all notifications from the application")
@@ -40,6 +41,7 @@ FluentPage {
             
             action: Slider {
                 id: notificationVolumeSlider
+                enabled: !Configs.isKeyLocked("notifications.volume")
                 width: 150
                 value: UtilsBackend.getGlobalVolume()
                 stepSize: 0.05
@@ -81,6 +83,7 @@ FluentPage {
                 Button {
                     icon.name: "ic_fluent_folder_open_20_regular"
                     text: qsTr("Select sound")
+                    enabled: !Configs.isKeyLocked("notifications.level_sounds.0")
                     onClicked: {
                         let soundPath = UtilsBackend.selectNotificationSound()
                         if (soundPath) {
@@ -122,6 +125,7 @@ FluentPage {
                 Button {
                     icon.name: "ic_fluent_folder_open_20_regular"
                     text: qsTr("Select sound")
+                    enabled: !Configs.isKeyLocked("notifications.level_sounds.1")
                     onClicked: {
                         let soundPath = UtilsBackend.selectNotificationSound()
                         if (soundPath) {
@@ -163,6 +167,7 @@ FluentPage {
                 Button {
                     icon.name: "ic_fluent_folder_open_20_regular"
                     text: qsTr("Select sound")
+                    enabled: !Configs.isKeyLocked("notifications.level_sounds.2")
                     onClicked: {
                         let soundPath = UtilsBackend.selectNotificationSound()
                         if (soundPath) {
@@ -204,6 +209,7 @@ FluentPage {
                 Button {
                     icon.name: "ic_fluent_folder_open_20_regular"
                     text: qsTr("Select sound")
+                    enabled: !Configs.isKeyLocked("notifications.level_sounds.3")
                     onClicked: {
                         let soundPath = UtilsBackend.selectNotificationSound()
                         if (soundPath) {
@@ -228,6 +234,7 @@ FluentPage {
                 //     durationSlider.value = Configs.data.notifications.default_duration
                 // }
                 value: Configs.data.notifications.default_duration
+                enabled: !Configs.isKeyLocked("notifications.default_duration")
                 onValueChanged: {
                     Configs.set("notifications.default_duration", value)
                 }
@@ -251,6 +258,7 @@ FluentPage {
         Repeater {
             model: UtilsBackend.notificationProviders
             delegate: Clip {
+                enabled: !Configs.isKeyLocked("notifications.providers")
                 Layout.fillWidth: true
                 Layout.minimumHeight: 70
                 id: frame

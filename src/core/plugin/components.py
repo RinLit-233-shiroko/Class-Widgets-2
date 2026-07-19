@@ -1,11 +1,12 @@
 import sys
 from pathlib import Path
-from typing import Optional, cast
+from typing import Optional, cast, TYPE_CHECKING
 from datetime import datetime
 from PySide6.QtCore import Signal, QObject
 from loguru import logger
 
 from src.core.config.model import ConfigBaseModel, PluginsConfig
+from src.core.config.manager import ConfigManager
 from src.core.plugin.bridge import PluginBackendBridge
 from src.core.notification import NotificationProvider
 from src.core.schedule.model import EntryType
@@ -20,10 +21,9 @@ from src.core.plugin.models import (
     SettingsPagePayload,
 )
 
-# 用于 type hint 避免循环导入
-from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from src.core.plugin.api import PluginAPI
+
 
 
 class BaseAPI(QObject):
@@ -122,13 +122,27 @@ class NotificationAPI(BaseAPI):
         logger.debug(f"Created notification provider: {provider_id} with icon: {icon}")
         return provider
 
-
 class ScheduleAPI(BaseAPI):
     def get(self):
         return self._app.schedule_manager.schedule
 
     def reload(self):
         return self._app.schedule_manager.reload()
+    
+    def update(self, schedule_dict: dict) -> bool:
+        if self._app.schedule_manager.readonly:
+            logger.warning("Attempt to update schedule while in read-only mode. Blocked.")
+            return False
+        return self._app.schedule_manager.modify_by_dict(schedule_dict)
+    
+    def set_readonly(self, readonly: bool) -> None:
+        """设置课表是否只读"""
+        self._app.schedule_manager.set_readonly(readonly)
+        logger.info(f"Schedule read-only mode set to: {readonly}")
+
+    @property
+    def readonly(self) -> bool:
+        return self._app.schedule_manager.readonly
 
 
 class ThemeAPI(BaseAPI):
@@ -349,3 +363,46 @@ class UiAPI(BaseAPI):
         })
         self.settingsPageRegistered.emit()
         logger.debug(f"Plugin: {pid} register settings page: {qml_path}")
+
+class ScheduleManagementAPI(BaseAPI):
+    def __init__(self, plugin_api: "PluginAPI"):
+        super().__init__(plugin_api)
+
+    def switch(self, name: str) -> bool:
+        return self._app.schedule_manager.load(name, force = True)
+
+    def list(self) -> list[dict[str, str]]:
+        return self._app.schedule_manager.schedules()
+
+class GlobalConfigAPI(BaseAPI):
+
+    def __init__(self, plugin_api: "PluginAPI"):
+        super().__init__(plugin_api)
+
+    @property
+    def configs(self) -> ConfigManager:
+        """获取所有全局配置项"""
+        return self._app.configs
+
+    def lock(self, keys: str | list[str] | set[str]) -> None:
+        """锁定配置项"""
+        if isinstance(keys, str):
+            keys = {keys}
+        self._app.configs.lock(keys)
+        logger.info(f"Locked config keys: {keys}")
+
+    def unlock(self, keys: str | list[str] | set[str]) -> None:
+        """解锁配置项"""
+        if isinstance(keys, str):
+            keys = {keys}
+        self._app.configs.unlock(keys)
+        logger.info(f"Unlocked config keys: {keys}")
+
+    def is_locked(self, key: str) -> bool:
+        """检查配置项是否被锁定"""
+        return self._app.configs.isKeyLocked(key)
+    
+    @property
+    def locked_keys(self) -> set[str]:
+        """获取所有被锁定的配置项"""
+        return self._app.configs.locked_keys

@@ -34,6 +34,7 @@ FluentPage {
                 to: 86400
                 property string suffix: qsTr("minutes")
                 Layout.preferredWidth: 200
+                enabled: !Configs.isKeyLocked("schedule.time_offset")
                 onValueChanged: Configs.set("schedule.time_offset", value)
                 Component.onCompleted: value = Configs.data.schedule.time_offset
             }

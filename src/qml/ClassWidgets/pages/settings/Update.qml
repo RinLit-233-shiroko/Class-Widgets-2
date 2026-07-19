@@ -214,6 +214,7 @@ FluentPage {
                 }
                 textRole: "text"
                 valueRole: "value"
+                enabled: !Configs.isKeyLocked("app.channel")
                 onCurrentValueChanged: if (focus) Configs.set("app.channel", currentValue)
                 Component.onCompleted: {
                     switch (Configs.data.app.channel) {
@@ -221,6 +222,7 @@ FluentPage {
                         case "alpha": currentIndex = 1; break
                         default:
                             currentIndex = 0
+                            // TODO: check enabled: !Configs.isKeyLocked("app.channel")
                             Configs.set("app.channel", "release")
                             break
                     }
@@ -235,6 +237,7 @@ FluentPage {
             description: qsTr("If GitHub is slow or unavailable in your region, use a mirror to download updates faster")
 
             action: Switch {
+                enabled: !Configs.isKeyLocked("network.mirror_enabled")
                 onCheckedChanged: Configs.set("network.mirror_enabled", checked)
                 Component.onCompleted: checked = Configs.data.network.mirror_enabled
             }
@@ -249,6 +252,7 @@ FluentPage {
                     model: Object.keys(Configs.data.network.mirrors)
                     textRole: ""
 
+                    enabled: !Configs.isKeyLocked("network.current_mirror")
                     onCurrentTextChanged: if (focus) Configs.set("network.current_mirror", currentText)
                     Component.onCompleted: {
                         for (var i = 0; i < model.count; i++) {
@@ -276,6 +280,7 @@ FluentPage {
             )
 
             Switch {
+                enabled: !Configs.isKeyLocked("network.auto_check_updates")
                 onCheckedChanged: Configs.set("network.auto_check_updates", checked)
                 Component.onCompleted: checked = Configs.data.network.auto_check_updates
             }
@@ -304,6 +309,7 @@ FluentPage {
                 spacing: 4
                 ToolButton {
                     icon.name: "ic_fluent_arrow_reset_20_regular"
+                    enabled: !Configs.isKeyLocked("network.releases_url")
                     onClicked: {
                         urlField.text = "https://classwidgets.rinlit.cn/2/releases.json/"
                         Configs.set("network.releases_url", "https://classwidgets.rinlit.cn/2/releases.json/")
@@ -319,6 +325,7 @@ FluentPage {
                     id: urlField
                     Layout.fillWidth: true
                     placeholderText: qsTr("https://example.com/releases.json/")
+                    enabled: !Configs.isKeyLocked("network.releases_url")
                     onTextChanged: if (focus) Configs.set("network.releases_url", text)
                     Component.onCompleted: text = Configs.data.network.releases_url
                 }

@@ -169,6 +169,7 @@ FluentPage {
             description: qsTr("When enabled, the app will <b>not</b> save logs.")
 
             action: Switch {
+                enabled: !Configs.isKeyLocked("app.no_logs")
                 onCheckedChanged: Configs.set("app.no_logs", checked)
                 Component.onCompleted: checked = Configs.data.app.no_logs
             }
@@ -212,6 +213,7 @@ FluentPage {
             )
 
             Switch {
+                enabled: !Configs.isKeyLocked("app.debug_mode")
                 onCheckedChanged: Configs.set("app.debug_mode", checked)
                 Component.onCompleted: checked = Configs.data.app.debug_mode
             }
@@ -224,6 +226,7 @@ FluentPage {
 
             Button {
                 text: qsTr("Restart")
+                enabled: !Configs.isKeyLocked("app.tutorial_completed")
                 onClicked: {
                     Configs.set("app.tutorial_completed", false)
                     AppCentral.restart()
