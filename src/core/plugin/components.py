@@ -1,11 +1,12 @@
 import sys
 from pathlib import Path
-from typing import Optional, cast, Any, Set, List
+from typing import Optional, cast
 from datetime import datetime
 from PySide6.QtCore import Signal, QObject
 from loguru import logger
 
 from src.core.config.model import ConfigBaseModel, PluginsConfig
+from src.core.config.manager import ConfigManager
 from src.core.plugin.api import PluginAPI
 from src.core.plugin.bridge import PluginBackendBridge
 from src.core.notification import NotificationProvider
@@ -21,10 +22,6 @@ from src.core.plugin.models import (
     SettingsPagePayload,
 )
 
-# 用于 type hint 避免循环导入
-from typing import TYPE_CHECKING
-if TYPE_CHECKING:
-    from src.core.plugin.api import PluginAPI
 
 
 class BaseAPI(QObject):
@@ -379,24 +376,20 @@ class GlobalConfigAPI(BaseAPI):
 
     def __init__(self, plugin_api: PluginAPI):
         super().__init__(plugin_api)
-        
-    def get(self, key: str, default: Any = None) -> Any:
-        return self._app.configs.get(key, default)
-    
-    def set(self, key: str, value: Any) -> None:
-        if self.is_locked(key):
-            logger.warning(f"Attempt to modify locked config key: {key}. Blocked.")
-            return
-        self._app.configs.set(key, value)
 
-    def lock(self, keys: str | List[str] | Set[str]) -> None: # 此处不使用 set 做 type hint 是因为 set 被 GlobalConfigAPI.set() 方法覆盖了，导致类型提示不准确
+    @property
+    def configs(self) -> ConfigManager:
+        """获取所有全局配置项"""
+        return self._app.configs
+
+    def lock(self, keys: str | list[str] | set[str]) -> None:
         """锁定配置项"""
         if isinstance(keys, str):
             keys = {keys}
         self._app.configs.lock(keys)
         logger.info(f"Locked config keys: {keys}")
 
-    def unlock(self, keys: str | List[str] | Set[str]) -> None: # 此处不使用 set 做 type hint 同理上文 lock 函数
+    def unlock(self, keys: str | list[str] | set[str]) -> None:
         """解锁配置项"""
         if isinstance(keys, str):
             keys = {keys}
@@ -408,6 +401,6 @@ class GlobalConfigAPI(BaseAPI):
         return self._app.configs.isKeyLocked(key)
     
     @property
-    def locked_keys(self) -> Set[str]:
+    def locked_keys(self) -> set[str]:
         """获取所有被锁定的配置项"""
         return self._app.configs.locked_keys

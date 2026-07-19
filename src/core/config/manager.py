@@ -126,6 +126,16 @@ class ConfigManager(QObject):
             return self.__dict__['_config']
 
         return getattr(self._config, name)
+    
+    def __setattr__(self, name: str, value):
+        """代理属性设置"""
+        if name in ['path', 'filename', 'full_path', 'save_timer', 'locked_keys', '_config']:
+            super().__setattr__(name, value)
+        else:
+            if self.isKeyLocked(name):
+                logger.warning(f"Attempt to modify locked config key: {name}. Blocked.")
+                return
+            setattr(self._config, name, value)
 
     def lock(self, keys: str | list[str] | set[str]):
         """锁定配置项"""

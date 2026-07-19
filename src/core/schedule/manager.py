@@ -14,6 +14,9 @@ from src.core.schedule.model import ScheduleData, MetaInfo
 from src.core.parser import ScheduleParser
 from src.core.utils import generate_id, get_default_subjects
 
+if TYPE_CHECKING:
+    from src.core import AppCentral
+
 
 def _create_empty_schedule():
     return ScheduleData(
@@ -32,7 +35,7 @@ class ScheduleManager(QObject):
     scheduleSwitched = Signal(ScheduleData)
     scheduleModified = Signal(ScheduleData)
 
-    def __init__(self, schedules_dir: Path, app_central):
+    def __init__(self, schedules_dir: Path, app_central: "AppCentral"):
         super().__init__()
         self.app_central = app_central
         self._converter = ScheduleIO(self)
