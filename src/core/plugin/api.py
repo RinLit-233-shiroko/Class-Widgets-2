@@ -6,7 +6,7 @@ from PySide6.QtCore import QObject, Signal
 # 导入所有API功能组件
 from .components import (
     BaseAPI, WidgetsAPI, NotificationAPI, ScheduleAPI, ThemeAPI,
-    RuntimeAPI, ConfigAPI, AutomationAPI, UiAPI
+    RuntimeAPI, ConfigAPI, AutomationAPI, UiAPI, ScheduleManagementAPI, GlobalConfigAPI,
 )
 
 # 用于 type hint 避免循环导入
@@ -27,6 +27,8 @@ class PluginAPI:
         self.widgets: WidgetsAPI = WidgetsAPI(self)
         self.notification: NotificationAPI = NotificationAPI(self)
         self.schedule: ScheduleAPI = ScheduleAPI(self)
+        self.schedulemanagement: ScheduleManagementAPI = ScheduleManagementAPI(self)
+        self.globalconfig: GlobalConfigAPI = GlobalConfigAPI(self)
         self.theme: ThemeAPI = ThemeAPI(self)
         self.runtime: RuntimeAPI = RuntimeAPI(self)
         self.config: ConfigAPI = ConfigAPI(self)
