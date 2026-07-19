@@ -58,7 +58,7 @@ Item {
         scheduleTable.selectedCell = { row: nextRow, column: nextColumn }
     }
 
-    property bool editable: !Schedule.isReadonly() && segmented.currentIndex === 1  // 是否可编辑
+    property bool editable: !AppCentral.scheduleManager.isReadonly() && segmented.currentIndex === 1  // 是否可编辑
 
     ColumnLayout {
         id: mainLayout
@@ -77,9 +77,9 @@ Item {
             }
 
             SegmentedItem {
+                enabled: !AppCentral.scheduleManager.isReadonly()
                 icon.name: "ic_fluent_calendar_edit_20_regular"
                 text: qsTr("Edit")
-                enabled: !Schedule.isReadonly()
             }
         }
 
@@ -150,6 +150,7 @@ Item {
                     icon.name: "ic_fluent_calendar_week_numbers_20_regular"
 
                     WeekSelector {
+                        enabled: !AppCentral.scheduleManager.isReadonly()
                         Layout.margins: 18
                         id: weekSelector
                         onCurrentWeekChanged: {
@@ -186,6 +187,7 @@ Item {
                                 Repeater {
                                     model: AppCentral.scheduleRuntime.subjects
                                     Button {
+                                        enabled: !AppCentral.scheduleManager.isReadonly()
                                         flat: true
                                         icon.name: modelData.icon
                                         text: modelData.name
