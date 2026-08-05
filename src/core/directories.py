@@ -3,7 +3,7 @@ from pathlib import Path
 from PySide6.QtCore import QObject, Slot
 
 # Define paths
-SRC_PATH = Path(__file__).parents[1]
+SRC_PATH = Path(__file__).resolve().parents[1]
 ROOT_PATH = SRC_PATH.parent
 
 ASSETS_PATH = SRC_PATH.parent / "assets"

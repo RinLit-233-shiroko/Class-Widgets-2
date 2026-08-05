@@ -259,7 +259,12 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     @Slot()
     def restart(self):
         self.cleanup()
-        os.execl(sys.executable, sys.executable, *sys.argv)
+        os.execl(
+            sys.executable,
+            sys.executable,
+            os.path.abspath(sys.argv[0]),
+            *sys.argv[1:],
+        )
 
     def setup_qml_context(self, window: QmlContextWindow) -> None:
         """
