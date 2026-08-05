@@ -112,7 +112,6 @@ class CheckSingleInstanceDialog(ReleasableWindow):
         self.load(
             CW_PATH
             / "Components"
-            / "editor"
             / "dialogs"
             / "CheckSingleInstanceDialog.qml"
         )
