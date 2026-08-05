@@ -65,7 +65,7 @@ jobs:
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             VERSION="${{ inputs.version }}"
             VERSION_TYPE="${{ inputs.version_type }}"
-            VERSION_TAG="v${VERSION}"
+            VERSION_TAG="${VERSION}"
           else
             VERSION_TAG="${{ github.ref_name }}"
             VERSION="${VERSION_TAG#v}"
@@ -217,7 +217,7 @@ jobs:
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             VERSION="${{ inputs.version }}"
             VERSION_TYPE="${{ inputs.version_type }}"
-            VERSION_TAG="v${VERSION}"
+            VERSION_TAG="${VERSION}"
           else
             VERSION_TAG="${{ github.ref_name }}"
             VERSION="${VERSION_TAG#v}"
