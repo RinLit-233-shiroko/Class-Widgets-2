@@ -7,6 +7,7 @@ from PySide6.QtCore import QObject, Signal
 from .components import (
     BaseAPI, WidgetsAPI, NotificationAPI, ScheduleAPI, ThemeAPI,
     RuntimeAPI, ConfigAPI, AutomationAPI, UiAPI, ScheduleManagementAPI, GlobalConfigAPI,
+    ApplicationAPI, DiagnosticsAPI,
 )
 
 # 用于 type hint 避免循环导入
@@ -14,7 +15,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from src.core import AppCentral
 
-__version__ = "0.4.1"
+__version__ = "0.4.2"
 
 
 class PluginAPI:
@@ -29,6 +30,8 @@ class PluginAPI:
         self.schedule: ScheduleAPI = ScheduleAPI(self)
         self.schedulemanagement: ScheduleManagementAPI = ScheduleManagementAPI(self)
         self.globalconfig: GlobalConfigAPI = GlobalConfigAPI(self)
+        self.application: ApplicationAPI = ApplicationAPI(self)
+        self.diagnostics: DiagnosticsAPI = DiagnosticsAPI(self)
         self.theme: ThemeAPI = ThemeAPI(self)
         self.runtime: RuntimeAPI = RuntimeAPI(self)
         self.config: ConfigAPI = ConfigAPI(self)

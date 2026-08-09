@@ -12,6 +12,8 @@ from src.core.notification import NotificationProvider
 from src.core.schedule.model import EntryType
 
 from src.core.plugin.models import (
+    ApplicationInfoPayload,
+    DiagnosticLogPayload,
     PluginNotificationPayload,
     RuntimeMetaPayload,
     RuntimeEntryPayload,
@@ -373,6 +375,44 @@ class ScheduleManagementAPI(BaseAPI):
 
     def list(self) -> list[dict[str, str]]:
         return self._app.schedule_manager.schedules()
+
+    def add(self, name: str) -> bool:
+        return self._app.schedule_manager.add(name)
+
+    def save(self, name: str) -> bool:
+        if not name or name in {".", ".."} or Path(name).name != name:
+            logger.warning(f"Invalid schedule name: {name!r}")
+            return False
+        path = self._app.schedule_manager.schedules_dir / f"{name}.json"
+        return self._app.schedule_manager.save(path)
+
+
+class ApplicationAPI(BaseAPI):
+    def get_info(self) -> ApplicationInfoPayload:
+        import platform
+
+        from src import __app_name__, __version__, __version_type__
+        from src.core.plugin.api import __version__ as plugin_api_version
+
+        return {
+            "name": __app_name__,
+            "version": __version__,
+            "channel": __version_type__,
+            "pluginApiVersion": plugin_api_version,
+            "platform": platform.platform(),
+        }
+
+    def restart(self) -> None:
+        self._app.restart()
+
+
+class DiagnosticsAPI(BaseAPI):
+    MAX_LOG_LIMIT = 200
+
+    def get_logs(self, limit: int = 200) -> list[DiagnosticLogPayload]:
+        safe_limit = max(0, min(limit, self.MAX_LOG_LIMIT))
+        logs = self._app.utils_backend.get_log_snapshot(safe_limit)
+        return [cast(DiagnosticLogPayload, item) for item in logs]
 
 class GlobalConfigAPI(BaseAPI):
 
