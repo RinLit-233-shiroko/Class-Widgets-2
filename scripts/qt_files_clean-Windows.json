@@ -36,11 +36,5 @@
   "Qt6WebEngineQuickDelegatesQml.dll",
   "Qt6WebSockets.dll",
   "Qt6WebView.dll",
-  "Qt6WebViewQuick.dll",
-  "Qt3D",
-  "QtQuick3D",
-  "QtWebChannel",
-  "QtWebEngine",
-  "QtWebSockets",
-  "QtWebView"
+  "Qt6WebViewQuick.dll"
 ]
