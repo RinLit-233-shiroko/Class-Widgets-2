@@ -185,34 +185,18 @@ jobs:
             ls -la "$TARGET" | head -20
             echo ""
             
-            cd "$TARGET"
-            
             if [ -f "$JSON_FILE" ]; then
               echo "Reading cleanup list from $JSON_FILE"
               echo ""
               
               jq -r '.[]' "$JSON_FILE" | while read -r item; do
-                if [ -e "$item" ]; then
-                  rm -rf "$item"
-                  echo "Removed (direct): $item"
-                  continue
+                full_path="$TARGET/$item"
+                if [ -f "$full_path" ] || [ -d "$full_path" ]; then
+                  rm -rf "$full_path"
+                  echo "Removed: $item"
+                else
+                  echo "Not found: $item"
                 fi
-                
-                found=$(find . -type f -name "$item" 2>/dev/null | head -1)
-                if [ -n "$found" ]; then
-                  rm -rf "$found"
-                  echo "Removed (found file): $found"
-                  continue
-                fi
-                
-                found_dir=$(find . -type d -name "$item" 2>/dev/null | head -1)
-                if [ -n "$found_dir" ]; then
-                  rm -rf "$found_dir"
-                  echo "Removed directory (found): $found_dir"
-                  continue
-                fi
-                
-                echo "Not found: $item"
               done
               
               echo ""
@@ -379,46 +363,6 @@ jobs:
           curl -v -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
                -X MKCOL "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}"
 
-          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
-            -T "CHANGELOG.md" \
-            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/CHANGELOG.md"
-
-          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
-            -T "dist/ClassWidgets-2-Windows.zip" \
-            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
-
-          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
-            -T "dist/ClassWidgets-2-macOS-X64.dmg" \
-            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-macOS-X64.dmg"
-          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
-            -T "dist/ClassWidgets-2-macOS-ARM64.dmg" \
-            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-macOS-ARM64.dmg"            "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-macOS-ARM64.dmg"
-
-      - name: 🔔 Trigger Official Website Update
-        if: success()
-        run: |
-          curl -L \
-            -X POST \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${{ secrets.ORG_DISPATCH_TOKEN }}" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            https://api.github.com/repos/Class-Widgets/official_website/dispatches \
-            -d '{"event_type": "update-version"}'
-
-      - name: 📤 Upload CHANGELOG & packages to OneDrive
-        if: success() &&
-          (github.event_name == 'push' ||
-          github.event.inputs.upload2webdav == 'OneDrive' ||
-          github.event.inputs.upload2webdav == 'Both')
-        run: |
-          VERSION="${{ steps.version.outputs.version_tag }}"
-          ENCODED_VERSION=$(echo "$VERSION" | sed 's/ /%20/g')
-
-          # Create directory
-          curl -v -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
-               -X MKCOL "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}"
-
-          # Upload files
           curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
             -T "CHANGELOG.md" \
             "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/CHANGELOG.md"
