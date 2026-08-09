@@ -174,8 +174,7 @@ class WidgetsWindow(RinUI.RinUIWindow, QObject):
             return  # 配置文件
 
         global_pos = QCursor.pos()
-        # local_pos = self.widgets_loader.mapFromGlobal(global_pos)
-        local_pos = global_pos
+        local_pos = self.root_window.mapFromGlobal(global_pos)
 
         in_mask = self.interactive_rect.contains(local_pos)
 
@@ -184,7 +183,6 @@ class WidgetsWindow(RinUI.RinUIWindow, QObject):
                 "mouseHovered",
                 True
             )
-            self.root_window.show()
             self.accepts_input = True
 
             # 鼠标不在有效区域
@@ -193,5 +191,4 @@ class WidgetsWindow(RinUI.RinUIWindow, QObject):
                 "mouseHovered",
                 False
             )
-            self.root_window.show()
             self.accepts_input = False

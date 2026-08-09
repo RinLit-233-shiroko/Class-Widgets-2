@@ -16,7 +16,7 @@ FluentWindow {
 
     onClosing: function(event) {
         event.accepted = false
-        settingsWindow.visible = false
+        WindowManager.closeSettings()
     }
 
     navigationItems: [

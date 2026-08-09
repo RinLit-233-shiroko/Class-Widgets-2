@@ -19,7 +19,7 @@ ApplicationWindow {
     // 拦截关闭事件
     onClosing: function(event) {
         event.accepted = false
-        whatsNewWindow.hide()
+        WindowManager.closeWhatsNew()
     }
 
     Component.onCompleted: {
@@ -247,7 +247,7 @@ ApplicationWindow {
                 visible: false
 
                 onClicked: {
-                    whatsNewWindow.hide()
+                    WindowManager.closeWhatsNew()
                 }
             }
         }

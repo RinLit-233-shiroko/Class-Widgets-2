@@ -64,7 +64,7 @@ Window {
                 icon.name: "ic_fluent_star_emphasis_20_regular"
                 text: qsTr("What's New")
                 onClicked: {
-                    AppCentral.openWhatsNew()
+                    WindowManager.openWhatsNew()
                     panel.hide()
                 }
             }
@@ -82,7 +82,7 @@ Window {
                     text: qsTr("Open")
                     onClicked: {
                         panel.hide()
-                        AppCentral.openSettings()
+                        WindowManager.openSettings()
                     }
                 }
             }
@@ -96,7 +96,7 @@ Window {
                     text: qsTr("Open")
                     onClicked: {
                         panel.hide()
-                        AppCentral.openEditor()
+                        WindowManager.openEditor()
                     }
                 }
             }
@@ -112,7 +112,7 @@ Window {
                     onClicked: {
                         // Qt.openUrlExternally("https://plaza.cw.rinlit.cn")
                         panel.hide()
-                        AppCentral.openPlaza()
+                        WindowManager.openPlaza()
                     }
                 }
             }
@@ -144,7 +144,7 @@ Window {
                     text: qsTr("Class Swap")
                     onClicked: {
                         panel.hide()
-                        AppCentral.openClassSwap()
+                        WindowManager.openClassSwap()
                     }
                 }
             }

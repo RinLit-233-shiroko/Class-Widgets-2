@@ -21,8 +21,10 @@ FluentWindow {
 
     onClosing: function(event) {
         event.accepted = false
-        settingsWindow.visible = false
+        WindowManager.closeEditor()
     }
+
+
 
     titleBarArea: RowLayout {
         anchors.fill: parent

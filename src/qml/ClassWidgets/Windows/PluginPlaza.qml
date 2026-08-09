@@ -16,7 +16,7 @@ FluentWindow {
 
     onClosing: function(event) {
         event.accepted = false
-        plazaWindow.visible = false
+        WindowManager.closePlaza()
     }
 
     titleBarArea: RowLayout {

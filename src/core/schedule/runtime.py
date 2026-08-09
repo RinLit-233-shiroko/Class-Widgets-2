@@ -221,8 +221,10 @@ class ScheduleRuntime(QObject):
         return self.current_title
 
     def refresh(self, schedule: Optional[ScheduleData] = None) -> None:
-        if schedule is None and self.schedule is None:
-            return
+        if schedule is None:
+            if self.schedule is None:
+                return
+            schedule = self.schedule
         self._update_schedule(schedule)
         self._update_time()
         self._update_notify()

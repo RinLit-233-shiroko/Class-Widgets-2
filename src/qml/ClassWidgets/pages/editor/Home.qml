@@ -74,9 +74,23 @@ FluentPage {
                     }
                 }
                 MenuItem {
-                    icon.name: " "
+                    icon.name: "ic_fluent_arrow_upload_20_regular"
                     text: qsTr("Import from Class Widgets 1")
-                    enabled: false
+                    onTriggered: {
+                        if (AppCentral.scheduleManager.scheduleIO.importCW1()) {
+                            floatLayer.createInfoBar({
+                                severity: Severity.Success,
+                                title: qsTr("Import Success"),
+                                text: qsTr("The schedule has been imported successfully.")
+                            })
+                        } else {
+                            floatLayer.createInfoBar({
+                                severity: Severity.Error,
+                                title: qsTr("Import Failed"),
+                                text: qsTr("Failed to import the schedule. Please check if the schedule file is valid.")
+                            })
+                        }
+                    }
                 }
             }
 

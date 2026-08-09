@@ -28,11 +28,7 @@ if TYPE_CHECKING:
     from src.core.utils.instance_locker import SingleInstanceGuard
     from src.core.widgets import WidgetsWindow, WidgetListModel
     from src.core.automations.manager import AutomationManager
-    from src.core.windows import (
-        Settings, Editor, Tutorial, WhatsNew,
-        CheckSingleInstanceDialog, PluginPlaza,
-        ClassSwapWindow, ClassSwapRestoreDialog
-    )
+    from src.core.windows.manager import AppWindowManager
 
 # runtime imports
 from src.core.notification import (
@@ -48,12 +44,11 @@ from src.core.schedule.swapper import ClassSwapManager
 from src.core.themes import ThemeManager
 from src.core.timer import UnionUpdateTimer
 from src.core.updater import UpdaterBridge
-from src.core.utils import TrayIcon, AppTranslator, UtilsBackend
-from src.core.utils.debugger import DebuggerWindow
+from src.core.utils import AppTranslator, UtilsBackend
 from src.core.utils.instance_locker import SingleInstanceGuard
 from src.core.widgets import WidgetsWindow, WidgetListModel
 from src.core.automations.manager import AutomationManager
-from src.core.windows import Settings, Editor, Tutorial, WhatsNew, CheckSingleInstanceDialog, PluginPlaza, ClassSwapWindow, ClassSwapRestoreDialog
+from src.core.windows.manager import AppWindowManager
 
 
 class QmlContextWindow(Protocol):
@@ -112,8 +107,9 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.configs: ConfigManager = ConfigManager(path=CONFIGS_PATH, filename="configs.json")
         self.theme_manager: ThemeManager = ThemeManager(self)
         self.widgets_model: WidgetListModel = WidgetListModel(self)
-        # debugger
         self.debugger: Optional[DebuggerWindow] = None
+        self.tray_icon: Optional[TrayIcon] = None
+        self.window_manager: AppWindowManager = AppWindowManager(self)
 
     def _initialize_notification(self) -> None:
         """初始化通知系统"""
@@ -152,21 +148,10 @@ class AppCentral(QObject):  # Class Widgets 的中枢
                 logger.error(f"Failed to set AppUserModelID: {e}")
 
     def _initialize_ui_components(self):
-        """初始化UI组件"""
-        self.settings: Settings = Settings(self)
-        self.editor: Editor = Editor(self)
-        self.whatsnew: WhatsNew = WhatsNew(self)
-        self.widgets_window: WidgetsWindow = WidgetsWindow(self)  # 简化参数传递
-        self.plugin_plaza: PluginPlaza = PluginPlaza(self)
-        self.class_swap_window: ClassSwapWindow = ClassSwapWindow(self)
+        """初始化启动必需的UI组件"""
+        self.widgets_window: WidgetsWindow = WidgetsWindow(self)
         if self.multi_instances:
-            self.single_dialog_window: CheckSingleInstanceDialog = CheckSingleInstanceDialog(self)
-
-        import platform
-        # win11 except
-        if platform.system() == "Windows" and platform.release() == "10" and platform.version() < "22000":
-            from RinUI import BackdropEffect
-            self.settings.setBackdropEffect(BackdropEffect.None_)
+            self.window_manager.ensure("single_instance")
 
     def run(self) -> None:  # 运行
         self._load_config()  # 加载配置
@@ -176,7 +161,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             if not (getattr(sys, "frozen", False) and sys.platform == "darwin"):
                 logger.info("Not running in a frozen macOS app. Skipped single instance check.")
                 self.quit()
-            self.openSingleInstanceDialog()
+            self.window_manager.open_single_instance_dialog()
         else:
             self.init()
 
@@ -184,6 +169,8 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     def init(self) -> None:
         # 如果教程未完成，先显示引导窗口
         if not getattr(self.configs.app, "tutorial_completed", False):
+            from src.core.windows import Tutorial
+
             logger.info("Tutorial not completed, showing tutorial window first.")
             self.tutorial_window = Tutorial(self)
             self.tutorial_window.root_window.show()
@@ -195,10 +182,10 @@ class AppCentral(QObject):  # Class Widgets 的中枢
 
         # 启动时：若检测到今天存在临时课表，先询问用户是否继续使用
         if self._class_swap_manager.hasTodaySwaps():
-            self.class_swap_restore_dialog_window: ClassSwapRestoreDialog = ClassSwapRestoreDialog(self)
+            self.window_manager.ensure("class_swap_restore")
             self._startup_swap_restore_pending = True
             logger.warning("Detected temporary class swaps for today on startup, prompting user for action")
-            self.openClassSwapRestoreDialog()
+            self.window_manager.open_class_swap_restore()
             return
 
         self._continue_init()
@@ -227,6 +214,8 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     def cleanup(self) -> None:
         self.configs.save()
         self.union_update_timer.stop()
+        self.window_manager.release_all()
+        self.plugin_manager.cleanup()
         logger.info("Clean up.")
 
     @Property(QObject, notify=initialized)
@@ -286,6 +275,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         context.setContextProperty("CWThemeManager", self.theme_manager)
         context.setContextProperty("PluginManager", self.plugin_manager)
         context.setContextProperty("AppCentral", self)
+        context.setContextProperty("WindowManager", self.window_manager)
         context.setContextProperty("PathManager", self.path_manager)
         context.setContextProperty("ClassSwapManager", self._class_swap_manager)
 
@@ -300,6 +290,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         context.setContextProperty("ThemeManager", None)
         context.setContextProperty("PluginManager", None)
         context.setContextProperty("AppCentral", None)
+        context.setContextProperty("WindowManager", None)
         context.setContextProperty("PathManager", None)
         context.setContextProperty("backend", None)
 
@@ -332,14 +323,16 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.union_update_timer.start()
 
     def _run_utils(self) -> None:
-        if self.configs.app.debug_mode:  # 调试模式
+        if self.configs.app.debug_mode:
+            from src.core.utils.debugger import DebuggerWindow
+
             self.debugger = DebuggerWindow(self)
 
         self.automation_manager.init_builtin_tasks()
         self.widgets_window.run()
 
         if "--update-done" in sys.argv:
-            self.openWhatsNew()
+            self.window_manager.open_whatsnew()
             self.updater_bridge.update_complete()
 
     def _load_theme_and_plugins(self) -> None:
@@ -354,6 +347,8 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.plugin_manager.load_plugins()
 
     def _init_tray_icon(self) -> None:
+        from src.core.utils.tray import TrayIcon
+
         self.tray_icon = TrayIcon()
         self.tray_icon.togglePanel.connect(self._on_tray_toggle)
 
@@ -379,101 +374,6 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     def _on_tray_toggle(self, pos: QPoint) -> None:
         self.togglePanel.emit(pos)
 
-    # settings
-    @Slot()
-    def openSettings(self) -> None:
-        """显示设置窗口"""
-        if self.settings and self.settings.root_window:
-            self.settings.root_window.show()
-            self.settings.root_window.raise_()
-            self.settings.root_window.requestActivate()
-        else:
-            logger.error("Settings window not initialized correctly.")
-
-    @Slot()
-    def openEditor(self) -> None:
-        """显示课程表编辑器"""
-        if self._class_swap_manager.hasTodaySwaps():
-            logger.warning("Blocked opening editor because temporary class swaps exist today")
-            self.openClassSwapRestoreDialog()
-            return
-
-        if self.editor and self.editor.root_window:
-            self.editor.root_window.show()
-            self.editor.root_window.raise_()
-            self.editor.root_window.requestActivate()
-        else:
-            logger.error("Editor window not initialized correctly.")
-
-    @Slot()
-    def openPlaza(self) -> None:
-        """显示课程表编辑器"""
-        if self.plugin_plaza and self.plugin_plaza.root_window:
-            self.plugin_plaza.root_window.show()
-            self.plugin_plaza.root_window.raise_()
-            self.plugin_plaza.root_window.requestActivate()
-        else:
-            logger.error("Editor window not initialized correctly.")
-
-    @Slot()
-    def openWhatsNew(self) -> None:
-        """显示课程表编辑器"""
-        if self.whatsnew and self.whatsnew.root_window:
-            self.whatsnew.root_window.show()
-            self.whatsnew.root_window.raise_()
-            self.whatsnew.root_window.requestActivate()
-        else:
-            logger.error("WhatsNew window not initialized correctly.")
-
-    @Slot()
-    def openSingleInstanceDialog(self) -> None:
-        """显示多实例提示对话框"""
-        if self.single_dialog_window and self.single_dialog_window.root_window:
-            self.single_dialog_window.root_window.show()
-            self.single_dialog_window.root_window.raise_()
-            self.single_dialog_window.root_window.requestActivate()
-        else:
-            logger.error("Single Instance Dialog not initialized correctly.")
-
-    @Slot()
-    def openClassSwap(self) -> None:
-        """显示换课窗口"""
-        if self.class_swap_window and self.class_swap_window.root_window:
-            self.class_swap_window.root_window.show()
-            self.class_swap_window.root_window.raise_()
-            self.class_swap_window.root_window.requestActivate()
-        else:
-            logger.error("ClassSwap window not initialized correctly.")
-
-    @Slot()
-    def openClassSwapRestoreDialog(self) -> None:
-        """显示启动时的临时课表恢复确认窗口"""
-        if self.class_swap_restore_dialog_window and self.class_swap_restore_dialog_window.root_window:
-            self.class_swap_restore_dialog_window.root_window.show()
-            self.class_swap_restore_dialog_window.root_window.raise_()
-            self.class_swap_restore_dialog_window.root_window.requestActivate()
-        else:
-            logger.error("ClassSwap restore dialog window not initialized correctly.")
-
-    @Slot()
-    def classSwapRestoreContinue(self) -> None:
-        """继续使用今天的临时课表"""
-        if self.class_swap_restore_dialog_window and self.class_swap_restore_dialog_window.root_window:
-            self.class_swap_restore_dialog_window.root_window.hide()
-        if self._startup_swap_restore_pending:
-            self._startup_swap_restore_pending = False
-            self._continue_init()
-
-    @Slot()
-    def classSwapRestoreDiscard(self) -> None:
-        """丢弃今天的临时课表并继续启动"""
-        self._class_swap_manager.discardTodaySwaps()
-        if self.class_swap_restore_dialog_window and self.class_swap_restore_dialog_window.root_window:
-            self.class_swap_restore_dialog_window.root_window.hide()
-        if self._startup_swap_restore_pending:
-            self._startup_swap_restore_pending = False
-            self._continue_init()
-
     @Slot()
     def openDebugger(self) -> None:
         """显示调试器"""
@@ -496,6 +396,9 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             return
 
         root = self.widgets_window.root_window
+        if not root:
+            return
+
         widgets_loader = root.findChild(QObject, "widgetsLoader")
         if widgets_loader:
             root.raise_()

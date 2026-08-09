@@ -30,6 +30,16 @@ class ScheduleServices:
         max_week_cycle = schedule.meta.maxWeekCycle or 1
         current_week = get_cycle_week(raw_week_index, max_week_cycle)
 
+        # 临时换课
+        class_swap = getattr(self.app_central.configs.schedule, "class_swap", None)
+        if isinstance(class_swap, dict) and class_swap.get("date") == date_str:
+            swap_weekday = class_swap.get("day_of_week")
+            swap_week = class_swap.get("week_of_cycle")
+            if isinstance(swap_weekday, int) and 1 <= swap_weekday <= 7:
+                weekday = swap_weekday
+            if isinstance(swap_week, int) and 1 <= swap_week <= max_week_cycle:
+                current_week = swap_week
+
         for day in schedule.days:
             day_of_week_list = [day.dayOfWeek] if isinstance(day.dayOfWeek, int) else day.dayOfWeek
             if day_of_week_list and weekday in day_of_week_list:
@@ -119,18 +129,13 @@ class ScheduleServices:
     @staticmethod
     def get_current_status(day: Timeline, now: Optional[datetime] = None, prep_min: int = 2) -> EntryType:
         now = now or datetime.now()
-        if (current := ScheduleServices.get_current_entry(day, now)):
-            match current.type:
-                case EntryType.BREAK | EntryType.FREE:
-                    if (upcoming := ScheduleServices.get_next_entries(day, now)):
-                        next_start = datetime.strptime(upcoming[0].startTime, "%H:%M")
-                        next_start = datetime.combine(now.date(), next_start.time())
-                        if next_start - timedelta(minutes=prep_min) <= now.replace(microsecond=0):
-                            return EntryType.PREPARATION
-                    return current.type
-                case _:
-                    return current.type
-        return EntryType.FREE
+        if upcoming := ScheduleServices.get_next_entries(day, now):
+            next_start = datetime.combine(now.date(), datetime.strptime(upcoming[0].startTime, "%H:%M").time())
+            if next_start - timedelta(minutes=prep_min) <= now.replace(microsecond=0):
+                return EntryType.PREPARATION
+
+        current = ScheduleServices.get_current_entry(day, now)
+        return current.type if current else EntryType.FREE
 
     @staticmethod
     def get_current_subject(day: Timeline, subjects: list[Subject], now: Optional[datetime] = None) -> Optional[Subject]:
