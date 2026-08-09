@@ -65,7 +65,7 @@ jobs:
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             VERSION="${{ inputs.version }}"
             VERSION_TYPE="${{ inputs.version_type }}"
-            VERSION_TAG="v${VERSION}"
+            VERSION_TAG="${VERSION}"
           else
             VERSION_TAG="${{ github.ref_name }}"
             VERSION="${VERSION_TAG#v}"
@@ -173,6 +173,43 @@ jobs:
             --name="Class Widgets 2" \
             src/app.py
 
+      - name: 🧹 Remove unnecessary PySide6 files (Only Windows)
+        if: runner.os == 'Windows'
+        shell: bash
+        run: |
+          TARGET="dist/Class Widgets 2/PySide6"
+          JSON_FILE="$GITHUB_WORKSPACE/scripts/qt_files_clean-Windows.json"
+          
+          if [ -d "$TARGET" ]; then
+            echo "Contents of PySide6 directory (first 20 items):"
+            ls -la "$TARGET" | head -20
+            echo ""
+            
+            if [ -f "$JSON_FILE" ]; then
+              echo "Reading cleanup list from $JSON_FILE"
+              echo ""
+              
+              jq -r '.[]' "$JSON_FILE" | while IFS= read -r item; do
+              
+                item=${item%$'\r'}
+                full_path="$TARGET/$item"
+                if [ -f "$full_path" ] || [ -d "$full_path" ]; then
+                  rm -rf "$full_path"
+                  echo "Removed: $item"
+                else
+                  echo "Not found: $item"
+                fi
+              done
+              
+              echo ""
+              echo "Cleanup compleeeeeeeeeted"
+            else
+              echo "JSON file not found at $JSON_FILE, skipping cleanup"
+            fi
+          else
+            echo "PySide6 directory not found at $TARGET, skipping cleanup"
+          fi
+
       - name: 📦 Zip build (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
@@ -217,7 +254,7 @@ jobs:
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             VERSION="${{ inputs.version }}"
             VERSION_TYPE="${{ inputs.version_type }}"
-            VERSION_TAG="v${VERSION}"
+            VERSION_TAG="${VERSION}"
           else
             VERSION_TAG="${{ github.ref_name }}"
             VERSION="${VERSION_TAG#v}"
@@ -330,11 +367,9 @@ jobs:
           VERSION="${{ steps.version.outputs.version_tag }}"
           ENCODED_VERSION=$(echo "$VERSION" | sed 's/ /%20/g')
 
-          # Create directory
           curl -v -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
                -X MKCOL "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}"
 
-          # Upload files
           curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
             -T "CHANGELOG.md" \
             "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/CHANGELOG.md"
