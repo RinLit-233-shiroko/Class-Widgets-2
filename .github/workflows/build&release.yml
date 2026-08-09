@@ -189,7 +189,10 @@ jobs:
               echo "Reading cleanup list from $JSON_FILE"
               echo ""
               
-              jq -r '.[]' "$JSON_FILE" | while read -r item; do
+              # 处理 Windows 行尾（\r）问题
+              jq -r '.[]' "$JSON_FILE" | while IFS= read -r item; do
+                # 去除可能的回车符
+                item=${item%$'\r'}
                 full_path="$TARGET/$item"
                 if [ -f "$full_path" ] || [ -d "$full_path" ]; then
                   rm -rf "$full_path"
