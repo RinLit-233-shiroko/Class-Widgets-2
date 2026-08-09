@@ -327,9 +327,11 @@ jobs:
           VERSION="${{ steps.version.outputs.version_tag }}"
           ENCODED_VERSION=$(echo "$VERSION" | sed 's/ /%20/g')
 
+          # Create directory
           curl -v -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
                -X MKCOL "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}"
 
+          # Upload files
           curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
             -T "CHANGELOG.md" \
             "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/CHANGELOG.md"
