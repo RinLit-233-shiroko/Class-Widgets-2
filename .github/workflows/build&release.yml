@@ -221,6 +221,7 @@ jobs:
         shell: bash
         run: |
           hdiutil create -volname "Class Widgets 2" -srcfolder dist -ov -format UDZO ClassWidgets-2-macOS-${{ runner.arch }}.dmg
+        # ditto -c -k --sequesterRsrc --keepParent "Class Widgets 2".app ClassWidgets-2-macOS-${{ runner.arch }}.zip
 
       - name: ☁️ Upload artifact (Windows)
         if: runner.os == 'Windows'
@@ -302,6 +303,7 @@ jobs:
 
       - name: 🚀 Create GitHub Release
         uses: softprops/action-gh-release@v2
+        # 推送/手动+发布 ==> 发布
         if: ${{  github.event_name == 'push' || github.event.inputs.release == 'true' }}
         with:
           name: Class Widgets ${{ steps.version.outputs.version_tag }}
@@ -316,6 +318,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
 
       - name: 📤 Upload CHANGELOG & packages to 123Pan
+        # 推送/手动+上传 ==> 上传
         if: success() && 
           ( github.event_name == 'push' ||
            github.event.inputs.upload2webdav == '123Pan' ||
