@@ -8,6 +8,8 @@ from loguru import logger
 from pydantic import Field, PrivateAttr
 from PySide6.QtCore import QObject, QTimer, Signal, Property, Slot
 
+from typing import Optional
+
 from .model import AppConfig, ScheduleConfig, PreferencesConfig, PluginsConfig, LocaleConfig, InteractionsConfig, \
     ConfigBaseModel, NetworkConfig, NotificationsConfig
 from src import __version__, __version_type__
@@ -42,7 +44,6 @@ class ConfigManager(QObject):
         self.full_path = self.path / filename
 
         self._config = RootConfig()
-        self._bind_nested_on_change(self._config)
 
         self.save_timer = QTimer(self)
         self.save_timer.setInterval(1000 * 60)  # 1分钟保存一次
@@ -50,15 +51,24 @@ class ConfigManager(QObject):
 
         self.locked_keys: set[str] = set()
 
-    def _bind_nested_on_change(self, obj):
+        self._bind_nested_on_change(self._config)
+
+    def _bind_nested_on_change(self, obj, path: Optional[str] = None):
         """
-        递归绑定 _on_change 给所有嵌套的 ConfigBaseModel
+        递归绑定 _on_change 给所有嵌套的 ConfigBaseModel；并且传递路径
         """
         obj._on_change = lambda: (self.configChanged.emit())
-        for field_name, field in obj.__fields__.items():
+        obj._config_path = path
+        obj._locked_keys = self.locked_keys
+        for field_name in type(obj).model_fields:
             value = getattr(obj, field_name)
             if isinstance(value, ConfigBaseModel):
-                self._bind_nested_on_change(value)
+                child_path = (
+                    f"{path}.{field_name}"
+                    if path
+                    else field_name
+                )
+                self._bind_nested_on_change(value, child_path) 
 
     def _ensure_defaults(self):
         """确保在 QApplication 存在时，填充"""

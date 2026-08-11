@@ -294,7 +294,12 @@ class ConfigAPI(BaseAPI):
                 self._cm._config._on_change()
             except Exception as e:
                 logger.error(f"Failed to sync config for {plugin_id}: {e}")
-        model._on_change = _sync_to_config_manager
+
+        model._bind_runtime_context(
+            f"plugins.configs.{plugin_id}",
+            self._cm.locked_keys,
+            _sync_to_config_manager,
+        )
         model._on_change()
 
         logger.debug(f"Plugin: {plugin_id} registered config model: {model}")
