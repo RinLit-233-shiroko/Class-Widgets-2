@@ -6,7 +6,7 @@ from PySide6.QtCore import QObject, Signal
 # 导入所有API功能组件
 from .components import (
     BaseAPI, WidgetsAPI, NotificationAPI, ScheduleAPI, ThemeAPI,
-    RuntimeAPI, ConfigAPI, AutomationAPI, UiAPI
+    RuntimeAPI, ConfigAPI, AutomationAPI, ActionsAPI, UiAPI
 )
 
 # 用于 type hint 避免循环导入
@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from src.core import AppCentral
 
-__version__ = "0.4.1"
+__version__ = "0.5.0"
 
 
 class PluginAPI:
@@ -31,6 +31,7 @@ class PluginAPI:
         self.runtime: RuntimeAPI = RuntimeAPI(self)
         self.config: ConfigAPI = ConfigAPI(self)
         self.automation: AutomationAPI = AutomationAPI(self)
+        self.actions: ActionsAPI = ActionsAPI(self)
         self.ui: 'UiAPI' = UiAPI(self)
 
     def set_current_plugin(self, plugin):

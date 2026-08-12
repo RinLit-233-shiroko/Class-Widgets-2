@@ -1,6 +1,6 @@
 import sys
 from pathlib import Path
-from typing import Optional, cast
+from typing import Any, Optional, cast
 from datetime import datetime
 from PySide6.QtCore import Signal, QObject
 from loguru import logger
@@ -293,6 +293,56 @@ class ConfigAPI(BaseAPI):
 class AutomationAPI(BaseAPI):
     def register(self, task):
         self._app.automation_manager.add_task(task)
+
+
+class ActionsAPI(BaseAPI):
+    """进程内全局命名的 Qt Signal 注册表。"""
+
+    def __init__(self, plugin_api: "PluginAPI"):
+        super().__init__(plugin_api)
+        self._actions: dict[str, dict[str, Any]] = {}
+
+    @staticmethod
+    def _validate_action_name(action_name: str) -> str:
+        if not isinstance(action_name, str) or not action_name.strip():
+            raise ValueError("Action name cannot be empty.")
+        return action_name.strip()
+
+    def register(self, action_name: str, *parameter_types: type) -> Any:
+        """注册 Action；同 ID、同参数类型可重复注册并取得同一个 Signal。"""
+        action_name = self._validate_action_name(action_name)
+        record = self._actions.get(action_name)
+        if record:
+            registered_types = record["parameter_types"]
+            if parameter_types != registered_types:
+                raise TypeError(
+                    f"Action {action_name!r} is already registered with parameter types "
+                    f"{registered_types!r}, not {parameter_types!r}."
+                )
+            return record["signal"]
+
+        emitter_type = type(
+            f"ActionEmitter_{len(self._actions)}",
+            (QObject,),
+            {"triggered": Signal(*parameter_types)},
+        )
+        emitter = emitter_type(self)
+        signal = emitter.triggered
+        self._actions[action_name] = {
+            "emitter": emitter,
+            "signal": signal,
+            "parameter_types": parameter_types,
+        }
+        logger.info(f"Registered global action signal: {action_name}")
+        return signal
+
+    def get(self, action_name: str) -> Any:
+        """按全局 ID 取得已注册 Action 的原生 Qt bound signal。"""
+        action_name = self._validate_action_name(action_name)
+        record = self._actions.get(action_name)
+        if not record:
+            raise KeyError(f"Action is not registered: {action_name}")
+        return record["signal"]
 
 
 class UiAPI(BaseAPI):

@@ -58,6 +58,7 @@ class PluginLoader:
                 RuntimeAPI as RealRuntimeAPI,
                 ConfigAPI as RealConfigAPI,
                 AutomationAPI as RealAutomationAPI,
+                ActionsAPI as RealActionsAPI,
                 UiAPI as RealUiAPI
             )
             
@@ -82,6 +83,7 @@ class PluginLoader:
             fake_mod.RuntimeAPI = RealRuntimeAPI
             fake_mod.ConfigAPI = RealConfigAPI
             fake_mod.AutomationAPI = RealAutomationAPI
+            fake_mod.ActionsAPI = RealActionsAPI
             fake_mod.UiAPI = RealUiAPI
             
             # 通知相关类型
