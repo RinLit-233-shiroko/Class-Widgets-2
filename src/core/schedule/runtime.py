@@ -213,12 +213,12 @@ class ScheduleRuntime(QObject):
 
     # SUBJECT
     @Property(dict, notify=updated)
-    def currentSubject(self) -> Optional[dict]:
-        return self.current_subject.model_dump() if self.current_subject else None
+    def currentSubject(self) -> dict:
+        return self.current_subject.model_dump() if self.current_subject else {}
 
     @Property(str, notify=updated)
     def currentTitle(self) -> str:
-        return self.current_title
+        return self.current_title or ""
 
     def refresh(self, schedule: Optional[ScheduleData] = None) -> None:
         if schedule is None:

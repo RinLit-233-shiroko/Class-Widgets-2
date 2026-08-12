@@ -135,8 +135,8 @@ class ScheduleManager(QObject):
             return False
 
     @Property(str, notify=scheduleSwitched)
-    def currentScheduleName(self) -> Optional[str]:
-        return self.current_schedule_name
+    def currentScheduleName(self) -> str:
+        return self.current_schedule_name or ""
 
     #slots
     @Slot(result=list)

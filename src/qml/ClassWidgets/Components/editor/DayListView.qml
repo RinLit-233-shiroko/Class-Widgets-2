@@ -271,20 +271,25 @@ ColumnLayout {
         }
 
         delegate: ListViewDelegate {
-            middleArea: [
-                Text { text: getDayTitle(modelData); font.bold: true; elide: Text.ElideRight; Layout.fillWidth: true },
+            contentItem: RowLayout {
+                spacing: 8
+
+                ColumnLayout {
+                    Layout.fillWidth: true
+                    spacing: 2
+                    Text { text: getDayTitle(modelData); font.bold: true; elide: Text.ElideRight; Layout.fillWidth: true }
                 // Text { text: modelData.id; font.pixelSize: 12; color: Theme.currentTheme.colors.textSecondaryColor; elide: Text.ElideRight; Layout.fillWidth: true }
-                Text { text: getDaySubtitle(modelData); font.pixelSize: 12; color: Theme.currentTheme.colors.textSecondaryColor; elide: Text.ElideRight; Layout.fillWidth: true }
-            ]
+                    Text { text: getDaySubtitle(modelData); font.pixelSize: 12; color: Theme.currentTheme.colors.textSecondaryColor; elide: Text.ElideRight; Layout.fillWidth: true }
+                }
 
-            rightArea: Button {
-                icon.name: "ic_fluent_more_vertical_20_regular"
-                flat: true
-                width: 48
-                height: 48
-                onClicked: contextMenu.open()
+                Button {
+                    icon.name: "ic_fluent_more_vertical_20_regular"
+                    flat: true
+                    Layout.preferredWidth: 48
+                    Layout.preferredHeight: 48
+                    onClicked: contextMenu.open()
 
-                Menu {
+                    Menu {
                     id: contextMenu
                     MenuItem {
                         icon.name: "ic_fluent_edit_20_regular"
@@ -297,6 +302,7 @@ ColumnLayout {
                         onTriggered: AppCentral.scheduleEditor.removeDay(modelData.id)  // 删除日程
                     }
                 }
+                    }
             }
 
             ToolTip {

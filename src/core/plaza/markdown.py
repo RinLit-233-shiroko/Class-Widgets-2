@@ -142,8 +142,8 @@ def _qt_quote_block(content: str, border_color: str = "#8a8a8a", is_admonition: 
 
 
 def _normalize_typography(value: str) -> str:
-    value = re.sub(r"<p>(.*?)</p>", r"<p style='font-size:14px; line-height:1.72; margin-top:8px; margin-bottom:12px;'>\1</p>", value, flags=re.S)
-    value = re.sub(r"<li>(.*?)</li>", r"<li style='font-size:14px; line-height:1.72; margin-top:4px; margin-bottom:4px;'>\1</li>", value, flags=re.S)
+    value = re.sub(r"<p>(.*?)</p>", r"<p style='font-size:14px; line-height:1.5; margin-top:8px; margin-bottom:12px;'>\1</p>", value, flags=re.S)
+    value = re.sub(r"<li>(.*?)</li>", r"<li style='font-size:14px; line-height:1.5; margin-top:4px; margin-bottom:4px;'>\1</li>", value, flags=re.S)
     value = re.sub(r"<ul>", r"<ul style='margin-top:8px; margin-bottom:14px;'>", value)
     value = re.sub(r"<ol>", r"<ol style='margin-top:8px; margin-bottom:14px;'>", value)
     value = re.sub(r"<a ", r"<a style='text-decoration:none;' ", value)
@@ -170,12 +170,23 @@ def _normalize_aligned_blocks(value: str) -> str:
 
 
 def _normalize_images(value: str) -> str:
-    def replace_image(match: re.Match[str]) -> str:
+    # Step 1: Process all img tag attributes (style → width/height)
+    def process_attrs(match: re.Match[str]) -> str:
         attributes = match.group(1).strip()
         attributes = re.sub(r"\s+style\s*=\s*(['\"])(.*?)\1", lambda style_match: _image_style_to_attributes(style_match), attributes, flags=re.I | re.S)
         return f"<img {attributes}>"
 
-    return re.sub(r"<img\b([^>]*)>", replace_image, value, flags=re.I | re.S)
+    value = re.sub(r"<img\b([^>]*)>", process_attrs, value, flags=re.I | re.S)
+
+    # Step 2: Center standalone images (wrapped in <p> with only an <img>)
+    value = re.sub(
+        r"<p>\s*(<img\b[^>]*>)\s*</p>",
+        r"<p align='center'>\1</p>",
+        value,
+        flags=re.I | re.S,
+    )
+
+    return value
 
 
 def _image_style_to_attributes(match: re.Match[str]) -> str:

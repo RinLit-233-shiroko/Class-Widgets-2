@@ -2,9 +2,6 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import Qt5Compat.GraphicalEffects
-import ClassWidgets.Easing
-import ClassWidgets.Theme 1.0
-
 
 Rectangle {
     id: root
@@ -12,7 +9,7 @@ Rectangle {
 
     property string value: ""
     property string oldValue: ""
-    property double progress: 1
+    property double progress: 1  // 0-1
     property int duration: 700
     property real scaleFactor: Configs.data.preferences.scale_factor || 1.0
 
@@ -30,7 +27,7 @@ Rectangle {
                                height * scaleFactor * 4)
     }
 
-    LinearGradient {
+    LinearGradient  {
         id: oldDigitGradient
         anchors.fill: oldDigit
         source: oldDigit
@@ -56,7 +53,7 @@ Rectangle {
                                height * scaleFactor * 4)
     }
 
-    LinearGradient {
+    LinearGradient  {
         id: newDigitGradient
         anchors.fill: newDigit
         opacity: progress * 3
@@ -84,7 +81,14 @@ Rectangle {
             from: 0
             to: 1
             duration: root.duration
-            easing.type: Easing.OutQuart
+            easing.type: Easing.Bezier
+            easing.bezierCurve: [ .51,.2,0,.44, 1, 1 ]
+        }
+        ScriptAction {
+            script: {
+                root.oldValue = root.value
+                newDigitGradient.visible = false
+            }
         }
     }
 }

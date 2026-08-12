@@ -1,12 +1,13 @@
 # Built-in themes definition
 from PySide6.QtCore import QCoreApplication
 
-from src.core import ASSETS_PATH
+from src.core import ASSETS_PATH, QML_PATH, SRC_PATH
 
 BUILTIN_THEMES = [
     {
+        "path": QML_PATH,
         "meta": {
-            "id": "default",
+            "id": "com.classwidgets.default",
             "name": QCoreApplication.translate("Theme", "Default"),
             "description": QCoreApplication.translate("Theme", "Class Widgets Builtin Default Theme"),
             "author": "Class Widgets Official",
@@ -17,8 +18,9 @@ BUILTIN_THEMES = [
         }
     },
     {
+        "path": SRC_PATH / "themes" / "cw1",
         "meta": {
-            "id": "cw1",
+            "id": "com.classwidgets.cw1",
             "name": "Class Widgets 1",
             "description": "Class Widgets 1 Classic Theme",
             "author": "Class Widgets Official",
@@ -29,8 +31,9 @@ BUILTIN_THEMES = [
         }
     },
     {
+        "path": SRC_PATH / "themes" / "win10",
         "meta": {
-            "id": "win10",
+            "id": "com.classwidgets.win10",
             "name": "Windows 10",
             "description": "Windows 10 Fluent 1 Style Theme",
             "author": "Class Widgets Official",
@@ -41,8 +44,9 @@ BUILTIN_THEMES = [
         }
     },
     {
+        "path": SRC_PATH / "themes" / "material",
         "meta": {
-            "id": "material",
+            "id": "com.classwidgets.material",
             "name": "Material You",
             "description": "Material You 3 Style Theme",
             "author": "Class Widgets Official",

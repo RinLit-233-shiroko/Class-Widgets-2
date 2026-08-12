@@ -10,6 +10,7 @@ Frame {
     property string title: ""
     property var plugins: []
     property bool loading: false
+    property bool showRating: true
     property int pageSize: 6
     property bool showHeader: true
     property bool showControls: true
@@ -32,20 +33,15 @@ Frame {
     onPluginsChanged: currentPage = 0
 
     /* ========= Frame styling ========= */
-    padding: 16
-    // radius: 16
-    // background: Rectangle {
-    //     radius: root.radius
-    //     color: Colors.proxy.backgroundColor
-    //     border.color: Colors.proxy.controlBorderColor
-    //     border.width: 1
-    // }
+    padding: 36
+    radius: 8
+    color: Colors.proxy.cardColor
 
     /* ========= Layout ========= */
     ColumnLayout {
         id: layoutRoot
         width: parent.width
-        spacing: 12
+        spacing: 24
 
         /* ===== Header / Toolbar ===== */
         RowLayout {
@@ -103,9 +99,11 @@ Frame {
 
                 delegate: PluginCard {
                     Layout.fillWidth: true
-                    Layout.preferredHeight: 90
+                    Layout.preferredHeight: 96
                     plugin: !loading ? modelData : null
                     isLoading: loading
+                    transparent: true
+                    showRating: root.showRating
                 }
             }
         }

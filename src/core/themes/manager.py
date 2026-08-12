@@ -16,7 +16,7 @@ from src.core.directories import THEMES_PATH
 if TYPE_CHECKING:
     from src.core.central import AppCentral
 
-DEFAULT_THEME_ID = "default"
+DEFAULT_THEME_ID = "com.classwidgets.default"
 
 
 class ThemeManager(QObject):

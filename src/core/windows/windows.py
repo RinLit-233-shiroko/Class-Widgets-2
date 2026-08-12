@@ -61,7 +61,7 @@ class PluginPlaza(ReleasableWindow):
     def __init__(self, parent):
         super().__init__()
         self.central = parent
-        self.plaza_bridge = PlazaBridge()
+        self.plaza_bridge = PlazaBridge(self.central.configs)
         self.markdown_render_bridge = MarkdownRenderBridge()
 
         self.central.setup_qml_context(self)

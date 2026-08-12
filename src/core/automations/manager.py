@@ -9,6 +9,7 @@ from .base import AutomationTask
 if TYPE_CHECKING:
     from src.core.central import AppCentral
 from .builtin_tasks import AutoHideTask
+from .plaza_update_check import PlazaUpdateCheckTask
 from .update_check import UpdateCheckTask
 
 
@@ -25,7 +26,8 @@ class AutomationManager(QObject):
         """Instantiate and register all built-in tasks"""
         builtin_tasks = [
             AutoHideTask,
-            UpdateCheckTask
+            UpdateCheckTask,
+            PlazaUpdateCheckTask,
         ]
         for task_cls in builtin_tasks:
             task_instance = task_cls(self.app_central)

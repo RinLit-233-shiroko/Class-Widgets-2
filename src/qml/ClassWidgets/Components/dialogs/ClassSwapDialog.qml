@@ -391,14 +391,23 @@ Window {
                         highlighted: !isSwap && targetSubjectId === model.sid
                         text: model.name
 
-                        leftArea: [
+                        contentItem: RowLayout {
+                            spacing: 8
+
                             Rectangle {
                                 width: 4
                                 height: 20
                                 radius: 2
                                 color: model.color
                             }
-                        ]
+
+                            Text {
+                                text: model.name
+                                elide: Text.ElideRight
+                                verticalAlignment: Text.AlignVCenter
+                                Layout.fillWidth: true
+                            }
+                        }
 
                         onClicked: {
                             if (swapState === "source_selected") {

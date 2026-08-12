@@ -5,35 +5,36 @@ import RinUI
 
 Item {
     id: root
+
     property var plugins: []
     property bool loading: false
-
-    // 自适应列数
-    readonly property int itemWidth: 300
+    property bool showRating: true
+    property int placeholderCount: 6
+    readonly property int itemWidth: 312
     readonly property int columns: Math.max(1, Math.floor(width / itemWidth))
-    readonly property int itemHeight: 90
+    readonly property int itemHeight: 96
     readonly property int spacing: 16
-
-    readonly property int rowCount: Math.ceil((plugins && plugins.length > 0 ? plugins.length : 9) / columns)
-    readonly property int contentHeight: rowCount * itemHeight + (rowCount - 1) * spacing
+    readonly property int itemCount: loading ? placeholderCount : plugins.length
+    readonly property int rowCount: itemCount > 0 ? Math.ceil(itemCount / columns) : 0
+    readonly property int contentHeight: rowCount > 0 ? rowCount * itemHeight + (rowCount - 1) * spacing : 0
 
     implicitHeight: contentHeight
 
     GridLayout {
         width: parent.width
-        height: contentHeight
+        height: root.contentHeight
         columns: root.columns
-        columnSpacing: spacing
-        rowSpacing: spacing
+        columnSpacing: root.spacing
+        rowSpacing: root.spacing
 
         Repeater {
-            model: root.loading ? 9 : root.plugins
-
+            model: root.loading ? root.placeholderCount : root.plugins
             delegate: PluginCard {
                 Layout.fillWidth: true
-                Layout.preferredHeight: itemHeight
-                plugin: !root.loading ? modelData : null
+                Layout.preferredHeight: root.itemHeight
+                plugin: root.loading ? null : modelData
                 isLoading: root.loading
+                showRating: root.showRating
             }
         }
     }

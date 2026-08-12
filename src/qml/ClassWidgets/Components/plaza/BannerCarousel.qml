@@ -6,10 +6,13 @@ import QtQuick.Shapes
 import RinUI
 import ClassWidgets.Components
 
-Item {
+ColumnLayout {
     id: root
     width: 600
     height: 240
+
+    property alias currentIndex: swipeView.currentIndex
+    property alias count: swipeView.count
 
     property var plugins: []
     property var banners: []
@@ -17,9 +20,20 @@ Item {
 
     property bool autoplayEnabled: true
     property int autoplayInterval: 4000
-    property int currentIndex: 0
 
     property var slides: []
+
+    Timer {
+        id: autoplayTimer
+        interval: root.autoplayInterval
+        repeat: true
+        running: root.autoplayEnabled && root.slides.length > 1
+        onTriggered: root.currentIndex = (root.currentIndex + 1) % root.slides.length
+    }
+
+    function resourceUrl(pluginId, resource) {
+        return pluginId ? PlazaBridge.baseUrl + "/api/plugins/" + encodeURIComponent(pluginId) + "/resources/" + resource : ""
+    }
 
     onPluginsChanged: rebuildSlides()
     onBannersChanged: rebuildSlides()
@@ -56,7 +70,7 @@ Item {
                 return {
                     id: p.id,
                     name: p.name,
-                    icon: "https://plaza.cw.rinlit.cn/api/plugins/" + p.id + "/resources/icon"
+                    icon: resourceUrl(p.id, "icon")
                 }
             })
 
@@ -71,7 +85,7 @@ Item {
         var imgs = (banners && banners.length > 0)
             ? banners.slice(0, 2)
             : [{
-                image: "https://plaza.cw.rinlit.cn/BannerWelcome.png",
+                image: PlazaBridge.baseUrl + "/BannerWelcome.png",
                 desc: "精选扩展与主题，提升你的使用体验。"
             }]
 
@@ -84,57 +98,65 @@ Item {
         }
 
         slides = result
-        currentIndex = 0
+        root.currentIndex = 0
+        pageIndicator.currentIndex = root.currentIndex
     }
 
-    Timer {
-        interval: autoplayInterval
-        repeat: true
-        running: autoplayEnabled && slides.length > 1
-        onTriggered: view.currentIndex =
-            (view.currentIndex + 1) % slides.length
-    }
-
-    Rectangle {
-        anchors.fill: parent
-        // radius: 16
-        color: Colors.proxy.backgroundColor
-        border.color: Colors.proxy.controlBorderColor
+    // ── 幻灯片页面 ──
+    // 注：SwipeView 的直接子对象都会被视为页面，因此 Repeater/Component 需声明在 delegate 内部
+    SwipeView {
+        id: swipeView
+        Layout.fillWidth: true
+        Layout.fillHeight: true
         clip: true
+        interactive: root.slides.length > 1
 
-        SwipeView {
-            id: view
-            anchors.fill: parent
-            currentIndex: root.currentIndex
-            interactive: slides.length > 1
-
-            onCurrentIndexChanged: {
-                if (root.currentIndex !== currentIndex)
-                    root.currentIndex = currentIndex
+        onCurrentIndexChanged: {
+            if (root.slides.length > 0 && currentIndex >= root.slides.length) {
+                currentIndex = root.slides.length - 1
+                return
             }
 
-            Repeater {
-                model: slides
+            if (pageIndicator.currentIndex !== currentIndex)
+                pageIndicator.currentIndex = currentIndex
 
-                delegate: Item {
-                    width: SwipeView.view.width
-                    height: SwipeView.view.height
+            if (root.autoplayEnabled && root.slides.length > 1)
+                autoplayTimer.restart()
+        }
 
-                    property var slideData: modelData
+        Repeater {
+            model: slides
+
+            // 每个 delegate 只有一个内容子元素（Loader），避免多 Item 同时参与布局
+            delegate: Loader {
+                id: slideLoader
+                // 直接引用 root 尺寸，避免初次加载时 SwipeView.view 尚未就绪导致排版错乱
+                width: swipeView.width
+                height: swipeView.height
+
+                // 自动播放定时器：声明在 delegate 内（SwipeView 不允许非 Item 直接子对象），
+                // 仅第一页的实例运行，避免多个 Timer 重复触发
+                property var slideData: modelData || ({})
+                sourceComponent: slideData.kind === "icons" ? iconsSlide : imageSlide
+
+                    // 通过 onLoaded 显式传参，避免加载组件内跨作用域引用出错
+                onLoaded: item.slideData = slideData
+
+                // ── 页码指示器（叠加在每个页面底部，随 SwipeView 根控件化无法再外挂）──
+                // ── 插件图标欢迎页 ──（声明在 delegate 内：SwipeView 的直接子对象均被视为页面）
+                Component {
+                    id: iconsSlide
 
                     Item {
-                        anchors.fill: parent
-                        visible: slideData.kind === "icons"
+                        property var slideData: ({})
 
                         // 亮色模式背景（linear to bottom-right）
                         Rectangle {
                             anchors.fill: parent
                             visible: !Theme.isDark()
                             gradient: LinearGradient {
-                                x1: 0
-                                y1: 0
-                                x2: parent.width
-                                y2: parent.height
+                                x1: 0; y1: 0
+                                x2: parent.width; y2: parent.height
                                 GradientStop { position: 0.0; color: "#68C6E9" }
                                 GradientStop { position: 1.0; color: "#62F9BD" }
                             }
@@ -148,7 +170,6 @@ Item {
                                 centerX: parent.width * 0.5
                                 centerY: parent.height * 1.0
                                 focalRadius: Math.max(parent.width, parent.height) * 0.9
-
                                 GradientStop { position: 1.0; color: "#1CCFD5" }
                                 GradientStop { position: 0.0; color: "#143E73" }
                             }
@@ -163,7 +184,8 @@ Item {
                                 spacing: 8
                                 Text {
                                     text: slideData.title || ""
-                                    typography: Typography.Subtitle
+                                    font.pixelSize: 28
+                                    font.bold: true
                                     Layout.fillWidth: true
                                     horizontalAlignment: Text.AlignHCenter
                                 }
@@ -171,6 +193,7 @@ Item {
                                 Text {
                                     text: slideData.subtitle || ""
                                     Layout.fillWidth: true
+                                    font.pixelSize: 16
                                     horizontalAlignment: Text.AlignHCenter
                                 }
                             }
@@ -190,7 +213,14 @@ Item {
                                         property var pluginData: slideData.plugins ? slideData.plugins[index] : null
                                         property bool iconLoaded: false
 
-                                        // 插件图标容器
+                                        Rectangle {
+                                            anchors.fill: parent
+                                            radius: 12
+                                            color: "#B3FFFFFF"
+                                            border.color: "#0D000000"
+                                            border.width: 1
+                                        }
+
                                         Skeleton {
                                             anchors.fill: parent
                                             radius: 12
@@ -198,7 +228,6 @@ Item {
                                             visible: !pluginData || !pluginData.icon || !iconLoaded
                                         }
 
-                                        // 插件图标
                                         Image {
                                             anchors.fill: parent
                                             source: pluginData && pluginData.icon ? pluginData.icon : ""
@@ -228,8 +257,11 @@ Item {
                                             anchors.fill: parent
                                             enabled: pluginData && pluginData.id
                                             cursorShape: enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
-                                            onClicked: Qt.openUrlExternally(
-                                                "https://plaza.cw.rinlit.cn/plugins/" + pluginData.id
+                                            onClicked: navigationView.safePush(
+                                                Qt.resolvedUrl("../../pages/plaza/Plugin.qml"),
+                                                true,
+                                                false,
+                                                { pluginId: pluginData.id }
                                             )
                                         }
 
@@ -246,10 +278,14 @@ Item {
                             }
                         }
                     }
+                }
+
+                // ── 图片横幅页 ──
+                Component {
+                    id: imageSlide
 
                     Item {
-                        anchors.fill: parent
-                        visible: slideData.kind === "image"
+                        property var slideData: ({})
 
                         Image {
                             anchors.fill: parent
@@ -270,7 +306,7 @@ Item {
                             anchors.horizontalCenter: parent.horizontalCenter
                             anchors.bottomMargin: 24
                             width: parent.width - 100
-                            text: slideData.banner && slideData.banner.desc ? slideData.banner.desc : ""
+                            text: slideData.banner ? (slideData.banner.subtitle || slideData.banner.desc || slideData.banner.title || "") : ""
                             color: "white"
                             horizontalAlignment: Text.AlignHCenter
                             elide: Text.ElideRight
@@ -279,16 +315,19 @@ Item {
                 }
             }
         }
+    }
 
-        PageIndicator {
-            id: pageIndiactor
-            anchors.bottom: parent.bottom
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.bottomMargin: 8
-            currentIndex: root.currentIndex
-            visible: count > 1 && !loading
-            interactive: true
-            count: view.count
+    PageIndicator {
+        id: pageIndicator
+        Layout.alignment: Qt.AlignHCenter
+        Layout.bottomMargin: 8
+        count: root.slides.length
+        visible: count > 1 && !root.loading
+        interactive: true
+
+        onCurrentIndexChanged: {
+            if (root.currentIndex !== currentIndex)
+                root.currentIndex = currentIndex
         }
     }
 }

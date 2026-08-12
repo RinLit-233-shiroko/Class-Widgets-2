@@ -104,7 +104,7 @@ Window {
             SettingCard {
                 Layout.fillWidth: true
                 icon.name: "ic_fluent_apps_add_in_20_regular"
-                title: qsTr("Extension Plaza (WEB)")
+                title: qsTr("Plugin Plaza")
                 description: qsTr("Discover and download plugins and themes")
                 Hyperlink {
                     text: qsTr("Open")

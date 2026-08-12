@@ -4,11 +4,10 @@ from enum import Enum
 from typing import Optional
 from collections.abc import Callable
 
-from pydantic import BaseModel, Field, Extra, PrivateAttr
+from pydantic import BaseModel, Field, Extra, PrivateAttr, field_validator, model_validator
 from PySide6.QtCore import QLocale, QCoreApplication, Property
 from loguru import logger
 
-from ..directories import DEFAULT_THEME
 from src import __version__, __version_type__
 from ..notification import NotificationProviderConfig
 
@@ -138,7 +137,7 @@ class PreferencesConfig(ConfigBaseModel):
     """
     偏好设置
     """
-    current_theme: str = Field(default_factory=lambda: DEFAULT_THEME.as_uri())
+    current_theme: str = "com.classwidgets.default"
     scale_factor: float = 1.0  # 缩放比例
     opacity: float = 1.0  # 不透明度
     widgets_anchor: LayoutAnchor = LayoutAnchor.TOP_CENTER  # 对齐方式
@@ -182,7 +181,17 @@ class InteractionsConfig(ConfigBaseModel):
 class PluginsConfig(ConfigBaseModel):
     enabled: list[str] = ["builtin.classwidgets.widgets"]
     configs: dict[str, dict[str, JsonData]] = Field(default_factory=dict)
+    auto_check_plaza_updates: bool = True
+    auto_install_plaza_updates: bool = False
 
+    @model_validator(mode="before")
+    @classmethod
+    def remove_legacy_plaza_sources(cls, values):
+        if not isinstance(values, dict) or "plaza_sources" not in values:
+            return values
+        migrated = dict(values)
+        migrated.pop("plaza_sources", None)
+        return migrated
 
 class ScheduleConfig(ConfigBaseModel):
     current_schedule: str = QCoreApplication.translate("Configs", "New Schedule 1")
@@ -202,6 +211,8 @@ class NetworkConfig(ConfigBaseModel):
     mirror_enabled: bool = True  # 是否启用网络功能
     releases_url: str = "https://classwidgets.rinlit.cn/2/releases.json"  # 版本更新地址
     auto_check_updates: bool = True  # 自动检查更新
+
+    plaza_url: str = "https://plaza.cw.rinlit.cn"
 
 class NotificationsConfig(ConfigBaseModel):
     """

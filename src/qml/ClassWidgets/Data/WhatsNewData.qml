@@ -74,7 +74,7 @@ QtObject {
                 AppCentral.toggleWidgetsEditMode()
                 break
             case "openPluginPlaza":
-                Qt.openUrlExternally("https://plaza.cw.rinlit.cn")
+                Qt.openUrlExternally(Configs.data.network.plaza_url)
                 break
             default:
                 console.log("Unknown action:", action)

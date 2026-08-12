@@ -42,13 +42,19 @@ Item {
         function onTextChanged() { restart(); }
     }
 
+    // 只有内容超出可视宽度时才滚动；内容放得下时静止显示
     function restart() {
         scrollAnim.stop();
         finished();
 
-        if (!running) return;
+        // 未启用滚动，或内容宽度不超过可视宽度：静止显示，无需滚动
+        if (!running || label.width <= marquee.width) {
+            label.x = Math.max(0, (marquee.width - label.width) / 2);
+            return;
+        }
 
+        // 内容超宽：从右侧循环滚动到左侧
+        label.x = marquee.width;
         scrollAnim.restart();
-        finished.connect(scrollAnim.stop);
     }
 }

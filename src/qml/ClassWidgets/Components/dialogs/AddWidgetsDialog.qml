@@ -12,6 +12,21 @@ Dialog {
     standardButtons: Dialog.Close
     width: 600
     height: 500
+    property var selectedWidget: widgetsListView.currentIndex >= 0
+        ? widgetsListView.model[widgetsListView.currentIndex]
+        : null
+    property bool themeReloading: false
+
+    Connections {
+        target: CWThemeManager
+        function onThemeReloadStarted() {
+            addWidgetsDialog.themeReloading = true
+        }
+
+        function onThemeReadyToReload() {
+            addWidgetsDialog.themeReloading = false
+        }
+    }
 
     RowLayout {
         Layout.fillWidth: true
@@ -33,13 +48,30 @@ Dialog {
                 Layout.fillHeight: true
                 model: WidgetsModel.definitionsList
                 textRole: "name"
+                onModelChanged: {
+                    if (count > 0 && currentIndex < 0)
+                        currentIndex = 0
+                }
+
+                onCountChanged: {
+                    if (count > 0 && currentIndex < 0)
+                        currentIndex = 0
+                }
+
+                Component.onCompleted: {
+                    if (count > 0 && currentIndex < 0)
+                        currentIndex = 0
+                }
                 delegate: ListViewDelegate {
                     Layout.fillWidth: true
-                    leftArea: Icon {
-                        icon: "ic_fluent_app_generic_20_regular"
-                        size: 22
-                    }
-                    middleArea: [
+                    contentItem: RowLayout {
+                        spacing: 8
+
+                        Icon {
+                            name: "ic_fluent_app_generic_20_regular"
+                            size: 22
+                        }
+
                         Text {
                             wrapMode: Text.NoWrap
                             text: modelData.name
@@ -47,7 +79,7 @@ Dialog {
                             Layout.fillWidth: true
                             Layout.rightMargin: 12
                         }
-                    ]
+                    }
                     ToolTip {
                         text: modelData.name
                         visible: parent.hovered
@@ -60,7 +92,6 @@ Dialog {
             id: widgetInfoLayout
             Layout.fillWidth: true
             Layout.fillHeight: true
-            property var model: widgetsListView.model[widgetsListView.currentIndex]
 
             Item {
                 Layout.fillWidth: true
@@ -74,7 +105,9 @@ Dialog {
                 Layout.leftMargin: 20
                 Layout.topMargin: 20
                 elide: Text.ElideMiddle
-                text: widgetInfoLayout.model.name || qsTr("No Widget Selected")
+                text: addWidgetsDialog.selectedWidget
+                    ? addWidgetsDialog.selectedWidget.name
+                    : qsTr("No Widget Selected")
             }
 
             Item {
@@ -85,21 +118,25 @@ Dialog {
             Loader {
                 id: widgetLoader
                 Layout.alignment: Qt.AlignCenter
-                source: widgetsListView.currentIndex >= 0
-                ? widgetInfoLayout.model.qml_path
-                : ""
+                active: addWidgetsDialog.visible
+                    && addWidgetsDialog.selectedWidget !== null
+                    && !addWidgetsDialog.themeReloading
+                source: addWidgetsDialog.selectedWidget
+                    ? addWidgetsDialog.selectedWidget.qml_path
+                    : ""
                 enabled: false // 阻止事件传递
 
                 onItemChanged: {
-                    if (item) {
-                        if (widgetInfoLayout.model.backend_obj) {
-                            item.backend = widgetInfoLayout.model.backend_obj
+                    if (item && addWidgetsDialog.selectedWidget) {
+                        if (addWidgetsDialog.selectedWidget.backend_obj) {
+                            item.backend = addWidgetsDialog.selectedWidget.backend_obj
                         }
-                        if (widgetInfoLayout.model.default_settings) {
-                            item.settings = widgetInfoLayout.model.default_settings
+                        if (addWidgetsDialog.selectedWidget.default_settings) {
+                            item.settings = addWidgetsDialog.selectedWidget.default_settings
                         }
                         Qt.callLater(function() {
-                            anim.start()
+                            if (widgetLoader.item)
+                                anim.start()
                         })
                     }
                 }
@@ -138,9 +175,10 @@ Dialog {
                 icon.name: "ic_fluent_add_20_regular"
                 text: qsTr("Add")
                 highlighted: true
+                enabled: addWidgetsDialog.selectedWidget !== null
                 onClicked: {
                     //添加
-                    WidgetsModel.addInstance(widgetsListView.model[widgetsListView.currentIndex].id)
+                    WidgetsModel.addInstance(addWidgetsDialog.selectedWidget.id)
                     addWidgetsDialog.close()
                 }
             }

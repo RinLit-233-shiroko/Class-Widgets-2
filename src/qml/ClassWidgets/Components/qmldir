@@ -38,3 +38,16 @@ BannerCarousel 1.0 plaza/BannerCarousel.qml
 PluginSection 1.0 plaza/PluginSection.qml
 PluginGrid 1.0 plaza/PluginGrid.qml
 PluginCard 1.0 plaza/PluginCard.qml
+PluginCardRounded 1.0 plaza/PluginCardRounded.qml
+MarkdownViewer 1.0 plaza/MarkdownViewer.qml
+PlazaLoading 1.0 plaza/PlazaLoading.qml
+EmptyState 1.0 plaza/EmptyState.qml
+ErrorState 1.0 plaza/ErrorState.qml
+Pagination 1.0 plaza/Pagination.qml
+PluginList 1.0 plaza/PluginList.qml
+PluginMeta 1.0 plaza/PluginMeta.qml
+PluginRating 1.0 plaza/PluginRating.qml
+PlazaStatusCard 1.0 plaza/PlazaStatusCard.qml
+PluginCommentsDialog 1.0 plaza/PluginCommentsDialog.qml
+TagShowcase 1.0 plaza/TagShowcase.qml
+FilterToolbar 1.0 plaza/FilterToolbar.qml
