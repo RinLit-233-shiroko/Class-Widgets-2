@@ -18,6 +18,7 @@ Item {
             Layout.alignment: Qt.AlignRight
 
             Button {
+                enabled: !AppCentral.scheduleManager.isReadonly()
                 icon.name: "ic_fluent_arrow_reset_20_regular"
                 text: qsTr("Restore Defaults")
                 onClicked: {
@@ -42,6 +43,7 @@ Item {
             ToolSeparator {}
 
             Button {
+                enabled: !AppCentral.scheduleManager.isReadonly()
                 highlighted: true
                 icon.name: "ic_fluent_add_20_regular"
                 text: qsTr("Add Subject")
@@ -67,6 +69,7 @@ Item {
             model: AppCentral.scheduleEditor.subjects
 
             delegate: SubjectClip {
+                enabled: !AppCentral.scheduleManager.isReadonly()
                 id: subjectClip
             }
 

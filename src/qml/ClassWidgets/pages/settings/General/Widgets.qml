@@ -94,6 +94,7 @@ FluentPage {
                 stepSize: 0.05
                 tickmarks: true
                 tickFrequency: 0.5
+                enabled: !Configs.isKeyLocked("preferences.scale_factor")
                 onValueChanged: if (pressed) Configs.set("preferences.scale_factor", value)
                 Component.onCompleted: value = Configs.data.preferences.scale_factor || 1.0
             }
@@ -112,6 +113,7 @@ FluentPage {
                 tickmarks: true
                 tickFrequency: 0.2
                 toolTip.text: (value * 100).toString() + "%"
+                enabled: !Configs.isKeyLocked("preferences.opacity")
                 onValueChanged: if (pressed) Configs.set("preferences.opacity", value)
                 Component.onCompleted: value = Configs.data.preferences.opacity || 1.0
             }
@@ -128,6 +130,7 @@ FluentPage {
                 Layout.fillWidth: true
                 Layout.preferredWidth: 200
                 model: Qt.fontFamilies().sort()
+                enabled: !Configs.isKeyLocked("preferences.font")
                 editable: true
 
                 onCurrentTextChanged: {
@@ -177,6 +180,7 @@ FluentPage {
                     tickFrequency: 100
                     Layout.fillWidth: true
                     showTooltip: false
+                    enabled: !Configs.isKeyLocked("preferences.font_weight")
 
                     // 初始化
                     Component.onCompleted: {
@@ -187,6 +191,7 @@ FluentPage {
                     // 更新
                     onMoved: {
                         let v = parseInt (weightSlider.value)
+                        enabled: !Configs.isKeyLocked("preferences.font_weight")
                         if (focus) Configs.set("preferences.font_weight", v)
                     }
                 }
@@ -227,6 +232,7 @@ FluentPage {
                 Layout.fillWidth: true
                 model: Qt.application.screens
                 textRole: "name"
+                enabled: !Configs.isKeyLocked("preferences.display")
                 onCurrentTextChanged: if (focus) Configs.set("preferences.display", currentText)
                 Component.onCompleted: {
                     const saved = Configs.data.preferences.display
@@ -267,6 +273,7 @@ FluentPage {
                         anchors.margins: 12
                         ButtonGroup.group: anchorGroup
                         checked: Configs.data.preferences.widgets_anchor === "top_left"
+                        enabled: !Configs.isKeyLocked("preferences.widgets_anchor")
                         onClicked: Configs.set("preferences.widgets_anchor", "top_left")
                     }
 
@@ -277,6 +284,7 @@ FluentPage {
                         anchors.topMargin: 12
                         ButtonGroup.group: anchorGroup
                         checked: Configs.data.preferences.widgets_anchor === "top_center"
+                        enabled: !Configs.isKeyLocked("preferences.widgets_anchor")
                         onClicked: Configs.set("preferences.widgets_anchor", "top_center")
                     }
 
@@ -287,6 +295,7 @@ FluentPage {
                         anchors.margins: 12
                         ButtonGroup.group: anchorGroup
                         checked: Configs.data.preferences.widgets_anchor === "top_right"
+                        enabled: !Configs.isKeyLocked("preferences.widgets_anchor")
                         onClicked: Configs.set("preferences.widgets_anchor", "top_right")
                     }
 
@@ -297,6 +306,7 @@ FluentPage {
                         anchors.margins: 12
                         ButtonGroup.group: anchorGroup
                         checked: Configs.data.preferences.widgets_anchor === "bottom_left"
+                        enabled: !Configs.isKeyLocked("preferences.widgets_anchor")
                         onClicked: Configs.set("preferences.widgets_anchor", "bottom_left")
                     }
 
@@ -307,6 +317,7 @@ FluentPage {
                         anchors.bottomMargin: 12
                         ButtonGroup.group: anchorGroup
                         checked: Configs.data.preferences.widgets_anchor === "bottom_center"
+                        enabled: !Configs.isKeyLocked("preferences.widgets_anchor")
                         onClicked: Configs.set("preferences.widgets_anchor", "bottom_center")
                     }
 
@@ -317,6 +328,7 @@ FluentPage {
                         anchors.margins: 12
                         ButtonGroup.group: anchorGroup
                         checked: Configs.data.preferences.widgets_anchor === "bottom_right"
+                        enabled: !Configs.isKeyLocked("preferences.widgets_anchor")
                         onClicked: Configs.set("preferences.widgets_anchor", "bottom_right")
                     }
                 }
@@ -336,6 +348,7 @@ FluentPage {
                             from: -1000
                             to: 1000
                             stepSize: 1
+                            enabled: !Configs.isKeyLocked("preferences.widgets_offset_x")
                             onValueChanged: if (focus) Configs.set("preferences.widgets_offset_x", value)
                             Component.onCompleted: value = Configs.data.preferences.widgets_offset_x || 0
                         }
@@ -350,6 +363,7 @@ FluentPage {
                             from: -1000
                             to: 1000
                             stepSize: 1
+                            enabled: !Configs.isKeyLocked("preferences.widgets_offset_y")
                             onValueChanged: if (focus) Configs.set("preferences.widgets_offset_y", value)
                             Component.onCompleted: value = Configs.data.preferences.widgets_offset_y || 0
                         }

@@ -55,6 +55,7 @@ FluentWindow {
             Layout.alignment: Qt.AlignRight
             icon.name: "ic_fluent_save_20_regular"
             size: 18
+            enabled: !AppCentral.scheduleManager.isReadonly()
 
             ToolTip {
                 text: qsTr("Save Changes")

@@ -59,6 +59,20 @@ class SettingsPagePayload(TypedDict):
     icon: str
 
 
+class ApplicationInfoPayload(TypedDict):
+    name: str
+    version: str
+    channel: str
+    pluginApiVersion: str
+    platform: str
+
+
+class DiagnosticLogPayload(TypedDict):
+    time: str
+    level: str
+    message: str
+
+
 class PluginMeta(TypedDict, total=False):
     id: str
     name: str

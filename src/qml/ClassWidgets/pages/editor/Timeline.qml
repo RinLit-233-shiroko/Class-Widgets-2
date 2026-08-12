@@ -15,12 +15,14 @@ Item {
         spacing: 8
 
         DayListView {
+            enabled: !AppCentral.scheduleManager.isReadonly()
             id: dayList
         }
 
         ToolSeparator { Layout.fillHeight: true }
 
         EntryListView {
+            enabled: !AppCentral.scheduleManager.isReadonly()
             id: entryList
             currentDayIndex: dayList.currentIndex
 
@@ -44,6 +46,7 @@ Item {
         ToolSeparator { Layout.fillHeight: true }
 
         EntryDetailView {
+            enabled: !AppCentral.scheduleManager.isReadonly()
             id: detailView
             Layout.preferredWidth: 220
         }

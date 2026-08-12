@@ -28,6 +28,7 @@ FluentPage {
 
             Switch {
                 id: hoverFadeSwitch
+                enabled: !Configs.isKeyLocked("interactions.hover_fade")
                 onCheckedChanged: Configs.set("interactions.hover_fade", checked)
                 Component.onCompleted: checked = Configs.data.interactions.hover_fade
             }
@@ -42,6 +43,7 @@ FluentPage {
             )
             Switch {
                 id: tapToHideSwitch
+                enabled: !Configs.isKeyLocked("interactions.hide.clicked")
                 onCheckedChanged: Configs.set("interactions.hide.clicked", checked)
                 Component.onCompleted: checked = Configs.data.interactions.hide.clicked
             }
@@ -62,6 +64,7 @@ FluentPage {
                 }
                 textRole: "text"
                 valueRole: "value"
+                enabled: !Configs.isKeyLocked("interactions.hide.mini_mode")
                 onCurrentValueChanged: if (focus) Configs.set("interactions.hide.mini_mode", currentValue) // !important "focus"!!!
                 Component.onCompleted: {
                     console.log(Configs.data.interactions.hide.mini_mode + "123")
@@ -75,22 +78,23 @@ FluentPage {
                     CheckBox {
                         Layout.fillWidth: true
                         text: qsTr("Hide when in class")
+                        enabled: !Configs.isKeyLocked("interactions.hide.in_class")
                         onCheckedChanged: Configs.set("interactions.hide.in_class", checked)
                         Component.onCompleted: checked = Configs.data.interactions.hide.in_class
                     }
                     CheckBox {
                         Layout.fillWidth: true
                         text: qsTr("Hide when a window is maximized")
+                        enabled: !Configs.isKeyLocked("interactions.hide.maximized") && Qt.platform.os === "windows"
                         onCheckedChanged: Configs.set("interactions.hide.maximized", checked)
                         Component.onCompleted: checked = Configs.data.interactions.hide.maximized
-                        enabled: Qt.platform.os === "windows"
                     }
                     CheckBox {
                         Layout.fillWidth: true
                         text: qsTr("Hide when a window enters fullscreen")
+                        enabled: !Configs.isKeyLocked("interactions.hide.fullscreen") && Qt.platform.os === "windows"
                         onCheckedChanged: Configs.set("interactions.hide.fullscreen", checked)
                         Component.onCompleted: checked = Configs.data.interactions.hide.fullscreen
-                        enabled: Qt.platform.os === "windows"
                     }
                 }
             }

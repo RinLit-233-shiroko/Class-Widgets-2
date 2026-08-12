@@ -86,6 +86,12 @@ class UtilsBackend(QObject):
     def logs(self):
         return self._logs
 
+    def get_log_snapshot(self, limit: int = MAX_LOG_LINES) -> list[dict]:
+        safe_limit = max(0, min(limit, self.MAX_LOG_LINES))
+        if safe_limit == 0:
+            return []
+        return [dict(item) for item in self._logs[-safe_limit:]]
+
     @Slot(result=list)
     def clearLogs(self):
         """清理物理日志文件"""

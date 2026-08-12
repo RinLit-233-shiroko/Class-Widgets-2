@@ -35,6 +35,7 @@ FluentPage {
             icon.name: "ic_fluent_globe_20_regular"
 
             ComboBox {
+                enabled: !Configs.isKeyLocked("locale.language")
                 property var data: [AppCentral.translator.getSystemLanguage(), "en_US", "ja_JP", "zh_CN", "zh_HK"]
                 property bool initialized: false
                 model: ListModel {
@@ -74,6 +75,7 @@ FluentPage {
             icon.name: "ic_fluent_paint_brush_20_regular"
 
             ComboBox {
+                enabled: !Configs.isKeyLocked("preferences.current_theme")
                 property var data: [Theme.mode.Light, Theme.mode.Dark, Theme.mode.Auto]
                 model: ListModel {
                     ListElement { text: qsTr("Light") }
@@ -104,6 +106,7 @@ FluentPage {
                 }
                 textRole: "text"
 
+                enabled: !Configs.isKeyLocked("preferences.widgets_layer")
                 onCurrentIndexChanged: if (focus) Configs.set("preferences.widgets_layer", model.get(currentIndex).value)
                 Component.onCompleted: {
                     for (var i = 0; i < model.count; i++) {
@@ -124,6 +127,7 @@ FluentPage {
 
             Switch {
                 id: miniModeSwitch
+                enabled: !Configs.isKeyLocked("preferences.mini_mode")
                 onCheckedChanged: Configs.set("preferences.mini_mode", checked)
                 Component.onCompleted: {
                     checked = Configs.data.preferences.mini_mode
@@ -147,11 +151,11 @@ FluentPage {
             icon.name: "ic_fluent_open_20_regular"
 
             Switch {
+                enabled: !Configs.isKeyLocked("app.auto_startup") && UtilsBackend.autostartSupported()
                 onCheckedChanged: {
                     Configs.set("app.auto_startup", checked)
                     UtilsBackend.setAutostart(checked)
                 }
-                enabled: UtilsBackend.autostartSupported()
                 Component.onCompleted: {
                     if (!UtilsBackend.autostartEnabled()) {
                         checked = false

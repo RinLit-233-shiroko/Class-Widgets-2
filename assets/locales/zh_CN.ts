@@ -114,42 +114,42 @@ Licensed under the MIT license</source>
         <translation>启用后，应用程序将&lt;b&gt;不会&lt;/b&gt;保存日志。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="177"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="178"/>
         <source>Clear Logs</source>
         <translation>清除日志</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="181"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="182"/>
         <source>Clear</source>
         <translation>清除</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="186"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="187"/>
         <source>Cleared</source>
         <translation>已清除</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="187"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="188"/>
         <source>All logs have been cleared about </source>
         <translation>所有日志均已清除完毕 </translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="193"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="194"/>
         <source>Failed</source>
         <translation>失败</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="194"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="195"/>
         <source>Failed to clear logs.</source>
         <translation>清除日志失败。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="207"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="208"/>
         <source>Debug Mode</source>
         <translation>调试模式</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="208"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="209"/>
         <source>Enable Debug Mode to access core widget information, and debugging tools 
 * Requires restart</source>
         <translation>启用调试模式可访问核心部件信息及调试工具 
@@ -162,22 +162,22 @@ Licensed under the MIT license</source>
 * 需要重启。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="223"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="225"/>
         <source>Show Tutorials again</source>
         <translation>重新进行初次引导</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="226"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="228"/>
         <source>Restart</source>
         <translation>重启</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="237"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="240"/>
         <source>License Agreement</source>
         <translation>许可证协议</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="244"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="247"/>
         <source>This project (Class Widgets 2) is licensed under the GPL-3 license. For details, see:</source>
         <translation>本项目（Class Widgets 2）采用 GPL-3 许可证。详细信息请参见：</translation>
     </message>
@@ -356,7 +356,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation type="vanished">默认</translation>
     </message>
     <message>
-        <location filename="../../src/core/config/model.py" line="158"/>
+        <location filename="../../src/core/config/model.py" line="198"/>
         <source>New Schedule 1</source>
         <translation>新课程表 1</translation>
     </message>
@@ -803,61 +803,61 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation>课表编辑器</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="60"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="61"/>
         <source>Save Changes</source>
         <translation>保存更改</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="39"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="68"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="69"/>
         <source>Saved</source>
         <translation>已保存</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="41"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="70"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="71"/>
         <source>Schedule saved successfully</source>
         <translation>课程表已成功保存</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="45"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="74"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="75"/>
         <source>Save Failed</source>
         <translation>保存失败</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="47"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="76"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="77"/>
         <source>Failed to save schedule, see log for details</source>
         <translation>无法保存课程表，请查看日志以获取详细信息</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="90"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="91"/>
         <source>Home</source>
         <translation>首页</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="95"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="96"/>
         <source>Timeline</source>
         <translation>时间线</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="100"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="101"/>
         <source>Schedule</source>
         <translation>课程表</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="106"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="107"/>
         <source>Subjects</source>
         <translation>科目</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="119"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="120"/>
         <source>Unsaved Changes</source>
         <translation>未保存的更改</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="120"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="121"/>
         <source>Don&apos;t forget to save your changes before closing the editor or switching schedule. You can click the save button in the title bar.</source>
         <translation>关闭编辑器或切换课程表之前，请不要忘记保存更改。您可以点击标题栏中的“保存”按钮。</translation>
     </message>
@@ -868,7 +868,7 @@ You can click the save button in the title bar.</source>
 可以在标题栏点击保存按钮。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="126"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="127"/>
         <source>OK</source>
         <translation>好</translation>
     </message>
@@ -1104,7 +1104,7 @@ Please try again later.</source>
     <name>ExportScheduleDialog</name>
     <message>
         <location filename="../../src/core/convertor/slots.py" line="24"/>
-        <location filename="../../src/core/schedule/manager.py" line="258"/>
+        <location filename="../../src/core/schedule/manager.py" line="286"/>
         <source>Export Schedule</source>
         <translation>导出课程表</translation>
     </message>
@@ -1114,7 +1114,7 @@ Please try again later.</source>
         <translation>CSES 格式 (*.yaml *.yml)</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/manager.py" line="261"/>
+        <location filename="../../src/core/schedule/manager.py" line="289"/>
         <source>Class Widgets 2 JSON Files (*.json)</source>
         <translation>Class Widgets 2 JSON 文件 (*.json)</translation>
     </message>
@@ -1185,88 +1185,88 @@ Please try again later.</source>
         <translation>打开课程表文件夹</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="36"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="37"/>
         <source>Import Schedule</source>
         <translation>导入课程表</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="40"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="41"/>
         <source>Import from Class Widgets 2</source>
         <translation>从 Class Widgets 2 导入</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="46"/>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="70"/>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="89"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="47"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="71"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="90"/>
         <source>Import Failed</source>
         <translation>导入失败</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="47"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="48"/>
         <source>Failed to import the schedule.Please check if the schedule file is valid.</source>
         <translation>请确认课程表文件是有效的。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="59"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="60"/>
         <source>Import from CSES</source>
         <translation>从 CSES 导入</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="64"/>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="83"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="65"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="84"/>
         <source>Import Success</source>
         <translation>导入成功</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="65"/>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="84"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="66"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="85"/>
         <source>The schedule has been imported successfully.</source>
         <translation>课程表已成功导入。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="71"/>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="90"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="72"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="91"/>
         <source>Failed to import the schedule. Please check if the schedule file is valid.</source>
         <translation>请确认课程表文件是有效的。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="78"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="79"/>
         <source>Import from Class Widgets 1</source>
         <translation>从 Class Widgets 1 导入</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="104"/>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="141"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="106"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="143"/>
         <source>Create a new schedule</source>
         <translation>创建新课表</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="114"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="116"/>
         <source>Your schedules</source>
         <translation>您的课表</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="144"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="146"/>
         <source>Enter a name for your new schedule</source>
         <translation>请输入新课表的名称</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="152"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="154"/>
         <source>Schedule name</source>
         <translation>课表名称</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="176"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="178"/>
         <source>Cannot be empty (⊙x⊙;)</source>
         <translation>不能为空 (⊙x⊙;)</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="179"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="181"/>
         <source>Cannot duplicate existing name (⊙x⊙;)</source>
         <translation>不能重复现有名称 (⊙x⊙;)</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="181"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="183"/>
         <source>Great! That&apos;s it. ヾ(≧▽≦*)o</source>
         <translation>太棒了！搞定啦。ヾ(≧▽≦*)o</translation>
     </message>
@@ -1342,12 +1342,12 @@ Please try again later.</source>
         <translation>Class Widgets 1 JSON 文件 (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/manager.py" line="209"/>
+        <location filename="../../src/core/schedule/manager.py" line="237"/>
         <source>Import Schedule</source>
         <translation>导入课程表</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/manager.py" line="212"/>
+        <location filename="../../src/core/schedule/manager.py" line="240"/>
         <source>Class Widgets 2 JSON Files (*.json)</source>
         <translation>Class Widgets 2 JSON 文件 (*.json)</translation>
     </message>
@@ -1385,82 +1385,82 @@ Please try again later.</source>
         <translation>设置 Class Widgets 的语言</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="41"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="42"/>
         <source>Use System Language</source>
         <translation>使用系统语言</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="67"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="68"/>
         <source>Customize</source>
         <translation>自定义</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="72"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="73"/>
         <source>App Theme</source>
         <translation>应用主题</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="73"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="74"/>
         <source>Select which app theme to display</source>
         <translation>选择显示的应用主题</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="79"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="81"/>
         <source>Light</source>
         <translation>浅色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="80"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="82"/>
         <source>Dark</source>
         <translation>深色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="81"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="83"/>
         <source>Use system setting</source>
         <translation>使用系统设置</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="93"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="95"/>
         <source>Window Layer</source>
         <translation>窗口图层</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="94"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="96"/>
         <source>Let your widgets floating on top, or tuck them neatly behind other windows</source>
         <translation>让您的小组件浮在顶部，或整齐地隐藏在其他窗口后面</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="99"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="101"/>
         <source>Pin on Top</source>
         <translation>置顶</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="102"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="104"/>
         <source>Send to Back</source>
         <translation>置底</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="121"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="124"/>
         <source>Mini Mode</source>
         <translation>迷你模式</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="122"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="125"/>
         <source>Use a more compact layout for smaller widgets</source>
         <translation>使用更紧凑的布局以适配小型小组件</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="140"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="144"/>
         <source>Actions</source>
         <translation>行动</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="145"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="149"/>
         <source>Run at Startup</source>
         <translation>开机自启动</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="146"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="150"/>
         <source>Run Class Widgets on startup</source>
         <translation>开机后自动运行 Class Widgets</translation>
     </message>
@@ -1494,7 +1494,7 @@ Please try again later.</source>
         <translation type="vanished">悬停使部件透明并允许点击穿透，移开后恢复显示。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="39"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="40"/>
         <source>Tap to hide</source>
         <translation>轻触隐藏</translation>
     </message>
@@ -1510,42 +1510,42 @@ Please try again later.</source>
         <translation>悬停使部件透明并允许点击穿透，移开后恢复显示</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="40"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="41"/>
         <source>Click on the widget to hide it, click it again to bring it back</source>
         <translation>点击小组件以隐藏，再次点击以恢复显示</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="52"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="54"/>
         <source>More hide behavior</source>
         <translation>更多隐藏行为</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="54"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="56"/>
         <source>Choose whether widgets hide or switch to Mini Mode when triggered</source>
         <translation>选择触发时部件隐藏或切换至迷你模式</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="60"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="62"/>
         <source>Hide Widgets</source>
         <translation>隐藏小组件</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="61"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="63"/>
         <source>Switch to mini mode</source>
         <translation>切换至迷你模式</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="77"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="80"/>
         <source>Hide when in class</source>
         <translation>在课堂中隐藏</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="83"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="87"/>
         <source>Hide when a window is maximized</source>
         <translation>窗口最大化时隐藏</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="90"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="94"/>
         <source>Hide when a window enters fullscreen</source>
         <translation>窗口进入全屏时隐藏</translation>
     </message>
@@ -1590,117 +1590,117 @@ Please try again later.</source>
         <translation>基本</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="26"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="362"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="27"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="370"/>
         <source>Enable notifications</source>
         <translation>启用通知</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="27"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="28"/>
         <source>Turn on or off all notifications from the application</source>
         <translation>开启或关闭 Class Widgets 的所有通知</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="38"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="39"/>
         <source>Ringtone</source>
         <translation>提醒声音</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="39"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="40"/>
         <source>Configure sounds for different types of notifications</source>
         <translation>为不同类型的通知配置声音</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="53"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="55"/>
         <source>Information</source>
         <translation>信息</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="54"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="56"/>
         <source>Notification sounds for general information</source>
         <translation>常规信息通知的提示音</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="63"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="104"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="145"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="186"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="65"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="107"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="149"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="191"/>
         <source>Default sound</source>
         <translation>默认</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="76"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="116"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="157"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="198"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="78"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="119"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="161"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="203"/>
         <source>Play sound</source>
         <translation>播放音效</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="83"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="124"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="165"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="206"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="85"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="127"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="169"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="211"/>
         <source>Select sound</source>
         <translation>选择声音</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="94"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="97"/>
         <source>Announcement</source>
         <translation>通知</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="95"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="98"/>
         <source>Notification sounds for class and break announcements</source>
         <translation>日程、活动等变更的实时通知</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="135"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="139"/>
         <source>Warning</source>
         <translation>警告</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="136"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="140"/>
         <source>Notification sounds for warnings and important alerts</source>
         <translation>警告通知和重要警报</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="176"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="181"/>
         <source>System</source>
         <translation>系统</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="177"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="182"/>
         <source>Notification sounds for system messages and updates</source>
         <translation>系统信息通知和最新情况</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="219"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="225"/>
         <source>Default duration (ms)</source>
         <translation>默认持续时长（毫秒）</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="220"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="226"/>
         <source>Customize the notification duration (ms)</source>
         <translation>自定义通知持续时长（毫秒）</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="243"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="250"/>
         <source>Providers</source>
         <translation>通知推送方</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="363"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="371"/>
         <source>Turn on or off notifications from this provider</source>
         <translation>允许或阻止该推送方的通知</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="388"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="396"/>
         <source>Use Dynamic Notification</source>
         <translation>使用灵动通知</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="411"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="419"/>
         <source>Use System Notification</source>
         <translation>使用系统通知</translation>
     </message>
@@ -1846,17 +1846,17 @@ If translations are missing after a theme change, please restart</source>
         <translation>选用一个用于应用的主题色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="56"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="58"/>
         <source>Themes</source>
         <translation>主题</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="211"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="215"/>
         <source>Incompatible Theme</source>
         <translation>此主题不兼容</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="216"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="220"/>
         <source>This theme requires the app version %1, but current app version is %2. 
 
 Applying an incompatible theme may cause serious errors, crashes, or unexpected behavior.</source>
@@ -1872,27 +1872,27 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
 不兼容可能导致意外问题。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="227"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="231"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="234"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="238"/>
         <source>Apply anyway</source>
         <translation>仍然应用</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="134"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="138"/>
         <source>Built-in</source>
         <translation>内置</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="163"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="167"/>
         <source>No description</source>
         <translation>无描述</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="141"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="145"/>
         <source>Incompatible</source>
         <translation>不兼容</translation>
     </message>
@@ -2631,24 +2631,24 @@ Do you want to %3 this plugin?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="221"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="222"/>
         <source>All</source>
         <translation>全部</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="224"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="358"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="225"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="360"/>
         <source>Enabled</source>
         <translation>启用</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="227"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="358"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="228"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="360"/>
         <source>Disabled</source>
         <translation>已禁用</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="302"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="303"/>
         <source>Built-in</source>
         <translation>内置</translation>
     </message>
@@ -2669,49 +2669,49 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="348"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="350"/>
         <source>This plugin requires API version %1, but current API version is %2. 
 It&apos;s incompatible and may cause unexpected issues.</source>
         <translation>此插件需要API版本%1，但当前API版本为%2。
 不兼容可能导致意外问题。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="379"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="381"/>
         <source>Update</source>
         <translation type="unfinished">更新</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="390"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="392"/>
         <source>Open In</source>
         <translation>在…中打开</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="393"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="395"/>
         <source>Finder</source>
         <translation>访达</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="393"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="395"/>
         <source>File Explorer</source>
         <translation>文件资源管理器</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="398"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="400"/>
         <source>Open Failed</source>
         <translation>打开失败</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="399"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="401"/>
         <source>Failed to open the plugin folder.</source>
         <translation>无法打开插件文件夹。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="408"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="410"/>
         <source>External Online Repository</source>
         <translation>外部在线仓库</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="416"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="418"/>
         <source>Uninstall</source>
         <translation>卸载</translation>
     </message>
@@ -2765,12 +2765,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation>预览</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="81"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="82"/>
         <source>Edit</source>
         <translation>编辑</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="102"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="103"/>
         <source>Week %1</source>
         <translation>第 %1 周</translation>
     </message>
@@ -2779,12 +2779,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation type="obsolete">一周</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="148"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="149"/>
         <source>Week Cycle</source>
         <translation>多周轮换</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="171"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="173"/>
         <source>Quick Add Subject</source>
         <translation>快速添加课程</translation>
     </message>
@@ -3507,23 +3507,23 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="vanished">计科</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="22"/>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="29"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="23"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="30"/>
         <source>Restore Defaults</source>
         <translation>恢复默认设置</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="32"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="33"/>
         <source>Are you sure you want to restore the default subjects?</source>
         <translation>您确定要恢复默认科目吗？</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="47"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="49"/>
         <source>Add Subject</source>
         <translation>添加科目</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="50"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="52"/>
         <source>Subject</source>
         <translation>科目</translation>
     </message>
@@ -4074,59 +4074,59 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation>α 测试版</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="234"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="236"/>
         <source>Use Mirror Source</source>
         <translation>使用镜像源</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="235"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="237"/>
         <source>If GitHub is slow or unavailable in your region, use a mirror to download updates faster</source>
         <translation>如果 GitHub 在你所在地区速度较慢或无法访问，可使用镜像源以加快下载</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="244"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="247"/>
         <source>Choose a mirror source for downloading updates</source>
         <translation>选择用于下载更新的镜像源</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="243"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="246"/>
         <source>Select Mirror</source>
         <translation>选择镜像源</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="272"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="276"/>
         <source>Auto check for updates</source>
         <translation>自动检查更新</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="273"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="277"/>
         <source>Automatically check for updates and download them when they are available 
 * Requires restart</source>
         <translation>自动检查更新并在可用时下载
 * 需要重启</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="292"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="297"/>
         <source>Advanced</source>
         <translation>高级选项</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="298"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="303"/>
         <source>Updater Server URL</source>
         <translation>更新服务器地址</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="299"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="304"/>
         <source>Set a custom URL to use for the updater server</source>
         <translation>设置自定义的更新服务器地址</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="313"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="319"/>
         <source>Reset to default</source>
         <translation>重置为默认值</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="321"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="327"/>
         <source>https://example.com/releases.json/</source>
         <translation>https://example.com/releases.json/</translation>
     </message>
@@ -4335,118 +4335,118 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation>让小组件显示得更大或保持紧凑</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="105"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="106"/>
         <source>Opacity</source>
         <translation>不透明度</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="106"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="107"/>
         <source>Change the opacity of the background of widgets</source>
         <translation>调整小组件背景的不透明度</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="123"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="125"/>
         <source>Font</source>
         <translation>字体</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="124"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="126"/>
         <source>Choose a font for the widgets</source>
         <translation>为小组件选择用于显示的字体</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="150"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="153"/>
         <source>Font weight</source>
         <translation>字重</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="151"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="154"/>
         <source>Set the thickness of the font</source>
         <translation>调整字体粗细</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="156"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="159"/>
         <source>Thin</source>
         <translation>极细</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="157"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="160"/>
         <source>Extra Light</source>
         <translation>特细</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="158"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="161"/>
         <source>Light</source>
         <translation>细体</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="159"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="162"/>
         <source>Regular</source>
         <translation>常规</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="160"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="163"/>
         <source>Medium</source>
         <translation>中等</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="161"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="164"/>
         <source>Semi Bold</source>
         <translation>半粗</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="162"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="165"/>
         <source>Bold</source>
         <translation>粗体</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="163"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="166"/>
         <source>Extra Bold</source>
         <translation>特粗</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="164"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="167"/>
         <source>Black</source>
         <translation>黑体</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="165"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="168"/>
         <source>Custom</source>
         <translation>自定义</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="196"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="201"/>
         <source>Preview</source>
         <translation>预览</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="199"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="204"/>
         <source>The quick brown fox jumps over the lazy dog</source>
         <translation>The quick brown fox jumps over the lazy dog
 愿世界和平</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="217"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="222"/>
         <source>Window</source>
         <translation>窗口</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="223"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="228"/>
         <source>Display</source>
         <translation>显示</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="224"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="229"/>
         <source>Set which screen to display widgets on, and adjust their position</source>
         <translation>设置小组件显示的屏幕，亦可调整其位置</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="332"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="344"/>
         <source>X-axis offset</source>
         <translation>X 轴偏移</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="346"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="359"/>
         <source>Y-axis offset</source>
         <translation>Y 轴偏移</translation>
     </message>

@@ -30,6 +30,9 @@ class AppTranslator(QObject):
     @Slot(str)
     def setLanguage(self, locale_name: str):  # sample: zh_CN; en_US
         """切换语言"""
+        if self.central.configs.isKeyLocked("locale.language"): 
+            logger.warning("Attempt to modify locked config key: locale.language. Blocked.")
+            return
         lang_path = Path(ASSETS_PATH / "locales" / f"{locale_name}.qm")
         if not lang_path.exists():  # fallback
             logger.warning(f"Language file {lang_path} not found. Fallback to default (en_US)")

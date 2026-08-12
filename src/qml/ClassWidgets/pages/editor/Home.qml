@@ -31,6 +31,7 @@ FluentPage {
             }
 
             DropDownButton {
+                enabled: !AppCentral.scheduleManager.isReadonly()
                 flat: true
                 icon.name: "ic_fluent_arrow_enter_20_regular"
                 text: qsTr("Import Schedule")
@@ -98,6 +99,7 @@ FluentPage {
                 Layout.fillHeight: true
             }
             Button {
+                enabled: !AppCentral.scheduleManager.isReadonly()
                 flat: true
                 highlighted: true
                 icon.name: "ic_fluent_add_20_regular"

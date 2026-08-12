@@ -652,6 +652,9 @@ class PluginManager(QObject):
 
     @Slot(str, bool)
     def setPluginEnabled(self, pid: str, enabled: bool):
+        if self.app_central.configs.isKeyLocked("plugins.enabled"):
+            logger.warning("Attempt to modify locked config key: plugins.enabled. Blocked.")
+            return
         if enabled:
             logger.info(f"Enabled plugin {pid}")
             self.enabled_plugins.add(pid)
@@ -688,6 +691,9 @@ class PluginManager(QObject):
         """
         卸载指定外部插件
         """
+        if self.app_central.configs.isKeyLocked("plugins.enabled"):
+            logger.warning("Attempt to modify locked config key: plugins.enabled. Blocked.")
+            return False
         meta = next((m for m in self.metas if m["id"] == pid), None)
         if not meta:
             logger.warning(f"Plugin {pid} not found, cannot uninstall.")

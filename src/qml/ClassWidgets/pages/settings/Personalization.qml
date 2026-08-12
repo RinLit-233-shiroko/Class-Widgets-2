@@ -37,6 +37,8 @@ FluentPage {
             icon.name: "ic_fluent_paint_brush_20_regular"
 
             DropDownColorPicker {
+                
+
                 position: Position.Left
 
                 color: Utils.primaryColor
@@ -59,6 +61,8 @@ FluentPage {
         Flow {
             Layout.fillWidth: true
             spacing: 8
+
+            enabled: !Configs.isKeyLocked("preferences.current_theme")
 
             Repeater {
                 model: CWThemeManager.themes

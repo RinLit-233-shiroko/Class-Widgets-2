@@ -6,6 +6,7 @@ from collections.abc import Callable
 
 from pydantic import BaseModel, Field, Extra, PrivateAttr, field_validator, model_validator
 from PySide6.QtCore import QLocale, QCoreApplication, Property
+from loguru import logger
 
 from src import __version__, __version_type__
 from ..notification import NotificationProviderConfig
@@ -22,6 +23,8 @@ GITHUB_MIRRORS: dict[str, str] = {
 
 class ConfigBaseModel(BaseModel):
     _on_change: Optional[Callable[[], None]] = PrivateAttr(default=None)
+    _config_path: Optional[str] = PrivateAttr(default=None)
+    _locked_keys: set[str] = PrivateAttr(default_factory=set)
 
     def __init__(self, **data):
         super().__init__(**data)
@@ -29,10 +32,47 @@ class ConfigBaseModel(BaseModel):
             if isinstance(value, ConfigBaseModel):
                 value._on_change = self._on_change
 
+    def _bind_context(self, value: ConfigBaseModel, path: Optional[str] = None) -> None:
+        """将当前模型的变更回调、路径和锁定配置传递给嵌套模型。"""
+        value._on_change = self._on_change
+        value._config_path = path
+        value._locked_keys = self._locked_keys
+        for field_name in type(value).model_fields:
+            child = getattr(value, field_name)
+            if isinstance(child, ConfigBaseModel):
+                child_path = f"{path}.{field_name}" if path else field_name
+                self._bind_context(child, child_path)
+
+    def _bind_runtime_context(
+        self,
+        path: Optional[str],
+        locked_keys: set[str],
+        on_change: Optional[Callable[[], None]],
+    ) -> None:
+        """绑定独立运行时模型的配置路径、锁定集合和变更回调。"""
+        self._config_path = path
+        self._locked_keys = locked_keys
+        self._on_change = on_change
+        for field_name in type(self).model_fields:
+            child = getattr(self, field_name)
+            if isinstance(child, ConfigBaseModel):
+                child_path = f"{path}.{field_name}" if path else field_name
+                child._bind_runtime_context(child_path, locked_keys, on_change)
+
     def __setattr__(self, name, value):  # 实时发送更新信号
+        if name not in {'_on_change', '_config_path', '_locked_keys'}:
+            if self._config_path:
+                full_path = f"{self._config_path}.{name}"
+            else:
+                full_path = name
+            # logger.debug(f"Setting config attribute: {full_path} = {value}")
+            if full_path in self._locked_keys:
+                logger.warning(f"Attempt to modify locked config key: {full_path}. Blocked.")
+                return
         super().__setattr__(name, value)
         if isinstance(value, ConfigBaseModel):
-            value._on_change = self._on_change
+            child_path = f"{self._config_path}.{name}" if self._config_path else name
+            self._bind_context(value, child_path)
         if self._on_change and name != "_on_change":
             self._on_change()
 

@@ -110,6 +110,7 @@ QQW.Window {
 
         TapHandler {
             id: hideTapHandler
+            enabled: !Configs.isKeyLocked("interactions.hide.state")
             onTapped: {
                 if (Configs.data.interactions.hide.clicked) {
                     Configs.set("interactions.hide.state", !Configs.data.interactions.hide.state)

@@ -1,16 +1,19 @@
 import sys
 from pathlib import Path
-from typing import Any, Optional, cast
+from typing import Any, Optional, cast, TYPE_CHECKING
 from datetime import datetime
 from PySide6.QtCore import Signal, QObject
 from loguru import logger
 
 from src.core.config.model import ConfigBaseModel, PluginsConfig
+from src.core.config.manager import ConfigManager
 from src.core.plugin.bridge import PluginBackendBridge
 from src.core.notification import NotificationProvider
 from src.core.schedule.model import EntryType
 
 from src.core.plugin.models import (
+    ApplicationInfoPayload,
+    DiagnosticLogPayload,
     PluginNotificationPayload,
     RuntimeMetaPayload,
     RuntimeEntryPayload,
@@ -20,10 +23,9 @@ from src.core.plugin.models import (
     SettingsPagePayload,
 )
 
-# 用于 type hint 避免循环导入
-from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from src.core.plugin.api import PluginAPI
+
 
 
 class BaseAPI(QObject):
@@ -122,13 +124,27 @@ class NotificationAPI(BaseAPI):
         logger.debug(f"Created notification provider: {provider_id} with icon: {icon}")
         return provider
 
-
 class ScheduleAPI(BaseAPI):
     def get(self):
         return self._app.schedule_manager.schedule
 
     def reload(self):
         return self._app.schedule_manager.reload()
+    
+    def update(self, schedule_dict: dict) -> bool:
+        if self._app.schedule_manager.readonly:
+            logger.warning("Attempt to update schedule while in read-only mode. Blocked.")
+            return False
+        return self._app.schedule_manager.modify_by_dict(schedule_dict)
+    
+    def set_readonly(self, readonly: bool) -> None:
+        """设置课表是否只读"""
+        self._app.schedule_manager.set_readonly(readonly)
+        logger.info(f"Schedule read-only mode set to: {readonly}")
+
+    @property
+    def readonly(self) -> bool:
+        return self._app.schedule_manager.readonly
 
 
 class ThemeAPI(BaseAPI):
@@ -278,7 +294,12 @@ class ConfigAPI(BaseAPI):
                 self._cm._config._on_change()
             except Exception as e:
                 logger.error(f"Failed to sync config for {plugin_id}: {e}")
-        model._on_change = _sync_to_config_manager
+
+        model._bind_runtime_context(
+            f"plugins.configs.{plugin_id}",
+            self._cm.locked_keys,
+            _sync_to_config_manager,
+        )
         model._on_change()
 
         logger.debug(f"Plugin: {plugin_id} registered config model: {model}")
@@ -399,3 +420,84 @@ class UiAPI(BaseAPI):
         })
         self.settingsPageRegistered.emit()
         logger.debug(f"Plugin: {pid} register settings page: {qml_path}")
+
+class ScheduleManagementAPI(BaseAPI):
+    def __init__(self, plugin_api: "PluginAPI"):
+        super().__init__(plugin_api)
+
+    def switch(self, name: str) -> bool:
+        return self._app.schedule_manager.load(name, force = True)
+
+    def list(self) -> list[dict[str, str]]:
+        return self._app.schedule_manager.schedules()
+
+    def add(self, name: str) -> bool:
+        return self._app.schedule_manager.add(name)
+
+    def save(self, name: str) -> bool:
+        if not name or name in {".", ".."} or Path(name).name != name:
+            logger.warning(f"Invalid schedule name: {name!r}")
+            return False
+        path = self._app.schedule_manager.schedules_dir / f"{name}.json"
+        return self._app.schedule_manager.save(path)
+
+
+class ApplicationAPI(BaseAPI):
+    def get_info(self) -> ApplicationInfoPayload:
+        import platform
+
+        from src import __app_name__, __version__, __version_type__
+        from src.core.plugin.api import __version__ as plugin_api_version
+
+        return {
+            "name": __app_name__,
+            "version": __version__,
+            "channel": __version_type__,
+            "pluginApiVersion": plugin_api_version,
+            "platform": platform.platform(),
+        }
+
+    def restart(self) -> None:
+        self._app.restart()
+
+
+class DiagnosticsAPI(BaseAPI):
+    MAX_LOG_LIMIT = 200
+
+    def get_logs(self, limit: int = 200) -> list[DiagnosticLogPayload]:
+        safe_limit = max(0, min(limit, self.MAX_LOG_LIMIT))
+        logs = self._app.utils_backend.get_log_snapshot(safe_limit)
+        return [cast(DiagnosticLogPayload, item) for item in logs]
+
+class GlobalConfigAPI(BaseAPI):
+
+    def __init__(self, plugin_api: "PluginAPI"):
+        super().__init__(plugin_api)
+
+    @property
+    def configs(self) -> ConfigManager:
+        """获取所有全局配置项"""
+        return self._app.configs
+
+    def lock(self, keys: str | list[str] | set[str]) -> None:
+        """锁定配置项"""
+        if isinstance(keys, str):
+            keys = {keys}
+        self._app.configs.lock(keys)
+        logger.info(f"Locked config keys: {keys}")
+
+    def unlock(self, keys: str | list[str] | set[str]) -> None:
+        """解锁配置项"""
+        if isinstance(keys, str):
+            keys = {keys}
+        self._app.configs.unlock(keys)
+        logger.info(f"Unlocked config keys: {keys}")
+
+    def is_locked(self, key: str) -> bool:
+        """检查配置项是否被锁定"""
+        return self._app.configs.isKeyLocked(key)
+    
+    @property
+    def locked_keys(self) -> set[str]:
+        """获取所有被锁定的配置项"""
+        return self._app.configs.locked_keys
