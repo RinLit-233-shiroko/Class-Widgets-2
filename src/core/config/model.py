@@ -66,7 +66,7 @@ class ConfigBaseModel(BaseModel):
                 full_path = f"{self._config_path}.{name}"
             else:
                 full_path = name
-            logger.debug(f"Setting config attribute: {full_path} = {value}")
+            # logger.debug(f"Setting config attribute: {full_path} = {value}")
             if full_path in self._locked_keys:
                 logger.warning(f"Attempt to modify locked config key: {full_path}. Blocked.")
                 return
