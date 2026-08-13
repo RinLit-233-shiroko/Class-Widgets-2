@@ -1614,7 +1614,10 @@ If translations are missing after a theme change, please restart</source>
 New version: %2
 
 Do you want to %3 this plugin?</source>
-        <translation type="unfinished"></translation>
+        <translation>现用版本 %1
+新得版本 %2
+
+君其欲 %3 此插件乎？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/PluginReplaceConfirmDialog.qml" line="55"/>
