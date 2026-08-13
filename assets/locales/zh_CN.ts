@@ -91,12 +91,12 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="145"/>
         <source>This project is licensed under the MIT license</source>
-        <translation>本项目根据 MIT 许可证授权</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="148"/>
         <source>MIT License</source>
-        <translation>MIT 许可证</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>This project is licensed under the GPL-3 license</source>
@@ -709,17 +709,17 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="38"/>
         <source>%1 B</source>
-        <translation></translation>
+        <translation>%1 B</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="40"/>
         <source>%1 KB</source>
-        <translation></translation>
+        <translation>%1 KB</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="41"/>
         <source>%1 MB</source>
-        <translation></translation>
+        <translation>%1 MB</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="45"/>
@@ -776,7 +776,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="204"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="255"/>
         <source>v%1 -&gt; v%2</source>
-        <translation></translation>
+        <translation>v%1 -&gt; v%2</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="207"/>
@@ -807,7 +807,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="275"/>
         <source>No installed Plugin Plaza plugins</source>
-        <translation>未在 插件广场 安装插件</translation>
+        <translation type="unfinished">未安装 插件广场 插件</translation>
     </message>
 </context>
 <context>
@@ -1140,12 +1140,12 @@ Please try again later.</source>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="21"/>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="120"/>
         <source>All</source>
-        <translation>全部</translation>
+        <translation type="unfinished">全部</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="146"/>
         <source>More categories</source>
-        <translation>更多类别</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="223"/>
@@ -1169,7 +1169,7 @@ Please try again later.</source>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="226"/>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="234"/>
         <source>Downloads</source>
-        <translation>按下载量</translation>
+        <translation type="unfinished">下载</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="227"/>
@@ -1957,17 +1957,17 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="125"/>
         <source>%1 B</source>
-        <translation></translation>
+        <translation>%1 B</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="127"/>
         <source>%1 KB</source>
-        <translation></translation>
+        <translation>%1 KB</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="128"/>
         <source>%1 MB</source>
-        <translation></translation>
+        <translation>%1 MB</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="183"/>
@@ -1993,7 +1993,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="253"/>
         <source>This plugin does not provide README content.</source>
-        <translation>插件未提供内容描述。</translation>
+        <translation>插件未提供内容描述</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="410"/>
@@ -2139,7 +2139,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="791"/>
         <source>Write a review</source>
-        <translation>撰写评价</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="814"/>
@@ -2257,7 +2257,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/core/plaza/notifications.py" line="53"/>
         <source>{action} {name} (v{version}).</source>
-        <translation></translation>
+        <translation>{action} {name} (v{version}).</translation>
     </message>
     <message>
         <location filename="../../src/core/plaza/notifications.py" line="66"/>
@@ -2267,7 +2267,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/core/plaza/notifications.py" line="69"/>
         <source>{name}: {error}</source>
-        <translation></translation>
+        <translation>{name}: {error}</translation>
     </message>
     <message>
         <location filename="../../src/core/plaza/notifications.py" line="78"/>
@@ -2352,17 +2352,17 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="20"/>
         <source>%1 B</source>
-        <translation></translation>
+        <translation>%1 B</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="22"/>
         <source>%1 KB</source>
-        <translation></translation>
+        <translation>%1 KB</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="23"/>
         <source>%1 MB</source>
-        <translation></translation>
+        <translation>%1 MB</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="42"/>
@@ -2711,7 +2711,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="381"/>
         <source>Update</source>
-        <translation>更新</translation>
+        <translation type="unfinished">更新</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="392"/>
@@ -3107,17 +3107,17 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="8"/>
         <source>Search</source>
-        <translation>搜索</translation>
+        <translation type="unfinished">搜索</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="57"/>
         <source>Invalid server response.</source>
-        <translation>服务器响应无效。</translation>
+        <translation type="unfinished">服务器响应无效。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="91"/>
         <source>The plaza rejected the request.</source>
-        <translation>插件广场拒绝了这一请求。</translation>
+        <translation type="unfinished">插件广场拒绝了这一请求。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="104"/>
@@ -3127,7 +3127,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="255"/>
         <source>Suggested plugins</source>
-        <translation>插件建议</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="286"/>
@@ -3151,7 +3151,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="289"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="297"/>
         <source>Downloads</source>
-        <translation>按下载量</translation>
+        <translation type="unfinished">下载</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="290"/>
@@ -3162,7 +3162,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="305"/>
         <source>All</source>
-        <translation>全部</translation>
+        <translation type="unfinished">全部</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="339"/>
@@ -3177,12 +3177,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="353"/>
         <source>No suggested keywords are available.</source>
-        <translation>暂不可用</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="360"/>
         <source>No plugins found</source>
-        <translation>未找到插件</translation>
+        <translation type="unfinished">未找到插件</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="361"/>
@@ -3262,27 +3262,27 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/core/central.py" line="151"/>
         <source>Settings</source>
-        <translation>设置</translation>
+        <translation type="unfinished">设置</translation>
     </message>
     <message>
         <location filename="../../src/core/central.py" line="157"/>
         <source>Schedules</source>
-        <translation>课程编辑</translation>
+        <translation type="unfinished">课程表</translation>
     </message>
     <message>
         <location filename="../../src/core/central.py" line="163"/>
         <source>Plugin Plaza</source>
-        <translation>插件广场</translation>
+        <translation type="unfinished">插件广场</translation>
     </message>
     <message>
         <location filename="../../src/core/central.py" line="169"/>
         <source>Reschedule Day</source>
-        <translation>调休</translation>
+        <translation type="unfinished">调休</translation>
     </message>
     <message>
         <location filename="../../src/core/central.py" line="175"/>
         <source>Class Swap</source>
-        <translation>换课</translation>
+        <translation type="unfinished">换课</translation>
     </message>
 </context>
 <context>
@@ -3812,12 +3812,12 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Time.qml" line="26"/>
         <source>Time Offset (Seconds)</source>
-        <translation>时差偏移（秒）</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Time.qml" line="35"/>
         <source>Seconds</source>
-        <translation>秒</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Time Offset (minutes)</source>
@@ -3952,43 +3952,43 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/TrayShortcuts.qml" line="26"/>
         <source>Shortcuts</source>
-        <translation>快捷方式</translation>
+        <translation type="unfinished">快捷方式</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/TrayShortcuts.qml" line="38"/>
         <location filename="../../src/qml/ClassWidgets/Components/TrayShortcuts.qml" line="236"/>
         <source>Add</source>
-        <translation>添加</translation>
+        <translation type="unfinished">添加</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/TrayShortcuts.qml" line="48"/>
         <source>Done</source>
-        <translation>完成</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/TrayShortcuts.qml" line="48"/>
         <source>Edit</source>
-        <translation>编辑</translation>
+        <translation type="unfinished">编辑</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/TrayShortcuts.qml" line="56"/>
         <source>No shortcuts yet</source>
-        <translation>未添加快捷方式</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/TrayShortcuts.qml" line="57"/>
         <source>Click &quot;+&quot; to add shortcuts.</source>
-        <translation>点击“+”以添加</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/TrayShortcuts.qml" line="150"/>
         <source>Remove</source>
-        <translation>移除</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/TrayShortcuts.qml" line="185"/>
         <source>Add Shortcuts</source>
-        <translation>添加快捷方式</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
