@@ -1280,7 +1280,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/core/convertor/slots.py" line="86"/>
         <source>Class Widgets 1 JSON Files (*.json)</source>
-        <translation type="unfinished"></translation>
+        <translation>クラス・ウィジェット 1 JSONフライス(*.json)</translation>
     </message>
     <message>
         <location filename="../../src/core/schedule/manager.py" line="237"/>
