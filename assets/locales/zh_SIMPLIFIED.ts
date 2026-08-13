@@ -87,7 +87,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="145"/>
         <source>This project is licensed under the MIT license</source>
-        <translation type="unfinished">此项目根据 MIT 许可证获得许可</translation>
+        <translation>此项目根据 MIT 许可证获得许可</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="148"/>
@@ -545,7 +545,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="149"/>
         <source>Failed to set start date or max week cycle. Please report this issue to the community or the developer.</source>
-        <translation type="unfinished">在设置的时候出现了一些莫名其妙的问题。请联系社区或迪沃楼者。</translation>
+        <translation>在设置的时候出现了一些莫名其妙的问题。请联系社区或迪沃楼者。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="85"/>
@@ -722,7 +722,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="256"/>
         <source>Unknown</source>
-        <translation type="unfinished">这啥？</translation>
+        <translation>这啥？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="275"/>
@@ -1029,7 +1029,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="21"/>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="120"/>
         <source>All</source>
-        <translation type="unfinished">我！全！都！要！</translation>
+        <translation>我！全！都！要！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="146"/>
@@ -1605,7 +1605,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/core/plaza/notifications.py" line="31"/>
         <source>Plugin Plaza</source>
-        <translation type="unfinished">屁股超市</translation>
+        <translation>屁股超市</translation>
     </message>
 </context>
 <context>
@@ -1810,7 +1810,7 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="253"/>
         <source>No description</source>
-        <translation type="unfinished">请输入文本。</translation>
+        <translation>请输入文本。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="253"/>
@@ -1926,7 +1926,7 @@ If translations are missing after a theme change, please restart</source>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="739"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="740"/>
         <source>Unknown</source>
-        <translation type="unfinished">这啥？</translation>
+        <translation>这啥？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="740"/>
@@ -1961,7 +1961,7 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="791"/>
         <source>Write a review</source>
-        <translation type="unfinished">畅所欲言！</translation>
+        <translation>畅所欲言！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="814"/>
@@ -2449,7 +2449,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="123"/>
         <source>Plugin Plaza</source>
-        <translation type="unfinished">屁股超市</translation>
+        <translation>屁股超市</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="124"/>
@@ -2496,7 +2496,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="381"/>
         <source>Update</source>
-        <translation type="unfinished">上日期</translation>
+        <translation>上日期</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="392"/>
@@ -2929,7 +2929,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="305"/>
         <source>All</source>
-        <translation type="unfinished">我！全！都！要！</translation>
+        <translation>我！全！都！要！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="339"/>
@@ -3025,7 +3025,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/core/central.py" line="151"/>
         <source>Settings</source>
-        <translation type="unfinished">齿轮</translation>
+        <translation>齿轮</translation>
     </message>
     <message>
         <location filename="../../src/core/central.py" line="157"/>
@@ -3035,17 +3035,17 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/core/central.py" line="163"/>
         <source>Plugin Plaza</source>
-        <translation type="unfinished">屁股超市</translation>
+        <translation>屁股超市</translation>
     </message>
     <message>
         <location filename="../../src/core/central.py" line="169"/>
         <source>Reschedule Day</source>
-        <translation type="unfinished">傻逼调休</translation>
+        <translation>傻逼调休</translation>
     </message>
     <message>
         <location filename="../../src/core/central.py" line="175"/>
         <source>Class Swap</source>
-        <translation type="unfinished">洗牌！</translation>
+        <translation>洗牌！</translation>
     </message>
 </context>
 <context>
@@ -3429,12 +3429,12 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Time.qml" line="26"/>
         <source>Time Offset (Seconds)</source>
-        <translation type="unfinished"></translation>
+        <translation>广播站多少年没同步时间了（恼）</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Time.qml" line="35"/>
         <source>Seconds</source>
-        <translation type="unfinished"></translation>
+        <translation>光秒</translation>
     </message>
     <message>
         <source>Time Offset (minutes)</source>
@@ -3528,13 +3528,13 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/TrayShortcuts.qml" line="26"/>
         <source>Shortcuts</source>
-        <translation type="unfinished">快快快！</translation>
+        <translation>快快快！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/TrayShortcuts.qml" line="38"/>
         <location filename="../../src/qml/ClassWidgets/Components/TrayShortcuts.qml" line="236"/>
         <source>Add</source>
-        <translation type="unfinished">咖啡不断加加加加到厌倦～</translation>
+        <translation>咖啡不断加加加加到厌倦～</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/TrayShortcuts.qml" line="48"/>
