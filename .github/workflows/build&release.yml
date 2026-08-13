@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version'
-        required: true
+        description: 'Version (leave empty for debug build)'
+        required: false
         default: '2.0.0.dev31546377'
         type: string
       version_type:
@@ -30,11 +30,6 @@ on:
           - 123Pan
           - OneDrive
           - Both
-      is_signing:
-        description: 'Sign Windows executable (SignPath)'
-        required: false
-        default: true
-        type: boolean
       release:
         description: 'Create GitHub Release'
         required: true
@@ -56,6 +51,8 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest, macos-15-intel, macos-latest]
+    outputs:
+      version_type: ${{ steps.version.outputs.version_type }}
 
     steps:
       - name: ⬇️ Checkout code
@@ -72,6 +69,13 @@ jobs:
             VERSION="${{ inputs.version }}"
             VERSION_TYPE="${{ inputs.version_type }}"
             VERSION_TAG="${VERSION}"
+
+            # Debug build when version is empty
+            if [[ -z "$VERSION" ]]; then
+              VERSION="2.0.0.debug"
+              VERSION_TYPE="debug"
+              VERSION_TAG="2.0.0.debug"
+            fi
           else
             VERSION_TAG="${{ github.ref_name }}"
             VERSION="${VERSION_TAG#v}"
@@ -90,7 +94,7 @@ jobs:
             fi
           fi
 
-          if [[ ! "$VERSION_TYPE" =~ ^(alpha|beta|stable)$ ]]; then
+          if [[ ! "$VERSION_TYPE" =~ ^(alpha|beta|stable|debug)$ ]]; then
             echo "Invalid version_type: $VERSION_TYPE" >&2
             exit 1
           fi
@@ -223,7 +227,7 @@ jobs:
           Compress-Archive -Path "dist/Class Widgets 2/*" -DestinationPath "dist/ClassWidgets-2-Windows.zip"
 
       - name: 🔏 Prepare exe for signing (Windows)
-        if: runner.os == 'Windows' && inputs.is_signing
+        if: runner.os == 'Windows' && steps.version.outputs.version_type == 'stable'
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Path "./exe-for-signing" -Force | Out-Null
@@ -233,7 +237,7 @@ jobs:
           echo "EXE_NAME=$($exe.Name)" >> $env:GITHUB_ENV
 
       - name: ☁️ Upload unsigned exe (Windows)
-        if: runner.os == 'Windows' && inputs.is_signing
+        if: runner.os == 'Windows' && steps.version.outputs.version_type == 'stable'
         id: upload_unsigned
         uses: actions/upload-artifact@v4
         with:
@@ -241,7 +245,7 @@ jobs:
           path: ./exe-for-signing
 
       - name: 🔏 Submit signing request (Windows)
-        if: runner.os == 'Windows' && inputs.is_signing
+        if: runner.os == 'Windows' && steps.version.outputs.version_type == 'stable'
         uses: signpath/github-action-submit-signing-request@v2
         with:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
@@ -253,7 +257,7 @@ jobs:
           output-artifact-directory: ./signed-output
 
       - name: 🔏 Replace with signed exe (Windows)
-        if: runner.os == 'Windows' && inputs.is_signing
+        if: runner.os == 'Windows' && steps.version.outputs.version_type == 'stable'
         shell: pwsh
         run: |
           $signedExe = "./signed-output/${env:EXE_NAME}"
@@ -292,6 +296,7 @@ jobs:
   release:
     needs: [build]
     runs-on: ubuntu-latest
+    if: needs.build.outputs.version_type != 'debug'
 
     steps:
       - name: ⬇️ Checkout code
@@ -307,6 +312,13 @@ jobs:
             VERSION="${{ inputs.version }}"
             VERSION_TYPE="${{ inputs.version_type }}"
             VERSION_TAG="${VERSION}"
+
+            # Debug build when version is empty
+            if [[ -z "$VERSION" ]]; then
+              VERSION="2.0.0.debug"
+              VERSION_TYPE="debug"
+              VERSION_TAG="2.0.0.debug"
+            fi
           else
             VERSION_TAG="${{ github.ref_name }}"
             VERSION="${VERSION_TAG#v}"
