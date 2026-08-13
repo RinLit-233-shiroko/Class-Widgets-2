@@ -1151,19 +1151,19 @@ Please try again later.</source>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="223"/>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="230"/>
         <source>Relevance</source>
-        <translation>按相关性</translation>
+        <translation>相关度</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="224"/>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="232"/>
         <source>Name</source>
-        <translation>按名称</translation>
+        <translation>名称</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="225"/>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="233"/>
         <source>Rating</source>
-        <translation>按评级</translation>
+        <translation>分级</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="226"/>
@@ -1175,7 +1175,7 @@ Please try again later.</source>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="227"/>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="231"/>
         <source>Latest</source>
-        <translation>按时间</translation>
+        <translation>最新的</translation>
     </message>
 </context>
 <context>
@@ -2694,12 +2694,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="17"/>
         <source>Note</source>
-        <translation>提示</translation>
+        <translation>提醒</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="18"/>
         <source>Plugin Plaza is now available!</source>
-        <translation>插件广场现已可用！</translation>
+        <translation>插件广场现已开业！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="350"/>
@@ -3122,7 +3122,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="104"/>
         <source>Unable to search plugins: </source>
-        <translation>无法搜索插件： </translation>
+        <translation>无法寻找插件： </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="255"/>
@@ -3133,19 +3133,19 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="286"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="293"/>
         <source>Relevance</source>
-        <translation>按相关性</translation>
+        <translation>相关度</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="287"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="295"/>
         <source>Name</source>
-        <translation>按名称</translation>
+        <translation>名称</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="288"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="296"/>
         <source>Rating</source>
-        <translation>按评级</translation>
+        <translation>评级</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="289"/>
@@ -3157,7 +3157,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="290"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="294"/>
         <source>Latest</source>
-        <translation>按时间</translation>
+        <translation>最新的</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="305"/>
@@ -3167,12 +3167,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="339"/>
         <source>Could not search plugins</source>
-        <translation>无法搜索插件</translation>
+        <translation>无法查找插件</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="352"/>
         <source>Search the plaza</source>
-        <translation>在广场搜</translation>
+        <translation>在插件广场内查找</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="353"/>
@@ -3187,7 +3187,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="361"/>
         <source>Try another search or category.</source>
-        <translation>尝试搜索其他的分区。</translation>
+        <translation>尝试用其他关键字或分区查找。</translation>
     </message>
 </context>
 <context>
@@ -3762,7 +3762,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/TagShowcase.qml" line="34"/>
         <source>View all %1 plugins</source>
-        <translation>查看所有 %1 个插件</translation>
+        <translation>查看所有 %1 的插件</translation>
     </message>
 </context>
 <context>
