@@ -44,7 +44,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="119"/>
         <source>Dependencies &amp; references</source>
-        <translation>依赖项与参考</translation>
+        <translation>前置模组与参考文献</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="122"/>
@@ -74,7 +74,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="144"/>
         <source>License</source>
-        <translation>协议</translation>
+        <translation>驾驶证</translation>
     </message>
     <message>
         <source>This project is licensed under the GPL-3 license</source>
@@ -107,7 +107,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="169"/>
         <source>When enabled, the app will &lt;b&gt;not&lt;/b&gt; save logs.</source>
-        <translation>启用后，2WC将&lt;b&gt;完全放飞自我。&lt;/b&gt;</translation>
+        <translation>启用后，吸大鼻流鹅将&lt;b&gt;完全放飞自我。&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="178"/>
@@ -323,9 +323,9 @@ You can continue to open another one, or close this window.</source>
         <source>Class Widgets found temporary class swaps for today.
 
 Do you want to continue using them, or discard and restore the original schedule?</source>
-        <translation>2WC找到了今天新鲜的零食配料表
+        <translation>吸大鼻流鹅找到了新鲜的零食配料表
 
-继续使用它们，或放弃并恢复老旧的配料表？</translation>
+参考它们，还是把它换成以前的配料表？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapRestoreDialog.qml" line="53"/>
@@ -343,7 +343,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/core/config/model.py" line="205"/>
         <source>New Schedule 1</source>
-        <translation>新的配料表1</translation>
+        <translation>新的配料表 1</translation>
     </message>
 </context>
 <context>
@@ -361,7 +361,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="31"/>
         <source>(auto)</source>
-        <translation>sudo 电脑自己干活</translation>
+        <translation>（启动大龙虾定义）</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="96"/>
@@ -639,7 +639,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="41"/>
         <source>%1 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 * 8,388,608 bits （第 11 代视窗）或 %1 * 8 * 10^6 bits（金苹果拱门）</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="45"/>
@@ -674,12 +674,12 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="139"/>
         <source>Check for updates</source>
-        <translation type="unfinished">查查你的</translation>
+        <translation>查查更加眼前一亮的屁股</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="178"/>
         <source>Resume</source>
-        <translation type="unfinished"></translation>
+        <translation>让吸大鼻流鹅启动 RE 系统</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="178"/>
@@ -702,7 +702,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="207"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="262"/>
         <source>Update</source>
-        <translation type="unfinished">上日期</translation>
+        <translation>以旧换新</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="235"/>
@@ -1910,7 +1910,7 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="724"/>
         <source>Other information</source>
-        <translation type="unfinished"></translation>
+        <translation>凑近看看这个屁股</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="738"/>
@@ -2158,12 +2158,12 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="248"/>
         <source>Download cancelled</source>
-        <translation type="unfinished">已急停</translation>
+        <translation>你的教室中的生物中止了一个已建立的下崽</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="249"/>
         <source>The download for %1 was cancelled.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 的下崽已被中止。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="262"/>
@@ -2906,25 +2906,25 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="287"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="295"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>你那屁股叫什么名字？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="288"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="296"/>
         <source>Rating</source>
-        <translation type="unfinished"></translation>
+        <translation>积分</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="289"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="297"/>
         <source>Downloads</source>
-        <translation type="unfinished"></translation>
+        <translation>下崽</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="290"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="294"/>
         <source>Latest</source>
-        <translation type="unfinished"></translation>
+        <translation>最后一夜</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="305"/>
@@ -2934,12 +2934,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="339"/>
         <source>Could not search plugins</source>
-        <translation type="unfinished"></translation>
+        <translation>找不了你要的屁股！（气愤</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="352"/>
         <source>Search the plaza</source>
-        <translation type="unfinished"></translation>
+        <translation>在屁股超市里面查查</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="353"/>
@@ -2949,12 +2949,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="360"/>
         <source>No plugins found</source>
-        <translation type="unfinished"></translation>
+        <translation>没有你要的屁股！（气愤</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="361"/>
         <source>Try another search or category.</source>
-        <translation type="unfinished"></translation>
+        <translation>尝试用其它钥匙或者去其它分区找屁股。</translation>
     </message>
 </context>
 <context>
@@ -3402,7 +3402,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/TagShowcase.qml" line="34"/>
         <source>View all %1 plugins</source>
-        <translation type="unfinished"></translation>
+        <translation>看看所有 %1 的屁股</translation>
     </message>
 </context>
 <context>
@@ -3634,7 +3634,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="63"/>
         <source>New version available!</source>
-        <translation>有更新的！</translation>
+        <translation>新的 CW 已经出现！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="65"/>
