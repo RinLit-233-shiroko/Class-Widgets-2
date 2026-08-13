@@ -29,7 +29,8 @@ Licensed under the GPL-3 license.</source>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="74"/>
         <source>© 2024-2026 RinLit. All rights reserved 
 Licensed under the MIT license</source>
-        <translation type="unfinished"></translation>
+        <translation>© 2024-2026 RinLit. 保留所有權利
+根據MIT 許可證授權</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="91"/>
@@ -132,7 +133,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="188"/>
         <source>All logs have been cleared about </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">所有日誌已清除完畢 </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="194"/>
@@ -153,7 +154,8 @@ Licensed under the MIT license</source>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="209"/>
         <source>Enable Debug Mode to access core widget information, and debugging tools 
 * Requires restart</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">啟用調試模式可訪問核心部件信息及調試工具·
+* 需要重啟</translation>
     </message>
     <message>
         <source>Enable Debug Mode to access core widget information, and debugging tools. 
@@ -204,7 +206,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/CheckSingleInstanceDialog.qml" line="23"/>
         <source>Already running</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Class Widgets 正在運行中</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/CheckSingleInstanceDialog.qml" line="36"/>
