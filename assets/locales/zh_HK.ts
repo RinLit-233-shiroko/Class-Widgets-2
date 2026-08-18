@@ -10,7 +10,7 @@
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="73"/>
         <source>Class Widgets 2</source>
-        <translation type="unfinished">小組件 2</translation>
+        <translation>Class Widgets 2</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="58"/>
@@ -29,7 +29,7 @@ Licensed under the GPL-3 license.</source>
         <source>© 2024-2026 RinLit. All rights reserved 
 Licensed under the MIT license</source>
         <translation>© 2024-2026 RinLit. 保留所有權利
-根據MIT 許可證授權</translation>
+根據 MIT License 授權</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="91"/>
@@ -53,12 +53,12 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="132"/>
         <source>Qt &amp; Qt Quick</source>
-        <translation type="unfinished">Qt 和 Qt Quick</translation>
+        <translation>Qt &amp; Qt Quick</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="136"/>
         <source>Fluent Design System</source>
-        <translation type="unfinished">Fluent Design System</translation>
+        <translation>Fluent 設計系統</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="140"/>
@@ -78,17 +78,17 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="154"/>
         <source>License</source>
-        <translation type="unfinished">授權條款</translation>
+        <translation>License</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="155"/>
         <source>This project is licensed under the MIT license</source>
-        <translation type="unfinished"></translation>
+        <translation>此項目根據 MIT License 獲得許可</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="158"/>
         <source>MIT License</source>
-        <translation type="unfinished"></translation>
+        <translation>MIT License</translation>
     </message>
     <message>
         <source>This project is licensed under the GPL-3 license</source>
@@ -101,12 +101,12 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="172"/>
         <source>Advances</source>
-        <translation type="unfinished">進階功能</translation>
+        <translation>功能</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="178"/>
         <source>Log Storage Disabled</source>
-        <translation type="unfinished">日誌儲存已停用</translation>
+        <translation>唔存低日誌</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="179"/>
@@ -131,7 +131,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="198"/>
         <source>All logs have been cleared about </source>
-        <translation type="unfinished">所有日誌已清除完畢 </translation>
+        <translation>所有日誌都已清除完畢 </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="204"/>
@@ -152,8 +152,8 @@ Licensed under the MIT license</source>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="219"/>
         <source>Enable Debug Mode to access core widget information, and debugging tools 
 * Requires restart</source>
-        <translation type="unfinished">啟用調試模式可訪問核心部件信息及調試工具·
-* 需要重啟</translation>
+        <translation>啟用除錯模式可訪問核心部件信息及除錯工具·
+* 需要重啟程式</translation>
     </message>
     <message>
         <source>Enable Debug Mode to access core widget information, and debugging tools. 
@@ -178,7 +178,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="257"/>
         <source>This project (Class Widgets 2) is licensed under the GPL-3 license. For details, see:</source>
-        <translation type="unfinished">本專案 (Class Widgets 2) 採用 GPL-3 授權條款。詳情請參閱：</translation>
+        <translation>本專案 (Class Widgets 2) 採用 MIT 授權條款。詳情請參閱：</translation>
     </message>
 </context>
 <context>
@@ -186,12 +186,12 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddWidgetsDialog.qml" line="10"/>
         <source>Add Widgets</source>
-        <translation type="unfinished">新增小工具</translation>
+        <translation>新增小工具</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddWidgetsDialog.qml" line="110"/>
         <source>No Widget Selected</source>
-        <translation type="unfinished">未選取小工具</translation>
+        <translation>未選取小工具</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddWidgetsDialog.qml" line="176"/>
@@ -204,17 +204,17 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="11"/>
         <source>Tune your widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>調整你的小工具</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="12"/>
         <source>Adjust the size and finish of your widgets. The preview updates as you make changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>調整小工具嘅大小同外觀，預覽會跟住你嘅修改即時更新。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="34"/>
         <source>Widget Scale</source>
-        <translation type="unfinished"></translation>
+        <translation>小工具縮放</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="35"/>
@@ -224,17 +224,17 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="77"/>
         <source>Background Opacity</source>
-        <translation type="unfinished"></translation>
+        <translation>不透明度</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="78"/>
         <source>Change the opacity of widget backgrounds</source>
-        <translation type="unfinished"></translation>
+        <translation>調整小工具背景嘅不透明度</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="98"/>
         <source>Corner Radius</source>
-        <translation type="unfinished"></translation>
+        <translation>圓角半徑</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="99"/>
