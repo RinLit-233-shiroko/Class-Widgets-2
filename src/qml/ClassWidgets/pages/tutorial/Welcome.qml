@@ -233,7 +233,9 @@ Item {
 
                 Hyperlink {
                     text: qsTr("View License")
-                    onClicked: root.tutorial.requestSkip()
+                    onClicked: {
+                        licenseDialog.open()
+                    }
                 }
 
                 Hyperlink {
@@ -242,5 +244,36 @@ Item {
                 }
             }
         }
+    }
+
+    Dialog {
+        id: licenseDialog
+        title: qsTr("License Agreement")
+        width: root.width * 0.8
+        height: root.height * 0.8
+        modal: true
+
+        Text {
+            Layout.fillWidth: true
+            text: qsTr("This project (Class Widgets 2) is licensed under the MIT license. For details, see:")
+        }
+
+        Flickable {
+            clip: true
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            contentHeight: licenseText.height
+
+            ScrollBar.vertical: ScrollBar {}
+
+            Text {
+                id: licenseText
+                width: parent.width
+                // textFormat: Text.RichText
+                text: UtilsBackend.licenseText
+            }
+        }
+
+        standardButtons: Dialog.Close
     }
 }

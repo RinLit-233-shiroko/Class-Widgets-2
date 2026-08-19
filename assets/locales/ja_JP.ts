@@ -37,9 +37,8 @@ MIT ライセンスの下でライセンスが提供されています</translat
         <translation>このリポジトリを閲覧する</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="115"/>
         <source>File a bug or request new sample</source>
-        <translation>バグを報告するか、新しいサンプルをリクエストする</translation>
+        <translation type="vanished">バグを報告するか、新しいサンプルをリクエストする</translation>
     </message>
     <message>
         <source>Create an issue on GitHub</source>
@@ -99,6 +98,11 @@ MIT ライセンスの下でライセンスが提供されています</translat
         <translation type="vanished">GPL-3ライセンス</translation>
     </message>
     <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="115"/>
+        <source>File a bug or request new feature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="172"/>
         <source>Advances</source>
         <translation>進展事項</translation>
@@ -156,6 +160,11 @@ MIT ライセンスの下でライセンスが提供されています</translat
 * 再起動が必要です</translation>
     </message>
     <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="257"/>
+        <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Enable Debug Mode to access core widget information, and debugging tools. 
 * Requires restart.</source>
         <translation type="vanished">デバッグモードを有効にし、コアウィジェット情報およびデバッグツールにアクセスしてください。
@@ -177,9 +186,8 @@ MIT ライセンスの下でライセンスが提供されています</translat
         <translation>利用許諾契約書</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="257"/>
         <source>This project (Class Widgets 2) is licensed under the GPL-3 license. For details, see:</source>
-        <translation>このプロジェクト（Class Widgets 2）はGPL-3ライセンスでライセンスされています。詳細についてはこちらを参照してください：</translation>
+        <translation type="vanished">このプロジェクト（Class Widgets 2）はGPL-3ライセンスでライセンスされています。詳細についてはこちらを参照してください：</translation>
     </message>
 </context>
 <context>
@@ -4541,8 +4549,18 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="240"/>
+        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="242"/>
         <source>Skip tutorial</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="251"/>
+        <source>License Agreement</source>
+        <translation type="unfinished">利用許諾契約書</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="258"/>
+        <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

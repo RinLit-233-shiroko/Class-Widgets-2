@@ -43,9 +43,8 @@ Licensed under the MIT license</source>
         <translation>查看此仓库</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="115"/>
         <source>File a bug or request new sample</source>
-        <translation>提交错误或请求新样本</translation>
+        <translation type="vanished">提交错误或请求新样本</translation>
     </message>
     <message>
         <source>Create an issue on GitHub</source>
@@ -105,6 +104,11 @@ Licensed under the MIT license</source>
         <translation type="vanished">GPL-3 许可证</translation>
     </message>
     <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="115"/>
+        <source>File a bug or request new feature</source>
+        <translation>提交 Bug 漏洞或新功能建议</translation>
+    </message>
+    <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="172"/>
         <source>Advances</source>
         <translation>功能</translation>
@@ -162,6 +166,11 @@ Licensed under the MIT license</source>
 * 需要重启</translation>
     </message>
     <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="257"/>
+        <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
+        <translation>本项目（Class Widgets 2）采用 MIT 许可证。详细信息请参见：</translation>
+    </message>
+    <message>
         <source>Enable Debug Mode to access core widget information, and debugging tools. 
 * Requires restart.</source>
         <translation type="vanished">启用调试模式可访问核心部件信息及调试工具。 
@@ -183,9 +192,8 @@ Licensed under the MIT license</source>
         <translation>许可证协议</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="257"/>
         <source>This project (Class Widgets 2) is licensed under the GPL-3 license. For details, see:</source>
-        <translation>本项目（Class Widgets 2）采用 GPL-3 许可证。详细信息请参见：</translation>
+        <translation type="vanished">本项目（Class Widgets 2）采用 GPL-3 许可证。详细信息请参见：</translation>
     </message>
 </context>
 <context>
@@ -4775,9 +4783,19 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation>查看协议</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="240"/>
+        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="242"/>
         <source>Skip tutorial</source>
         <translation>跳过引导</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="251"/>
+        <source>License Agreement</source>
+        <translation>许可证协议</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="258"/>
+        <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
+        <translation>本项目（Class Widgets 2）采用 MIT 许可证。详细信息请参见：</translation>
     </message>
 </context>
 <context>

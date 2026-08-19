@@ -37,9 +37,8 @@ Licensed under the MIT license</source>
         <translation type="unfinished">查看此儲存庫</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="115"/>
         <source>File a bug or request new sample</source>
-        <translation type="unfinished">提交錯誤或請求新範例</translation>
+        <translation type="obsolete">提交錯誤或請求新範例</translation>
     </message>
     <message>
         <source>Create an issue on GitHub</source>
@@ -99,6 +98,11 @@ Licensed under the MIT license</source>
         <translation type="obsolete">GPL-3 許可證</translation>
     </message>
     <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="115"/>
+        <source>File a bug or request new feature</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="172"/>
         <source>Advances</source>
         <translation>功能</translation>
@@ -156,6 +160,11 @@ Licensed under the MIT license</source>
 * 需要重啟程式</translation>
     </message>
     <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="257"/>
+        <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Enable Debug Mode to access core widget information, and debugging tools. 
 * Requires restart.</source>
         <translation type="obsolete">啟用除錯模式以存取核心小工具資訊和除錯工具。* 需要重新啟動。</translation>
@@ -176,7 +185,6 @@ Licensed under the MIT license</source>
         <translation type="unfinished">授權協議</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="257"/>
         <source>This project (Class Widgets 2) is licensed under the GPL-3 license. For details, see:</source>
         <translation>本專案 (Class Widgets 2) 採用 MIT 授權條款。詳情請參閱：</translation>
     </message>
@@ -4439,8 +4447,18 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="240"/>
+        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="242"/>
         <source>Skip tutorial</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="251"/>
+        <source>License Agreement</source>
+        <translation type="unfinished">授權協議</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="258"/>
+        <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

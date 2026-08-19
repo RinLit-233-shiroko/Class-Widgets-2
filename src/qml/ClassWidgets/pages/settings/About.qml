@@ -112,7 +112,7 @@ FluentPage {
                 }
             }
             SettingItem {
-                title: qsTr("File a bug or request new sample")
+                title: qsTr("File a bug or request new feature")
 
                 // Hyperlink {
                 //     text: qsTr("Create an issue on GitHub")
@@ -254,7 +254,7 @@ FluentPage {
 
         Text {
             Layout.fillWidth: true
-            text: qsTr("This project (Class Widgets 2) is licensed under the GPL-3 license. For details, see:")
+            text: qsTr("This project (Class Widgets 2) is licensed under the MIT license. For details, see:")
         }
 
         Flickable {

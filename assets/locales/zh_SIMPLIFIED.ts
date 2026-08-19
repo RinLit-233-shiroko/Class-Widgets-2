@@ -31,9 +31,8 @@ Licensed under the MIT license</source>
         <translation>视奸此项目</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="115"/>
         <source>File a bug or request new sample</source>
-        <translation>提交你失败的药水</translation>
+        <translation type="vanished">提交你失败的药水</translation>
     </message>
     <message>
         <source>Create an issue on GitHub</source>
@@ -81,6 +80,11 @@ Licensed under the MIT license</source>
     <message>
         <source>GPL-3 License</source>
         <translation type="vanished">GPL-3 许可证</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="115"/>
+        <source>File a bug or request new feature</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="155"/>
@@ -165,8 +169,12 @@ Licensed under the MIT license</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="257"/>
+        <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>This project (Class Widgets 2) is licensed under the GPL-3 license. For details, see:</source>
-        <translation>本项目（Class Widgets 2）采用 GPL-3 许可证。详细信息请参见：</translation>
+        <translation type="vanished">本项目（Class Widgets 2）采用 GPL-3 许可证。详细信息请参见：</translation>
     </message>
 </context>
 <context>
@@ -4347,8 +4355,18 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="240"/>
+        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="242"/>
         <source>Skip tutorial</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="251"/>
+        <source>License Agreement</source>
+        <translation type="unfinished">伊甸园条约</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="258"/>
+        <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

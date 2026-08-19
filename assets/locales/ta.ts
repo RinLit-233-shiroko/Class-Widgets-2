@@ -31,9 +31,8 @@ MIT உரிமத்தின் கீழ் உரிமம் பெற்�
         <translation>இந்தக் களஞ்சியத்தைப் பார்க்க</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="115"/>
         <source>File a bug or request new sample</source>
-        <translation>பிழையைப் பதிவு செய்யவும் அல்லது புதிய மாதிரியைக் கோரவும்</translation>
+        <translation type="vanished">பிழையைப் பதிவு செய்யவும் அல்லது புதிய மாதிரியைக் கோரவும்</translation>
     </message>
     <message>
         <source>Create an issue on GitHub</source>
@@ -81,6 +80,11 @@ MIT உரிமத்தின் கீழ் உரிமம் பெற்�
     <message>
         <source>GPL-3 License</source>
         <translation type="vanished">GPL-3 உரிமம்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="115"/>
+        <source>File a bug or request new feature</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="155"/>
@@ -166,8 +170,12 @@ MIT உரிமத்தின் கீழ் உரிமம் பெற்�
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="257"/>
+        <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>This project (Class Widgets 2) is licensed under the GPL-3 license. For details, see:</source>
-        <translation>இந்த திட்டம் (வகுப்பு விட்செட்டுகள் 2) GPL-3 உரிமத்தின் கீழ் உரிமம் பெற்றது. விவரங்களுக்கு, பார்க்கவும்:</translation>
+        <translation type="vanished">இந்த திட்டம் (வகுப்பு விட்செட்டுகள் 2) GPL-3 உரிமத்தின் கீழ் உரிமம் பெற்றது. விவரங்களுக்கு, பார்க்கவும்:</translation>
     </message>
 </context>
 <context>
@@ -4350,8 +4358,18 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="240"/>
+        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="242"/>
         <source>Skip tutorial</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="251"/>
+        <source>License Agreement</source>
+        <translation type="unfinished">உரிம ஒப்பந்தத்தின்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="258"/>
+        <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
