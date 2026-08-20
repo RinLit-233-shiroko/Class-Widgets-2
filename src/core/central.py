@@ -48,6 +48,7 @@ from src.core.utils.instance_locker import SingleInstanceGuard
 from src.core.widgets import WidgetsWindow, WidgetListModel
 from src.core.automations.manager import AutomationManager
 from src.core.windows.manager import AppWindowManager
+from src.core.startup_animation import StartupAnimation
 
 
 class QmlContextWindow(Protocol):
@@ -129,6 +130,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.widgets_model: WidgetListModel = WidgetListModel(self)
         self.tray_icon: Optional[TrayIcon] = None
         self.window_manager: AppWindowManager = AppWindowManager(self)
+        self.startup_animation: StartupAnimation = StartupAnimation(self)
 
     def _initialize_notification(self) -> None:
         """初始化通知系统"""
@@ -222,6 +224,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     def run(self) -> None:  # 运行
         self._load_config()  # 加载配置
         self._load_translator()  # 加载翻译
+        self.startup_animation.start()
 
         if self.multi_instances:
             if not (getattr(sys, "frozen", False) and sys.platform == "darwin"):
@@ -324,6 +327,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             ("update timer stop", self.union_update_timer.stop),
             ("auxiliary window release", self.window_manager.release_all),
             ("main window release", self.widgets_window.release),
+            ("startup animation release", self.startup_animation.release),
             ("plugin cleanup", self.plugin_manager.cleanup),
             ("RinUI theme cleanup", self.widgets_window.theme_manager.clean_up),
             ("single instance lock release", self.instance_guard.release),
@@ -334,6 +338,10 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             except Exception:
                 logger.exception("Failed during {}", step_name)
         logger.info("Clean up.")
+
+    @Property(QObject)
+    def startupAnimation(self) -> QObject:
+        return self.startup_animation
 
     @Property(QObject, notify=initialized)
     def scheduleRuntime(self) -> QObject:  # 运行时

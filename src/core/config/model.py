@@ -131,6 +131,10 @@ class AppConfig(ConfigBaseModel):
     channel: str = __version_type__
     tutorial_completed: bool = False  # 是否完成初始化
     auto_startup: bool = False  # 开机自启
+    startup_animation_enabled: bool = True  # 启动动画开关
+    startup_animation_media_path: str = ""  # 本地图片或视频的绝对路径
+    startup_animation_media_type: str = "none"  # none / image / video
+    startup_animation_show_info: bool = True  # 显示图标、软件名和版本信息
 
 
 class PreferencesConfig(ConfigBaseModel):
