@@ -445,7 +445,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation type="vanished">默认</translation>
     </message>
     <message>
-        <location filename="../../src/core/config/model.py" line="209"/>
+        <location filename="../../src/core/config/model.py" line="210"/>
         <source>New Schedule 1</source>
         <translation>新课程表 1</translation>
     </message>
@@ -2167,12 +2167,32 @@ If translations are missing after a theme change, please restart</source>
         <translation>主题</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="215"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="212"/>
+        <source>Liquid Glass Effect</source>
+        <translation>液态玻璃效果</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="213"/>
+        <source>Choose between a balanced glass effect and a stronger effect with brighter highlights and deeper shadows</source>
+        <translation>可选择均衡的玻璃效果，或使用高光更明亮、投影更深的增强效果</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="219"/>
+        <source>Standard Liquid Glass</source>
+        <translation>标准液态玻璃</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="220"/>
+        <source>Enhanced Liquid Glass</source>
+        <translation>增强液态玻璃</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="236"/>
         <source>Incompatible Theme</source>
         <translation>此主题不兼容</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="220"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="241"/>
         <source>This theme requires the app version %1, but current app version is %2. 
 
 Applying an incompatible theme may cause serious errors, crashes, or unexpected behavior.</source>
@@ -2188,12 +2208,12 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
 不兼容可能导致意外问题。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="231"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="252"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="238"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="259"/>
         <source>Apply anyway</source>
         <translation>仍然应用</translation>
     </message>

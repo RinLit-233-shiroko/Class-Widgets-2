@@ -153,6 +153,7 @@ class PreferencesConfig(ConfigBaseModel):
     display: Optional[str] = None  # 指定显示器
     mini_mode: bool = False  # 迷你
     lighting_effect: bool = True  # 光影效果
+    liquid_glass_effect: str = "standard"  # standard / enhanced，仅液态玻璃主题使用
     shortcuts: list[str] = Field(default_factory=lambda: [
         "com.classwidgets.settings",
         "com.classwidgets.schedules",
