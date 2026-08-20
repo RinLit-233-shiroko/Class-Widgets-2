@@ -166,5 +166,97 @@ FluentPage {
                 }
             }
         }
+
+        SettingCard {
+            Layout.fillWidth: true
+            title: qsTr("Startup Animation")
+            description: qsTr("Show a compact animation in the center of the screen when Class Widgets starts")
+            icon.name: "ic_fluent_play_circle_20_regular"
+
+            Switch {
+                id: startupAnimationSwitch
+                property bool initialized: false
+                enabled: !Configs.isKeyLocked("app.startup_animation_enabled")
+                onCheckedChanged: if (initialized) Configs.set("app.startup_animation_enabled", checked)
+                Component.onCompleted: {
+                    checked = Configs.data.app.startup_animation_enabled
+                    initialized = true
+                }
+            }
+        }
+
+        SettingCard {
+            id: startupMediaCard
+            Layout.fillWidth: true
+            title: qsTr("Startup Media")
+            description: qsTr("Choose a local image or a video no longer than 10 seconds")
+            icon.name: "ic_fluent_image_20_regular"
+
+            property string selectError: ""
+
+            ColumnLayout {
+                spacing: 6
+
+                RowLayout {
+                    spacing: 8
+
+                    Text {
+                        Layout.fillWidth: true
+                        text: AppCentral.startupAnimation.hasCustomMedia
+                              ? AppCentral.startupAnimation.mediaName
+                              : qsTr("No local media selected")
+                        color: Colors.proxy.textSecondaryColor
+                        elide: Text.ElideMiddle
+                    }
+
+                    Button {
+                        text: qsTr("Select media")
+                        enabled: !Configs.isKeyLocked("app.startup_animation_media_path")
+                        onClicked: {
+                            startupMediaCard.selectError = AppCentral.startupAnimation.selectMedia()
+                        }
+                    }
+
+                    Button {
+                        text: qsTr("Clear")
+                        enabled: AppCentral.startupAnimation.hasCustomMedia
+                                 && !Configs.isKeyLocked("app.startup_animation_media_path")
+                        onClicked: {
+                            AppCentral.startupAnimation.clearMedia()
+                            startupMediaCard.selectError = ""
+                        }
+                    }
+                }
+
+                Text {
+                    Layout.fillWidth: true
+                    visible: startupMediaCard.selectError !== ""
+                    text: startupMediaCard.selectError
+                    color: "#c42b1c"
+                    wrapMode: Text.WordWrap
+                    font.pixelSize: 12
+                }
+            }
+        }
+
+        SettingCard {
+            Layout.fillWidth: true
+            title: qsTr("Show ClassWidgets Information")
+            description: AppCentral.startupAnimation.hasCustomMedia
+                         ? qsTr("Show the icon, software name and version over custom startup media")
+                         : qsTr("This information is always shown until a local image or video is selected")
+            icon.name: "ic_fluent_info_20_regular"
+
+            Switch {
+                property bool initialized: false
+                enabled: AppCentral.startupAnimation.hasCustomMedia
+                         && !Configs.isKeyLocked("app.startup_animation_show_info")
+                onCheckedChanged: if (initialized) Configs.set("app.startup_animation_show_info", checked)
+                Component.onCompleted: {
+                    checked = Configs.data.app.startup_animation_show_info
+                    initialized = true
+                }
+            }
+        }
     }
 }
