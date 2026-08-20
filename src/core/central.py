@@ -224,7 +224,6 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     def run(self) -> None:  # 运行
         self._load_config()  # 加载配置
         self._load_translator()  # 加载翻译
-        self.startup_animation.start()
 
         if self.multi_instances:
             if not (getattr(sys, "frozen", False) and sys.platform == "darwin"):
@@ -250,6 +249,8 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             self.window_manager.open_tutorial()
             return  # 中断后续初始化流程，教程窗口负责完成设置后重启
 
+        # 仅在已完成首次引导后的常规启动中显示动画。
+        self.startup_animation.start()
         self._startup_state = StartupState.INITIALIZING
         try:
             self._setup_logging()  # 设置日志

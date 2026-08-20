@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import os
 import sys
+from typing import Literal
 
 # 允许从源码目录和 PyInstaller 解包目录启动。
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
@@ -65,9 +66,14 @@ class SettingsPlazaCentral(AppCentral):
         self.widgets_window = _NoopWidgetsWindow(self.theme_manager)
 
 
-def main() -> int:
+def main(mode: Literal["settings", "plaza", "both"] = "both") -> int:
     app = QApplication(sys.argv)
-    app.setApplicationName("Class Widgets 2 Settings & Plugin Plaza")
+    window_titles = {
+        "settings": "Class Widgets 2 Settings",
+        "plaza": "Class Widgets 2 Plugin Plaza",
+        "both": "Class Widgets 2 Settings & Plugin Plaza",
+    }
+    app.setApplicationName(window_titles[mode])
     app.setOrganizationName("Class Widgets")
 
     central = SettingsPlazaCentral()
@@ -82,13 +88,24 @@ def main() -> int:
     central._load_class_swap()
     central._load_runtime()
 
-    # 两个目标窗口均直接启动；插件中心也仍可从“设置 → 插件”页面再次唤起。
-    central.window_manager.open_settings()
-    QTimer.singleShot(120, central.window_manager.open_plugin_plaza)
+    # 独立入口可只打开设置、只打开插件中心，或保留兼容模式同时打开两者。
+    if mode in {"settings", "both"}:
+        central.window_manager.open_settings()
+    if mode in {"plaza", "both"}:
+        QTimer.singleShot(120 if mode == "both" else 0, central.window_manager.open_plugin_plaza)
     exit_code = app.exec()
     central.cleanup()
     return exit_code
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    command_modes = {
+        "--settings-only": "settings",
+        "--plugin-plaza-only": "plaza",
+        "--settings-plaza": "both",  # 保留旧参数兼容性
+    }
+    selected_mode = next(
+        (command_modes[arg] for arg in sys.argv[1:] if arg in command_modes),
+        "both",
+    )
+    raise SystemExit(main(selected_mode))

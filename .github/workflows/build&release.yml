@@ -163,15 +163,25 @@ jobs:
             --name="Class Widgets 2" \
             src/app.py
 
-      - name: 🔨 Build Settings & Plugin Plaza launcher (Windows)
+      - name: 🔨 Build Settings launcher (Windows)
         shell: bash
         run: |
           uv run pyinstaller --noconsole --onefile \
             --icon "assets/images/logo.ico" \
-            --name="Class Widgets 2 Settings & Plugin Plaza" \
+            --name="Class Widgets 2 Settings" \
             --distpath "dist/Class Widgets 2" \
-            --workpath "build/settings-plaza-launcher" \
-            src/settings_plaza_launcher.py
+            --workpath "build/settings-launcher" \
+            src/settings_launcher.py
+
+      - name: 🔨 Build Plugin Plaza launcher (Windows)
+        shell: bash
+        run: |
+          uv run pyinstaller --noconsole --onefile \
+            --icon "assets/images/logo.ico" \
+            --name="Class Widgets 2 Plugin Plaza" \
+            --distpath "dist/Class Widgets 2" \
+            --workpath "build/plugin-plaza-launcher" \
+            src/plugin_plaza_launcher.py
 
       - name: 🧹 Remove unnecessary PySide6 files (Only Windows)
         if: runner.os == 'Windows'
