@@ -171,7 +171,6 @@ jobs:
             --name="Class Widgets 2 Settings & Plugin Plaza" \
             --distpath "dist/Class Widgets 2" \
             --workpath "build/settings-plaza-launcher" \
-            --specpath "build/specs" \
             src/settings_plaza_launcher.py
 
       - name: 🧹 Remove unnecessary PySide6 files (Only Windows)
