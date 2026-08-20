@@ -1,26 +1,20 @@
-# Class Widgets 2：设置与插件中心独立版
+# Class Widgets 2：设置与插件中心包内启动器
 
-本构建产物将 [Class Widgets 2](https://github.com/MMCKB/Class-Widgets-2) 的 **设置窗口** 与 **插件中心窗口** 提取为一个独立的 Windows 可执行文件。程序复用原项目的 QML 页面、主题、配置、插件管理和插件广场接口，并遵循上游项目随附的 MIT 许可证。
+Windows 发布包会额外包含 `Class Widgets 2 Settings & Plugin Plaza.exe`。该文件是一个轻量启动器，位于 `Class Widgets 2.exe` 同一目录，用于直接打开 **设置窗口** 与 **插件中心窗口**。
 
-## 运行方式
+> 此启动器不会携带第二份 Qt、主题、配置或插件资源；它会调用同目录的 `Class Widgets 2.exe --settings-plaza`，因此始终复用同一个 Class Widgets 2 包体。
 
-在 64 位 Windows 上双击 `ClassWidgets2-Settings-Plaza.exe` 即可运行。首次启动时会同时打开“设置”和“插件中心”两个窗口。该版本为 PyInstaller 单文件程序，启动时会在临时目录自动解包运行所需资源，不需要安装 Python。
+## 使用方式
 
-| 功能范围 | 状态 |
+下载并解压 `ClassWidgets-2-Windows.zip` 后，双击以下任一文件：
+
+| 文件 | 行为 |
 |---|---|
-| 设置窗口及其导航页面 | 已保留 |
-| 插件中心：首页、插件列表、搜索、详情与下载页 | 已保留 |
-| 主题、语言、通知和配置页面 | 已保留 |
-| 插件广场网络访问 | 已保留；需要网络连接 |
-| 桌面 Widget 透明窗、Widget 刷新和鼠标监测 | 明确不启动 |
-| 原软件其他辅助窗口 | 不作为独立版启动界面 |
+| `Class Widgets 2.exe` | 启动完整应用，包括桌面 Widget。 |
+| `Class Widgets 2 Settings & Plugin Plaza.exe` | 仅启动设置与插件中心，不加载桌面 Widget 画布。 |
 
-## 源码再次构建
+启动器必须与主程序保留在同一文件夹中。若移动或单独复制启动器，因找不到 `Class Widgets 2.exe` 而无法运行。
 
-若需自行生成 EXE，请在 64 位 Windows 中安装 Python 3.12，然后双击 `build_settings_plaza_windows.bat`。构建结果将写入 `dist\ClassWidgets2-Settings-Plaza.exe`。
+## 构建策略
 
-> 本独立版并未加载 `MainInterface.qml`，也不会调用桌面 Widget 的启动方法。因此，即便完整 Class Widgets 2 正在运行，它也不会创建第二个桌面 Widget 画布。
-
-## 上游来源与许可证
-
-源代码基于上游仓库，原始版权和 MIT 许可证文本保留在 `LICENSE` 文件中。插件中心展示的远程内容由其服务端提供，内容可用性与网络连接状态有关。
+GitHub Actions 仅在 `windows-latest` 上构建一个 Windows 包。构建流程先生成主程序的目录式包体，再将单文件启动器输出到同一目录，最后统一压缩为 `ClassWidgets-2-Windows.zip`。上游许可证文件会随主包一并分发。

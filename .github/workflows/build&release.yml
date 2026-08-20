@@ -3,7 +3,7 @@ name: Build & Release ClassWidgets-2
 on:
   push:
     tags:
-      - "*"
+      - "v*"
   workflow_dispatch:
     inputs:
       version:
@@ -33,7 +33,7 @@ on:
       is_signing:
         description: 'Sign Windows executable (SignPath)'
         required: false
-        default: true
+        default: false
         type: boolean
       release:
         description: 'Create GitHub Release'
@@ -52,10 +52,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [windows-latest, macos-15-intel, macos-latest]
+    runs-on: windows-latest
 
     steps:
       - name: ⬇️ Checkout code
@@ -150,7 +147,6 @@ jobs:
           uv pip install pyinstaller
 
       - name: 🔨 Build ClassWidgets-2 (Windows)
-        if: runner.os == 'Windows'
         shell: bash
         run: |
           uv run pyinstaller --noconsole \
@@ -158,28 +154,25 @@ jobs:
             --add-data "src/qml:src/qml" \
             --add-data "src/plugins:src/plugins" \
             --add-data "src/themes:src/themes" \
+            --add-data "themes:themes" \
             --add-data "assets:assets" \
             --add-data "LICENSE:." \
+            --hidden-import "src.settings_plaza_app" \
             --paths=. \
             --contents-directory . \
             --name="Class Widgets 2" \
             src/app.py
 
-      - name: 🔨 Build ClassWidgets-2 (macOS)
-        if: runner.os == 'macOS'
+      - name: 🔨 Build Settings & Plugin Plaza launcher (Windows)
         shell: bash
         run: |
-          uv run pyinstaller --noconsole \
-            --icon "assets/images/logo.icns" \
-            --add-data "src/qml:src/qml" \
-            --add-data "src/plugins:src/plugins" \
-            --add-data "src/themes:src/themes" \
-            --add-data "assets:assets" \
-            --add-data "LICENSE:." \
-            --paths=. \
-            --contents-directory . \
-            --name="Class Widgets 2" \
-            src/app.py
+          uv run pyinstaller --noconsole --onefile \
+            --icon "assets/images/logo.ico" \
+            --name="Class Widgets 2 Settings & Plugin Plaza" \
+            --distpath "dist/Class Widgets 2" \
+            --workpath "build/settings-plaza-launcher" \
+            --specpath "build/specs" \
+            src/settings_plaza_launcher.py
 
       - name: 🧹 Remove unnecessary PySide6 files (Only Windows)
         if: runner.os == 'Windows'
@@ -224,8 +217,29 @@ jobs:
         run: |
           Compress-Archive -Path "dist/Class Widgets 2/*" -DestinationPath "dist/ClassWidgets-2-Windows.zip"
 
+      - name: 🔏 Resolve signing configuration (Windows)
+        id: signing
+        shell: bash
+        env:
+          SIGNPATH_API_TOKEN: ${{ secrets.SIGNPATH_API_TOKEN }}
+          SIGNPATH_ORG_ID: ${{ vars.SIGNPATH_ORG_ID }}
+          SIGNPATH_PROJECT_SLUG: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+          SIGNPATH_POLICY_SLUG: ${{ vars.SIGNPATH_POLICY_SLUG }}
+        run: |
+          if [[ "${{ inputs.is_signing }}" == "true" \
+            && -n "$SIGNPATH_API_TOKEN" \
+            && -n "$SIGNPATH_ORG_ID" \
+            && -n "$SIGNPATH_PROJECT_SLUG" \
+            && -n "$SIGNPATH_POLICY_SLUG" ]]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+            echo "SignPath signing enabled."
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "SignPath signing skipped: disabled or incomplete configuration."
+          fi
+
       - name: 🔏 Prepare exe for signing (Windows)
-        if: runner.os == 'Windows' && inputs.is_signing
+        if: steps.signing.outputs.enabled == 'true'
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Path "./exe-for-signing" -Force | Out-Null
@@ -235,7 +249,7 @@ jobs:
           echo "EXE_NAME=$($exe.Name)" >> $env:GITHUB_ENV
 
       - name: ☁️ Upload unsigned exe (Windows)
-        if: runner.os == 'Windows' && inputs.is_signing
+        if: steps.signing.outputs.enabled == 'true'
         id: upload_unsigned
         uses: actions/upload-artifact@v4
         with:
@@ -243,7 +257,7 @@ jobs:
           path: ./exe-for-signing
 
       - name: 🔏 Submit signing request (Windows)
-        if: runner.os == 'Windows' && inputs.is_signing
+        if: steps.signing.outputs.enabled == 'true'
         uses: signpath/github-action-submit-signing-request@v2
         with:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
@@ -255,7 +269,7 @@ jobs:
           output-artifact-directory: ./signed-output
 
       - name: 🔏 Replace with signed exe (Windows)
-        if: runner.os == 'Windows' && inputs.is_signing
+        if: steps.signing.outputs.enabled == 'true'
         shell: pwsh
         run: |
           $signedExe = "./signed-output/${env:EXE_NAME}"
@@ -270,26 +284,6 @@ jobs:
             exit 1
           }
 
-      - name: 🔧 Install Inno Setup
-        if: runner.os == 'Windows'
-        shell: pwsh
-        run: |
-          choco install innosetup -y
-
-      - name: 🏗️ Build Windows Installer
-        if: runner.os == 'Windows'
-        shell: cmd
-        run: |
-          set CW_VERSION=${{ steps.version.outputs.version }}
-          iscc scripts\cw2-cicd.iss
-
-      - name: ☁️ Upload installer artifact
-        if: runner.os == 'Windows'
-        uses: actions/upload-artifact@v4
-        with:
-          name: ClassWidgets-2-Windows-Installer
-          path: output/ClassWidgets-*-Win-Installer.exe
-
       - name: 📦 Zip build (macOS)
         if: runner.os == 'macOS'
         shell: bash
@@ -303,13 +297,6 @@ jobs:
         with:
           name: ClassWidgets-2-Windows
           path: dist/ClassWidgets-2-Windows.zip
-
-      - name: ☁️ Upload artifact (macOS)
-        if: runner.os == 'macOS'
-        uses: actions/upload-artifact@v4
-        with:
-          name: ClassWidgets-2-macOS-${{ runner.arch }}
-          path: ClassWidgets-2-macOS-${{ runner.arch }}.dmg
 
   release:
     needs: [build]
@@ -386,8 +373,6 @@ jobs:
           prerelease: ${{ steps.version.outputs.prerelease }}
           files: |
             dist/ClassWidgets-2-Windows.zip
-            dist/ClassWidgets-2-macOS-X64.dmg
-            dist/ClassWidgets-2-macOS-ARM64.dmg
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
 
@@ -414,12 +399,6 @@ jobs:
             -T "dist/ClassWidgets-2-Windows.zip" \
             "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
 
-          curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
-            -T "dist/ClassWidgets-2-macOS-X64.dmg" \
-            "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-macOS-X64.dmg"
-          curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
-            -T "dist/ClassWidgets-2-macOS-ARM64.dmg" \
-            "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-macOS-ARM64.dmg"
 
       - name: 🔔 Trigger Official Website Update
         if: success()
@@ -451,10 +430,3 @@ jobs:
           curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
             -T "dist/ClassWidgets-2-Windows.zip" \
             "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
-
-          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
-            -T "dist/ClassWidgets-2-macOS-X64.dmg" \
-            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-macOS-X64.dmg"
-          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
-            -T "dist/ClassWidgets-2-macOS-ARM64.dmg" \
-            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-macOS-ARM64.dmg"

@@ -188,3 +188,7 @@ RinUI
 
 # Reasonix
 .reasonix/
+
+# Local cross-build outputs for the Settings & Plugin Plaza launcher
+build-win/
+dist-win/
