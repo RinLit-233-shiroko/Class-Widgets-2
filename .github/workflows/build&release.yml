@@ -309,6 +309,8 @@ jobs:
 
   release:
     needs: [build]
+    # 手动验证构建默认只上传 Actions 产物；仅版本标签或显式选择时创建 Release。
+    if: github.event_name == 'push' || inputs.release == true
     runs-on: ubuntu-latest
 
     steps:
