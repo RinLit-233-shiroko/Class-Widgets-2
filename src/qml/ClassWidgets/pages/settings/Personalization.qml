@@ -205,6 +205,27 @@ FluentPage {
                 }
             }
         }
+
+        SettingCard {
+            Layout.fillWidth: true
+            visible: CWThemeManager.currentTheme === "com.classwidgets.liquidglass"
+            title: qsTr("Liquid Glass Effect")
+            description: qsTr("Choose between a balanced glass effect and a stronger effect with brighter highlights and deeper shadows")
+            icon.name: "ic_fluent_glass_20_regular"
+
+            ComboBox {
+                property var values: ["standard", "enhanced"]
+                model: ListModel {
+                    ListElement { text: qsTr("Standard Liquid Glass") }
+                    ListElement { text: qsTr("Enhanced Liquid Glass") }
+                }
+                currentIndex: values.indexOf(Configs.data.preferences.liquid_glass_effect)
+                enabled: !Configs.isKeyLocked("preferences.liquid_glass_effect")
+                onCurrentIndexChanged: if (focus && currentIndex >= 0) {
+                    Configs.set("preferences.liquid_glass_effect", values[currentIndex])
+                }
+            }
+        }
     }
 
 
