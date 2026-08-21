@@ -28,6 +28,7 @@ if TYPE_CHECKING:
     from src.core.widgets import WidgetsWindow, WidgetListModel
     from src.core.automations.manager import AutomationManager
     from src.core.windows.manager import AppWindowManager
+    from src.core.ai_chat import AiChatService
 
 # runtime imports
 from src.core.notification import (
@@ -49,6 +50,7 @@ from src.core.widgets import WidgetsWindow, WidgetListModel
 from src.core.automations.manager import AutomationManager
 from src.core.windows.manager import AppWindowManager
 from src.core.startup_animation import StartupAnimation
+from src.core.ai_chat import AiChatService
 
 
 class QmlContextWindow(Protocol):
@@ -131,6 +133,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.tray_icon: Optional[TrayIcon] = None
         self.window_manager: AppWindowManager = AppWindowManager(self)
         self.startup_animation: StartupAnimation = StartupAnimation(self)
+        self.ai_chat_service: AiChatService = AiChatService(self, self)
 
     def _initialize_notification(self) -> None:
         """初始化通知系统"""
@@ -309,6 +312,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     def _load_config(self) -> None:
         """加载和验证配置"""
         self.configs.load_config()
+        self.ai_chat_service.refreshWakeListener()
 
     def _load_class_swap(self) -> None:
         """加载换课记录，跨天时自动清理"""
@@ -329,6 +333,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             ("auxiliary window release", self.window_manager.release_all),
             ("main window release", self.widgets_window.release),
             ("startup animation release", self.startup_animation.release),
+            ("AI chat release", self.ai_chat_service.release),
             ("plugin cleanup", self.plugin_manager.cleanup),
             ("RinUI theme cleanup", self.widgets_window.theme_manager.clean_up),
             ("single instance lock release", self.instance_guard.release),
@@ -343,6 +348,10 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     @Property(QObject)
     def startupAnimation(self) -> QObject:
         return self.startup_animation
+
+    @Property(QObject)
+    def aiChatService(self) -> QObject:
+        return self.ai_chat_service
 
     @Property(QObject, notify=initialized)
     def scheduleRuntime(self) -> QObject:  # 运行时
@@ -419,6 +428,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         context.setContextProperty("PathManager", self.path_manager)
         context.setContextProperty("ClassSwapManager", self._class_swap_manager)
         context.setContextProperty("UtilsBackend", self.utils_backend)
+        context.setContextProperty("AiChatService", self.ai_chat_service)
 
     @staticmethod
     def clean_qml_context(window):
@@ -434,6 +444,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         context.setContextProperty("WindowManager", None)
         context.setContextProperty("PathManager", None)
         context.setContextProperty("UtilsBackend", None)
+        context.setContextProperty("AiChatService", None)
         context.setContextProperty("backend", None)
 
     def _load_schedule(self) -> None:

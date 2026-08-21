@@ -191,6 +191,31 @@ class InteractionsConfig(ConfigBaseModel):
     hide: HideInteractionsConfig = Field(default_factory=HideInteractionsConfig)  # 隐藏配置
 
 
+class AiChatConfig(ConfigBaseModel):
+    """AI 对话与语音唤醒配置。
+
+    ``api_key`` 会随本地 ``configs.json`` 保存。它仅用于用户自行配置的
+    OpenAI 兼容服务，设置页面以密码输入框展示，避免在界面中直接泄露。
+    """
+
+    enabled: bool = False
+    base_url: str = "https://api.openai.com"
+    api_key: str = ""
+    model: str = "gpt-4o"
+    transcription_model: str = "whisper-1"
+    wake_phrase: str = "你好小组件"
+    wake_enabled: bool = True
+    wake_language: str = "zh-CN"
+    # 留空时使用随 Windows 包提供的中文小模型；填写本地 Vosk 模型目录后，
+    # 可用于英语、日语等任意 Vosk 支持的语言。
+    wake_model_path: str = ""
+    tts_enabled: bool = True
+    tts_model: str = "tts-1"
+    tts_voice: str = "alloy"
+    tts_speed: float = 1.0
+    system_prompt: str = ""
+
+
 class PluginsConfig(ConfigBaseModel):
     enabled: list[str] = ["builtin.classwidgets.widgets"]
     configs: dict[str, dict[str, JsonData]] = Field(default_factory=dict)

@@ -49,6 +49,11 @@ FluentWindow {
             page: PathManager.qml("pages/settings/Personalization.qml"),
         },
         {
+            title: qsTr("AI Conversation"),
+            page: PathManager.qml("pages/settings/AiChat.qml"),
+            icon: "ic_fluent_bot_20_regular"
+        },
+        {
             title: qsTr("Notification & Time"),
             icon: "ic_fluent_alert_badge_20_regular",
             subItems: [
