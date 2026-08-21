@@ -77,6 +77,9 @@ Widget {
 
     TapHandler {
         enabled: !root.editMode
-        onTapped: AiChatService.activate()
+        onTapped: {
+            const point = root.mapToItem(null, 0, 0)
+            AiChatService.activateAt(point.x, point.y, root.width, root.height)
+        }
     }
 }
