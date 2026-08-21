@@ -1,36 +1,74 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import Qt5Compat.GraphicalEffects
 import RinUI
 import ClassWidgets.Theme
 
 Rectangle {
     id: root
     objectName: "aiChatPanel"
-    width: Math.min(560, parent ? parent.width - 48 : 560)
-    property real speechTailHeight: AiChatService.speaking ? 104 : 0
-    height: Math.min(650, parent ? parent.height - 48 - speechTailHeight : 650)
-    x: parent ? (parent.width - width) / 2 : 0
-    y: parent ? Math.max(24, (parent.height - height - speechTailHeight) / 2) : 0
-    z: 6000
+    property real anchorX: 0
+    property real anchorY: 0
+    property real anchorWidth: 0
+    property real anchorHeight: 0
+    property string errorMessage: ""
+    property bool voiceActivation: false
+    property bool hasConversation: AiChatService.messages.length > 0
+                                  || AiChatService.state === "thinking"
+                                  || AiChatService.state === "responding"
+                                  || AiChatService.state === "speaking"
+    property bool listening: AiChatService.recording
+                             || (AiChatService.state === "listening" && AiChatService.transcriptionText.length > 0)
+    property real conversationHeight: hasConversation
+                                      ? Math.min(392, Math.max(148, messageList.contentHeight + 22))
+                                      : 0
+    property real composerHeight: listening ? 144 : 84
+    property real desiredHeight: composerHeight + (hasConversation ? conversationHeight + 12 : 0)
+                                 + (AiChatService.speaking ? 66 : 0) + 28
+
+    width: Math.min(540, parent ? parent.width - 44 : 540)
+    height: desiredHeight
+    x: {
+        const desiredX = anchorWidth > 0 ? anchorX + (anchorWidth - width) / 2 : (parent.width - width) / 2
+        return Math.max(22, Math.min(parent.width - width - 22, desiredX))
+    }
+    y: {
+        // 常态优先落在点击 Widget 下方；空间不足时留在屏幕下侧而非顶部。
+        const belowWidget = anchorHeight > 0 ? anchorY + anchorHeight + 16 : parent.height - height - 34
+        return Math.max(22, Math.min(parent.height - height - 30, belowWidget))
+    }
+    z: 400
     visible: false
-    radius: 24
-    color: Theme.isDark() ? Qt.rgba(0.08, 0.09, 0.13, 0.97) : Qt.rgba(0.98, 0.98, 1, 0.98)
+    opacity: visible ? 1 : 0
+    radius: 20
+    color: Theme.isDark() ? Qt.rgba(0.075, 0.09, 0.13, 0.97) : Qt.rgba(0.98, 0.985, 1, 0.98)
     border.width: 1
-    border.color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.16) : Qt.rgba(0.22, 0.33, 0.5, 0.14)
+    border.color: Theme.isDark() ? Qt.rgba(0.66, 0.78, 1, 0.22) : Qt.rgba(0.24, 0.38, 0.62, 0.18)
+    clip: true
     focus: visible
 
-    property string errorMessage: ""
     signal panelGeometryChanged()
 
-    function openPanel() {
+    Behavior on height { NumberAnimation { duration: 360; easing.type: Easing.OutCubic } }
+    Behavior on y { NumberAnimation { duration: 340; easing.type: Easing.OutCubic } }
+    Behavior on opacity { NumberAnimation { duration: 220; easing.type: Easing.OutCubic } }
+
+    function openAt(fromVoiceWake, x, y, width, height) {
+        voiceActivation = fromVoiceWake
+        anchorX = x
+        anchorY = y
+        anchorWidth = width
+        anchorHeight = height
+        errorMessage = ""
         visible = true
-        input.forceActiveFocus()
+        if (!fromVoiceWake)
+            input.forceActiveFocus()
         panelGeometryChanged()
     }
 
-    function closePanel() {
+    function closePanel(cancelConversation) {
+        if (cancelConversation)
+            AiChatService.cancel()
         visible = false
         panelGeometryChanged()
     }
@@ -41,166 +79,267 @@ Rectangle {
     onHeightChanged: panelGeometryChanged()
     onVisibleChanged: panelGeometryChanged()
 
-    layer.enabled: true
-    layer.effect: DropShadow {
-        transparentBorder: true
-        horizontalOffset: 0
-        verticalOffset: 16
-        radius: 32
-        samples: 33
-        color: "#50000000"
-    }
-
     ColumnLayout {
         anchors.fill: parent
-        anchors.margins: 20
-        spacing: 12
-
-        RowLayout {
-            Layout.fillWidth: true
-            spacing: 12
-
-            Rectangle {
-                Layout.preferredWidth: 38
-                Layout.preferredHeight: 38
-                radius: width / 2
-                gradient: Gradient {
-                    GradientStop { position: 0; color: "#58C9F3" }
-                    GradientStop { position: 1; color: "#8978F2" }
-                }
-                Text {
-                    anchors.centerIn: parent
-                    text: "AI"
-                    color: "white"
-                    font.bold: true
-                    font.pixelSize: 14
-                }
-            }
-
-            ColumnLayout {
-                Layout.fillWidth: true
-                spacing: 1
-                Label {
-                    text: qsTr("AI Conversation")
-                    font.pixelSize: 18
-                    font.bold: true
-                    color: Theme.isDark() ? "#F4F5FC" : "#1D2433"
-                }
-                Label {
-                    text: {
-                        switch (AiChatService.state) {
-                        case "listening": return AiChatService.recording ? qsTr("Listening… release the microphone button when you finish") : qsTr("Ready for your message")
-                        case "thinking": return qsTr("Thinking…")
-                        case "responding": return qsTr("Replying…")
-                        case "speaking": return qsTr("Reading aloud…")
-                        default: return qsTr("Conversation complete")
-                        }
-                    }
-                    color: Theme.isDark() ? "#AEB8CD" : "#61708A"
-                    font.pixelSize: 12
-                }
-            }
-
-            ToolButton {
-                text: "↺"
-                font.pixelSize: 20
-                enabled: AiChatService.state === "idle"
-                ToolTip.visible: hovered
-                ToolTip.text: qsTr("Clear conversation")
-                onClicked: AiChatService.clearConversation()
-            }
-            ToolButton {
-                text: "×"
-                font.pixelSize: 22
-                ToolTip.visible: hovered
-                ToolTip.text: qsTr("Close")
-                onClicked: root.closePanel()
-            }
-        }
+        anchors.margins: 14
+        spacing: 10
 
         Rectangle {
+            id: conversationSurface
             Layout.fillWidth: true
-            Layout.preferredHeight: 1
-            color: Theme.isDark() ? "#2A3040" : "#E0E5EE"
-        }
-
-        Rectangle {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            radius: 16
-            color: Theme.isDark() ? "#111520" : "#F1F4F9"
+            Layout.preferredHeight: root.conversationHeight
+            visible: root.hasConversation
+            radius: 15
             clip: true
+            color: Theme.isDark() ? Qt.rgba(0.11, 0.14, 0.21, 0.9) : Qt.rgba(0.92, 0.95, 0.99, 0.96)
+
+            Behavior on Layout.preferredHeight {
+                NumberAnimation { duration: 350; easing.type: Easing.OutCubic }
+            }
 
             ListView {
                 id: messageList
                 anchors.fill: parent
-                anchors.margins: 12
-                spacing: 9
+                anchors.margins: 10
+                spacing: 8
                 clip: true
                 model: AiChatService.messages
-                ScrollBar.vertical: ScrollBar {}
+                ScrollBar.vertical: ScrollBar { policy: ScrollBar.AsNeeded }
 
                 delegate: Item {
                     required property var modelData
+                    property bool isUser: modelData.role === "user"
                     width: messageList.width
-                    height: bubble.implicitHeight
+                    height: bubble.height + 6
 
                     Rectangle {
                         id: bubble
-                        width: Math.min(implicitWidth, messageList.width * 0.82)
-                        implicitWidth: messageText.implicitWidth + 24
-                        implicitHeight: messageText.implicitHeight + 18
-                        x: modelData.role === "user" ? parent.width - width : 0
-                        radius: 13
-                        color: modelData.role === "user" ? "#5379E8" : (Theme.isDark() ? "#293041" : "#FFFFFF")
+                        width: Math.min(messageList.width * 0.82, 420)
+                        height: messageText.implicitHeight + 20
+                        x: parent.isUser ? parent.width - width : 0
+                        radius: 14
+                        color: parent.isUser ? Theme.themeColor : (Theme.isDark() ? "#293348" : "#FFFFFF")
 
                         Text {
                             id: messageText
-                            anchors.centerIn: parent
-                            width: Math.min(implicitWidth, messageList.width * 0.82 - 24)
+                            anchors.left: parent.left
+                            anchors.right: parent.right
+                            anchors.top: parent.top
+                            anchors.margins: 12
+                            width: parent.width - 24
                             text: modelData.content
                             wrapMode: Text.Wrap
-                            color: modelData.role === "user" ? "white" : (Theme.isDark() ? "#F0F3FA" : "#273246")
+                            textFormat: Text.PlainText
+                            color: parent.parent.isUser ? "white" : (Theme.isDark() ? "#F3F6FF" : "#23324A")
                             font.pixelSize: 14
-                            lineHeight: 1.25
+                            lineHeight: 1.28
                         }
                     }
                 }
 
                 footer: Item {
                     width: messageList.width
-                    height: (AiChatService.state === "thinking" || AiChatService.state === "responding") ? responseBubble.implicitHeight + 9 : 0
-                    visible: height > 0
+                    height: (AiChatService.state === "thinking" || AiChatService.state === "responding")
+                            ? liveBubble.height + 8 : 0
 
                     Rectangle {
-                        id: responseBubble
-                        width: Math.min(implicitWidth, messageList.width * 0.82)
-                        implicitWidth: responseText.implicitWidth + 24
-                        implicitHeight: responseText.implicitHeight + 18
-                        radius: 13
-                        color: Theme.isDark() ? "#293041" : "#FFFFFF"
+                        id: liveBubble
+                        width: Math.min(messageList.width * 0.82, 420)
+                        height: liveText.implicitHeight + 20
+                        radius: 14
+                        color: Theme.isDark() ? "#293348" : "#FFFFFF"
 
                         Text {
-                            id: responseText
-                            anchors.centerIn: parent
-                            width: Math.min(implicitWidth, messageList.width * 0.82 - 24)
-                            text: AiChatService.currentResponse || (AiChatService.state === "thinking" ? qsTr("Preparing a reply…") : "")
+                            id: liveText
+                            anchors.left: parent.left
+                            anchors.right: parent.right
+                            anchors.top: parent.top
+                            anchors.margins: 12
+                            width: parent.width - 24
+                            text: AiChatService.currentResponse.length > 0
+                                  ? AiChatService.currentResponse
+                                  : qsTr("Thinking…")
                             wrapMode: Text.Wrap
-                            color: Theme.isDark() ? "#F0F3FA" : "#273246"
+                            textFormat: Text.PlainText
+                            color: Theme.isDark() ? "#F3F6FF" : "#23324A"
                             font.pixelSize: 14
-                            lineHeight: 1.25
+                            lineHeight: 1.28
                         }
                     }
                 }
 
-                Label {
-                    anchors.centerIn: parent
-                    visible: messageList.count === 0 && AiChatService.state === "idle"
-                    text: qsTr("Type a message below, or use the microphone to speak to AI.")
-                    width: parent.width - 40
-                    horizontalAlignment: Text.AlignHCenter
-                    wrapMode: Text.Wrap
-                    color: Theme.isDark() ? "#7F8AA2" : "#7A879A"
+                onContentHeightChanged: positionViewAtEnd()
+                Component.onCompleted: positionViewAtEnd()
+            }
+        }
+
+        Rectangle {
+            Layout.fillWidth: true
+            Layout.preferredHeight: root.listening ? 126 : 62
+            radius: 15
+            color: Theme.isDark() ? "#182238" : "#EDF4FF"
+            border.width: 1
+            border.color: root.listening ? Qt.rgba(Theme.themeColor.r, Theme.themeColor.g, Theme.themeColor.b, 0.6)
+                                         : (Theme.isDark() ? "#344765" : "#CFDCEF")
+
+            Behavior on Layout.preferredHeight {
+                NumberAnimation { duration: 300; easing.type: Easing.OutCubic }
+            }
+
+            RowLayout {
+                anchors.fill: parent
+                anchors.margins: 9
+                spacing: 8
+
+                Item {
+                    Layout.preferredWidth: root.listening ? 62 : 42
+                    Layout.fillHeight: true
+
+                    Rectangle {
+                        anchors.centerIn: parent
+                        width: root.listening ? 48 : 32
+                        height: width
+                        radius: width / 2
+                        color: root.listening ? Theme.themeColor : Qt.alpha(Theme.themeColor, 0.72)
+
+                        SequentialAnimation on scale {
+                            running: root.listening
+                            loops: Animation.Infinite
+                            NumberAnimation { from: 0.92; to: 1.12; duration: 700; easing.type: Easing.InOutSine }
+                            NumberAnimation { from: 1.12; to: 0.92; duration: 700; easing.type: Easing.InOutSine }
+                        }
+
+                        Text {
+                            anchors.centerIn: parent
+                            text: root.listening ? "◉" : "AI"
+                            color: "white"
+                            font.bold: true
+                            font.pixelSize: root.listening ? 22 : 12
+                        }
+                    }
+                }
+
+                Item {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+
+                    TextArea {
+                        id: input
+                        anchors.fill: parent
+                        visible: !root.listening
+                        placeholderText: qsTr("Type a message…")
+                        wrapMode: TextEdit.Wrap
+                        selectByMouse: true
+                        color: Theme.isDark() ? "#F5F7FC" : "#23324A"
+                        background: Item {}
+                        Keys.onReturnPressed: function(event) {
+                            if (!event.modifiers && input.text.trim().length > 0) {
+                                AiChatService.sendMessage(input.text)
+                                input.clear()
+                                event.accepted = true
+                            }
+                        }
+                    }
+
+                    Column {
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        visible: root.listening
+                        spacing: 5
+
+                        Text {
+                            text: qsTr("Listening…")
+                            color: Theme.themeColor
+                            font.pixelSize: 14
+                            font.bold: true
+                        }
+                        Text {
+                            width: parent.width
+                            text: AiChatService.transcriptionText.length > 0
+                                  ? AiChatService.transcriptionText
+                                  : qsTr("Speak naturally. Your words will appear here when recognized.")
+                            wrapMode: Text.Wrap
+                            color: Theme.isDark() ? "#C8D5EC" : "#52647E"
+                            font.pixelSize: 12
+                            maximumLineCount: 2
+                            elide: Text.ElideRight
+                        }
+                    }
+                }
+
+                Button {
+                    Layout.preferredWidth: 50
+                    Layout.preferredHeight: 42
+                    text: AiChatService.recording ? "■" : "◉"
+                    enabled: AiChatService.state === "listening" || AiChatService.recording
+                    ToolTip.visible: hovered
+                    ToolTip.text: AiChatService.recording ? qsTr("Stop recording") : qsTr("Start recording")
+                    onClicked: {
+                        if (AiChatService.recording)
+                            AiChatService.stopRecording()
+                        else
+                            AiChatService.startRecording()
+                    }
+                }
+
+                Button {
+                    Layout.preferredWidth: 60
+                    Layout.preferredHeight: 42
+                    text: qsTr("Send")
+                    visible: !root.listening
+                    enabled: input.text.trim().length > 0 && (AiChatService.state === "idle" || AiChatService.state === "listening")
+                    onClicked: {
+                        AiChatService.sendMessage(input.text)
+                        input.clear()
+                    }
+                }
+
+                ToolButton {
+                    Layout.preferredWidth: 34
+                    text: "×"
+                    font.pixelSize: 20
+                    ToolTip.visible: hovered
+                    ToolTip.text: qsTr("Close")
+                    onClicked: root.closePanel(true)
+                }
+            }
+        }
+
+        Rectangle {
+            Layout.fillWidth: true
+            Layout.preferredHeight: 52
+            visible: AiChatService.speaking
+            radius: 13
+            color: Theme.isDark() ? "#1D2C45" : "#E8F3FF"
+
+            RowLayout {
+                anchors.fill: parent
+                anchors.margins: 10
+                spacing: 10
+                Repeater {
+                    model: 5
+                    delegate: Rectangle {
+                        required property int index
+                        Layout.preferredWidth: 3
+                        Layout.preferredHeight: 12 + (index % 3) * 7
+                        radius: 2
+                        color: Theme.themeColor
+                        SequentialAnimation on scale {
+                            running: AiChatService.speaking
+                            loops: Animation.Infinite
+                            PauseAnimation { duration: index * 95 }
+                            NumberAnimation { from: 0.45; to: 1.18; duration: 380; easing.type: Easing.InOutSine }
+                            NumberAnimation { from: 1.18; to: 0.45; duration: 380; easing.type: Easing.InOutSine }
+                        }
+                    }
+                }
+                Text {
+                    Layout.fillWidth: true
+                    text: AiChatService.speechText
+                    color: Theme.isDark() ? "#EAF2FF" : "#2D4C70"
+                    font.pixelSize: 12
+                    elide: Text.ElideRight
                 }
             }
         }
@@ -209,180 +348,23 @@ Rectangle {
             Layout.fillWidth: true
             visible: root.errorMessage.length > 0
             text: root.errorMessage
-            color: "#E36565"
+            color: "#D95858"
             wrapMode: Text.Wrap
             font.pixelSize: 12
-        }
-
-        RowLayout {
-            Layout.fillWidth: true
-            spacing: 8
-
-            TextArea {
-                id: input
-                Layout.fillWidth: true
-                Layout.preferredHeight: 62
-                placeholderText: qsTr("Type a message…")
-                wrapMode: TextEdit.Wrap
-                selectByMouse: true
-                enabled: AiChatService.state === "idle" || AiChatService.state === "listening"
-                color: Theme.isDark() ? "#F3F5FA" : "#1D2433"
-                background: Rectangle {
-                    radius: 14
-                    color: Theme.isDark() ? "#1A2030" : "#F1F4F9"
-                    border.width: 1
-                    border.color: input.activeFocus ? "#668BFA" : (Theme.isDark() ? "#33405A" : "#D5DCE8")
-                }
-                Keys.onReturnPressed: function(event) {
-                    if (!event.modifiers && input.text.trim().length > 0) {
-                        AiChatService.sendMessage(input.text)
-                        input.clear()
-                        event.accepted = true
-                    }
-                }
-            }
-
-            Button {
-                Layout.preferredWidth: 52
-                Layout.preferredHeight: 50
-                text: AiChatService.recording ? "■" : "◉"
-                enabled: AiChatService.state === "listening" || AiChatService.recording
-                ToolTip.visible: hovered
-                ToolTip.text: AiChatService.recording ? qsTr("Stop recording") : qsTr("Start recording")
-                onClicked: {
-                    if (AiChatService.recording)
-                        AiChatService.stopRecording()
-                    else
-                        AiChatService.startRecording()
-                }
-            }
-
-            Button {
-                Layout.preferredWidth: 70
-                Layout.preferredHeight: 50
-                text: qsTr("Send")
-                enabled: input.text.trim().length > 0 && (AiChatService.state === "idle" || AiChatService.state === "listening")
-                onClicked: {
-                    AiChatService.sendMessage(input.text)
-                    input.clear()
-                }
-            }
-        }
-    }
-
-    Rectangle {
-        id: speechTail
-        anchors.top: root.bottom
-        anchors.horizontalCenter: root.horizontalCenter
-        width: root.width * 0.92
-        height: root.speechTailHeight
-        opacity: AiChatService.speaking ? 1 : 0
-        visible: height > 0 || opacity > 0
-        clip: true
-        radius: 0
-        color: Theme.isDark() ? "#1A2132" : "#EDF4FF"
-        border.width: 1
-        border.color: Theme.isDark() ? "#3B547A" : "#C7DDF8"
-
-        Behavior on height {
-            NumberAnimation { duration: 320; easing.type: Easing.OutBack }
-        }
-        Behavior on opacity {
-            NumberAnimation { duration: 180; easing.type: Easing.OutCubic }
-        }
-
-        Rectangle {
-            anchors.top: parent.top
-            anchors.horizontalCenter: parent.horizontalCenter
-            width: 48
-            height: 4
-            radius: 2
-            color: Theme.isDark() ? "#7CC7F5" : "#4B8EEB"
-        }
-
-        RowLayout {
-            anchors.fill: parent
-            anchors.leftMargin: 18
-            anchors.rightMargin: 18
-            anchors.topMargin: 14
-            anchors.bottomMargin: 12
-            spacing: 12
-
-            Item {
-                Layout.preferredWidth: 44
-                Layout.fillHeight: true
-
-                Repeater {
-                    model: 5
-                    delegate: Rectangle {
-                        required property int index
-                        width: 4
-                        height: 13 + ((index * 7) % 18)
-                        radius: 2
-                        x: index * 8 + 2
-                        anchors.verticalCenter: parent.verticalCenter
-                        color: index % 2 === 0 ? "#55C5F2" : "#887AF4"
-                        SequentialAnimation on scale {
-                            running: AiChatService.speaking
-                            loops: Animation.Infinite
-                            PauseAnimation { duration: index * 90 }
-                            NumberAnimation { from: 0.45; to: 1.15; duration: 430; easing.type: Easing.InOutSine }
-                            NumberAnimation { from: 1.15; to: 0.45; duration: 430; easing.type: Easing.InOutSine }
-                        }
-                    }
-                }
-            }
-
-            ColumnLayout {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                spacing: 3
-
-                Label {
-                    text: qsTr("Reading aloud")
-                    color: Theme.isDark() ? "#9FC9F6" : "#316FC0"
-                    font.pixelSize: 12
-                    font.bold: true
-                }
-                Text {
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                    text: AiChatService.speechText
-                    wrapMode: Text.Wrap
-                    elide: Text.ElideRight
-                    maximumLineCount: 2
-                    color: Theme.isDark() ? "#F0F4FF" : "#233E65"
-                    font.pixelSize: 13
-                    lineHeight: 1.2
-                }
-            }
-
-            Button {
-                Layout.preferredWidth: 42
-                Layout.preferredHeight: 34
-                text: "■"
-                ToolTip.visible: hovered
-                ToolTip.text: qsTr("Stop reading")
-                onClicked: AiChatService.cancel()
-            }
         }
     }
 
     Connections {
         target: AiChatService
-        function onActivationRequested(_fromVoiceWake) {
-            root.errorMessage = ""
-            root.openPanel()
+        function onActivationRequested(fromVoiceWake, x, y, width, height) {
+            root.openAt(fromVoiceWake, x, y, width, height)
         }
         function onErrorOccurred(message) {
             root.errorMessage = message
-            root.openPanel()
+            if (!root.visible)
+                root.openAt(false, 0, 0, 0, 0)
         }
-        function onConversationChanged() {
-            messageList.positionViewAtEnd()
-        }
-        function onResponseChanged() {
-            messageList.positionViewAtEnd()
-        }
+        function onConversationChanged() { messageList.positionViewAtEnd() }
+        function onResponseChanged() { messageList.positionViewAtEnd() }
     }
 }

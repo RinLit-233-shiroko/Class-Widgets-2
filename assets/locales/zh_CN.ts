@@ -446,140 +446,139 @@ Licensed under the MIT license</source>
 <context>
     <name>AiChatPanel</name>
     <message>
-        <location filename="../../src/qml/AiChatPanel.qml" line="84"/>
         <source>AI Conversation</source>
-        <translation>AI 对话</translation>
+        <translation type="vanished">AI 对话</translation>
     </message>
     <message>
-        <location filename="../../src/qml/AiChatPanel.qml" line="92"/>
         <source>Listening… release the microphone button when you finish</source>
-        <translation>正在聆听……说完后请再次点击麦克风按钮。</translation>
+        <translation type="vanished">正在聆听……说完后请再次点击麦克风按钮。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/AiChatPanel.qml" line="92"/>
         <source>Ready for your message</source>
-        <translation>等待您的消息</translation>
+        <translation type="vanished">等待您的消息</translation>
     </message>
     <message>
-        <location filename="../../src/qml/AiChatPanel.qml" line="93"/>
+        <location filename="../../src/qml/AiChatPanel.qml" line="161"/>
         <source>Thinking…</source>
         <translation>思考中……</translation>
     </message>
     <message>
-        <location filename="../../src/qml/AiChatPanel.qml" line="94"/>
         <source>Replying…</source>
-        <translation>回复中……</translation>
+        <translation type="vanished">回复中……</translation>
     </message>
     <message>
-        <location filename="../../src/qml/AiChatPanel.qml" line="95"/>
         <source>Reading aloud…</source>
-        <translation>正在朗读……</translation>
+        <translation type="vanished">正在朗读……</translation>
     </message>
     <message>
-        <location filename="../../src/qml/AiChatPanel.qml" line="96"/>
         <source>Conversation complete</source>
-        <translation>对话已完成</translation>
+        <translation type="vanished">对话已完成</translation>
     </message>
     <message>
-        <location filename="../../src/qml/AiChatPanel.qml" line="109"/>
         <source>Clear conversation</source>
-        <translation>清空对话</translation>
+        <translation type="vanished">清空对话</translation>
     </message>
     <message>
-        <location filename="../../src/qml/AiChatPanel.qml" line="116"/>
+        <location filename="../../src/qml/AiChatPanel.qml" line="303"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="../../src/qml/AiChatPanel.qml" line="187"/>
         <source>Preparing a reply…</source>
-        <translation>正在准备回复……</translation>
+        <translation type="vanished">正在准备回复……</translation>
     </message>
     <message>
-        <location filename="../../src/qml/AiChatPanel.qml" line="199"/>
         <source>Type a message below, or use the microphone to speak to AI.</source>
-        <translation>请在下方输入消息，或使用麦克风与 AI 对话。</translation>
+        <translation type="vanished">请在下方输入消息，或使用麦克风与 AI 对话。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/AiChatPanel.qml" line="225"/>
+        <location filename="../../src/qml/AiChatPanel.qml" line="230"/>
         <source>Type a message…</source>
         <translation>输入消息……</translation>
     </message>
     <message>
-        <location filename="../../src/qml/AiChatPanel.qml" line="251"/>
+        <location filename="../../src/qml/AiChatPanel.qml" line="252"/>
+        <source>Listening…</source>
+        <translation>聆听中……</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/AiChatPanel.qml" line="261"/>
+        <source>Speak naturally. Your words will appear here when recognized.</source>
+        <translation>请自然说话；识别到的文字将显示在这里。</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/AiChatPanel.qml" line="277"/>
         <source>Stop recording</source>
         <translation>停止录音</translation>
     </message>
     <message>
-        <location filename="../../src/qml/AiChatPanel.qml" line="251"/>
+        <location filename="../../src/qml/AiChatPanel.qml" line="277"/>
         <source>Start recording</source>
         <translation>开始录音</translation>
     </message>
     <message>
-        <location filename="../../src/qml/AiChatPanel.qml" line="263"/>
+        <location filename="../../src/qml/AiChatPanel.qml" line="289"/>
         <source>Send</source>
         <translation>发送</translation>
     </message>
     <message>
-        <location filename="../../src/qml/AiChatPanel.qml" line="342"/>
         <source>Reading aloud</source>
-        <translation>正在朗读</translation>
+        <translation type="vanished">正在朗读</translation>
     </message>
     <message>
-        <location filename="../../src/qml/AiChatPanel.qml" line="365"/>
         <source>Stop reading</source>
-        <translation>停止朗读</translation>
+        <translation type="vanished">停止朗读</translation>
     </message>
 </context>
 <context>
     <name>AiChatService</name>
     <message>
-        <location filename="../../src/core/ai_chat/service.py" line="298"/>
+        <location filename="../../src/core/ai_chat/service.py" line="305"/>
         <source>AI chat is disabled. Enable it in Settings first.</source>
         <translation>AI 对话尚未启用，请先在设置中启用。</translation>
     </message>
     <message>
-        <location filename="../../src/core/ai_chat/service.py" line="300"/>
+        <location filename="../../src/core/ai_chat/service.py" line="307"/>
         <source>Set an AI provider base URL in Settings first.</source>
         <translation>请先在设置中填写 AI 服务提供商的基础 URL。</translation>
     </message>
     <message>
-        <location filename="../../src/core/ai_chat/service.py" line="302"/>
+        <location filename="../../src/core/ai_chat/service.py" line="309"/>
         <source>Set an API key in Settings first.</source>
         <translation>请先在设置中填写 API 密钥。</translation>
     </message>
     <message>
-        <location filename="../../src/core/ai_chat/service.py" line="304"/>
+        <location filename="../../src/core/ai_chat/service.py" line="311"/>
         <source>Set a chat model in Settings first.</source>
         <translation>请先在设置中填写对话模型。</translation>
     </message>
     <message>
-        <location filename="../../src/core/ai_chat/service.py" line="306"/>
+        <location filename="../../src/core/ai_chat/service.py" line="313"/>
         <source>Set a transcription model in Settings first.</source>
         <translation>请先在设置中填写转写模型。</translation>
     </message>
     <message>
-        <location filename="../../src/core/ai_chat/service.py" line="308"/>
+        <location filename="../../src/core/ai_chat/service.py" line="315"/>
         <source>Set a speech model in Settings first.</source>
         <translation>请先在设置中填写朗读模型。</translation>
     </message>
     <message>
-        <location filename="../../src/core/ai_chat/service.py" line="310"/>
+        <location filename="../../src/core/ai_chat/service.py" line="317"/>
         <source>Set a speech voice in Settings first.</source>
         <translation>请先在设置中填写朗读音色。</translation>
     </message>
     <message>
-        <location filename="../../src/core/ai_chat/service.py" line="415"/>
+        <location filename="../../src/core/ai_chat/service.py" line="429"/>
         <source>Enter a base URL and API key before refreshing models.</source>
         <translation>刷新模型前，请先填写基础 URL 和 API 密钥。</translation>
     </message>
     <message>
-        <location filename="../../src/core/ai_chat/service.py" line="441"/>
+        <location filename="../../src/core/ai_chat/service.py" line="456"/>
         <source>Unable to load the provider model list.</source>
         <translation>无法加载服务提供商的模型列表。</translation>
     </message>
     <message>
-        <location filename="../../src/core/ai_chat/service.py" line="450"/>
+        <location filename="../../src/core/ai_chat/service.py" line="470"/>
         <source>Select a local Vosk model folder</source>
         <translation>选择本地 Vosk 模型文件夹</translation>
     </message>

@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Optional
 
 import requests
-from PySide6.QtCore import QObject, Property, QThread, Signal, Slot
+from PySide6.QtCore import QObject, Property, QThread, QTimer, Signal, Slot
 from PySide6.QtWidgets import QFileDialog
 from loguru import logger
 
@@ -185,7 +185,8 @@ class AiChatService(QObject):
     stateChanged = Signal()
     conversationChanged = Signal()
     responseChanged = Signal()
-    activationRequested = Signal(bool)
+    activationRequested = Signal(bool, float, float, float, float)
+    transcriptionChanged = Signal()
     errorOccurred = Signal(str)
     wakeAvailabilityChanged = Signal()
     speechChanged = Signal()
@@ -203,6 +204,7 @@ class AiChatService(QObject):
         self._state = self.IDLE
         self._conversation: list[dict[str, str]] = []
         self._current_response = ""
+        self._transcription_text = ""
         self._chat_worker: Optional[ChatRequestWorker] = None
         self._transcription_worker: Optional[TranscriptionWorker] = None
         self._speech_worker: Optional[SpeechSynthesisWorker] = None
@@ -210,6 +212,7 @@ class AiChatService(QObject):
         self._available_models: list[str] = []
         self._model_list_error = ""
         self._models_loading = False
+        self._tts_unavailable = False
         self._speech_text = ""
         self._speech_player = SpeechPlayer(self)
         self._recorder = MicrophoneRecorder(self)
@@ -243,6 +246,10 @@ class AiChatService(QObject):
     @Property(str, notify=responseChanged)
     def currentResponse(self) -> str:
         return self._current_response
+
+    @Property(str, notify=transcriptionChanged)
+    def transcriptionText(self) -> str:
+        return self._transcription_text
 
     @Property(bool, notify=stateChanged)
     def speaking(self) -> bool:
@@ -319,13 +326,20 @@ class AiChatService(QObject):
     @Slot()
     def activate(self) -> None:
         """由 Widget 点击触发，打开文字对话面板并显示边框动画。"""
+        self.activateAt(0.0, 0.0, 0.0, 0.0)
+
+    @Slot(float, float, float, float)
+    def activateAt(self, x: float, y: float, width: float, height: float) -> None:
+        """从指定 Widget 的下方打开输入浮层；坐标来自 QML 场景。"""
         error = self._configuration_error()
         if error:
             self.errorOccurred.emit(error)
             return
         self._stop_wake_listener()
+        self._transcription_text = ""
+        self.transcriptionChanged.emit()
         self._set_state(self.LISTENING)
-        self.activationRequested.emit(False)
+        self.activationRequested.emit(False, x, y, width, height)
 
     @Slot()
     def startRecording(self) -> None:
@@ -423,12 +437,14 @@ class AiChatService(QObject):
         self._models_worker = worker
         worker.loaded.connect(self._on_models_loaded)
         worker.failed.connect(self._on_models_failed)
+        # 结果信号进入主线程时，工作线程可能尚未完成退出；必须保留引用直到
+        # finished，防止大量模型响应下 QThread 被提前析构而导致程序崩溃。
+        worker.finished.connect(self._on_models_worker_finished)
         worker.finished.connect(worker.deleteLater)
         worker.start()
 
     @Slot(list)
     def _on_models_loaded(self, models: list) -> None:
-        self._models_worker = None
         self._available_models = [str(model) for model in models]
         self._model_list_error = ""
         self._models_loading = False
@@ -436,11 +452,15 @@ class AiChatService(QObject):
 
     @Slot(str)
     def _on_models_failed(self, message: str) -> None:
-        self._models_worker = None
         self._available_models = []
         self._model_list_error = message or self.tr("Unable to load the provider model list.")
         self._models_loading = False
         self.modelListChanged.emit()
+
+    @Slot()
+    def _on_models_worker_finished(self) -> None:
+        if self.sender() is self._models_worker:
+            self._models_worker = None
 
     @Slot(result=str)
     def selectWakeModelDirectory(self) -> str:
@@ -508,8 +528,10 @@ class AiChatService(QObject):
             self.refreshWakeListener()
             return
         self._stop_wake_listener()
+        self._transcription_text = ""
+        self.transcriptionChanged.emit()
         self._set_state(self.LISTENING)
-        self.activationRequested.emit(True)
+        self.activationRequested.emit(True, 0.0, 0.0, 0.0, 0.0)
         self._recorder.start()
 
     @Slot(str)
@@ -531,11 +553,20 @@ class AiChatService(QObject):
             recording_path,
         )
         self._transcription_worker = worker
-        worker.transcribed.connect(self.sendMessage)
+        worker.transcribed.connect(self._on_transcribed)
         worker.failed.connect(self._on_operation_error)
         worker.finished.connect(self._on_transcription_finished)
         worker.finished.connect(worker.deleteLater)
         worker.start()
+
+    @Slot(str)
+    def _on_transcribed(self, text: str) -> None:
+        # 先展示已识别文本，让聆听卡有明确的“听到了什么”反馈；随后再以
+        # 平滑过渡进入用户消息与 AI 回复状态。
+        self._transcription_text = text
+        self.transcriptionChanged.emit()
+        self._set_state(self.LISTENING)
+        QTimer.singleShot(520, lambda: self.sendMessage(text))
 
     @Slot()
     def _on_transcription_finished(self) -> None:
@@ -560,7 +591,7 @@ class AiChatService(QObject):
         self._conversation.append({"role": "assistant", "content": reply})
         self.responseChanged.emit()
         self.conversationChanged.emit()
-        if self.app.configs.ai_chat.tts_enabled:
+        if self.app.configs.ai_chat.tts_enabled and not self._tts_unavailable:
             self._begin_speech(reply)
         else:
             self._finish_interaction()
@@ -618,8 +649,13 @@ class AiChatService(QObject):
         self._speech_worker = None
         self._speech_text = ""
         self.speechChanged.emit()
-        if message:
-            self.errorOccurred.emit(message)
+        # 许多 OpenAI 兼容提供商只实现聊天接口。朗读端点 404 时保留已完成
+        # 的文字对话，并在本次应用运行中停止重复请求该不兼容端点。
+        if "404" in (message or ""):
+            self._tts_unavailable = True
+            logger.info("The configured provider does not support /v1/audio/speech; keeping text chat available.")
+        elif message:
+            logger.warning("AI speech playback was skipped: {}", message)
         self._finish_interaction()
 
     def _stop_speech(self) -> None:
