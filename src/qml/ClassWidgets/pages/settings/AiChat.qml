@@ -87,16 +87,61 @@ FluentPage {
         SettingCard {
             Layout.fillWidth: true
             title: qsTr("Chat Model")
-            description: qsTr("The model sent to the /v1/chat/completions endpoint")
+            description: qsTr("Refresh the models available to this API key, then select one for the /v1/chat/completions endpoint. Manual input remains available for providers without a model-list API.")
             icon.name: "ic_fluent_sparkle_20_regular"
 
-            TextField {
-                Layout.preferredWidth: 260
-                placeholderText: "gpt-4o"
-                enabled: !Configs.isKeyLocked("ai_chat.model")
-                selectByMouse: true
-                Component.onCompleted: text = Configs.data.ai_chat.model
-                onEditingFinished: root.saveValue("ai_chat.model", text.trim(), false)
+            ColumnLayout {
+                Layout.preferredWidth: 430
+                spacing: 8
+
+                RowLayout {
+                    Layout.fillWidth: true
+                    Button {
+                        text: AiChatService.modelsLoading ? qsTr("Loading models…") : qsTr("Refresh models")
+                        enabled: !AiChatService.modelsLoading && !Configs.isKeyLocked("ai_chat.model")
+                        onClicked: {
+                            root.saveValue("ai_chat.base_url", baseUrlInput.text.trim(), false)
+                            root.saveValue("ai_chat.api_key", apiKeyInput.text, false)
+                            AiChatService.refreshModels()
+                        }
+                    }
+                    Label {
+                        Layout.fillWidth: true
+                        visible: AiChatService.availableModels.length > 0
+                        text: qsTr("%1 models available").arg(AiChatService.availableModels.length)
+                        color: Colors.proxy.textSecondaryColor
+                    }
+                }
+
+                ComboBox {
+                    id: modelPicker
+                    Layout.fillWidth: true
+                    visible: AiChatService.availableModels.length > 0
+                    model: AiChatService.availableModels
+                    onActivated: {
+                        chatModelInput.text = currentText
+                        root.saveValue("ai_chat.model", currentText, false)
+                    }
+                }
+
+                TextField {
+                    id: chatModelInput
+                    Layout.fillWidth: true
+                    placeholderText: "gpt-4o"
+                    enabled: !Configs.isKeyLocked("ai_chat.model")
+                    selectByMouse: true
+                    Component.onCompleted: text = Configs.data.ai_chat.model
+                    onEditingFinished: root.saveValue("ai_chat.model", text.trim(), false)
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    visible: AiChatService.modelListError.length > 0
+                    text: AiChatService.modelListError
+                    color: "#C73B3B"
+                    wrapMode: Text.Wrap
+                    font.pixelSize: 12
+                }
             }
         }
 
