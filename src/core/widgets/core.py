@@ -152,9 +152,12 @@ class WidgetsWindow(ReleasableWindow, QObject):
             return
 
         widgets_loader = obj.findChild(QObject, "widgetsLoader")
+        ai_chat_panel = obj.findChild(QObject, "aiChatPanel")
         if widgets_loader:
             widgets_loader.geometryChanged.connect(self.schedule_mask_update)
             widgets_loader.contentGeometryChanged.connect(self.schedule_mask_update)
+            if ai_chat_panel:
+                ai_chat_panel.panelGeometryChanged.connect(self.schedule_mask_update)
             self.schedule_mask_update()
             self._qml_ready = True
             self.qmlReady.emit()
@@ -199,6 +202,23 @@ class WidgetsWindow(ReleasableWindow, QObject):
                 int(w.height())
             )
             mask = mask.united(QRegion(rect))
+
+        # AI 对话面板位于同一个透明桌面窗口中，不属于 Widget 容器；
+        # 展示时需显式加入 Windows 输入区域，才能接收文字和鼠标操作。
+        ai_chat_panel = self.root_window.findChild(QObject, "aiChatPanel")
+        if (
+            ai_chat_panel
+            and ai_chat_panel.property("visible")
+            and ai_chat_panel.width() > 0
+            and ai_chat_panel.height() > 0
+        ):
+            panel_rect = QRect(
+                int(ai_chat_panel.x()),
+                int(ai_chat_panel.y()),
+                int(ai_chat_panel.width()),
+                int(ai_chat_panel.height()),
+            )
+            mask = mask.united(QRegion(panel_rect))
 
         self.interactive_rect = mask
         # An empty mask clips the whole transparent window. This is common while
