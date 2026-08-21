@@ -277,117 +277,136 @@ Licensed under the MIT license</source>
         <translation>对话模型</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="90"/>
         <source>The model sent to the /v1/chat/completions endpoint</source>
-        <translation>发送至 /v1/chat/completions 接口的模型。</translation>
+        <translation type="vanished">发送至 /v1/chat/completions 接口的模型。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="105"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="90"/>
+        <source>Refresh the models available to this API key, then select one for the /v1/chat/completions endpoint. Manual input remains available for providers without a model-list API.</source>
+        <translation>刷新此 API 密钥可用的模型，并选择一个用于 /v1/chat/completions 接口；不提供模型列表接口的服务商仍可手动输入。</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="100"/>
+        <source>Loading models…</source>
+        <translation>正在加载模型……</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="100"/>
+        <source>Refresh models</source>
+        <translation>刷新模型</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="111"/>
+        <source>%1 models available</source>
+        <translation>可用模型：%1 个</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="150"/>
         <source>Transcription Model</source>
         <translation>转写模型</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="106"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="151"/>
         <source>The model sent to the /v1/audio/transcriptions endpoint after microphone recording</source>
         <translation>麦克风录音后发送至 /v1/audio/transcriptions 接口的模型。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="120"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="165"/>
         <source>Voice Wake-up</source>
         <translation>语音唤醒</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="126"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="171"/>
         <source>Enable Voice Wake-up</source>
         <translation>启用语音唤醒</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="127"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="172"/>
         <source>Listen locally through the default microphone for the wake phrase below</source>
         <translation>通过默认麦克风在本地监听以下唤醒语。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="144"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="189"/>
         <source>Wake Phrase</source>
         <translation>唤醒语</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="145"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="190"/>
         <source>Enter the words you want to say to start AI listening. Any non-empty text is supported.</source>
         <translation>输入您想说出的 AI 唤醒文字，支持任意非空文本。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="150"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="195"/>
         <source>For example: Hello Widget</source>
         <translation>例如：你好小组件</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="160"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="205"/>
         <source>Wake-up Language and Model</source>
         <translation>唤醒语言与模型</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="161"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="206"/>
         <source>The Windows package includes a Chinese model. To use another language, select that language&apos;s local Vosk model folder below.</source>
         <translation>Windows 安装包内置中文模型；如需使用其他语言，请在下方选择该语言的本地 Vosk 模型文件夹。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="183"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="228"/>
         <source>Use bundled Chinese model</source>
         <translation>使用内置中文模型</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="190"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="235"/>
         <source>Choose folder</source>
         <translation>选择文件夹</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="199"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="244"/>
         <source>Use bundled</source>
         <translation>使用内置模型</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="213"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="258"/>
         <source>Voice wake-up is ready</source>
         <translation>语音唤醒已就绪</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="213"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="258"/>
         <source>Voice wake-up status</source>
         <translation>语音唤醒状态</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="215"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="260"/>
         <source>Vosk is listening locally for your wake phrase.</source>
         <translation>Vosk 正在本地监听您的唤醒语。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="218"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="263"/>
         <source>Voice wake-up will be ready after AI Conversation is enabled and the selected Vosk model is available.</source>
         <translation>启用 AI 对话且所选 Vosk 模型可用后，即可使用语音唤醒。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="222"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="267"/>
         <source>Voice Reading</source>
         <translation>语音朗读</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="228"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="273"/>
         <source>Read Replies Aloud</source>
         <translation>朗读 AI 回复</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="229"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="274"/>
         <source>After an AI reply is complete, generate speech through the OpenAI-compatible /v1/audio/speech endpoint and show an animated reading card below the conversation.</source>
         <translation>AI 回复完成后，将通过 OpenAI 兼容的 /v1/audio/speech 接口生成语音，并在对话框下方显示带动画的朗读卡片。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="246"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="291"/>
         <source>Speech Model and Voice</source>
         <translation>朗读模型与音色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="247"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="292"/>
         <source>Enter the text-to-speech model and voice supported by your provider. Defaults are tts-1 and alloy.</source>
         <translation>填写服务提供商支持的文字转语音模型与音色；默认值为 tts-1 和 alloy。</translation>
     </message>
@@ -396,22 +415,22 @@ Licensed under the MIT license</source>
         <translation type="vanished">启用 AI 对话且离线中文 Vosk 模型可用后，即可使用语音唤醒。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="272"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="317"/>
         <source>AI Behavior</source>
         <translation>AI 行为</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="278"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="323"/>
         <source>System Prompt</source>
         <translation>系统提示词</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="279"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="324"/>
         <source>Optional instructions sent before each conversation. Leave blank to use the provider default behavior.</source>
         <translation>每次对话前发送给 AI 的可选指令；留空则使用服务提供商的默认行为。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="285"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/AiChat.qml" line="330"/>
         <source>Optional instructions for the assistant</source>
         <translation>给 AI 的可选指令</translation>
     </message>
@@ -507,42 +526,52 @@ Licensed under the MIT license</source>
 <context>
     <name>AiChatService</name>
     <message>
-        <location filename="../../src/core/ai_chat/service.py" line="242"/>
+        <location filename="../../src/core/ai_chat/service.py" line="298"/>
         <source>AI chat is disabled. Enable it in Settings first.</source>
         <translation>AI 对话尚未启用，请先在设置中启用。</translation>
     </message>
     <message>
-        <location filename="../../src/core/ai_chat/service.py" line="244"/>
+        <location filename="../../src/core/ai_chat/service.py" line="300"/>
         <source>Set an AI provider base URL in Settings first.</source>
         <translation>请先在设置中填写 AI 服务提供商的基础 URL。</translation>
     </message>
     <message>
-        <location filename="../../src/core/ai_chat/service.py" line="246"/>
+        <location filename="../../src/core/ai_chat/service.py" line="302"/>
         <source>Set an API key in Settings first.</source>
         <translation>请先在设置中填写 API 密钥。</translation>
     </message>
     <message>
-        <location filename="../../src/core/ai_chat/service.py" line="248"/>
+        <location filename="../../src/core/ai_chat/service.py" line="304"/>
         <source>Set a chat model in Settings first.</source>
         <translation>请先在设置中填写对话模型。</translation>
     </message>
     <message>
-        <location filename="../../src/core/ai_chat/service.py" line="250"/>
+        <location filename="../../src/core/ai_chat/service.py" line="306"/>
         <source>Set a transcription model in Settings first.</source>
         <translation>请先在设置中填写转写模型。</translation>
     </message>
     <message>
-        <location filename="../../src/core/ai_chat/service.py" line="252"/>
+        <location filename="../../src/core/ai_chat/service.py" line="308"/>
         <source>Set a speech model in Settings first.</source>
         <translation>请先在设置中填写朗读模型。</translation>
     </message>
     <message>
-        <location filename="../../src/core/ai_chat/service.py" line="254"/>
+        <location filename="../../src/core/ai_chat/service.py" line="310"/>
         <source>Set a speech voice in Settings first.</source>
         <translation>请先在设置中填写朗读音色。</translation>
     </message>
     <message>
-        <location filename="../../src/core/ai_chat/service.py" line="356"/>
+        <location filename="../../src/core/ai_chat/service.py" line="415"/>
+        <source>Enter a base URL and API key before refreshing models.</source>
+        <translation>刷新模型前，请先填写基础 URL 和 API 密钥。</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/ai_chat/service.py" line="441"/>
+        <source>Unable to load the provider model list.</source>
+        <translation>无法加载服务提供商的模型列表。</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/ai_chat/service.py" line="450"/>
         <source>Select a local Vosk model folder</source>
         <translation>选择本地 Vosk 模型文件夹</translation>
     </message>

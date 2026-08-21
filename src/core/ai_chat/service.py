@@ -135,6 +135,45 @@ class TranscriptionWorker(QThread):
                 logger.debug("Failed to remove temporary recording {}", path)
 
 
+class ModelsListWorker(QThread):
+    """在后台读取 OpenAI 兼容服务的可用模型列表。"""
+
+    loaded = Signal(list)
+    failed = Signal(str)
+
+    def __init__(self, endpoint: str, headers: dict[str, str]) -> None:
+        super().__init__()
+        self.endpoint = endpoint
+        self.headers = headers
+
+    def run(self) -> None:
+        try:
+            response = requests.get(
+                self.endpoint,
+                headers=self.headers,
+                timeout=(10, 30),
+            )
+            response.raise_for_status()
+            payload = response.json()
+            models = sorted(
+                {
+                    str(item.get("id", "")).strip()
+                    for item in payload.get("data", [])
+                    if isinstance(item, dict) and str(item.get("id", "")).strip()
+                },
+                key=str.lower,
+            )
+            if not models:
+                raise RuntimeError("The provider returned no models for this API key.")
+            self.loaded.emit(models)
+        except requests.RequestException as error:
+            logger.warning("AI model-list request failed: {}", error)
+            self.failed.emit(f"Model list request failed: {error}")
+        except Exception as error:
+            logger.warning("AI model-list processing failed: {}", error)
+            self.failed.emit(str(error))
+
+
 class AiChatService(QObject):
     """提供给 QML、Widget 与插件的 AI 对话统一服务。
 
@@ -150,6 +189,7 @@ class AiChatService(QObject):
     errorOccurred = Signal(str)
     wakeAvailabilityChanged = Signal()
     speechChanged = Signal()
+    modelListChanged = Signal()
 
     IDLE = "idle"
     LISTENING = "listening"
@@ -166,6 +206,10 @@ class AiChatService(QObject):
         self._chat_worker: Optional[ChatRequestWorker] = None
         self._transcription_worker: Optional[TranscriptionWorker] = None
         self._speech_worker: Optional[SpeechSynthesisWorker] = None
+        self._models_worker: Optional[ModelsListWorker] = None
+        self._available_models: list[str] = []
+        self._model_list_error = ""
+        self._models_loading = False
         self._speech_text = ""
         self._speech_player = SpeechPlayer(self)
         self._recorder = MicrophoneRecorder(self)
@@ -207,6 +251,18 @@ class AiChatService(QObject):
     @Property(str, notify=speechChanged)
     def speechText(self) -> str:
         return self._speech_text
+
+    @Property("QStringList", notify=modelListChanged)
+    def availableModels(self) -> list[str]:
+        return list(self._available_models)
+
+    @Property(bool, notify=modelListChanged)
+    def modelsLoading(self) -> bool:
+        return self._models_loading
+
+    @Property(str, notify=modelListChanged)
+    def modelListError(self) -> str:
+        return self._model_list_error
 
     @Property(bool, notify=wakeAvailabilityChanged)
     def wakeAvailable(self) -> bool:
@@ -348,6 +404,44 @@ class AiChatService(QObject):
         self.responseChanged.emit()
         self._finish_interaction()
 
+    @Slot()
+    def refreshModels(self) -> None:
+        """从当前 OpenAI 兼容提供商加载此 API Key 可用的模型列表。"""
+        if self._models_worker is not None:
+            return
+        config = self.app.configs.ai_chat
+        if not config.base_url.strip() or not config.api_key.strip():
+            self._available_models = []
+            self._model_list_error = self.tr("Enter a base URL and API key before refreshing models.")
+            self._models_loading = False
+            self.modelListChanged.emit()
+            return
+        self._model_list_error = ""
+        self._models_loading = True
+        self.modelListChanged.emit()
+        worker = ModelsListWorker(self._endpoint(config.base_url, "models"), self._headers())
+        self._models_worker = worker
+        worker.loaded.connect(self._on_models_loaded)
+        worker.failed.connect(self._on_models_failed)
+        worker.finished.connect(worker.deleteLater)
+        worker.start()
+
+    @Slot(list)
+    def _on_models_loaded(self, models: list) -> None:
+        self._models_worker = None
+        self._available_models = [str(model) for model in models]
+        self._model_list_error = ""
+        self._models_loading = False
+        self.modelListChanged.emit()
+
+    @Slot(str)
+    def _on_models_failed(self, message: str) -> None:
+        self._models_worker = None
+        self._available_models = []
+        self._model_list_error = message or self.tr("Unable to load the provider model list.")
+        self._models_loading = False
+        self.modelListChanged.emit()
+
     @Slot(result=str)
     def selectWakeModelDirectory(self) -> str:
         """选择任意语言的本地 Vosk 模型目录并立即应用。"""
@@ -382,12 +476,13 @@ class AiChatService(QObject):
         self._stop_wake_listener()
         self._recorder.release()
         self._stop_speech()
-        for worker in (self._chat_worker, self._transcription_worker, speech_worker):
+        for worker in (self._chat_worker, self._transcription_worker, speech_worker, self._models_worker):
             if worker and worker.isRunning():
                 worker.wait(5_000)
         self._chat_worker = None
         self._transcription_worker = None
         self._speech_worker = None
+        self._models_worker = None
         self._speech_player.release()
 
     def _default_vosk_model_path(self) -> Path:
