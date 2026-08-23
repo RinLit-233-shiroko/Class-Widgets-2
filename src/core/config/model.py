@@ -168,7 +168,7 @@ class PreferencesConfig(ConfigBaseModel):
     )
     current_preset: str = "default"
 
-    font: str = Field(default="")  # 字体
+    font: str = Field(default="Microsoft YaHei")  # 字体
     font_weight: int = 600  # 字重
 
     class Config:

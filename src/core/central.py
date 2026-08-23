@@ -535,7 +535,12 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         :param fallback_font: fallback 字体
         :return: QFont 对象
         """
-        f = QFont(target_font)
-        f.setFamilies([target_font, fallback_font])
+        families = [
+            family.strip()
+            for family in (target_font, fallback_font)
+            if family and family.strip()
+        ]
+        f = QFont()
+        f.setFamilies(families)
         f.setStyleHint(QFont.StyleHint.SansSerif)
         return f
