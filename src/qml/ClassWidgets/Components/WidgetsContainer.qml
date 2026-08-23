@@ -29,17 +29,7 @@ Item {
                     + editButtons.anchors.topMargin + editButtons.height
         : widgetsFlow.implicitHeight
 
-    onEditModeChanged: {
-        console.log("[WidgetsContainer] editMode:", editMode,
-                    "geometry:", x, y, width, height,
-                    "contentWidth:", flickable.contentWidth,
-                    "rowImplicitWidth:", widgetsFlow.implicitWidth)
-        contentGeometryChanged()
-    }
-    onWidthChanged: console.log("[WidgetsContainer] geometry width:", width,
-                                "editMode:", editMode)
-    onHeightChanged: console.log("[WidgetsContainer] geometry height:", height,
-                                 "editMode:", editMode)
+    onEditModeChanged: contentGeometryChanged()
 
     Component.onCompleted: {
         editMode = widgetRepeater.count === 0
@@ -148,14 +138,6 @@ Item {
         interactive: widgetsContainer.editMode && contentWidth > width
         boundsBehavior: Flickable.StopAtBounds
 
-        onWidthChanged: console.log("[WidgetsContainer] flickable width:", width,
-                                    "contentWidth:", contentWidth,
-                                    "interactive:", interactive)
-        onContentWidthChanged: console.log("[WidgetsContainer] flickable contentWidth:",
-                                           contentWidth,
-                                           "rowImplicitWidth:", widgetsFlow.implicitWidth)
-        onContentXChanged: console.log("[WidgetsContainer] flickable contentX:", contentX,
-                                       "maxX:", Math.max(0, contentWidth - width))
         ScrollBar.horizontal: ScrollBar {
             id: horizontalScrollBar
             objectName: "widgetsHorizontalScrollBar"
@@ -163,9 +145,6 @@ Item {
             visible: widgetsContainer.editMode && flickable.contentWidth > flickable.width
             policy: widgetsContainer.editMode && flickable.contentWidth > flickable.width
                         ? ScrollBar.AsNeeded : ScrollBar.AlwaysOff
-            onVisibleChanged: console.log("[WidgetsContainer] scrollbar visible:", visible,
-                                          "size:", size,
-                                          "contentWidth:", flickable.contentWidth)
         }
 
         Row {
@@ -175,10 +154,6 @@ Item {
                 ? (flickable.width - widgetsFlow.implicitWidth) / 2 : 0
             spacing: widgetsContainer.spacing
             height: implicitHeight
-
-            onImplicitWidthChanged: console.log("[WidgetsContainer] row implicitWidth:",
-                                                implicitWidth,
-                                                "count:", widgetRepeater.count)
 
             Repeater {
                 id: widgetRepeater
@@ -366,18 +341,6 @@ Item {
         opacity: 1
         clip: false
 
-        Component.onCompleted: console.log("[WidgetsContainer] buttons:",
-                                           "visible=", visible,
-                                           "x=", x, "y=", y,
-                                           "width=", width, "height=", height)
-
-        onVisibleChanged: console.log("[WidgetsContainer] buttons visible:", visible,
-                                      "geometry:", x, y, width, height)
-        onXChanged: console.log("[WidgetsContainer] buttons x:", x)
-        onYChanged: console.log("[WidgetsContainer] buttons y:", y)
-        onWidthChanged: console.log("[WidgetsContainer] buttons width:", width)
-        onHeightChanged: console.log("[WidgetsContainer] buttons height:", height)
-
         Button {
             id: addWidgetButton
             highlighted: true
@@ -387,7 +350,6 @@ Item {
             text: qsTr("Add")
 
             onClicked: {
-                console.log("[WidgetsContainer] add button clicked")
                 widgetsContainer.editMode = true
                 addDialog.open()
             }
@@ -403,7 +365,6 @@ Item {
             text: qsTr("Done")
 
             onClicked: {
-                console.log("[WidgetsContainer] done button clicked")
                 widgetsContainer.editMode = false
             }
         }
