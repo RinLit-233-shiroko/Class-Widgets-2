@@ -98,11 +98,14 @@ QQW.Window {
     WidgetsContainer {
         id: widgetsLoader
         objectName: "widgetsLoader"
+        // 编辑按钮位于容器外层，必须高于 Watermark，避免被其覆盖
+        z: editMode ? 1000 : 0
 
         // 坐标控制迁移到WidgetsContainer
 
         // 鼠标悬浮隐藏
         opacity: mouseHovered ? 0.25
+            : editMode ? 1
             : hide ? 0.75 : 1
 
         Behavior on x { NumberAnimation { duration: 400 * root.initialized; easing.type: Easing.OutQuint } }
