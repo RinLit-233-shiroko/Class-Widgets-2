@@ -84,7 +84,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="115"/>
         <source>File a bug or request new feature</source>
-        <translation type="unfinished"></translation>
+        <translation>释放甲虫或者许愿</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="155"/>
@@ -170,7 +170,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="257"/>
         <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
-        <translation type="unfinished"></translation>
+        <translation>西大不丢饿使用了分钟协议，你可以看→</translation>
     </message>
     <message>
         <source>This project (Class Widgets 2) is licensed under the GPL-3 license. For details, see:</source>
@@ -200,42 +200,42 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="11"/>
         <source>Tune your widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>摆弄小型桌宠</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="12"/>
         <source>Adjust the size and finish of your widgets. The preview updates as you make changes.</source>
-        <translation type="unfinished"></translation>
+        <translation>摆弄并视奸你的小型桌宠。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="34"/>
         <source>Widget Scale</source>
-        <translation type="unfinished"></translation>
+        <translation>压缩或者拉伸你的小型桌宠</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="35"/>
         <source>Make widgets look bigger or stay compact</source>
-        <translation type="unfinished">大大的❤️或者小小的💦</translation>
+        <translation>大大的❤️或者小小的💦</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="77"/>
         <source>Background Opacity</source>
-        <translation type="unfinished"></translation>
+        <translation>灰蒙蒙程度</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="78"/>
         <source>Change the opacity of widget backgrounds</source>
-        <translation type="unfinished"></translation>
+        <translation>让小型桌宠背面变得灰蒙蒙的</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="98"/>
         <source>Corner Radius</source>
-        <translation type="unfinished"></translation>
+        <translation>R</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="99"/>
         <source>Set how rounded widget corners appear</source>
-        <translation type="unfinished"></translation>
+        <translation>你要什么样的圆</translation>
     </message>
 </context>
 <context>
@@ -392,12 +392,12 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Complete.qml" line="50"/>
         <source>Welcome to Class Widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>西！大！不！丢！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Complete.qml" line="69"/>
         <source>Get Started</source>
-        <translation type="unfinished"></translation>
+        <translation>Go Go Go出发咯～</translation>
     </message>
 </context>
 <context>
@@ -1279,83 +1279,83 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="132"/>
         <source>Recommended settings</source>
-        <translation type="unfinished"></translation>
+        <translation>mú bǎn</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="138"/>
         <source>Recent and commonly used settings</source>
-        <translation type="unfinished"></translation>
+        <translation>你喜欢的</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="144"/>
         <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>叮叮当QQ响起会是谁呢Nayo~</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="145"/>
         <source>Plugins</source>
-        <translation type="unfinished">屁股</translation>
+        <translation>屁股</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="146"/>
         <source>Widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>小型桌宠</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="177"/>
         <source>Personalize your widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>给你的小型桌宠美容</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="265"/>
         <source>Color mode</source>
-        <translation type="unfinished"></translation>
+        <translation>给点颜色瞧瞧</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="272"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>谁扔了闪？！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="273"/>
         <source>Dark</source>
-        <translation type="unfinished">五彩斑斓的黑</translation>
+        <translation>五彩斑斓的黑</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="274"/>
         <source>Use system setting</source>
-        <translation type="unfinished">学系统精。</translation>
+        <translation>学系统精</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="286"/>
         <source>Browse more colors, and themes</source>
-        <translation type="unfinished"></translation>
+        <translation>我不是色盲！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="313"/>
         <source>Getting Started</source>
-        <translation type="unfinished"></translation>
+        <translation>用</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="319"/>
         <source>Complete these steps to get started</source>
-        <translation type="unfinished"></translation>
+        <translation>读，用</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="326"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="329"/>
         <source>Open schedule editor</source>
-        <translation type="unfinished"></translation>
+        <translation>开箱配料表编者</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="337"/>
         <source>Calibrate time offset</source>
-        <translation type="unfinished"></translation>
+        <translation>配平</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="344"/>
         <source>Manage notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>我让你吱声了吗？！</translation>
     </message>
 </context>
 <context>
@@ -1582,52 +1582,52 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="11"/>
         <source>Choose widget interactions</source>
-        <translation type="unfinished"></translation>
+        <translation>怎么和小型桌宠玩</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="12"/>
         <source>Decide how widgets get out of your way while you work.</source>
-        <translation type="unfinished"></translation>
+        <translation>怎么让小型桌宠不妨碍工作。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="29"/>
         <source>Hide Behavior</source>
-        <translation type="unfinished"></translation>
+        <translation>隐身～</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="30"/>
         <source>Choose whether widgets disappear or become compact</source>
-        <translation type="unfinished"></translation>
+        <translation>小型桌宠如何退场</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="45"/>
         <source>Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>你看不见我</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="50"/>
         <source>Mini Mode</source>
-        <translation type="unfinished">小小的也很可爱</translation>
+        <translation>小小的也很可爱</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="85"/>
         <source>Tap to Hide</source>
-        <translation type="unfinished"></translation>
+        <translation>摸一下就死</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="86"/>
         <source>Click on a widget to hide it, click it again to bring it back</source>
-        <translation type="unfinished"></translation>
+        <translation>摸一下就死，再摸一下复活</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="98"/>
         <source>Hover Fade</source>
-        <translation type="unfinished"></translation>
+        <translation>魂飞魄散</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="99"/>
         <source>Hover to make widgets transparent and let clicks pass through</source>
-        <translation type="unfinished"></translation>
+        <translation>魂飞魄散变成幽灵</translation>
     </message>
 </context>
 <context>
@@ -1635,22 +1635,22 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Language.qml" line="13"/>
         <source>Choose your language</source>
-        <translation type="unfinished"></translation>
+        <translation>你会八国语言吗？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Language.qml" line="14"/>
         <source>Choose a language. You can refine every setting later.</source>
-        <translation type="unfinished"></translation>
+        <translation>请选择你的八国语言</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Language.qml" line="30"/>
         <source>Language</source>
-        <translation type="unfinished">八国语言</translation>
+        <translation>八国语言</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Language.qml" line="40"/>
         <source>Use System Language</source>
-        <translation type="unfinished">学系统精。</translation>
+        <translation>学系统精</translation>
     </message>
 </context>
 <context>
@@ -2750,103 +2750,103 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="21"/>
         <source>Recommended plugins</source>
-        <translation type="unfinished"></translation>
+        <translation>大家都喜欢的屁股</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="22"/>
         <source>Pick certified plugins from Plugin Plaza to install with your first setup.</source>
-        <translation type="unfinished"></translation>
+        <translation>在屁股集市挑选大家都喜欢的屁股，然后预装这些屁股。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="28"/>
         <source>Installing plugins</source>
-        <translation type="unfinished"></translation>
+        <translation>正在准备屁股</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="30"/>
         <source>Finish</source>
-        <translation type="unfinished"></translation>
+        <translation>鱼.sh</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="32"/>
         <source>Skip</source>
-        <translation type="unfinished"></translation>
+        <translation>跳</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="33"/>
         <source>Finish &amp; Install</source>
-        <translation type="unfinished"></translation>
+        <translation>一键下崽</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="39"/>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="475"/>
         <source>Retry</source>
-        <translation type="unfinished">再来一瓶</translation>
+        <translation>再来一瓶</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="170"/>
         <source>%1 selected</source>
-        <translation type="unfinished"></translation>
+        <translation>挑选了 %1 个</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="171"/>
         <source>No plugins selected</source>
-        <translation type="unfinished"></translation>
+        <translation>没有选中屁股</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="173"/>
         <source>%1/%2 plugins</source>
-        <translation type="unfinished"></translation>
+        <translation>%1/%2 个屁股</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="196"/>
         <source>Installation failed</source>
-        <translation type="unfinished"></translation>
+        <translation>哦不！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="271"/>
         <source>Unable to start installation</source>
-        <translation type="unfinished"></translation>
+        <translation>不能开始😭</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="312"/>
         <source>Installation cancelled</source>
-        <translation type="unfinished"></translation>
+        <translation>你转身就走，像是下定了某种决心</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="369"/>
         <source>Select all</source>
-        <translation type="unfinished"></translation>
+        <translation>我！全！都！要！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="378"/>
         <source>Clear selection</source>
-        <translation type="unfinished"></translation>
+        <translation>嫑</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="462"/>
         <source>Could not load recommendations</source>
-        <translation type="unfinished"></translation>
+        <translation>没有好的屁股</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="463"/>
         <source>No recommendations available</source>
-        <translation type="unfinished"></translation>
+        <translation>真的没有好的屁股</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="466"/>
         <source>You can browse Plugin Plaza after setup.</source>
-        <translation type="unfinished"></translation>
+        <translation>屁股集市有很多屁股可供选择。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="489"/>
         <source>Some plugins were not installed</source>
-        <translation type="unfinished"></translation>
+        <translation>有些屁股没买到</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="490"/>
         <source>%1 installed, %2 failed. Retry the failed plugins or continue without them.</source>
-        <translation type="unfinished"></translation>
+        <translation>买到了 %1 个，%2 个没买到。你可以再去买一次屁股或者先继续。</translation>
     </message>
 </context>
 <context>
@@ -2854,42 +2854,42 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Preferences.qml" line="12"/>
         <source>Preferences</source>
-        <translation type="unfinished"></translation>
+        <translation>我喜欢的</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Preferences.qml" line="13"/>
         <source>Choose a few defaults before selecting plugins.</source>
-        <translation type="unfinished"></translation>
+        <translation>挑选屁股之前，让我们先来调教一下。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Preferences.qml" line="29"/>
         <source>Run at Startup</source>
-        <translation type="unfinished">开机时自动引爆 Class Widgets 牌 GTX 690</translation>
+        <translation>开机时自动引爆 Class Widgets 牌 GTX 690</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Preferences.qml" line="30"/>
         <source>Open Class Widgets automatically when you sign in</source>
-        <translation type="unfinished"></translation>
+        <translation>自动引爆 Class Widgets 牌 GTX 690</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Preferences.qml" line="53"/>
         <source>Create Desktop Shortcut</source>
-        <translation type="unfinished"></translation>
+        <translation>在桌面产生一个传送门</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Preferences.qml" line="54"/>
         <source>Add a shortcut to your desktop after setup completes</source>
-        <translation type="unfinished"></translation>
+        <translation>调教完后在桌面产生一个传送门</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Preferences.qml" line="69"/>
         <source>Enable Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation>喊我</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Preferences.qml" line="70"/>
         <source>Allow reminders, schedule updates, and plugin messages</source>
-        <translation type="unfinished"></translation>
+        <translation>可以给我发消息。</translation>
     </message>
 </context>
 <context>
@@ -3822,47 +3822,47 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Theme.qml" line="11"/>
         <source>Choose your look</source>
-        <translation type="unfinished"></translation>
+        <translation>挑选你的外貌</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Theme.qml" line="12"/>
         <source>Set the app appearance and an accent color that feels right to you.</source>
-        <translation type="unfinished"></translation>
+        <translation>挑选你喜欢的。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Theme.qml" line="30"/>
         <source>Theme</source>
-        <translation type="unfinished"></translation>
+        <translation>剧院</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Theme.qml" line="31"/>
         <source>Select which app theme to display</source>
-        <translation type="unfinished">巴啦啦能量！乌卡拉卡！小魔仙魔力变！</translation>
+        <translation>巴啦啦能量！乌卡拉卡！小魔仙魔力变！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Theme.qml" line="47"/>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation>奥拓</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Theme.qml" line="52"/>
         <source>Light</source>
-        <translation type="unfinished"></translation>
+        <translation>闪光弹</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Theme.qml" line="57"/>
         <source>Dark</source>
-        <translation type="unfinished">五彩斑斓的黑</translation>
+        <translation>五彩斑斓的黑</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Theme.qml" line="93"/>
         <source>Accent Color</source>
-        <translation type="unfinished">色色</translation>
+        <translation>色色</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Theme.qml" line="94"/>
         <source>Choose the color used for highlights and controls</source>
-        <translation type="unfinished"></translation>
+        <translation>一起色色！</translation>
     </message>
 </context>
 <context>
@@ -4055,27 +4055,27 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="12"/>
         <source>Getting Started</source>
-        <translation type="unfinished"></translation>
+        <translation>怎么玩？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="95"/>
         <source>Skip setup?</source>
-        <translation type="unfinished"></translation>
+        <translation>跳？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="100"/>
         <source>Are you sure you want to skip the setup?</source>
-        <translation type="unfinished"></translation>
+        <translation>真的要跳吗？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="113"/>
         <source>Close setup?</source>
-        <translation type="unfinished"></translation>
+        <translation>嫑？</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="118"/>
         <source>Are you sure you want to close the setup?</source>
-        <translation type="unfinished"></translation>
+        <translation>真的嫑吗？</translation>
     </message>
 </context>
 <context>
@@ -4083,7 +4083,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/tutorial/TutorialPage.qml" line="18"/>
         <source>Continue</source>
-        <translation type="unfinished">我批准了</translation>
+        <translation>我批准了</translation>
     </message>
 </context>
 <context>
@@ -4091,7 +4091,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/tutorial/TutorialPluginCard.qml" line="40"/>
         <source>Unknown plugin</source>
-        <translation type="unfinished">un知道屁股</translation>
+        <translation>un知道屁股</translation>
     </message>
 </context>
 <context>
@@ -4099,7 +4099,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/tutorial/TutorialStepFooter.qml" line="13"/>
         <source>Continue</source>
-        <translation type="unfinished">我批准了</translation>
+        <translation>我批准了</translation>
     </message>
 </context>
 <context>
@@ -4391,32 +4391,32 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="216"/>
         <source>Get started</source>
-        <translation type="unfinished">用</translation>
+        <translation>用</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="229"/>
         <source>Data migration</source>
-        <translation type="unfinished"></translation>
+        <translation>搬家</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="235"/>
         <source>View License</source>
-        <translation type="unfinished"></translation>
+        <translation>看法律文书</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="242"/>
         <source>Skip tutorial</source>
-        <translation type="unfinished"></translation>
+        <translation>跳</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="251"/>
         <source>License Agreement</source>
-        <translation type="unfinished">伊甸园条约</translation>
+        <translation>伊甸园条约</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="258"/>
         <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
-        <translation type="unfinished"></translation>
+        <translation>西大不丢饿使用了分钟协议，你可以看→</translation>
     </message>
 </context>
 <context>
@@ -4452,12 +4452,12 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="17"/>
         <source>A Brand New Quick Access Panel</source>
-        <translation type="unfinished"></translation>
+        <translation>新的！板子！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="18"/>
         <source>The new Quick Access Panel gives you instant access to Class Widgets features from the tray icon. Quickly launch common actions, switch between class schedules, and manage shortcuts.</source>
-        <translation type="unfinished"></translation>
+        <translation>很方便！牛逼！</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Data/WhatsNewData.qml" line="25"/>
@@ -4505,17 +4505,17 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/tutorial/WidgetPreview.qml" line="73"/>
         <source>Remaining</source>
-        <translation type="unfinished">死期</translation>
+        <translation>死期</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/tutorial/WidgetPreview.qml" line="157"/>
         <source>Current Activity</source>
-        <translation type="unfinished">当前激活</translation>
+        <translation>当前激活</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/tutorial/WidgetPreview.qml" line="187"/>
         <source>Mathematics</source>
-        <translation type="unfinished">X</translation>
+        <translation>X</translation>
     </message>
 </context>
 <context>
@@ -4577,12 +4577,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="149"/>
         <source>Corner Radius</source>
-        <translation type="unfinished"></translation>
+        <translation>R</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="150"/>
         <source>Set how rounded widget corners appear</source>
-        <translation type="unfinished"></translation>
+        <translation>你要什么样的圆</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="169"/>
@@ -4742,7 +4742,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="365"/>
         <source>Done</source>
-        <translation type="unfinished">我滴任务完成辣！</translation>
+        <translation>我滴任务完成辣！</translation>
     </message>
 </context>
 <context>
