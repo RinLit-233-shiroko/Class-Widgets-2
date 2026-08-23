@@ -343,7 +343,7 @@ Item {
 
         Button {
             id: addWidgetButton
-            highlighted: true
+            // highlighted: true
             width: 100
             height: 40
             icon.name: "ic_fluent_add_20_regular"
