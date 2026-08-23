@@ -1,6 +1,7 @@
 // AnimatedDigit.qml
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Window
 import Qt5Compat.GraphicalEffects
 import ClassWidgets.Theme 1.0
 
@@ -13,6 +14,12 @@ Rectangle {
     property double progress: 1  // 0-1
     property int duration: 700
     property real scaleFactor: Configs.data.preferences.scale_factor || 1.0
+    property real renderScale: {
+        const windowDpr = root.Window.window
+            ? root.Window.window.devicePixelRatio
+            : 1
+        return Math.max(1, scaleFactor * windowDpr)
+    }
 
     property alias font: oldDigit.font
     implicitWidth: Math.max(oldDigit.width, newDigit.width)
@@ -24,14 +31,19 @@ Rectangle {
         anchors.centerIn: parent
         opacity: 0
         layer.enabled: true
-        layer.textureSize: Qt.size(width * scaleFactor * 4, 
-                               height * scaleFactor * 4)
+        layer.smooth: true
+        layer.mipmap: false
+        layer.textureSize: Qt.size(
+            Math.ceil(width * root.renderScale),
+            Math.ceil(height * root.renderScale)
+        )
     }
 
     LinearGradient  {
         id: oldDigitGradient
         anchors.fill: oldDigit
         source: oldDigit
+        smooth: true
         gradient: Gradient {
             GradientStop { position: 0; color: oldDigit.color }
             GradientStop {
@@ -50,8 +62,12 @@ Rectangle {
         opacity: 0
         font: oldDigit.font
         layer.enabled: true
-        layer.textureSize: Qt.size(width * scaleFactor * 4, 
-                               height * scaleFactor * 4)
+        layer.smooth: true
+        layer.mipmap: false
+        layer.textureSize: Qt.size(
+            Math.ceil(width * root.renderScale),
+            Math.ceil(height * root.renderScale)
+        )
     }
 
     LinearGradient  {
@@ -59,6 +75,7 @@ Rectangle {
         anchors.fill: newDigit
         opacity: progress * 3
         source: newDigit
+        smooth: true
         gradient: Gradient {
             GradientStop { position: 0.85 - progress; color: Qt.alpha(newDigit.color, 0) }
             GradientStop {
