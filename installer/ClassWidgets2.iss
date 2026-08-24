@@ -48,7 +48,7 @@ WizardSizePercent=100
 [Files]
 Source: "{#BuildDir}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "assets\.cw2-installed"; DestDir: "{app}"; Flags: ignoreversion
-Source: "assets\logo.ico"; Flags: dontcopy
+Source: "assets\logo.png"; Flags: dontcopy
 Source: "assets\next-button.png"; Flags: dontcopy
 
 [Icons]
@@ -156,19 +156,16 @@ end;
 
 procedure ExtractInstallerAssets;
 begin
-  ExtractTemporaryFile('logo.ico');
+  ExtractTemporaryFile('logo.png');
   ExtractTemporaryFile('next-button.png');
 end;
 
 procedure LoadBrandIcon(const Image: TBitmapImage; const Size: Integer);
 begin
+  Image.PngImage.LoadFromFile(ExpandConstant('{tmp}\logo.png'));
   Image.Width := ScaleX(Size);
   Image.Height := ScaleY(Size);
   Image.Stretch := True;
-  InitializeBitmapImageFromIcon(Image, ExpandConstant('{tmp}\logo.ico'), clNone,
-    [32, 48, 64, 128, 256]);
-  Image.Width := ScaleX(Size);
-  Image.Height := ScaleY(Size);
 end;
 
 procedure StopWelcomeAnimation;
