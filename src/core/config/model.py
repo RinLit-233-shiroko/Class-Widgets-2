@@ -216,6 +216,22 @@ class AiChatConfig(ConfigBaseModel):
     system_prompt: str = ""
 
 
+class WeatherConfig(ConfigBaseModel):
+    """天气 Widget 的共享数据与位置配置。
+
+    使用独立的 Open-Meteo 公开接口，不复用第三方项目的天气服务代码；城市
+    会在首次刷新时解析为经纬度，随后所有天气 Widget 共享同一份缓存结果。
+    """
+
+    enabled: bool = True
+    city: str = ""
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
+    timezone: str = "auto"
+    refresh_interval_minutes: int = 15
+    last_city_label: str = ""
+
+
 class PluginsConfig(ConfigBaseModel):
     enabled: list[str] = ["builtin.classwidgets.widgets"]
     configs: dict[str, dict[str, JsonData]] = Field(default_factory=dict)

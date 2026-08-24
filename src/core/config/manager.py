@@ -11,7 +11,7 @@ from PySide6.QtCore import QObject, QTimer, Signal, Property, Slot
 from typing import Optional
 
 from .model import AppConfig, ScheduleConfig, PreferencesConfig, PluginsConfig, LocaleConfig, InteractionsConfig, \
-    ConfigBaseModel, NetworkConfig, NotificationsConfig, AiChatConfig
+    ConfigBaseModel, NetworkConfig, NotificationsConfig, AiChatConfig, WeatherConfig
 from src import __version__, __version_type__
 
 
@@ -25,6 +25,7 @@ class RootConfig(ConfigBaseModel):
     network: NetworkConfig = Field(default_factory=NetworkConfig)
     notifications: NotificationsConfig = Field(default_factory=NotificationsConfig)
     ai_chat: AiChatConfig = Field(default_factory=AiChatConfig)
+    weather: WeatherConfig = Field(default_factory=WeatherConfig)
 
     _on_change: callable = PrivateAttr(default=None)
 
