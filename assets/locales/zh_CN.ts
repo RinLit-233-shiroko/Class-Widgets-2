@@ -3953,63 +3953,63 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="101"/>
         <source>Edit Subject</source>
-        <translation type="unfinished">编辑主题</translation>
+        <translation>编辑主题</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="114"/>
         <source>ID</source>
-        <translation type="unfinished">ID</translation>
+        <translation>ID</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="119"/>
         <source>Simplified Name</source>
-        <translation type="unfinished">简称</translation>
+        <translation>简称</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="125"/>
         <source>Subject Name</source>
-        <translation type="unfinished">课程名称</translation>
+        <translation>课程名称</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="126"/>
         <source>e.g. Science</source>
-        <translation type="unfinished">例如：科学</translation>
+        <translation>例如：科学</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="130"/>
         <source>Teacher</source>
-        <translation type="unfinished">教师</translation>
+        <translation>教师</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="135"/>
         <source>Location</source>
-        <translation type="unfinished">地点</translation>
+        <translation>地点</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="136"/>
         <source>e.g. Room 7813</source>
-        <translation type="unfinished">例如：0721 教室</translation>
+        <translation>例如：0721 教室</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="140"/>
         <source>Color</source>
-        <translation type="unfinished">颜色</translation>
+        <translation>颜色</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="150"/>
         <source>Held in homeroom</source>
-        <translation type="unfinished">在当前教室授课</translation>
+        <translation>在本班教室授课</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="162"/>
         <source>Icon</source>
-        <translation type="unfinished">图标</translation>
+        <translation>图标</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="182"/>
         <source>Enable if the subject is taught in your homeroom classroom.  
 If it takes place in another location, such as a sport field, lab, or another classroom, leave it off.</source>
-        <translation type="unfinished">若课程在本班教室进行，请启用。
+        <translation>若课程在本班教室进行，请启用。
 若在其他场所（如操场、实验室或其他教室）进行，请关闭。</translation>
     </message>
 </context>
