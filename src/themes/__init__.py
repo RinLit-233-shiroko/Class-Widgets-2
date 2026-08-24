@@ -56,16 +56,4 @@ BUILTIN_THEMES = [
             "color": "#6750A4",
         }
     },
-    {
-        "path": SRC_PATH / "themes" / "liquid_glass",
-        "meta": {
-            "id": "com.classwidgets.liquidglass",
-            "name": "Liquid Glass",
-            "description": "Translucent glass panels with fluid highlights",
-            "author": "Class Widgets Official",
-            "version": "1.0.0",
-            "api_version": "*",
-            "color": "#5FC7F2",
-        }
-    },
 ]

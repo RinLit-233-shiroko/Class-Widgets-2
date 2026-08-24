@@ -76,12 +76,6 @@ class Plugin(CW2Plugin):
                     "show_forecast": True,
                 },
             },
-            {
-                "widget_id": "classwidgets.aiChat",
-                "name": QCoreApplication.translate("Widgets", "AI Conversation"),
-                "qml_path": Path(QML_PATH / "widgets" / "aiChat.qml").as_posix(),
-                "backend_obj": self,
-            },
         ]
 
     def on_load(self):
