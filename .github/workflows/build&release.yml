@@ -294,12 +294,27 @@ jobs:
             exit 1
           }
 
-      - name: 🪄 Build CW branded installer (Windows)
+      - name: ⚙️ Build silent installation engine (Windows)
         if: runner.os == 'Windows'
         uses: Minionguyjpro/Inno-Setup-Action@v1.2.2
         with:
-          path: installer/ClassWidgets2.iss
+          path: installer/engine/ClassWidgets2Engine.iss
           options: /DAppVersion=${{ steps.version.outputs.version }} /O+
+
+      - name: ✨ Build modern CW installer (Windows)
+        if: runner.os == 'Windows'
+        shell: bash
+        run: |
+          uv run pyinstaller --noconfirm --clean --noconsole --onefile \
+            --icon "assets/images/logo.ico" \
+            --add-data "installer/qml:qml" \
+            --add-data "assets:assets" \
+            --add-data "src/__init__.py:metadata" \
+            --add-data "dist/installer-payload:payload" \
+            --name="ClassWidgets-2-Setup" \
+            --distpath "dist" \
+            --workpath "build/modern-installer" \
+            installer/installer_app.py
 
       - name: ✅ Verify Windows packages
         if: runner.os == 'Windows'
