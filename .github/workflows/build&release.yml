@@ -253,8 +253,8 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Path "./exe-for-signing" -Force | Out-Null
-          $exe = Get-ChildItem -Path "dist/Class Widgets 2" -Filter "*.exe" | Select-Object -First 1
-          if ($null -eq $exe) { Write-Error "未找到待签名的可执行文件"; exit 1 }
+          $exe = Get-Item -Path "dist/Class Widgets 2/Class Widgets 2.exe" -ErrorAction SilentlyContinue
+          if ($null -eq $exe) { Write-Error "未找到待签名的主程序可执行文件"; exit 1 }
           Copy-Item $exe.FullName -Destination "./exe-for-signing/$($exe.Name)" -Force
           echo "EXE_NAME=$($exe.Name)" >> $env:GITHUB_ENV
 
@@ -385,6 +385,7 @@ jobs:
           prerelease: ${{ steps.version.outputs.prerelease }}
           files: |
             dist/ClassWidgets-2-Windows.zip
+            dist/ClassWidgets-2-Setup.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
 
@@ -410,6 +411,10 @@ jobs:
           curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
             -T "dist/ClassWidgets-2-Windows.zip" \
             "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
+
+          curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
+            -T "dist/ClassWidgets-2-Setup.exe" \
+            "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-Setup.exe"
 
 
       - name: 🔔 Trigger Official Website Update
@@ -442,3 +447,7 @@ jobs:
           curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
             -T "dist/ClassWidgets-2-Windows.zip" \
             "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
+
+          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
+            -T "dist/ClassWidgets-2-Setup.exe" \
+            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-Setup.exe"
