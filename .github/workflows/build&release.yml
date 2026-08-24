@@ -146,27 +146,6 @@ jobs:
           uv sync
           uv pip install pyinstaller
 
-      - name: 🎙️ Download offline Vosk Chinese model
-        shell: pwsh
-        run: |
-          $modelName = "vosk-model-small-cn-0.22"
-          $modelDir = "assets/models/$modelName"
-          if (Test-Path "$modelDir/am") {
-            Write-Host "Using cached offline Vosk model at $modelDir"
-            exit 0
-          }
-
-          New-Item -ItemType Directory -Path "assets/models" -Force | Out-Null
-          $archive = Join-Path $env:RUNNER_TEMP "$modelName.zip"
-          $extractRoot = Join-Path $env:RUNNER_TEMP "vosk-model-extract"
-          Invoke-WebRequest -Uri "https://alphacephei.com/vosk/models/$modelName.zip" -OutFile $archive
-          Expand-Archive -Path $archive -DestinationPath $extractRoot -Force
-          $extractedModel = Join-Path $extractRoot $modelName
-          if (-not (Test-Path "$extractedModel/am")) {
-            throw "The downloaded Vosk model is incomplete: $extractedModel"
-          }
-          Move-Item -Path $extractedModel -Destination "assets/models" -Force
-          Write-Host "Downloaded offline Vosk Chinese model"
 
       - name: 🔨 Build ClassWidgets-2 (Windows)
         shell: bash
@@ -180,10 +159,6 @@ jobs:
             --add-data "assets:assets" \
             --add-data "LICENSE:." \
             --hidden-import "src.settings_plaza_app" \
-            --hidden-import "sounddevice" \
-            --hidden-import "vosk" \
-            --collect-all "sounddevice" \
-            --collect-all "vosk" \
             --paths=. \
             --contents-directory . \
             --name="Class Widgets 2" \

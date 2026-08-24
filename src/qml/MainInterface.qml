@@ -135,11 +135,6 @@ QQW.Window {
         id: trayPanel
     }
 
-    AiChatOverlay {}
-
-    AiChatPanel {
-        id: aiChatPanel
-    }
 
     Component.onCompleted: {
         updateLayer()

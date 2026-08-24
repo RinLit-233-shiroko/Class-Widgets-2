@@ -19,8 +19,6 @@ dependencies = [
   "pydantic",
   "pyyaml",
   "requests",
-  "sounddevice>=0.5.0",
-  "vosk>=0.3.45",
   "markdown-it-py~=4.2.0"
 ]
 description = "Class Widgets 2, The Next Class Schedule."
