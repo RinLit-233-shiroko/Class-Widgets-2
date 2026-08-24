@@ -71,13 +71,13 @@ const
   ColorMuted = $0099877C;
   ColorPanel = $00FCF8F5;
 
-function SetTimer(hWnd: HWND; nIDEvent: UINT_PTR; uElapse: UINT; lpTimerFunc: NativeInt): UINT_PTR;
+function SetTimer(hWnd, nIDEvent, uElapse, lpTimerFunc: Integer): Integer;
   external 'SetTimer@user32.dll stdcall';
-function KillTimer(hWnd: HWND; uIDEvent: UINT_PTR): BOOL;
+function KillTimer(hWnd, uIDEvent: Integer): Integer;
   external 'KillTimer@user32.dll stdcall';
-function CreateRoundRectRgn(nLeftRect, nTopRect, nRightRect, nBottomRect, nWidthEllipse, nHeightEllipse: Integer): THandle;
+function CreateRoundRectRgn(nLeftRect, nTopRect, nRightRect, nBottomRect, nWidthEllipse, nHeightEllipse: Integer): Integer;
   external 'CreateRoundRectRgn@gdi32.dll stdcall';
-function SetWindowRgn(hWnd: HWND; hRgn: THandle; bRedraw: BOOL): Integer;
+function SetWindowRgn(hWnd, hRgn: Integer; bRedraw: Boolean): Integer;
   external 'SetWindowRgn@user32.dll stdcall';
 
 var
@@ -104,8 +104,8 @@ var
   FinishReady: TNewStaticText;
   FinishOpenButton: TNewButton;
   Particle: array [0..11] of TNewStaticText;
-  WelcomeTimerId: UINT_PTR;
-  FireworkTimerId: UINT_PTR;
+  WelcomeTimerId: Integer;
+  FireworkTimerId: Integer;
   WelcomeFrame: Integer;
   FireworkFrame: Integer;
 
@@ -184,7 +184,7 @@ begin
   end;
 end;
 
-procedure WelcomeTimerProc(Arg1: HWND; Arg2: UINT; Arg3: UINT_PTR; Arg4: DWORD);
+procedure WelcomeTimerProc(Arg1, Arg2, Arg3, Arg4: Integer);
 var
   StepValue: Integer;
   TargetLeft: Integer;
@@ -269,7 +269,7 @@ begin
   WizardForm.BackButton.OnClick(WizardForm.BackButton);
 end;
 
-procedure FireworkTimerProc(Arg1: HWND; Arg2: UINT; Arg3: UINT_PTR; Arg4: DWORD);
+procedure FireworkTimerProc(Arg1, Arg2, Arg3, Arg4: Integer);
 var
   I: Integer;
   CenterX: Integer;
