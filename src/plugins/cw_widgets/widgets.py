@@ -65,6 +65,18 @@ class Plugin(CW2Plugin):
                 }
             },
             {
+                "widget_id": "classwidgets.weather",
+                "name": QCoreApplication.translate("Widgets", "Weather"),
+                "qml_path": Path(QML_PATH / "widgets" / "weather.qml").as_posix(),
+                "backend_obj": self,
+                "settings_qml": Path(QML_PATH / "widgets" / "settings" / "weather.qml").as_posix(),
+                "default_settings": {
+                    "display_mode": "temperature",
+                    "show_city": True,
+                    "show_forecast": True,
+                },
+            },
+            {
                 "widget_id": "classwidgets.aiChat",
                 "name": QCoreApplication.translate("Widgets", "AI Conversation"),
                 "qml_path": Path(QML_PATH / "widgets" / "aiChat.qml").as_posix(),

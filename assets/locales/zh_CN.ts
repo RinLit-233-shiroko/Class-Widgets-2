@@ -806,7 +806,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation type="vanished">默认</translation>
     </message>
     <message>
-        <location filename="../../src/core/config/model.py" line="235"/>
+        <location filename="../../src/core/config/model.py" line="251"/>
         <source>New Schedule 1</source>
         <translation>新课程表 1</translation>
     </message>
@@ -4063,36 +4063,41 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="52"/>
+        <source>Weather</source>
+        <translation>天气</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="57"/>
         <source>AI Conversation</source>
         <translation>AI 对话</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="57"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="62"/>
         <source>Notification &amp; Time</source>
         <translation>通知与时间</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="61"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="66"/>
         <source>Notification</source>
         <translation>通知</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="66"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="71"/>
         <source>Time</source>
         <translation>时间</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="73"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="78"/>
         <source>Plugins</source>
         <translation>插件</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="80"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="85"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="86"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="91"/>
         <source>Update</source>
         <translation>更新</translation>
     </message>
@@ -4104,27 +4109,27 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>Shortcuts</name>
     <message>
-        <location filename="../../src/core/central.py" line="156"/>
+        <location filename="../../src/core/central.py" line="159"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="162"/>
+        <location filename="../../src/core/central.py" line="165"/>
         <source>Schedules</source>
         <translation>课程编辑</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="168"/>
+        <location filename="../../src/core/central.py" line="171"/>
         <source>Plugin Plaza</source>
         <translation>插件广场</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="174"/>
+        <location filename="../../src/core/central.py" line="177"/>
         <source>Reschedule Day</source>
         <translation>调休</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="180"/>
+        <location filename="../../src/core/central.py" line="183"/>
         <source>Class Swap</source>
         <translation>换课</translation>
     </message>
@@ -5438,6 +5443,69 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     </message>
 </context>
 <context>
+    <name>Weather</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Weather.qml" line="13"/>
+        <source>Enable Weather</source>
+        <translation>启用天气</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Weather.qml" line="14"/>
+        <source>Enable shared weather data for Weather Widgets. Weather is fetched from a public service without an API key.</source>
+        <translation>为天气小组件启用共享天气数据。天气数据来自无需 API Key 的公开服务。</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Weather.qml" line="29"/>
+        <source>City</source>
+        <translation>城市</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Weather.qml" line="30"/>
+        <source>Enter a city name, such as Beijing, Shanghai, Tokyo, or London. The service will resolve it to a location automatically.</source>
+        <translation>输入城市名称，例如北京、上海、东京或伦敦；服务会自动解析为对应位置。</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Weather.qml" line="35"/>
+        <source>Enter city name</source>
+        <translation>输入城市名称</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Weather.qml" line="48"/>
+        <source>Refresh interval</source>
+        <translation>刷新间隔</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Weather.qml" line="49"/>
+        <source>Choose how often CW2 refreshes weather in the background. The minimum interval is 5 minutes.</source>
+        <translation>设置 CW2 在后台刷新天气的频率，最短间隔为 5 分钟。</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Weather.qml" line="68"/>
+        <source>Weather status</source>
+        <translation>天气状态</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Weather.qml" line="72"/>
+        <source>Updated at %1 · %2</source>
+        <translation>更新时间：%1 · %2</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Weather.qml" line="73"/>
+        <source>Set a city and refresh to preview weather data.</source>
+        <translation>设置城市并刷新，即可预览天气数据。</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Weather.qml" line="77"/>
+        <source>Refreshing…</source>
+        <translation>刷新中……</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Weather.qml" line="77"/>
+        <source>Refresh now</source>
+        <translation>立即刷新</translation>
+    </message>
+</context>
+<context>
     <name>WeekSelector</name>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="38"/>
@@ -5844,6 +5912,11 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     </message>
     <message>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="69"/>
+        <source>Weather</source>
+        <translation>天气</translation>
+    </message>
+    <message>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="81"/>
         <source>AI Conversation</source>
         <translation>AI 对话</translation>
     </message>
@@ -6022,6 +6095,80 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="34"/>
         <source>Unset</source>
         <translation>未设置</translation>
+    </message>
+</context>
+<context>
+    <name>weather</name>
+    <message>
+        <location filename="../../src/qml/widgets/settings/weather.qml" line="11"/>
+        <source>Primary information</source>
+        <translation>主要信息</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/weather.qml" line="12"/>
+        <source>Choose the main weather value shown by this Widget.</source>
+        <translation>选择此小组件主要显示的天气数值。</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/weather.qml" line="19"/>
+        <location filename="../../src/qml/widgets/weather.qml" line="32"/>
+        <source>Temperature</source>
+        <translation>温度</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/weather.qml" line="20"/>
+        <location filename="../../src/qml/widgets/weather.qml" line="31"/>
+        <source>Feels like</source>
+        <translation>体感温度</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/weather.qml" line="21"/>
+        <location filename="../../src/qml/widgets/weather.qml" line="28"/>
+        <source>Humidity</source>
+        <translation>湿度</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/weather.qml" line="22"/>
+        <location filename="../../src/qml/widgets/weather.qml" line="29"/>
+        <source>Wind</source>
+        <translation>风速</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/weather.qml" line="23"/>
+        <location filename="../../src/qml/widgets/weather.qml" line="30"/>
+        <source>Pressure</source>
+        <translation>气压</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/weather.qml" line="41"/>
+        <source>Show city</source>
+        <translation>显示城市</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/weather.qml" line="42"/>
+        <source>Display the configured city name above the weather information.</source>
+        <translation>在天气信息上方显示已配置的城市名称。</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/weather.qml" line="53"/>
+        <source>Show daily forecast</source>
+        <translation>显示每日预报</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/weather.qml" line="54"/>
+        <source>Display today&apos;s high/low temperature and precipitation probability.</source>
+        <translation>显示今日最高/最低温度和降水概率。</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/weather.qml" line="9"/>
+        <location filename="../../src/qml/widgets/weather.qml" line="81"/>
+        <source>Weather</source>
+        <translation>天气</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/weather.qml" line="107"/>
+        <source>Set a city in Weather settings</source>
+        <translation>请在天气设置中配置城市</translation>
     </message>
 </context>
 </TS>

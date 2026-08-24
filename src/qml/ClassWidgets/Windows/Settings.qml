@@ -49,6 +49,11 @@ FluentWindow {
             page: PathManager.qml("pages/settings/Personalization.qml"),
         },
         {
+            title: qsTr("Weather"),
+            page: PathManager.qml("pages/settings/Weather.qml"),
+            icon: "ic_fluent_weather_partly_cloudy_day_20_regular"
+        },
+        {
             title: qsTr("AI Conversation"),
             page: PathManager.qml("pages/settings/AiChat.qml"),
             icon: "ic_fluent_bot_20_regular"
