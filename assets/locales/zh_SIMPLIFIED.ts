@@ -23,7 +23,7 @@
         <source>© 2024-2026 RinLit. All rights reserved 
 Licensed under the MIT license</source>
         <translation>© 2024-2026 RinLit。保留所有权利
-根据 MIT 许可证获得许可</translation>
+根据 麻省理工学院 许可证获得许可</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="91"/>
@@ -89,12 +89,12 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="155"/>
         <source>This project is licensed under the MIT license</source>
-        <translation>此项目根据 MIT 许可证获得许可</translation>
+        <translation>此项目根据 麻省理工学院 许可证获得许可</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="158"/>
         <source>MIT License</source>
-        <translation>MIT 协议</translation>
+        <translation>麻省理工学院 协议</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="172"/>
@@ -170,7 +170,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="257"/>
         <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
-        <translation>西大不丢饿使用了分钟协议，你可以看→</translation>
+        <translation>西大不丢饿使用了 麻省理工学院 许可证，你可以看→</translation>
     </message>
     <message>
         <source>This project (Class Widgets 2) is licensed under the GPL-3 license. For details, see:</source>
@@ -4416,7 +4416,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="258"/>
         <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
-        <translation>西大不丢饿使用了分钟协议，你可以看→</translation>
+        <translation>西大不丢饿使用了 麻省理工学院 许可证，你可以看→</translation>
     </message>
 </context>
 <context>
