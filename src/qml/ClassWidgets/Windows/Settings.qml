@@ -49,11 +49,6 @@ FluentWindow {
             page: PathManager.qml("pages/settings/Personalization.qml"),
         },
         {
-            title: qsTr("Weather"),
-            page: PathManager.qml("pages/settings/Weather.qml"),
-            icon: "ic_fluent_weather_partly_cloudy_day_20_regular"
-        },
-        {
             title: qsTr("Notification & Time"),
             icon: "ic_fluent_alert_badge_20_regular",
             subItems: [
