@@ -114,7 +114,7 @@ begin
   Result := StartValue + ((EndValue - StartValue) * StepValue) div StepCount;
 end;
 
-procedure ApplyFont(const Control: TControl; const Size: Integer; const Color: TColor; const Bold: Boolean);
+procedure ApplyStaticFont(const Control: TNewStaticText; const Size: Integer; const Color: TColor; const Bold: Boolean);
 begin
   Control.Font.Name := 'Segoe UI';
   Control.Font.Size := Size;
@@ -125,9 +125,28 @@ begin
     Control.Font.Style := [];
 end;
 
+procedure ApplyButtonFont(const Control: TNewButton; const Size: Integer; const Color: TColor; const Bold: Boolean);
+begin
+  Control.Font.Name := 'Segoe UI';
+  Control.Font.Size := Size;
+  Control.Font.Color := Color;
+  if Bold then
+    Control.Font.Style := [fsBold]
+  else
+    Control.Font.Style := [];
+end;
+
+procedure ApplyPathEditFont(const Control: TNewPathEdit; const Size: Integer; const Color: TColor);
+begin
+  Control.Font.Name := 'Segoe UI';
+  Control.Font.Size := Size;
+  Control.Font.Color := Color;
+  Control.Font.Style := [];
+end;
+
 procedure ApplyRoundedWindow;
 var
-  Region: THandle;
+  Region: Integer;
 begin
   Region := CreateRoundRectRgn(0, 0, WizardForm.Width + 1, WizardForm.Height + 1,
     ScaleX(CornerRadius), ScaleY(CornerRadius));
@@ -324,7 +343,7 @@ begin
   WelcomeName.Width := ScaleX(190);
   WelcomeName.Height := ScaleY(38);
   WelcomeName.Top := ScaleY(202);
-  ApplyFont(WelcomeName, 20, ColorText, True);
+  ApplyStaticFont(WelcomeName, 20, ColorText, True);
 
   WelcomeVersion := TNewStaticText.Create(WelcomePage);
   WelcomeVersion.Parent := WelcomePage.Surface;
@@ -333,7 +352,7 @@ begin
   WelcomeVersion.Width := ScaleX(110);
   WelcomeVersion.Height := ScaleY(30);
   WelcomeVersion.Top := ScaleY(208);
-  ApplyFont(WelcomeVersion, 11, ColorMuted, False);
+  ApplyStaticFont(WelcomeVersion, 11, ColorMuted, False);
 
   WelcomeCaption := TNewStaticText.Create(WelcomePage);
   WelcomeCaption.Parent := WelcomePage.Surface;
@@ -344,7 +363,7 @@ begin
   WelcomeCaption.Height := ScaleY(28);
   WelcomeCaption.Left := (WelcomePage.SurfaceWidth - WelcomeCaption.Width) div 2;
   WelcomeCaption.Top := ScaleY(325);
-  ApplyFont(WelcomeCaption, 11, ColorMuted, False);
+  ApplyStaticFont(WelcomeCaption, 11, ColorMuted, False);
 
   WelcomeNextButton := TBitmapButton.Create(WelcomePage);
   WelcomeNextButton.Parent := WelcomePage.Surface;
@@ -370,7 +389,7 @@ begin
   InstallPathTitle.Height := ScaleY(46);
   InstallPathTitle.Left := ScaleX(84);
   InstallPathTitle.Top := ScaleY(126);
-  ApplyFont(InstallPathTitle, 24, ColorText, True);
+  ApplyStaticFont(InstallPathTitle, 24, ColorText, True);
 
   InstallPathDescription := TNewStaticText.Create(InstallPathPage);
   InstallPathDescription.Parent := InstallPathPage.Surface;
@@ -380,7 +399,7 @@ begin
   InstallPathDescription.Height := ScaleY(34);
   InstallPathDescription.Left := ScaleX(84);
   InstallPathDescription.Top := ScaleY(183);
-  ApplyFont(InstallPathDescription, 10, ColorMuted, False);
+  ApplyStaticFont(InstallPathDescription, 10, ColorMuted, False);
 
   InstallPathEdit := TNewPathEdit.Create(InstallPathPage);
   InstallPathEdit.Parent := InstallPathPage.Surface;
@@ -390,7 +409,7 @@ begin
   InstallPathEdit.Height := ScaleY(42);
   InstallPathEdit.Text := WizardForm.DirEdit.Text;
   InstallPathEdit.Color := ColorPanel;
-  ApplyFont(InstallPathEdit, 10, ColorText, False);
+  ApplyPathEditFont(InstallPathEdit, 10, ColorText);
 
   InstallBrowseButton := TNewButton.Create(InstallPathPage);
   InstallBrowseButton.Parent := InstallPathPage.Surface;
@@ -400,7 +419,7 @@ begin
   InstallBrowseButton.Width := ScaleX(108);
   InstallBrowseButton.Height := ScaleY(42);
   InstallBrowseButton.OnClick := @BrowseInstallPathClick;
-  ApplyFont(InstallBrowseButton, 10, ColorPrimary, True);
+  ApplyButtonFont(InstallBrowseButton, 10, ColorPrimary, True);
 
   InstallBackButton := TNewButton.Create(InstallPathPage);
   InstallBackButton.Parent := InstallPathPage.Surface;
@@ -410,7 +429,7 @@ begin
   InstallBackButton.Width := ScaleX(112);
   InstallBackButton.Height := ScaleY(42);
   InstallBackButton.OnClick := @InstallBackClick;
-  ApplyFont(InstallBackButton, 10, ColorMuted, False);
+  ApplyButtonFont(InstallBackButton, 10, ColorMuted, False);
 
   InstallConfirmButton := TNewButton.Create(InstallPathPage);
   InstallConfirmButton.Parent := InstallPathPage.Surface;
@@ -420,7 +439,7 @@ begin
   InstallConfirmButton.Width := ScaleX(186);
   InstallConfirmButton.Height := ScaleY(42);
   InstallConfirmButton.OnClick := @ConfirmInstallClick;
-  ApplyFont(InstallConfirmButton, 11, ColorPrimary, True);
+  ApplyButtonFont(InstallConfirmButton, 11, ColorPrimary, True);
 end;
 
 procedure CreateProgressOverlay;
@@ -433,7 +452,7 @@ begin
   ProgressTitle.Height := ScaleY(48);
   ProgressTitle.Left := ScaleX(84);
   ProgressTitle.Top := ScaleY(160);
-  ApplyFont(ProgressTitle, 24, ColorText, True);
+  ApplyStaticFont(ProgressTitle, 24, ColorText, True);
 
   ProgressDescription := TNewStaticText.Create(WizardForm);
   ProgressDescription.Parent := WizardForm.InstallingPage;
@@ -443,7 +462,7 @@ begin
   ProgressDescription.Height := ScaleY(30);
   ProgressDescription.Left := ScaleX(84);
   ProgressDescription.Top := ScaleY(218);
-  ApplyFont(ProgressDescription, 10, ColorMuted, False);
+  ApplyStaticFont(ProgressDescription, 10, ColorMuted, False);
 
   ProgressBar := TNewProgressBar.Create(WizardForm);
   ProgressBar.Parent := WizardForm.InstallingPage;
@@ -464,7 +483,7 @@ begin
   ProgressPercent.Height := ScaleY(24);
   ProgressPercent.Left := ScaleX(622);
   ProgressPercent.Top := ScaleY(320);
-  ApplyFont(ProgressPercent, 10, ColorPrimary, True);
+  ApplyStaticFont(ProgressPercent, 10, ColorPrimary, True);
 end;
 
 procedure CreateFinishPage;
@@ -495,7 +514,7 @@ begin
     Particle[I].Height := ScaleY(20);
     Particle[I].Alignment := taCenter;
     Particle[I].Visible := False;
-    ApplyFont(Particle[I], 8 + (I mod 3) * 2, ParticleColors[I mod 4], True);
+    ApplyStaticFont(Particle[I], 8 + (I mod 3) * 2, ParticleColors[I mod 4], True);
   end;
 
   FinishName := TNewStaticText.Create(FinishPage);
@@ -507,7 +526,7 @@ begin
   FinishName.Height := ScaleY(42);
   FinishName.Left := (FinishPage.SurfaceWidth - FinishName.Width) div 2;
   FinishName.Top := ScaleY(216);
-  ApplyFont(FinishName, 22, ColorText, True);
+  ApplyStaticFont(FinishName, 22, ColorText, True);
 
   FinishReady := TNewStaticText.Create(FinishPage);
   FinishReady.Parent := FinishPage.Surface;
@@ -518,7 +537,7 @@ begin
   FinishReady.Height := ScaleY(28);
   FinishReady.Left := (FinishPage.SurfaceWidth - FinishReady.Width) div 2;
   FinishReady.Top := ScaleY(264);
-  ApplyFont(FinishReady, 11, ColorMuted, False);
+  ApplyStaticFont(FinishReady, 11, ColorMuted, False);
 
   FinishOpenButton := TNewButton.Create(FinishPage);
   FinishOpenButton.Parent := FinishPage.Surface;
@@ -528,7 +547,7 @@ begin
   FinishOpenButton.Width := ScaleX(196);
   FinishOpenButton.Height := ScaleY(44);
   FinishOpenButton.OnClick := @FinishOpenClick;
-  ApplyFont(FinishOpenButton, 11, ColorPrimary, True);
+  ApplyButtonFont(FinishOpenButton, 11, ColorPrimary, True);
 end;
 
 procedure InitializeWizard;
