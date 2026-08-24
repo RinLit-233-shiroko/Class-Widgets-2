@@ -301,6 +301,21 @@ jobs:
           hdiutil create -volname "Class Widgets 2" -srcfolder dist -ov -format UDZO ClassWidgets-2-macOS-${{ runner.arch }}.dmg
         # ditto -c -k --sequesterRsrc --keepParent "Class Widgets 2".app ClassWidgets-2-macOS-${{ runner.arch }}.zip
 
+      - name: ✅ Verify Windows packages
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $packages = @(
+            "dist/ClassWidgets-2-Windows.zip"
+          )
+          foreach ($package in $packages) {
+            if (-not (Test-Path $package)) {
+              Write-Error "Expected package was not created: $package"
+              exit 1
+            }
+            Write-Host "Created package: $package ($((Get-Item $package).Length) bytes)"
+          }
+
       - name: ☁️ Upload artifact (Windows)
         if: runner.os == 'Windows'
         uses: actions/upload-artifact@v4
@@ -383,9 +398,7 @@ jobs:
           tag_name: ${{ steps.version.outputs.version_tag }}
           body_path: CHANGELOG.md
           prerelease: ${{ steps.version.outputs.prerelease }}
-          files: |
-            dist/ClassWidgets-2-Windows.zip
-            dist/ClassWidgets-2-Setup.exe
+          files: dist/ClassWidgets-2-Windows.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
 
@@ -411,10 +424,6 @@ jobs:
           curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
             -T "dist/ClassWidgets-2-Windows.zip" \
             "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
-
-          curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
-            -T "dist/ClassWidgets-2-Setup.exe" \
-            "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-Setup.exe"
 
 
       - name: 🔔 Trigger Official Website Update
@@ -447,7 +456,3 @@ jobs:
           curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
             -T "dist/ClassWidgets-2-Windows.zip" \
             "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
-
-          curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
-            -T "dist/ClassWidgets-2-Setup.exe" \
-            "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-Setup.exe"
