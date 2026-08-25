@@ -1,19 +1,24 @@
-name: Build & Release ClassWidgets-2
+name: Build, Release & i18n
 
 on:
   push:
+    branches: [main]
     tags:
       - "v*"
+    paths:
+      - "src/**/*.py"
+      - "src/**/*.qml"
+      - "assets/locales/*.ts"
   workflow_dispatch:
     inputs:
       version:
         description: 'Version'
-        required: true
+        required: false
         default: '2.0.0.dev31546377'
         type: string
       version_type:
         description: 'Type'
-        required: true
+        required: false
         default: 'alpha'
         type: choice
         options:
@@ -22,7 +27,7 @@ on:
           - stable
       upload2webdav:
         description: 'Upload to...'
-        required: true
+        required: false
         default: 'None'
         type: choice
         options:
@@ -37,11 +42,21 @@ on:
         type: boolean
       release:
         description: 'Create GitHub Release'
-        required: true
+        required: false
         default: false
         type: boolean
       prerelease:
         description: 'Mark as Pre-release'
+        required: false
+        default: true
+        type: boolean
+      update_ts_files:
+        description: "是否更新 .ts 文件"
+        required: false
+        default: true
+        type: boolean
+      compile_to_qm:
+        description: "是否编译 .qm 文件"
         required: false
         default: true
         type: boolean
@@ -51,7 +66,155 @@ permissions:
   id-token: write
 
 jobs:
+  # ========== 翻译更新任务 ==========
+  i18n-detect:
+    name: 检测文件变更
+    if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && github.event.inputs.update_ts_files == true)
+    runs-on: ubuntu-latest
+    outputs:
+      should_run: ${{ steps.detect.outputs.should_run }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect file changes
+        id: detect
+        shell: bash
+        run: |
+          should_run="false"
+          
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+            if git rev-parse HEAD~1 >/dev/null 2>&1; then
+              changed_files=$(git diff --name-only HEAD~1 HEAD)
+            else
+              changed_files=$(git diff-tree --no-commit-id --name-only -r HEAD)
+            fi
+            
+            if echo "$changed_files" | grep -qE '^src/.+\.(py|qml)$' || \
+               echo "$changed_files" | grep -qE '^assets/locales/.+\.ts$'; then
+              should_run="true"
+            fi
+          elif [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            should_run="true"
+          fi
+          
+          echo "should_run=$should_run" >> "$GITHUB_OUTPUT"
+
+  i18n-update:
+    name: 更新翻译文件
+    runs-on: ubuntu-latest
+    needs: i18n-detect
+    if: needs.i18n-detect.outputs.should_run == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python & uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+          enable-cache: true
+          activate-environment: true
+
+      - name: Install PySide6 tools
+        shell: bash
+        run: uv pip install "PySide6~=6.9.3"
+
+      - name: Update translation source files
+        shell: bash
+        run: |
+          mapfile -t source_files < <(find src -type f \( -name "*.py" -o -name "*.qml" \) | sort)
+          for ts_file in assets/locales/*.ts; do
+            if [ -f "$ts_file" ]; then
+              echo "更新 $(basename "$ts_file")"
+              pyside6-lupdate "${source_files[@]}" -ts "$ts_file"
+            fi
+          done
+
+      - name: Commit updated .ts files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        continue-on-error: true
+        with:
+          commit_message: |
+            chore(i18n): update ts files
+            
+            - actor: ${{ github.actor }}
+            - event: ${{ github.event_name }}
+            - sha: ${{ github.sha }}
+            - run: ${{ github.run_id }}
+          commit_options: "--no-verify --signoff"
+          file_pattern: "assets/locales/*.ts"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "41898282+github-actions[bot]@users.noreply.github.com"
+          commit_author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+
+  i18n-compile:
+    name: 编译翻译文件
+    runs-on: ubuntu-latest
+    needs: [i18n-detect, i18n-update]
+    if: |
+      always() &&
+      needs.i18n-detect.outputs.should_run == 'true' &&
+      (needs.i18n-update.result == 'success' || needs.i18n-update.result == 'skipped')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python & uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+          enable-cache: true
+          activate-environment: true
+
+      - name: Install PySide6 tools
+        shell: bash
+        run: uv pip install "PySide6~=6.9.3"
+
+      - name: Compile .qm files
+        shell: bash
+        run: |
+          for ts_file in assets/locales/*.ts; do
+            if [ -f "$ts_file" ]; then
+              qm_file="${ts_file%.ts}.qm"
+              echo "编译 $(basename "$ts_file") -> $(basename "$qm_file")"
+              pyside6-lrelease "$ts_file" -qm "$qm_file"
+            fi
+          done
+
+      - name: Commit compiled .qm files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        continue-on-error: true
+        with:
+          commit_message: |
+            chore(i18n): compile qm files
+            
+            - actor: ${{ github.actor }}
+            - event: ${{ github.event_name }}
+            - sha: ${{ github.sha }}
+            - run: ${{ github.run_id }}
+          commit_options: "--no-verify --signoff"
+          file_pattern: "assets/locales/*.qm"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "41898282+github-actions[bot]@users.noreply.github.com"
+          commit_author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+
+  # ========== 构建任务 ==========
   build:
+    needs: [i18n-update, i18n-compile]
+    if: |
+      always() &&
+      (needs.i18n-update.result == 'success' || needs.i18n-update.result == 'skipped') &&
+      (needs.i18n-compile.result == 'success' || needs.i18n-compile.result == 'skipped') &&
+      (github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v'))
     runs-on: windows-latest
 
     steps:
@@ -146,7 +309,6 @@ jobs:
           uv sync
           uv pip install pyinstaller
 
-
       - name: 🔨 Build ClassWidgets-2 (Windows)
         shell: bash
         run: |
@@ -192,33 +354,17 @@ jobs:
           JSON_FILE="$GITHUB_WORKSPACE/scripts/qt_files_clean-Windows.json"
           
           if [ -d "$TARGET" ]; then
-            echo "Contents of PySide6 directory (first 20 items):"
-            ls -la "$TARGET" | head -20
-            echo ""
-            
             if [ -f "$JSON_FILE" ]; then
-              echo "Reading cleanup list from $JSON_FILE"
-              echo ""
-              
               jq -r '.[]' "$JSON_FILE" | while IFS= read -r item; do
-              
                 item=${item%$'\r'}
                 full_path="$TARGET/$item"
                 if [ -f "$full_path" ] || [ -d "$full_path" ]; then
                   rm -rf "$full_path"
                   echo "Removed: $item"
-                else
-                  echo "Not found: $item"
                 fi
               done
-              
-              echo ""
-              echo "Cleanup compleeeeeeeeeted"
-            else
-              echo "JSON file not found at $JSON_FILE, skipping cleanup"
+              echo "Cleanup completed"
             fi
-          else
-            echo "PySide6 directory not found at $TARGET, skipping cleanup"
           fi
 
       - name: 📦 Zip build (Windows)
@@ -285,10 +431,9 @@ jobs:
           $signedExe = "./signed-output/${env:EXE_NAME}"
           if (Test-Path $signedExe) {
             Copy-Item $signedExe "dist/Class Widgets 2/${env:EXE_NAME}" -Force
-            # Re-zip with signed exe
             Remove-Item "dist/ClassWidgets-2-Windows.zip" -Force
             Compress-Archive -Path "dist/Class Widgets 2/*" -DestinationPath "dist/ClassWidgets-2-Windows.zip"
-            echo "✅ 已使用签名后的可执行文件重新打包"
+            echo "已使用签名后的可执行文件重新打包"
           } else {
             Write-Error "未找到已签名的可执行文件"
             exit 1
@@ -305,9 +450,7 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
-          $packages = @(
-            "dist/ClassWidgets-2-Windows.zip"
-          )
+          $packages = @("dist/ClassWidgets-2-Windows.zip")
           foreach ($package in $packages) {
             if (-not (Test-Path $package)) {
               Write-Error "Expected package was not created: $package"
@@ -323,10 +466,13 @@ jobs:
           name: ClassWidgets-2-Windows
           path: dist/ClassWidgets-2-Windows.zip
 
+  # ========== 发布任务 ==========
   release:
     needs: [build]
-    # 手动验证构建默认只上传 Actions 产物；仅版本标签或显式选择时创建 Release。
-    if: github.event_name == 'push' || inputs.release == true
+    if: |
+      always() &&
+      needs.build.result == 'success' &&
+      (github.event_name == 'push' || inputs.release == true)
     runs-on: ubuntu-latest
 
     steps:
@@ -353,6 +499,8 @@ jobs:
               VERSION="${VERSION%%-alpha*}"
               VERSION="${VERSION%%.alpha*}"
               VERSION="${VERSION%%_alpha*}"
+            elif [[ "$VERSION" =~ (^|[-._])dev([-.0-9]*)?$ ]]; then
+              VERSION_TYPE="alpha"
             elif [[ "$VERSION" =~ (^|[-._])beta([-.0-9]*)?$ ]]; then
               VERSION_TYPE="beta"
               VERSION="${VERSION%%-beta*}"
@@ -391,8 +539,7 @@ jobs:
 
       - name: 🚀 Create GitHub Release
         uses: softprops/action-gh-release@v2
-        # 推送/手动+发布 ==> 发布
-        if: ${{  github.event_name == 'push' || github.event.inputs.release == 'true' }}
+        if: ${{ github.event_name == 'push' || github.event.inputs.release == 'true' }}
         with:
           name: Class Widgets ${{ steps.version.outputs.version_tag }}
           tag_name: ${{ steps.version.outputs.version_tag }}
@@ -400,31 +547,24 @@ jobs:
           prerelease: ${{ steps.version.outputs.prerelease }}
           files: dist/ClassWidgets-2-Windows.zip
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 📤 Upload CHANGELOG & packages to 123Pan
-        # 推送/手动+上传 ==> 上传
+      - name: 📤 Upload to 123Pan
         if: success() && 
-          ( github.event_name == 'push' ||
+          (github.event_name == 'push' ||
            github.event.inputs.upload2webdav == '123Pan' ||
            github.event.inputs.upload2webdav == 'Both')
         run: |
           VERSION="${{ steps.version.outputs.version_tag }}"
           ENCODED_VERSION=$(echo "$VERSION" | sed 's/ /%20/g')
-
-          # Create directory
           curl -v -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
                -X MKCOL "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}"
-
-          # Upload files
           curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
             -T "CHANGELOG.md" \
             "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/CHANGELOG.md"
-
           curl -u "${{ secrets.PAN_USER }}:${{ secrets.PAN_PASS }}" \
             -T "dist/ClassWidgets-2-Windows.zip" \
             "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
-
 
       - name: 🔔 Trigger Official Website Update
         if: success()
@@ -437,7 +577,7 @@ jobs:
             https://api.github.com/repos/Class-Widgets/official_website/dispatches \
             -d '{"event_type": "update-version"}'
 
-      - name: 📤 Upload CHANGELOG & packages to OneDrive
+      - name: 📤 Upload to OneDrive
         if: success() &&
           (github.event_name == 'push' ||
           github.event.inputs.upload2webdav == 'OneDrive' ||
@@ -445,14 +585,11 @@ jobs:
         run: |
           VERSION="${{ steps.version.outputs.version_tag }}"
           ENCODED_VERSION=$(echo "$VERSION" | sed 's/ /%20/g')
-
           curl -v -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
                -X MKCOL "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}"
-
           curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
             -T "CHANGELOG.md" \
             "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/CHANGELOG.md"
-
           curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
             -T "dist/ClassWidgets-2-Windows.zip" \
             "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
