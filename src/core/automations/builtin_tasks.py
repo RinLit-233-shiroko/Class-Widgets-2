@@ -76,18 +76,23 @@ class AutoHideTask(AutomationTask):
                 or self.app_central.runtime.current_status == EntryType.ACTIVITY)):
             return  # 课堂内隐藏优先级
 
-        # 遍历全部窗口，检查最大化/全屏
-        self._window_states.clear()
-        win32gui.EnumWindows(self._enum_windows_callback, None)
-
         any_maximized = False
         any_fullscreen = False
 
         if self.app_central.configs.interactions.hide.maximized:
+            # 最大化检测仍检查所有可见的应用窗口。
+            self._window_states.clear()
+            win32gui.EnumWindows(self._enum_windows_callback, None)
             any_maximized = any(state['maximized'] for state in self._window_states.values())
 
         if self.app_central.configs.interactions.hide.fullscreen:
-            any_fullscreen = any(state['fullscreen'] for state in self._window_states.values())
+            foreground_window = win32gui.GetForegroundWindow()
+            try:
+                class_name = win32gui.GetClassName(foreground_window)
+                if class_name not in SYSTEM_WINDOW_CLASSES:
+                    any_fullscreen = is_window_fullscreen(foreground_window)
+            except Exception as e:
+                logger.debug(f"Check foreground window {foreground_window} failed: {e}")
 
         new_state = any_maximized or any_fullscreen
 
@@ -109,7 +114,7 @@ class AutoHideTask(AutomationTask):
             maximized = is_window_maximized(hwnd)
             fullscreen = is_window_fullscreen(hwnd)
 
-            self._window_states[hwnd] = {"maximized": maximized, "fullscreen": fullscreen}
+            self._window_states[hwnd] = {"maximized": maximized, "fullscreen": fullscreen, "name": class_name}
         except Exception as e:
             logger.debug(f"Check window {hwnd} failed: {e}")
         return True

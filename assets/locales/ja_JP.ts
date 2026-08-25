@@ -82,12 +82,12 @@ MIT ライセンスの下でライセンスが提供されています</translat
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="155"/>
         <source>This project is licensed under the MIT license</source>
-        <translation type="unfinished"></translation>
+        <translation>このプロジェクトはMITライセンスで許可します</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="158"/>
         <source>MIT License</source>
-        <translation type="unfinished"></translation>
+        <translation>MITライセンス</translation>
     </message>
     <message>
         <source>This project is licensed under the GPL-3 license</source>
@@ -162,7 +162,7 @@ MIT ライセンスの下でライセンスが提供されています</translat
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="257"/>
         <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">このプロジェクト（クラス・ウィジェット2）はMITライセンスを採用する、詳細情報はこちらです</translation>
     </message>
     <message>
         <source>Enable Debug Mode to access core widget information, and debugging tools. 
@@ -233,7 +233,7 @@ MIT ライセンスの下でライセンスが提供されています</translat
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="77"/>
         <source>Background Opacity</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">背景の不透明度</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="78"/>
@@ -243,7 +243,7 @@ MIT ライセンスの下でライセンスが提供されています</translat
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="98"/>
         <source>Corner Radius</source>
-        <translation type="unfinished"></translation>
+        <translation>コーナ半径</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="99"/>
@@ -256,7 +256,7 @@ MIT ライセンスの下でライセンスが提供されています</translat
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/CheckSingleInstanceDialog.qml" line="23"/>
         <source>Already running</source>
-        <translation type="unfinished">すでに実行中</translation>
+        <translation>クラス・ウィジェットはすでに実行中</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/CheckSingleInstanceDialog.qml" line="36"/>
@@ -412,12 +412,12 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Complete.qml" line="50"/>
         <source>Welcome to Class Widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>ようこそ&#x3000;クラス・ウィジェット</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Complete.qml" line="69"/>
         <source>Get Started</source>
-        <translation type="unfinished"></translation>
+        <translation>開始する</translation>
     </message>
 </context>
 <context>
@@ -717,52 +717,52 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="30"/>
         <source>Link copied</source>
-        <translation type="unfinished"></translation>
+        <translation>リンクがコピーされました</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="38"/>
         <source>%1 B</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 B</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="40"/>
         <source>%1 KB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 KB</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="41"/>
         <source>%1 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 MB</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="45"/>
         <source>%1/s</source>
-        <translation type="unfinished"></translation>
+        <translation>%1/s</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="97"/>
         <source>Paused</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">一時停止</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="99"/>
         <source>Installing</source>
-        <translation type="unfinished"></translation>
+        <translation>インストールをします</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="102"/>
         <source>Downloaded: %1 / %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ダウンロードは％１、全部は％２</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="109"/>
         <source>Downloading</source>
-        <translation type="unfinished"></translation>
+        <translation>ダウンロードをします</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="129"/>
         <source>Updates and downloads</source>
-        <translation type="unfinished"></translation>
+        <translation>更新どうダウンロード</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="139"/>
@@ -772,7 +772,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="178"/>
         <source>Resume</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">回復</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="178"/>
@@ -2042,17 +2042,17 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="125"/>
         <source>%1 B</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 B</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="127"/>
         <source>%1 KB</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 KB</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="128"/>
         <source>%1 MB</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 MB</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="183"/>
@@ -2108,12 +2108,12 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="574"/>
         <source>Resume</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">回復</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="576"/>
         <source>Installing</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">インストールをします</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="578"/>
@@ -2128,17 +2128,17 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="607"/>
         <source>Paused</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">一時停止</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="609"/>
         <source>Downloaded: %1 / %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ダウンロードは％１、全部は％２</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="612"/>
         <source>Downloading</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ダウンロードをします</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="630"/>
@@ -2153,7 +2153,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="642"/>
         <source>Link copied</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">リンクがコピーされました</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="653"/>
@@ -2363,17 +2363,17 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="20"/>
         <source>%1 B</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 B</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="22"/>
         <source>%1 KB</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 KB</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="23"/>
         <source>%1 MB</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 MB</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="42"/>
@@ -2388,12 +2388,12 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="189"/>
         <source>Downloaded: %1 / %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ダウンロードは％１、全部は％２</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="192"/>
         <source>Downloading</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ダウンロードをします</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="206"/>
@@ -4611,7 +4611,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="258"/>
         <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">このプロジェクト（クラス・ウィジェット2）はMITライセンスを採用する、詳細情報はこちらです</translation>
     </message>
 </context>
 <context>
@@ -4777,7 +4777,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="149"/>
         <source>Corner Radius</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">コーナ半径</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="150"/>

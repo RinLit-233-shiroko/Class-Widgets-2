@@ -294,6 +294,8 @@ jobs:
             exit 1
           }
 
+      # 跳过上游的Inno Setup安装器步骤（本fork不构建安装程序）
+      
       - name: ✅ Verify Windows packages
         if: runner.os == 'Windows'
         shell: pwsh

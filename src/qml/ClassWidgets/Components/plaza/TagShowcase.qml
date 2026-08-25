@@ -47,8 +47,8 @@ ColumnLayout {
         interactive: contentWidth > width
         model: root.loading ? 0 : (root.plugins || [])
 
-        QQC.ScrollBar.horizontal: QQC.ScrollBar {
-            policy: cardList.contentWidth > cardList.width ? QQC.ScrollBar.AsNeeded : QQC.ScrollBar.AlwaysOff
+        ScrollBar.horizontal: ScrollBar {
+            policy: ScrollBar.AsNeeded
         }
 
         delegate: PluginCardRounded {
