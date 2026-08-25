@@ -1,4 +1,4 @@
-name: Build, Release & i18n
+name: 构建、发布与国际化
 
 on:
   push:
@@ -12,12 +12,12 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version'
+        description: '版本号'
         required: false
         default: '2.0.0.dev31546377'
         type: string
       version_type:
-        description: 'Type'
+        description: '版本类型'
         required: false
         default: 'alpha'
         type: choice
@@ -26,7 +26,7 @@ on:
           - beta
           - stable
       upload2webdav:
-        description: 'Upload to...'
+        description: '上传到网盘'
         required: false
         default: 'None'
         type: choice
@@ -36,27 +36,27 @@ on:
           - OneDrive
           - Both
       is_signing:
-        description: 'Sign Windows executable (SignPath)'
+        description: '签名Windows可执行文件 (SignPath)'
         required: false
         default: false
         type: boolean
       release:
-        description: 'Create GitHub Release'
+        description: '创建GitHub Release'
         required: false
         default: false
         type: boolean
       prerelease:
-        description: 'Mark as Pre-release'
+        description: '标记为预发布版本'
         required: false
         default: true
         type: boolean
       update_ts_files:
-        description: "是否更新 .ts 文件"
+        description: "更新翻译源文件 (.ts)"
         required: false
         default: true
         type: boolean
       compile_to_qm:
-        description: "是否编译 .qm 文件"
+        description: "编译翻译文件 (.qm)"
         required: false
         default: true
         type: boolean
@@ -74,12 +74,12 @@ jobs:
     outputs:
       should_run: ${{ steps.detect.outputs.should_run }}
     steps:
-      - name: Checkout
+      - name: ⬇️ 检出代码
         uses: actions/checkout@v4
         with:
           fetch-depth: 2
 
-      - name: Detect file changes
+      - name: 📄 检测文件变更
         id: detect
         shell: bash
         run: |
@@ -108,24 +108,24 @@ jobs:
     needs: i18n-detect
     if: needs.i18n-detect.outputs.should_run == 'true'
     steps:
-      - name: Checkout
+      - name: ⬇️ 检出代码
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      - name: Set up Python & uv
+      - name: 📦 安装Python和uv
         uses: astral-sh/setup-uv@v6
         with:
           python-version: "3.12"
           enable-cache: true
           activate-environment: true
 
-      - name: Install PySide6 tools
+      - name: 📦 安装PySide6工具
         shell: bash
         run: uv pip install "PySide6~=6.9.3"
 
-      - name: Update translation source files
+      - name: 📝 更新翻译源文件
         shell: bash
         run: |
           mapfile -t source_files < <(find src -type f \( -name "*.py" -o -name "*.qml" \) | sort)
@@ -136,7 +136,7 @@ jobs:
             fi
           done
 
-      - name: Commit updated .ts files
+      - name: 📤 提交更新后的翻译文件
         uses: stefanzweifel/git-auto-commit-action@v5
         continue-on-error: true
         with:
@@ -162,24 +162,24 @@ jobs:
       needs.i18n-detect.outputs.should_run == 'true' &&
       (needs.i18n-update.result == 'success' || needs.i18n-update.result == 'skipped')
     steps:
-      - name: Checkout
+      - name: ⬇️ 检出代码
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      - name: Set up Python & uv
+      - name: 📦 安装Python和uv
         uses: astral-sh/setup-uv@v6
         with:
           python-version: "3.12"
           enable-cache: true
           activate-environment: true
 
-      - name: Install PySide6 tools
+      - name: 📦 安装PySide6工具
         shell: bash
         run: uv pip install "PySide6~=6.9.3"
 
-      - name: Compile .qm files
+      - name: 📦 编译翻译文件
         shell: bash
         run: |
           for ts_file in assets/locales/*.ts; do
@@ -190,7 +190,7 @@ jobs:
             fi
           done
 
-      - name: Commit compiled .qm files
+      - name: 📤 提交编译后的翻译文件
         uses: stefanzweifel/git-auto-commit-action@v5
         continue-on-error: true
         with:
@@ -218,10 +218,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: ⬇️ Checkout code
+      - name: ⬇️ 检出代码
         uses: actions/checkout@v5
 
-      - name: 📦 Set up Python & Install uv
+      - name: 📦 安装Python和uv
         uses: astral-sh/setup-uv@v6
 
       - name: 🏷️ Resolve build version
@@ -296,7 +296,7 @@ jobs:
 
           grep -E '^__version__|^__version_type__' src/__init__.py
 
-      - name: 📦 Cache dependencies
+      - name: 📦 缓存依赖
         uses: actions/cache@v4
         with:
           path: ~/.cache/uv
@@ -304,12 +304,12 @@ jobs:
           restore-keys: |
             uv-${{ runner.os }}-${{ github.workflow }}-
 
-      - name: 📦 Install dependencies
+      - name: 📦 安装依赖
         run: |
           uv sync
           uv pip install pyinstaller
 
-      - name: 🔨 Build ClassWidgets-2 (Windows)
+      - name: 🔨 构建主程序 (Windows)
         shell: bash
         run: |
           uv run pyinstaller --noconsole \
@@ -326,7 +326,7 @@ jobs:
             --name="Class Widgets 2" \
             src/app.py
 
-      - name: 🔨 Build Settings launcher (Windows)
+      - name: 🔨 构建设置启动器 (Windows)
         shell: bash
         run: |
           uv run pyinstaller --noconsole --onefile \
@@ -336,7 +336,7 @@ jobs:
             --workpath "build/settings-launcher" \
             src/settings_launcher.py
 
-      - name: 🔨 Build Plugin Plaza launcher (Windows)
+      - name: 🔨 构建插件中心启动器 (Windows)
         shell: bash
         run: |
           uv run pyinstaller --noconsole --onefile \
@@ -346,7 +346,7 @@ jobs:
             --workpath "build/plugin-plaza-launcher" \
             src/plugin_plaza_launcher.py
 
-      - name: 🧹 Remove unnecessary PySide6 files (Only Windows)
+      - name: 🧹 清理PySide6文件 (仅Windows)
         if: runner.os == 'Windows'
         shell: bash
         run: |
@@ -367,13 +367,13 @@ jobs:
             fi
           fi
 
-      - name: 📦 Zip build (Windows)
+      - name: 📦 打包ZIP (Windows)
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
           Compress-Archive -Path "dist/Class Widgets 2/*" -DestinationPath "dist/ClassWidgets-2-Windows.zip"
 
-      - name: 🔏 Resolve signing configuration (Windows)
+      - name: 🔏 解析签名配置 (Windows)
         id: signing
         shell: bash
         env:
@@ -388,13 +388,13 @@ jobs:
             && -n "$SIGNPATH_PROJECT_SLUG" \
             && -n "$SIGNPATH_POLICY_SLUG" ]]; then
             echo "enabled=true" >> "$GITHUB_OUTPUT"
-            echo "SignPath signing enabled."
+            echo "SignPath签名已启用"
           else
             echo "enabled=false" >> "$GITHUB_OUTPUT"
-            echo "SignPath signing skipped: disabled or incomplete configuration."
+            echo "SignPath签名已跳过：未启用或配置不完整"
           fi
 
-      - name: 🔏 Prepare exe for signing (Windows)
+      - name: 🔏 准备签名文件 (Windows)
         if: steps.signing.outputs.enabled == 'true'
         shell: pwsh
         run: |
@@ -404,7 +404,7 @@ jobs:
           Copy-Item $exe.FullName -Destination "./exe-for-signing/$($exe.Name)" -Force
           echo "EXE_NAME=$($exe.Name)" >> $env:GITHUB_ENV
 
-      - name: ☁️ Upload unsigned exe (Windows)
+      - name: ☁️ 上传未签名文件 (Windows)
         if: steps.signing.outputs.enabled == 'true'
         id: upload_unsigned
         uses: actions/upload-artifact@v4
@@ -412,7 +412,7 @@ jobs:
           name: windows-exe-unsigned
           path: ./exe-for-signing
 
-      - name: 🔏 Submit signing request (Windows)
+      - name: 🔏 提交签名请求 (Windows)
         if: steps.signing.outputs.enabled == 'true'
         uses: signpath/github-action-submit-signing-request@v2
         with:
@@ -424,7 +424,7 @@ jobs:
           wait-for-completion: true
           output-artifact-directory: ./signed-output
 
-      - name: 🔏 Replace with signed exe (Windows)
+      - name: 🔏 替换签名文件 (Windows)
         if: steps.signing.outputs.enabled == 'true'
         shell: pwsh
         run: |
@@ -441,7 +441,7 @@ jobs:
 
       # 跳过上游的Inno Setup安装器步骤（本fork不构建安装程序）
       
-      - name: ✅ Verify Windows packages
+      - name: ✅ 验证Windows包
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
@@ -454,7 +454,7 @@ jobs:
             Write-Host "Created package: $package ($((Get-Item $package).Length) bytes)"
           }
 
-      - name: ☁️ Upload artifacts (Windows)
+      - name: ☁️ 上传构建产物 (Windows)
         if: runner.os == 'Windows'
         uses: actions/upload-artifact@v4
         with:
@@ -471,12 +471,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: ⬇️ Checkout code
+      - name: ⬇️ 检出代码
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
-      - name: 🏷️ Resolve release version
+      - name: 🏷️ 解析发布版本
         id: version
         shell: bash
         run: |
@@ -514,25 +514,25 @@ jobs:
           echo "version_tag=$VERSION_TAG" >> "$GITHUB_OUTPUT"
           echo "prerelease=$PRERELEASE" >> "$GITHUB_OUTPUT"
 
-      - name: ⬇️ Download artifacts
+      - name: ⬇️ 下载构建产物
         uses: actions/download-artifact@v5
         with:
           path: dist/
           merge-multiple: true
 
-      - name: 🧱 Set up git-cliff
+      - name: 🧱 安装git-cliff
         uses: kenji-miyake/setup-git-cliff@v2
 
-      - name: 🏷️ Create local tag for CHANGELOG
+      - name: 🏷️ 创建本地标签
         if: ${{ github.event_name == 'workflow_dispatch' }}
         run: |
           git tag "${{ steps.version.outputs.version_tag }}"
 
-      - name: 📜 Generate CHANGELOG.md
+      - name: 📜 生成CHANGELOG.md
         run: |
           git cliff --latest --tag "${{ steps.version.outputs.version_tag }}" --config .git-cliff.toml > CHANGELOG.md
 
-      - name: 🚀 Create GitHub Release
+      - name: 🚀 创建GitHub Release
         uses: softprops/action-gh-release@v2
         if: ${{ github.event_name == 'push' || github.event.inputs.release == 'true' }}
         with:
@@ -544,7 +544,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 📤 Upload to 123Pan
+      - name: 📤 上传到123Pan
         if: success() && 
           (github.event_name == 'push' ||
            github.event.inputs.upload2webdav == '123Pan' ||
@@ -561,7 +561,7 @@ jobs:
             -T "dist/ClassWidgets-2-Windows.zip" \
             "https://webdav.123pan.cn/webdav/${ENCODED_VERSION}/ClassWidgets-2-Windows.zip"
 
-      - name: 🔔 Trigger Official Website Update
+      - name: 🔔 触发官网更新
         if: success()
         run: |
           curl -L \
@@ -572,7 +572,7 @@ jobs:
             https://api.github.com/repos/Class-Widgets/official_website/dispatches \
             -d '{"event_type": "update-version"}'
 
-      - name: 📤 Upload to OneDrive
+      - name: 📤 上传到OneDrive
         if: success() &&
           (github.event_name == 'push' ||
           github.event.inputs.upload2webdav == 'OneDrive' ||
