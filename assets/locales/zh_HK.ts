@@ -100,7 +100,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="115"/>
         <source>File a bug or request new feature</source>
-        <translation type="unfinished"></translation>
+        <translation>提交Bug漏洞或新功能建議</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="172"/>
@@ -162,7 +162,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="257"/>
         <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
-        <translation type="unfinished"></translation>
+        <translation>本項目（Class Widgets 2）使用MIT許可證。詳情信息請看：</translation>
     </message>
     <message>
         <source>Enable Debug Mode to access core widget information, and debugging tools. 
