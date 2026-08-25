@@ -39,7 +39,7 @@ LicenseFile=..\LICENSE
 ;PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=commandline
 OutputDir=..\output
-OutputBaseFilename=CW {#MyAppVersion} Installer
+OutputBaseFilename=ClassWidgets-{#MyAppVersion}-Win-Installer
 SolidCompression=yes
 WizardStyle=modern windows11
 DefaultDialogFontName=Microsoft YaHei
@@ -63,4 +63,3 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#DoubleAmp(MyAppName)}}"; Flags: nowait postinstall skipifsilent
-
