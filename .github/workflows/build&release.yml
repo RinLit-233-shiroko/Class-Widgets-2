@@ -167,9 +167,9 @@ jobs:
 
       - name: 🔧 Install Inno Setup
         if: runner.os == 'Windows'
-        uses: jrfnl/innosetup-compiler@v2
-        with:
-          version: '7.1.0'
+        shell: pwsh
+        run: |
+          choco install innosetup -y
 
       - name: 🏗️ Build Windows Installer
         if: runner.os == 'Windows'
