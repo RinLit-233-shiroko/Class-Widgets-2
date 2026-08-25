@@ -280,6 +280,7 @@ jobs:
         if: runner.os == 'Windows'
         shell: cmd
         run: |
+          set CW_VERSION=${{ steps.version.outputs.version }}
           iscc scripts\cw2-cicd.iss
 
       - name: ☁️ Upload installer artifact
