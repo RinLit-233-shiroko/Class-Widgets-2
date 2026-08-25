@@ -46,9 +46,9 @@ DefaultDialogFontName=Microsoft YaHei
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
-Name: "chinesesimplified"; MessagesFile: "Languages\ChineseSimplified.isl"
-Name: "chinesetraditional"; MessagesFile: "Languages\ChineseTraditional.isl"
-Name: "japanese"; MessagesFile: "Languages\Japanese.isl"
+Name: "chinesesimplified"; MessagesFile: "Installer_Languages\ChineseSimplified.isl"
+Name: "chinesetraditional"; MessagesFile: "Installer_Languages\ChineseTraditional.isl"
+Name: "japanese"; MessagesFile: "Installer_Languages\Japanese.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
