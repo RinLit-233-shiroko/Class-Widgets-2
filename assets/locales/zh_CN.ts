@@ -5939,4 +5939,79 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation>未设置</translation>
     </message>
 </context>
+<context>
+    <name>RGBEffects</name>
+    <message>
+        <source>Direct</source>
+        <translation>直接控制</translation>
+    </message>
+    <message>
+        <source>Static</source>
+        <translation>静态</translation>
+    </message>
+    <message>
+        <source>Breathing</source>
+        <translation>呼吸</translation>
+    </message>
+    <message>
+        <source>Flashing</source>
+        <translation>闪烁</translation>
+    </message>
+    <message>
+        <source>Spectrum Cycle</source>
+        <translation>光谱循环</translation>
+    </message>
+    <message>
+        <source>Rainbow Wave</source>
+        <translation>彩虹波浪</translation>
+    </message>
+    <message>
+        <source>Running Light</source>
+        <translation>跑马灯</translation>
+    </message>
+    <message>
+        <source>Meteor</source>
+        <translation>流星</translation>
+    </message>
+    <message>
+        <source>Gradient</source>
+        <translation>渐变</translation>
+    </message>
+    <message>
+        <source>Sparkle</source>
+        <translation>星火</translation>
+    </message>
+    <message>
+        <source>Heartbeat</source>
+        <translation>心跳</translation>
+    </message>
+    <message>
+        <source>Ocean</source>
+        <translation>海洋</translation>
+    </message>
+    <message>
+        <source>Sunset</source>
+        <translation>日落</translation>
+    </message>
+    <message>
+        <source>Forest</source>
+        <translation>森林</translation>
+    </message>
+    <message>
+        <source>Aurora</source>
+        <translation>极光</translation>
+    </message>
+    <message>
+        <source>Fire</source>
+        <translation>火焰</translation>
+    </message>
+    <message>
+        <source>Lava</source>
+        <translation>熔岩</translation>
+    </message>
+    <message>
+        <source>Cyberpunk</source>
+        <translation>赛博朋克</translation>
+    </message>
+</context>
 </TS>
