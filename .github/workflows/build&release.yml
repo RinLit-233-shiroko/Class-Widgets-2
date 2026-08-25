@@ -287,7 +287,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ClassWidgets-2-Windows-Installer
-          path: output/ClassWidgets-{#MyAppVersion}-Win-Installer.exe
+          path: output/ClassWidgets-*-Win-Installer.exe
 
       - name: 📦 Zip build (macOS)
         if: runner.os == 'macOS'
