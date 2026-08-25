@@ -11,6 +11,11 @@ FluentPage {
     title: qsTr("Personalization")
     property string pendingThemeId: ""
 
+    // 导航到子页面
+    function openPage(page) {
+        navigationView.push(PathManager.qml("pages/settings/" + page))
+    }
+
     // InfoBar {
     //     Layout.fillWidth: true
     //     title: qsTr("Warning")
@@ -205,9 +210,30 @@ FluentPage {
                 }
             }
         }
-
     }
 
+    // RGB灯光效果设置入口（仅RGB主题时显示）
+    ColumnLayout {
+        Layout.fillWidth: true
+        spacing: 12
+        visible: CWThemeManager.currentTheme === "com.classwidgets.rgb"
+
+        Text {
+            typography: Typography.BodyStrong
+            text: qsTr("RGB Lighting")
+        }
+
+        SettingCard {
+            Layout.fillWidth: true
+            title: qsTr("RGB Lighting Effects")
+            description: qsTr("Configure dynamic lighting effects for RGB theme")
+            icon.name: "ic_fluent_light_20_regular"
+
+            TapHandler {
+                onTapped: root.openPage("Personalization/RGB.qml")
+            }
+        }
+    }
 
     Dialog {
         id: incompatibleDialog
