@@ -214,22 +214,20 @@ Item {
                 id: widgetDragHandler
                 enabled: widgetsContainer.editMode
                 property var originalX: parent.x
-                property var originalY: parent.y
                 onActiveChanged: {
                     if (active) {
                         originalX = parent.x
-                        originalY = parent.y
                     }
                     if (!active) {
-                        var from = index
-                        var to = Math.round(widgetContainer.x / (widgetContainer.width + widgetsContainer.spacing))
+                        const from = index
+                        let to = Math.round(widgetContainer.x / (widgetContainer.width + widgetsContainer.spacing))
                         if (to < 0) to = 0
                         if (to >= widgetRepeater.count) to = widgetRepeater.count - 1
+                        widgetContainer.y = 0
                         if (to !== from) {
                             WidgetsModel.moveInstance(from, to)
                         } else {
-                            x = originalX
-                            y = originalY
+                            widgetContainer.x = originalX
                         }
                     }
                 }
