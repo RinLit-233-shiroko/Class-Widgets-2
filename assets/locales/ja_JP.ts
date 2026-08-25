@@ -221,17 +221,17 @@ MIT ライセンスの下でライセンスが提供されています</translat
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="11"/>
         <source>Tune your widgets</source>
-        <translation type="unfinished"></translation>
+        <translation>ウィジェットを調整します</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="12"/>
         <source>Adjust the size and finish of your widgets. The preview updates as you make changes.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ウィジェットの外観どサイズ、プレビューはあなたの変更にリアルタイムに更新します</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="34"/>
         <source>Widget Scale</source>
-        <translation type="unfinished"></translation>
+        <translation>ウィジェットズーム</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="35"/>
@@ -246,7 +246,7 @@ MIT ライセンスの下でライセンスが提供されています</translat
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="78"/>
         <source>Change the opacity of widget backgrounds</source>
-        <translation type="unfinished"></translation>
+        <translation>ウィジェットの背景ど不透明を調整します</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="98"/>
@@ -749,17 +749,17 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="97"/>
         <source>Paused</source>
-        <translation type="unfinished">一時停止</translation>
+        <translation>一時停止中</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="99"/>
         <source>Installing</source>
-        <translation>インストールをします</translation>
+        <translation>インストール中</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="102"/>
         <source>Downloaded: %1 / %2</source>
-        <translation type="unfinished">ダウンロードは％１、全部は％２</translation>
+        <translation type="unfinished">ダウンロード: %1 / %2</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="109"/>
@@ -784,7 +784,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="178"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>一時停止中</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="202"/>
@@ -796,7 +796,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="204"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="255"/>
         <source>v%1 -&gt; v%2</source>
-        <translation type="unfinished"></translation>
+        <translation>v%1 -&gt; v%2</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="207"/>
@@ -1100,7 +1100,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/ErrorState.qml" line="10"/>
         <source>Retry</source>
-        <translation type="unfinished"></translation>
+        <translation>再試</translation>
     </message>
 </context>
 <context>
@@ -1145,7 +1145,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="224"/>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="232"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>名称</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="225"/>
@@ -1157,13 +1157,13 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="226"/>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="234"/>
         <source>Downloads</source>
-        <translation type="unfinished"></translation>
+        <translation>ダウンロード</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="227"/>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="231"/>
         <source>Latest</source>
-        <translation type="unfinished"></translation>
+        <translation>最新発表</translation>
     </message>
 </context>
 <context>
@@ -1312,7 +1312,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Home.qml" line="100"/>
         <source>Check your connection and try loading the plaza again.</source>
-        <translation type="unfinished"></translation>
+        <translation>ネットワークを確認する、後ほど再始動をします</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="132"/>
