@@ -25,7 +25,7 @@ class ScheduleRuntime(QObject):
         self.schedule: Optional[ScheduleData] = None
         self.services: ScheduleServices = ScheduleServices(app_central)
         self.current_time = app_central.time_service.now()
-        self.current_offset_time = app_central.time_service.display_now()
+        self.current_offset_time = app_central.time_service.schedule_now(self.current_time)
 
         self.current_day_of_week: int = 0
         self.current_week = 0
@@ -238,7 +238,7 @@ class ScheduleRuntime(QObject):
         """
         self.time_offset = self.app_central.configs.schedule.time_offset  # 时间偏移
         self.current_time = self.app_central.time_service.now()
-        self.current_offset_time = self.current_time + timedelta(seconds=self.time_offset)  # 内部计算时间
+        self.current_offset_time = self.app_central.time_service.schedule_now(self.current_time)
         self.schedule = schedule or self.schedule
         self.schedule_meta = self.schedule.meta
         self.current_day = self.services.get_day_entries(self.schedule, self.current_offset_time)

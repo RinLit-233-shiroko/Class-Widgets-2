@@ -57,11 +57,18 @@ def test_time_service_fallback_and_offset(project_root: Path) -> None:
         initial_now = service.now()
         assert abs((service.now() - initial_now).total_seconds()) < 1
 
-        configs.schedule.time_offset = 17
-        assert abs((service.display_now() - service.now() - timedelta(seconds=17)).total_seconds()) < 1
-
-        service.setPreciseTimeEnabled(True)
+        configs.set("time.use_precise_time", True)
         assert configs.time.use_precise_time is True
+        with service._lock:
+            service._ntp_available = True
+            service._ntp_offset_seconds = 5.0
+
+        ntp_base_time = service.now()
+        configs.schedule.time_offset = 17
+        assert abs(
+            (service.schedule_now(ntp_base_time) - ntp_base_time - timedelta(seconds=17)).total_seconds()
+        ) < 1
+        assert not hasattr(service, "display_now")
 
         configs.time.ntp_server = ""
         service.sync()
@@ -82,6 +89,7 @@ def test_qml_contains_required_controls(project_root: Path) -> None:
         "同步时间",
         "自定义 NTP 服务器",
         "时间偏移（秒）",
+        "不会改变 NTP/系统真实时间",
         "setPreciseTimeEnabled",
         "synchronizeTime",
     )
@@ -92,7 +100,8 @@ def test_qml_contains_required_controls(project_root: Path) -> None:
     runtime_api = (project_root / "src/core/plugin/components.py").read_text(encoding="utf-8")
     widget_backend = (project_root / "src/plugins/cw_widgets/widgets.py").read_text(encoding="utf-8")
     assert "def current_offset_time" in runtime_api
-    assert "self.api.runtime.current_offset_time" in widget_backend
+    assert "self.api.runtime.current_time" in widget_backend
+    assert "self.api.runtime.current_offset_time" not in widget_backend
 
 
 def main() -> None:

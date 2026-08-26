@@ -60,17 +60,20 @@ class TimeService(QObject):
             offset = self._ntp_offset_seconds if use_ntp else 0.0
         return datetime.now() + timedelta(seconds=offset)
 
-    def display_now(self) -> datetime:
-        """返回包含用户秒级偏移的显示/课程计算时间。"""
-        return self.now() + timedelta(seconds=self._configs.schedule.time_offset)
+    def schedule_now(self, base_time: datetime | None = None) -> datetime:
+        """返回课程计算时间；课程偏移只在 NTP/系统基准时间后叠加一次。"""
+        reference_time = base_time or self.now()
+        return reference_time + timedelta(seconds=self._configs.schedule.time_offset)
 
     @Property(str, notify=updated)
     def currentTime(self) -> str:
-        return self.display_now().strftime("%H:%M:%S")
+        """设置页显示真实基准时间，不应用课程偏移。"""
+        return self.now().strftime("%H:%M:%S")
 
     @Property(str, notify=updated)
     def currentDate(self) -> str:
-        return self.display_now().strftime("%Y-%m-%d")
+        """设置页显示真实基准日期，不应用课程偏移。"""
+        return self.now().strftime("%Y-%m-%d")
 
     @Property(bool, notify=updated)
     def preciseTimeAvailable(self) -> bool:

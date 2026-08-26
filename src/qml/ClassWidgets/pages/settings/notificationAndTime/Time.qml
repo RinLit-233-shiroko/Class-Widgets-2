@@ -162,7 +162,7 @@ FluentPage {
             Layout.fillWidth: true
             icon.name: "ic_fluent_timer_20_regular"
             title: qsTr("时间偏移（秒）")
-            description: qsTr("调整显示时间与课程计算时间，以匹配学校铃声或广播时间")
+            description: qsTr("仅调整课程判断、倒计时与提醒时间；不会改变 NTP/系统真实时间或时间小组件显示")
 
             SpinBox {
                 from: -86400
