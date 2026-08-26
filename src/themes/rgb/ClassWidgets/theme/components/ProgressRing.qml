@@ -4,7 +4,7 @@ import ClassWidgets.THEME
 
 Rectangle {
     // RGB主题：颜色由效果引擎动态控制
-    property color rgbColor: ThemeManager ? ThemeManager.rgbColor : "#4099b2"
+    property color rgbColor: "#4099b2"
     property real progress: 0.5
     
     width: 40

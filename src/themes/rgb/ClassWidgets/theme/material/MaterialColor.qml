@@ -3,11 +3,11 @@ import QtQuick
 
 /**
  * RGB主题 - 动态颜色定义
- * 所有颜色由效果引擎控制，通过 ThemeManager.rgbColor 动态更新
+ * 注意：此单例提供默认颜色，实际动态颜色由各组件的 rgbColor 属性控制
  */
 QtObject {
-    // 基础颜色（由效果引擎动态更新）
-    property color primary: ThemeManager ? ThemeManager.rgbColor : "#4099b2"
+    // 基础颜色（默认值，实际由组件 rgbColor 属性动态控制）
+    property color primary: "#4099b2"
     property color onPrimary: Qt.luma(primary) > 0.5 ? "#000000" : "#ffffff"
     
     // 表面颜色（基于主色调的变体）

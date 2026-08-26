@@ -3,34 +3,27 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
 import RinUI
-import ClassWidgets.Theme
+import ClassWidgets.Theme 1.0
 import ClassWidgets.Easing
-import ClassWidgets.Theme.Material
 
 
 Item {
     id: widgetBase
-    // 最小宽度 = 内容 + 边距，默认可以被拉伸
     readonly property bool miniMode: Configs.data.preferences.mini_mode
     readonly property bool hide: Configs.data.interactions.hide.state
     property bool editMode: false
-    property bool lightingEffect: false
+    property bool lightingEffect: Configs.data.preferences.lighting_effect || true
 
     implicitWidth: Math.max(headerRow.implicitWidth, contentArea.childrenRect.width) + 48
     height: miniMode ? 56 : 100
-    clip: true
     opacity: widgetHoverHandler.hovered? 0.8 : 1
 
-    // RGB主题：颜色由效果引擎动态控制
-    // 通过 ThemeManager.rgbColor 获取当前颜色
-    property color rgbColor: ThemeManager ? ThemeManager.rgbColor : "#4099b2"
-    property color backgroundColor: Qt.luma(rgbColor) > 0.5 
-        ? Qt.darker(rgbColor, 3.0) 
-        : Qt.lighter(rgbColor, 3.0)
-    property color foregroundColor: Qt.luma(rgbColor) > 0.5 
-        ? "#000000" 
-        : "#ffffff"
-    property color accentColor: rgbColor
+    // RGB主题：动态颜色
+    property color rgbColor: Theme.isDark() ? "#4099b2" : "#4099b2"
+    property color backgroundColor: Qt.luma(rgbColor) > 0.5
+        ? Qt.darker(rgbColor, 2.5)
+        : Qt.lighter(rgbColor, 2.5)
+    property color textColor: Qt.luma(rgbColor) > 0.5 ? "#000000" : "#ffffff"
 
     // backend
     property var backend: null
@@ -43,9 +36,10 @@ Item {
     property alias backgroundArea: backgroundArea.children
     default property alias content: contentArea.data
     property real padding: miniMode ? 16 : 24
+    property real cornerRadius: Configs.data.preferences.widget_corner_radius
 
     // 背景
-    readonly property real borderWidth: 1.5
+    readonly property real borderWidth: 1
 
     // 动画
     Behavior on implicitWidth {
@@ -64,101 +58,67 @@ Item {
         }
     }
 
-    // 颜色平滑过渡动画
-    Behavior on backgroundColor {
-        ColorAnimation {
-            duration: 300
-            easing.type: Easing.Bezier
-        }
+    // 颜色过渡动画
+    Behavior on rgbColor {
+        ColorAnimation { duration: 300 }
     }
 
-    Behavior on foregroundColor {
-        ColorAnimation {
-            duration: 300
-            easing.type: Easing.Bezier
-        }
-    }
-
-    Behavior on accentColor {
-        ColorAnimation {
-            duration: 300
-            easing.type: Easing.Bezier
-        }
-    }
-
-    // 背景圆角矩形
+    // 内部背景矩形
     Rectangle {
-        id: backgroundRect
+        id: background
         anchors.fill: parent
+        radius: Math.min(width, height, widgetBase.cornerRadius)
         color: backgroundColor
-        radius: 16
-        border.width: borderWidth
-        borderColor: Qt.alpha(foregroundColor, 0.1)
-
-        // 发光效果
-        layer.enabled: true
-        layer.effect: Glow {
-            radius: 8
-            samples: 16
-            color: Qt.alpha(accentColor, 0.3)
-            source: backgroundRect
-        }
+        opacity: Configs.data.preferences.opacity
     }
 
-    // 内容布局
-    RowLayout {
-        id: headerRow
-        anchors.fill: parent
-        anchors.margins: padding
-        spacing: 12
-
-        // 图标区域
-        Item {
-            id: iconArea
-            Layout.preferredWidth: miniMode ? 24 : 32
-            Layout.preferredHeight: miniMode ? 24 : 32
-
-            // 默认图标（可由子组件覆盖）
-            Rectangle {
-                anchors.fill: parent
-                radius: width / 2
-                color: accentColor
-                visible: iconArea.children.length <= 1
-            }
-        }
-
-        // 文本区域
-        ColumnLayout {
-            id: subtitleArea
-            Layout.fillWidth: true
-            spacing: 2
-
-            Text {
-                id: subtitleLabel
-                text: ""
-                font.pixelSize: miniMode ? 14 : 16
-                font.weight: Font.Medium
-                color: foregroundColor
-                elide: Text.ElideRight
-                Layout.fillWidth: true
-            }
-        }
-
-        // 操作按钮区域
-        RowLayout {
-            id: actionButtons
-            spacing: 4
-        }
-    }
-
-    // 内容区域
+    // 背景布局
     Item {
-        id: contentArea
-        anchors.top: headerRow.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.margins: padding / 2
+        id: backgroundArea
+        anchors.fill: parent
+    }
+
+    // 主布局
+    ColumnLayout {
+        id: mainLayout
+        anchors.fill: parent
+        anchors.topMargin: miniMode ? 12 : 16
+        anchors.bottomMargin: miniMode ? 10 : 18
+        anchors.leftMargin: padding
+        anchors.rightMargin: padding
+        spacing: 8
+
+        // 顶部 subtitle + actions
+        RowLayout {
+            id: headerRow
+            Layout.fillWidth: true
+            visible: opacity > 0
+            opacity: !miniMode
+            Behavior on opacity { NumberAnimation { duration: 100; easing.type: Easing.OutQuint } }
+
+            RowLayout {
+                id: subtitleArea
+                Layout.fillHeight: true
+
+                Subtitle {
+                    id: subtitleLabel
+                }
+            }
+
+            Item { id: actionsSeparator; Layout.fillWidth: actionButtons.children.length > 0 }
+
+            RowLayout {
+                id: actionButtons
+                Layout.fillHeight: true
+            }
+        }
+
+        // 内容区域
+        Item {
+            id: contentArea
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+        }
     }
 
     // 悬停处理
