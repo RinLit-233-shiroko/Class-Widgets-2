@@ -170,8 +170,8 @@ FluentPage {
 
         SettingCard {
             Layout.fillWidth: true
-            title: qsTr("Startup Animation")
-            description: qsTr("Show a compact animation in the center of the screen when Class Widgets starts")
+            title: qsTr("启动动画")
+            description: qsTr("启动 Class Widgets 时，在屏幕中央显示紧凑的动画")
             icon.name: "ic_fluent_play_circle_20_regular"
 
             Switch {
@@ -189,8 +189,8 @@ FluentPage {
         SettingCard {
             id: startupMediaCard
             Layout.fillWidth: true
-            title: qsTr("Startup Media")
-            description: qsTr("Choose a local image or a video no longer than 10 seconds")
+            title: qsTr("启动动画媒体")
+            description: qsTr("选择本地图片，或不超过 10 秒的视频")
             icon.name: "ic_fluent_image_20_regular"
 
             property string selectError: ""
@@ -205,13 +205,13 @@ FluentPage {
                         Layout.fillWidth: true
                         text: AppCentral.startupAnimation.hasCustomMedia
                               ? AppCentral.startupAnimation.mediaName
-                              : qsTr("No local media selected")
+                              : qsTr("未选择本地媒体")
                         color: Colors.proxy.textSecondaryColor
                         elide: Text.ElideMiddle
                     }
 
                     Button {
-                        text: qsTr("Select media")
+                        text: qsTr("选择媒体")
                         enabled: !Configs.isKeyLocked("app.startup_animation_media_path")
                         onClicked: {
                             startupMediaCard.selectError = AppCentral.startupAnimation.selectMedia()
@@ -219,7 +219,7 @@ FluentPage {
                     }
 
                     Button {
-                        text: qsTr("Clear")
+                        text: qsTr("清除")
                         enabled: AppCentral.startupAnimation.hasCustomMedia
                                  && !Configs.isKeyLocked("app.startup_animation_media_path")
                         onClicked: {
@@ -242,10 +242,28 @@ FluentPage {
 
         SettingCard {
             Layout.fillWidth: true
-            title: qsTr("Show ClassWidgets Information")
+            visible: AppCentral.startupAnimation.mediaType === "video"
+            title: qsTr("强制播放完视频")
+            description: qsTr("开启后会忽略默认展示时长，直到所选视频播放结束。")
+            icon.name: "ic_fluent_video_clip_20_regular"
+
+            Switch {
+                property bool initialized: false
+                enabled: !Configs.isKeyLocked("app.startup_animation_force_video_completion")
+                onCheckedChanged: if (initialized) Configs.set("app.startup_animation_force_video_completion", checked)
+                Component.onCompleted: {
+                    checked = Configs.data.app.startup_animation_force_video_completion
+                    initialized = true
+                }
+            }
+        }
+
+        SettingCard {
+            Layout.fillWidth: true
+            title: qsTr("显示 ClassWidgets 信息")
             description: AppCentral.startupAnimation.hasCustomMedia
-                         ? qsTr("Show the icon, software name and version over custom startup media")
-                         : qsTr("This information is always shown until a local image or video is selected")
+                         ? qsTr("在自定义启动媒体上显示图标、软件名称和版本信息")
+                         : qsTr("未选择本地图片或视频时，始终显示此信息")
             icon.name: "ic_fluent_info_20_regular"
 
             Switch {
@@ -257,6 +275,19 @@ FluentPage {
                     checked = Configs.data.app.startup_animation_show_info
                     initialized = true
                 }
+            }
+        }
+
+        SettingCard {
+            Layout.fillWidth: true
+            title: qsTr("预览启动动画")
+            description: qsTr("弹出独立的启动动画预览窗口；不会隐藏、暂停或重新加载当前小组件。")
+            icon.name: "ic_fluent_play_20_regular"
+
+            Button {
+                text: AppCentral.startupAnimation.previewing ? qsTr("正在预览…") : qsTr("预览")
+                enabled: !AppCentral.startupAnimation.previewing
+                onClicked: AppCentral.startupAnimation.preview()
             }
         }
     }

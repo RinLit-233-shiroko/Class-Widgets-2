@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Window
 import QtMultimedia
+import Qt5Compat.GraphicalEffects
 
 Window {
     id: root
@@ -15,12 +16,14 @@ Window {
     y: Screen.virtualY + (Screen.height - height) / 2
     color: "transparent"
     flags: Qt.FramelessWindowHint | Qt.Window | Qt.WindowStaysOnTopHint
-    title: "Class Widgets"
+    title: previewMode ? qsTr("启动动画预览") : "Class Widgets"
 
+    property bool previewMode: StartupAnimationPreview
     property bool customMedia: StartupAnimationController.hasCustomMedia
     property bool showInfo: !customMedia || Configs.data.app.startup_animation_show_info
     property bool detailsReady: false
     property bool videoMode: customMedia && StartupAnimationController.mediaType === "video"
+    property bool forceCompleteVideo: videoMode && Configs.data.app.startup_animation_force_video_completion
 
     function finish() {
         if (!fadeOut.running)
@@ -41,11 +44,21 @@ Window {
         Behavior on scale { NumberAnimation { duration: 360; easing.type: Easing.OutBack } }
 
         Rectangle {
+            id: mediaSurface
             anchors.fill: parent
             radius: parent.radius
             color: "#041720"
             visible: root.customMedia
             clip: true
+            layer.enabled: visible
+            layer.effect: OpacityMask {
+                maskSource: Rectangle {
+                    width: mediaSurface.width
+                    height: mediaSurface.height
+                    radius: mediaSurface.radius
+                    color: "white"
+                }
+            }
 
             Image {
                 anchors.fill: parent
@@ -210,6 +223,7 @@ Window {
         id: defaultCloseTimer
         interval: root.videoMode ? 10000 : (root.customMedia ? 3600 : 3100)
         repeat: false
+        running: !root.forceCompleteVideo
         onTriggered: root.finish()
     }
 
@@ -223,6 +237,7 @@ Window {
         card.opacity = 1
         card.scale = 1
         revealTimer.start()
-        defaultCloseTimer.start()
+        if (!root.forceCompleteVideo)
+            defaultCloseTimer.start()
     }
 }

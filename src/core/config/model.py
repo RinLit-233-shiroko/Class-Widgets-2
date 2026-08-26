@@ -135,6 +135,7 @@ class AppConfig(ConfigBaseModel):
     startup_animation_skip_once: bool = False  # 完成引导后下一次启动跳过动画
     startup_animation_media_path: str = ""  # 本地图片或视频的绝对路径
     startup_animation_media_type: str = "none"  # none / image / video
+    startup_animation_force_video_completion: bool = False  # 视频媒体时强制播放完毕
     startup_animation_show_info: bool = True  # 显示图标、软件名和版本信息
     show_update_summary: bool = True  # 更新完成后显示更新摘要
 

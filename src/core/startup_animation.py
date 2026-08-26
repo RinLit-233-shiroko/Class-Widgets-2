@@ -35,6 +35,7 @@ class StartupAnimation(QObject):
         self.app = app_central
         self.engine: QQmlApplicationEngine | None = None
         self.root_window = None
+        self._preview_active = False
 
     @Property(bool, notify=changed)
     def hasCustomMedia(self) -> bool:
@@ -64,6 +65,16 @@ class StartupAnimation(QObject):
     def maxVideoDurationSeconds(self) -> int:
         return self.MAX_VIDEO_DURATION_MS // 1000
 
+    @Property(bool, notify=changed)
+    def forceVideoCompletion(self) -> bool:
+        return bool(
+            getattr(self.app.configs.app, "startup_animation_force_video_completion", False)
+        )
+
+    @Property(bool, notify=changed)
+    def previewing(self) -> bool:
+        return self._preview_active
+
     def _media_path(self) -> Path | None:
         value = getattr(self.app.configs.app, "startup_animation_media_path", "")
         return Path(value).expanduser() if value else None
@@ -80,10 +91,10 @@ class StartupAnimation(QObject):
         """选择图片或视频，并仅在校验通过后保存绝对路径。"""
         path, _ = QFileDialog.getOpenFileName(
             None,
-            self.tr("Select startup media"),
+            self.tr("选择启动动画媒体"),
             "",
             self.tr(
-                "Supported media (*.png *.jpg *.jpeg *.bmp *.webp *.gif "
+                "支持的媒体 (*.png *.jpg *.jpeg *.bmp *.webp *.gif "
                 "*.mp4 *.webm *.mov *.m4v *.avi)"
             ),
         )
@@ -97,26 +108,26 @@ class StartupAnimation(QObject):
         """校验并保存一个用户指定的本地图片或视频路径。"""
         media_path = Path(path).expanduser().resolve()
         if not media_path.is_file():
-            return self.tr("The selected media file does not exist.")
+            return self.tr("所选媒体文件不存在。")
 
         suffix = media_path.suffix.lower()
         if suffix in self.IMAGE_SUFFIXES:
             reader = QImageReader(str(media_path))
             if not reader.canRead():
-                return self.tr("The selected image cannot be read.")
+                return self.tr("无法读取所选图片。")
             self._set_media(media_path, "image")
             return ""
 
         if suffix in self.VIDEO_SUFFIXES:
             duration = self._video_duration_ms(media_path)
             if duration <= 0:
-                return self.tr("The selected video could not be read.")
+                return self.tr("无法读取所选视频。")
             if duration > self.MAX_VIDEO_DURATION_MS:
-                return self.tr("Startup videos must be 10 seconds or shorter.")
+                return self.tr("启动动画视频不得超过 10 秒。")
             self._set_media(media_path, "video")
             return ""
 
-        return self.tr("Unsupported media format.")
+        return self.tr("不支持的媒体格式。")
 
     def _set_media(self, path: Path, media_type: str) -> None:
         self.app.configs.set("app.startup_animation_media_path", str(path))
@@ -127,6 +138,7 @@ class StartupAnimation(QObject):
     def clearMedia(self) -> None:
         self.app.configs.set("app.startup_animation_media_path", "")
         self.app.configs.set("app.startup_animation_media_type", "none")
+        self.app.configs.set("app.startup_animation_force_video_completion", False)
         # 未提供媒体时，始终显示默认 Class Widgets 信息。
         self.app.configs.set("app.startup_animation_show_info", True)
         self._persist()
@@ -161,6 +173,19 @@ class StartupAnimation(QObject):
         """按配置显示启动动画，并返回是否已成功进入动画等待状态。"""
         if not getattr(self.app.configs.app, "startup_animation_enabled", True):
             return False
+        self._preview_active = False
+        return self._open_window()
+
+    @Slot(result=bool)
+    def preview(self) -> bool:
+        """独立显示启动动画预览，不影响已经运行的小组件。"""
+        if self.engine is not None:
+            return False
+        self._preview_active = True
+        self.changed.emit()
+        return self._open_window()
+
+    def _open_window(self) -> bool:
         if self.engine is not None:
             return True
 
@@ -168,6 +193,7 @@ class StartupAnimation(QObject):
         self.engine.addImportPath(str(QML_PATH))
         context = self.engine.rootContext()
         context.setContextProperty("StartupAnimationController", self)
+        context.setContextProperty("StartupAnimationPreview", self._preview_active)
         context.setContextProperty("AppCentral", self.app)
         context.setContextProperty("Configs", self.app.configs)
         context.setContextProperty("PathManager", self.app.path_manager)
@@ -188,8 +214,10 @@ class StartupAnimation(QObject):
     def finish(self) -> None:
         if self.engine is None and self.root_window is None:
             return
+        preview_was_active = self._preview_active
         self.release()
-        self.finished.emit()
+        if not preview_was_active:
+            self.finished.emit()
 
     def release(self) -> None:
         if self.root_window is not None:
@@ -201,3 +229,6 @@ class StartupAnimation(QObject):
             self.engine.collectGarbage()
             self.engine.deleteLater()
             self.engine = None
+        if self._preview_active:
+            self._preview_active = False
+            self.changed.emit()

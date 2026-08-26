@@ -289,8 +289,8 @@ FluentPage {
         SettingCard {
             Layout.fillWidth: true
             icon.name: "ic_fluent_document_bullet_list_20_regular"
-            title: qsTr("Show update summary")
-            description: qsTr("Open the update summary window after an update is installed")
+            title: qsTr("显示更新摘要")
+            description: qsTr("更新安装完成后，在下次启动时打开更新摘要窗口")
 
             Switch {
                 enabled: !Configs.isKeyLocked("app.show_update_summary")

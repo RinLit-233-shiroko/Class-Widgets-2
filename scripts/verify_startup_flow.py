@@ -32,6 +32,14 @@ class FakeStartupAnimation:
         return self.started
 
 
+class SignalRecorder:
+    def __init__(self) -> None:
+        self.count = 0
+
+    def emit(self) -> None:
+        self.count += 1
+
+
 class FakeWidgetsWindow:
     def __init__(self) -> None:
         self.run_calls = 0
@@ -54,6 +62,7 @@ def test_config_defaults(project_root: Path) -> None:
     model = load_module(project_root, "src.core.config.model")
     config = model.AppConfig()
     assert config.startup_animation_skip_once is False
+    assert config.startup_animation_force_video_completion is False
     assert config.show_update_summary is True
 
 
@@ -74,6 +83,44 @@ def test_animation_wait_and_skip_once(project_root: Path) -> None:
     normal_context = SimpleNamespace(configs=normal_configs, startup_animation=normal_animation)
     assert app_central._start_startup_animation_if_needed(normal_context) is True
     assert normal_animation.start_calls == 1
+
+
+def test_preview_session_does_not_finish_normal_startup(project_root: Path) -> None:
+    startup_module = load_module(project_root, "src.core.startup_animation")
+    controller = startup_module.StartupAnimation
+
+    preview_signal = SignalRecorder()
+    preview_context = SimpleNamespace(
+        engine=None,
+        _preview_active=False,
+        changed=preview_signal,
+        _open_window=lambda: True,
+    )
+    assert controller.preview(preview_context) is True
+    assert preview_context._preview_active is True
+    assert preview_signal.count == 1
+
+    preview_finished = SignalRecorder()
+    preview_close_context = SimpleNamespace(
+        engine=object(),
+        root_window=None,
+        _preview_active=True,
+        finished=preview_finished,
+        release=lambda: None,
+    )
+    controller.finish(preview_close_context)
+    assert preview_finished.count == 0
+
+    normal_finished = SignalRecorder()
+    normal_close_context = SimpleNamespace(
+        engine=object(),
+        root_window=None,
+        _preview_active=False,
+        finished=normal_finished,
+        release=lambda: None,
+    )
+    controller.finish(normal_close_context)
+    assert normal_finished.count == 1
 
 
 def test_widget_start_is_gated_by_animation(project_root: Path) -> None:
@@ -102,10 +149,15 @@ def test_qml_and_lifecycle_contract(project_root: Path) -> None:
     tutorial = (project_root / "src/qml/ClassWidgets/Windows/Tutorial.qml").read_text(encoding="utf-8")
     about = (project_root / "src/qml/ClassWidgets/pages/settings/About.qml").read_text(encoding="utf-8")
     update = (project_root / "src/qml/ClassWidgets/pages/settings/Update.qml").read_text(encoding="utf-8")
+    general = (project_root / "src/qml/ClassWidgets/pages/settings/General/Index.qml").read_text(encoding="utf-8")
+    startup_qml = (project_root / "src/qml/StartupAnimation.qml").read_text(encoding="utf-8")
 
     assert "finished = Signal()" in startup_controller
     assert "def start(self) -> bool:" in startup_controller
     assert "self.finished.emit()" in startup_controller
+    assert "def preview(self) -> bool:" in startup_controller
+    assert "StartupAnimationPreview" in startup_controller
+    assert "if not preview_was_active:" in startup_controller
     assert "self.startup_animation.finished.connect(self._on_startup_animation_finished)" in central
     assert "self._start_widgets_if_ready()" in central
     assert "self._update_summary_pending = getattr(" in central
@@ -116,6 +168,20 @@ def test_qml_and_lifecycle_contract(project_root: Path) -> None:
     assert 'Configs.set("app.startup_animation_skip_once", false)' in about
     assert 'Configs.data.app.show_update_summary' in update
     assert 'Configs.set("app.show_update_summary", checked)' in update
+    assert 'title: qsTr("显示更新摘要")' in update
+
+    assert 'Configs.set("app.startup_animation_force_video_completion", checked)' in general
+    assert 'AppCentral.startupAnimation.preview()' in general
+    assert 'title: qsTr("预览启动动画")' in general
+    assert 'title: qsTr("强制播放完视频")' in general
+    assert 'title: qsTr("启动动画")' in general
+
+    assert "import Qt5Compat.GraphicalEffects" in startup_qml
+    assert "layer.effect: OpacityMask" in startup_qml
+    assert "radius: mediaSurface.radius" in startup_qml
+    assert "property bool forceCompleteVideo" in startup_qml
+    assert "running: !root.forceCompleteVideo" in startup_qml
+    assert "property bool previewMode: StartupAnimationPreview" in startup_qml
 
 
 def main() -> None:
@@ -123,6 +189,7 @@ def main() -> None:
     test_python_syntax(project_root)
     test_config_defaults(project_root)
     test_animation_wait_and_skip_once(project_root)
+    test_preview_session_does_not_finish_normal_startup(project_root)
     test_widget_start_is_gated_by_animation(project_root)
     test_qml_and_lifecycle_contract(project_root)
     print("Startup flow verification passed.")
