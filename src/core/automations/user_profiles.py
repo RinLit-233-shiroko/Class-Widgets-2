@@ -668,22 +668,63 @@ class AutomationProfilesService(AutomationTask):
                     if name:
                         snapshot.setdefault(name, set()).add(int(path.name))
             elif system == "Windows":
-                result = subprocess.run(
-                    ["tasklist", "/FO", "CSV", "/NH"],
-                    capture_output=True,
-                    text=True,
-                    timeout=3,
-                    check=True,
-                    shell=False,
-                )
-                for line in result.stdout.splitlines():
-                    parts = [part.strip('"') for part in line.split('","')]
-                    if len(parts) < 2:
+                # 使用 Windows 原生 API 枚举进程，避免每次轮询启动 tasklist.exe
+                # 导致控制台窗口闪烁。该路径不创建子进程，也不依赖额外组件。
+                import ctypes
+                from ctypes import wintypes
+
+                psapi = ctypes.WinDLL("psapi", use_last_error=True)
+                kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+                enum_processes = psapi.EnumProcesses
+                enum_processes.argtypes = [
+                    ctypes.POINTER(wintypes.DWORD),
+                    wintypes.DWORD,
+                    ctypes.POINTER(wintypes.DWORD),
+                ]
+                enum_processes.restype = wintypes.BOOL
+                open_process = kernel32.OpenProcess
+                open_process.argtypes = [wintypes.DWORD, wintypes.BOOL, wintypes.DWORD]
+                open_process.restype = wintypes.HANDLE
+                close_handle = kernel32.CloseHandle
+                close_handle.argtypes = [wintypes.HANDLE]
+                close_handle.restype = wintypes.BOOL
+                query_image_name = kernel32.QueryFullProcessImageNameW
+                query_image_name.argtypes = [
+                    wintypes.HANDLE,
+                    wintypes.DWORD,
+                    wintypes.LPWSTR,
+                    ctypes.POINTER(wintypes.DWORD),
+                ]
+                query_image_name.restype = wintypes.BOOL
+
+                process_query_limited_information = 0x1000
+                capacity = 2048
+                process_ids: list[int] = []
+                while capacity <= 32768:
+                    raw_ids = (wintypes.DWORD * capacity)()
+                    bytes_returned = wintypes.DWORD()
+                    if not enum_processes(raw_ids, ctypes.sizeof(raw_ids), ctypes.byref(bytes_returned)):
+                        raise ctypes.WinError(ctypes.get_last_error())
+                    count = bytes_returned.value // ctypes.sizeof(wintypes.DWORD)
+                    process_ids = [int(raw_ids[index]) for index in range(count) if raw_ids[index]]
+                    if bytes_returned.value < ctypes.sizeof(raw_ids):
+                        break
+                    capacity *= 2
+
+                for process_id in process_ids:
+                    handle = open_process(process_query_limited_information, False, process_id)
+                    if not handle:
                         continue
                     try:
-                        snapshot.setdefault(parts[0].casefold(), set()).add(int(parts[1]))
-                    except ValueError:
-                        continue
+                        buffer_size = wintypes.DWORD(32768)
+                        image_name = ctypes.create_unicode_buffer(buffer_size.value)
+                        if not query_image_name(handle, 0, image_name, ctypes.byref(buffer_size)):
+                            continue
+                        executable_name = Path(image_name.value).name.casefold()
+                        if executable_name:
+                            snapshot.setdefault(executable_name, set()).add(process_id)
+                    finally:
+                        close_handle(handle)
             else:
                 result = subprocess.run(
                     ["ps", "-axo", "pid=,comm="],

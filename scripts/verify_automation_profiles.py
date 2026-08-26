@@ -230,6 +230,7 @@ def test_process_and_ui_contract(project_root: Path) -> None:
     central = (project_root / "src/core/central.py").read_text(encoding="utf-8")
     settings = (project_root / "src/qml/ClassWidgets/Windows/Settings.qml").read_text(encoding="utf-8")
     page = (project_root / "src/qml/ClassWidgets/pages/settings/Automation.qml").read_text(encoding="utf-8")
+    automation_service = (project_root / "src/core/automations/user_profiles.py").read_text(encoding="utf-8")
 
     assert "AutomationProfilesService" in manager
     assert "def init_user_profiles" in manager
@@ -245,6 +246,11 @@ def test_process_and_ui_contract(project_root: Path) -> None:
     assert "addRule" in page
     assert "addAction" in page
     assert page.count("{") == page.count("}"), "unbalanced QML braces"
+
+    assert 'ctypes.WinDLL("psapi", use_last_error=True)' in automation_service
+    assert "EnumProcesses" in automation_service
+    assert "QueryFullProcessImageNameW" in automation_service
+    assert '["tasklist"' not in automation_service
 
 
 def main() -> None:
