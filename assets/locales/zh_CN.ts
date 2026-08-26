@@ -746,7 +746,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation type="vanished">默认</translation>
     </message>
     <message>
-        <location filename="../../src/core/config/model.py" line="225"/>
+        <location filename="../../src/core/config/model.py" line="210"/>
         <source>New Schedule 1</source>
         <translation>新课程表 1</translation>
     </message>
@@ -1503,12 +1503,12 @@ Please try again later.</source>
         <translation>导出课程表</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="26"/>
+        <location filename="../../src/core/convertor/slots.py" line="27"/>
         <source>CSES Format (*.yaml *.yml)</source>
         <translation>CSES 格式 (*.yaml *.yml)</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/manager.py" line="288"/>
+        <location filename="../../src/core/schedule/manager.py" line="289"/>
         <source>Class Widgets 2 JSON Files (*.json)</source>
         <translation>Class Widgets 2 JSON 文件 (*.json)</translation>
     </message>
@@ -1823,7 +1823,7 @@ Please try again later.</source>
         <translation>导入 CSES 课程表</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="44"/>
+        <location filename="../../src/core/convertor/slots.py" line="45"/>
         <source>CSES YAML Files (*.yaml *.yml)</source>
         <translation>CSES YAML 文件 (*.yaml *.yml)</translation>
     </message>
@@ -1833,7 +1833,7 @@ Please try again later.</source>
         <translation>导入 Class Widgets 1 课程表</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="85"/>
+        <location filename="../../src/core/convertor/slots.py" line="86"/>
         <source>Class Widgets 1 JSON Files (*.json)</source>
         <translation>Class Widgets 1 JSON 文件 (*.json)</translation>
     </message>
@@ -1843,7 +1843,7 @@ Please try again later.</source>
         <translation>导入课程表</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/manager.py" line="239"/>
+        <location filename="../../src/core/schedule/manager.py" line="240"/>
         <source>Class Widgets 2 JSON Files (*.json)</source>
         <translation>Class Widgets 2 JSON 文件 (*.json)</translation>
     </message>
@@ -2471,20 +2471,35 @@ If translations are missing after a theme change, please restart</source>
 若在切换主题后应用翻译丢失，请重新启动</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="30"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="35"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="40"/>
         <source>Accent Color</source>
         <translation>主题色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="36"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="41"/>
         <source>Pick the color which app highlighted color</source>
         <translation>选用一个用于应用的主题色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="58"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="63"/>
         <source>Themes</source>
         <translation>主题</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="223"/>
+        <source>RGB Lighting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="228"/>
+        <source>RGB Lighting Effects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="229"/>
+        <source>Configure dynamic lighting effects for RGB theme</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Liquid Glass Effect</source>
@@ -2503,12 +2518,12 @@ If translations are missing after a theme change, please restart</source>
         <translation type="vanished">增强液态玻璃</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="216"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="242"/>
         <source>Incompatible Theme</source>
         <translation>此主题不兼容</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="221"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="247"/>
         <source>This theme requires the app version %1, but current app version is %2. 
 
 Applying an incompatible theme may cause serious errors, crashes, or unexpected behavior.</source>
@@ -2524,27 +2539,27 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
 不兼容可能导致意外问题。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="232"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="258"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="239"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="265"/>
         <source>Apply anyway</source>
         <translation>仍然应用</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="138"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="143"/>
         <source>Built-in</source>
         <translation>内置</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="167"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="172"/>
         <source>No description</source>
         <translation>无描述</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="145"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="150"/>
         <source>Incompatible</source>
         <translation>不兼容</translation>
     </message>
@@ -2872,7 +2887,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
         <translation>不兼容</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/manager.py" line="124"/>
+        <location filename="../../src/core/plugin/manager.py" line="127"/>
         <source>{count} incompatible plugin(s) have been loaded, which may cause unknown issues.</source>
         <translation>发现 {count} 个插件可能不兼容，运行过程中可能出现异常。</translation>
     </message>
@@ -2906,7 +2921,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
         <translation>发现插件更新可用</translation>
     </message>
     <message>
-        <location filename="../../src/core/plaza/notifications.py" line="79"/>
+        <location filename="../../src/core/plaza/notifications.py" line="81"/>
         <source>{count} plugin update(s) are ready in Plugin Plaza.</source>
         <translation>已有 {count} 个插件更新已准备就绪。</translation>
     </message>
@@ -2941,42 +2956,42 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
         <translation>插件包版本（{package_version}）与插件广场版本（{release_version}）不匹配。</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/errors.py" line="29"/>
+        <location filename="../../src/core/plugin/errors.py" line="30"/>
         <source>The plugin package does not match the selected plugin.</source>
         <translation>插件包与所选插件不匹配。</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/errors.py" line="31"/>
+        <location filename="../../src/core/plugin/errors.py" line="32"/>
         <source>The plugin package could not be found.</source>
         <translation>找不到插件包。</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/errors.py" line="37"/>
+        <location filename="../../src/core/plugin/errors.py" line="38"/>
         <source>The plugin package is too large.</source>
         <translation>插件包过大。</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/errors.py" line="39"/>
+        <location filename="../../src/core/plugin/errors.py" line="40"/>
         <source>The plugin package is invalid.</source>
         <translation>插件包无效。</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/errors.py" line="45"/>
+        <location filename="../../src/core/plugin/errors.py" line="46"/>
         <source>The plugin manifest is invalid.</source>
         <translation>插件清单无效。</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/errors.py" line="54"/>
+        <location filename="../../src/core/plugin/errors.py" line="55"/>
         <source>The plugin package failed security checks.</source>
         <translation>插件包未通过安全检查。</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/errors.py" line="56"/>
+        <location filename="../../src/core/plugin/errors.py" line="57"/>
         <source>Unable to download the plugin. Check your connection and try again.</source>
         <translation>无法下载插件。请检查网络后重试。</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/errors.py" line="57"/>
+        <location filename="../../src/core/plugin/errors.py" line="60"/>
         <source>Plugin installation failed.</source>
         <translation>插件安装失败。</translation>
     </message>
@@ -3530,6 +3545,285 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     </message>
 </context>
 <context>
+    <name>RGB</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="12"/>
+        <source>RGB Lighting Effects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="31"/>
+        <source>Select Primary Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="41"/>
+        <source>Select Secondary Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="68"/>
+        <source>RGB Theme Required</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="69"/>
+        <source>Please select the RGB theme in Personalization to use lighting effects.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="79"/>
+        <source>Effect Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="84"/>
+        <source>Enable RGB Effects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="85"/>
+        <source>Widget colors will change dynamically with the selected effect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="107"/>
+        <source>OpenRGB Standard Effects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="116"/>
+        <source>Static</source>
+        <translation type="unfinished">静态</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="117"/>
+        <source>Breathing</source>
+        <translation type="unfinished">呼吸</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="118"/>
+        <source>Flashing</source>
+        <translation type="unfinished">闪烁</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="119"/>
+        <source>Spectrum Cycle</source>
+        <translation type="unfinished">光谱循环</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="120"/>
+        <source>Rainbow Wave</source>
+        <translation type="unfinished">彩虹波浪</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="144"/>
+        <source>Extended Effects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="153"/>
+        <source>Running Light</source>
+        <translation type="unfinished">跑马灯</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="154"/>
+        <source>Meteor</source>
+        <translation type="unfinished">流星</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="155"/>
+        <source>Gradient</source>
+        <translation type="unfinished">渐变</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="156"/>
+        <source>Sparkle</source>
+        <translation type="unfinished">星火</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="157"/>
+        <source>Heartbeat</source>
+        <translation type="unfinished">心跳</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="181"/>
+        <source>Presets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="190"/>
+        <source>Ocean</source>
+        <translation type="unfinished">海洋</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="191"/>
+        <source>Sunset</source>
+        <translation type="unfinished">日落</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="192"/>
+        <source>Forest</source>
+        <translation type="unfinished">森林</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="193"/>
+        <source>Aurora</source>
+        <translation type="unfinished">极光</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="194"/>
+        <source>Fire</source>
+        <translation type="unfinished">火焰</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="195"/>
+        <source>Cyberpunk</source>
+        <translation type="unfinished">赛博朋克</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="219"/>
+        <source>Color Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="224"/>
+        <source>Primary Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="225"/>
+        <source>Main color for the effect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="241"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="267"/>
+        <source>Select</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="249"/>
+        <source>Secondary Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="250"/>
+        <source>Used for gradient effects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="282"/>
+        <source>Parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="287"/>
+        <source>Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="288"/>
+        <source>Effect animation speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="314"/>
+        <source>Brightness</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="315"/>
+        <source>Effect brightness level</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="347"/>
+        <source>Preview</source>
+        <translation type="unfinished">预览</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="370"/>
+        <source>Color Preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>RGBEffects</name>
+    <message>
+        <source>Direct</source>
+        <translation type="vanished">直接控制</translation>
+    </message>
+    <message>
+        <source>Static</source>
+        <translation type="vanished">静态</translation>
+    </message>
+    <message>
+        <source>Breathing</source>
+        <translation type="vanished">呼吸</translation>
+    </message>
+    <message>
+        <source>Flashing</source>
+        <translation type="vanished">闪烁</translation>
+    </message>
+    <message>
+        <source>Spectrum Cycle</source>
+        <translation type="vanished">光谱循环</translation>
+    </message>
+    <message>
+        <source>Rainbow Wave</source>
+        <translation type="vanished">彩虹波浪</translation>
+    </message>
+    <message>
+        <source>Running Light</source>
+        <translation type="vanished">跑马灯</translation>
+    </message>
+    <message>
+        <source>Meteor</source>
+        <translation type="vanished">流星</translation>
+    </message>
+    <message>
+        <source>Gradient</source>
+        <translation type="vanished">渐变</translation>
+    </message>
+    <message>
+        <source>Sparkle</source>
+        <translation type="vanished">星火</translation>
+    </message>
+    <message>
+        <source>Heartbeat</source>
+        <translation type="vanished">心跳</translation>
+    </message>
+    <message>
+        <source>Ocean</source>
+        <translation type="vanished">海洋</translation>
+    </message>
+    <message>
+        <source>Sunset</source>
+        <translation type="vanished">日落</translation>
+    </message>
+    <message>
+        <source>Forest</source>
+        <translation type="vanished">森林</translation>
+    </message>
+    <message>
+        <source>Aurora</source>
+        <translation type="vanished">极光</translation>
+    </message>
+    <message>
+        <source>Fire</source>
+        <translation type="vanished">火焰</translation>
+    </message>
+    <message>
+        <source>Lava</source>
+        <translation type="vanished">熔岩</translation>
+    </message>
+    <message>
+        <source>Cyberpunk</source>
+        <translation type="vanished">赛博朋克</translation>
+    </message>
+</context>
+<context>
     <name>Reschedule Day</name>
     <message>
         <source>Shortcuts</source>
@@ -3600,17 +3894,17 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation type="vanished">快速添加课程</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/converter.py" line="62"/>
+        <location filename="../../src/core/convertor/converter.py" line="63"/>
         <source>All Weeks</source>
         <translation>每周</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/converter.py" line="64"/>
+        <location filename="../../src/core/convertor/converter.py" line="65"/>
         <source>Odd Weeks</source>
         <translation>单周</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/converter.py" line="66"/>
+        <location filename="../../src/core/convertor/converter.py" line="67"/>
         <source>Even Weeks</source>
         <translation>双周</translation>
     </message>
@@ -3744,7 +4038,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>ScheduleConverter</name>
     <message>
-        <location filename="../../src/core/convertor/converter.py" line="489"/>
+        <location filename="../../src/core/convertor/converter.py" line="490"/>
         <source>Class</source>
         <translation>课程</translation>
     </message>
@@ -3785,17 +4079,17 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>ScheduleRuntime</name>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="292"/>
+        <location filename="../../src/core/schedule/runtime.py" line="293"/>
         <source>Class Started</source>
         <translation>上课</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="309"/>
+        <location filename="../../src/core/schedule/runtime.py" line="310"/>
         <source>Activity Started</source>
         <translation>活动开始</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="318"/>
+        <location filename="../../src/core/schedule/runtime.py" line="319"/>
         <source>Intermission</source>
         <translation>课程准备</translation>
     </message>
@@ -3820,22 +4114,22 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation>下一节 {}（不在本教室）</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="353"/>
+        <location filename="../../src/core/schedule/runtime.py" line="355"/>
         <source>Recess</source>
         <translation>下课课间</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="388"/>
+        <location filename="../../src/core/schedule/runtime.py" line="390"/>
         <source>Enjoy your break</source>
         <translation>放松一下吧～</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="391"/>
+        <location filename="../../src/core/schedule/runtime.py" line="392"/>
         <source>Free Time</source>
         <translation>自由时间</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="396"/>
+        <location filename="../../src/core/schedule/runtime.py" line="397"/>
         <source>Status Changed</source>
         <translation>状态变更为</translation>
     </message>
@@ -3998,32 +4292,32 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation type="vanished">AI 对话</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="57"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="52"/>
         <source>Notification &amp; Time</source>
         <translation>通知与时间</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="61"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="56"/>
         <source>Notification</source>
         <translation>通知</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="66"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="61"/>
         <source>Time</source>
         <translation>时间</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="73"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="68"/>
         <source>Plugins</source>
         <translation>插件</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="80"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="75"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="86"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="81"/>
         <source>Update</source>
         <translation>更新</translation>
     </message>
@@ -4035,27 +4329,27 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>Shortcuts</name>
     <message>
-        <location filename="../../src/core/central.py" line="156"/>
+        <location filename="../../src/core/central.py" line="153"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="162"/>
+        <location filename="../../src/core/central.py" line="159"/>
         <source>Schedules</source>
         <translation>课程编辑</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="168"/>
+        <location filename="../../src/core/central.py" line="165"/>
         <source>Plugin Plaza</source>
         <translation>插件广场</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="174"/>
+        <location filename="../../src/core/central.py" line="171"/>
         <source>Reschedule Day</source>
         <translation>调休</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="180"/>
+        <location filename="../../src/core/central.py" line="177"/>
         <source>Class Swap</source>
         <translation>换课</translation>
     </message>
@@ -4079,32 +4373,32 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation>选择启动媒体</translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="85"/>
+        <location filename="../../src/core/startup_animation.py" line="87"/>
         <source>Supported media (*.png *.jpg *.jpeg *.bmp *.webp *.gif *.mp4 *.webm *.mov *.m4v *.avi)</source>
         <translation>支持的媒体 (*.png *.jpg *.jpeg *.bmp *.webp *.gif *.mp4 *.webm *.mov *.m4v *.avi)</translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="99"/>
+        <location filename="../../src/core/startup_animation.py" line="101"/>
         <source>The selected media file does not exist.</source>
         <translation>所选媒体文件不存在。</translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="105"/>
+        <location filename="../../src/core/startup_animation.py" line="106"/>
         <source>The selected image cannot be read.</source>
         <translation>无法读取所选图片。</translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="112"/>
+        <location filename="../../src/core/startup_animation.py" line="113"/>
         <source>The selected video could not be read.</source>
         <translation>无法读取所选视频。</translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="114"/>
+        <location filename="../../src/core/startup_animation.py" line="115"/>
         <source>Startup videos must be 10 seconds or shorter.</source>
         <translation>启动视频时长不得超过 10 秒。</translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="118"/>
+        <location filename="../../src/core/startup_animation.py" line="120"/>
         <source>Unsupported media format.</source>
         <translation>不支持的媒体格式。</translation>
     </message>
@@ -4202,87 +4496,87 @@ If it takes place in another location, such as a sport field, lab, or another cl
 <context>
     <name>Subjects</name>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="45"/>
+        <location filename="../../src/core/utils/subjects.py" line="46"/>
         <source>Chinese</source>
         <translation>语文</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="46"/>
+        <location filename="../../src/core/utils/subjects.py" line="47"/>
         <source>Mathematics</source>
         <translation>数学</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="47"/>
+        <location filename="../../src/core/utils/subjects.py" line="48"/>
         <source>English</source>
         <translation>英语</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="48"/>
+        <location filename="../../src/core/utils/subjects.py" line="49"/>
         <source>Politics</source>
         <translation>政治</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="49"/>
+        <location filename="../../src/core/utils/subjects.py" line="50"/>
         <source>History</source>
         <translation>历史</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="50"/>
+        <location filename="../../src/core/utils/subjects.py" line="51"/>
         <source>Physics</source>
         <translation>物理</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="51"/>
+        <location filename="../../src/core/utils/subjects.py" line="52"/>
         <source>Chemistry</source>
         <translation>化学</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="52"/>
+        <location filename="../../src/core/utils/subjects.py" line="53"/>
         <source>Biology</source>
         <translation>生物</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="53"/>
+        <location filename="../../src/core/utils/subjects.py" line="54"/>
         <source>Geography</source>
         <translation>地理</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="54"/>
+        <location filename="../../src/core/utils/subjects.py" line="55"/>
         <source>Music</source>
         <translation>音乐</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="55"/>
+        <location filename="../../src/core/utils/subjects.py" line="56"/>
         <source>Art</source>
         <translation>美术</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="56"/>
+        <location filename="../../src/core/utils/subjects.py" line="57"/>
         <source>Psychology</source>
         <translation>心理</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="57"/>
+        <location filename="../../src/core/utils/subjects.py" line="58"/>
         <source>Physical Education</source>
         <translation>体育</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="58"/>
+        <location filename="../../src/core/utils/subjects.py" line="59"/>
         <source>Information Technology</source>
         <translation>信息技术</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="59"/>
+        <location filename="../../src/core/utils/subjects.py" line="60"/>
         <source>General Technology</source>
         <translation>通用技术</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="60"/>
+        <location filename="../../src/core/utils/subjects.py" line="61"/>
         <source>Elective</source>
         <translation>选修</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="61"/>
+        <location filename="../../src/core/utils/subjects.py" line="62"/>
         <source>Self Study</source>
         <translation>自学</translation>
     </message>
@@ -4319,27 +4613,27 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="vanished">哲</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="63"/>
+        <location filename="../../src/core/utils/subjects.py" line="64"/>
         <source>Class Meeting</source>
         <translation>班会</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="64"/>
+        <location filename="../../src/core/utils/subjects.py" line="65"/>
         <source>Weekly Test</source>
         <translation>周测</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="65"/>
+        <location filename="../../src/core/utils/subjects.py" line="66"/>
         <source>Economics</source>
         <translation>经济学</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="66"/>
+        <location filename="../../src/core/utils/subjects.py" line="67"/>
         <source>Philosophy</source>
         <translation>哲学</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="67"/>
+        <location filename="../../src/core/utils/subjects.py" line="70"/>
         <source>Computer Science</source>
         <translation>计算机科学</translation>
     </message>
@@ -4384,7 +4678,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="vanished">信</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="62"/>
+        <location filename="../../src/core/utils/subjects.py" line="63"/>
         <source>Club</source>
         <translation>社团</translation>
     </message>
@@ -4483,127 +4777,127 @@ If it takes place in another location, such as a sport field, lab, or another cl
 <context>
     <name>SubjectsSimplified</name>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="70"/>
+        <location filename="../../src/core/utils/subjects.py" line="71"/>
         <source>CHN</source>
         <translation>语</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="71"/>
+        <location filename="../../src/core/utils/subjects.py" line="72"/>
         <source>Math</source>
         <translation>数</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="72"/>
+        <location filename="../../src/core/utils/subjects.py" line="73"/>
         <source>Eng</source>
         <translation>英</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="73"/>
+        <location filename="../../src/core/utils/subjects.py" line="74"/>
         <source>Civics</source>
         <translation>政</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="74"/>
+        <location filename="../../src/core/utils/subjects.py" line="75"/>
         <source>Hist</source>
         <translation>史</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="75"/>
+        <location filename="../../src/core/utils/subjects.py" line="76"/>
         <source>Phys</source>
         <translation>物</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="76"/>
+        <location filename="../../src/core/utils/subjects.py" line="77"/>
         <source>Chem</source>
         <translation>化</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="77"/>
+        <location filename="../../src/core/utils/subjects.py" line="78"/>
         <source>Bio</source>
         <translation>生</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="78"/>
+        <location filename="../../src/core/utils/subjects.py" line="79"/>
         <source>Geo</source>
         <translation>地</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="79"/>
+        <location filename="../../src/core/utils/subjects.py" line="80"/>
         <source>Mus</source>
         <translation>音</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="80"/>
+        <location filename="../../src/core/utils/subjects.py" line="81"/>
         <source>Art</source>
         <translation>美</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="81"/>
+        <location filename="../../src/core/utils/subjects.py" line="82"/>
         <source>Psy</source>
         <translation>心</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="82"/>
+        <location filename="../../src/core/utils/subjects.py" line="83"/>
         <source>PE</source>
         <translation>体</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="83"/>
+        <location filename="../../src/core/utils/subjects.py" line="84"/>
         <source>IT</source>
         <translation>信</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="84"/>
+        <location filename="../../src/core/utils/subjects.py" line="85"/>
         <source>GenTech</source>
         <translation>通</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="85"/>
+        <location filename="../../src/core/utils/subjects.py" line="86"/>
         <source>Elective</source>
         <translation>选</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="86"/>
+        <location filename="../../src/core/utils/subjects.py" line="87"/>
         <source>Study</source>
         <translation>自</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="87"/>
+        <location filename="../../src/core/utils/subjects.py" line="88"/>
         <source>Club</source>
         <translation>社</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="88"/>
+        <location filename="../../src/core/utils/subjects.py" line="89"/>
         <source>ClassMtg</source>
         <translation>班</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="89"/>
+        <location filename="../../src/core/utils/subjects.py" line="90"/>
         <source>Weekly</source>
         <translation>测</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="90"/>
+        <location filename="../../src/core/utils/subjects.py" line="91"/>
         <source>Econ</source>
         <translation>经</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="91"/>
+        <location filename="../../src/core/utils/subjects.py" line="92"/>
         <source>Philos</source>
         <translation>哲</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="92"/>
+        <location filename="../../src/core/utils/subjects.py" line="93"/>
         <source>CS</source>
         <translation>计科</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="93"/>
+        <location filename="../../src/core/utils/subjects.py" line="94"/>
         <source>Meeting</source>
         <translation>会</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="94"/>
+        <location filename="../../src/core/utils/subjects.py" line="95"/>
         <source>Test</source>
         <translation>测</translation>
     </message>
@@ -4669,6 +4963,16 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <location filename="../../src/themes/__init__.py" line="12"/>
         <source>Class Widgets Builtin Default Theme</source>
         <translation>Class Widgets 内置默认主题</translation>
+    </message>
+    <message>
+        <location filename="../../src/themes/__init__.py" line="24"/>
+        <source>RGB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/themes/__init__.py" line="25"/>
+        <source>动态RGB灯光效果主题 - 颜色随效果实时变化</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Theme.qml" line="11"/>
@@ -5291,7 +5595,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
 <context>
     <name>UpdateNotification</name>
     <message>
-        <location filename="../../src/core/automations/update_check.py" line="39"/>
+        <location filename="../../src/core/automations/update_check.py" line="43"/>
         <source>&quot;{version}&quot; is available!
 Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation>发现新版本：&quot;{version}&quot;！
@@ -5303,7 +5607,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation>Class Widgets 更新速递</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="85"/>
+        <location filename="../../src/core/updater/bridge.py" line="89"/>
         <source>Class Widgets has been updated to the latest version: {version}</source>
         <translation>Class Widgets 已更新至最新版本：{version}</translation>
     </message>
@@ -5318,7 +5622,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation>已下载更新</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="164"/>
+        <location filename="../../src/core/updater/bridge.py" line="168"/>
         <source>Ready to install anytime. Go to &quot;Settings&quot; → &quot;Update&quot; to proceed with installation.</source>
         <translation>随时可以安装。前往“设置”→“更新”以安装。</translation>
     </message>
@@ -5328,7 +5632,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation>即将应用更新</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="206"/>
+        <location filename="../../src/core/updater/bridge.py" line="209"/>
         <source>The update may take several seconds to complete. (●&apos;◡&apos;●)</source>
         <translation>本更新可能会耗时数十秒，请稍后 (●&apos;◡&apos;●)</translation>
     </message>
@@ -5937,81 +6241,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="34"/>
         <source>Unset</source>
         <translation>未设置</translation>
-    </message>
-</context>
-<context>
-    <name>RGBEffects</name>
-    <message>
-        <source>Direct</source>
-        <translation>直接控制</translation>
-    </message>
-    <message>
-        <source>Static</source>
-        <translation>静态</translation>
-    </message>
-    <message>
-        <source>Breathing</source>
-        <translation>呼吸</translation>
-    </message>
-    <message>
-        <source>Flashing</source>
-        <translation>闪烁</translation>
-    </message>
-    <message>
-        <source>Spectrum Cycle</source>
-        <translation>光谱循环</translation>
-    </message>
-    <message>
-        <source>Rainbow Wave</source>
-        <translation>彩虹波浪</translation>
-    </message>
-    <message>
-        <source>Running Light</source>
-        <translation>跑马灯</translation>
-    </message>
-    <message>
-        <source>Meteor</source>
-        <translation>流星</translation>
-    </message>
-    <message>
-        <source>Gradient</source>
-        <translation>渐变</translation>
-    </message>
-    <message>
-        <source>Sparkle</source>
-        <translation>星火</translation>
-    </message>
-    <message>
-        <source>Heartbeat</source>
-        <translation>心跳</translation>
-    </message>
-    <message>
-        <source>Ocean</source>
-        <translation>海洋</translation>
-    </message>
-    <message>
-        <source>Sunset</source>
-        <translation>日落</translation>
-    </message>
-    <message>
-        <source>Forest</source>
-        <translation>森林</translation>
-    </message>
-    <message>
-        <source>Aurora</source>
-        <translation>极光</translation>
-    </message>
-    <message>
-        <source>Fire</source>
-        <translation>火焰</translation>
-    </message>
-    <message>
-        <source>Lava</source>
-        <translation>熔岩</translation>
-    </message>
-    <message>
-        <source>Cyberpunk</source>
-        <translation>赛博朋克</translation>
     </message>
 </context>
 </TS>
