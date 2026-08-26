@@ -1441,157 +1441,228 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation>பொது</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="18"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="30"/>
+        <source>Time</source>
+        <translation type="unfinished">நேரம்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="35"/>
+        <source>Use Precise Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="37"/>
+        <source>Use the synchronized NTP time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="38"/>
+        <source>Use NTP time when available; otherwise use system time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="58"/>
+        <source>NTP Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="59"/>
+        <source>Choose a preset server or enter a custom server address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="77"/>
+        <source>Custom server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="106"/>
+        <source>Custom NTP server, for example time.example.com</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="130"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="145"/>
+        <source>Synchronize Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="131"/>
+        <source>Synchronize now; if it fails, Class Widgets continues with system time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="145"/>
+        <source>Synchronizing…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="154"/>
+        <source>Time Offset (Seconds)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="155"/>
+        <source>Apply a seconds-level offset to the displayed time and schedule calculations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="162"/>
+        <source>Seconds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="175"/>
         <source>Locale</source>
         <translation>மொழி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="23"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="180"/>
         <source>Translation notice / 翻译提示</source>
         <translation>மொழிபெயர்ப்பு அறிவிப்பு / மொழிபெயர்ப்பு குறிப்புகள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="24"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="181"/>
         <source>Some translations may be auto-generated and could be inaccurate. Help us improve them on &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt;. &lt;br&gt;部分翻译可能由自动翻译生成，存在不准确之处。欢迎在 &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt; 上参与改进</source>
         <translation>சில மொழிபெயர்ப்புகள் தானாக உருவாக்கப்படலாம் மற்றும் துல்லியமற்றதாக இருக்கலாம். &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt; இல் அவற்றை மேம்படுத்த எங்களுக்கு உதவுங்கள். &lt;br&gt;சில மொழிபெயர்ப்புகள் தானாக உருவாக்கப்படலாம் மற்றும் துல்லியமற்றதாக இருக்கலாம். &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt; இல் மேம்பாடுகளுக்கு பங்களிக்க தயங்க வேண்டாம்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="33"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="190"/>
         <source>Language</source>
         <translation>மொழி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="34"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="191"/>
         <source>Set the language of Class Widgets</source>
         <translation>வகுப்பு விட்செட்களின் மொழியை அமைக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="42"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="199"/>
         <source>Use System Language</source>
         <translation>கணினி மொழியைப் பயன்படுத்தவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="68"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="225"/>
         <source>Customize</source>
         <translation>தனிப்பயனாக்கு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="73"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="230"/>
         <source>App Theme</source>
         <translation>பயன்பாட்டு கருப்பொருள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="74"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="231"/>
         <source>Select which app theme to display</source>
         <translation>எந்த ஆப்ச் கருப்பொருள் காட்ட வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="81"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="238"/>
         <source>Light</source>
         <translation>ஒளி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="82"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="239"/>
         <source>Dark</source>
         <translation>இருள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="83"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="240"/>
         <source>Use system setting</source>
         <translation>கணினி அமைப்பைப் பயன்படுத்தவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="95"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="252"/>
         <source>Window Layer</source>
         <translation>சாளர அடுக்கு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="96"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="253"/>
         <source>Let your widgets floating on top, or tuck them neatly behind other windows</source>
         <translation>உங்கள் விட்செட்டுகளை மேலே மிதக்க அனுமதிக்கவும் அல்லது மற்ற சன்னல்களுக்குப் பின்னால் அவற்றை நேர்த்தியாக ஒட்டவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="101"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="258"/>
         <source>Pin on Top</source>
         <translation>மேலே பின்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="104"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="261"/>
         <source>Send to Back</source>
         <translation>பின்னுக்கு அனுப்பு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="124"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="281"/>
         <source>Mini Mode</source>
         <translation>மினி பயன்முறை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="125"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="282"/>
         <source>Use a more compact layout for smaller widgets</source>
         <translation>சிறிய விட்செட்டுகளுக்கு மிகவும் கச்சிதமான அமைப்பைப் பயன்படுத்தவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="144"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="301"/>
         <source>Actions</source>
         <translation>செயல்கள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="149"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="306"/>
         <source>Run at Startup</source>
         <translation>தொடக்கத்தில் இயக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="150"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="307"/>
         <source>Run Class Widgets on startup</source>
         <translation>தொடக்கத்தில் வகுப்பு விட்செட்களை இயக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="172"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="329"/>
         <source>Startup Animation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="173"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="330"/>
         <source>Show a compact animation in the center of the screen when Class Widgets starts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="191"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="348"/>
         <source>Startup Media</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="192"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="349"/>
         <source>Choose a local image or a video no longer than 10 seconds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="207"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="364"/>
         <source>No local media selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="213"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="370"/>
         <source>Select media</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="221"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="378"/>
         <source>Clear</source>
         <translation type="unfinished">தெளிவு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="244"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="401"/>
         <source>Show ClassWidgets Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="246"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="403"/>
         <source>Show the icon, software name and version over custom startup media</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="247"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="404"/>
         <source>This information is always shown until a local image or video is selected</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3463,27 +3534,27 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>Shortcuts</name>
     <message>
-        <location filename="../../src/core/central.py" line="153"/>
+        <location filename="../../src/core/central.py" line="155"/>
         <source>Settings</source>
         <translation type="unfinished">அமைப்புகள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="159"/>
+        <location filename="../../src/core/central.py" line="161"/>
         <source>Schedules</source>
         <translation type="unfinished">அட்டவணைகள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="165"/>
+        <location filename="../../src/core/central.py" line="167"/>
         <source>Plugin Plaza</source>
         <translation type="unfinished">செருகுநிரல் பிளாசா</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="171"/>
+        <location filename="../../src/core/central.py" line="173"/>
         <source>Reschedule Day</source>
         <translation type="unfinished">மறு அட்டவணை நாள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="177"/>
+        <location filename="../../src/core/central.py" line="179"/>
         <source>Class Swap</source>
         <translation type="unfinished">வகுப்பு இடமாற்று</translation>
     </message>
@@ -4022,6 +4093,35 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <source>minutes</source>
         <translation type="vanished">நிமிடங்கள்</translation>
+    </message>
+</context>
+<context>
+    <name>TimeService</name>
+    <message>
+        <location filename="../../src/core/time_service.py" line="38"/>
+        <location filename="../../src/core/time_service.py" line="130"/>
+        <source>Using system time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/time_service.py" line="99"/>
+        <source>No NTP server specified; using system time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/time_service.py" line="106"/>
+        <source>Synchronizing with {0}…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/time_service.py" line="148"/>
+        <source>Synchronized with {0}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/time_service.py" line="152"/>
+        <source>NTP synchronization failed; using system time</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

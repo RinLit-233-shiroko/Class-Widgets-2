@@ -1439,157 +1439,228 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation>将军</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="18"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="30"/>
+        <source>Time</source>
+        <translation type="unfinished">Tim Cook</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="35"/>
+        <source>Use Precise Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="37"/>
+        <source>Use the synchronized NTP time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="38"/>
+        <source>Use NTP time when available; otherwise use system time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="58"/>
+        <source>NTP Server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="59"/>
+        <source>Choose a preset server or enter a custom server address</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="77"/>
+        <source>Custom server</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="106"/>
+        <source>Custom NTP server, for example time.example.com</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="130"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="145"/>
+        <source>Synchronize Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="131"/>
+        <source>Synchronize now; if it fails, Class Widgets continues with system time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="145"/>
+        <source>Synchronizing…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="154"/>
+        <source>Time Offset (Seconds)</source>
+        <translation type="unfinished">广播站多少年没同步时间了（恼）</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="155"/>
+        <source>Apply a seconds-level offset to the displayed time and schedule calculations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="162"/>
+        <source>Seconds</source>
+        <translation type="unfinished">光秒</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="175"/>
         <source>Locale</source>
         <translation>你在哪个地方</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="23"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="180"/>
         <source>Translation notice / 翻译提示</source>
         <translation>Translation notice / 八国语言教程</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="24"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="181"/>
         <source>Some translations may be auto-generated and could be inaccurate. Help us improve them on &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt;. &lt;br&gt;部分翻译可能由自动翻译生成，存在不准确之处。欢迎在 &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt; 上参与改进</source>
         <translation>Some translations may be auto-generated and could be inaccurate. Help us improve them on &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt;. &lt;br&gt;部分翻译可能由自动翻译生成，存在不准确之处。欢迎在 &lt;a href=&apos;https://hosted.weblate.org/projects/class-widgets/cw2/&apos;&gt;Weblate&lt;/a&gt; 上参与改进。哦但是如果你看到了这句话说明你现在正在使用梗体中文。这是我瞎译的。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="33"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="190"/>
         <source>Language</source>
         <translation>八国语言</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="34"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="191"/>
         <source>Set the language of Class Widgets</source>
         <translation>你精通八国语言吗？</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="42"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="199"/>
         <source>Use System Language</source>
         <translation>学系统精。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="68"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="225"/>
         <source>Customize</source>
         <translation>我说了算</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="73"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="230"/>
         <source>App Theme</source>
         <translation>皮肤</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="74"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="231"/>
         <source>Select which app theme to display</source>
         <translation>巴啦啦能量！乌卡拉卡！小魔仙魔力变！</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="81"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="238"/>
         <source>Light</source>
         <translation>闪光弹</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="82"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="239"/>
         <source>Dark</source>
         <translation>五彩斑斓的黑</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="83"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="240"/>
         <source>Use system setting</source>
         <translation>学系统精。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="95"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="252"/>
         <source>Window Layer</source>
         <translation>你和我好像不在同一个图层。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="96"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="253"/>
         <source>Let your widgets floating on top, or tuck them neatly behind other windows</source>
         <translation>顶天立地，或者老鹰捉小鸡</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="101"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="258"/>
         <source>Pin on Top</source>
         <translation>.top</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="104"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="261"/>
         <source>Send to Back</source>
         <translation>我在床底</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="124"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="281"/>
         <source>Mini Mode</source>
         <translation>小小的也很可爱</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="125"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="282"/>
         <source>Use a more compact layout for smaller widgets</source>
         <translation>空间管理大师</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="144"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="301"/>
         <source>Actions</source>
         <translation>gogogo出发咯～</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="149"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="306"/>
         <source>Run at Startup</source>
         <translation>开机时自动引爆 Class Widgets 牌 GTX 690</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="150"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="307"/>
         <source>Run Class Widgets on startup</source>
         <translation>电脑开机后 Class Widgets 将自动和你打招呼</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="172"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="329"/>
         <source>Startup Animation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="173"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="330"/>
         <source>Show a compact animation in the center of the screen when Class Widgets starts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="191"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="348"/>
         <source>Startup Media</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="192"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="349"/>
         <source>Choose a local image or a video no longer than 10 seconds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="207"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="364"/>
         <source>No local media selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="213"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="370"/>
         <source>Select media</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="221"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="378"/>
         <source>Clear</source>
         <translation type="unfinished">弄死它</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="244"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="401"/>
         <source>Show ClassWidgets Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="246"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="403"/>
         <source>Show the icon, software name and version over custom startup media</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="247"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="404"/>
         <source>This information is always shown until a local image or video is selected</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3461,27 +3532,27 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>Shortcuts</name>
     <message>
-        <location filename="../../src/core/central.py" line="153"/>
+        <location filename="../../src/core/central.py" line="155"/>
         <source>Settings</source>
         <translation>齿轮</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="159"/>
+        <location filename="../../src/core/central.py" line="161"/>
         <source>Schedules</source>
         <translation>配料表</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="165"/>
+        <location filename="../../src/core/central.py" line="167"/>
         <source>Plugin Plaza</source>
         <translation>屁股超市</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="171"/>
+        <location filename="../../src/core/central.py" line="173"/>
         <source>Reschedule Day</source>
         <translation>傻逼调休</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="177"/>
+        <location filename="../../src/core/central.py" line="179"/>
         <source>Class Swap</source>
         <translation>洗牌！</translation>
     </message>
@@ -4018,6 +4089,35 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <source>minutes</source>
         <translation type="vanished">最小</translation>
+    </message>
+</context>
+<context>
+    <name>TimeService</name>
+    <message>
+        <location filename="../../src/core/time_service.py" line="38"/>
+        <location filename="../../src/core/time_service.py" line="130"/>
+        <source>Using system time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/time_service.py" line="99"/>
+        <source>No NTP server specified; using system time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/time_service.py" line="106"/>
+        <source>Synchronizing with {0}…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/time_service.py" line="148"/>
+        <source>Synchronized with {0}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/time_service.py" line="152"/>
+        <source>NTP synchronization failed; using system time</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
