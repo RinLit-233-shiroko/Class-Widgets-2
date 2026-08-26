@@ -2444,7 +2444,7 @@ Please try again later.</source>
         <translation type="vanished">日程运行时</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/backend.py" line="54"/>
+        <location filename="../../src/core/utils/backend.py" line="57"/>
         <source>Debug Notification</source>
         <translation>调试通知</translation>
     </message>
@@ -2482,47 +2482,47 @@ Please try again later.</source>
 <context>
     <name>Overview</name>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="48"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="50"/>
         <source>Debug</source>
         <translation>调试通知</translation>
     </message>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="49"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="51"/>
         <source>Debug message</source>
         <translation>调试信息</translation>
     </message>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="85"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="97"/>
         <source>App Theme</source>
         <translation>应用主题</translation>
     </message>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="86"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="98"/>
         <source>Select which app theme to display</source>
         <translation>选择显示的应用主题</translation>
     </message>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="92"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="104"/>
         <source>Light</source>
         <translation>浅色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="93"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="105"/>
         <source>Dark</source>
         <translation>深色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="94"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="106"/>
         <source>Use system setting</source>
         <translation>使用系统设置</translation>
     </message>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="106"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="118"/>
         <source>No Logs</source>
         <translation>不保存日志</translation>
     </message>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="107"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="119"/>
         <source>Do not save logs to local storage.</source>
         <translation>不将日志保存至本地存储。</translation>
     </message>

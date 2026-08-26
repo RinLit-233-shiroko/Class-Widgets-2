@@ -1954,7 +1954,7 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>NotificationProviders</name>
     <message>
-        <location filename="../../src/core/utils/backend.py" line="54"/>
+        <location filename="../../src/core/utils/backend.py" line="57"/>
         <source>Debug Notification</source>
         <translation>பிழைத்திருத்த அறிவிப்பு</translation>
     </message>
@@ -1992,47 +1992,47 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>Overview</name>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="48"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="50"/>
         <source>Debug</source>
         <translation>பிழைத்திருத்தம்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="49"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="51"/>
         <source>Debug message</source>
         <translation>பிழைத்திருத்த செய்தி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="85"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="97"/>
         <source>App Theme</source>
         <translation>பயன்பாட்டு கருப்பொருள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="86"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="98"/>
         <source>Select which app theme to display</source>
         <translation>எந்த ஆப்ச் கருப்பொருள் காட்ட வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="92"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="104"/>
         <source>Light</source>
         <translation>ஒளி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="93"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="105"/>
         <source>Dark</source>
         <translation>இருள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="94"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="106"/>
         <source>Use system setting</source>
         <translation>கணினி அமைப்பைப் பயன்படுத்தவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="106"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="118"/>
         <source>No Logs</source>
         <translation>பதிவுகள் இல்லை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="107"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="119"/>
         <source>Do not save logs to local storage.</source>
         <translation>உள்ளக சேமிப்பகத்தில் பதிவுகளைச் சேமிக்க வேண்டாம்.</translation>
     </message>
