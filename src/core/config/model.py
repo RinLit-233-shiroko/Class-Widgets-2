@@ -224,7 +224,10 @@ class TimeConfig(ConfigBaseModel):
 class CentralControlConfig(ConfigBaseModel):
     """集控策略的本地接收配置。"""
 
-    schedule_manifest_url: str = "https://mmckb.github.io/Test/manifest.json"
+    schedule_manifest_url: str = ""
+    auto_fetch_enabled: bool = False
+    auto_fetch_interval_minutes: int = 15
+    executed_command_ids: list[str] = Field(default_factory=list)
 
 
 class NetworkConfig(ConfigBaseModel):

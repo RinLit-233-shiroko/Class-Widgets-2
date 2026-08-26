@@ -201,6 +201,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.central_control: CentralControlScheduleService = CentralControlScheduleService(
             self.configs,
             self.schedule_manager,
+            self._notification,
             self,
         )
 
@@ -318,6 +319,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         """加载和验证配置"""
         self.configs.load_config()
         self.time_service.start()
+        self.central_control.start()
 
     def _load_class_swap(self) -> None:
         """加载换课记录，跨天时自动清理"""
@@ -334,6 +336,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
 
         cleanup_steps = (
             ("time service stop", self.time_service.stop),
+            ("central control stop", self.central_control.stop),
             ("configuration save", self.configs.save),
             ("update timer stop", self.union_update_timer.stop),
             ("auxiliary window release", self.window_manager.release_all),
