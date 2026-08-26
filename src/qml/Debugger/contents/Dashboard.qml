@@ -18,7 +18,7 @@ ColumnLayout {
 
     Text {
         typography: Typography.BodyStrong
-        text: "Dashboard"
+        text: qsTr("仪表盘")
     }
 
     Frame {
@@ -170,7 +170,7 @@ ColumnLayout {
     }
 
     Expander {
-        text: "Runtime Variables"
+        text: qsTr("运行时变量")
         Layout.fillWidth: true
 
         ColumnLayout {
@@ -182,14 +182,14 @@ ColumnLayout {
                 Item { Layout.fillWidth: true }
 
                 Button {
-                    text: "Reload Schedule File"
+                    text: qsTr("重新加载课程表文件")
                     onClicked: AppCentral.scheduleManager.reload()
                 }
             }
 
             Text {
                 typography: Typography.BodyStrong
-                text: "ScheduleRuntime"
+                text: qsTr("课程表运行时")
             }
 
             VarStatus {
@@ -197,19 +197,19 @@ ColumnLayout {
                 columns: 3
                 Layout.preferredHeight: 350
                 model: [
-                    { name: "currentTime", value: AppCentral.scheduleRuntime.currentTime },
-                    { name: "currentDate", value: JSON.stringify(AppCentral.scheduleRuntime.currentDate) },
-                    { name: "currentDayOfWeek", value: AppCentral.scheduleRuntime.currentDayOfWeek },
-                    { name: "currentWeek", value: AppCentral.scheduleRuntime.currentWeek },
-                    { name: "currentWeekOfCycle", value: AppCentral.scheduleRuntime.currentWeekOfCycle },
-                    { name: "scheduleMeta", value: JSON.stringify(AppCentral.scheduleRuntime.scheduleMeta) },
-                    { name: "currentDayEntries", value: JSON.stringify(AppCentral.scheduleRuntime.currentDayEntries) },
-                    { name: "currentEntry", value: JSON.stringify(AppCentral.scheduleRuntime.currentEntry) },
-                    { name: "nextEntries", value: JSON.stringify(AppCentral.scheduleRuntime.nextEntries) },
-                    { name: "remainingTime", value: JSON.stringify(AppCentral.scheduleRuntime.remainingTime) },
-                    { name: "currentStatus", value: AppCentral.scheduleRuntime.currentStatus },
-                    { name: "currentSubject", value: JSON.stringify(AppCentral.scheduleRuntime.currentSubject) },
-                    { name: "currentTitle", value: AppCentral.scheduleRuntime.currentTitle }
+                    { name: qsTr("当前时间"), value: AppCentral.scheduleRuntime.currentTime },
+                    { name: qsTr("当前日期"), value: JSON.stringify(AppCentral.scheduleRuntime.currentDate) },
+                    { name: qsTr("当前星期"), value: AppCentral.scheduleRuntime.currentDayOfWeek },
+                    { name: qsTr("当前周数"), value: AppCentral.scheduleRuntime.currentWeek },
+                    { name: qsTr("周期周数"), value: AppCentral.scheduleRuntime.currentWeekOfCycle },
+                    { name: qsTr("课表元数据"), value: JSON.stringify(AppCentral.scheduleRuntime.scheduleMeta) },
+                    { name: qsTr("当天条目"), value: JSON.stringify(AppCentral.scheduleRuntime.currentDayEntries) },
+                    { name: qsTr("当前条目"), value: JSON.stringify(AppCentral.scheduleRuntime.currentEntry) },
+                    { name: qsTr("后续条目"), value: JSON.stringify(AppCentral.scheduleRuntime.nextEntries) },
+                    { name: qsTr("剩余时间"), value: JSON.stringify(AppCentral.scheduleRuntime.remainingTime) },
+                    { name: qsTr("当前状态"), value: AppCentral.scheduleRuntime.currentStatus },
+                    { name: qsTr("当前学科"), value: JSON.stringify(AppCentral.scheduleRuntime.currentSubject) },
+                    { name: qsTr("当前标题"), value: AppCentral.scheduleRuntime.currentTitle }
                 ]
             }
         }

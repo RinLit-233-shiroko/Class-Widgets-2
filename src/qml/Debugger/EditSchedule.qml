@@ -7,7 +7,7 @@ import Debugger
 
 ApplicationWindow {
     id: mainWindow
-    title: "Class Widgets Debugger"
+    title: qsTr("ClassWidgets 调试器")
     width: 900
     height: 600
     minimumWidth: 425
@@ -46,11 +46,11 @@ ApplicationWindow {
 
     FluentPage {
         anchors.fill: parent
-        title: "Edit Schedule"
+        title: qsTr("编辑课程表")
 
         SettingExpander {
             Layout.fillWidth: true
-            title: "MetaInfo"
+            title: qsTr("课表元数据")
             icon.name: "ic_fluent_notepad_20_regular"
 
             SettingItem {
@@ -61,14 +61,14 @@ ApplicationWindow {
                 }
             }
             SettingItem {
-                title: "Version"
+                title: qsTr("版本")
                 TextField {
                     text: AppCentral.scheduleEditor.meta.version
                     readOnly: true
                 }
             }
             SettingItem {
-                title: "fMax Week Cycle Length"
+                title: qsTr("最大周循环长度")
                 SpinBox {
                     from: 1
                     to: 4
@@ -76,7 +76,7 @@ ApplicationWindow {
                 }
             }
             SettingItem {
-                title: "Start Date"
+                title: qsTr("开始日期")
                 DatePicker {
                     Component.onCompleted: {
                         setDate(AppCentral.scheduleEditor.meta.startDate)
@@ -87,10 +87,10 @@ ApplicationWindow {
 
         SettingExpander {
             Layout.fillWidth: true
-            title: "Schedule"
+            title: qsTr("课程表")
             icon.name: "ic_fluent_calendar_clock_20_regular"
             action: Button {
-                text: "Add Day"
+                text: qsTr("添加日期")
                 onClicked: AppCentral.scheduleEditor.addDay(
                     0, null, null
                 )
@@ -113,7 +113,7 @@ ApplicationWindow {
                         spacing: 4
                         Button {
                             icon.name: "ic_fluent_add_20_regular"
-                            text: "Add"
+                            text: qsTr("添加")
                             onClicked: AppCentral.scheduleEditor.addEntry(
                                 modelData.id, "class", null, null, null, null
                             )
@@ -143,7 +143,7 @@ ApplicationWindow {
                             RowLayout {
                                 InfoBadge {
                                     Layout.alignment: Qt.AlignVCenter
-                                    text: modelData.type
+                                    text: getEntryTypeName(modelData.type)
                                     severity: {
                                         switch (modelData.type) {
                                             case "class": return Severity.Error
@@ -171,14 +171,25 @@ ApplicationWindow {
 
 
     // func
+    function getEntryTypeName(type) {
+        switch (type) {
+            case "class": return qsTr("课程")
+            case "break": return qsTr("课间")
+            case "activity": return qsTr("活动")
+            case "free": return qsTr("空闲")
+            case "preparation": return qsTr("准备")
+            default: return type
+        }
+    }
+
     function getDayTitle(day) {
-        const weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        const weekDays = [qsTr("星期一"), qsTr("星期二"), qsTr("星期三"), qsTr("星期四"), qsTr("星期五"), qsTr("星期六"), qsTr("星期日")]
 
         if (day.date) {
             // 日期模式
             const dateObj = new Date(day.date)
             const dayName = weekDays[dateObj.getDay() === 0 ? 6 : dateObj.getDay() - 1]  // JS周日是0
-            return `${day.date} (${dayName})`
+            return `${day.date}（${dayName}）`
         }
 
         if (day.dayOfWeek) {
@@ -186,15 +197,15 @@ ApplicationWindow {
             const weeks = day.weeks
 
             if (weeks === "all") {
-                return `${dayName} (All Weeks)`
+                return `${dayName}（${qsTr("全部周")}）`
             } else if (typeof weeks === "number") {
-                return `${dayName} (Cycle: ${weeks})`
+                return `${dayName}（${qsTr("循环")}: ${weeks}）`
             } else if (Array.isArray(weeks)) {
-                return `${dayName} (Weeks: ${weeks.join(",")})`
+                return `${dayName}（${qsTr("周次")}: ${weeks.join(",")}）`
             }
         }
 
-        return "Unknown"
+        return qsTr("未知")
     }
 
     Frame {
@@ -210,7 +221,7 @@ ApplicationWindow {
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             highlighted: false
-            text: "Save"
+            text: qsTr("保存")
             onClicked: AppCentral.scheduleEditor.save()
         }
     }

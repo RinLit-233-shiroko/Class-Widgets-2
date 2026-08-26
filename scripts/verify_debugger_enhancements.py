@@ -32,6 +32,12 @@ def test_debugger_qml(project_root: Path) -> None:
     overview = (project_root / "src/qml/Debugger/contents/Overview.qml").read_text(
         encoding="utf-8"
     )
+    main_window = (project_root / "src/qml/Debugger/MainWindow.qml").read_text(
+        encoding="utf-8"
+    )
+    edit_schedule = (project_root / "src/qml/Debugger/EditSchedule.qml").read_text(
+        encoding="utf-8"
+    )
 
     for fragment in (
         "UtilsBackend.logCount",
@@ -54,8 +60,34 @@ def test_debugger_qml(project_root: Path) -> None:
     ):
         assert fragment in overview, f"Missing notification feedback: {fragment}"
 
+    for fragment in (
+        "ClassWidgets 调试器",
+        "当前时间：",
+        "当前日期：",
+        "仪表盘",
+        "运行时变量",
+        "重新加载课程表文件",
+        "发送测试通知",
+        "应用概览",
+        "课表元数据",
+        "添加日期",
+        "全部周",
+        "未知",
+    ):
+        assert (
+            fragment in main_window
+            or fragment in dashboard
+            or fragment in overview
+            or fragment in edit_schedule
+        ), f"Missing Chinese debugger text: {fragment}"
+
+    assert "Current Time:" not in main_window
+    assert "Runtime Variables" not in dashboard
+    assert "Send notifications" not in overview
+    assert "Edit Schedule" not in edit_schedule
     assert dashboard.count("{") == dashboard.count("}"), "Unbalanced Dashboard.qml braces"
     assert overview.count("{") == overview.count("}"), "Unbalanced Overview.qml braces"
+    assert edit_schedule.count("{") == edit_schedule.count("}"), "Unbalanced EditSchedule.qml braces"
 
 
 def main() -> None:
