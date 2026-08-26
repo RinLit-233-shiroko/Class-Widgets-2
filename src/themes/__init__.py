@@ -18,20 +18,6 @@ BUILTIN_THEMES = [
         }
     },
     {
-        "path": SRC_PATH / "themes" / "rgb",
-        "meta": {
-            "id": "com.classwidgets.rgb",
-            "name": QCoreApplication.translate("Theme", "RGB"),
-            "description": QCoreApplication.translate("Theme", "动态RGB灯光效果主题 - 颜色随效果实时变化"),
-            "author": "Class Widgets Official",
-            "version": "1.0.0",
-            "api_version": "*",
-            "preview": ASSETS_PATH / "images" / "themes" / "rgb.png",
-            "color": "#ff0000",
-            "is_rgb_theme": True,
-        }
-    },
-    {
         "path": SRC_PATH / "themes" / "cw1",
         "meta": {
             "id": "com.classwidgets.cw1",

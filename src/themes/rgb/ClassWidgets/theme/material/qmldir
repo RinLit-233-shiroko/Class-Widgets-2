@@ -1,2 +1,0 @@
-module ClassWidgets.Theme.Material
-singleton MaterialColor 1.0 MaterialColor.qml
