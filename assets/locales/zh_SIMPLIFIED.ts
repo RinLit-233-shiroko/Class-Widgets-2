@@ -403,7 +403,7 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>Configs</name>
     <message>
-        <location filename="../../src/core/config/model.py" line="206"/>
+        <location filename="../../src/core/config/model.py" line="210"/>
         <source>New Schedule 1</source>
         <translation>新的配料表 1</translation>
     </message>
@@ -1511,6 +1511,56 @@ Do you want to continue using them, or discard and restore the original schedule
         <source>Run Class Widgets on startup</source>
         <translation>电脑开机后 Class Widgets 将自动和你打招呼</translation>
     </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="172"/>
+        <source>Startup Animation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="173"/>
+        <source>Show a compact animation in the center of the screen when Class Widgets starts</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="191"/>
+        <source>Startup Media</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="192"/>
+        <source>Choose a local image or a video no longer than 10 seconds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="207"/>
+        <source>No local media selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="213"/>
+        <source>Select media</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="221"/>
+        <source>Clear</source>
+        <translation type="unfinished">弄死它</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="244"/>
+        <source>Show ClassWidgets Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="246"/>
+        <source>Show the icon, software name and version over custom startup media</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="247"/>
+        <source>This information is always shown until a local image or video is selected</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Interactions</name>
@@ -1897,33 +1947,48 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation type="vanished">FBI Warning</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="30"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="35"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="40"/>
         <source>Accent Color</source>
         <translation>色色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="36"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="41"/>
         <source>Pick the color which app highlighted color</source>
         <translation>选用一个你最喜欢的色色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="58"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="63"/>
         <source>Themes</source>
         <translation>肤色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="138"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="143"/>
         <source>Built-in</source>
         <translation>内裤</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="215"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="223"/>
+        <source>RGB Lighting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="228"/>
+        <source>RGB Lighting Effects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="229"/>
+        <source>Configure dynamic lighting effects for RGB theme</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="242"/>
         <source>Incompatible Theme</source>
         <translation>你不能色色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="220"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="247"/>
         <source>This theme requires the app version %1, but current app version is %2. 
 
 Applying an incompatible theme may cause serious errors, crashes, or unexpected behavior.</source>
@@ -1932,17 +1997,17 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
 应用不兼容的主题可能会使西大不丢饿原地起飞。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="231"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="258"/>
         <source>Cancel</source>
         <translation>嫑</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="238"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="265"/>
         <source>Apply anyway</source>
         <translation>无视风险</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="167"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="172"/>
         <source>No description</source>
         <translation>请输入文本。</translation>
     </message>
@@ -1955,7 +2020,7 @@ If translations are missing after a theme change, please restart</source>
 东西丢了我建议你用重启大法</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="145"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="150"/>
         <source>Incompatible</source>
         <translation>不合适</translation>
     </message>
@@ -2893,6 +2958,210 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     </message>
 </context>
 <context>
+    <name>RGB</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="12"/>
+        <source>RGB Lighting Effects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="31"/>
+        <source>Select Primary Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="41"/>
+        <source>Select Secondary Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="68"/>
+        <source>RGB Theme Required</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="69"/>
+        <source>Please select the RGB theme in Personalization to use lighting effects.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="79"/>
+        <source>Effect Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="84"/>
+        <source>Enable RGB Effects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="85"/>
+        <source>Widget colors will change dynamically with the selected effect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="107"/>
+        <source>OpenRGB Standard Effects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="116"/>
+        <source>Static</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="117"/>
+        <source>Breathing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="118"/>
+        <source>Flashing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="119"/>
+        <source>Spectrum Cycle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="120"/>
+        <source>Rainbow Wave</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="144"/>
+        <source>Extended Effects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="153"/>
+        <source>Running Light</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="154"/>
+        <source>Meteor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="155"/>
+        <source>Gradient</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="156"/>
+        <source>Sparkle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="157"/>
+        <source>Heartbeat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="181"/>
+        <source>Presets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="190"/>
+        <source>Ocean</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="191"/>
+        <source>Sunset</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="192"/>
+        <source>Forest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="193"/>
+        <source>Aurora</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="194"/>
+        <source>Fire</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="195"/>
+        <source>Cyberpunk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="219"/>
+        <source>Color Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="224"/>
+        <source>Primary Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="225"/>
+        <source>Main color for the effect</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="241"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="267"/>
+        <source>Select</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="249"/>
+        <source>Secondary Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="250"/>
+        <source>Used for gradient effects</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="282"/>
+        <source>Parameters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="287"/>
+        <source>Speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="288"/>
+        <source>Effect animation speed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="314"/>
+        <source>Brightness</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="315"/>
+        <source>Effect brightness level</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="347"/>
+        <source>Preview</source>
+        <translation type="unfinished">预习</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization/RGB.qml" line="370"/>
+        <source>Color Preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RescheduleDayDialog</name>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/RescheduleDayDialog.qml" line="8"/>
@@ -3376,29 +3645,67 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>Shortcuts</name>
     <message>
-        <location filename="../../src/core/central.py" line="151"/>
+        <location filename="../../src/core/central.py" line="153"/>
         <source>Settings</source>
         <translation>齿轮</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="157"/>
+        <location filename="../../src/core/central.py" line="159"/>
         <source>Schedules</source>
         <translation>配料表</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="163"/>
+        <location filename="../../src/core/central.py" line="165"/>
         <source>Plugin Plaza</source>
         <translation>屁股超市</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="169"/>
+        <location filename="../../src/core/central.py" line="171"/>
         <source>Reschedule Day</source>
         <translation>傻逼调休</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="175"/>
+        <location filename="../../src/core/central.py" line="177"/>
         <source>Class Swap</source>
         <translation>洗牌！</translation>
+    </message>
+</context>
+<context>
+    <name>StartupAnimation</name>
+    <message>
+        <location filename="../../src/core/startup_animation.py" line="82"/>
+        <source>Select startup media</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/startup_animation.py" line="87"/>
+        <source>Supported media (*.png *.jpg *.jpeg *.bmp *.webp *.gif *.mp4 *.webm *.mov *.m4v *.avi)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/startup_animation.py" line="101"/>
+        <source>The selected media file does not exist.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/startup_animation.py" line="106"/>
+        <source>The selected image cannot be read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/startup_animation.py" line="113"/>
+        <source>The selected video could not be read.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/startup_animation.py" line="115"/>
+        <source>Startup videos must be 10 seconds or shorter.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/startup_animation.py" line="120"/>
+        <source>Unsupported media format.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3818,6 +4125,16 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <location filename="../../src/themes/__init__.py" line="12"/>
         <source>Class Widgets Builtin Default Theme</source>
         <translation>Class Widgets 自带的主题</translation>
+    </message>
+    <message>
+        <location filename="../../src/themes/__init__.py" line="24"/>
+        <source>RGB</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/themes/__init__.py" line="25"/>
+        <source>动态RGB灯光效果主题 - 颜色随效果实时变化</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Theme.qml" line="11"/>
