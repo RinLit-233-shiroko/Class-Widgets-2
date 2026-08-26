@@ -4104,7 +4104,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Time.qml" line="165"/>
-        <source>调整显示时间与课程计算时间，以匹配学校铃声或广播时间</source>
+        <source>仅调整课程判断、倒计时与提醒时间；不会改变 NTP/系统真实时间或时间小组件显示</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4117,27 +4117,27 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <name>TimeService</name>
     <message>
         <location filename="../../src/core/time_service.py" line="38"/>
-        <location filename="../../src/core/time_service.py" line="130"/>
+        <location filename="../../src/core/time_service.py" line="133"/>
         <source>正在使用系统时间</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/time_service.py" line="99"/>
+        <location filename="../../src/core/time_service.py" line="102"/>
         <source>未指定 NTP 服务器，正在使用系统时间</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/time_service.py" line="106"/>
+        <location filename="../../src/core/time_service.py" line="109"/>
         <source>正在与 {0} 同步…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/time_service.py" line="148"/>
+        <location filename="../../src/core/time_service.py" line="151"/>
         <source>已与 {0} 同步</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/time_service.py" line="152"/>
+        <location filename="../../src/core/time_service.py" line="155"/>
         <source>NTP 同步失败，正在使用系统时间</source>
         <translation type="unfinished"></translation>
     </message>
