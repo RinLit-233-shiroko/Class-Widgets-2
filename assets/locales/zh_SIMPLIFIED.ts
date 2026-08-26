@@ -4612,27 +4612,42 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation>你需要重新访问2WC在这个操作之后</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="297"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="292"/>
+        <source>GitHub Releases 更新源</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="293"/>
+        <source>填写 GitHub 仓库的 Releases 页面地址。保存后仅检查此源，不再使用默认更新服务器。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="309"/>
+        <source>清除自定义更新源</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="336"/>
         <source>Advanced</source>
         <translation>搞基选项</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="303"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="342"/>
         <source>Updater Server URL</source>
         <translation>更改天线地址</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="304"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="343"/>
         <source>Set a custom URL to use for the updater server</source>
         <translation>我就要用自己的天线！</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="319"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="358"/>
         <source>Reset to default</source>
         <translation>回炉重造</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="327"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="366"/>
         <source>https://example.com/releases.json/</source>
         <translation>https://example.com/releases.json/</translation>
     </message>
@@ -4662,22 +4677,22 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation>好东西来了</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="163"/>
+        <location filename="../../src/core/updater/bridge.py" line="171"/>
         <source>Update Downloaded</source>
         <translation>上日期已经被下加载了</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="168"/>
+        <location filename="../../src/core/updater/bridge.py" line="176"/>
         <source>Ready to install anytime. Go to &quot;Settings&quot; → &quot;Update&quot; to proceed with installation.</source>
         <translation>你没事吧？没事的话更新一下。</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="205"/>
+        <location filename="../../src/core/updater/bridge.py" line="213"/>
         <source>Applying Update Soon</source>
         <translation>我要更新了。</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="209"/>
+        <location filename="../../src/core/updater/bridge.py" line="217"/>
         <source>The update may take several seconds to complete. (●&apos;◡&apos;●)</source>
         <translation>正在更新 Class Widgets ，请勿 TM 关闭计算机</translation>
     </message>
