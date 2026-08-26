@@ -500,6 +500,94 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
 </context>
 <context>
+    <name>Dashboard</name>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Dashboard.qml" line="21"/>
+        <source>仪表盘</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Dashboard.qml" line="173"/>
+        <source>运行时变量</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Dashboard.qml" line="185"/>
+        <source>重新加载课程表文件</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Dashboard.qml" line="192"/>
+        <source>课程表运行时</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Dashboard.qml" line="200"/>
+        <source>当前时间</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Dashboard.qml" line="201"/>
+        <source>当前日期</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Dashboard.qml" line="202"/>
+        <source>当前星期</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Dashboard.qml" line="203"/>
+        <source>当前周数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Dashboard.qml" line="204"/>
+        <source>周期周数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Dashboard.qml" line="205"/>
+        <source>课表元数据</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Dashboard.qml" line="206"/>
+        <source>当天条目</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Dashboard.qml" line="207"/>
+        <source>当前条目</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Dashboard.qml" line="208"/>
+        <source>后续条目</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Dashboard.qml" line="209"/>
+        <source>剩余时间</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Dashboard.qml" line="210"/>
+        <source>当前状态</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Dashboard.qml" line="211"/>
+        <source>当前学科</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Dashboard.qml" line="212"/>
+        <source>当前标题</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>DayEditor</name>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="10"/>
@@ -865,6 +953,124 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="275"/>
         <source>No installed Plugin Plaza plugins</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EditSchedule</name>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="10"/>
+        <source>ClassWidgets 调试器</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="49"/>
+        <source>编辑课程表</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="53"/>
+        <source>课表元数据</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="64"/>
+        <source>版本</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="71"/>
+        <source>最大周循环长度</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="79"/>
+        <source>开始日期</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="90"/>
+        <source>课程表</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="93"/>
+        <source>添加日期</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="116"/>
+        <source>添加</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="176"/>
+        <source>课程</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="177"/>
+        <source>课间</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="178"/>
+        <source>活动</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="179"/>
+        <source>空闲</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="180"/>
+        <source>准备</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="186"/>
+        <source>星期一</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="186"/>
+        <source>星期二</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="186"/>
+        <source>星期三</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="186"/>
+        <source>星期四</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="186"/>
+        <source>星期五</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="186"/>
+        <source>星期六</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="186"/>
+        <source>星期日</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="208"/>
+        <source>未知</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/EditSchedule.qml" line="224"/>
+        <source>保存</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1824,6 +2030,30 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
 </context>
 <context>
+    <name>MainWindow</name>
+    <message>
+        <location filename="../../src/qml/Debugger/MainWindow.qml" line="9"/>
+        <location filename="../../src/qml/Debugger/MainWindow.qml" line="46"/>
+        <source>ClassWidgets 调试器</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/MainWindow.qml" line="53"/>
+        <source>当前时间：</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/MainWindow.qml" line="62"/>
+        <source>当前日期：</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/MainWindow.qml" line="63"/>
+        <source>（时间信息来自 ClassWidgets → AppCentral.scheduleRuntime）</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Notification</name>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="13"/>
@@ -1992,49 +2222,156 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>Overview</name>
     <message>
-        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="50"/>
         <source>Debug</source>
-        <translation>பிழைத்திருத்தம்</translation>
+        <translation type="vanished">பிழைத்திருத்தம்</translation>
+    </message>
+    <message>
+        <source>Debug message</source>
+        <translation type="vanished">பிழைத்திருத்த செய்தி</translation>
+    </message>
+    <message>
+        <source>App Theme</source>
+        <translation type="vanished">பயன்பாட்டு கருப்பொருள்</translation>
+    </message>
+    <message>
+        <source>Select which app theme to display</source>
+        <translation type="vanished">எந்த ஆப்ச் கருப்பொருள் காட்ட வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்</translation>
+    </message>
+    <message>
+        <source>Light</source>
+        <translation type="vanished">ஒளி</translation>
+    </message>
+    <message>
+        <source>Dark</source>
+        <translation type="vanished">இருள்</translation>
+    </message>
+    <message>
+        <source>Use system setting</source>
+        <translation type="vanished">கணினி அமைப்பைப் பயன்படுத்தவும்</translation>
+    </message>
+    <message>
+        <source>No Logs</source>
+        <translation type="vanished">பதிவுகள் இல்லை</translation>
+    </message>
+    <message>
+        <source>Do not save logs to local storage.</source>
+        <translation type="vanished">உள்ளக சேமிப்பகத்தில் பதிவுகளைச் சேமிக்க வேண்டாம்.</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="10"/>
+        <source>概览</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="16"/>
+        <source>通知</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="17"/>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="50"/>
+        <source>调试</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="21"/>
+        <source>发送测试通知</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="29"/>
+        <source>信息</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="29"/>
+        <source>公告</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="29"/>
+        <source>警告</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="29"/>
+        <source>系统</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="34"/>
+        <source>标题</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="39"/>
+        <source>内容</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="44"/>
+        <source>发送</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="51"/>
-        <source>Debug message</source>
-        <translation>பிழைத்திருத்த செய்தி</translation>
+        <source>调试通知</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="55"/>
+        <source>测试通知已发送</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="57"/>
+        <source>调试通知提供者不可用</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="83"/>
+        <source>应用概览</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/Debugger/contents/Overview.qml" line="87"/>
+        <source>版本</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="97"/>
-        <source>App Theme</source>
-        <translation>பயன்பாட்டு கருப்பொருள்</translation>
+        <source>应用主题</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="98"/>
-        <source>Select which app theme to display</source>
-        <translation>எந்த ஆப்ச் கருப்பொருள் காட்ட வேண்டும் என்பதைத் தேர்ந்தெடுக்கவும்</translation>
+        <source>选择要显示的应用主题</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="104"/>
-        <source>Light</source>
-        <translation>ஒளி</translation>
+        <source>浅色</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="105"/>
-        <source>Dark</source>
-        <translation>இருள்</translation>
+        <source>深色</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="106"/>
-        <source>Use system setting</source>
-        <translation>கணினி அமைப்பைப் பயன்படுத்தவும்</translation>
+        <source>跟随系统设置</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="118"/>
-        <source>No Logs</source>
-        <translation>பதிவுகள் இல்லை</translation>
+        <source>不保存日志</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/Debugger/contents/Overview.qml" line="119"/>
-        <source>Do not save logs to local storage.</source>
-        <translation>உள்ளக சேமிப்பகத்தில் பதிவுகளைச் சேமிக்க வேண்டாம்.</translation>
+        <source>不将日志保存到本地存储。</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
