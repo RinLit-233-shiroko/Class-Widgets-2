@@ -13,7 +13,7 @@ from typing import TYPE_CHECKING, Any
 
 from loguru import logger
 from pydantic import BaseModel, Field, field_validator
-from PySide6.QtCore import Property, QProcess, QThread, Signal, Slot
+from PySide6.QtCore import Property, QProcess, Signal, Slot
 
 from src.core import CONFIGS_PATH
 from src.core.notification import NotificationProvider
@@ -36,10 +36,8 @@ TRIGGER_TYPES = {
     "break_started",
     "school_dismissal",
     "noon_dismissal",
-    "temperature_at_or_above",
 }
-ACTION_TYPES = {"notification", "run_program", "fan_full_speed"}
-SENSOR_NAMES = {"cpu", "gpu", "other"}
+ACTION_TYPES = {"notification", "run_program"}
 
 
 class AutomationTrigger(BaseModel):
@@ -47,8 +45,6 @@ class AutomationTrigger(BaseModel):
 
     type: str = "app_started"
     process_name: str = ""
-    sensor_name: str = "cpu"
-    threshold_celsius: float = 80.0
 
     @field_validator("type")
     @classmethod
@@ -56,19 +52,6 @@ class AutomationTrigger(BaseModel):
         if value not in TRIGGER_TYPES:
             raise ValueError(f"Unsupported automation trigger: {value}")
         return value
-
-    @field_validator("sensor_name")
-    @classmethod
-    def validate_sensor_name(cls, value: str) -> str:
-        normalized = value.strip().casefold() or "cpu"
-        if normalized not in SENSOR_NAMES:
-            return "other"
-        return normalized
-
-    @field_validator("threshold_celsius")
-    @classmethod
-    def validate_threshold(cls, value: float) -> float:
-        return max(0.0, min(float(value), 150.0))
 
 
 class AutomationAction(BaseModel):
@@ -132,9 +115,6 @@ class AutomationProfile(BaseModel):
     id: str = Field(default_factory=lambda: uuid.uuid4().hex)
     name: str = "新自动化配置"
     enabled: bool = False
-    temperature_command: str = ""
-    temperature_arguments: list[str] = Field(default_factory=list)
-    temperature_poll_seconds: int = 5
     rules: list[AutomationRule] = Field(default_factory=list)
 
     @field_validator("name")
@@ -142,46 +122,9 @@ class AutomationProfile(BaseModel):
     def validate_name(cls, value: str) -> str:
         return value.strip()[:80] or "新自动化配置"
 
-    @field_validator("temperature_poll_seconds")
-    @classmethod
-    def validate_poll_seconds(cls, value: int) -> int:
-        return max(2, min(int(value), 300))
-
-
-class _TemperatureProbeWorker(QThread):
-    completed = Signal(str, bool, object, str)
-
-    def __init__(self, profile_id: str, program: str, arguments: list[str], parent=None) -> None:
-        super().__init__(parent)
-        self.profile_id = profile_id
-        self.program = program
-        self.arguments = list(arguments)
-
-    def run(self) -> None:
-        try:
-            result = subprocess.run(
-                [self.program, *self.arguments],
-                capture_output=True,
-                text=True,
-                encoding="utf-8",
-                errors="replace",
-                timeout=5,
-                check=True,
-                shell=False,
-            )
-            raw_values = json.loads(result.stdout)
-            if not isinstance(raw_values, dict):
-                raise ValueError("温度命令输出必须是 JSON 对象")
-            values: dict[str, float] = {}
-            for key, value in raw_values.items():
-                values[str(key).casefold()] = float(value)
-            self.completed.emit(self.profile_id, True, values, "")
-        except Exception as exc:
-            self.completed.emit(self.profile_id, False, {}, str(exc))
-
 
 class AutomationProfilesService(AutomationTask):
-    """自动化配置文件运行器：按秒检测课程、进程和外部温度命令。"""
+    """自动化配置文件运行器：按秒检测课程和进程状态。"""
 
     changed = Signal()
     DEFAULT_PROFILE_NAME = "新自动化配置"
@@ -191,10 +134,6 @@ class AutomationProfilesService(AutomationTask):
         self._profiles: dict[str, AutomationProfile] = {}
         self._storage_dir = Path(CONFIGS_PATH) / "automation_profiles"
         self._running = False
-        self._profile_workers: dict[str, _TemperatureProbeWorker] = {}
-        self._last_temperature_poll: dict[str, float] = {}
-        self._temperatures: dict[str, dict[str, float]] = {}
-        self._temperature_rule_active: dict[tuple[str, str], bool] = {}
         self._last_rule_run: dict[tuple[str, str], float] = {}
         self._last_processes: dict[str, set[int]] = {}
         self._process_snapshot_ready = False
@@ -220,10 +159,6 @@ class AutomationProfilesService(AutomationTask):
     def statusText(self) -> str:
         return self._last_status_text
 
-    @Property(dict, notify=changed)
-    def temperatures(self) -> dict[str, dict[str, float]]:
-        return {profile_id: dict(values) for profile_id, values in self._temperatures.items()}
-
     @Property(bool, notify=changed)
     def running(self) -> bool:
         return self._running
@@ -244,11 +179,6 @@ class AutomationProfilesService(AutomationTask):
             return
         self._dispatch_event("app_exiting")
         self._running = False
-        for worker in self._profile_workers.values():
-            worker.requestInterruption()
-            worker.quit()
-            worker.wait(1000)
-        self._profile_workers.clear()
         self._set_status(self.tr("自动化服务已停止"))
 
     def update(self) -> None:
@@ -256,7 +186,6 @@ class AutomationProfilesService(AutomationTask):
             return
         self._check_process_events()
         self._check_schedule_events()
-        self._schedule_temperature_probes()
 
     @Slot(str, result=str)
     def createProfile(self, name: str) -> str:
@@ -272,8 +201,6 @@ class AutomationProfilesService(AutomationTask):
         if profile is None:
             return
         self._profile_path(profile_id).unlink(missing_ok=True)
-        self._temperatures.pop(profile_id, None)
-        self._last_temperature_poll.pop(profile_id, None)
         self._set_status(self.tr("已删除自动化配置文件“{0}”").format(profile.name))
 
     @Slot(str, bool)
@@ -290,15 +217,12 @@ class AutomationProfilesService(AutomationTask):
             )
         )
 
-    @Slot(str, str, str, str, int)
-    def updateProfile(self, profile_id: str, name: str, sensor_program: str, sensor_arguments: str, poll_seconds: int) -> None:
+    @Slot(str, str)
+    def updateProfile(self, profile_id: str, name: str) -> None:
         profile = self._get_profile(profile_id)
         if profile is None:
             return
         profile.name = name
-        profile.temperature_command = sensor_program.strip()
-        profile.temperature_arguments = self._parse_arguments(sensor_arguments)
-        profile.temperature_poll_seconds = poll_seconds
         self._save_profile(profile)
         self._set_status(self.tr("已保存自动化配置文件“{0}”").format(profile.name))
 
@@ -330,7 +254,7 @@ class AutomationProfilesService(AutomationTask):
         self._save_profile(self._profiles[profile_id])
         self.changed.emit()
 
-    @Slot(str, str, str, str, str, str, float, int)
+    @Slot(str, str, str, str, str, int)
     def updateRule(
         self,
         profile_id: str,
@@ -338,8 +262,6 @@ class AutomationProfilesService(AutomationTask):
         name: str,
         trigger_type: str,
         process_name: str,
-        sensor_name: str,
-        threshold_celsius: float,
         cooldown_seconds: int,
     ) -> None:
         profile = self._get_profile(profile_id)
@@ -351,8 +273,6 @@ class AutomationProfilesService(AutomationTask):
             rule.trigger = AutomationTrigger(
                 type=trigger_type,
                 process_name=process_name.strip(),
-                sensor_name=sensor_name,
-                threshold_celsius=threshold_celsius,
             )
             rule.cooldown_seconds = cooldown_seconds
         except ValueError as exc:
@@ -428,15 +348,47 @@ class AutomationProfilesService(AutomationTask):
         self._profiles.clear()
         for path in sorted(self._storage_dir.glob("*.json")):
             try:
-                profile = AutomationProfile.model_validate_json(path.read_text(encoding="utf-8"))
+                raw_profile = json.loads(path.read_text(encoding="utf-8"))
+                migrated = False
+                for key in (
+                    "temperature_command",
+                    "temperature_arguments",
+                    "temperature_poll_seconds",
+                ):
+                    if key in raw_profile:
+                        raw_profile.pop(key)
+                        migrated = True
+
+                compatible_rules = []
+                for raw_rule in raw_profile.get("rules", []):
+                    trigger = raw_rule.get("trigger", {})
+                    if trigger.get("type") == "temperature_at_or_above":
+                        migrated = True
+                        continue
+                    actions = raw_rule.get("actions", [])
+                    filtered_actions = [
+                        action for action in actions if action.get("type") != "fan_full_speed"
+                    ]
+                    if len(filtered_actions) != len(actions):
+                        raw_rule = dict(raw_rule)
+                        raw_rule["actions"] = filtered_actions
+                        migrated = True
+                    compatible_rules.append(raw_rule)
+                raw_profile["rules"] = compatible_rules
+
+                profile = AutomationProfile.model_validate(raw_profile)
                 self._profiles[profile.id] = profile
+                if migrated:
+                    self._write_profile(path, profile)
             except Exception as exc:
                 logger.warning("Skipping invalid automation profile {}: {}", path, exc)
         self.changed.emit()
 
     def _save_profile(self, profile: AutomationProfile) -> None:
         self._storage_dir.mkdir(parents=True, exist_ok=True)
-        path = self._profile_path(profile.id)
+        self._write_profile(self._profile_path(profile.id), profile)
+
+    def _write_profile(self, path: Path, profile: AutomationProfile) -> None:
         temporary = path.with_suffix(".json.tmp")
         temporary.write_text(profile.model_dump_json(indent=2), encoding="utf-8")
         temporary.replace(path)
@@ -509,60 +461,6 @@ class AutomationProfilesService(AutomationTask):
             elif was_class and not self._has_future_classes_today():
                 self._dispatch_event("school_dismissal")
 
-    def _schedule_temperature_probes(self) -> None:
-        now = time.monotonic()
-        for profile in self._enabled_profiles():
-            if not profile.temperature_command or profile.id in self._profile_workers:
-                continue
-            if not any(
-                rule.trigger.type == "temperature_at_or_above"
-                for rule in self._enabled_rules(profile)
-            ):
-                continue
-            last_poll = self._last_temperature_poll.get(profile.id, 0.0)
-            if now - last_poll < profile.temperature_poll_seconds:
-                continue
-            self._last_temperature_poll[profile.id] = now
-            worker = _TemperatureProbeWorker(
-                profile.id,
-                profile.temperature_command,
-                profile.temperature_arguments,
-                self,
-            )
-            worker.completed.connect(self._on_temperature_probe_completed)
-            worker.finished.connect(worker.deleteLater)
-            worker.finished.connect(lambda profile_id=profile.id: self._profile_workers.pop(profile_id, None))
-            self._profile_workers[profile.id] = worker
-            worker.start()
-
-    @Slot(str, bool, object, str)
-    def _on_temperature_probe_completed(self, profile_id: str, success: bool, values: object, error: str) -> None:
-        profile = self._get_profile(profile_id)
-        if profile is None:
-            return
-        if not success or not isinstance(values, dict):
-            self._set_status(self.tr("温度读取失败（{0}）：{1}").format(profile.name, error))
-            return
-        normalized = {str(key).casefold(): float(value) for key, value in values.items()}
-        self._temperatures[profile_id] = normalized
-        for rule in self._enabled_rules(profile):
-            if rule.trigger.type != "temperature_at_or_above":
-                continue
-            sensor_name = rule.trigger.sensor_name
-            sensor_value = normalized.get(sensor_name)
-            if sensor_value is None:
-                continue
-            key = (profile.id, rule.id)
-            above = sensor_value >= rule.trigger.threshold_celsius
-            if above and not self._temperature_rule_active.get(key, False):
-                self._run_rule(
-                    profile,
-                    rule,
-                    self.tr("{0} 温度达到 {1:.1f}°C").format(sensor_name.upper(), sensor_value),
-                )
-            self._temperature_rule_active[key] = above
-        self._set_status(self.tr("已更新自动化温度传感器数据"))
-
     def _dispatch_event(self, trigger_type: str) -> None:
         for profile in self._enabled_profiles():
             for rule in self._enabled_rules(profile):
@@ -598,7 +496,7 @@ class AutomationProfilesService(AutomationTask):
                 True,
             )
             return True
-        if action.type in {"run_program", "fan_full_speed"}:
+        if action.type == "run_program":
             if not action.program:
                 logger.warning("Skipping automation action without an executable: {}", rule.name)
                 return False

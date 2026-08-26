@@ -1,15 +1,15 @@
 from __future__ import annotations
 
 import importlib
+import json
 import tempfile
 from pathlib import Path
 from types import SimpleNamespace
 
+
 class FakeNotificationManager:
     def __init__(self) -> None:
-        self.configs = SimpleNamespace(
-            notifications=SimpleNamespace(providers={})
-        )
+        self.configs = SimpleNamespace(notifications=SimpleNamespace(providers={}))
         self.providers: list[object] = []
         self.dispatched: list[object] = []
 
@@ -34,7 +34,7 @@ def load_service_module():
     return importlib.import_module("src.core.automations.user_profiles")
 
 
-def test_profile_defaults_and_storage(project_root: Path) -> None:
+def test_profile_defaults_and_program_action() -> None:
     module = load_service_module()
     with tempfile.TemporaryDirectory() as temp_dir:
         original_path = module.CONFIGS_PATH
@@ -50,15 +50,12 @@ def test_profile_defaults_and_storage(project_root: Path) -> None:
             assert (Path(temp_dir) / "automation_profiles" / f"{profile_id}.json").is_file()
 
             rule_id = service.addRule(profile_id)
-            assert rule_id
             service.updateRule(
                 profile_id,
                 rule_id,
-                "CPU 过热时满速散热",
-                "temperature_at_or_above",
-                "",
-                "cpu",
-                85.0,
+                "启动演示程序",
+                "process_started",
+                "demo.exe",
                 0,
             )
             action_id = service.addAction(profile_id, rule_id)
@@ -66,79 +63,86 @@ def test_profile_defaults_and_storage(project_root: Path) -> None:
                 profile_id,
                 rule_id,
                 action_id,
-                "fan_full_speed",
-                "风扇满速",
+                "run_program",
+                "启动程序",
                 "",
-                "C:/Tools/fan-full-speed.cmd",
-                '--profile "full speed"',
+                "C:/Tools/demo.exe",
+                "--class 1",
                 8000,
             )
             profile = service._get_profile(profile_id)
             rule = profile.rules[0]
-            assert rule.trigger.type == "temperature_at_or_above"
-            assert rule.trigger.threshold_celsius == 85.0
-            assert rule.actions[-1].type == "fan_full_speed"
-            assert rule.actions[-1].arguments == ["--profile", "full speed"]
+            assert rule.trigger.type == "process_started"
+            assert rule.trigger.process_name == "demo.exe"
+            assert rule.actions[-1].type == "run_program"
+            assert rule.actions[-1].arguments == ["--class", "1"]
         finally:
             module.CONFIGS_PATH = original_path
 
 
-def test_temperature_edge_trigger_and_safe_fan_command() -> None:
+def test_legacy_temperature_configuration_is_cleaned() -> None:
     module = load_service_module()
     with tempfile.TemporaryDirectory() as temp_dir:
         original_path = module.CONFIGS_PATH
-        original_qprocess = module.QProcess
         module.CONFIGS_PATH = Path(temp_dir)
-        starts: list[tuple[str, list[str]]] = []
-
-        class FakeQProcess:
-            @staticmethod
-            def startDetached(program: str, arguments: list[str]) -> bool:
-                starts.append((program, list(arguments)))
-                return True
-
-        module.QProcess = FakeQProcess
         try:
-            central = FakeCentral()
-            service = module.AutomationProfilesService(central)
-            service.start()
-            profile_id = service.createProfile("热保护")
-            service.setProfileEnabled(profile_id, True)
-            rule_id = service.addRule(profile_id)
-            service.updateRule(
-                profile_id,
-                rule_id,
-                "CPU 高温",
-                "temperature_at_or_above",
-                "",
-                "cpu",
-                80.0,
-                0,
-            )
-            action_id = service.addAction(profile_id, rule_id)
-            service.updateAction(
-                profile_id,
-                rule_id,
-                action_id,
-                "fan_full_speed",
-                "风扇满速",
-                "",
-                "fan-control.exe",
-                "--set full",
-                8000,
+            profiles_dir = Path(temp_dir) / "automation_profiles"
+            profiles_dir.mkdir(parents=True)
+            legacy_path = profiles_dir / "legacy.json"
+            legacy_path.write_text(
+                json.dumps(
+                    {
+                        "id": "legacy-profile",
+                        "name": "旧配置",
+                        "enabled": True,
+                        "temperature_command": "read-temperature.exe",
+                        "temperature_arguments": ["--json"],
+                        "temperature_poll_seconds": 5,
+                        "rules": [
+                            {
+                                "id": "temperature-rule",
+                                "name": "旧温度规则",
+                                "trigger": {"type": "temperature_at_or_above"},
+                                "actions": [{"type": "fan_full_speed", "program": "fan.exe"}],
+                            },
+                            {
+                                "id": "process-rule",
+                                "name": "保留进程规则",
+                                "trigger": {"type": "process_started", "process_name": "demo.exe"},
+                                "actions": [
+                                    {"type": "fan_full_speed", "program": "fan.exe"},
+                                    {"type": "notification", "title": "已启动"},
+                                ],
+                            },
+                        ],
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
             )
 
-            service._on_temperature_probe_completed(profile_id, True, {"cpu": 75.0}, "")
-            assert starts == []
-            service._on_temperature_probe_completed(profile_id, True, {"cpu": 82.0}, "")
-            assert starts == [("fan-control.exe", ["--set", "full"])]
-            service._on_temperature_probe_completed(profile_id, True, {"cpu": 90.0}, "")
-            assert len(starts) == 1, "same high-temperature interval must not repeat the action"
-            service._on_temperature_probe_completed(profile_id, True, {"cpu": 70.0}, "")
-            service._on_temperature_probe_completed(profile_id, True, {"cpu": 83.0}, "")
-            assert len(starts) == 2, "temperature must fall below threshold before a new rise triggers again"
+            service = module.AutomationProfilesService(FakeCentral())
+            service.start()
+            profile = service._get_profile("legacy-profile")
+            assert profile is not None
+            assert len(profile.rules) == 1
+            assert profile.rules[0].trigger.type == "process_started"
+            assert [action.type for action in profile.rules[0].actions] == ["notification"]
+
+            persisted = json.loads(legacy_path.read_text(encoding="utf-8"))
+            assert "temperature_command" not in persisted
+            assert "temperature_arguments" not in persisted
+            assert "temperature_poll_seconds" not in persisted
+            assert all(
+                rule["trigger"]["type"] != "temperature_at_or_above"
+                for rule in persisted["rules"]
+            )
+            assert all(
+                action["type"] != "fan_full_speed"
+                for rule in persisted["rules"]
+                for action in rule["actions"]
+            )
         finally:
-            module.QProcess = original_qprocess
             module.CONFIGS_PATH = original_path
 
 
@@ -161,16 +165,10 @@ def test_process_triggers() -> None:
                     trigger_type,
                     trigger_type,
                     "demo.exe",
-                    "cpu",
-                    80.0,
                     0,
                 )
 
-            snapshots = iter([
-                {},
-                {"demo.exe": {100}},
-                {},
-            ])
+            snapshots = iter([{}, {"demo.exe": {100}}, {}])
             service._snapshot_processes = lambda: next(snapshots)
             service._check_process_events()
             assert central.notification.dispatched == []
@@ -201,8 +199,6 @@ def test_schedule_triggers() -> None:
                     trigger_type,
                     trigger_type,
                     "",
-                    "cpu",
-                    80.0,
                     0,
                 )
 
@@ -218,13 +214,13 @@ def test_schedule_triggers() -> None:
             module.CONFIGS_PATH = original_path
 
 
-def test_process_and_ui_contract(project_root: Path) -> None:
+def test_service_and_ui_contract(project_root: Path) -> None:
     module = load_service_module()
     assert module.AutomationProfile().enabled is False
     assert {"app_started", "app_exiting", "process_started", "process_running", "process_exited"} <= module.TRIGGER_TYPES
     assert {"class_started", "break_started", "school_dismissal", "noon_dismissal"} <= module.TRIGGER_TYPES
-    assert "temperature_at_or_above" in module.TRIGGER_TYPES
-    assert "fan_full_speed" in module.ACTION_TYPES
+    assert "temperature_at_or_above" not in module.TRIGGER_TYPES
+    assert "fan_full_speed" not in module.ACTION_TYPES
 
     manager = (project_root / "src/core/automations/manager.py").read_text(encoding="utf-8")
     central = (project_root / "src/core/central.py").read_text(encoding="utf-8")
@@ -240,11 +236,12 @@ def test_process_and_ui_contract(project_root: Path) -> None:
     assert "automation_manager.stop" in central
     assert 'title: qsTr("自动化")' in settings
     assert 'pages/settings/Automation.qml' in settings
-    assert "temperature_at_or_above" in page
-    assert "fan_full_speed" in page
     assert "createProfile" in page
     assert "addRule" in page
     assert "addAction" in page
+    assert "temperature_at_or_above" not in page
+    assert "fan_full_speed" not in page
+    assert "温度传感器命令" not in page
     assert page.count("{") == page.count("}"), "unbalanced QML braces"
     assert "property string currentValue" not in page
     assert "property string automationValue" in page
@@ -253,15 +250,19 @@ def test_process_and_ui_contract(project_root: Path) -> None:
     assert "EnumProcesses" in automation_service
     assert "QueryFullProcessImageNameW" in automation_service
     assert '["tasklist"' not in automation_service
+    assert automation_service.count('"temperature_at_or_above"') == 1
+    assert automation_service.count('"fan_full_speed"') == 1
+    assert "_schedule_temperature_probes" not in automation_service
+    assert "_on_temperature_probe_completed" not in automation_service
 
 
 def main() -> None:
     project_root = Path(__file__).resolve().parents[1]
-    test_profile_defaults_and_storage(project_root)
-    test_temperature_edge_trigger_and_safe_fan_command()
+    test_profile_defaults_and_program_action()
+    test_legacy_temperature_configuration_is_cleaned()
     test_process_triggers()
     test_schedule_triggers()
-    test_process_and_ui_contract(project_root)
+    test_service_and_ui_contract(project_root)
     print("Automation profiles verification passed.")
 
 

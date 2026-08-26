@@ -13,18 +13,15 @@ FluentPage {
     readonly property var triggerKeys: [
         "app_started", "app_exiting", "process_started", "process_running",
         "process_exited", "class_started", "break_started", "school_dismissal",
-        "noon_dismissal", "temperature_at_or_above"
+        "noon_dismissal"
     ]
     readonly property var triggerNames: [
         qsTr("应用启动时"), qsTr("应用退出时"), qsTr("进程启动时"),
         qsTr("进程运行时"), qsTr("进程退出时"), qsTr("上课时"),
-        qsTr("课间时"), qsTr("放学时"), qsTr("中午放学时"),
-        qsTr("CPU / 显卡等温度达到阈值时")
+        qsTr("课间时"), qsTr("放学时"), qsTr("中午放学时")
     ]
-    readonly property var actionKeys: ["notification", "run_program", "fan_full_speed"]
-    readonly property var actionNames: [
-        qsTr("显示提醒"), qsTr("运行程序"), qsTr("将风扇调到满速（运行配置程序）")
-    ]
+    readonly property var actionKeys: ["notification", "run_program"]
+    readonly property var actionNames: [qsTr("显示提醒"), qsTr("运行程序")]
 
     function indexFor(values, value) {
         const index = values.indexOf(value)
@@ -68,7 +65,7 @@ FluentPage {
             Layout.fillWidth: true
             color: Colors.proxy.textSecondaryColor
             wrapMode: Text.Wrap
-            text: qsTr("自动化配置文件保存在本机，默认未启用。每个配置文件可以包含多条“当……时，执行……”规则；程序与风扇动作只会运行你明确配置的本地可执行文件和参数。")
+            text: qsTr("自动化配置文件保存在本机，默认未启用。每个配置文件可以包含多条“当……时，执行……”规则；运行程序动作只会启动你明确配置的本地可执行文件和参数。")
         }
 
         SettingCard {
@@ -152,83 +149,9 @@ FluentPage {
                     Layout.fillWidth: true
                     placeholderText: qsTr("配置文件名称")
                     text: root.selectedProfile ? root.selectedProfile.name : ""
-                    onEditingFinished: {
-                        AppCentral.automationProfiles.updateProfile(
-                            root.selectedProfileId, text, sensorProgram.text,
-                            sensorArguments.text, sensorInterval.value
-                        )
-                    }
-                }
-            }
-        }
-
-        SettingExpander {
-            Layout.fillWidth: true
-            visible: root.selectedProfile !== null
-            icon.name: "ic_fluent_temperature_20_regular"
-            title: qsTr("温度传感器命令")
-            description: qsTr("温度触发器会运行此命令，并要求标准输出为 JSON 对象，例如 {\"cpu\": 78.5, \"gpu\": 65.0}。未配置时不会读取温度。")
-
-            ColumnLayout {
-                Layout.fillWidth: true
-                spacing: 8
-
-                TextField {
-                    id: sensorProgram
-                    Layout.fillWidth: true
-                    placeholderText: qsTr("温度读取程序路径，例如 C:\\Tools\\read-temperature.exe")
-                    text: root.selectedProfile ? root.selectedProfile.temperature_command : ""
-                    onEditingFinished: {
-                        AppCentral.automationProfiles.updateProfile(
-                            root.selectedProfileId, profileName.text, text,
-                            sensorArguments.text, sensorInterval.value
-                        )
-                    }
-                }
-
-                TextField {
-                    id: sensorArguments
-                    Layout.fillWidth: true
-                    placeholderText: qsTr("读取温度程序的参数；支持带引号的路径")
-                    text: root.selectedProfile ? root.selectedProfile.temperature_arguments.join(" ") : ""
-                    onEditingFinished: {
-                        AppCentral.automationProfiles.updateProfile(
-                            root.selectedProfileId, profileName.text, sensorProgram.text,
-                            text, sensorInterval.value
-                        )
-                    }
-                }
-
-                RowLayout {
-                    Layout.fillWidth: true
-                    spacing: 8
-
-                    Text { text: qsTr("检查间隔") }
-                    SpinBox {
-                        id: sensorInterval
-                        from: 2
-                        to: 300
-                        value: root.selectedProfile ? root.selectedProfile.temperature_poll_seconds : 5
-                        editable: true
-                        onValueModified: {
-                            AppCentral.automationProfiles.updateProfile(
-                                root.selectedProfileId, profileName.text, sensorProgram.text,
-                                sensorArguments.text, value
-                            )
-                        }
-                    }
-                    Text {
-                        text: qsTr("秒")
-                        color: Colors.proxy.textSecondaryColor
-                    }
-                    Item { Layout.fillWidth: true }
-                }
-
-                Text {
-                    Layout.fillWidth: true
-                    color: Colors.proxy.textSecondaryColor
-                    wrapMode: Text.Wrap
-                    text: qsTr("安全说明：CW 不直接写入主板或显卡寄存器。风扇满速动作只会启动你在该动作中明确指定的本地控制程序/脚本；请先在厂商工具或风扇控制软件中验证该命令。")
+                    onEditingFinished: AppCentral.automationProfiles.updateProfile(
+                        root.selectedProfileId, text
+                    )
                 }
             }
         }
@@ -282,7 +205,7 @@ FluentPage {
                                     onEditingFinished: AppCentral.automationProfiles.updateRule(
                                         root.selectedProfileId, rule.id, text,
                                         triggerType.automationValue, processName.text,
-                                        sensorName.automationValue, threshold.value, cooldown.value
+                                        cooldown.value
                                     )
                                 }
 
@@ -306,7 +229,7 @@ FluentPage {
                                     onActivated: AppCentral.automationProfiles.updateRule(
                                         root.selectedProfileId, rule.id, ruleName.text,
                                         automationValue, processName.text,
-                                        sensorName.automationValue, threshold.value, cooldown.value
+                                        cooldown.value
                                     )
                                 }
                             }
@@ -322,43 +245,8 @@ FluentPage {
                                 onEditingFinished: AppCentral.automationProfiles.updateRule(
                                     root.selectedProfileId, rule.id, ruleName.text,
                                     triggerType.automationValue, text,
-                                    sensorName.automationValue, threshold.value, cooldown.value
+                                    cooldown.value
                                 )
-                            }
-
-                            RowLayout {
-                                Layout.fillWidth: true
-                                visible: triggerType.automationValue === "temperature_at_or_above"
-                                spacing: 8
-
-                                Text { text: qsTr("传感器") }
-                                ComboBox {
-                                    id: sensorName
-                                    model: ["cpu", "gpu", "other"]
-                                    currentIndex: root.indexFor(model, rule.trigger.sensor_name)
-                                    property string automationValue: model[currentIndex]
-                                    onActivated: AppCentral.automationProfiles.updateRule(
-                                        root.selectedProfileId, rule.id, ruleName.text,
-                                        triggerType.automationValue, processName.text,
-                                        automationValue, threshold.value, cooldown.value
-                                    )
-                                }
-
-                                Text { text: qsTr("达到") }
-                                SpinBox {
-                                    id: threshold
-                                    from: 0
-                                    to: 150
-                                    value: rule.trigger.threshold_celsius
-                                    editable: true
-                                    onValueModified: AppCentral.automationProfiles.updateRule(
-                                        root.selectedProfileId, rule.id, ruleName.text,
-                                        triggerType.automationValue, processName.text,
-                                        sensorName.automationValue, value, cooldown.value
-                                    )
-                                }
-                                Text { text: "°C" }
-                                Item { Layout.fillWidth: true }
                             }
 
                             RowLayout {
@@ -375,7 +263,7 @@ FluentPage {
                                     onValueModified: AppCentral.automationProfiles.updateRule(
                                         root.selectedProfileId, rule.id, ruleName.text,
                                         triggerType.automationValue, processName.text,
-                                        sensorName.automationValue, threshold.value, value
+                                        value
                                     )
                                 }
                                 Text {
@@ -491,9 +379,7 @@ FluentPage {
                                             id: actionProgram
                                             Layout.fillWidth: true
                                             visible: actionType.automationValue !== "notification"
-                                            placeholderText: actionType.automationValue === "fan_full_speed"
-                                                ? qsTr("设置满速的控制程序或脚本路径")
-                                                : qsTr("要运行的程序路径")
+                                            placeholderText: qsTr("要运行的程序路径")
                                             text: action.program
                                             onEditingFinished: AppCentral.automationProfiles.updateAction(
                                                 root.selectedProfileId, rule.id, action.id,
@@ -527,7 +413,7 @@ FluentPage {
             Layout.fillWidth: true
             icon.name: "ic_fluent_alert_20_regular"
             title: qsTr("状态与测试")
-            description: qsTr("测试通知不会执行程序或风扇动作。")
+            description: qsTr("测试通知不会执行程序动作。")
 
             ColumnLayout {
                 Layout.fillWidth: true
@@ -538,23 +424,6 @@ FluentPage {
                     color: Colors.proxy.textSecondaryColor
                     wrapMode: Text.Wrap
                     text: AppCentral.automationProfiles.statusText
-                }
-
-                Text {
-                    Layout.fillWidth: true
-                    visible: root.selectedProfile !== null
-                    color: Colors.proxy.textSecondaryColor
-                    wrapMode: Text.Wrap
-                    text: {
-                        if (!root.selectedProfile)
-                            return ""
-                        const values = AppCentral.automationProfiles.temperatures[root.selectedProfile.id]
-                        if (!values)
-                            return qsTr("尚未读取温度。")
-                        return qsTr("温度：CPU %1°C，GPU %2°C")
-                            .arg(values.cpu === undefined ? "—" : values.cpu)
-                            .arg(values.gpu === undefined ? "—" : values.gpu)
-                    }
                 }
 
                 Button {
