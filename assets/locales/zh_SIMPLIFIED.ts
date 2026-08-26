@@ -247,6 +247,25 @@ Licensed under the MIT license</source>
     </message>
 </context>
 <context>
+    <name>CentralControl</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="8"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="16"/>
+        <source>集控</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="22"/>
+        <source>集控功能暂未启用</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="23"/>
+        <source>此页面已预留为独立的集控入口。后续将在此配置设备接入、统一策略与远程管理功能。</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CheckSingleInstanceDialog</name>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/CheckSingleInstanceDialog.qml" line="23"/>
@@ -3456,16 +3475,21 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="68"/>
+        <source>集控</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="73"/>
         <source>Plugins</source>
         <translation>屁股</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="75"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="80"/>
         <source>About</source>
         <translation>这是什么</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="81"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="86"/>
         <source>Update</source>
         <translation>上日期</translation>
     </message>
