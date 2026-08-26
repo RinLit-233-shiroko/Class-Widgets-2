@@ -1282,7 +1282,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation type="vanished">默认</translation>
     </message>
     <message>
-        <location filename="../../src/core/config/model.py" line="212"/>
+        <location filename="../../src/core/config/model.py" line="213"/>
         <source>New Schedule 1</source>
         <translation>新课程表 1</translation>
     </message>
@@ -2716,53 +2716,123 @@ Please try again later.</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="173"/>
-        <source>Startup Animation</source>
-        <translation>启动动画</translation>
+        <source>启动动画</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="174"/>
-        <source>Show a compact animation in the center of the screen when Class Widgets starts</source>
-        <translation>启动 Class Widgets 时在屏幕中央显示紧凑动画</translation>
+        <source>启动 Class Widgets 时，在屏幕中央显示紧凑的动画</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="192"/>
-        <source>Startup Media</source>
-        <translation>启动媒体</translation>
+        <source>启动动画媒体</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="193"/>
-        <source>Choose a local image or a video no longer than 10 seconds</source>
-        <translation>选择本地图片，或时长不超过 10 秒的视频</translation>
+        <source>选择本地图片，或不超过 10 秒的视频</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="208"/>
-        <source>No local media selected</source>
-        <translation>未选择本地媒体</translation>
+        <source>未选择本地媒体</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="214"/>
-        <source>Select media</source>
-        <translation>选择媒体</translation>
+        <source>选择媒体</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="222"/>
-        <source>Clear</source>
-        <translation>清除</translation>
+        <source>清除</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="245"/>
-        <source>Show ClassWidgets Information</source>
-        <translation>显示 ClassWidgets 信息</translation>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="246"/>
+        <source>强制播放完视频</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="247"/>
-        <source>Show the icon, software name and version over custom startup media</source>
-        <translation>在自定义启动媒体上显示图标、软件名称和版本号</translation>
+        <source>开启后会忽略默认展示时长，直到所选视频播放结束。</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="248"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="263"/>
+        <source>显示 ClassWidgets 信息</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="265"/>
+        <source>在自定义启动媒体上显示图标、软件名称和版本信息</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="266"/>
+        <source>未选择本地图片或视频时，始终显示此信息</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="283"/>
+        <source>预览启动动画</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="284"/>
+        <source>弹出独立的启动动画预览窗口；不会隐藏、暂停或重新加载当前小组件。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="288"/>
+        <source>正在预览…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="288"/>
+        <source>预览</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Startup Animation</source>
+        <translation type="vanished">启动动画</translation>
+    </message>
+    <message>
+        <source>Show a compact animation in the center of the screen when Class Widgets starts</source>
+        <translation type="vanished">启动 Class Widgets 时在屏幕中央显示紧凑动画</translation>
+    </message>
+    <message>
+        <source>Startup Media</source>
+        <translation type="vanished">启动媒体</translation>
+    </message>
+    <message>
+        <source>Choose a local image or a video no longer than 10 seconds</source>
+        <translation type="vanished">选择本地图片，或时长不超过 10 秒的视频</translation>
+    </message>
+    <message>
+        <source>No local media selected</source>
+        <translation type="vanished">未选择本地媒体</translation>
+    </message>
+    <message>
+        <source>Select media</source>
+        <translation type="vanished">选择媒体</translation>
+    </message>
+    <message>
+        <source>Clear</source>
+        <translation type="vanished">清除</translation>
+    </message>
+    <message>
+        <source>Show ClassWidgets Information</source>
+        <translation type="vanished">显示 ClassWidgets 信息</translation>
+    </message>
+    <message>
+        <source>Show the icon, software name and version over custom startup media</source>
+        <translation type="vanished">在自定义启动媒体上显示图标、软件名称和版本号</translation>
+    </message>
+    <message>
         <source>This information is always shown until a local image or video is selected</source>
-        <translation>选择本地图片或视频后，才可以关闭这些信息</translation>
+        <translation type="vanished">选择本地图片或视频后，才可以关闭这些信息</translation>
     </message>
 </context>
 <context>
@@ -5115,39 +5185,72 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>StartupAnimation</name>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="83"/>
         <source>Select startup media</source>
-        <translation>选择启动媒体</translation>
+        <translation type="vanished">选择启动媒体</translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="88"/>
         <source>Supported media (*.png *.jpg *.jpeg *.bmp *.webp *.gif *.mp4 *.webm *.mov *.m4v *.avi)</source>
-        <translation>支持的媒体 (*.png *.jpg *.jpeg *.bmp *.webp *.gif *.mp4 *.webm *.mov *.m4v *.avi)</translation>
+        <translation type="vanished">支持的媒体 (*.png *.jpg *.jpeg *.bmp *.webp *.gif *.mp4 *.webm *.mov *.m4v *.avi)</translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="102"/>
         <source>The selected media file does not exist.</source>
-        <translation>所选媒体文件不存在。</translation>
+        <translation type="vanished">所选媒体文件不存在。</translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="107"/>
         <source>The selected image cannot be read.</source>
-        <translation>无法读取所选图片。</translation>
+        <translation type="vanished">无法读取所选图片。</translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="114"/>
         <source>The selected video could not be read.</source>
-        <translation>无法读取所选视频。</translation>
+        <translation type="vanished">无法读取所选视频。</translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="116"/>
         <source>Startup videos must be 10 seconds or shorter.</source>
-        <translation>启动视频时长不得超过 10 秒。</translation>
+        <translation type="vanished">启动视频时长不得超过 10 秒。</translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="121"/>
         <source>Unsupported media format.</source>
-        <translation>不支持的媒体格式。</translation>
+        <translation type="vanished">不支持的媒体格式。</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/startup_animation.py" line="94"/>
+        <source>选择启动动画媒体</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/startup_animation.py" line="99"/>
+        <source>支持的媒体 (*.png *.jpg *.jpeg *.bmp *.webp *.gif *.mp4 *.webm *.mov *.m4v *.avi)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/startup_animation.py" line="113"/>
+        <source>所选媒体文件不存在。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/startup_animation.py" line="118"/>
+        <source>无法读取所选图片。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/startup_animation.py" line="125"/>
+        <source>无法读取所选视频。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/startup_animation.py" line="127"/>
+        <source>启动动画视频不得超过 10 秒。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/startup_animation.py" line="132"/>
+        <source>不支持的媒体格式。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/StartupAnimation.qml" line="19"/>
+        <source>启动动画预览</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6397,6 +6500,16 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation>选择用于下载更新的镜像源</translation>
     </message>
     <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="292"/>
+        <source>显示更新摘要</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="293"/>
+        <source>更新安装完成后，在下次启动时打开更新摘要窗口</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="246"/>
         <source>Select Mirror</source>
         <translation>选择镜像源</translation>
@@ -6412,16 +6525,6 @@ If it takes place in another location, such as a sport field, lab, or another cl
 * Requires restart</source>
         <translation>自动检查更新并在可用时下载
 * 需要重启</translation>
-    </message>
-    <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="292"/>
-        <source>Show update summary</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="293"/>
-        <source>Open the update summary window after an update is installed</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="305"/>
