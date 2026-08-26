@@ -50,6 +50,7 @@ from src.core.automations.manager import AutomationManager
 from src.core.windows.manager import AppWindowManager
 from src.core.startup_animation import StartupAnimation
 from src.core.time_service import TimeService
+from src.core.central_control import CentralControlScheduleService
 
 
 class QmlContextWindow(Protocol):
@@ -197,6 +198,11 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         """初始化调度相关组件"""
         self.union_update_timer: UnionUpdateTimer = UnionUpdateTimer()
         self.schedule_manager: ScheduleManager = ScheduleManager(Path(CONFIGS_PATH / "schedules"), self)
+        self.central_control: CentralControlScheduleService = CentralControlScheduleService(
+            self.configs,
+            self.schedule_manager,
+            self,
+        )
 
         self.runtime: ScheduleRuntime = ScheduleRuntime(self)
         self._schedule_editor: ScheduleEditor = ScheduleEditor(self.schedule_manager)
@@ -373,6 +379,10 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     @Property(QObject, notify=updated)
     def scheduleManager(self):  # 课程表管理器
         return self.schedule_manager
+
+    @Property(QObject)
+    def centralControl(self) -> QObject:
+        return self.central_control
 
     @Property(QObject, notify=initialized)
     def translator(self):

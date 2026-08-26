@@ -221,6 +221,12 @@ class TimeConfig(ConfigBaseModel):
     ntp_server: str = "time.cloudflare.com"
 
 
+class CentralControlConfig(ConfigBaseModel):
+    """集控策略的本地接收配置。"""
+
+    schedule_manifest_url: str = "https://mmckb.github.io/Test/manifest.json"
+
+
 class NetworkConfig(ConfigBaseModel):
     """
     网络配置

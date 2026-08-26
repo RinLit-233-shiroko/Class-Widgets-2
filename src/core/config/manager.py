@@ -11,7 +11,7 @@ from PySide6.QtCore import QObject, QTimer, Signal, Property, Slot
 from typing import Optional
 
 from .model import AppConfig, ScheduleConfig, PreferencesConfig, PluginsConfig, LocaleConfig, InteractionsConfig, \
-    ConfigBaseModel, NetworkConfig, NotificationsConfig, TimeConfig
+    ConfigBaseModel, NetworkConfig, NotificationsConfig, TimeConfig, CentralControlConfig
 from src import __version__, __version_type__
 
 
@@ -20,6 +20,7 @@ class RootConfig(ConfigBaseModel):
     locale: LocaleConfig = Field(default_factory=LocaleConfig)
     schedule: ScheduleConfig = Field(default_factory=ScheduleConfig)
     time: TimeConfig = Field(default_factory=TimeConfig)
+    central_control: CentralControlConfig = Field(default_factory=CentralControlConfig)
     preferences: PreferencesConfig = Field(default_factory=PreferencesConfig)
     interactions: InteractionsConfig = Field(default_factory=InteractionsConfig)
     plugins: PluginsConfig = Field(default_factory=PluginsConfig)
