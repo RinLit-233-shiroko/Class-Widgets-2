@@ -1,4 +1,5 @@
 import platform
+import json
 import subprocess
 import sys
 from pathlib import Path
@@ -28,6 +29,8 @@ class UtilsBackend(QObject):
         self._extra_settings: list = []
         self._license_text: str = ""
         self._logs: list = []
+        self._log_buffer_bytes = 0
+        self._log_buffer_peak_bytes = 0
         self.app.plugin_api.ui.settingsPageRegistered.connect(lambda: self.extraSettingsChanged.emit())
         self.app.plugin_api.ui.shortcutsChanged.connect(self.shortcutsChanged.emit)
         self.app.configs.configChanged.connect(self.shortcutsChanged.emit)
@@ -81,16 +84,53 @@ class UtilsBackend(QObject):
             "level": record["level"].name,
             "message": record["message"]
         }
+        entry_size = len(json.dumps(log_entry, ensure_ascii=False).encode("utf-8"))
         self._logs.append(log_entry)
+        self._log_buffer_bytes += entry_size
 
         if len(self._logs) > self.MAX_LOG_LINES:
-            self._logs.pop(0)
+            removed_entry = self._logs.pop(0)
+            self._log_buffer_bytes -= len(
+                json.dumps(removed_entry, ensure_ascii=False).encode("utf-8")
+            )
 
+        self._log_buffer_peak_bytes = max(self._log_buffer_peak_bytes, self._log_buffer_bytes)
         self.logsUpdated.emit()
 
     @Property("QVariantList", notify=logsUpdated)
     def logs(self):
         return self._logs
+
+    @Property(int, notify=logsUpdated)
+    def logCount(self) -> int:
+        return len(self._logs)
+
+    @Property(int, constant=True)
+    def maxLogLines(self) -> int:
+        return self.MAX_LOG_LINES
+
+    @Property(int, notify=logsUpdated)
+    def logBufferBytes(self) -> int:
+        return self._log_buffer_bytes
+
+    @Property(int, notify=logsUpdated)
+    def logBufferPeakBytes(self) -> int:
+        return self._log_buffer_peak_bytes
+
+    @Property(str, notify=logsUpdated)
+    def logFirstTime(self) -> str:
+        return self._logs[0]["time"] if self._logs else ""
+
+    @Property(str, notify=logsUpdated)
+    def logLastTime(self) -> str:
+        return self._logs[-1]["time"] if self._logs else ""
+
+    @Slot(result=bool)
+    def clearMemoryLogs(self) -> bool:
+        self._logs.clear()
+        self._log_buffer_bytes = 0
+        self.logsUpdated.emit()
+        return True
 
     def get_log_snapshot(self, limit: int = MAX_LOG_LINES) -> list[dict]:
         safe_limit = max(0, min(limit, self.MAX_LOG_LINES))

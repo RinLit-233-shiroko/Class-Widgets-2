@@ -17,8 +17,10 @@ ColumnLayout {
         description: "Debug"
 
         SettingItem {
+            id: notificationTestItem
             title: "Send notifications"
-            // 此 SettingItem 没有描述
+            property string notificationTestStatus: ""
+
             ColumnLayout {
                 Layout.fillWidth: true
                 ComboBox {
@@ -44,12 +46,15 @@ ColumnLayout {
                         let provider = UtilsBackend.debugNotificationProvider
                         if (provider) {
                             provider.push(
-                                notificationLevel.currentIndex,                  // level, 对应 NotificationLevel.ANNOUNCEMENT
-                                notificationTitle.text || qsTr("Debug"), // title
-                                notificationText.text || qsTr("Debug message"),    // message
+                                notificationLevel.currentIndex,
+                                notificationTitle.text || qsTr("Debug"),
+                                notificationText.text || qsTr("Debug message"),
                                 4000,
                                 true
                             )
+                            notificationTestItem.notificationTestStatus = "测试通知已发送"
+                        } else {
+                            notificationTestItem.notificationTestStatus = "调试通知提供者不可用"
                         }
                     }
                     // onClicked: {
@@ -60,6 +65,13 @@ ColumnLayout {
                     //         notificationText.text  // text
                     //     )
                     // }
+                }
+
+                Text {
+                    Layout.fillWidth: true
+                    visible: notificationTestItem.notificationTestStatus !== ""
+                    color: Colors.proxy.textSecondaryColor
+                    text: notificationTestItem.notificationTestStatus
                 }
             }
         }
