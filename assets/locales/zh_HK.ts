@@ -4739,7 +4739,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="obsolete">插件廣場</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="154"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="155"/>
         <source>Reschedule Day</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4758,17 +4758,17 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="unfinished">切換您的行程</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="134"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="135"/>
         <source>Debugger</source>
         <translation type="unfinished">調試器</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="141"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="142"/>
         <source>Restart</source>
         <translation type="unfinished">重新啟動應用程式</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="148"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="149"/>
         <source>Exit</source>
         <translation type="unfinished">退出</translation>
     </message>

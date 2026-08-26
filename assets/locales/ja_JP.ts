@@ -4895,7 +4895,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="obsolete">ショートカット</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="154"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="155"/>
         <source>Reschedule Day</source>
         <translation type="unfinished">再スケジュール日</translation>
     </message>
@@ -4922,17 +4922,17 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation>スケジュールを切り替える</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="134"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="135"/>
         <source>Debugger</source>
         <translation>Debugger</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="141"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="142"/>
         <source>Restart</source>
         <translation>再起動</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="148"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="149"/>
         <source>Exit</source>
         <translation>終了</translation>
     </message>

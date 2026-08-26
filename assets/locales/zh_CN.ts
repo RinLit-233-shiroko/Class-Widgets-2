@@ -5643,7 +5643,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="vanished">快捷方式</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="154"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="155"/>
         <source>Reschedule Day</source>
         <translation>调休</translation>
     </message>
@@ -5662,17 +5662,17 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation>切换课程表</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="134"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="135"/>
         <source>Debugger</source>
         <translation>调试器</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="141"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="142"/>
         <source>Restart</source>
         <translation>重启</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="148"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="149"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>

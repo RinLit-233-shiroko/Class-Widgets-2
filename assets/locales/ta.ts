@@ -4712,7 +4712,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="vanished">குறுக்குவழிகள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="154"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="155"/>
         <source>Reschedule Day</source>
         <translation>மறு அட்டவணை நாள்</translation>
     </message>
@@ -4731,17 +4731,17 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation>உங்கள் அட்டவணையை மாற்றவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="134"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="135"/>
         <source>Debugger</source>
         <translation>பிழைத்திருத்தி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="141"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="142"/>
         <source>Restart</source>
         <translation>மறுதொடக்கம்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="148"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="149"/>
         <source>Exit</source>
         <translation>வெளியேறு</translation>
     </message>
