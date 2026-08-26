@@ -164,12 +164,12 @@ MIT உரிமத்தின் கீழ் உரிமம் பெற்�
         <translation>மறுதொடக்கம்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="250"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="251"/>
         <source>License Agreement</source>
         <translation>உரிம ஒப்பந்தத்தின்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="257"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="258"/>
         <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -534,7 +534,7 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>Configs</name>
     <message>
-        <location filename="../../src/core/config/model.py" line="210"/>
+        <location filename="../../src/core/config/model.py" line="212"/>
         <source>New Schedule 1</source>
         <translation>புதிய அட்டவணை 1</translation>
     </message>
@@ -3931,27 +3931,27 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>Shortcuts</name>
     <message>
-        <location filename="../../src/core/central.py" line="156"/>
+        <location filename="../../src/core/central.py" line="162"/>
         <source>Settings</source>
         <translation type="unfinished">அமைப்புகள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="162"/>
+        <location filename="../../src/core/central.py" line="168"/>
         <source>Schedules</source>
         <translation type="unfinished">அட்டவணைகள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="168"/>
+        <location filename="../../src/core/central.py" line="174"/>
         <source>Plugin Plaza</source>
         <translation type="unfinished">செருகுநிரல் பிளாசா</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="174"/>
+        <location filename="../../src/core/central.py" line="180"/>
         <source>Reschedule Day</source>
         <translation type="unfinished">மறு அட்டவணை நாள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="180"/>
+        <location filename="../../src/core/central.py" line="186"/>
         <source>Class Swap</source>
         <translation type="unfinished">வகுப்பு இடமாற்று</translation>
     </message>
@@ -3959,37 +3959,37 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>StartupAnimation</name>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="82"/>
+        <location filename="../../src/core/startup_animation.py" line="83"/>
         <source>Select startup media</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="87"/>
+        <location filename="../../src/core/startup_animation.py" line="88"/>
         <source>Supported media (*.png *.jpg *.jpeg *.bmp *.webp *.gif *.mp4 *.webm *.mov *.m4v *.avi)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="101"/>
+        <location filename="../../src/core/startup_animation.py" line="102"/>
         <source>The selected media file does not exist.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="106"/>
+        <location filename="../../src/core/startup_animation.py" line="107"/>
         <source>The selected image cannot be read.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="113"/>
+        <location filename="../../src/core/startup_animation.py" line="114"/>
         <source>The selected video could not be read.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="115"/>
+        <location filename="../../src/core/startup_animation.py" line="116"/>
         <source>Startup videos must be 10 seconds or shorter.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="120"/>
+        <location filename="../../src/core/startup_animation.py" line="121"/>
         <source>Unsupported media format.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5065,41 +5065,51 @@ If it takes place in another location, such as a sport field, lab, or another cl
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="292"/>
-        <source>GitHub Releases 更新源</source>
+        <source>Show update summary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="293"/>
+        <source>Open the update summary window after an update is installed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="305"/>
+        <source>GitHub Releases 更新源</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="306"/>
         <source>填写 GitHub 仓库的 Releases 页面地址。保存后仅检查此源，不再使用默认更新服务器。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="309"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="322"/>
         <source>清除自定义更新源</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="336"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="349"/>
         <source>Advanced</source>
         <translation>மேம்பட்ட</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="342"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="355"/>
         <source>Updater Server URL</source>
         <translation>புதுப்பிப்பு சேவையக முகவரி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="343"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="356"/>
         <source>Set a custom URL to use for the updater server</source>
         <translation>புதுப்பிப்பு சேவையகத்தைப் பயன்படுத்த தனிப்பயன் முகவரி ஐ அமைக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="358"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="371"/>
         <source>Reset to default</source>
         <translation>இயல்புநிலைக்கு மீட்டமைக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="366"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="379"/>
         <source>https://example.com/releases.json/</source>
         <translation>https://example.com/releases.json/</translation>
     </message>

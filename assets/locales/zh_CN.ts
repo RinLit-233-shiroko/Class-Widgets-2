@@ -166,7 +166,7 @@ Licensed under the MIT license</source>
 * 需要重启</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="257"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="258"/>
         <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
         <translation>本项目（Class Widgets 2）采用 MIT 许可证。详细信息请参见：</translation>
     </message>
@@ -187,7 +187,7 @@ Licensed under the MIT license</source>
         <translation>重启</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="250"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="251"/>
         <source>License Agreement</source>
         <translation>许可证协议</translation>
     </message>
@@ -868,7 +868,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation type="vanished">默认</translation>
     </message>
     <message>
-        <location filename="../../src/core/config/model.py" line="210"/>
+        <location filename="../../src/core/config/model.py" line="212"/>
         <source>New Schedule 1</source>
         <translation>新课程表 1</translation>
     </message>
@@ -4657,27 +4657,27 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>Shortcuts</name>
     <message>
-        <location filename="../../src/core/central.py" line="156"/>
+        <location filename="../../src/core/central.py" line="162"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="162"/>
+        <location filename="../../src/core/central.py" line="168"/>
         <source>Schedules</source>
         <translation>课程编辑</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="168"/>
+        <location filename="../../src/core/central.py" line="174"/>
         <source>Plugin Plaza</source>
         <translation>插件广场</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="174"/>
+        <location filename="../../src/core/central.py" line="180"/>
         <source>Reschedule Day</source>
         <translation>调休</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="180"/>
+        <location filename="../../src/core/central.py" line="186"/>
         <source>Class Swap</source>
         <translation>换课</translation>
     </message>
@@ -4696,37 +4696,37 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>StartupAnimation</name>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="82"/>
+        <location filename="../../src/core/startup_animation.py" line="83"/>
         <source>Select startup media</source>
         <translation>选择启动媒体</translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="87"/>
+        <location filename="../../src/core/startup_animation.py" line="88"/>
         <source>Supported media (*.png *.jpg *.jpeg *.bmp *.webp *.gif *.mp4 *.webm *.mov *.m4v *.avi)</source>
         <translation>支持的媒体 (*.png *.jpg *.jpeg *.bmp *.webp *.gif *.mp4 *.webm *.mov *.m4v *.avi)</translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="101"/>
+        <location filename="../../src/core/startup_animation.py" line="102"/>
         <source>The selected media file does not exist.</source>
         <translation>所选媒体文件不存在。</translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="106"/>
+        <location filename="../../src/core/startup_animation.py" line="107"/>
         <source>The selected image cannot be read.</source>
         <translation>无法读取所选图片。</translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="113"/>
+        <location filename="../../src/core/startup_animation.py" line="114"/>
         <source>The selected video could not be read.</source>
         <translation>无法读取所选视频。</translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="115"/>
+        <location filename="../../src/core/startup_animation.py" line="116"/>
         <source>Startup videos must be 10 seconds or shorter.</source>
         <translation>启动视频时长不得超过 10 秒。</translation>
     </message>
     <message>
-        <location filename="../../src/core/startup_animation.py" line="120"/>
+        <location filename="../../src/core/startup_animation.py" line="121"/>
         <source>Unsupported media format.</source>
         <translation>不支持的媒体格式。</translation>
     </message>
@@ -5996,41 +5996,51 @@ If it takes place in another location, such as a sport field, lab, or another cl
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="292"/>
-        <source>GitHub Releases 更新源</source>
+        <source>Show update summary</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="293"/>
+        <source>Open the update summary window after an update is installed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="305"/>
+        <source>GitHub Releases 更新源</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="306"/>
         <source>填写 GitHub 仓库的 Releases 页面地址。保存后仅检查此源，不再使用默认更新服务器。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="309"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="322"/>
         <source>清除自定义更新源</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="336"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="349"/>
         <source>Advanced</source>
         <translation>高级选项</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="342"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="355"/>
         <source>Updater Server URL</source>
         <translation>更新服务器地址</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="343"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="356"/>
         <source>Set a custom URL to use for the updater server</source>
         <translation>设置自定义的更新服务器地址</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="358"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="371"/>
         <source>Reset to default</source>
         <translation>重置为默认值</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="366"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="379"/>
         <source>https://example.com/releases.json/</source>
         <translation>https://example.com/releases.json/</translation>
     </message>
