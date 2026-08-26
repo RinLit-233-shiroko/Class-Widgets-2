@@ -36,7 +36,7 @@ RowLayout {
             options.push({
                 text: cycleLength === 2
                     ? i === 1 ? qsTr("1") : qsTr("2")
-                    : qsTr("Week %1").arg(i),
+                    : qsTr("%1").arg(i),
                 value: i
             })
         }
@@ -95,11 +95,12 @@ RowLayout {
 
     RowLayout {
         visible: weekCycleEditor.selectedType === "round"
-        spacing: 8
+        spacing: 2
         Text { text: weekCyclePrefix }
         ComboBox {
             id: roundBox
             model: weekCycleEditor.roundWeekOptions
+            Layout.preferredWidth: 72
             textRole: "text"
             valueRole: "value"
             currentIndex: Math.max(0, weekCycleEditor.roundWeek - 1)
@@ -110,7 +111,7 @@ RowLayout {
 
     RowLayout {
         visible: weekCycleEditor.selectedType === "custom"
-        spacing: 8
+        spacing: 2
         Text { text: weekPrefix }
         SpinBox {
             id: customBox

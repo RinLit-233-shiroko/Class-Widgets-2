@@ -179,6 +179,14 @@ MIT உரிமத்தின் கீழ் உரிமம் பெற்�
     </message>
 </context>
 <context>
+    <name>AddSubjectExpander</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/AddSubjectExpander.qml" line="87"/>
+        <source>Quick Add Subject</source>
+        <translation type="unfinished">விரைவு பொருள் சேர்</translation>
+    </message>
+</context>
+<context>
     <name>AddWidgetsDialog</name>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddWidgetsDialog.qml" line="10"/>
@@ -442,67 +450,67 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation>ஐடி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="107"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="108"/>
         <source>Date</source>
         <translation>திகதி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="122"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="123"/>
         <source>Days of Week</source>
         <translation>வாரத்தின் நாட்கள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="129"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="130"/>
         <source>Mon</source>
         <translation>தி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="129"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="130"/>
         <source>Tue</source>
         <translation>செவ்வாய்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="129"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="130"/>
         <source>Wed</source>
         <translation>அறிவன்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="130"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="131"/>
         <source>Thu</source>
         <translation>வியாழன்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="130"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="131"/>
         <source>Fri</source>
         <translation>வெள்ளி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="130"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="131"/>
         <source>Sat</source>
         <translation>காரி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="130"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="131"/>
         <source>Sun</source>
         <translation>சூரியன்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="146"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="147"/>
         <source>Every Week</source>
         <translation>ஒவ்வொரு வாரமும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="147"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="148"/>
         <source>Specific Round</source>
         <translation>குறிப்பிட்ட சுற்று</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="148"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="149"/>
         <source>Custom</source>
         <translation>தனிப்பயன்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="154"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="155"/>
         <source>Week of Cycle</source>
         <translation>சுழற்சியின் வாரம்</translation>
     </message>
@@ -581,103 +589,88 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation>சூரியன்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="84"/>
         <source>Set start date and max weeks</source>
-        <translation>தொடக்க தேதி மற்றும் அதிகபட்ச வாரங்களை அமைக்கவும்</translation>
+        <translation type="vanished">தொடக்க தேதி மற்றும் அதிகபட்ச வாரங்களை அமைக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="102"/>
         <source>Set default duration</source>
-        <translation>இயல்புநிலை கால அளவை அமைக்கவும்</translation>
+        <translation type="vanished">இயல்புநிலை கால அளவை அமைக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="117"/>
         <source>Set date and max weeks</source>
-        <translation>தேதி மற்றும் அதிகபட்ச வாரங்களை அமைக்கவும்</translation>
+        <translation type="vanished">தேதி மற்றும் அதிகபட்ச வாரங்களை அமைக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="122"/>
         <source>Start date:</source>
-        <translation>தொடக்க தேதி:</translation>
+        <translation type="vanished">தொடக்க தேதி:</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="132"/>
         <source>Max week cycle:</source>
-        <translation>அதிகபட்ச வார சுழற்சி:</translation>
+        <translation type="vanished">அதிகபட்ச வார சுழற்சி:</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="149"/>
         <source>Failed to set start date or max week cycle. Please report this issue to the community or the developer.</source>
-        <translation>தொடக்க தேதி அல்லது அதிகபட்ச வார சுழற்சியை அமைக்க முடியவில்லை. இந்தச் சிக்கலைச் சமூகம் அல்லது டெவலப்பரிடம் புகாரளிக்கவும்.</translation>
+        <translation type="vanished">தொடக்க தேதி அல்லது அதிகபட்ச வார சுழற்சியை அமைக்க முடியவில்லை. இந்தச் சிக்கலைச் சமூகம் அல்லது டெவலப்பரிடம் புகாரளிக்கவும்.</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="85"/>
         <source>Set the first day of school to calculate week numbers accurately</source>
-        <translation>வார எண்களைத் துல்லியமாகக் கணக்கிட பள்ளியின் முதல் நாளை அமைக்கவும்</translation>
+        <translation type="vanished">வார எண்களைத் துல்லியமாகக் கணக்கிட பள்ளியின் முதல் நாளை அமைக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="89"/>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="107"/>
         <source>Set</source>
-        <translation>கணம்</translation>
+        <translation type="vanished">கணம்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="103"/>
         <source>Set the default duration for new classes, breaks, or activities.</source>
-        <translation>புதிய வகுப்புகள், இடைவேளைகள் அல்லது செயல்பாடுகளுக்கான இயல்புநிலை கால அளவை அமைக்கவும்.</translation>
+        <translation type="vanished">புதிய வகுப்புகள், இடைவேளைகள் அல்லது செயல்பாடுகளுக்கான இயல்புநிலை கால அளவை அமைக்கவும்.</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="148"/>
         <source>Failed</source>
-        <translation>தோல்வியடைந்தது</translation>
+        <translation type="vanished">தோல்வியடைந்தது</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="160"/>
         <source>Select Default Duration</source>
-        <translation>இயல்புநிலை கால அளவைத் தேர்ந்தெடுக்கவும்</translation>
+        <translation type="vanished">இயல்புநிலை கால அளவைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="166"/>
         <source>Class</source>
-        <translation>வகுப்பு</translation>
+        <translation type="vanished">வகுப்பு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="180"/>
         <source>Break</source>
-        <translation>இடைவேளை</translation>
+        <translation type="vanished">இடைவேளை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="193"/>
         <source>Activity</source>
-        <translation>செய்கைப்பாடு</translation>
+        <translation type="vanished">செய்கைப்பாடு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="244"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="101"/>
         <source>No timelines yet</source>
         <translation>இதுவரை காலக்கெடு இல்லை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="250"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="107"/>
         <source>No timelines yet. Click &quot;New Timeline&quot; to get started.</source>
         <translation>இதுவரை காலக்கெடு இல்லை. தொடங்குவதற்கு &quot;புதிய காலவரிசை&quot; என்பதைக் சொடுக்கு செய்யவும்.</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="296"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="153"/>
         <source>Edit</source>
         <translation>தொகு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="301"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="158"/>
         <source>Remove</source>
         <translation>அகற்று</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="326"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="183"/>
         <source>New Timeline</source>
         <translation>புதிய காலவரிசை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="330"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/DayListView.qml" line="187"/>
         <source>Duplicate</source>
         <translation>நகல்</translation>
     </message>
@@ -801,66 +794,78 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation>அட்டவணை ஆசிரியர்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="61"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="96"/>
         <source>Save Changes</source>
         <translation>மாற்றங்களைச் சேமிக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="39"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="69"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="74"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="105"/>
         <source>Saved</source>
         <translation>சேமிக்கப்பட்டது</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="41"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="71"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="76"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="107"/>
         <source>Schedule saved successfully</source>
         <translation>அட்டவணை வெற்றிகரமாக சேமிக்கப்பட்டது</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="45"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="75"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="48"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="80"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="111"/>
         <source>Save Failed</source>
         <translation>சேமிக்க முடியவில்லை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="47"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="77"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="33"/>
+        <source>Save changes to the timetable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="37"/>
+        <source>Do you want to save the changes to &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="50"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="82"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="113"/>
         <source>Failed to save schedule, see log for details</source>
         <translation>அட்டவணையைச் சேமிக்க முடியவில்லை, விவரங்களுக்கு பதிவைப் பார்க்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="91"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="127"/>
         <source>Home</source>
         <translation>வீடு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="96"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="132"/>
         <source>Timeline</source>
         <translation>காலவரிசை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="101"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="137"/>
         <source>Schedule</source>
         <translation>அட்டவணை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="107"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="143"/>
         <source>Subjects</source>
         <translation>பாடங்கள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="120"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="156"/>
         <source>Unsaved Changes</source>
         <translation>சேமிக்கப்படாத மாற்றங்கள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="121"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="157"/>
         <source>Don&apos;t forget to save your changes before closing the editor or switching schedule. You can click the save button in the title bar.</source>
         <translation>எடிட்டரை மூடுவதற்கு முன் அல்லது அட்டவணையை மாற்றுவதற்கு முன் உங்கள் மாற்றங்களைச் சேமிக்க மறக்காதீர்கள். தலைப்புப் பட்டியில் உள்ள சேமி பொத்தானைக் சொடுக்கு செய்யலாம்.</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="127"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="163"/>
         <source>OK</source>
         <translation>சரி</translation>
     </message>
@@ -876,43 +881,42 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>EntryDelegate</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="52"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="54"/>
         <source>Remove</source>
         <translation>அகற்று</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="196"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="213"/>
         <source>Class</source>
         <translation>வகுப்பு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="197"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="214"/>
         <source>Break</source>
         <translation>இடைவேளை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="198"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="215"/>
         <source>Activity</source>
         <translation>செய்கைப்பாடு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="199"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="216"/>
         <source>Unknown Type</source>
         <translation>தெரியாத வகை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="207"/>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="216"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="224"/>
         <source> minutes</source>
         <translation> நிமிடங்கள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="235"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="252"/>
         <source>Invalid Time Range</source>
         <translation>தவறான நேர வரம்பு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="236"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDelegate.qml" line="253"/>
         <source>End time must be later than start time.</source>
         <translation>தொடக்க நேரத்தை விட முடிவு நேரம் தாமதமாக இருக்க வேண்டும்.</translation>
     </message>
@@ -920,80 +924,88 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>EntryDetailView</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="58"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="82"/>
         <source>Invalid Time Range</source>
         <translation>தவறான நேர வரம்பு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="59"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="83"/>
         <source>End time must be later than start time.</source>
         <translation>தொடக்க நேரத்தை விட முடிவு நேரம் தாமதமாக இருக்க வேண்டும்.</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="103"/>
         <source>Edit </source>
-        <translation>திருத்தவும் </translation>
+        <translation type="vanished">திருத்தவும் </translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="113"/>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="128"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="156"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="249"/>
         <source>Class</source>
         <translation>வகுப்பு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="114"/>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="129"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="162"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="251"/>
         <source>Break</source>
         <translation>இடைவேளை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="115"/>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="130"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="168"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="253"/>
         <source>Activity</source>
         <translation>செய்கைப்பாடு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="116"/>
         <source>Unknown Type</source>
-        <translation>தெரியாத வகை</translation>
+        <translation type="vanished">தெரியாத வகை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="135"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="175"/>
         <source>ID</source>
         <translation>ஐடி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="145"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="186"/>
         <source>Default Subject</source>
         <translation>இயல்புநிலை பொருள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="151"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="192"/>
         <source>Select Subject</source>
         <translation>பாடத்தைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="180"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="221"/>
         <source>Set Subject</source>
         <translation>பொருள் அமைக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="197"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="238"/>
         <source>Title</source>
         <translation>தலைப்பு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="210"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="255"/>
+        <source>Type a title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="263"/>
         <source>Start Time</source>
         <translation>தொடக்க நேரம்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="223"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="276"/>
         <source>End Time</source>
         <translation>முடிவு நேரம்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="242"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="299"/>
+        <source>OK</source>
+        <translation type="unfinished">சரி</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryDetailView.qml" line="305"/>
         <source>Remove</source>
         <translation>அகற்று</translation>
     </message>
@@ -1001,55 +1013,55 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>EntryListView</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="91"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="102"/>
         <source> PM</source>
         <translation> பி.எம்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="93"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="104"/>
         <source> AM</source>
         <translation> AM</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="165"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="177"/>
         <source>New Schedule</source>
         <translation>புதிய அட்டவணை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="141"/>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="170"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="153"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="182"/>
         <source>Class</source>
         <translation>வகுப்பு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="40"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="46"/>
         <source>No timeline selected</source>
         <translation>காலவரிசை எதுவும் தேர்ந்தெடுக்கப்படவில்லை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="46"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="52"/>
         <source>Please select a timeline first to add a new schedule.</source>
         <translation>புதிய அட்டவணையைச் சேர்க்க, முதலில் காலவரிசையைத் தேர்ந்தெடுக்கவும்.</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="149"/>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="176"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="161"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="188"/>
         <source>Break</source>
         <translation>இடைவேளை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="157"/>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="182"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="169"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="194"/>
         <source>Activity</source>
         <translation>செய்கைப்பாடு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="241"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="299"/>
         <source>Conflict with existing schedule</source>
         <translation>ஏற்கனவே உள்ள அட்டவணையுடன் முரண்பாடு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="243"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/EntryListView.qml" line="301"/>
         <source>This time overlaps with an existing schedule (%1 – %2)</source>
         <translation>இந்த நேரம் ஏற்கனவே உள்ள அட்டவணையுடன் மேலெழுகிறது (% 1 - %2)</translation>
     </message>
@@ -1139,12 +1151,12 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation>வீடு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="16"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="18"/>
         <source>The new way to edit schedules</source>
         <translation>அட்டவணைகளைத் திருத்துவதற்கான புதிய வழி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="17"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="19"/>
         <source>1. Tap and drag to adjust class times;
 2. Quickly fill in courses at a glance;
 3. Done in just 3 steps — editing your schedule has never been easier!</source>
@@ -1153,93 +1165,113 @@ Do you want to continue using them, or discard and restore the original schedule
 3. வெறும் 3 படிகளில் முடிந்தது - உங்கள் அட்டவணையைத் திருத்துவது எப்போதும் எளிதாக இருந்ததில்லை!</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="29"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="31"/>
         <source>Open schedules folder</source>
         <translation>அட்டவணை கோப்புறையைத் திறக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="37"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="39"/>
         <source>Import Schedule</source>
         <translation>இறக்குமதி அட்டவணை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="41"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="43"/>
         <source>Import from Class Widgets 2</source>
         <translation>வகுப்பு விட்செட்டுகள் 2 இலிருந்து இறக்குமதி செய்யவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="47"/>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="71"/>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="90"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="49"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="73"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="92"/>
         <source>Import Failed</source>
         <translation>இறக்குமதி தோல்வி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="48"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="50"/>
         <source>Failed to import the schedule.Please check if the schedule file is valid.</source>
         <translation>அட்டவணையை இறக்குமதி செய்ய முடியவில்லை. அட்டவணை கோப்பு சரியானதா என சரிபார்க்கவும்.</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="60"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="62"/>
         <source>Import from CSES</source>
         <translation>CSES இலிருந்து இறக்குமதி செய்யவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="65"/>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="84"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="67"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="86"/>
         <source>Import Success</source>
         <translation>இறக்குமதி செய்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="66"/>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="85"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="68"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="87"/>
         <source>The schedule has been imported successfully.</source>
         <translation>அட்டவணை வெற்றிகரமாக இறக்குமதி செய்யப்பட்டது.</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="72"/>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="91"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="74"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="93"/>
         <source>Failed to import the schedule. Please check if the schedule file is valid.</source>
         <translation>அட்டவணையை இறக்குமதி செய்ய முடியவில்லை. அட்டவணை கோப்பு சரியானதா என சரிபார்க்கவும்.</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="79"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="81"/>
         <source>Import from Class Widgets 1</source>
         <translation>வகுப்பு விட்செட்டுகள் 1 இலிருந்து இறக்குமதி செய்யவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="106"/>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="143"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="108"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="182"/>
         <source>Create a new schedule</source>
         <translation>புதிய அட்டவணையை உருவாக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="116"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="118"/>
         <source>Your schedules</source>
         <translation>உங்கள் அட்டவணைகள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="146"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="150"/>
+        <source>Save changes to the timetable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="153"/>
+        <source>Do you want to save the changes to &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="164"/>
+        <source>Save Failed</source>
+        <translation type="unfinished">சேமிக்க முடியவில்லை</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="166"/>
+        <source>Failed to save schedule, see log for details</source>
+        <translation type="unfinished">அட்டவணையைச் சேமிக்க முடியவில்லை, விவரங்களுக்கு பதிவைப் பார்க்கவும்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="185"/>
         <source>Enter a name for your new schedule</source>
         <translation>உங்கள் புதிய அட்டவணைக்கு ஒரு பெயரை உள்ளிடவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="154"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="193"/>
         <source>Schedule name</source>
         <translation>அட்டவணை பெயர்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="178"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="217"/>
         <source>Cannot be empty (⊙x⊙;)</source>
         <translation>காலியாக இருக்க முடியாது (⊙x⊙;)</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="181"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="220"/>
         <source>Cannot duplicate existing name (⊙x⊙;)</source>
         <translation>ஏற்கனவே உள்ள பெயரை நகலெடுக்க முடியாது (⊙x⊙;)</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="183"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="222"/>
         <source>Great! That&apos;s it. ヾ(≧▽≦*)o</source>
         <translation>அருமை! அவ்வளவுதான். ヾ(≧▽≦*)o</translation>
     </message>
@@ -2933,29 +2965,25 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>Schedule</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="76"/>
         <source>Preview</source>
-        <translation>முன்னோட்டம்</translation>
+        <translation type="vanished">முன்னோட்டம்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="82"/>
         <source>Edit</source>
-        <translation>தொகு</translation>
+        <translation type="vanished">தொகு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="103"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="109"/>
         <source>Week %1</source>
         <translation>வாரம்% 1</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="149"/>
         <source>Week Cycle</source>
-        <translation>வார சுழற்சி</translation>
+        <translation type="vanished">வார சுழற்சி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="173"/>
         <source>Quick Add Subject</source>
-        <translation>விரைவு பொருள் சேர்</translation>
+        <translation type="vanished">விரைவு பொருள் சேர்</translation>
     </message>
     <message>
         <location filename="../../src/core/convertor/converter.py" line="63"/>
@@ -3902,6 +3930,80 @@ If it takes place in another location, such as a sport field, lab, or another cl
     </message>
 </context>
 <context>
+    <name>Timeline</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="25"/>
+        <source>Set start date and max weeks</source>
+        <translation type="unfinished">தொடக்க தேதி மற்றும் அதிகபட்ச வாரங்களை அமைக்கவும்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="26"/>
+        <source>Set the first day of school to calculate week numbers accurately</source>
+        <translation type="unfinished">வார எண்களைத் துல்லியமாகக் கணக்கிட பள்ளியின் முதல் நாளை அமைக்கவும்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="30"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="49"/>
+        <source>Set</source>
+        <translation type="unfinished">கணம்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="44"/>
+        <source>Set default duration</source>
+        <translation type="unfinished">இயல்புநிலை கால அளவை அமைக்கவும்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="45"/>
+        <source>Set the default duration for new classes, breaks, or activities.</source>
+        <translation type="unfinished">புதிய வகுப்புகள், இடைவேளைகள் அல்லது செயல்பாடுகளுக்கான இயல்புநிலை கால அளவை அமைக்கவும்.</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="82"/>
+        <source>Set date and max weeks</source>
+        <translation type="unfinished">தேதி மற்றும் அதிகபட்ச வாரங்களை அமைக்கவும்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="90"/>
+        <source>Start date:</source>
+        <translation type="unfinished">தொடக்க தேதி:</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="100"/>
+        <source>Max week cycle:</source>
+        <translation type="unfinished">அதிகபட்ச வார சுழற்சி:</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="118"/>
+        <source>Failed</source>
+        <translation type="unfinished">தோல்வியடைந்தது</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="119"/>
+        <source>Failed to set start date or max week cycle. Please report this issue to the community or the developer.</source>
+        <translation type="unfinished">தொடக்க தேதி அல்லது அதிகபட்ச வார சுழற்சியை அமைக்க முடியவில்லை. இந்தச் சிக்கலைச் சமூகம் அல்லது டெவலப்பரிடம் புகாரளிக்கவும்.</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="130"/>
+        <source>Select Default Duration</source>
+        <translation type="unfinished">இயல்புநிலை கால அளவைத் தேர்ந்தெடுக்கவும்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="139"/>
+        <source>Class</source>
+        <translation type="unfinished">வகுப்பு</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="153"/>
+        <source>Break</source>
+        <translation type="unfinished">இடைவேளை</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="166"/>
+        <source>Activity</source>
+        <translation type="unfinished">செய்கைப்பாடு</translation>
+    </message>
+</context>
+<context>
     <name>TrayPanel</name>
     <message>
         <source>Settings</source>
@@ -3920,7 +4022,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="vanished">உங்கள் அட்டவணை சுயவிவரத்தை திருத்தவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="66"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="67"/>
         <source>What&apos;s New</source>
         <translation>புதியது என்ன</translation>
     </message>
@@ -3945,7 +4047,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="vanished">குறுக்குவழிகள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="153"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="154"/>
         <source>Reschedule Day</source>
         <translation>மறு அட்டவணை நாள்</translation>
     </message>
@@ -3954,22 +4056,27 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="vanished">வகுப்பு இடமாற்று</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="86"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="10"/>
+        <source>Quick Access Panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="87"/>
         <source>Switch your schedule</source>
         <translation>உங்கள் அட்டவணையை மாற்றவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="133"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="134"/>
         <source>Debugger</source>
         <translation>பிழைத்திருத்தி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="140"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="141"/>
         <source>Restart</source>
         <translation>மறுதொடக்கம்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="147"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="148"/>
         <source>Exit</source>
         <translation>வெளியேறு</translation>
     </message>
@@ -4365,29 +4472,64 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
 <context>
     <name>WeekSelector</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="42"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="38"/>
+        <source>1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="38"/>
+        <source>2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Week %1</source>
+        <translation type="obsolete">வாரம்% 1</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="39"/>
+        <source>%1</source>
+        <translation type="unfinished">% 1</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="66"/>
+        <source>Week {value} of every %1 weeks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="69"/>
+        <source>Week {value}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="78"/>
         <source>Every Week</source>
         <translation>ஒவ்வொரு வாரமும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="47"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="83"/>
+        <source>Repeat on a Cycle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="87"/>
+        <source>One Specific Week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Round</source>
-        <translation>சுற்று</translation>
+        <translation type="vanished">சுற்று</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="51"/>
         <source>Custom</source>
-        <translation>தனிப்பயன்</translation>
+        <translation type="vanished">தனிப்பயன்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="59"/>
         <source>Week of Cycle:</source>
-        <translation>சுழற்சியின் வாரம்:</translation>
+        <translation type="vanished">சுழற்சியின் வாரம்:</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="72"/>
         <source>Week Index:</source>
-        <translation>வார அட்டவணை:</translation>
+        <translation type="vanished">வார அட்டவணை:</translation>
     </message>
 </context>
 <context>
@@ -4723,29 +4865,24 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
 <context>
     <name>WidgetsContainer</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="244"/>
+        <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="224"/>
         <source>Edit </source>
         <translation>திருத்தவும் </translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="259"/>
+        <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="239"/>
         <source>Delete</source>
         <translation>நீக்கு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="268"/>
+        <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="248"/>
         <source>Edit Widgets Screen</source>
         <translation>விட்செட்கள் திரையைத் திருத்து</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="350"/>
+        <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="322"/>
         <source>Add</source>
         <translation>கூட்டு</translation>
-    </message>
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="365"/>
-        <source>Done</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

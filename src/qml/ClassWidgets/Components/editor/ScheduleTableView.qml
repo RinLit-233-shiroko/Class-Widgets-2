@@ -42,10 +42,10 @@ Item {
         let maxWeekCycle = AppCentral.scheduleEditor.meta.maxWeekCycle;
 
         if (Array.isArray(weeks)) {
-            return weeks.indexOf(currentWeek) !== -1;
+            return weeks.indexOf(table.currentWeek) !== -1;
         }
         if (typeof weeks === "number") {
-            return currentWeek >= weeks && (currentWeek - weeks) % maxWeekCycle === 0;
+            return table.currentWeek >= weeks && (table.currentWeek - weeks) % maxWeekCycle === 0;
         }
 
         return false;
@@ -62,7 +62,7 @@ Item {
         let e = classEntries[row];
         let dayOfWeek = columnIndex + 1;
 
-        return AppCentral.scheduleEditor.getEntryOverride(e.id, currentWeek, dayOfWeek);
+        return AppCentral.scheduleEditor.getEntryOverride(e.id, table.currentWeek, dayOfWeek);
     }
 
     // 表头

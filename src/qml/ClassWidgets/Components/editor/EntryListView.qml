@@ -7,9 +7,15 @@ import ClassWidgets.Components
 ColumnLayout {
     id: root
     property int currentDayIndex: -1
+    onCurrentDayIndexChanged: _requestScrollToFirst()
+    Component.onCompleted: _requestScrollToFirst()
+
+    // 标记有待执行的"滚动到首个日程"请求，等待 Flickable 布局完成后触发
+    property bool _pendingFirstScroll: false
+
     property var subjects: AppCentral.scheduleRuntime.subjects || []
 
-    property real pxPerMin: zoomSlider.value
+    property real pxPerMin: zoomSlider.value * 1.50
 
     // 暴露
     property int currentIndex: -1
@@ -61,8 +67,13 @@ ColumnLayout {
         contentHeight: 24 * 60 * pxPerMin
 
         Behavior on contentY {
+            id: contentYBehavior
             NumberAnimation { duration: 400; easing.type: Easing.OutQuint }
         }
+
+        // 布局完成时触发挂起的首次滚动请求
+        onHeightChanged: _scrollToFirstEntry()
+        onContentHeightChanged: _scrollToFirstEntry()
 
         ScrollBar.vertical: ScrollBar {}
 
@@ -123,6 +134,7 @@ ColumnLayout {
                 index: model.index
                 entry: modelData
                 pxPerMin: root.pxPerMin
+                listViewRoot: root
             }
         }
     }
@@ -191,18 +203,64 @@ ColumnLayout {
 
         Text {
             Layout.alignment: Qt.AlignCenter
-            text: (zoomSlider.value * 80).toFixed() + "%"
+            text: (zoomSlider.value * 100).toFixed() + "%"
         }
         Slider {
             id: zoomSlider
             from: 0.5
-            to: 5
-            stepSize: 0.05
-            value: 1.25
-            showTooltip: false
+            to: 3
+            stepSize: 0.25
+            value: 1
+            toolTip.visible: false
+            toolTip.text: (zoomSlider.value * 100).toFixed() + "%"
+
+            property real prevValue: 1
+
+            onValueChanged: {
+                // 以当前可视区域中心为锚点进行缩放
+                let centerContentY = flickable.contentY + flickable.height / 2
+                let centerMinutes = centerContentY / prevValue
+
+                let newContentY = centerMinutes * value - flickable.height / 2
+                let maxContentY = Math.max(0, flickable.contentHeight - flickable.height)
+                newContentY = Math.max(0, Math.min(newContentY, maxContentY))
+
+                // 临时禁用动画，避免缩放时产生额外的滚动效果
+                contentYBehavior.enabled = false
+                flickable.contentY = newContentY
+                // contentYBehavior.enabled = true
+
+                prevValue = value
+            }
         }
     }
 
+
+    function _requestScrollToFirst() {
+        if (currentDayIndex < 0) return
+        _pendingFirstScroll = true
+        _scrollToFirstEntry()
+    }
+
+    // 滚动到首个日程顶部，留出约 10 分钟的视觉间距
+    function _scrollToFirstEntry() {
+        if (!_pendingFirstScroll) return
+        if (flickable.height <= 0 || flickable.contentHeight <= 0) return
+
+        _pendingFirstScroll = false
+
+        let day = AppCentral.scheduleEditor.days[currentDayIndex]
+        if (!day || !day.entries || day.entries.length === 0) return
+
+        let firstEntry = day.entries[0]
+        let targetY = toMinutes(firstEntry.startTime) * pxPerMin
+        let padding = pxPerMin * 10
+        let newY = Math.max(0, targetY - padding)
+        let maxContentY = Math.max(0, flickable.contentHeight - flickable.height)
+        newY = Math.min(newY, maxContentY)
+
+        flickable.contentY = newY
+    }
 
     function toTimeString(minutes) {
         let h = Math.floor(minutes / 60)

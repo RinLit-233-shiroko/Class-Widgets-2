@@ -97,10 +97,11 @@ Dialog {
             SegmentedItem { text: qsTr("By Date"); icon.name: "ic_fluent_calendar_20_regular" }
         }
 
-        // RowLayout {
-        //     Text { text: qsTr("ID"); width: 100 }
-        //     TextField { id: dayId; Layout.fillWidth: true; readOnly: true }
-        // }
+        RowLayout {
+            Text { text: qsTr("ID"); width: 100 }
+            TextField { id: dayId; Layout.fillWidth: true; readOnly: true;}
+            visible: false
+        }
 
         RowLayout {
             visible: daySegmented.currentIndex === 1

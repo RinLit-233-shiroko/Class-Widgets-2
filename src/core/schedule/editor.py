@@ -463,7 +463,7 @@ class ScheduleEditor(QObject):
             logger.warning("No schedule or meta data available.")
             return False
 
-        self.schedule.meta.maxWeeks = max_weeks
+        self.schedule.meta.maxWeekCycle = max_weeks
         self.updated.emit()
         return True
 
