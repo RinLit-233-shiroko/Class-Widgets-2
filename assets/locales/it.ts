@@ -231,75 +231,115 @@ Licensed under the MIT license</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="23"/>
-        <source>课程表下发地址</source>
+        <source>集控地址</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="24"/>
-        <source>填写 GitHub Pages 上的课程表清单地址（manifest.json）</source>
+        <source>填写 GitHub Pages 上的集控清单地址（manifest.json）；留空时不会拉取任何集控内容。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="41"/>
-        <source>接收集控课程表</source>
+        <source>拉取方式</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="42"/>
-        <source>手动下载、校验并应用课程表。下载失败时会保留当前本地课程表。</source>
+        <source>手动模式仅在点击检查按钮时拉取；自动模式会在启动后和指定间隔自动拉取。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="58"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="50"/>
+        <source>自动拉取集控内容</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="62"/>
+        <source>检查间隔</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="80"/>
+        <source>分钟</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="92"/>
+        <source>接收集控内容</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="93"/>
+        <source>下载、校验并应用课程表；同一公告命令只会在本机执行一次。失败时保留当前本地课程表。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="109"/>
         <source>当前集控课程表：%1（策略版本：%2）</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="66"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="118"/>
+        <source>本次已处理 %1 条一次性公告命令。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="124"/>
         <source>正在检查…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="67"/>
-        <source>检查并应用课程表</source>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="125"/>
+        <source>检查并应用集控内容</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>CentralControlScheduleService</name>
     <message>
-        <location filename="../../src/core/central_control.py" line="60"/>
-        <source>尚未检查集控课程表</source>
+        <location filename="../../src/core/central_control.py" line="69"/>
+        <source>尚未检查集控内容</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/central_control.py" line="95"/>
-        <source>请先填写课程表下发地址</source>
+        <location filename="../../src/core/central_control.py" line="76"/>
+        <source>集控公告</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/central_control.py" line="98"/>
-        <source>课程表下发地址必须以 http:// 或 https:// 开头</source>
+        <location filename="../../src/core/central_control.py" line="147"/>
+        <source>请先填写集控地址</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/central_control.py" line="102"/>
-        <source>正在检查集控课程表…</source>
+        <location filename="../../src/core/central_control.py" line="150"/>
+        <source>集控地址必须以 http:// 或 https:// 开头</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/central_control.py" line="113"/>
-        <source>集控课程表接收失败：{0}</source>
+        <location filename="../../src/core/central_control.py" line="154"/>
+        <source>正在检查集控内容…</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/central_control.py" line="120"/>
-        <source>集控课程表应用失败：{0}</source>
+        <location filename="../../src/core/central_control.py" line="166"/>
+        <source>集控内容接收失败：{0}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/central_control.py" line="126"/>
+        <location filename="../../src/core/central_control.py" line="174"/>
+        <source>集控内容应用失败：{0}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/central_control.py" line="180"/>
         <source>已应用集控课程表“{0}”（策略版本：{1}）</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/central_control.py" line="185"/>
+        <source>；已处理 {0} 条公告命令</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
