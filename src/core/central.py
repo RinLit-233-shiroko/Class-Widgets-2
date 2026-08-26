@@ -49,6 +49,7 @@ from src.core.widgets import WidgetsWindow, WidgetListModel
 from src.core.automations.manager import AutomationManager
 from src.core.windows.manager import AppWindowManager
 from src.core.startup_animation import StartupAnimation
+from src.core.time_service import TimeService
 
 
 class QmlContextWindow(Protocol):
@@ -126,6 +127,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.app_instance: Optional[QApplication] = QApplication.instance()
         self.path_manager: PathManager = PathManager()  # 统一路径管理
         self.configs: ConfigManager = ConfigManager(path=CONFIGS_PATH, filename="configs.json")
+        self.time_service: TimeService = TimeService(self.configs, self)
         self.theme_manager: ThemeManager = ThemeManager(self)
         self.widgets_model: WidgetListModel = WidgetListModel(self)
         self.tray_icon: Optional[TrayIcon] = None
@@ -309,6 +311,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     def _load_config(self) -> None:
         """加载和验证配置"""
         self.configs.load_config()
+        self.time_service.start()
 
     def _load_class_swap(self) -> None:
         """加载换课记录，跨天时自动清理"""
@@ -324,6 +327,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self._cleanup_started = True
 
         cleanup_steps = (
+            ("time service stop", self.time_service.stop),
             ("configuration save", self.configs.save),
             ("update timer stop", self.union_update_timer.stop),
             ("auxiliary window release", self.window_manager.release_all),
@@ -343,6 +347,10 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     @Property(QObject)
     def startupAnimation(self) -> QObject:
         return self.startup_animation
+
+    @Property(QObject)
+    def timeService(self) -> QObject:
+        return self.time_service
 
     @Property(QObject, notify=initialized)
     def scheduleRuntime(self) -> QObject:  # 运行时

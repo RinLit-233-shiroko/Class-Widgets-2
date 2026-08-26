@@ -14,6 +14,163 @@ FluentPage {
         Layout.fillWidth: true
         spacing: 4
         Text {
+            text: AppCentral.timeService.currentTime
+            font.pixelSize: 32
+            font.weight: Font.DemiBold
+        }
+
+        Text {
+            text: AppCentral.timeService.currentDate
+            color: Colors.proxy.textSecondaryColor
+            font.pixelSize: 14
+        }
+
+        Text {
+            typography: Typography.BodyStrong
+            text: qsTr("Time")
+        }
+
+        SettingCard {
+            Layout.fillWidth: true
+            title: qsTr("Use Precise Time")
+            description: AppCentral.timeService.preciseTimeAvailable
+                         ? qsTr("Use the synchronized NTP time")
+                         : qsTr("Use NTP time when available; otherwise use system time")
+            icon.name: "ic_fluent_clock_20_regular"
+
+            Switch {
+                property bool initialized: false
+                enabled: !Configs.isKeyLocked("time.use_precise_time")
+                onCheckedChanged: {
+                    if (initialized) {
+                        AppCentral.timeService.setPreciseTimeEnabled(checked)
+                    }
+                }
+                Component.onCompleted: {
+                    checked = Configs.data.time.use_precise_time
+                    initialized = true
+                }
+            }
+        }
+
+        SettingCard {
+            Layout.fillWidth: true
+            title: qsTr("NTP Server")
+            description: qsTr("Choose a preset server or enter a custom server address")
+            icon.name: "ic_fluent_server_20_regular"
+
+            ColumnLayout {
+                spacing: 8
+
+                ComboBox {
+                    id: ntpServerSelector
+                    Layout.fillWidth: true
+                    textRole: "text"
+                    property bool initialized: false
+                    enabled: !Configs.isKeyLocked("time.ntp_server")
+                    model: ListModel {
+                        ListElement { text: "Cloudflare (time.cloudflare.com)"; value: "time.cloudflare.com" }
+                        ListElement { text: "NTP Pool (pool.ntp.org)"; value: "pool.ntp.org" }
+                        ListElement { text: "Alibaba Cloud (ntp.aliyun.com)"; value: "ntp.aliyun.com" }
+                        ListElement { text: "Tencent Cloud (ntp.tencent.com)"; value: "ntp.tencent.com" }
+                        ListElement { text: "Windows (time.windows.com)"; value: "time.windows.com" }
+                        ListElement { text: qsTr("Custom server"); value: "" }
+                    }
+
+                    Component.onCompleted: {
+                        customNtpServer.text = Configs.data.time.ntp_server
+                        for (var i = 0; i < model.count - 1; i++) {
+                            if (model.get(i).value === Configs.data.time.ntp_server) {
+                                currentIndex = i
+                                break
+                            }
+                        }
+                        if (currentIndex < 0 || model.get(currentIndex).value !== Configs.data.time.ntp_server) {
+                            currentIndex = model.count - 1
+                        }
+                        initialized = true
+                    }
+
+                    onCurrentIndexChanged: {
+                        if (!initialized || currentIndex === model.count - 1) {
+                            return
+                        }
+                        customNtpServer.text = model.get(currentIndex).value
+                        Configs.set("time.ntp_server", model.get(currentIndex).value)
+                    }
+                }
+
+                TextField {
+                    id: customNtpServer
+                    Layout.fillWidth: true
+                    placeholderText: qsTr("Custom NTP server, for example time.example.com")
+                    enabled: !Configs.isKeyLocked("time.ntp_server")
+                    onEditingFinished: {
+                        var server = text.trim()
+                        if (server.length === 0) {
+                            text = Configs.data.time.ntp_server
+                            return
+                        }
+                        Configs.set("time.ntp_server", server)
+                        var matchedIndex = ntpServerSelector.model.count - 1
+                        for (var i = 0; i < ntpServerSelector.model.count - 1; i++) {
+                            if (ntpServerSelector.model.get(i).value === server) {
+                                matchedIndex = i
+                                break
+                            }
+                        }
+                        ntpServerSelector.currentIndex = matchedIndex
+                    }
+                }
+            }
+        }
+
+        SettingCard {
+            Layout.fillWidth: true
+            title: qsTr("Synchronize Time")
+            description: qsTr("Synchronize now; if it fails, Class Widgets continues with system time")
+            icon.name: "ic_fluent_arrow_sync_20_regular"
+
+            ColumnLayout {
+                spacing: 8
+
+                Text {
+                    Layout.fillWidth: true
+                    text: AppCentral.timeService.statusText
+                    color: Colors.proxy.textSecondaryColor
+                    wrapMode: Text.WordWrap
+                }
+
+                Button {
+                    text: AppCentral.timeService.syncing ? qsTr("Synchronizing…") : qsTr("Synchronize Time")
+                    enabled: !AppCentral.timeService.syncing
+                    onClicked: AppCentral.timeService.synchronizeTime()
+                }
+            }
+        }
+
+        SettingCard {
+            Layout.fillWidth: true
+            title: qsTr("Time Offset (Seconds)")
+            description: qsTr("Apply a seconds-level offset to the displayed time and schedule calculations")
+            icon.name: "ic_fluent_timer_20_regular"
+
+            SpinBox {
+                from: -86400
+                to: 86400
+                property bool initialized: false
+                property string suffix: qsTr("Seconds")
+                Layout.preferredWidth: 200
+                enabled: !Configs.isKeyLocked("schedule.time_offset")
+                onValueChanged: if (initialized) Configs.set("schedule.time_offset", value)
+                Component.onCompleted: {
+                    value = Configs.data.schedule.time_offset
+                    initialized = true
+                }
+            }
+        }
+
+        Text {
             typography: Typography.BodyStrong
             text: qsTr("Locale")
         }

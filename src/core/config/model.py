@@ -214,6 +214,13 @@ class ScheduleConfig(ConfigBaseModel):
     class_swap: dict[str, JsonData] = Field(default_factory=dict)  # 临时换课记录
 
 
+class TimeConfig(ConfigBaseModel):
+    """全局时钟与 NTP 同步配置。"""
+
+    use_precise_time: bool = False
+    ntp_server: str = "time.cloudflare.com"
+
+
 class NetworkConfig(ConfigBaseModel):
     """
     网络配置
