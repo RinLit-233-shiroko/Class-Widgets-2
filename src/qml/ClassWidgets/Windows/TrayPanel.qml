@@ -126,6 +126,7 @@ Window {
         ToolButton {
             flat: true
             icon.name: "ic_fluent_developer_board_search_20_regular"
+            visible: Configs.data.app.debug_mode
             enabled: Configs.data.app.debug_mode
             onClicked: {
                 panel.hide()
