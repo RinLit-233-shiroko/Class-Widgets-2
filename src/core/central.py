@@ -399,6 +399,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         cleanup_steps = (
             ("time service stop", self.time_service.stop),
             ("central control stop", self.central_control.stop),
+            ("automation stop", self.automation_manager.stop),
             ("configuration save", self.configs.save),
             ("update timer stop", self.union_update_timer.stop),
             ("auxiliary window release", self.window_manager.release_all),
@@ -448,6 +449,10 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     @Property(QObject)
     def centralControl(self) -> QObject:
         return self.central_control
+
+    @Property(QObject)
+    def automationProfiles(self) -> QObject:
+        return self.automation_manager.init_user_profiles()
 
     @Property(QObject, notify=initialized)
     def translator(self):

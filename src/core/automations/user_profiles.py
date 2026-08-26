@@ -1,0 +1,710 @@
+"""用户可配置的本地自动化规则与安全的外部命令适配。"""
+from __future__ import annotations
+
+import json
+import os
+import platform
+import shlex
+import subprocess
+import time
+import uuid
+from pathlib import Path
+from typing import TYPE_CHECKING, Any
+
+from loguru import logger
+from pydantic import BaseModel, Field, field_validator
+from PySide6.QtCore import Property, QProcess, QThread, Signal, Slot
+
+from src.core import CONFIGS_PATH
+from src.core.notification import NotificationProvider
+from src.core.notification.model import NotificationLevel
+from src.core.schedule import EntryType
+
+from .base import AutomationTask
+
+if TYPE_CHECKING:
+    from src.core.central import AppCentral
+
+
+TRIGGER_TYPES = {
+    "app_started",
+    "app_exiting",
+    "process_started",
+    "process_running",
+    "process_exited",
+    "class_started",
+    "break_started",
+    "school_dismissal",
+    "noon_dismissal",
+    "temperature_at_or_above",
+}
+ACTION_TYPES = {"notification", "run_program", "fan_full_speed"}
+SENSOR_NAMES = {"cpu", "gpu", "other"}
+
+
+class AutomationTrigger(BaseModel):
+    """单条自动化规则的触发器。"""
+
+    type: str = "app_started"
+    process_name: str = ""
+    sensor_name: str = "cpu"
+    threshold_celsius: float = 80.0
+
+    @field_validator("type")
+    @classmethod
+    def validate_type(cls, value: str) -> str:
+        if value not in TRIGGER_TYPES:
+            raise ValueError(f"Unsupported automation trigger: {value}")
+        return value
+
+    @field_validator("sensor_name")
+    @classmethod
+    def validate_sensor_name(cls, value: str) -> str:
+        normalized = value.strip().casefold() or "cpu"
+        if normalized not in SENSOR_NAMES:
+            return "other"
+        return normalized
+
+    @field_validator("threshold_celsius")
+    @classmethod
+    def validate_threshold(cls, value: float) -> float:
+        return max(0.0, min(float(value), 150.0))
+
+
+class AutomationAction(BaseModel):
+    """单条规则可执行的安全动作。外部程序始终以参数列表执行，绝不经由 Shell。"""
+
+    id: str = Field(default_factory=lambda: uuid.uuid4().hex)
+    type: str = "notification"
+    title: str = "自动化提醒"
+    message: str = ""
+    program: str = ""
+    arguments: list[str] = Field(default_factory=list)
+    duration_ms: int = 8000
+
+    @field_validator("type")
+    @classmethod
+    def validate_type(cls, value: str) -> str:
+        if value not in ACTION_TYPES:
+            raise ValueError(f"Unsupported automation action: {value}")
+        return value
+
+    @field_validator("title")
+    @classmethod
+    def validate_title(cls, value: str) -> str:
+        return value.strip()[:80] or "自动化提醒"
+
+    @field_validator("message")
+    @classmethod
+    def validate_message(cls, value: str) -> str:
+        return value.strip()[:500]
+
+    @field_validator("duration_ms")
+    @classmethod
+    def validate_duration(cls, value: int) -> int:
+        return max(1000, min(int(value), 60000))
+
+
+class AutomationRule(BaseModel):
+    """用户可启停的规则。每条规则可包含多个动作。"""
+
+    id: str = Field(default_factory=lambda: uuid.uuid4().hex)
+    name: str = "新自动化"
+    enabled: bool = True
+    trigger: AutomationTrigger = Field(default_factory=AutomationTrigger)
+    actions: list[AutomationAction] = Field(default_factory=lambda: [AutomationAction()])
+    cooldown_seconds: int = 30
+
+    @field_validator("name")
+    @classmethod
+    def validate_name(cls, value: str) -> str:
+        return value.strip()[:80] or "新自动化"
+
+    @field_validator("cooldown_seconds")
+    @classmethod
+    def validate_cooldown(cls, value: int) -> int:
+        return max(0, min(int(value), 86400))
+
+
+class AutomationProfile(BaseModel):
+    """一个独立保存在本地的自动化配置文件。"""
+
+    id: str = Field(default_factory=lambda: uuid.uuid4().hex)
+    name: str = "新自动化配置"
+    enabled: bool = False
+    temperature_command: str = ""
+    temperature_arguments: list[str] = Field(default_factory=list)
+    temperature_poll_seconds: int = 5
+    rules: list[AutomationRule] = Field(default_factory=list)
+
+    @field_validator("name")
+    @classmethod
+    def validate_name(cls, value: str) -> str:
+        return value.strip()[:80] or "新自动化配置"
+
+    @field_validator("temperature_poll_seconds")
+    @classmethod
+    def validate_poll_seconds(cls, value: int) -> int:
+        return max(2, min(int(value), 300))
+
+
+class _TemperatureProbeWorker(QThread):
+    completed = Signal(str, bool, object, str)
+
+    def __init__(self, profile_id: str, program: str, arguments: list[str], parent=None) -> None:
+        super().__init__(parent)
+        self.profile_id = profile_id
+        self.program = program
+        self.arguments = list(arguments)
+
+    def run(self) -> None:
+        try:
+            result = subprocess.run(
+                [self.program, *self.arguments],
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+                timeout=5,
+                check=True,
+                shell=False,
+            )
+            raw_values = json.loads(result.stdout)
+            if not isinstance(raw_values, dict):
+                raise ValueError("温度命令输出必须是 JSON 对象")
+            values: dict[str, float] = {}
+            for key, value in raw_values.items():
+                values[str(key).casefold()] = float(value)
+            self.completed.emit(self.profile_id, True, values, "")
+        except Exception as exc:
+            self.completed.emit(self.profile_id, False, {}, str(exc))
+
+
+class AutomationProfilesService(AutomationTask):
+    """自动化配置文件运行器：按秒检测课程、进程和外部温度命令。"""
+
+    changed = Signal()
+    DEFAULT_PROFILE_NAME = "新自动化配置"
+
+    def __init__(self, app_central: "AppCentral") -> None:
+        super().__init__(app_central)
+        self._profiles: dict[str, AutomationProfile] = {}
+        self._storage_dir = Path(CONFIGS_PATH) / "automation_profiles"
+        self._running = False
+        self._profile_workers: dict[str, _TemperatureProbeWorker] = {}
+        self._last_temperature_poll: dict[str, float] = {}
+        self._temperatures: dict[str, dict[str, float]] = {}
+        self._temperature_rule_active: dict[tuple[str, str], bool] = {}
+        self._last_rule_run: dict[tuple[str, str], float] = {}
+        self._last_processes: dict[str, set[int]] = {}
+        self._process_snapshot_ready = False
+        self._last_schedule_status = ""
+        self._last_status_text = self.tr("尚未启动自动化服务")
+        self._notification_provider = NotificationProvider(
+            id="com.classwidgets.automation",
+            name=self.tr("自动化"),
+            icon="ic_fluent_branch_compare_20_regular",
+            manager=app_central.notification,
+            use_system_notify=True,
+        )
+
+    @property
+    def name(self) -> str:
+        return "UserAutomationProfiles"
+
+    @Property(list, notify=changed)
+    def profiles(self) -> list[dict[str, Any]]:
+        return [profile.model_dump() for profile in self._profiles.values()]
+
+    @Property(str, notify=changed)
+    def statusText(self) -> str:
+        return self._last_status_text
+
+    @Property(dict, notify=changed)
+    def temperatures(self) -> dict[str, dict[str, float]]:
+        return {profile_id: dict(values) for profile_id, values in self._temperatures.items()}
+
+    @Property(bool, notify=changed)
+    def running(self) -> bool:
+        return self._running
+
+    def start(self) -> None:
+        if self._running:
+            return
+        self._load_profiles()
+        self._running = True
+        self._last_processes = {}
+        self._process_snapshot_ready = False
+        self._last_schedule_status = self._runtime_status()
+        self._set_status(self.tr("自动化服务已启动；默认配置文件均为关闭状态"))
+        self._dispatch_event("app_started")
+
+    def stop(self) -> None:
+        if not self._running:
+            return
+        self._dispatch_event("app_exiting")
+        self._running = False
+        for worker in self._profile_workers.values():
+            worker.requestInterruption()
+            worker.quit()
+            worker.wait(1000)
+        self._profile_workers.clear()
+        self._set_status(self.tr("自动化服务已停止"))
+
+    def update(self) -> None:
+        if not self._running:
+            return
+        self._check_process_events()
+        self._check_schedule_events()
+        self._schedule_temperature_probes()
+
+    @Slot(str, result=str)
+    def createProfile(self, name: str) -> str:
+        profile = AutomationProfile(name=name or self.DEFAULT_PROFILE_NAME)
+        self._profiles[profile.id] = profile
+        self._save_profile(profile)
+        self._set_status(self.tr("已创建自动化配置文件“{0}”；默认未启用").format(profile.name))
+        return profile.id
+
+    @Slot(str)
+    def deleteProfile(self, profile_id: str) -> None:
+        profile = self._profiles.pop(profile_id, None)
+        if profile is None:
+            return
+        self._profile_path(profile_id).unlink(missing_ok=True)
+        self._temperatures.pop(profile_id, None)
+        self._last_temperature_poll.pop(profile_id, None)
+        self._set_status(self.tr("已删除自动化配置文件“{0}”").format(profile.name))
+
+    @Slot(str, bool)
+    def setProfileEnabled(self, profile_id: str, enabled: bool) -> None:
+        profile = self._get_profile(profile_id)
+        if profile is None:
+            return
+        profile.enabled = bool(enabled)
+        self._save_profile(profile)
+        self._set_status(
+            self.tr("已{0}自动化配置文件“{1}”").format(
+                self.tr("启用") if profile.enabled else self.tr("停用"),
+                profile.name,
+            )
+        )
+
+    @Slot(str, str, str, str, int)
+    def updateProfile(self, profile_id: str, name: str, sensor_program: str, sensor_arguments: str, poll_seconds: int) -> None:
+        profile = self._get_profile(profile_id)
+        if profile is None:
+            return
+        profile.name = name
+        profile.temperature_command = sensor_program.strip()
+        profile.temperature_arguments = self._parse_arguments(sensor_arguments)
+        profile.temperature_poll_seconds = poll_seconds
+        self._save_profile(profile)
+        self._set_status(self.tr("已保存自动化配置文件“{0}”").format(profile.name))
+
+    @Slot(str, result=str)
+    def addRule(self, profile_id: str) -> str:
+        profile = self._get_profile(profile_id)
+        if profile is None:
+            return ""
+        rule = AutomationRule(name=self.tr("新自动化"))
+        profile.rules.append(rule)
+        self._save_profile(profile)
+        return rule.id
+
+    @Slot(str, str)
+    def deleteRule(self, profile_id: str, rule_id: str) -> None:
+        profile = self._get_profile(profile_id)
+        if profile is None:
+            return
+        profile.rules = [rule for rule in profile.rules if rule.id != rule_id]
+        self._save_profile(profile)
+        self.changed.emit()
+
+    @Slot(str, str, bool)
+    def setRuleEnabled(self, profile_id: str, rule_id: str, enabled: bool) -> None:
+        rule = self._get_rule(profile_id, rule_id)
+        if rule is None:
+            return
+        rule.enabled = bool(enabled)
+        self._save_profile(self._profiles[profile_id])
+        self.changed.emit()
+
+    @Slot(str, str, str, str, str, str, float, int)
+    def updateRule(
+        self,
+        profile_id: str,
+        rule_id: str,
+        name: str,
+        trigger_type: str,
+        process_name: str,
+        sensor_name: str,
+        threshold_celsius: float,
+        cooldown_seconds: int,
+    ) -> None:
+        profile = self._get_profile(profile_id)
+        rule = self._get_rule(profile_id, rule_id)
+        if profile is None or rule is None:
+            return
+        try:
+            rule.name = name
+            rule.trigger = AutomationTrigger(
+                type=trigger_type,
+                process_name=process_name.strip(),
+                sensor_name=sensor_name,
+                threshold_celsius=threshold_celsius,
+            )
+            rule.cooldown_seconds = cooldown_seconds
+        except ValueError as exc:
+            self._set_status(self.tr("自动化规则无效：{0}").format(exc))
+            return
+        self._save_profile(profile)
+        self.changed.emit()
+
+    @Slot(str, str, result=str)
+    def addAction(self, profile_id: str, rule_id: str) -> str:
+        profile = self._get_profile(profile_id)
+        rule = self._get_rule(profile_id, rule_id)
+        if profile is None or rule is None:
+            return ""
+        action = AutomationAction()
+        rule.actions.append(action)
+        self._save_profile(profile)
+        return action.id
+
+    @Slot(str, str, str)
+    def deleteAction(self, profile_id: str, rule_id: str, action_id: str) -> None:
+        profile = self._get_profile(profile_id)
+        rule = self._get_rule(profile_id, rule_id)
+        if profile is None or rule is None:
+            return
+        rule.actions = [action for action in rule.actions if action.id != action_id]
+        self._save_profile(profile)
+        self.changed.emit()
+
+    @Slot(str, str, str, str, str, str, str, str, int)
+    def updateAction(
+        self,
+        profile_id: str,
+        rule_id: str,
+        action_id: str,
+        action_type: str,
+        title: str,
+        message: str,
+        program: str,
+        arguments: str,
+        duration_ms: int,
+    ) -> None:
+        profile = self._get_profile(profile_id)
+        rule = self._get_rule(profile_id, rule_id)
+        action = self._get_action(profile_id, rule_id, action_id)
+        if profile is None or rule is None or action is None:
+            return
+        try:
+            action.type = action_type
+            action.title = title
+            action.message = message
+            action.program = program.strip()
+            action.arguments = self._parse_arguments(arguments)
+            action.duration_ms = duration_ms
+        except ValueError as exc:
+            self._set_status(self.tr("自动化动作无效：{0}").format(exc))
+            return
+        self._save_profile(profile)
+        self.changed.emit()
+
+    @Slot(str, str)
+    def testNotification(self, title: str, message: str) -> None:
+        self._notification_provider.push(
+            int(NotificationLevel.ANNOUNCEMENT),
+            title.strip()[:80] or self.tr("自动化测试"),
+            message.strip()[:500] or self.tr("这是一条自动化测试通知。"),
+            5000,
+            True,
+        )
+
+    def _load_profiles(self) -> None:
+        self._storage_dir.mkdir(parents=True, exist_ok=True)
+        self._profiles.clear()
+        for path in sorted(self._storage_dir.glob("*.json")):
+            try:
+                profile = AutomationProfile.model_validate_json(path.read_text(encoding="utf-8"))
+                self._profiles[profile.id] = profile
+            except Exception as exc:
+                logger.warning("Skipping invalid automation profile {}: {}", path, exc)
+        self.changed.emit()
+
+    def _save_profile(self, profile: AutomationProfile) -> None:
+        self._storage_dir.mkdir(parents=True, exist_ok=True)
+        path = self._profile_path(profile.id)
+        temporary = path.with_suffix(".json.tmp")
+        temporary.write_text(profile.model_dump_json(indent=2), encoding="utf-8")
+        temporary.replace(path)
+        self.changed.emit()
+
+    def _profile_path(self, profile_id: str) -> Path:
+        return self._storage_dir / f"{profile_id}.json"
+
+    def _get_profile(self, profile_id: str) -> AutomationProfile | None:
+        return self._profiles.get(profile_id)
+
+    def _get_rule(self, profile_id: str, rule_id: str) -> AutomationRule | None:
+        profile = self._get_profile(profile_id)
+        if profile is None:
+            return None
+        return next((rule for rule in profile.rules if rule.id == rule_id), None)
+
+    def _get_action(self, profile_id: str, rule_id: str, action_id: str) -> AutomationAction | None:
+        rule = self._get_rule(profile_id, rule_id)
+        if rule is None:
+            return None
+        return next((action for action in rule.actions if action.id == action_id), None)
+
+    def _check_process_events(self) -> None:
+        current = self._snapshot_processes()
+        if not self._process_snapshot_ready:
+            self._process_snapshot_ready = True
+            for profile in self._enabled_profiles():
+                for rule in self._enabled_rules(profile):
+                    process_name = rule.trigger.process_name.casefold()
+                    if rule.trigger.type == "process_running" and current.get(process_name):
+                        self._run_rule(profile, rule, self.tr("进程正在运行"))
+            self._last_processes = current
+            return
+
+        for profile in self._enabled_profiles():
+            for rule in self._enabled_rules(profile):
+                process_name = rule.trigger.process_name.casefold()
+                if not process_name:
+                    continue
+                previous_ids = self._last_processes.get(process_name, set())
+                current_ids = current.get(process_name, set())
+                if rule.trigger.type == "process_started" and current_ids - previous_ids:
+                    self._run_rule(profile, rule, self.tr("进程启动"))
+                elif rule.trigger.type == "process_running" and current_ids and not previous_ids:
+                    self._run_rule(profile, rule, self.tr("进程正在运行"))
+                elif rule.trigger.type == "process_exited" and previous_ids and not current_ids:
+                    self._run_rule(profile, rule, self.tr("进程退出"))
+        self._last_processes = current
+
+    def _check_schedule_events(self) -> None:
+        current_status = self._runtime_status()
+        if not current_status or current_status == self._last_schedule_status:
+            return
+        previous_status = self._last_schedule_status
+        self._last_schedule_status = current_status
+        is_class = current_status in {EntryType.CLASS.value, EntryType.ACTIVITY.value}
+        was_class = previous_status in {EntryType.CLASS.value, EntryType.ACTIVITY.value}
+        is_break = current_status in {
+            EntryType.BREAK.value,
+            EntryType.PREPARATION.value,
+            EntryType.FREE.value,
+        }
+        if is_class and not was_class:
+            self._dispatch_event("class_started")
+        if is_break and current_status != previous_status:
+            self._dispatch_event("break_started")
+            if was_class and self._is_noon_dismissal():
+                self._dispatch_event("noon_dismissal")
+            elif was_class and not self._has_future_classes_today():
+                self._dispatch_event("school_dismissal")
+
+    def _schedule_temperature_probes(self) -> None:
+        now = time.monotonic()
+        for profile in self._enabled_profiles():
+            if not profile.temperature_command or profile.id in self._profile_workers:
+                continue
+            if not any(
+                rule.trigger.type == "temperature_at_or_above"
+                for rule in self._enabled_rules(profile)
+            ):
+                continue
+            last_poll = self._last_temperature_poll.get(profile.id, 0.0)
+            if now - last_poll < profile.temperature_poll_seconds:
+                continue
+            self._last_temperature_poll[profile.id] = now
+            worker = _TemperatureProbeWorker(
+                profile.id,
+                profile.temperature_command,
+                profile.temperature_arguments,
+                self,
+            )
+            worker.completed.connect(self._on_temperature_probe_completed)
+            worker.finished.connect(worker.deleteLater)
+            worker.finished.connect(lambda profile_id=profile.id: self._profile_workers.pop(profile_id, None))
+            self._profile_workers[profile.id] = worker
+            worker.start()
+
+    @Slot(str, bool, object, str)
+    def _on_temperature_probe_completed(self, profile_id: str, success: bool, values: object, error: str) -> None:
+        profile = self._get_profile(profile_id)
+        if profile is None:
+            return
+        if not success or not isinstance(values, dict):
+            self._set_status(self.tr("温度读取失败（{0}）：{1}").format(profile.name, error))
+            return
+        normalized = {str(key).casefold(): float(value) for key, value in values.items()}
+        self._temperatures[profile_id] = normalized
+        for rule in self._enabled_rules(profile):
+            if rule.trigger.type != "temperature_at_or_above":
+                continue
+            sensor_name = rule.trigger.sensor_name
+            sensor_value = normalized.get(sensor_name)
+            if sensor_value is None:
+                continue
+            key = (profile.id, rule.id)
+            above = sensor_value >= rule.trigger.threshold_celsius
+            if above and not self._temperature_rule_active.get(key, False):
+                self._run_rule(
+                    profile,
+                    rule,
+                    self.tr("{0} 温度达到 {1:.1f}°C").format(sensor_name.upper(), sensor_value),
+                )
+            self._temperature_rule_active[key] = above
+        self._set_status(self.tr("已更新自动化温度传感器数据"))
+
+    def _dispatch_event(self, trigger_type: str) -> None:
+        for profile in self._enabled_profiles():
+            for rule in self._enabled_rules(profile):
+                if rule.trigger.type == trigger_type:
+                    self._run_rule(profile, rule, trigger_type)
+
+    def _run_rule(self, profile: AutomationProfile, rule: AutomationRule, reason: str) -> None:
+        now = time.monotonic()
+        key = (profile.id, rule.id)
+        previous_run = self._last_rule_run.get(key, 0.0)
+        if now - previous_run < rule.cooldown_seconds:
+            return
+        self._last_rule_run[key] = now
+        executed = 0
+        for action in rule.actions:
+            if self._run_action(profile, rule, action):
+                executed += 1
+        self._set_status(
+            self.tr("已执行自动化“{0}”（{1}；{2} 个动作）").format(
+                rule.name,
+                reason,
+                executed,
+            )
+        )
+
+    def _run_action(self, profile: AutomationProfile, rule: AutomationRule, action: AutomationAction) -> bool:
+        if action.type == "notification":
+            self._notification_provider.push(
+                int(NotificationLevel.ANNOUNCEMENT),
+                action.title,
+                action.message,
+                action.duration_ms,
+                True,
+            )
+            return True
+        if action.type in {"run_program", "fan_full_speed"}:
+            if not action.program:
+                logger.warning("Skipping automation action without an executable: {}", rule.name)
+                return False
+            try:
+                result = QProcess.startDetached(action.program, action.arguments)
+                started = result[0] if isinstance(result, tuple) else bool(result)
+            except Exception as exc:
+                logger.warning("Failed to start automation program {}: {}", action.program, exc)
+                return False
+            if not started:
+                logger.warning("Automation program did not start: {}", action.program)
+            return started
+        return False
+
+    def _enabled_profiles(self) -> list[AutomationProfile]:
+        return [profile for profile in self._profiles.values() if profile.enabled]
+
+    @staticmethod
+    def _enabled_rules(profile: AutomationProfile) -> list[AutomationRule]:
+        return [rule for rule in profile.rules if rule.enabled]
+
+    def _runtime_status(self) -> str:
+        status = getattr(self.app_central.runtime, "current_status", None)
+        return getattr(status, "value", str(status or ""))
+
+    def _is_noon_dismissal(self) -> bool:
+        runtime = self.app_central.runtime
+        current_time = getattr(runtime, "current_offset_time", None)
+        if current_time is None or not 11 <= current_time.hour <= 14:
+            return False
+        return self._has_future_classes_today()
+
+    def _has_future_classes_today(self) -> bool:
+        runtime = self.app_central.runtime
+        current_day = getattr(runtime, "current_day", None)
+        current_time = getattr(runtime, "current_offset_time", None)
+        if current_day is None or current_time is None:
+            return False
+        for entry in getattr(current_day, "entries", []):
+            entry_type = getattr(getattr(entry, "type", None), "value", getattr(entry, "type", ""))
+            if entry_type not in {EntryType.CLASS.value, EntryType.ACTIVITY.value}:
+                continue
+            if str(getattr(entry, "startTime", "")) > current_time.strftime("%H:%M"):
+                return True
+        return False
+
+    @staticmethod
+    def _parse_arguments(arguments: str) -> list[str]:
+        try:
+            return shlex.split(arguments, posix=platform.system() != "Windows")
+        except ValueError:
+            return []
+
+    @staticmethod
+    def _snapshot_processes() -> dict[str, set[int]]:
+        snapshot: dict[str, set[int]] = {}
+        system = platform.system()
+        try:
+            if system == "Linux":
+                for path in Path("/proc").iterdir():
+                    if not path.name.isdigit():
+                        continue
+                    try:
+                        name = (path / "comm").read_text(encoding="utf-8").strip().casefold()
+                    except OSError:
+                        continue
+                    if name:
+                        snapshot.setdefault(name, set()).add(int(path.name))
+            elif system == "Windows":
+                result = subprocess.run(
+                    ["tasklist", "/FO", "CSV", "/NH"],
+                    capture_output=True,
+                    text=True,
+                    timeout=3,
+                    check=True,
+                    shell=False,
+                )
+                for line in result.stdout.splitlines():
+                    parts = [part.strip('"') for part in line.split('","')]
+                    if len(parts) < 2:
+                        continue
+                    try:
+                        snapshot.setdefault(parts[0].casefold(), set()).add(int(parts[1]))
+                    except ValueError:
+                        continue
+            else:
+                result = subprocess.run(
+                    ["ps", "-axo", "pid=,comm="],
+                    capture_output=True,
+                    text=True,
+                    timeout=3,
+                    check=True,
+                    shell=False,
+                )
+                for line in result.stdout.splitlines():
+                    parts = line.strip().split(maxsplit=1)
+                    if len(parts) != 2:
+                        continue
+                    try:
+                        snapshot.setdefault(Path(parts[1]).name.casefold(), set()).add(int(parts[0]))
+                    except ValueError:
+                        continue
+        except Exception as exc:
+            logger.debug("Unable to snapshot processes: {}", exc)
+        return snapshot
+
+    def _set_status(self, status: str) -> None:
+        self._last_status_text = status
+        self.changed.emit()

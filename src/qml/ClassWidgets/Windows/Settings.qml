@@ -70,6 +70,11 @@ FluentWindow {
             icon: "ic_fluent_people_team_20_regular",
         },
         {
+            title: qsTr("自动化"),
+            page: PathManager.qml("pages/settings/Automation.qml"),
+            icon: "ic_fluent_branch_compare_20_regular",
+        },
+        {
             title: qsTr("Plugins"),
             page: PathManager.qml("pages/settings/Plugins.qml"),
             icon: "ic_fluent_apps_add_in_20_regular",
