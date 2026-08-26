@@ -262,19 +262,82 @@ MIT ライセンスの下でライセンスが提供されています</translat
 <context>
     <name>CentralControl</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="8"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="16"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="9"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="17"/>
         <source>集控</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="22"/>
-        <source>集控功能暂未启用</source>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="23"/>
+        <source>课程表下发地址</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="23"/>
-        <source>此页面已预留为独立的集控入口。后续将在此配置设备接入、统一策略与远程管理功能。</source>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="24"/>
+        <source>填写 GitHub Pages 上的课程表清单地址（manifest.json）</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="41"/>
+        <source>接收集控课程表</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="42"/>
+        <source>手动下载、校验并应用课程表。下载失败时会保留当前本地课程表。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="58"/>
+        <source>当前集控课程表：%1（策略版本：%2）</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="66"/>
+        <source>正在检查…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="67"/>
+        <source>检查并应用课程表</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CentralControlScheduleService</name>
+    <message>
+        <location filename="../../src/core/central_control.py" line="60"/>
+        <source>尚未检查集控课程表</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/central_control.py" line="95"/>
+        <source>请先填写课程表下发地址</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/central_control.py" line="98"/>
+        <source>课程表下发地址必须以 http:// 或 https:// 开头</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/central_control.py" line="102"/>
+        <source>正在检查集控课程表…</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/central_control.py" line="113"/>
+        <source>集控课程表接收失败：{0}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/central_control.py" line="120"/>
+        <source>集控课程表应用失败：{0}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/central_control.py" line="126"/>
+        <source>已应用集控课程表“{0}”（策略版本：{1}）</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3590,27 +3653,27 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>Shortcuts</name>
     <message>
-        <location filename="../../src/core/central.py" line="155"/>
+        <location filename="../../src/core/central.py" line="156"/>
         <source>Settings</source>
         <translation type="unfinished">設定</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="161"/>
+        <location filename="../../src/core/central.py" line="162"/>
         <source>Schedules</source>
         <translation type="unfinished">スケジュール</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="167"/>
+        <location filename="../../src/core/central.py" line="168"/>
         <source>Plugin Plaza</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="173"/>
+        <location filename="../../src/core/central.py" line="174"/>
         <source>Reschedule Day</source>
         <translation type="unfinished">再スケジュール日</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="179"/>
+        <location filename="../../src/core/central.py" line="180"/>
         <source>Class Swap</source>
         <translation type="unfinished">クラス交換</translation>
     </message>
