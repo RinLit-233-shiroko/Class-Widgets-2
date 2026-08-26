@@ -198,7 +198,8 @@ ApplicationWindow {
 
     function completeTutorial() {
         Configs.set("app.tutorial_completed", true)
-        AppCentral.restart("--update-done")
+        Configs.set("app.startup_animation_skip_once", true)
+        AppCentral.restart()
     }
 
     StackView {

@@ -25,6 +25,7 @@ class StartupAnimation(QObject):
     """管理主程序的非全屏启动动画和自定义本地媒体。"""
 
     changed = Signal()
+    finished = Signal()
     MAX_VIDEO_DURATION_MS = 10_000
     IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".bmp", ".webp", ".gif"}
     VIDEO_SUFFIXES = {".mp4", ".webm", ".mov", ".m4v", ".avi"}
@@ -156,12 +157,12 @@ class StartupAnimation(QObject):
         timer.deleteLater()
         return duration
 
-    def start(self) -> None:
-        """按配置显示启动动画；独立设置/插件中心模式不会调用此方法。"""
+    def start(self) -> bool:
+        """按配置显示启动动画，并返回是否已成功进入动画等待状态。"""
         if not getattr(self.app.configs.app, "startup_animation_enabled", True):
-            return
+            return False
         if self.engine is not None:
-            return
+            return True
 
         self.engine = QQmlApplicationEngine(self)
         self.engine.addImportPath(str(QML_PATH))
@@ -176,6 +177,8 @@ class StartupAnimation(QObject):
         if not self.engine.rootObjects():
             logger.error("Startup animation QML failed to load")
             self.release()
+            return False
+        return True
 
     def _on_object_created(self, obj, _url) -> None:
         if obj is not None and self.root_window is None:
@@ -183,7 +186,10 @@ class StartupAnimation(QObject):
 
     @Slot()
     def finish(self) -> None:
+        if self.engine is None and self.root_window is None:
+            return
         self.release()
+        self.finished.emit()
 
     def release(self) -> None:
         if self.root_window is not None:

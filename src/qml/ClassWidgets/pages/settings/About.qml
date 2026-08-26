@@ -239,6 +239,7 @@ FluentPage {
                 enabled: !Configs.isKeyLocked("app.tutorial_completed")
                 onClicked: {
                     Configs.set("app.tutorial_completed", false)
+                    Configs.set("app.startup_animation_skip_once", false)
                     AppCentral.restart()
                 }
             }

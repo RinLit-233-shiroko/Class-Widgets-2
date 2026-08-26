@@ -288,6 +288,19 @@ FluentPage {
 
         SettingCard {
             Layout.fillWidth: true
+            icon.name: "ic_fluent_document_bullet_list_20_regular"
+            title: qsTr("Show update summary")
+            description: qsTr("Open the update summary window after an update is installed")
+
+            Switch {
+                enabled: !Configs.isKeyLocked("app.show_update_summary")
+                onCheckedChanged: Configs.set("app.show_update_summary", checked)
+                Component.onCompleted: checked = Configs.data.app.show_update_summary
+            }
+        }
+
+        SettingCard {
+            Layout.fillWidth: true
             icon.name: "ic_fluent_cloud_arrow_up_20_regular"
             title: qsTr("GitHub Releases 更新源")
             description: qsTr(
