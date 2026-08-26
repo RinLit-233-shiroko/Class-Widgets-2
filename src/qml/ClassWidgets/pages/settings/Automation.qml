@@ -70,6 +70,80 @@ FluentPage {
 
         SettingCard {
             Layout.fillWidth: true
+            visible: AppCentral.automationProfiles.pluginProjects.length > 0
+            icon.name: "ic_fluent_plug_connected_20_regular"
+            title: qsTr("插件自动化项目")
+            description: qsTr("由已启用插件提供；是否启用由你单独控制。")
+
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: 8
+
+                Repeater {
+                    model: AppCentral.automationProfiles.pluginProjects
+
+                    delegate: Frame {
+                        required property var modelData
+                        readonly property var project: modelData
+                        Layout.fillWidth: true
+
+                        RowLayout {
+                            anchors.left: parent.left
+                            anchors.right: parent.right
+                            spacing: 10
+
+                            Icon {
+                                name: project.icon
+                                size: 20
+                            }
+
+                            ColumnLayout {
+                                Layout.fillWidth: true
+                                spacing: 2
+
+                                Text {
+                                    Layout.fillWidth: true
+                                    text: project.title
+                                    typography: Typography.BodyStrong
+                                    elide: Text.ElideRight
+                                }
+
+                                Text {
+                                    Layout.fillWidth: true
+                                    visible: project.description.length > 0
+                                    text: project.description
+                                    color: Colors.proxy.textSecondaryColor
+                                    wrapMode: Text.Wrap
+                                }
+
+                                Text {
+                                    text: qsTr("插件：%1").arg(project.pluginId)
+                                    color: Colors.proxy.textSecondaryColor
+                                    typography: Typography.Caption
+                                }
+                            }
+
+                            Button {
+                                visible: project.hasSettings
+                                text: qsTr("设置")
+                                onClicked: AppCentral.automationProfiles.openPluginProjectSettings(project.id)
+                            }
+
+                            Switch {
+                                text: qsTr("启用")
+                                checked: project.enabled
+                                onToggled: AppCentral.automationProfiles.setPluginProjectEnabled(
+                                    project.id, checked
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        SettingCard {
+            Layout.fillWidth: true
             icon.name: "ic_fluent_folder_multiple_20_regular"
             title: qsTr("自动化配置文件")
             description: qsTr("可创建多个相互独立的配置文件；新建文件默认关闭。")

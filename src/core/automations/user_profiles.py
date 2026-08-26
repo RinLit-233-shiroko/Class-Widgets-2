@@ -8,6 +8,7 @@ import shlex
 import subprocess
 import time
 import uuid
+from dataclasses import dataclass
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
@@ -123,6 +124,31 @@ class AutomationProfile(BaseModel):
         return value.strip()[:80] or "新自动化配置"
 
 
+@dataclass
+class PluginAutomationProject:
+    """由插件注册、在自动化设置页展示的独立项目。"""
+
+    id: str
+    plugin_id: str
+    title: str
+    description: str
+    icon: str
+    enabled: bool
+    on_enabled_changed: Any | None = None
+    on_open_settings: Any | None = None
+
+    def to_view(self) -> dict[str, Any]:
+        return {
+            "id": self.id,
+            "pluginId": self.plugin_id,
+            "title": self.title,
+            "description": self.description,
+            "icon": self.icon,
+            "enabled": self.enabled,
+            "hasSettings": self.on_open_settings is not None,
+        }
+
+
 class AutomationProfilesService(AutomationTask):
     """自动化配置文件运行器：按秒检测课程和进程状态。"""
 
@@ -133,6 +159,10 @@ class AutomationProfilesService(AutomationTask):
         super().__init__(app_central)
         self._profiles: dict[str, AutomationProfile] = {}
         self._storage_dir = Path(CONFIGS_PATH) / "automation_profiles"
+        self._plugin_projects_path = Path(CONFIGS_PATH) / "automation_plugin_projects.json"
+        self._plugin_projects: dict[str, PluginAutomationProject] = {}
+        self._plugin_project_states: dict[str, bool] = {}
+        self._plugin_project_states_loaded = False
         self._running = False
         self._last_rule_run: dict[tuple[str, str], float] = {}
         self._last_processes: dict[str, set[int]] = {}
@@ -159,6 +189,10 @@ class AutomationProfilesService(AutomationTask):
     def statusText(self) -> str:
         return self._last_status_text
 
+    @Property(list, notify=changed)
+    def pluginProjects(self) -> list[dict[str, Any]]:
+        return [project.to_view() for project in self._plugin_projects.values()]
+
     @Property(bool, notify=changed)
     def running(self) -> bool:
         return self._running
@@ -167,6 +201,7 @@ class AutomationProfilesService(AutomationTask):
         if self._running:
             return
         self._load_profiles()
+        self._load_plugin_project_states()
         self._running = True
         self._last_processes = {}
         self._process_snapshot_ready = False
@@ -333,6 +368,91 @@ class AutomationProfilesService(AutomationTask):
         self._save_profile(profile)
         self.changed.emit()
 
+    def register_plugin_project(
+        self,
+        plugin_id: str,
+        project_id: str,
+        title: str,
+        description: str = "",
+        icon: str = "ic_fluent_plug_connected_20_regular",
+        on_enabled_changed: Any | None = None,
+        on_open_settings: Any | None = None,
+    ) -> str:
+        """注册一个插件自动化项目；插件只能控制自身项目，启用状态由用户保存。"""
+        plugin_id = self._validate_plugin_project_component(plugin_id, "plugin ID")
+        project_id = self._validate_plugin_project_component(project_id, "project ID")
+        title = str(title).strip()[:80]
+        if not title:
+            raise ValueError("Plugin automation project title cannot be empty")
+        if on_enabled_changed is not None and not callable(on_enabled_changed):
+            raise TypeError("on_enabled_changed must be callable")
+        if on_open_settings is not None and not callable(on_open_settings):
+            raise TypeError("on_open_settings must be callable")
+
+        self._load_plugin_project_states()
+        qualified_id = f"{plugin_id}.{project_id}"
+        if qualified_id in self._plugin_projects:
+            raise ValueError(f"Plugin automation project is already registered: {qualified_id}")
+        enabled = bool(self._plugin_project_states.get(qualified_id, False))
+        project = PluginAutomationProject(
+            id=qualified_id,
+            plugin_id=plugin_id,
+            title=title,
+            description=str(description).strip()[:240],
+            icon=str(icon).strip() or "ic_fluent_plug_connected_20_regular",
+            enabled=enabled,
+            on_enabled_changed=on_enabled_changed,
+            on_open_settings=on_open_settings,
+        )
+        self._plugin_projects[qualified_id] = project
+        self.changed.emit()
+        self._notify_plugin_project_enabled(project)
+        logger.info("Registered plugin automation project: {}", qualified_id)
+        return qualified_id
+
+    def unregister_plugin_projects(self, plugin_id: str) -> None:
+        """移除已卸载插件的运行时项目；保留状态以支持同 ID 插件重新安装。"""
+        removed_ids = [
+            project_id
+            for project_id, project in self._plugin_projects.items()
+            if project.plugin_id == plugin_id
+        ]
+        for project_id in removed_ids:
+            self._plugin_projects.pop(project_id, None)
+        if removed_ids:
+            self.changed.emit()
+            logger.info("Unregistered {} automation project(s) for plugin {}", len(removed_ids), plugin_id)
+
+    @Slot(str, bool, result=bool)
+    def setPluginProjectEnabled(self, project_id: str, enabled: bool) -> bool:
+        project = self._plugin_projects.get(project_id)
+        if project is None:
+            return False
+        project.enabled = bool(enabled)
+        self._plugin_project_states[project_id] = project.enabled
+        self._save_plugin_project_states()
+        self._notify_plugin_project_enabled(project)
+        self._set_status(
+            self.tr("已{0}插件自动化项目“{1}”").format(
+                self.tr("启用") if project.enabled else self.tr("停用"),
+                project.title,
+            )
+        )
+        return True
+
+    @Slot(str, result=bool)
+    def openPluginProjectSettings(self, project_id: str) -> bool:
+        project = self._plugin_projects.get(project_id)
+        if project is None or project.on_open_settings is None:
+            return False
+        try:
+            project.on_open_settings()
+            return True
+        except Exception as exc:
+            logger.warning("Failed to open settings for plugin automation project {}: {}", project_id, exc)
+            self._set_status(self.tr("无法打开插件自动化项目设置"))
+            return False
+
     @Slot(str, str)
     def testNotification(self, title: str, message: str) -> None:
         self._notification_provider.push(
@@ -342,6 +462,50 @@ class AutomationProfilesService(AutomationTask):
             5000,
             True,
         )
+
+    @staticmethod
+    def _validate_plugin_project_component(value: str, label: str) -> str:
+        normalized = str(value).strip()
+        if not normalized or len(normalized) > 80:
+            raise ValueError(f"Invalid plugin automation {label}")
+        if any(character not in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789._-" for character in normalized):
+            raise ValueError(f"Invalid plugin automation {label}")
+        return normalized
+
+    def _load_plugin_project_states(self) -> None:
+        if self._plugin_project_states_loaded:
+            return
+        self._plugin_project_states_loaded = True
+        try:
+            if not self._plugin_projects_path.exists():
+                return
+            raw_data = json.loads(self._plugin_projects_path.read_text(encoding="utf-8"))
+            raw_states = raw_data.get("projects", {}) if isinstance(raw_data, dict) else {}
+            if isinstance(raw_states, dict):
+                self._plugin_project_states = {
+                    str(project_id): bool(enabled)
+                    for project_id, enabled in raw_states.items()
+                }
+        except Exception as exc:
+            logger.warning("Unable to load plugin automation project states: {}", exc)
+            self._plugin_project_states = {}
+
+    def _save_plugin_project_states(self) -> None:
+        self._plugin_projects_path.parent.mkdir(parents=True, exist_ok=True)
+        temporary = self._plugin_projects_path.with_suffix(".json.tmp")
+        temporary.write_text(
+            json.dumps({"schemaVersion": 1, "projects": self._plugin_project_states}, indent=2),
+            encoding="utf-8",
+        )
+        temporary.replace(self._plugin_projects_path)
+
+    def _notify_plugin_project_enabled(self, project: PluginAutomationProject) -> None:
+        if project.on_enabled_changed is None:
+            return
+        try:
+            project.on_enabled_changed(project.enabled)
+        except Exception as exc:
+            logger.warning("Plugin automation project callback failed for {}: {}", project.id, exc)
 
     def _load_profiles(self) -> None:
         self._storage_dir.mkdir(parents=True, exist_ok=True)
