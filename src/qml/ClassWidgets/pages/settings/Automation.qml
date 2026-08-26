@@ -281,8 +281,8 @@ FluentPage {
                                     text: rule.name
                                     onEditingFinished: AppCentral.automationProfiles.updateRule(
                                         root.selectedProfileId, rule.id, text,
-                                        triggerType.currentValue, processName.text,
-                                        sensorName.currentValue, threshold.value, cooldown.value
+                                        triggerType.automationValue, processName.text,
+                                        sensorName.automationValue, threshold.value, cooldown.value
                                     )
                                 }
 
@@ -302,11 +302,11 @@ FluentPage {
                                     Layout.fillWidth: true
                                     model: root.triggerNames
                                     currentIndex: root.indexFor(root.triggerKeys, rule.trigger.type)
-                                    property string currentValue: root.triggerKeys[currentIndex]
+                                    property string automationValue: root.triggerKeys[currentIndex]
                                     onActivated: AppCentral.automationProfiles.updateRule(
                                         root.selectedProfileId, rule.id, ruleName.text,
-                                        currentValue, processName.text,
-                                        sensorName.currentValue, threshold.value, cooldown.value
+                                        automationValue, processName.text,
+                                        sensorName.automationValue, threshold.value, cooldown.value
                                     )
                                 }
                             }
@@ -314,21 +314,21 @@ FluentPage {
                             TextField {
                                 id: processName
                                 Layout.fillWidth: true
-                                visible: triggerType.currentValue === "process_started"
-                                         || triggerType.currentValue === "process_running"
-                                         || triggerType.currentValue === "process_exited"
+                                visible: triggerType.automationValue === "process_started"
+                                         || triggerType.automationValue === "process_running"
+                                         || triggerType.automationValue === "process_exited"
                                 placeholderText: qsTr("进程名，例如 PowerPoint.exe")
                                 text: rule.trigger.process_name
                                 onEditingFinished: AppCentral.automationProfiles.updateRule(
                                     root.selectedProfileId, rule.id, ruleName.text,
-                                    triggerType.currentValue, text,
-                                    sensorName.currentValue, threshold.value, cooldown.value
+                                    triggerType.automationValue, text,
+                                    sensorName.automationValue, threshold.value, cooldown.value
                                 )
                             }
 
                             RowLayout {
                                 Layout.fillWidth: true
-                                visible: triggerType.currentValue === "temperature_at_or_above"
+                                visible: triggerType.automationValue === "temperature_at_or_above"
                                 spacing: 8
 
                                 Text { text: qsTr("传感器") }
@@ -336,11 +336,11 @@ FluentPage {
                                     id: sensorName
                                     model: ["cpu", "gpu", "other"]
                                     currentIndex: root.indexFor(model, rule.trigger.sensor_name)
-                                    property string currentValue: model[currentIndex]
+                                    property string automationValue: model[currentIndex]
                                     onActivated: AppCentral.automationProfiles.updateRule(
                                         root.selectedProfileId, rule.id, ruleName.text,
-                                        triggerType.currentValue, processName.text,
-                                        currentValue, threshold.value, cooldown.value
+                                        triggerType.automationValue, processName.text,
+                                        automationValue, threshold.value, cooldown.value
                                     )
                                 }
 
@@ -353,8 +353,8 @@ FluentPage {
                                     editable: true
                                     onValueModified: AppCentral.automationProfiles.updateRule(
                                         root.selectedProfileId, rule.id, ruleName.text,
-                                        triggerType.currentValue, processName.text,
-                                        sensorName.currentValue, value, cooldown.value
+                                        triggerType.automationValue, processName.text,
+                                        sensorName.automationValue, value, cooldown.value
                                     )
                                 }
                                 Text { text: "°C" }
@@ -374,8 +374,8 @@ FluentPage {
                                     editable: true
                                     onValueModified: AppCentral.automationProfiles.updateRule(
                                         root.selectedProfileId, rule.id, ruleName.text,
-                                        triggerType.currentValue, processName.text,
-                                        sensorName.currentValue, threshold.value, value
+                                        triggerType.automationValue, processName.text,
+                                        sensorName.automationValue, threshold.value, value
                                     )
                                 }
                                 Text {
@@ -417,10 +417,10 @@ FluentPage {
                                                 Layout.fillWidth: true
                                                 model: root.actionNames
                                                 currentIndex: root.indexFor(root.actionKeys, action.type)
-                                                property string currentValue: root.actionKeys[currentIndex]
+                                                property string automationValue: root.actionKeys[currentIndex]
                                                 onActivated: AppCentral.automationProfiles.updateAction(
                                                     root.selectedProfileId, rule.id, action.id,
-                                                    currentValue, actionTitle.text, actionMessage.text,
+                                                    automationValue, actionTitle.text, actionMessage.text,
                                                     actionProgram.text, actionArguments.text, actionDuration.value
                                                 )
                                             }
@@ -436,12 +436,12 @@ FluentPage {
                                         TextField {
                                             id: actionTitle
                                             Layout.fillWidth: true
-                                            visible: actionType.currentValue === "notification"
+                                            visible: actionType.automationValue === "notification"
                                             placeholderText: qsTr("提醒标题")
                                             text: action.title
                                             onEditingFinished: AppCentral.automationProfiles.updateAction(
                                                 root.selectedProfileId, rule.id, action.id,
-                                                actionType.currentValue, text, actionMessage.text,
+                                                actionType.automationValue, text, actionMessage.text,
                                                 actionProgram.text, actionArguments.text, actionDuration.value
                                             )
                                         }
@@ -449,7 +449,7 @@ FluentPage {
                                         TextArea {
                                             id: actionMessage
                                             Layout.fillWidth: true
-                                            visible: actionType.currentValue === "notification"
+                                            visible: actionType.automationValue === "notification"
                                             placeholderText: qsTr("提醒内容")
                                             text: action.message
                                             wrapMode: TextEdit.Wrap
@@ -457,7 +457,7 @@ FluentPage {
                                                 if (!focus) {
                                                     AppCentral.automationProfiles.updateAction(
                                                         root.selectedProfileId, rule.id, action.id,
-                                                        actionType.currentValue, actionTitle.text, text,
+                                                        actionType.automationValue, actionTitle.text, text,
                                                         actionProgram.text, actionArguments.text, actionDuration.value
                                                     )
                                                 }
@@ -466,7 +466,7 @@ FluentPage {
 
                                         RowLayout {
                                             Layout.fillWidth: true
-                                            visible: actionType.currentValue === "notification"
+                                            visible: actionType.automationValue === "notification"
                                             spacing: 8
 
                                             Text { text: qsTr("显示时长") }
@@ -479,7 +479,7 @@ FluentPage {
                                                 editable: true
                                                 onValueModified: AppCentral.automationProfiles.updateAction(
                                                     root.selectedProfileId, rule.id, action.id,
-                                                    actionType.currentValue, actionTitle.text, actionMessage.text,
+                                                    actionType.automationValue, actionTitle.text, actionMessage.text,
                                                     actionProgram.text, actionArguments.text, value
                                                 )
                                             }
@@ -490,14 +490,14 @@ FluentPage {
                                         TextField {
                                             id: actionProgram
                                             Layout.fillWidth: true
-                                            visible: actionType.currentValue !== "notification"
-                                            placeholderText: actionType.currentValue === "fan_full_speed"
+                                            visible: actionType.automationValue !== "notification"
+                                            placeholderText: actionType.automationValue === "fan_full_speed"
                                                 ? qsTr("设置满速的控制程序或脚本路径")
                                                 : qsTr("要运行的程序路径")
                                             text: action.program
                                             onEditingFinished: AppCentral.automationProfiles.updateAction(
                                                 root.selectedProfileId, rule.id, action.id,
-                                                actionType.currentValue, actionTitle.text, actionMessage.text,
+                                                actionType.automationValue, actionTitle.text, actionMessage.text,
                                                 text, actionArguments.text, actionDuration.value
                                             )
                                         }
@@ -505,12 +505,12 @@ FluentPage {
                                         TextField {
                                             id: actionArguments
                                             Layout.fillWidth: true
-                                            visible: actionType.currentValue !== "notification"
+                                            visible: actionType.automationValue !== "notification"
                                             placeholderText: qsTr("程序参数；支持带引号的路径")
                                             text: action.arguments.join(" ")
                                             onEditingFinished: AppCentral.automationProfiles.updateAction(
                                                 root.selectedProfileId, rule.id, action.id,
-                                                actionType.currentValue, actionTitle.text, actionMessage.text,
+                                                actionType.automationValue, actionTitle.text, actionMessage.text,
                                                 actionProgram.text, text, actionDuration.value
                                             )
                                         }

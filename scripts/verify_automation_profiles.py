@@ -246,6 +246,8 @@ def test_process_and_ui_contract(project_root: Path) -> None:
     assert "addRule" in page
     assert "addAction" in page
     assert page.count("{") == page.count("}"), "unbalanced QML braces"
+    assert "property string currentValue" not in page
+    assert "property string automationValue" in page
 
     assert 'ctypes.WinDLL("psapi", use_last_error=True)' in automation_service
     assert "EnumProcesses" in automation_service
