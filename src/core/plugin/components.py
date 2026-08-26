@@ -183,6 +183,11 @@ class RuntimeAPI(BaseAPI):
         return self._runtime.current_time
 
     @property
+    def current_offset_time(self) -> datetime:
+        """返回包含用户秒级偏移的当前时间。"""
+        return self._runtime.current_offset_time
+
+    @property
     def current_day_of_week(self) -> int:
         return self._runtime.current_day_of_week
 

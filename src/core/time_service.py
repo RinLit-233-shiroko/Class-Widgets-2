@@ -34,7 +34,7 @@ class TimeService(QObject):
         self._ntp_offset_seconds = 0.0
         self._ntp_available = False
         self._syncing = False
-        self._status_text = self.tr("Using system time")
+        self._status_text = self.tr("正在使用系统时间")
         self._sync_thread: Thread | None = None
 
         self._display_timer = QTimer(self)
@@ -96,14 +96,14 @@ class TimeService(QObject):
         """从当前配置的 NTP 服务器异步同步时间。"""
         server = self._configs.time.ntp_server.strip()
         if not server:
-            self._set_failure(self.tr("No NTP server specified; using system time"))
+            self._set_failure(self.tr("未指定 NTP 服务器，正在使用系统时间"))
             return
 
         with self._lock:
             if self._syncing:
                 return
             self._syncing = True
-            self._status_text = self.tr("Synchronizing with {0}…").format(server)
+            self._status_text = self.tr("正在与 {0} 同步…").format(server)
         self.updated.emit()
 
         self._sync_thread = Thread(
@@ -126,7 +126,7 @@ class TimeService(QObject):
             self.sync()
         else:
             with self._lock:
-                self._status_text = self.tr("Using system time")
+                self._status_text = self.tr("正在使用系统时间")
             self.updated.emit()
 
     def _sync_worker(self, server: str) -> None:
@@ -145,10 +145,10 @@ class TimeService(QObject):
             self._ntp_available = success
             if success:
                 self._ntp_offset_seconds = offset
-                self._status_text = self.tr("Synchronized with {0}").format(server)
+                self._status_text = self.tr("已与 {0} 同步").format(server)
             else:
                 self._ntp_offset_seconds = 0.0
-                self._status_text = self.tr("NTP synchronization failed; using system time")
+                self._status_text = self.tr("NTP 同步失败，正在使用系统时间")
         self.updated.emit()
         self.syncFinished.emit(success)
 

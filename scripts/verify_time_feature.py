@@ -42,6 +42,7 @@ def test_python_syntax(project_root: Path) -> None:
         project_root / "src/core/config/manager.py",
         project_root / "src/core/central.py",
         project_root / "src/core/schedule/runtime.py",
+        project_root / "src/core/plugin/components.py",
         project_root / "src/plugins/cw_widgets/widgets.py",
     ]
     for source_file in source_files:
@@ -65,28 +66,33 @@ def test_time_service_fallback_and_offset(project_root: Path) -> None:
         configs.time.ntp_server = ""
         service.sync()
         assert service.preciseTimeAvailable is False
-        assert "system time" in service.statusText.lower()
+        assert "系统时间" in service.statusText
     finally:
         service.stop()
 
 
 def test_qml_contains_required_controls(project_root: Path) -> None:
-    qml_file = project_root / "src/qml/ClassWidgets/pages/settings/General/Index.qml"
+    qml_file = project_root / "src/qml/ClassWidgets/pages/settings/notificationAndTime/Time.qml"
     qml = qml_file.read_text(encoding="utf-8")
     required_fragments = (
         "AppCentral.timeService.currentTime",
         "AppCentral.timeService.currentDate",
-        "Use Precise Time",
-        "NTP Server",
-        "Synchronize Time",
-        "Custom NTP server",
-        "Time Offset (Seconds)",
+        "使用精确时间",
+        "NTP 服务器",
+        "同步时间",
+        "自定义 NTP 服务器",
+        "时间偏移（秒）",
         "setPreciseTimeEnabled",
         "synchronizeTime",
     )
     for fragment in required_fragments:
         assert fragment in qml, f"Missing QML fragment: {fragment}"
     assert qml.count("{") == qml.count("}"), "Unbalanced QML braces"
+
+    runtime_api = (project_root / "src/core/plugin/components.py").read_text(encoding="utf-8")
+    widget_backend = (project_root / "src/plugins/cw_widgets/widgets.py").read_text(encoding="utf-8")
+    assert "def current_offset_time" in runtime_api
+    assert "self.api.runtime.current_offset_time" in widget_backend
 
 
 def main() -> None:
