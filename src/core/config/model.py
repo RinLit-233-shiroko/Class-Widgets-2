@@ -229,6 +229,7 @@ class NetworkConfig(ConfigBaseModel):
     current_mirror: str = "gh_proxy"  # 当前镜像源
     mirror_enabled: bool = True  # 是否启用网络功能
     releases_url: str = "https://classwidgets.rinlit.cn/2/releases.json"  # 版本更新地址
+    github_releases_url: str = ""  # 自定义 GitHub Releases 页面地址；非空时优先使用
     auto_check_updates: bool = True  # 自动检查更新
 
     plaza_url: str = "https://plaza.cw.rinlit.cn"

@@ -285,6 +285,45 @@ FluentPage {
                 Component.onCompleted: checked = Configs.data.network.auto_check_updates
             }
         }
+
+        SettingCard {
+            Layout.fillWidth: true
+            icon.name: "ic_fluent_cloud_arrow_up_20_regular"
+            title: qsTr("GitHub Releases 更新源")
+            description: qsTr(
+                "填写 GitHub 仓库的 Releases 页面地址。保存后仅检查此源，不再使用默认更新服务器。"
+            )
+
+            RowLayout {
+                spacing: 4
+
+                ToolButton {
+                    icon.name: "ic_fluent_delete_20_regular"
+                    enabled: !Configs.isKeyLocked("network.github_releases_url")
+                    onClicked: {
+                        githubReleasesField.text = ""
+                        Configs.set("network.github_releases_url", "")
+                    }
+
+                    ToolTip {
+                        text: qsTr("清除自定义更新源")
+                        visible: parent.hovered
+                    }
+                }
+
+                TextField {
+                    id: githubReleasesField
+                    Layout.fillWidth: true
+                    placeholderText: "https://github.com/owner/repository/releases"
+                    enabled: !Configs.isKeyLocked("network.github_releases_url")
+                    Component.onCompleted: text = Configs.data.network.github_releases_url
+                    onEditingFinished: {
+                        text = text.trim()
+                        Configs.set("network.github_releases_url", text)
+                    }
+                }
+            }
+        }
     }
 
     ColumnLayout {

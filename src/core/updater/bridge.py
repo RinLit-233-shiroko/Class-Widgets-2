@@ -101,9 +101,17 @@ class UpdaterBridge(QObject):
         if self._check_worker and self._check_worker.isRunning():
             self._check_worker.terminate()
 
-        self._check_worker = CheckUpdateWorker(channel, current_version)
+        github_releases_url = self.configs.network.github_releases_url.strip()
+        self._check_worker = CheckUpdateWorker(
+            channel,
+            current_version,
+            github_releases_url=github_releases_url,
+        )
         self._check_worker.finished.connect(self._on_check_finished)
-        self._check_worker.start(self.app_central.configs.network.releases_url)
+        self._check_worker.start(
+            self.configs.network.releases_url,
+            github_releases_url=github_releases_url,
+        )
 
     def _on_check_finished(self, status, version, url_or_err):
         if status == "Error":
