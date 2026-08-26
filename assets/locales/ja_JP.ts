@@ -260,6 +260,420 @@ MIT ライセンスの下でライセンスが提供されています</translat
     </message>
 </context>
 <context>
+    <name>Automation</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="8"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="64"/>
+        <source>自动化</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="19"/>
+        <source>应用启动时</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="19"/>
+        <source>应用退出时</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="19"/>
+        <source>进程启动时</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="20"/>
+        <source>进程运行时</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="20"/>
+        <source>进程退出时</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="20"/>
+        <source>上课时</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="21"/>
+        <source>课间时</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="21"/>
+        <source>放学时</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="21"/>
+        <source>中午放学时</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="22"/>
+        <source>CPU / 显卡等温度达到阈值时</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="26"/>
+        <source>显示提醒</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="26"/>
+        <source>运行程序</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="26"/>
+        <source>将风扇调到满速（运行配置程序）</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="71"/>
+        <source>自动化配置文件保存在本机，默认未启用。每个配置文件可以包含多条“当……时，执行……”规则；程序与风扇动作只会运行你明确配置的本地可执行文件和参数。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="77"/>
+        <source>自动化配置文件</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="78"/>
+        <source>可创建多个相互独立的配置文件；新建文件默认关闭。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="106"/>
+        <source>新建</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="108"/>
+        <source>新自动化配置</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="114"/>
+        <source>删除</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="127"/>
+        <source>尚未创建自动化配置文件。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="136"/>
+        <source>自动化配置</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="137"/>
+        <source>关闭配置文件后，文件中的全部规则均不会执行。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="145"/>
+        <source>启用此自动化配置文件</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="153"/>
+        <source>配置文件名称</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="169"/>
+        <source>温度传感器命令</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="170"/>
+        <source>温度触发器会运行此命令，并要求标准输出为 JSON 对象，例如 {&quot;cpu&quot;: 78.5, &quot;gpu&quot;: 65.0}。未配置时不会读取温度。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="179"/>
+        <source>温度读取程序路径，例如 C:Tools<byte value="xd"/>ead-temperature.exe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="192"/>
+        <source>读取温度程序的参数；支持带引号的路径</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="206"/>
+        <source>检查间隔</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="221"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="382"/>
+        <source>秒</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="231"/>
+        <source>安全说明：CW 不直接写入主板或显卡寄存器。风扇满速动作只会启动你在该动作中明确指定的本地控制程序/脚本；请先在厂商工具或风扇控制软件中验证该命令。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="240"/>
+        <source>自动化规则</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="241"/>
+        <source>每条规则均可单独关闭，可配置多个触发条件对应的动作。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="248"/>
+        <source>添加自动化</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="280"/>
+        <source>自动化名称</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="290"/>
+        <source>删除规则</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="299"/>
+        <source>当</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="320"/>
+        <source>进程名，例如 PowerPoint.exe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="334"/>
+        <source>传感器</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="347"/>
+        <source>达到</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="368"/>
+        <source>冷却时间</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="389"/>
+        <source>执行以下动作：</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="394"/>
+        <source>添加动作</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="429"/>
+        <source>删除动作</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="440"/>
+        <source>提醒标题</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="453"/>
+        <source>提醒内容</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="472"/>
+        <source>显示时长</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="486"/>
+        <source>毫秒</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="495"/>
+        <source>设置满速的控制程序或脚本路径</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="496"/>
+        <source>要运行的程序路径</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="509"/>
+        <source>程序参数；支持带引号的路径</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="529"/>
+        <source>状态与测试</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="530"/>
+        <source>测试通知不会执行程序或风扇动作。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="553"/>
+        <source>尚未读取温度。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="554"/>
+        <source>温度：CPU %1°C，GPU %2°C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="561"/>
+        <source>发送测试提醒</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="563"/>
+        <source>自动化测试</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Automation.qml" line="563"/>
+        <source>这是一条自动化测试通知。</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AutomationProfilesService</name>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="203"/>
+        <source>尚未启动自动化服务</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="205"/>
+        <source>自动化</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="239"/>
+        <source>自动化服务已启动；默认配置文件均为关闭状态</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="252"/>
+        <source>自动化服务已停止</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="266"/>
+        <source>已创建自动化配置文件“{0}”；默认未启用</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="277"/>
+        <source>已删除自动化配置文件“{0}”</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="287"/>
+        <source>已{0}自动化配置文件“{1}”</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="288"/>
+        <source>启用</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="288"/>
+        <source>停用</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="303"/>
+        <source>已保存自动化配置文件“{0}”</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="310"/>
+        <source>新自动化</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="359"/>
+        <source>自动化规则无效：{0}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="411"/>
+        <source>自动化动作无效：{0}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="420"/>
+        <source>自动化测试</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="421"/>
+        <source>这是一条自动化测试通知。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="471"/>
+        <location filename="../../src/core/automations/user_profiles.py" line="485"/>
+        <source>进程正在运行</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="483"/>
+        <source>进程启动</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="487"/>
+        <source>进程退出</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="544"/>
+        <source>温度读取失败（{0}）：{1}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="561"/>
+        <source>{0} 温度达到 {1:.1f}°C</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="564"/>
+        <source>已更新自动化温度传感器数据</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/user_profiles.py" line="584"/>
+        <source>已执行自动化“{0}”（{1}；{2} 个动作）</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CentralControl</name>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/CentralControl.qml" line="9"/>
@@ -4009,16 +4423,21 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="73"/>
+        <source>自动化</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="78"/>
         <source>Plugins</source>
         <translation>プラグイン</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="80"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="85"/>
         <source>About</source>
         <translation>情報</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="86"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="91"/>
         <source>Update</source>
         <translation type="unfinished">更新</translation>
     </message>
