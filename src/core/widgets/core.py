@@ -187,14 +187,22 @@ class WidgetsWindow(ReleasableWindow, QObject):
             self.root_window.setMask(QRegion())
             return
 
-        for w in widgets_loader.childItems():
-            if w.objectName() == "addWidgetsContainer":
-                continue
+        # 小组件现位于 Flow 内部，Flow 是根容器的直接子项
+        widgets_flow = widgets_loader.findChild(QObject, "widgetsFlow")
+        if not widgets_flow:
+            return
+
+        base_x = widgets_loader.x()
+        base_y = widgets_loader.y()
+        flow_x = widgets_flow.x()
+        flow_y = widgets_flow.y()
+
+        for w in widgets_flow.childItems():
             if w.width() <= 0 or w.height() <= 0 or not w.isVisible():
                 continue
             rect = QRect(
-                int(w.x() + widgets_loader.x()),
-                int(w.y() + widgets_loader.y()),
+                int(w.x() + flow_x + base_x),
+                int(w.y() + flow_y + base_y),
                 int(w.width()),
                 int(w.height())
             )

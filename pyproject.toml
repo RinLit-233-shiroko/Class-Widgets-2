@@ -13,7 +13,7 @@ authors = [
 ]
 dependencies = [
   "PySide6~=6.10.3",
-  "RinUI>=0.4.3.1",
+  "RinUI>=0.4.3.2",
   "loguru",
   "packaging",
   "pydantic",
