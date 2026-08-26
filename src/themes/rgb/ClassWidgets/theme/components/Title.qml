@@ -1,10 +1,10 @@
 import QtQuick
 import QtQuick.Controls
-import ClassWidgets.Theme
+import ClassWidgets.Theme 1.0
 
 Text {
     // RGB主题：颜色由效果引擎动态控制
-    property color rgbColor: ThemeManager ? ThemeManager.rgbColor : "#4099b2"
+    property color rgbColor: "#4099b2"
     color: Qt.luma(rgbColor) > 0.5 ? "#000000" : "#ffffff"
     
     font.family: "Segoe UI"
