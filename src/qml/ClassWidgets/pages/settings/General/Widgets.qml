@@ -198,6 +198,7 @@ FluentPage {
                 description: qsTr("Set the thickness of the font")
 
                 Text {
+                    id: weightLabel
                     text: {
                         switch (Math.round(weightSlider.value)) {
                             case 100: return qsTr("Thin")
@@ -223,7 +224,8 @@ FluentPage {
                     tickmarks: true
                     tickFrequency: 100
                     Layout.fillWidth: true
-                    showTooltip: false
+                    showTooltip: true
+                    toolTip.text: weightLabel.text
                     enabled: !Configs.isKeyLocked("preferences.font_weight")
 
                     // 初始化
