@@ -342,18 +342,18 @@ Column {
                 SequentialAnimation {
                     id: anim
                     NumberAnimation { target: widgetContainer; property: "opacity"; from: 0; to: 0; duration: 1 }
-                    PauseAnimation { duration: index * 125 }
+                    PauseAnimation { duration: Math.min(index * 20, 100) }
                     ParallelAnimation {
                         NumberAnimation {
                             target: widgetContainer
                             property: "opacity"
-                            from: 0; to: 1; duration: 300
+                            from: 0; to: 1; duration: 200
                             easing.type: Easing.OutCubic
                         }
                         NumberAnimation {
                             target: widgetContainer;
                             property: "scale";
-                            from: 0.8; to: 1; duration: 400;
+                            from: 0.9; to: 1; duration: 250;
                             easing.type: Easing.OutBack
                         }
                     }
