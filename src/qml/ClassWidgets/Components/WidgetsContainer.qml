@@ -32,7 +32,30 @@ Column {
     property bool isTopPosition: preferences.widgets_anchor.indexOf("top_") === 0
     property real hideFade: 0
 
+    // 超宽自适应：编辑模式下若整体宽度超出屏幕，自动等比缩小并提示
+    readonly property real availWidth: Math.max(240, Screen.width - 16)
+    readonly property real overflowScale: width > availWidth ? availWidth / width : 1.0
+    readonly property bool overflows: editMode && width > availWidth
+    scale: editMode ? overflowScale : 1.0
+    transformOrigin: Item.TopLeft
+
     signal contentGeometryChanged()
+
+    // 超宽提示条：仅在编辑模式且超宽时显示（字号/高度按缩放补偿，保持视觉大小不变）
+    Rectangle {
+        visible: widgetsContainer.editMode && widgetsContainer.overflows
+        width: parent.width
+        height: 30 / widgetsContainer.overflowScale
+        radius: 8
+        color: "#CC1F2937"
+        border.color: "#66FFC107"
+        Text {
+            anchors.centerIn: parent
+            text: "⚠ 当前布局可能已超出屏幕宽度，建议减少组件数量"
+            color: "#FFE082"
+            font.pixelSize: 12 / widgetsContainer.overflowScale
+        }
+    }
 
     Behavior on hideFade {
         NumberAnimation {
@@ -84,6 +107,10 @@ Column {
             x = parent.width - width - preferences.widgets_offset_x
             if (hide) x = parent.width - hideMargin
             break
+        }
+        // 编辑模式：整体居中并限制在屏幕内，避免两端组件被裁掉无法辨认
+        if (editMode) {
+            x = Math.max(8, (parent.width - width * overflowScale) / 2)
         }
         return x
     }
@@ -300,7 +327,7 @@ Column {
                     property real angle1: 2.0
                     property real angle2: -2.0
                     running: editMode
-                    loops: Animation.Infinite
+                    loops: 3
 
                     NumberAnimation { to: rotationAnim.angle1; duration: 125; easing.type: Easing.InOutQuad }
                     NumberAnimation { to: rotationAnim.angle2; duration: 125; easing.type: Easing.InOutQuad }
