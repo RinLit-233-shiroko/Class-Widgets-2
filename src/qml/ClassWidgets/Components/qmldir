@@ -15,6 +15,7 @@ WidgetSettingsDialog 1.0 dialogs/WidgetSettingsDialog.qml
 RescheduleDayDialog 1.0 dialogs/RescheduleDayDialog.qml
 ClassSwapDialog 1.0 dialogs/ClassSwapDialog.qml
 PluginReplaceConfirmDialog 1.0 dialogs/PluginReplaceConfirmDialog.qml
+SceneSwitcherDialog 1.0 dialogs/SceneSwitcherDialog.qml
 
 # Settings
 ClipItem 1.0 settings/ClipItem.qml
