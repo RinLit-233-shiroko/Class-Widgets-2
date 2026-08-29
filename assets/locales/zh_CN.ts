@@ -5529,4 +5529,17 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation>未设置</translation>
     </message>
 </context>
+<context>
+    <name>SceneSwitcherDialog</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/SceneSwitcherDialog.qml" line="8"/>
+        <source>Switch Scene</source>
+        <translation>切换场景</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/SceneSwitcherDialog.qml" line="19"/>
+        <source>Select a scene to switch to</source>
+        <translation>选择要切换到的场景</translation>
+    </message>
+</context>
 </TS>
