@@ -70,6 +70,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         "com.classwidgets.plugin-plaza": "Plugin Plaza",
         "com.classwidgets.reschedule-day": "Reschedule Day",
         "com.classwidgets.class-swap": "Class Swap",
+        "com.classwidgets.switch-scene": "Switch Scene",
     }
     
     updated = Signal()
