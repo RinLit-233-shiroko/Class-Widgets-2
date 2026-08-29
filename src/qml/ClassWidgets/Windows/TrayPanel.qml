@@ -174,12 +174,19 @@ Window {
         }
     }
 
+
+    SceneSwitcherDialog {
+        id: sceneSwitcherDialog
+    }
+
     Connections {
         target: AppCentral
 
         function onTrayShortcutRequested(shortcutId) {
             if (shortcutId === "com.classwidgets.reschedule-day") {
                 rescheduleDayDialog.open()
+            } else if (shortcutId === "com.classwidgets.switch-scene") {
+                sceneSwitcherDialog.open()
             }
         }
 
