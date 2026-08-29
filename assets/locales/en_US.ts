@@ -4705,4 +4705,56 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
+<context>
+    <name>SceneSwitcherDialog</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/SceneSwitcherDialog.qml" line="8"/>
+        <source>Switch Scene</source>
+        <translation>Switch Scene</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/SceneSwitcherDialog.qml" line="19"/>
+        <source>Select a scene to switch to</source>
+        <translation>Select a scene to switch to</translation>
+    </message>
+</context>
+<context>
+    <name>SceneSwitcherDialog</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/SceneSwitcherDialog.qml" line="8"/>
+        <source>Switch Scene</source>
+        <translation>Switch Scene</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/SceneSwitcherDialog.qml" line="19"/>
+        <source>Select a scene to switch to</source>
+        <translation>Select a scene to switch to</translation>
+    </message>
+</context>
+<context>
+    <name>SceneSwitcherDialog</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/SceneSwitcherDialog.qml" line="8"/>
+        <source>Switch Scene</source>
+        <translation>Switch Scene</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/SceneSwitcherDialog.qml" line="19"/>
+        <source>Select a scene to switch to</source>
+        <translation>Select a scene to switch to</translation>
+    </message>
+</context>
+<context>
+    <name>SceneSwitcherDialog</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/SceneSwitcherDialog.qml" line="8"/>
+        <source>Switch Scene</source>
+        <translation>Switch Scene</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/SceneSwitcherDialog.qml" line="19"/>
+        <source>Select a scene to switch to</source>
+        <translation>Select a scene to switch to</translation>
+    </message>
+</context>
 </TS>
