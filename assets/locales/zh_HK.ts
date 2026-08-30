@@ -2165,7 +2165,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="231"/>
         <source>Cancel</source>
-        <translation type="unfinished">取消</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="238"/>
@@ -2201,17 +2201,17 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="144"/>
         <source>%1 B</source>
-        <translation type="unfinished">%1 B</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="146"/>
         <source>%1 KB</source>
-        <translation type="unfinished">%1 KB</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="147"/>
         <source>%1 MB</source>
-        <translation type="unfinished">%1 MB</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="202"/>
@@ -2252,7 +2252,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="502"/>
         <source>Unknown author</source>
-        <translation type="unfinished">未知作者</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="535"/>
@@ -2262,17 +2262,17 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="591"/>
         <source>Pause</source>
-        <translation type="unfinished">暫停</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="593"/>
         <source>Resume</source>
-        <translation type="unfinished">恢復</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="595"/>
         <source>Installing</source>
-        <translation type="unfinished">安裝中</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="597"/>
@@ -2292,17 +2292,17 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="630"/>
         <source>Paused</source>
-        <translation type="unfinished">已暫停</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="632"/>
         <source>Downloaded: %1 / %2</source>
-        <translation type="unfinished">已下載 % 1，共 % 2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="635"/>
         <source>Downloading</source>
-        <translation type="unfinished">正在下載中</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="646"/>
@@ -2327,7 +2327,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="693"/>
         <source>Link copied</source>
-        <translation type="unfinished">連結已經複製</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="704"/>
@@ -2421,7 +2421,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
         <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCard.qml" line="21"/>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCard.qml" line="22"/>
         <source>Unknown author</source>
-        <translation type="unfinished">未知作者</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCard.qml" line="209"/>
@@ -2440,7 +2440,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
         <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCardRounded.qml" line="23"/>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCardRounded.qml" line="24"/>
         <source>Unknown author</source>
-        <translation type="unfinished">未知作者</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2530,17 +2530,17 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="20"/>
         <source>%1 B</source>
-        <translation type="unfinished">%1 B</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="22"/>
         <source>%1 KB</source>
-        <translation type="unfinished">%1 KB</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="23"/>
         <source>%1 MB</source>
-        <translation type="unfinished">%1 MB</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="42"/>
@@ -2550,12 +2550,12 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="182"/>
         <source>Downloaded: %1 / %2</source>
-        <translation type="unfinished">已下載 % 1，共 % 2</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="185"/>
         <source>Downloading</source>
-        <translation type="unfinished">正在下載中</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="202"/>
@@ -2615,7 +2615,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="273"/>
         <source>Downloads</source>
-        <translation type="unfinished">下載</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/plugin/errors.py" line="23"/>
@@ -2878,7 +2878,7 @@ Do you want to %3 this plugin?</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="137"/>
         <source>Downloads</source>
-        <translation type="unfinished">下載</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="143"/>
@@ -2909,7 +2909,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="381"/>
         <source>Update</source>
-        <translation type="unfinished">更新</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>The selected ZIP file does not contain a valid plugin.</source>
@@ -3016,7 +3016,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="49"/>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="503"/>
         <source>Retry</source>
-        <translation type="unfinished">重試</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="188"/>
@@ -3099,7 +3099,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Preferences.qml" line="29"/>
         <source>Run at Startup</source>
-        <translation type="unfinished">開機自啟動</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Preferences.qml" line="30"/>
@@ -3185,7 +3185,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="109"/>
         <source>Week %1</source>
-        <translation type="unfinished">第 % 1週</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Week Cycle</source>
@@ -3493,31 +3493,31 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="355"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="362"/>
         <source>Relevance</source>
-        <translation type="unfinished">相關度</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="356"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="364"/>
         <source>Name</source>
-        <translation type="unfinished">名稱</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="357"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="365"/>
         <source>Rating</source>
-        <translation type="unfinished">分級</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="358"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="366"/>
         <source>Downloads</source>
-        <translation type="unfinished">下載</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="359"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="363"/>
         <source>Latest</source>
-        <translation type="unfinished">最新發佈</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="330"/>
@@ -3610,7 +3610,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="90"/>
         <source>Update</source>
-        <translation type="unfinished">更新</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3638,7 +3638,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/core/central.py" line="170"/>
         <source>Class Swap</source>
-        <translation type="unfinished">換課</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4503,7 +4503,7 @@ Class Widgets has restored the default theme.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="12"/>
         <source>Getting Started</source>
-        <translation type="unfinished">開始使用</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="95"/>
@@ -4531,7 +4531,7 @@ Class Widgets has restored the default theme.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/tutorial/TutorialPage.qml" line="18"/>
         <source>Continue</source>
-        <translation type="unfinished">繼續使用</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4547,7 +4547,7 @@ Class Widgets has restored the default theme.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/tutorial/TutorialStepFooter.qml" line="13"/>
         <source>Continue</source>
-        <translation type="unfinished">繼續使用</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4601,7 +4601,7 @@ Class Widgets has restored the default theme.</source>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="75"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="132"/>
         <source>Check for updates</source>
-        <translation type="unfinished">檢查更新</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="88"/>
@@ -4671,7 +4671,7 @@ Class Widgets has restored the default theme.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="174"/>
         <source>Cancel</source>
-        <translation type="unfinished">取消</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="186"/>
@@ -4893,7 +4893,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Welcome.qml" line="258"/>
         <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
-        <translation type="unfinished">本項目（Class Widgets 2）使用MIT許可證。詳情信息請看：</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5064,7 +5064,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="150"/>
         <source>Set how rounded widget corners appear</source>
-        <translation type="unfinished">設定小組件圓角的顯示方式</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="169"/>
