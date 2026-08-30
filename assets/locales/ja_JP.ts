@@ -2633,7 +2633,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="273"/>
         <source>Downloads</source>
-        <translation type="unfinished">ダウンロード</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/plugin/errors.py" line="23"/>
@@ -2904,7 +2904,7 @@ Do you want to %3 this plugin?</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="137"/>
         <source>Downloads</source>
-        <translation type="unfinished">ダウンロード</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="143"/>
@@ -3060,7 +3060,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="49"/>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="503"/>
         <source>Retry</source>
-        <translation type="unfinished">再試</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="188"/>
@@ -3561,7 +3561,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="356"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="364"/>
         <source>Name</source>
-        <translation type="unfinished">名称</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="357"/>
@@ -3573,13 +3573,13 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="358"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="366"/>
         <source>Downloads</source>
-        <translation type="unfinished">ダウンロード</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="359"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="363"/>
         <source>Latest</source>
-        <translation type="unfinished">最新発表</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="330"/>
