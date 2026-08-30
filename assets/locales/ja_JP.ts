@@ -100,7 +100,7 @@ MIT ライセンスの下でライセンスが提供されています</translat
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="116"/>
         <source>File a bug or request new feature</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">バグ・不具合の報告、また新機能の提案を送信します</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="173"/>
@@ -256,7 +256,7 @@ MIT ライセンスの下でライセンスが提供されています</translat
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="99"/>
         <source>Set how rounded widget corners appear</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ウィジェットの角丸表示の設定</translation>
     </message>
 </context>
 <context>
@@ -830,7 +830,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="221"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="270"/>
         <source>Unknown author</source>
-        <translation type="unfinished"></translation>
+        <translation>作者不明</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="223"/>
@@ -862,7 +862,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="278"/>
         <source>Updated at %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">%1 の更新</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="278"/>
@@ -1845,12 +1845,12 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Language.qml" line="13"/>
         <source>Choose your language</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">あんだの言語に選んでください</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Language.qml" line="14"/>
         <source>Choose a language. You can refine every setting later.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">言語を選択します。 後ですべての設定を絞り込むことができます.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Language.qml" line="30"/>
@@ -1860,7 +1860,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Language.qml" line="40"/>
         <source>Use System Language</source>
-        <translation type="unfinished"></translation>
+        <translation>システム言語を使用</translation>
     </message>
 </context>
 <context>
@@ -2097,12 +2097,12 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/Pagination.qml" line="23"/>
         <source>Page %1 of %2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ページの %1 の %2</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/Pagination.qml" line="32"/>
         <source>Next page</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">次のページ</translation>
     </message>
 </context>
 <context>
@@ -2269,7 +2269,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="591"/>
         <source>Pause</source>
-        <translation type="unfinished">一時停止中</translation>
+        <translation>一時停止中</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="593"/>
@@ -4484,7 +4484,7 @@ Class Widgets has restored the default theme.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="10"/>
         <source>Quick Access Panel</source>
-        <translation type="unfinished"></translation>
+        <translation>クイックパネル</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="87"/>
@@ -4911,12 +4911,12 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="38"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>单</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="38"/>
         <source>2</source>
-        <translation type="unfinished"></translation>
+        <translation>双</translation>
     </message>
     <message>
         <source>Week %1</source>
@@ -4930,12 +4930,12 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="66"/>
         <source>Week {value} of every %1 weeks</source>
-        <translation type="unfinished"></translation>
+        <translation>毎％１週の｛value｝週</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="69"/>
         <source>Week {value}</source>
-        <translation type="unfinished"></translation>
+        <translation>第｛value｝週</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="78"/>
@@ -4945,12 +4945,12 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="83"/>
         <source>Repeat on a Cycle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">複数週ローテーション</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/WeekSelector.qml" line="87"/>
         <source>One Specific Week</source>
-        <translation type="unfinished"></translation>
+        <translation>指定週</translation>
     </message>
     <message>
         <source>Round</source>
