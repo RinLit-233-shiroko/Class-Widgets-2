@@ -3793,7 +3793,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="51"/>
         <source>Interactions</source>
-        <translation>交互</translation>
+        <translation>互动</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="56"/>
@@ -5623,7 +5623,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/currentActivity.qml" line="82"/>
         <source>Nothing right now</source>
-        <translation>暂无日程</translation>
+        <translation>当前无课程</translation>
     </message>
 </context>
 <context>
