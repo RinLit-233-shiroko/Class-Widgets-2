@@ -814,7 +814,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="152"/>
         <source>Check for updates</source>
-        <translation type="unfinished">アップデートを確認</translation>
+        <translation type="unfinished">アップデートを確認する</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Downloads.qml" line="192"/>
@@ -892,14 +892,14 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="76"/>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="107"/>
         <source>Schedule saved successfully</source>
-        <translation type="unfinished">スケジュールが正常に保存されました</translation>
+        <translation type="unfinished">スケジュールの保存に成功しました</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="48"/>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="80"/>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="111"/>
         <source>Save Failed</source>
-        <translation type="unfinished">保存失敗</translation>
+        <translation type="unfinished">保存に失敗しました</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="33"/>
@@ -916,7 +916,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="82"/>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="113"/>
         <source>Failed to save schedule, see log for details</source>
-        <translation type="unfinished">スケジュールの保存に失敗しました。詳細はログをご確認ください。</translation>
+        <translation type="unfinished">スケジュールの保存に失敗しました、詳細はログをご覧ください</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Editor.qml" line="96"/>
@@ -1193,7 +1193,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="21"/>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="120"/>
         <source>All</source>
-        <translation type="unfinished">全て</translation>
+        <translation type="unfinished">すべて</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/FilterToolbar.qml" line="146"/>
@@ -1236,12 +1236,12 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Theme/components/FloatingWidget.qml" line="160"/>
         <source>Class</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Class</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Theme/components/FloatingWidget.qml" line="162"/>
         <source>Activity</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">活動</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Theme/components/FloatingWidget.qml" line="164"/>
@@ -1365,12 +1365,12 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="164"/>
         <source>Save Failed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">保存に失敗しました</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="166"/>
         <source>Failed to save schedule, see log for details</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">スケジュールの保存に失敗しました、詳細はログをご覧ください</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="185"/>
@@ -1445,7 +1445,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="144"/>
         <source>Notifications</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">通知</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="145"/>
@@ -1490,7 +1490,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="313"/>
         <source>Getting Started</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">はじめに</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Home.qml" line="319"/>
@@ -1684,7 +1684,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="180"/>
         <source>Run at Startup</source>
-        <translation type="unfinished">起動時に実行</translation>
+        <translation type="unfinished">スタートアップ時に実行</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Index.qml" line="181"/>
@@ -1832,7 +1832,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="97"/>
         <source>Hover Fade</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ホバーによるフェード</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="98"/>
@@ -2167,7 +2167,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="138"/>
         <source>Built-in</source>
-        <translation type="unfinished">内蔵</translation>
+        <translation type="unfinished">埋め込み</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="167"/>
@@ -2224,7 +2224,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="202"/>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="794"/>
         <source>No data</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">データなし</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="250"/>
@@ -2299,7 +2299,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="630"/>
         <source>Paused</source>
-        <translation type="unfinished">一時停止</translation>
+        <translation type="unfinished">一時停止中</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="632"/>
@@ -2319,7 +2319,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="646"/>
         <source>Disable</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">無効</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="681"/>
@@ -2349,7 +2349,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="742"/>
         <source>Description</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">説明</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="775"/>
@@ -2390,7 +2390,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="794"/>
         <source>Repository</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">リポジトリ</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Plugin.qml" line="818"/>
@@ -3044,12 +3044,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="40"/>
         <source>Finish</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">完了(&amp;F)</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="42"/>
         <source>Skip</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">スキップ</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="43"/>
@@ -3080,7 +3080,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="214"/>
         <source>Installation failed</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">インストールに失敗しました</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Plugins.qml" line="295"/>
@@ -3143,7 +3143,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Preferences.qml" line="29"/>
         <source>Run at Startup</source>
-        <translation type="unfinished">起動時に実行</translation>
+        <translation type="unfinished">スタートアップ時に実行</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Preferences.qml" line="30"/>
@@ -3397,7 +3397,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/core/convertor/converter.py" line="490"/>
         <source>Class</source>
-        <translation type="unfinished">クラス</translation>
+        <translation type="unfinished">Class</translation>
     </message>
 </context>
 <context>
@@ -3584,7 +3584,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="330"/>
         <source>All</source>
-        <translation type="unfinished">全て</translation>
+        <translation type="unfinished">すべて</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Search.qml" line="393"/>
@@ -4192,7 +4192,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/TableEntryDelegate.qml" line="21"/>
         <source>Class</source>
-        <translation type="unfinished">クラス</translation>
+        <translation type="unfinished">Class</translation>
     </message>
 </context>
 <context>
@@ -4413,17 +4413,17 @@ Class Widgets はデフォルトテーマを復元しました。</translation>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="137"/>
         <source>Class</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Class</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="151"/>
         <source>Break</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Break</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="164"/>
         <source>Activity</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">活動</translation>
     </message>
 </context>
 <context>
@@ -4529,7 +4529,7 @@ Class Widgets はデフォルトテーマを復元しました。</translation>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/TrayShortcuts.qml" line="48"/>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">完了</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/TrayShortcuts.qml" line="48"/>
@@ -4604,7 +4604,7 @@ Class Widgets はデフォルトテーマを復元しました。</translation>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="12"/>
         <source>Getting Started</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">はじめに</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="95"/>
@@ -4691,7 +4691,7 @@ Class Widgets はデフォルトテーマを復元しました。</translation>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="71"/>
         <source>Update failed</source>
-        <translation type="unfinished">アップロード失敗!</translation>
+        <translation type="unfinished">更新失敗</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="73"/>
@@ -4702,7 +4702,7 @@ Class Widgets はデフォルトテーマを復元しました。</translation>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="75"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="132"/>
         <source>Check for updates</source>
-        <translation type="unfinished">アップデートを確認</translation>
+        <translation type="unfinished">アップデートを確認する</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="88"/>
@@ -4839,7 +4839,7 @@ Class Widgets はデフォルトテーマを復元しました。</translation>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="297"/>
         <source>Advanced</source>
-        <translation type="unfinished">高度な</translation>
+        <translation type="unfinished">高度な設定</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="303"/>
@@ -5261,7 +5261,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="275"/>
         <source>Display</source>
-        <translation type="unfinished">ディスプレイ</translation>
+        <translation type="unfinished">表示</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="276"/>
@@ -5429,12 +5429,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="32"/>
         <source>Class</source>
-        <translation type="unfinished">クラス</translation>
+        <translation type="unfinished">Class</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="33"/>
         <source>Activity</source>
-        <translation type="unfinished">アクティビティ</translation>
+        <translation type="unfinished">活動</translation>
     </message>
     <message>
         <source>Unknown</source>
