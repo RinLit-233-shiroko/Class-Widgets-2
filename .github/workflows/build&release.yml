@@ -155,6 +155,7 @@ jobs:
         run: |
           uv run pyinstaller --noconsole \
             --icon "assets/images/logo.ico" \
+            --hidden-import sqlite3 \
             --add-data "src/qml:src/qml" \
             --add-data "src/plugins:src/plugins" \
             --add-data "src/themes:src/themes" \
@@ -171,6 +172,7 @@ jobs:
         run: |
           uv run pyinstaller --noconsole \
             --icon "assets/images/logo.icns" \
+            --hidden-import sqlite3 \
             --add-data "src/qml:src/qml" \
             --add-data "src/plugins:src/plugins" \
             --add-data "src/themes:src/themes" \
