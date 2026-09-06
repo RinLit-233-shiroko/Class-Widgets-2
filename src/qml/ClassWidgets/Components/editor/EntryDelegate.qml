@@ -81,6 +81,11 @@ Clip {
         }
     }
 
+    // 正在编辑该条（详情 Flyout 打开）时，禁用其拖动手柄，避免时间选择器
+    // 里的拖拽穿透把本条带跑。
+    readonly property bool detailOpen: detailViewLoader.active
+        && detailViewLoader.item ? detailViewLoader.item.opened : false
+
     // 上拖拽调整
     Item {
         id: startResizeHandle
@@ -119,7 +124,7 @@ Clip {
         }
 
         visible: enabledDrag
-        enabled: enabledDrag
+        enabled: enabledDrag && !entryDelegate.detailOpen
     }
 
     // 下拖拽调整时间
@@ -131,7 +136,7 @@ Clip {
         z: 2
 
         visible: enabledDrag
-        enabled: enabledDrag
+        enabled: enabledDrag && !entryDelegate.detailOpen
 
         Rectangle {
             anchors.bottom: parent.bottom
@@ -167,7 +172,8 @@ Clip {
     DragHandler {
         id: moveHandler
         // The selected entry must be able to take the pointer from Flickable.
-        enabled: checked && !startResizeHandler.active && !endResizeHandler.active
+        // 详情/时间选择器打开时禁用，避免拖拽穿透把本条带跑。
+        enabled: checked && !entryDelegate.detailOpen && !startResizeHandler.active && !endResizeHandler.active
         target: null
         yAxis.enabled: true
         grabPermissions: PointerHandler.CanTakeOverFromAnything
