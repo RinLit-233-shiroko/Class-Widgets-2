@@ -56,6 +56,7 @@ class AutoHideTask(AutomationTask):
         self._window_states: dict[int, dict[str, bool]] = {}
         self.previous_state: bool = False
         self._fullscreen_window: int | None = None
+        self._os_hiding: bool = False  # 当前是否因最大化/全屏而被自动隐藏
         
         # Check initial state on startup
         if self.app_central.configs.interactions.hide.in_class:
@@ -63,6 +64,37 @@ class AutoHideTask(AutomationTask):
 
         # Check initial maximize/fullscreen state on startup
         self.update()
+
+    def _subject_name(self, entry) -> str:
+        """取条目对应的课程名称（用于豁免名单匹配）。"""
+        if entry is None:
+            return ""
+        subject_id = getattr(entry, "subjectId", None)
+        name = ""
+        if subject_id:
+            try:
+                schedule = getattr(self.runtime, "schedule", None)
+                subjects = getattr(schedule, "subjects", None) if schedule else None
+                if subjects:
+                    subject = self.runtime.services.get_subject(subject_id, subjects)
+                    if subject:
+                        name = getattr(subject, "name", None) or ""
+                        if not name:
+                            name = getattr(subject, "simplifiedName", None) or ""
+            except Exception as e:
+                logger.debug(f"Failed to resolve subject name: {e}")
+        if not name:
+            name = getattr(entry, "title", None) or ""
+        return name
+
+    def _is_exempt(self, entry) -> bool:
+        """该课程是否在“不自动隐藏”豁免名单（按课程名称）。"""
+        if entry is None:
+            return False
+        names = self.app_central.configs.interactions.hide.no_hide_subjects or []
+        if not names:
+            return False
+        return self._subject_name(entry) in names
 
     def _hide(self, state: bool) -> None:
         """隐藏窗口"""
@@ -119,6 +151,7 @@ class AutoHideTask(AutomationTask):
 
         if new_state != self.previous_state:
             self._hide(new_state)
+            self._os_hiding = new_state
         self.previous_state = new_state
 
     def _enum_windows_callback(self, hwnd: int, _) -> bool:
@@ -142,7 +175,16 @@ class AutoHideTask(AutomationTask):
 
     def on_schedule_changed(self, current_type: EntryType) -> None:
         """课程发生变化触发"""
-        if not self.app_central.configs.interactions.hide.in_class:  # 未开启设置
+        cfg = self.app_central.configs.interactions.hide
+        if not cfg.in_class:  # 未开启设置
             return
 
-        self._hide(current_type == EntryType.CLASS or current_type == EntryType.ACTIVITY)
+        hide_now = current_type == EntryType.CLASS or current_type == EntryType.ACTIVITY
+        # 豁免课程（按名称）：上课期间不自动隐藏；若正被隐藏则恢复显示。
+        # 若隐藏由全屏/最大化触发，则不强行恢复。
+        if hide_now and cfg.action == TapAction.HIDE and not self._os_hiding \
+                and self._is_exempt(self.runtime.current_entry):
+            cfg.state = False
+            return
+
+        self._hide(hide_now)
