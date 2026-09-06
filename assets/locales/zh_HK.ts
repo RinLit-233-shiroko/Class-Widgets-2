@@ -1919,7 +1919,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="56"/>
         <source>Notification sounds for general information</source>
-        <translation>常規資訊通知的提示音</translation>
+        <translation>用於一般資訊的通知聲音</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="65"/>
@@ -1927,7 +1927,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="145"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="185"/>
         <source>Default sound</source>
-        <translation>默認</translation>
+        <translation>預設聲音</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="79"/>
@@ -1935,7 +1935,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="158"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="198"/>
         <source>Play sound</source>
-        <translation>播放音效</translation>
+        <translation>播放聲音</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="86"/>
@@ -1943,7 +1943,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="166"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="206"/>
         <source>Select sound</source>
-        <translation>選取聲音</translation>
+        <translation>選擇聲音</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Notification.qml" line="95"/>
@@ -4708,12 +4708,12 @@ Class Widgets has restored the default theme.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="236"/>
         <source>Use Mirror Source</source>
-        <translation type="unfinished"></translation>
+        <translation>使用鏡像來源</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="237"/>
         <source>If GitHub is slow or unavailable in your region, use a mirror to download updates faster</source>
-        <translation type="unfinished"></translation>
+        <translation>如果 GitHub 在您所在區域速度較慢或無法使用，請使用鏡像來更快地下載更新</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="246"/>
