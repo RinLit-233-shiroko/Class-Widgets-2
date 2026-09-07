@@ -129,6 +129,7 @@ class HideInteractionsConfig(ConfigBaseModel):
     maximized: bool = False  # 窗口最大化
     fullscreen: bool = False   # 窗口全屏
     action: TapAction = TapAction.HIDE  # 触发隐藏时的行为（隐藏 / 切换迷你模式 / 浮窗）
+    fully_hide: bool = False  # 完全隐藏：隐藏时不在屏幕边缘残留唤回小条
 
     class Config:
         use_enum_values = True

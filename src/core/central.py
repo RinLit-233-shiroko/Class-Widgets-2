@@ -513,6 +513,21 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             logger.info("File logging disabled by configuration")
 
     def _on_tray_toggle(self, pos: QPoint) -> None:
+        hide = self.configs.interactions.hide
+        floating = (
+            hide.action == "floating_widget"
+            or self.configs.interactions.tapped_action == "floating_widget"
+        )
+        if (
+            hide.fully_hide
+            and hide.state
+            and not floating
+            and not self.configs.isKeyLocked("interactions.hide.state")
+        ):
+            # 完全隐藏状态下，小组件没有可见的唤回入口：单击托盘图标直接唤回，
+            # 不再弹出快捷面板。
+            hide.state = False
+            return
         self.togglePanel.emit(pos)
 
     @Slot()

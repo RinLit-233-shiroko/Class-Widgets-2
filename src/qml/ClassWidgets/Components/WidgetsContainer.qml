@@ -20,19 +20,21 @@ Column {
     property bool floatingMode: hide
         && (Configs.data.interactions.tapped_action === "floating_widget"
             || Configs.data.interactions.hide.action === "floating_widget")
+    property bool fullyHide: Configs.data.interactions.hide.fully_hide
     property var preferences: Configs.data.preferences
 
     property real dragOffsetX: 0
     property real dragOffsetY: 0
     property real hideMargin: {
         if (floatingMode) return 0  // 浮窗模式下完全移出窗口
+        if (fullyHide) return 0  // 完全隐藏：不残留边缘小条
         switch (Qt.platform.os) {
             case "osx":
                 return 48
             default:
                 return 24
         }
-    } // 隐藏时保留的可点击空间
+    } // 隐藏时保留的可点击空间（非完全隐藏时）
     property bool isTopPosition: preferences.widgets_anchor.indexOf("top_") === 0
     property real hideFade: 0
 
