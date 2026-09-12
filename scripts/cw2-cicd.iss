@@ -37,7 +37,7 @@ DisableProgramGroupPage=yes
 LicenseFile=..\LICENSE
 ; Uncomment the following line to run in non administrative install mode (install for current user only).
 ;PrivilegesRequired=lowest
-PrivilegesRequiredOverridesAllowed=commandline dialog
+PrivilegesRequiredOverridesAllowed=commandline
 OutputDir=..\output
 OutputBaseFilename=ClassWidgets-{#MyAppVersion}-Win-Installer
 SolidCompression=yes
