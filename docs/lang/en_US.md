@@ -23,15 +23,11 @@
 </div>
 
 > [!NOTE]
-> We’re planning to officially launch the first Stable release on the 24th of this month — August 24, 2026, the project’s second anniversary.
-> We’d love to hear from you on GitHub. Thanks for the support!
->
-> If GitHub downloads feel slow, you can grab the build you need from the community mirror links below.
-> The cloud files update automatically with each release, and you can also update directly from the built-in updater inside Class Widgets.
->
-> <div align="center">
-> <a href="https://github.com/RinLit-233-shiroko/Class-Widgets-2/releases">Release Page</a> | <a href="https://dl.gemen.pp.ua">OneDrive</a> | <s><a href="https://cw.rinlit.cn/">Official Website (under construction)</a></s>
-> </div>
+>We’ve officially dropped our very first Stable release!
+>If you run into any issues or got feedback, feel free to hit up our GitHub page and let us know. Appreciate y’all!
+>If GitHub downloads are moving slow for you, you can grab the version you need from the other mirror links below. The files on those mirrors will automatically stay updated whenever a new release drops.
+>You can also just use the built-in updater in Class Widgets to keep everything up to date.
+
 
 ## Overview
 Class Widgets 2 is the next generation of digital timetable software, rebuilt from the ground up with a newer architecture and a cleaner design language.
