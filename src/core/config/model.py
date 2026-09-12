@@ -129,6 +129,7 @@ class HideInteractionsConfig(ConfigBaseModel):
     maximized: bool = False  # 窗口最大化
     fullscreen: bool = False   # 窗口全屏
     action: TapAction = TapAction.HIDE  # 触发隐藏时的行为（隐藏 / 切换迷你模式 / 浮窗）
+    no_hide_subjects: list[str] = Field(default_factory=list)  # 按课程名称豁免自动隐藏（对所有课表生效）
 
     class Config:
         use_enum_values = True
