@@ -283,6 +283,7 @@ FluentPage {
                                      ? Colors.proxy.systemCriticalColor
                                      : Colors.proxy.textColor
                     primaryActionVisible: modelData.update_available
+                                              && !root.hasPendingOperation(modelData.id)
                     primaryActionEnabled: !PluginManager.plazaInstallActive
                                               && !root.hasPendingOperation(modelData.id)
                     primaryActionText: qsTr("Update")

@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import RinUI
 import Debugger
+import "../ClassWidgets/Components/editor/WeekRule.js" as WeekRule
 
 
 ApplicationWindow {
@@ -183,14 +184,18 @@ ApplicationWindow {
 
         if (day.dayOfWeek) {
             const dayName = weekDays[day.dayOfWeek - 1]
-            const weeks = day.weeks
+            const type = WeekRule.kind(day.weeks)
 
-            if (weeks === "all") {
+            if (type === "all") {
                 return `${dayName} (All Weeks)`
-            } else if (typeof weeks === "number") {
-                return `${dayName} (Cycle: ${weeks})`
-            } else if (Array.isArray(weeks)) {
-                return `${dayName} (Weeks: ${weeks.join(",")})`
+            } else if (type === "odd") {
+                return `${dayName} (Odd Weeks)`
+            } else if (type === "even") {
+                return `${dayName} (Even Weeks)`
+            } else if (type === "specific") {
+                return `${dayName} (Weeks: ${WeekRule.specificWeeks(day.weeks).join(",")})`
+            } else if (type === "cycle") {
+                return `${dayName} (Cycle: ${day.weeks})`
             }
         }
 

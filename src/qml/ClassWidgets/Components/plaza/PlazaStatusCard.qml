@@ -170,7 +170,7 @@ Clip {
             }
 
             Switch {
-                visible: root.enableSwitchVisible
+                visible: root.enableSwitchVisible && !root.primaryActionVisible
                 // text: checked ? qsTr("Enabled") : qsTr("Disabled")
                 onToggled: root.enableToggled(checked)
 

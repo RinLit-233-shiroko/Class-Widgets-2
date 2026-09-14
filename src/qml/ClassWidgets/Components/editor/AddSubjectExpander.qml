@@ -3,213 +3,408 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import RinUI
 
-
-/**
- * AddSubjectExpander
- * ------------------
- * Schedule 编辑器「快捷添加学科」悬浮组件（基于 RinUI Expander，root 即 Expander）。
- * 由调用侧作为页面 root 的直接子项使用（不进任何 Layout），位置完全自管理。
- *
- *  行为：
- *  • Header 区域（不含右侧展开按钮）可 X / Y 双向拖动；内部 Flickable 滚动互不影响
- *  • 拖动用 Qt 标准 drag.target 机制：Qt 用全局光标追踪直接移动 root.x/y，
- *    无任何手动坐标换算 → 不存在反馈循环 / 坐标系漂移问题
- *  • 松手后 Y 用 OutBack 弹性动画吸附回「底部对齐」（动态值：按当前展开高度实时计算）
- *  • 展开/收起动画过程中 y 逐帧跟随高度变化，底部始终对齐；页面尺寸变化时自动重对齐
- *  • 默认悬浮在父级右下角（edgeMargin 边距），默认展开
- *  • 点击 Header（非拖动）触发展开/折叠；右侧展开按钮独立可点
- *  • 点击学科按钮发出 subjectClicked(subjectId)
- *
- *  注意：
- *  • 不使用 anchors —— drag.target 需要直接写 root.x/y，anchors 会与之冲突
- *  • Expander 的默认属性是 contentData（未命名子项会进内容区），
- *    拖动层/动画/Connections 必须显式挂到 data: [...] 才是 root 的直接子项
- */
-Expander {
+// Quick-fill panel, toggled by the "Quick Fill" button in the bottom bar.
+// It is not a Popup/Flyout, so clicking outside does not dismiss it; the
+// header area stays freely draggable.
+Item {
     id: root
 
-    // —— 对外配置 —— //
-    property int snapDuration: 380
-    /** 从底部吸附位向上可拖动的最大距离 (px)；0 = 不限制 */
-    property real maxDragUp: 420
-    /** 悬浮边距（初始定位 + 底部吸附时与父级边缘的距离） */
-    property real edgeMargin: 24
-    property QtObject sourceItem
+    implicitWidth: 340
+    readonly property int subjectViewportMaxHeight: 150
+    // The root follows the layout's height; only the course list is capped.
+    implicitHeight: contentColumn.implicitHeight + 28
 
+    property real edgeMargin: 24
+
+    /** Default dock and drag lower-bound Y (usually the top of the bottom bar). */
+    property real bottomAnchorY: parent ? parent.height - edgeMargin : 0
+    property real bottomGap: 0
+    /** Page content sampled by AcrylicBrush. */
+    property Item sourceItem: null
+
+    property var subjects: AppCentral.scheduleRuntime.subjects || []
+    readonly property real cornerRadius: 8
+
+    // Keep the same feel parameters as FloatingWidgetContainer.
+    readonly property real friction: 0.86
+    readonly property real springStrength: 115
+    readonly property real springDamping: 18
+    readonly property real stopVelocity: 6
+    readonly property int maxDragSamples: 20
+    readonly property int sampleWindowMs: 100
 
     signal subjectClicked(var subjectId)
+    signal nextRequested()
 
-    // —— 内部状态 —— //
-    /** true = y 跟随「父级底部 - 当前高度」逐帧对齐（吸附态）；拖动/吸附动画期间为 false */
-    property bool _followBottom: true
-    /** 本次按下是否发生过真实拖动（区分点击与拖动） */
-    property bool _wasDragged: false
-    /** 用户是否主动拖动过 X（未拖过则父级宽度变化时重新贴右） */
-    property bool _userMovedX: false
-    /** 右侧展开按钮预留宽度（RinUI Expander 中 expandBtn.width + 边距 ≈ 45px），不覆盖此区域 */
-    readonly property real _expandBtnReserved: 45
+    // —— Drag state —— //
+    property bool _positionInitialized: false
+    property bool _userPositioned: false
+    property real _velocityX: 0
+    property real _velocityY: 0
+    property var _dragSamples: []
 
-    expanded: true   // 默认展开
+    visible: false
 
-    /** 底部对齐（吸附态专用；吸附动画进行中不打断） */
-    function _alignBottom() {
-        if (_followBottom && parent && !_ySnapAnim.running)
-            y = parent.height - height - edgeMargin
-    }
+    function _bounds() {
+        if (!parent)
+            return { minX: 0, minY: 0, maxX: 0, maxY: 0 }
 
-    // 初始位置：父级右下角（不用 anchors，x/y 留给 drag.target 自由写）
-    Component.onCompleted: {
-        if (parent) {
-            x = Math.max(0, parent.width - width - edgeMargin)
-            y = parent.height - height - edgeMargin
+        const minX = Math.max(0, edgeMargin)
+        const minY = Math.max(0, edgeMargin)
+        return {
+            minX: minX,
+            minY: minY,
+            maxX: Math.max(minX, parent.width - width - edgeMargin),
+            maxY: Math.max(minY, bottomAnchorY - bottomGap - height)
         }
     }
 
-    // 展开/收起动画中 implicitHeight 逐帧变化 → y 逐帧跟随，底部始终对齐
-    onHeightChanged: _alignBottom()
-
-    header: RowLayout {
-        Layout.margins: 13
-        Layout.leftMargin: 0
-        spacing: 16
-
-        RowLayout {
-            Layout.maximumWidth: parent.width * 0.6
-            spacing: 16
-
-            Icon {
-                size: 22
-                name: "ic_fluent_line_horizontal_3_20_regular"
-            }
-            Text {
-                Layout.fillWidth: true
-                typography: Typography.Body
-                text: qsTr("Quick Add Subject")
-            }
+    function _clampToBounds(posX, posY) {
+        const bounds = _bounds()
+        return {
+            x: Math.max(bounds.minX, Math.min(bounds.maxX, posX)),
+            y: Math.max(bounds.minY, Math.min(bounds.maxY, posY))
         }
     }
 
+    function _draggedPosition(pos, minimum, maximum) {
+        if (pos < minimum)
+            return minimum + (pos - minimum) * 0.22
+        if (pos > maximum)
+            return maximum + (pos - maximum) * 0.22
+        return pos
+    }
+
+    function _placeDefaultPosition() {
+        // Layout anchors can briefly report incomplete values. Keep defaulting
+        // to the bottom-right corner until the user actually drags the panel.
+        if (!parent || width <= 0 || height <= 0
+                || parent.width <= 0 || parent.height <= 0 || bottomAnchorY <= 0)
+            return
+
+        const bounds = _bounds()
+        x = bounds.maxX
+        // If the anchor is temporarily too high to fit the panel, use the
+        // page bottom instead of locking the panel to the top edge.
+        y = bounds.maxY <= bounds.minY
+            ? Math.max(bounds.minY, parent.height - edgeMargin - height)
+            : bounds.maxY
+        _positionInitialized = true
+    }
+
+    function _reconcilePosition() {
+        if (!_positionInitialized || !parent)
+            return
+
+        const position = _clampToBounds(x, y)
+        x = position.x
+        y = position.y
+    }
+
+    function _syncPosition() {
+        if (!_userPositioned) {
+            _placeDefaultPosition()
+            return
+        }
+        if (_positionInitialized)
+            _reconcilePosition()
+    }
+
+    function _startInertia() {
+        if (Math.abs(_velocityX) > stopVelocity || Math.abs(_velocityY) > stopVelocity)
+            physicsAnimation.running = true
+        else
+            _reconcilePosition()
+    }
+
+    function showPanel() {
+        visible = true
+        _syncPosition()
+        // Re-run after the popup/layout pass in case bottomAnchorY settles
+        // on the next event-loop turn.
+        Qt.callLater(_syncPosition)
+    }
+
+    function hidePanel() {
+        physicsAnimation.running = false
+        visible = false
+    }
+
+    function toggle() {
+        visible ? hidePanel() : showPanel()
+    }
+
+    Component.onCompleted: _syncPosition()
+
+    // Before the first drag, keep recalculating the default bottom-right
+    // position while page geometry settles. Afterwards only clamp it.
+    onWidthChanged: _syncPosition()
+    onHeightChanged: _syncPosition()
+    onBottomAnchorYChanged: _syncPosition()
+    onVisibleChanged: {
+        if (visible)
+            _syncPosition()
+    }
+
+    // ── Background ───────────────────────────────────────────────────
+    Item {
+        id: panelBackground
+        anchors.fill: parent
+        clip: true
+
+        layer.enabled: true
+        layer.effect: Shadow {
+            style: "flyout"
+            source: panelBackground
+        }
+
+        AcrylicBrush {
+            anchors.fill: parent
+            sourceItem: root.sourceItem
+            enabled: root.sourceItem !== null
+            radius: root.cornerRadius
+            z: 0
+        }
+
+        Rectangle {
+            anchors.fill: parent
+            radius: root.cornerRadius
+            color: "transparent"
+            border.color: Theme.currentTheme.colors.flyoutBorderColor
+            border.width: 1
+            z: 1
+        }
+    }
+
+    // ── Content ──────────────────────────────────────────────────────
     ColumnLayout {
-        width: parent.width
-        height: 200
+        id: contentColumn
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.topMargin: 12
+        anchors.leftMargin: 16
+        anchors.rightMargin: 16
         spacing: 8
 
-        Flickable {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            contentHeight: _subjectsFlow.height
-            clip: true
+        Rectangle {
+            Layout.alignment: Qt.AlignHCenter
+            Layout.preferredWidth: 48
+            Layout.preferredHeight: 4
+            radius: height / 2
+            color: Colors.proxy.dividerBorderColor
+        }
 
-            ScrollBar.vertical: ScrollBar {}
+        Text {
+            Layout.fillWidth: true
+            Layout.preferredHeight: 20
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignVCenter
+            typography: Typography.BodyStrong
+            text: qsTr("Quick Add Subject")
+            elide: Text.ElideRight
+        }
+
+        Flickable {
+            id: subjectFlick
+            Layout.fillWidth: true
+            Layout.preferredHeight: Math.min(
+                subjectsFlow.height,
+                root.subjectViewportMaxHeight
+            )
+            Layout.maximumHeight: root.subjectViewportMaxHeight
+            contentWidth: width
+            contentHeight: subjectsFlow.height
+            clip: true
+            boundsBehavior: Flickable.StopAtBounds
+
+            ScrollBar.vertical: ScrollBar { }
 
             Flow {
-                id: _subjectsFlow
-                width: parent.width
+                id: subjectsFlow
+                width: subjectFlick.width
+                spacing: 0
+
                 Repeater {
-                    model: AppCentral.scheduleRuntime.subjects
+                    model: root.subjects
+
                     Button {
                         enabled: !AppCentral.scheduleManager.isReadonly()
                         flat: true
-                        icon.name: modelData.icon
+                        icon.name: modelData.icon || ""
                         text: modelData.name
                         onClicked: root.subjectClicked(modelData.id)
                     }
                 }
             }
         }
-    }
 
-    // ================================================================
-    // 拖动层 / 吸附动画 / 父级尺寸监听
-    // 必须挂到 root.data（root 默认属性是 contentData，未命名子项会被塞进内容区）。
-    // ================================================================
-    data: [
-        AcrylicBrush {
-            blur: 32
-            tintOpacity: 0.8
-            sourceItem: root.sourceItem
-        },
-        MouseArea {
-            id: _dragArea
-            x: 0
-            y: 0
-            // 覆盖 header 区域，宽度避让右侧展开按钮预留区
-            width: root.width - root._expandBtnReserved
-            height: root.headerHeight
-            z: 1000   // 高于 header Clip 与内部拦截层
-            cursorShape: Qt.SizeAllCursor
+        RowLayout {
+            Layout.fillWidth: true
+            Layout.preferredHeight: 32
 
-            // Qt 标准拖动：全局光标追踪直接写 root.x/y，无手动坐标换算
-            drag.target: root
-            drag.axis: Drag.XAndYAxis
-            drag.minimumX: 0
-            drag.maximumX: root.parent ? root.parent.width - root.width : 0
-            // Y：范围 = [底部吸附位 - maxDragUp, 底部吸附位]（吸附位按当前高度动态计算）
-            drag.minimumY: root.parent
-                ? Math.max(0, root.parent.height - root.height - root.edgeMargin - root.maxDragUp)
-                : 0
-            drag.maximumY: root.parent
-                ? Math.max(0, root.parent.height - root.height - root.edgeMargin)
-                : 0
-
-            // 按下时 root 的位置（drag 组没有信号，靠 released 时比较位移判断是否拖动过）
-            property real _pressX: 0
-            property real _pressY: 0
-
-            onPressed: (mouse) => {
-                root._followBottom = false
-                root._wasDragged = false
-                if (_ySnapAnim.running) _ySnapAnim.stop()
-                _pressX = root.x
-                _pressY = root.y
+            Item {
+                Layout.fillWidth: true
             }
 
-            onClicked: (mouse) => {
-                // 非拖动点击 → 切换展开/折叠
-                if (!root._wasDragged) root.expanded = !root.expanded
-            }
-
-            onReleased: (mouse) => {
-                // released 先于 clicked 触发：位移超阈值 = 发生过拖动
-                if (Math.abs(root.x - _pressX) > 3 || Math.abs(root.y - _pressY) > 3) {
-                    root._wasDragged = true
-                    if (Math.abs(root.x - _pressX) > 3) root._userMovedX = true
-                }
-                if (root._wasDragged) {
-                    // 拖动松手：Y 弹性吸附回底部（高度此刻稳定，目标值按当前展开状态计算）
-                    _ySnapAnim.to = root.parent
-                        ? root.parent.height - root.height - root.edgeMargin
-                        : root.y
-                    _ySnapAnim.start()
-                } else {
-                    // 纯点击（可能已触发展开/收起动画）：恢复逐帧跟随，y 随高度动画平滑对齐
-                    root._followBottom = true
-                    root._alignBottom()
-                }
-            }
-        },
-
-        NumberAnimation {
-            id: _ySnapAnim
-            target: root
-            property: "y"
-            duration: root.snapDuration
-            easing.type: Easing.OutBack
-            easing.overshoot: 1.5
-            onFinished: root._followBottom = true
-        },
-
-        // 父级（页面）尺寸变化时重新对齐
-        Connections {
-            target: root.parent
-            function onHeightChanged() {
-                root._alignBottom()
-            }
-            function onWidthChanged() {
-                // 用户没拖过 X → 保持贴右；拖过 → 保持用户位置
-                if (!root._userMovedX && root.parent)
-                    root.x = Math.max(0, root.parent.width - root.width - root.edgeMargin)
+            Button {
+                Layout.preferredWidth: 140
+                Layout.preferredHeight: 32
+                enabled: !AppCentral.scheduleManager.isReadonly()
+                text: qsTr("Next Class")
+                onClicked: root.nextRequested()
             }
         }
-    ]
+    }
+
+    // ── Drag / inertia ───────────────────────────────────────────────
+    Item {
+        id: dragHandle
+        width: root.width
+        height: 48
+        z: 1000
+
+        HoverHandler {
+            cursorShape: Qt.SizeAllCursor
+        }
+
+        DragHandler {
+            id: dragHandler
+            target: null
+            grabPermissions: PointerHandler.CanTakeOverFromAnything
+
+            property real startX: 0
+            property real startY: 0
+            property bool dragged: false
+
+            onActiveChanged: {
+                if (active) {
+                    root._userPositioned = true
+                    physicsAnimation.running = false
+                    root._velocityX = 0
+                    root._velocityY = 0
+                    startX = root.x
+                    startY = root.y
+                    root._dragSamples = []
+                    dragged = false
+                    return
+                }
+
+                if (!root._positionInitialized)
+                    return
+
+                if (!dragged) {
+                    root._reconcilePosition()
+                    return
+                }
+
+                const now = Date.now()
+                const cutoff = now - root.sampleWindowMs
+                const samples = root._dragSamples
+                while (samples.length > 0 && samples[0].t < cutoff)
+                    samples.shift()
+
+                if (samples.length >= 2) {
+                    const first = samples[0]
+                    const last = samples[samples.length - 1]
+                    const dt = Math.max(1, last.t - first.t)
+                    root._velocityX = (last.x - first.x) * 1000 / dt
+                    root._velocityY = (last.y - first.y) * 1000 / dt
+                } else {
+                    root._velocityX = 0
+                    root._velocityY = 0
+                }
+
+                root._startInertia()
+            }
+
+            onTranslationChanged: {
+                if (!active)
+                    return
+
+                const now = Date.now()
+                const bounds = root._bounds()
+                const rawX = startX + translation.x
+                const rawY = startY + translation.y
+                const positionX = root._draggedPosition(
+                    rawX, bounds.minX, bounds.maxX
+                )
+                const positionY = root._draggedPosition(
+                    rawY, bounds.minY, bounds.maxY
+                )
+
+                const samples = root._dragSamples
+                samples.push({ t: now, x: positionX, y: positionY })
+                if (samples.length > root.maxDragSamples)
+                    samples.shift()
+
+                root.x = positionX
+                root.y = positionY
+                dragged = dragged || Math.abs(translation.x) > 8
+                    || Math.abs(translation.y) > 8
+            }
+        }
+    }
+
+    // Mirrors FloatingWidgetContainer's velocity + spring motion.
+    FrameAnimation {
+        id: physicsAnimation
+        running: false
+
+        onTriggered: {
+            const dt = Math.min(frameTime, 0.05)
+            const bounds = root._bounds()
+            let forceX = 0
+            let forceY = 0
+
+            if (root.x < bounds.minX)
+                forceX = (bounds.minX - root.x) * root.springStrength
+                    - root._velocityX * root.springDamping
+            else if (root.x > bounds.maxX)
+                forceX = (bounds.maxX - root.x) * root.springStrength
+                    - root._velocityX * root.springDamping
+
+            if (root.y < bounds.minY)
+                forceY = (bounds.minY - root.y) * root.springStrength
+                    - root._velocityY * root.springDamping
+            else if (root.y > bounds.maxY)
+                forceY = (bounds.maxY - root.y) * root.springStrength
+                    - root._velocityY * root.springDamping
+
+            root._velocityX += forceX * dt
+            root._velocityY += forceY * dt
+
+            const damping = Math.pow(root.friction, dt * 60)
+            root._velocityX *= damping
+            root._velocityY *= damping
+            root.x += root._velocityX * dt
+            root.y += root._velocityY * dt
+
+            const insideX = root.x >= bounds.minX && root.x <= bounds.maxX
+            const insideY = root.y >= bounds.minY && root.y <= bounds.maxY
+            const stoppedX = insideX && Math.abs(root._velocityX) < root.stopVelocity
+            const stoppedY = insideY && Math.abs(root._velocityY) < root.stopVelocity
+
+            if (stoppedX)
+                root._velocityX = 0
+            if (stoppedY)
+                root._velocityY = 0
+            if (stoppedX && stoppedY) {
+                physicsAnimation.running = false
+                root._reconcilePosition()
+            }
+        }
+    }
+
+    Connections {
+        target: root.parent
+
+        function onWidthChanged() {
+            root._syncPosition()
+        }
+
+        function onHeightChanged() {
+            root._syncPosition()
+        }
+    }
 }

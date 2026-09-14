@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import RinUI
 import ClassWidgets.Components
+import "../WeekRule.js" as WeekRule
 
 ColumnLayout {
     id: root
@@ -52,9 +53,15 @@ ColumnLayout {
             }
 
             if (day.dayOfWeek) {
-                if (weeks === "all") return qsTr("Every Week")
-                if (typeof weeks === "number") return qsTr("week %1 of the cycle").arg(weeks)
-                if (Array.isArray(weeks)) return qsTr("Weeks %1").arg(weeks.map(w => Number(w)).join(","))
+                // `weeks` may be an array-like sequence from the backend, so the
+                // rule is classified by WeekRule instead of Array.isArray().
+                const type = WeekRule.kind(weeks)
+                if (type === "all") return qsTr("Every Week")
+                if (type === "odd") return qsTr("Odd Week")
+                if (type === "even") return qsTr("Even Week")
+                if (type === "specific")
+                    return qsTr("Weeks %1").arg(WeekRule.specificWeeks(weeks).join(","))
+                return qsTr("week %1 of the cycle").arg(weeks)
             }
 
             return ""

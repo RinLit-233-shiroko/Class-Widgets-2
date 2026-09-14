@@ -52,7 +52,7 @@ FluentPage {
         SettingCard {
             Layout.fillWidth: true
             icon.name: "ic_fluent_alert_20_regular"
-            title: qsTr("Advance Time (Minutes)")
+            title: qsTr("Advance Notice (Minutes)")
             description: qsTr("Minutes before class starts to ring the preparation bell")
 
             SpinBox {

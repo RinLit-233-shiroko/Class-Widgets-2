@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import RinUI
+import ClassWidgets.Components
 
 Flyout {
     id: root
@@ -37,19 +38,13 @@ Flyout {
         }
     }
 
-    function subjectIdByName(name) {
-        for (let i = 0; i < subjects.length; i++) {
-            if (subjects[i].name === name) return subjects[i].id
-        }
-        return null
-    }
 
     function refresh(entry) {
         if (!entry) return;
 
         root.currentEntry = entry
         entryId.text = currentEntry.id || ""
-        entrySubject.checkedId = currentEntry.subjectId || null
+        entrySubject.subjectId = currentEntry.subjectId || ""
         entryTitle.text = currentEntry.title || ""
 
         root.open()
@@ -92,7 +87,7 @@ Flyout {
             currentEntry.id, newType,
             startTime,
             endTime,
-            entrySubject.checkedId || null,
+            entrySubject.subjectId || null,
             entryTitle.text || null
         )
     }
@@ -174,52 +169,21 @@ Flyout {
 
         RowLayout {
             visible: typeSegmented.currentIndex === 0
-            Text { text: qsTr("Default Subject");}
+            Text { text: qsTr("Default Subject"); }
 
-            Item { Layout.fillWidth: true }
+            Item {
+                Layout.fillWidth: true
+            }
 
-            DropDownButton {
+            SubjectPickerButton {
                 id: entrySubject
-                text: checkedId ? AppCentral.scheduleEditor.subjectNameById(checkedId) : qsTr("Select Subject")
-                property string checkedId: ""
-                onClicked: subjectsFlyout.open()
-
-                Flyout {
-                    id: subjectsFlyout
-                    position: Position.Left
-                    implicitWidth: 300
-
-                    Flow {
-                        Layout.fillWidth: true
-                        ButtonGroup {
-                            id: subjectsGroup
-                            exclusive: true
-                        }
-                        Repeater {
-                            model: root.subjects
-                            ToggleButton {
-                                property string checkedId: modelData.id
-                                icon.name: modelData.icon
-                                text: modelData.name
-                                flat: true
-                                ButtonGroup.group: subjectsGroup
-                            }
-                        }
-                    }
-
-                    buttonBox: Button {
-                        highlighted: true
-                        text: qsTr("Set Subject")
-                        onClicked: {
-                            entrySubject.checkedId = subjectsGroup.checkedButton.checkedId
-                            subjectsFlyout.close()
-                        }
-                    }
-                }
+                subjects: root.subjects
+                onSubjectSelected: entrySubject.subjectId = subjectId
             }
 
             onVisibleChanged: {
-                if (!visible) entrySubject.checkedId = null
+                if (!visible)
+                    entrySubject.subjectId = ""
             }
         }
 

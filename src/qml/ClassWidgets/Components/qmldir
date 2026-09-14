@@ -19,22 +19,30 @@ PluginReplaceConfirmDialog 1.0 dialogs/PluginReplaceConfirmDialog.qml
 
 # Settings
 ClipItem 1.0 settings/ClipItem.qml
-DayListView 1.0 editor/DayListView.qml
-EntryDetailView 1.0 editor/EntryDetailView.qml
-EntryListView 1.0 editor/EntryListView.qml
-EntryDelegate 1.0 editor/EntryDelegate.qml
-
-ScheduleTableView 1.0 editor/ScheduleTableView.qml
-TableEntryDelegate 1.0 editor/TableEntryDelegate.qml
-WeekSelector 1.0 editor/WeekSelector.qml
-ScheduleFlyout 1.0 editor/ScheduleFlyout.qml
-SubjectClip 1.0 editor/SubjectClip.qml
-
-SaveFlyout 1.0 editor/SaveFlyout.qml
-ScheduleClip 1.0 editor/ScheduleClip.qml
+# Editor / Shared
 AddSubjectExpander 1.0 editor/AddSubjectExpander.qml
+SaveFlyout 1.0 editor/SaveFlyout.qml
+SubjectClip 1.0 editor/SubjectClip.qml
+SubjectPickerButton 1.0 editor/SubjectPickerButton.qml
+SpecificWeekEditor 1.0 editor/SpecificWeekEditor.qml
+WeekdaySelector 1.0 editor/WeekdaySelector.qml
 
-## dialogs
+# Editor / Timeline
+DayListView 1.0 editor/timeline/DayListView.qml
+EntryDelegate 1.0 editor/timeline/EntryDelegate.qml
+EntryDetailView 1.0 editor/timeline/EntryDetailView.qml
+EntryListView 1.0 editor/timeline/EntryListView.qml
+
+# Editor / Schedule
+ScheduleClip 1.0 editor/schedule/ScheduleClip.qml
+ScheduleCourseCard 1.0 editor/schedule/ScheduleCourseCard.qml
+ScheduleFlyout 1.0 editor/schedule/ScheduleFlyout.qml
+ScheduleHeader 1.0 editor/schedule/ScheduleHeader.qml
+ScheduleOverrideItem 1.0 editor/schedule/ScheduleOverrideItem.qml
+ScheduleTableView 1.0 editor/schedule/ScheduleTableView.qml
+TableEntryDelegate 1.0 editor/schedule/TableEntryDelegate.qml
+
+# Editor / Dialogs
 DayEditor 1.0 editor/dialogs/DayEditor.qml
 IconPicker 1.0 editor/dialogs/IconPicker.qml
 

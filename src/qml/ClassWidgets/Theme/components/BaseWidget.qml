@@ -33,8 +33,33 @@ Item {
     default property alias content: contentArea.data
     property alias mainLayout: mainColumnLayout.data
 
-    implicitWidth: Math.max(headerRow.implicitWidth, contentArea.childrenRect.width) + 48
+    implicitWidth: Math.max(headerRow.implicitWidth, visibleContentWidth()) + 48
     height: miniMode ? 56 : 100
+
+    // 计算 contentArea 中可见子项的水平跨度（等价于 childrenRect，但排除隐藏子项）。
+    // childrenRect 会把不可见子项也算进去，导致隐藏内容（如字幕模式下的 Title）仍撑大组件宽度
+    function visibleContentWidth() {
+        var children = contentArea.children
+        var minLeft = 0
+        var maxRight = 0
+        var counted = false
+        for (var i = 0; i < children.length; i++) {
+            var child = children[i]
+            if (!child.visible)
+                continue
+            var left = child.x
+            var right = child.x + child.width
+            if (!counted) {
+                minLeft = left
+                maxRight = right
+                counted = true
+            } else {
+                if (left < minLeft) minLeft = left
+                if (right > maxRight) maxRight = right
+            }
+        }
+        return counted ? (maxRight - minLeft) : 0
+    }
 
     function updateSettings(changes) {
         if (!changes || !instanceId)

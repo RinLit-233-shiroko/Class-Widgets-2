@@ -1,7 +1,17 @@
 from datetime import datetime, timedelta
 from typing import Optional
 
-from src.core.schedule.model import Entry, EntryType, Timeline, Subject, ScheduleData, Timetable, WeekType
+from src.core.schedule.model import (
+    Entry,
+    EntryType,
+    Timeline,
+    Subject,
+    ScheduleData,
+    Timetable,
+    WeekType,
+    normalize_week_rule,
+    week_rule_matches,
+)
 from src.core.utils import get_week_number, get_cycle_week
 
 
@@ -23,8 +33,8 @@ class ScheduleServices:
         # 指定日期时间线优先，不受 dayOfWeek/weeks 限制。
         matched_day = next((day for day in schedule.days if day.date == date_str), None)
 
-        # 当前是第几周（可为负）
-        raw_week_index = self._get_week_index(schedule, now)
+        # 绝对周次从开学日起算；周期周次只用于整数规则和多周轮换。
+        absolute_week = self._get_week_index(schedule, now)
         reschedule_map = self._get_reschedule_map()
 
         # 调休处理：优先使用调休映射表
@@ -33,8 +43,8 @@ class ScheduleServices:
         else:
             weekday = now.isoweekday()  # 默认 1-7
 
-        max_week_cycle = schedule.meta.maxWeekCycle or 1
-        current_week = get_cycle_week(raw_week_index, max_week_cycle)
+        max_week_cycle = max(1, schedule.meta.maxWeekCycle or 1)
+        cycle_week = get_cycle_week(absolute_week, max_week_cycle)
 
         # 临时换课
         class_swap = getattr(self.app_central.configs.schedule, "class_swap", None)
@@ -44,7 +54,7 @@ class ScheduleServices:
             if isinstance(swap_weekday, int) and 1 <= swap_weekday <= 7:
                 weekday = swap_weekday
             if isinstance(swap_week, int) and 1 <= swap_week <= max_week_cycle:
-                current_week = swap_week
+                cycle_week = swap_week
 
         if matched_day is None:
             for day in schedule.days:
@@ -52,7 +62,9 @@ class ScheduleServices:
                 if (
                     day_of_week_list
                     and weekday in day_of_week_list
-                    and self._is_in_week(day.weeks, current_week, max_week_cycle)
+                    and self._is_in_week(
+                        day.weeks, absolute_week, max_week_cycle, cycle_week
+                    )
                 ):
                     matched_day = day
                     break
@@ -69,7 +81,9 @@ class ScheduleServices:
                 for override in schedule.overrides:
                     if override.entryId != entry.id:
                         continue
-                    if self._override_applies(override, weekday, current_week, max_week_cycle):
+                    if self._override_applies(
+                        override, weekday, absolute_week, max_week_cycle, cycle_week
+                    ):
                         if override.subjectId:
                             entry.subjectId = override.subjectId
                             subject_overridden = True
@@ -87,12 +101,20 @@ class ScheduleServices:
             return day_copy
         return None
 
-    def _override_applies(self, override: Timetable, weekday: int, current_week: int, max_week_cycle: int = 1) -> bool:
-        if override.dayOfWeek:
-            if weekday not in override.dayOfWeek:
-                return False
-        if override.weeks:
-            if not self._is_in_week(override.weeks, current_week, max_week_cycle):
+    @staticmethod
+    def _override_applies(
+        override: Timetable,
+        weekday: int,
+        absolute_week: int,
+        max_week_cycle: int = 1,
+        cycle_week: Optional[int] = None,
+    ) -> bool:
+        if override.dayOfWeek and weekday not in override.dayOfWeek:
+            return False
+        if override.weeks is not None:
+            if not ScheduleServices._is_in_week(
+                override.weeks, absolute_week, max_week_cycle, cycle_week
+            ):
                 return False
         return True
 
@@ -187,24 +209,25 @@ class ScheduleServices:
         return get_week_number(schedule.meta.startDate, now)
 
     @staticmethod
-    def _is_in_week(weeks: str | int | Optional[list[int]], current_week: int, max_week_cycle: int = 1) -> bool:
-        """
-        判断某个 weeks 字段是否包含当前周
-        - "all" 或 WeekType.ALL → 永远 True
-        - None → 永远 True（等于没限制）
-        - int → 当前周 == int
-        - list[int] → 当前周 in list
-        :arg weeks: 限制周数的字段
-        :arg current_week: 当前周
-        """
-        if weeks is None:
-            return True
+    def _is_in_week(
+        weeks,
+        absolute_week: int,
+        max_week_cycle: int = 1,
+        cycle_week: Optional[int] = None,
+    ) -> bool:
+        """判断 week rule 是否覆盖指定周。
 
-        if isinstance(weeks, str):
-            return weeks == WeekType.ALL.value
-        if isinstance(weeks, int):
-            return current_week >= weeks and ((current_week - weeks) % max_week_cycle == 0)  # 补做
-        if isinstance(weeks, list):
-            return current_week in weeks
-
-        return False
+        - "all" → 所有周
+        - "odd"/"even" → 按绝对周次判断单双周
+        - int → 周期内第几周（例如每 3 周的第 2 周）
+        - list[int] → 指定绝对周次
+        - None → 不限制
+        """
+        rule = normalize_week_rule(weeks)
+        if rule is None:
+            return weeks is None
+        if isinstance(rule, int):
+            if cycle_week is None:
+                return week_rule_matches(rule, absolute_week, max_week_cycle)
+            return cycle_week == rule
+        return week_rule_matches(rule, absolute_week, max_week_cycle)

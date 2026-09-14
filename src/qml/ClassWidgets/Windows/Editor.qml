@@ -30,6 +30,14 @@ FluentWindow {
 
     Dialog {
         id: saveTipDialog
+        implicitWidth: Math.min(
+            Math.max(Utils.dialogMinimumWidth, Math.min(implicitContentWidth + 48, Utils.dialogMaximumWidth)),
+            Math.max(0, (Overlay.overlay ? Overlay.overlay.width : settingsWindow.width) - 16)
+        )
+        implicitHeight: Math.min(
+            implicitContentHeight + topPadding + bottomPadding + (footer ? footer.implicitHeight : 0),
+            Math.max(0, (Overlay.overlay ? Overlay.overlay.height : settingsWindow.height) - 16)
+        )
         title: qsTr("Save changes to the timetable")
         modal: true
         Text {
