@@ -386,6 +386,7 @@ jobs:
           prerelease: ${{ steps.version.outputs.prerelease }}
           files: |
             dist/ClassWidgets-2-Windows.zip
+            dist/ClassWidgets-*-Win-Installer.exe
             dist/ClassWidgets-2-macOS-X64.dmg
             dist/ClassWidgets-2-macOS-ARM64.dmg
         env:
