@@ -207,34 +207,71 @@ Item {
             }
         }
 
-        GridView {
-            id: subjectsGrid
+        Item {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            clip: true
-            property int spacing: 8
 
-            cellWidth: Math.max(200, width / Math.floor(width / 200))
-            cellHeight: 92
-            flow: GridView.FlowLeftToRight
+            GridView {
+                id: subjectsGrid
+                anchors.fill: parent
+                clip: true
+                property int spacing: 8
 
-            model: root.visibleSubjects
+                cellWidth: Math.max(200, width / Math.floor(width / 200))
+                cellHeight: 92
+                flow: GridView.FlowLeftToRight
 
-            delegate: SubjectClip {
-                enabled: !root.readOnly
-                selectionMode: root.selectionMode
-                selected: root.isSelected(modelData.id)
-                readOnly: root.readOnly
-                onEditRequested: function(subjectId, name, simplifiedName, teacher, icon, color, location, isLocalClassroom) {
-                    root.openEditDialog(
-                        subjectId, name, simplifiedName, teacher, icon, color, location, isLocalClassroom
-                    )
+                model: root.visibleSubjects
+
+                delegate: SubjectClip {
+                    enabled: !root.readOnly
+                    selectionMode: root.selectionMode
+                    selected: root.isSelected(modelData.id)
+                    readOnly: root.readOnly
+                    onEditRequested: function(subjectId, name, simplifiedName, teacher, icon, color, location, isLocalClassroom) {
+                        root.openEditDialog(
+                            subjectId, name, simplifiedName, teacher, icon, color, location, isLocalClassroom
+                        )
+                    }
+                    onSelectionToggled: function(subjectId) { root.toggleSelected(subjectId) }
+                    onDeleteRequested: function(subjectId) { root.requestRemove(subjectId) }
                 }
-                onSelectionToggled: function(subjectId) { root.toggleSelected(subjectId) }
-                onDeleteRequested: function(subjectId) { root.requestRemove(subjectId) }
+
+                ScrollBar.vertical: ScrollBar {}
             }
 
-            ScrollBar.vertical: ScrollBar {}
+            // Empty state when there are no subjects. Mirrors the Timeline
+            // page's blank placeholder style (EntryListView).
+            Item {
+                anchors.fill: parent
+                visible: root.visibleSubjects.length === 0
+
+                ColumnLayout {
+                    width: Math.min(parent.width - 40, 320)
+                    anchors.centerIn: parent
+                    opacity: 0.5
+
+                    Icon {
+                        Layout.alignment: Qt.AlignCenter
+                        name: "ic_fluent_square_hint_sparkles_20_regular"
+                        size: 46
+                    }
+                    Text {
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
+                        typography: Typography.BodyLarge
+                        text: qsTr("No subjects yet")
+                    }
+                    Text {
+                        horizontalAlignment: Text.AlignHCenter
+                        Layout.fillWidth: true
+                        typography: Typography.Caption
+                        text: qsTr(
+                            "Add subjects to start building your schedule."
+                        )
+                    }
+                }
+            }
         }
     }
 

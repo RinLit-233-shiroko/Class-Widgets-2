@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Layouts
 import RinUI
 import ClassWidgets.Components
 import "../WeekRule.js" as WeekRule
@@ -800,11 +801,15 @@ Item {
                 onClicked: root.clearSelection()
             }
 
-            // One vertical line per day column.
+            // One vertical line per day column. Each delegate carries its own
+            // visibility: hiding a Repeater alone can leave already-instantiated
+            // delegates rendered in some QtQuick versions, so the same binding
+            // lives on the rectangles to reliably clear them for an empty week.
             Repeater {
                 model: 7
 
                 delegate: Rectangle {
+                    visible: !root.timeAxis.empty
                     x: index * root.itemWidth
                     y: 0
                     width: 1
@@ -918,14 +923,40 @@ Item {
                 }
             }
 
-            // Empty state for schedules without class entries.
-            Text {
-                anchors.horizontalCenter: parent.horizontalCenter
-                y: Math.max(72, calendarFlick.height / 2)
-                text: qsTr("No classes this week")
-                color: Colors.proxy.textSecondaryColor
-                font.pixelSize: 13
+            // Empty state for schedules without class entries. Mirrors the
+            // Timeline page's blank placeholder style (EntryListView). Centered
+            // in the visible viewport; for an empty table the content height
+            // equals the viewport height, so it lands in the exact middle.
+            Item {
+                anchors.centerIn: parent
+                width: Math.min(calendarFlick.width - 40, 320)
                 visible: root.timeAxis.empty
+
+                ColumnLayout {
+                    width: parent.width
+                    anchors.centerIn: parent
+                    opacity: 0.5
+
+                    Icon {
+                        Layout.alignment: Qt.AlignCenter
+                        name: "ic_fluent_square_hint_sparkles_20_regular"
+                        size: 46
+                    }
+                    Text {
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
+                        typography: Typography.BodyLarge
+                        text: qsTr("No classes this week")
+                    }
+                    Text {
+                        horizontalAlignment: Text.AlignHCenter
+                        Layout.fillWidth: true
+                        typography: Typography.Caption
+                        text: qsTr(
+                            "Add classes to this week to fill in your schedule."
+                        )
+                    }
+                }
             }
         }
     }
