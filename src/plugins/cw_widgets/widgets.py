@@ -27,6 +27,11 @@ class Plugin(CW2Plugin):
                 "name": QCoreApplication.translate("Widgets", "Current Activity"),
                 "qml_path": Path(QML_PATH / "widgets" / "currentActivity.qml").as_posix(),
                 "backend_obj": self,
+                "settings_qml": Path(QML_PATH / "widgets" / "settings" / "currentActivity.qml").as_posix(),
+                "default_settings": {
+                    "display_mode": "alternate",
+                    "alternate_interval": 3
+                }
             },
             {
                 "widget_id": "classwidgets.time",

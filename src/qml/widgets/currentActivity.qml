@@ -7,9 +7,52 @@ import Qt5Compat.GraphicalEffects
 
 Widget {
     id: root
+    property string customTitle: AppCentral.scheduleRuntime.currentEntry.title || ""
+    property string subjectName: AppCentral.scheduleRuntime.currentSubject.name || ""
+    property string displayMode: settings && settings.display_mode
+        ? settings.display_mode : "alternate"
+    property int alternateInterval: {
+        var value = settings ? Number(settings.alternate_interval) : 3
+        return isNaN(value) ? 3 : Math.max(2, Math.min(10, value))
+    }
+    property bool showTitleInAlternateMode: true
+
     text: {
         AppCentral.translator.language
         return qsTr("Current Activity")
+    }
+
+    function fallbackText() {
+        if (AppCentral.scheduleRuntime.currentStatus === "class") return qsTr("Class")
+        if (AppCentral.scheduleRuntime.currentStatus === "activity") return qsTr("Activity")
+        if (AppCentral.scheduleRuntime.currentStatus === "break") return qsTr("Take a break")
+        return qsTr("Nothing right now")
+    }
+
+    function displayedActivityText() {
+        if (displayMode === "title") return customTitle || subjectName || fallbackText()
+        if (displayMode === "subject") return subjectName || customTitle || fallbackText()
+        if (customTitle && subjectName) {
+            return showTitleInAlternateMode ? customTitle : subjectName
+        }
+        return customTitle || subjectName || fallbackText()
+    }
+
+    function resetAlternateMode() {
+        showTitleInAlternateMode = true
+    }
+
+    onCustomTitleChanged: resetAlternateMode()
+    onSubjectNameChanged: resetAlternateMode()
+    onDisplayModeChanged: resetAlternateMode()
+
+    Timer {
+        id: alternateTimer
+        interval: root.alternateInterval * 1000
+        running: root.displayMode === "alternate" && root.customTitle !== ""
+            && root.subjectName !== ""
+        repeat: true
+        onTriggered: root.showTitleInAlternateMode = !root.showTitleInAlternateMode
     }
 
     // property color currentColor: AppCentral.scheduleRuntime.currentSubject.color
@@ -71,15 +114,7 @@ Widget {
             size: miniMode ? 24 : 32
         }
         Title {
-            text: AppCentral.scheduleRuntime.currentEntry.title
-                || AppCentral.scheduleRuntime.currentSubject.name
-                || (AppCentral.scheduleRuntime.currentStatus === "class"
-                  ? qsTr("Class")
-                    : AppCentral.scheduleRuntime.currentStatus === "activity"
-                  ? qsTr("Activity")
-                    : AppCentral.scheduleRuntime.currentStatus === "break"
-                  ? qsTr("Take a break")
-                    : qsTr("Nothing right now"))
+            text: root.displayedActivityText()
         }
     }
 
