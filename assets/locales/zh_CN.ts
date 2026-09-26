@@ -4318,15 +4318,20 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>ScheduleTableView</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/schedule/ScheduleTableView.qml" line="213"/>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/schedule/ScheduleTableView.qml" line="216"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/schedule/ScheduleTableView.qml" line="214"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/schedule/ScheduleTableView.qml" line="217"/>
         <source>Class</source>
         <translation>课程</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/schedule/ScheduleTableView.qml" line="925"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/schedule/ScheduleTableView.qml" line="949"/>
         <source>No classes this week</source>
         <translation>本周无课程</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/schedule/ScheduleTableView.qml" line="955"/>
+        <source>Add classes to this week to fill in your schedule.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4886,13 +4891,13 @@ If it takes place in another location, such as a sport field, lab, or another cl
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="203"/>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="243"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="280"/>
         <source>Add Subject</source>
         <translation>添加科目</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="92"/>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="333"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="370"/>
         <source>Subject</source>
         <translation>科目</translation>
     </message>
@@ -4932,7 +4937,17 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="243"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="263"/>
+        <source>No subjects yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="269"/>
+        <source>Add subjects to start building your schedule.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="280"/>
         <source>Edit Subject</source>
         <translation>编辑主题</translation>
     </message>
@@ -4941,59 +4956,59 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="vanished">ID</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="253"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="290"/>
         <source>Simplified Name</source>
         <translation>简称</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="258"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="295"/>
         <source>Subject Name</source>
         <translation>课程名称</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="259"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="296"/>
         <source>e.g. Science</source>
         <translation>例如：科学</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="263"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="300"/>
         <source>Teacher</source>
         <translation>教师</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="268"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="305"/>
         <source>Location</source>
         <translation>地点</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="269"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="306"/>
         <source>e.g. Room 7813</source>
         <translation>例如：0721 教室</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="273"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="310"/>
         <source>Color</source>
         <translation>颜色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="284"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="321"/>
         <source>Held in homeroom</source>
         <translation>在本班教室授课</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="296"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="333"/>
         <source>Icon</source>
         <translation>图标</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="316"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="353"/>
         <source>Enable if the subject is taught in your homeroom classroom.  
 If it takes place in another location, such as a sport field, lab, or another classroom, leave it off.</source>
         <translation>若课程在本班教室进行，请启用。
 若在其他场所（如操场、实验室或其他教室）进行，请关闭。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="361"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="398"/>
         <source>Remove Subject</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5282,9 +5297,14 @@ If it takes place in another location, such as a sport field, lab, or another cl
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ThemeLoadErrorDialog.qml" line="56"/>
+        <source>The selected theme could not be loaded. 
+Class Widgets has restored the default theme.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>The selected theme could not be loaded.
 Class Widgets has restored the default theme.</source>
-        <translation>无法加载所选主题。\nClass Widgets 已恢复为默认主题。</translation>
+        <translation type="vanished">无法加载所选主题。\nClass Widgets 已恢复为默认主题。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ThemeLoadErrorDialog.qml" line="57"/>
@@ -6174,6 +6194,19 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <message>
         <source>Change Language</source>
         <translation type="vanished">修改当前语言</translation>
+    </message>
+</context>
+<context>
+    <name>WidgetLoadError</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/WidgetLoadError.qml" line="17"/>
+        <source>Load failed</source>
+        <translation type="unfinished">加载失败</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/WidgetLoadError.qml" line="48"/>
+        <source>Remove</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
