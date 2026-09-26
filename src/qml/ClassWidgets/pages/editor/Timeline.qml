@@ -14,42 +14,18 @@ Item {
         anchors.margins: 24
         spacing: 8
 
-        // 顶部设置卡片区域
-        RowLayout {
+        // 顶部设置区域
+        InfoBar {
             Layout.fillWidth: true
-            spacing: 8
+            severity: Severity.Info
+            title: qsTr("Customize default durations")
+            text: qsTr("Choose default durations for new classes, breaks, and activities to speed up editing.")
+            // closable: false
 
-            SettingCard {
-                Layout.fillWidth: true
-                Layout.preferredHeight: 84
-                title: qsTr("Set start date and max weeks")
-                description: qsTr("Set the first day of school to calculate week numbers accurately")
-                icon.name: "ic_fluent_calendar_arrow_counterclockwise_20_regular"
-
-                Button {
-                    text: qsTr("Set")
-                    onClicked: {
-                        const currentDate = AppCentral.scheduleEditor.getStartDate()
-                        datePicker.setDate(currentDate)
-                        const maxWeekCycle = AppCentral.scheduleEditor.getMaxWeekCycle()
-                        maxWeekCycleBox.value = maxWeekCycle
-                        datePickerDialog.open()
-                    }
-                }
-            }
-
-            SettingCard {
-                Layout.fillWidth: true
-                Layout.preferredHeight: 84
-                title: qsTr("Set default duration")
-                description: qsTr("Set the default duration for new classes, breaks, or activities.")
-                icon.name: "ic_fluent_clock_bill_20_regular"
-
-                Button {
-                    text: qsTr("Set")
-                    onClicked: {
-                        defaultDurationDialog.open()
-                    }
+            customContent: Hyperlink {
+                text: qsTr("Open Editor Settings")
+                onClicked: {
+                    navigationView.push(PathManager.qml("pages/editor/Settings.qml"))
                 }
             }
         }
@@ -60,9 +36,62 @@ Item {
             Layout.fillHeight: true
             spacing: 8
 
-            DayListView {
-                enabled: !AppCentral.scheduleManager.isReadonly()
-                id: dayList
+            Item {
+                id: dayListPane
+                Layout.fillHeight: true
+                Layout.minimumWidth: 250
+                Layout.maximumWidth: Math.max(parent.width * 0.3, 300)
+
+                DayListView {
+                    enabled: !AppCentral.scheduleManager.isReadonly()
+                    id: dayList
+                    anchors.fill: parent
+                    listTopMargin: dateButton.implicitHeight + 8
+                }
+
+                Clip {
+                    id: dateButton
+                    anchors.top: parent.top
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    implicitHeight: Math.max(iconItem.implicitHeight, labelText.implicitHeight) + 16
+                    onClicked: {
+                        const currentDate = AppCentral.scheduleEditor.getStartDate()
+                        datePicker.setDate(currentDate)
+                        const maxWeekCycle = AppCentral.scheduleEditor.getMaxWeekCycle()
+                        maxWeekCycleBox.value = maxWeekCycle
+                        datePickerDialog.open()
+                    }
+
+                    radius: 6
+
+                    AcrylicBrush {
+                        sourceItem: dayList
+                    }
+
+                    // 用锚定而不是 Layout 定宽：文本宽度直接由按钮宽度推出，
+                    // 避免 Layout 先按 implicitWidth 撑开、导致长文案顶出外框。
+                    Icon {
+                        id: iconItem
+                        size: 20
+                        anchors.left: parent.left
+                        anchors.leftMargin: 12
+                        anchors.verticalCenter: parent.verticalCenter
+                        name: "ic_fluent_calendar_arrow_repeat_all_20_regular"
+                    }
+                    Text {
+                        id: labelText
+                        anchors.left: iconItem.right
+                        anchors.leftMargin: 8
+                        anchors.right: parent.right
+                        anchors.rightMargin: 12
+                        anchors.verticalCenter: parent.verticalCenter
+                        wrapMode: Text.Wrap
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        text: qsTr("Set Start Date & Maximum Rotation Weeks")
+                    }
+                }
             }
 
             ToolSeparator { Layout.fillHeight: true }
@@ -122,75 +151,4 @@ Item {
         }
     }
 
-    Dialog {
-        id: defaultDurationDialog
-        modal: true
-        title: qsTr("Select Default Duration")
-        width: 325
-
-        ColumnLayout {
-            spacing: 8
-
-            RowLayout {
-                Text {
-                    Layout.fillWidth: true
-                    text: qsTr("Class")
-                }
-                SpinBox {
-                    id: classDuration
-                    Layout.preferredWidth: 150
-                    from: 1
-                    to: 1440
-                    stepSize: 5
-                }
-            }
-
-            RowLayout {
-                Text {
-                    Layout.fillWidth: true
-                    text: qsTr("Break")
-                }
-                SpinBox {
-                    id: breakDuration
-                    Layout.preferredWidth: 150
-                    from: 1
-                    to: 1440
-                }
-            }
-
-            RowLayout {
-                Text {
-                    Layout.fillWidth: true
-                    text: qsTr("Activity")
-                }
-                SpinBox {
-                    id: activityDuration
-                    Layout.preferredWidth: 150
-                    from: 1
-                    to: 1440
-                    stepSize: 5
-                }
-            }
-        }
-
-        standardButtons: Dialog.Ok | Dialog.Cancel
-
-        onOpened: {
-            classDuration.value = Configs.data.schedule.default_duration.class_
-            breakDuration.value = Configs.data.schedule.default_duration.break_
-            activityDuration.value = Configs.data.schedule.default_duration.activity
-        }
-
-        onAccepted: {
-            Configs.set("schedule.default_duration.class_", classDuration.value)
-            Configs.set("schedule.default_duration.break_", breakDuration.value)
-            Configs.set("schedule.default_duration.activity", activityDuration.value)
-        }
-
-        Component.onCompleted: {
-            classDuration.value = Configs.data.schedule.default_duration.class_
-            breakDuration.value = Configs.data.schedule.default_duration.break_
-            activityDuration.value = Configs.data.schedule.default_duration.activity
-        }
-    }
 }

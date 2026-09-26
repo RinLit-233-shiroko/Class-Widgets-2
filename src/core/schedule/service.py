@@ -57,49 +57,64 @@ class ScheduleServices:
                 cycle_week = swap_week
 
         if matched_day is None:
-            for day in schedule.days:
-                day_of_week_list = [day.dayOfWeek] if isinstance(day.dayOfWeek, int) else day.dayOfWeek
+            # 同一星期可有多条 Timeline（各自带 weeks 规则），全部作为当天基础合并；
+            # 纯独立时间线（指定周/日期）据此可与普通周骨架并存，独立课平时不占位。
+            matched_days = [
+                day
+                for day in schedule.days
                 if (
-                    day_of_week_list
-                    and weekday in day_of_week_list
-                    and self._is_in_week(
-                        day.weeks, absolute_week, max_week_cycle, cycle_week
+                    day_of_week := (
+                        [day.dayOfWeek]
+                        if isinstance(day.dayOfWeek, int)
+                        else day.dayOfWeek
                     )
+                )
+                and weekday in day_of_week
+                and self._is_in_week(
+                    day.weeks, absolute_week, max_week_cycle, cycle_week
+                )
+            ]
+        else:
+            matched_days = [matched_day]
+
+        if not matched_days:
+            return None
+
+        # 合并所有命中的 Timeline entries（同一时间槽后者覆盖前者），再应用 override。
+        day_copy = matched_days[0].model_copy()
+        merged: dict[tuple[str, str], Entry] = {}
+        for day in matched_days:
+            for entry in day.entries:
+                merged[(entry.startTime, entry.endTime)] = entry.model_copy()
+        day_copy.entries = [
+            merged[key] for key in sorted(merged, key=lambda k: k[0])
+        ]
+
+        # 应用 override 到副本
+        for entry in day_copy.entries:
+            subject_overridden = False
+            title_overridden = False
+            for override in schedule.overrides:
+                if override.entryId != entry.id:
+                    continue
+                if self._override_applies(
+                    override, weekday, absolute_week, max_week_cycle, cycle_week
                 ):
-                    matched_day = day
-                    break
+                    if override.subjectId:
+                        entry.subjectId = override.subjectId
+                        subject_overridden = True
+                    if override.title:
+                        entry.title = override.title
+                        title_overridden = True
+                    if override.startTime:
+                        entry.startTime = override.startTime
+                    if override.endTime:
+                        entry.endTime = override.endTime
 
-        if matched_day is not None:
-            # 深拷贝 day 和 entries
-            day_copy = matched_day.model_copy()
-            day_copy.entries = [entry.model_copy() for entry in matched_day.entries]
+            if subject_overridden and not title_overridden:
+                entry.title = None
 
-            # 应用 override 到副本
-            for entry in day_copy.entries:
-                subject_overridden = False
-                title_overridden = False
-                for override in schedule.overrides:
-                    if override.entryId != entry.id:
-                        continue
-                    if self._override_applies(
-                        override, weekday, absolute_week, max_week_cycle, cycle_week
-                    ):
-                        if override.subjectId:
-                            entry.subjectId = override.subjectId
-                            subject_overridden = True
-                        if override.title:
-                            entry.title = override.title
-                            title_overridden = True
-                        if override.startTime:
-                            entry.startTime = override.startTime
-                        if override.endTime:
-                            entry.endTime = override.endTime
-
-                if subject_overridden and not title_overridden:
-                    entry.title = None
-
-            return day_copy
-        return None
+        return day_copy
 
     @staticmethod
     def _override_applies(

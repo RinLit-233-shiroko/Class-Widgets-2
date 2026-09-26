@@ -31,14 +31,15 @@ function isList(value) {
 }
 
 // 1-based integer, or 0 when the value cannot be used as a week number.
+// Mirrors the backend: only whole numbers count (Python's int()/is_integer()),
+// so a decimal like 2.5 must never be truncated into a valid cycle week.
 function naturalNumber(value) {
     if (typeof value === "boolean")
         return 0
     const number = Number(value)
-    if (!isFinite(number))
+    if (!isFinite(number) || !Number.isInteger(number))
         return 0
-    const integer = Math.floor(number)
-    return integer >= 1 ? integer : 0
+    return number >= 1 ? number : 0
 }
 
 function uniqueWeeks(value) {

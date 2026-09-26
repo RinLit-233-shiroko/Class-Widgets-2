@@ -14,7 +14,7 @@ BaseWidget {
     borderColor: Theme.isDark()
         ? Qt.alpha("#fff", 0.4)
         : Qt.alpha("#fff", 1)
-    opacity: hoverHandler.hovered ? 0.8 : 1
+    opacity: hovered ? 0.8 : 1
 
     backgroundArea: Item {
         anchors.fill: parent
@@ -92,10 +92,6 @@ BaseWidget {
             opacity: Configs.data.preferences.opacity * 1.2
             z: 99
         }
-    }
-
-    HoverHandler {
-        id: hoverHandler
     }
 
     Behavior on implicitWidth {

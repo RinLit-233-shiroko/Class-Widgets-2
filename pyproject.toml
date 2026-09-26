@@ -19,7 +19,10 @@ dependencies = [
   "pydantic",
   "pyyaml",
   "requests",
-  "markdown-it-py~=4.2.0"
+  "markdown-it-py~=4.2.0",
+  "icalendar~=7.3.0",
+  "recurring-ical-events~=3.8.2",
+  "tzdata~=2026.4"
 ]
 description = "Class Widgets 2, The Next Class Schedule."
 dynamic = ["version"]

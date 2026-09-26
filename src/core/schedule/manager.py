@@ -2,28 +2,33 @@ import json
 import shutil
 from datetime import datetime
 from pathlib import Path
-from PySide6.QtCore import QObject, Signal, Slot, Property, QUrl
-from PySide6.QtGui import QDesktopServices
-from PySide6.QtWidgets import QFileDialog, QApplication
-from loguru import logger
-from typing import Optional, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
+from loguru import logger
+from PySide6.QtCore import Property, QObject, QUrl, Signal, Slot
+from PySide6.QtGui import QDesktopServices
+from PySide6.QtWidgets import QApplication, QFileDialog
+
+from src.core.convertor.converter import convert
 from src.core.convertor.slots import ScheduleIO
 from src.core.directories import SCHEDULES_PATH
-from src.core.schedule.model import ScheduleData, MetaInfo
 from src.core.parser import ScheduleParser
+from src.core.schedule.model import MetaInfo, ScheduleData
 from src.core.utils import generate_id, get_default_subjects
 
 if TYPE_CHECKING:
     from src.core import AppCentral
 
 
-def _create_empty_schedule():
+def _create_empty_schedule(
+    start_date: str | None = None,
+    max_week_cycle: int = 2,
+):
     return ScheduleData(
         meta=MetaInfo(
             id=generate_id("meta"),
-            maxWeekCycle=2,
-            startDate=f"{datetime.now().year}-09-01"
+            maxWeekCycle=max_week_cycle,
+            startDate=start_date or f"{datetime.now().year}-09-01"
         ),
         subjects=get_default_subjects(),
         days=[]
@@ -34,6 +39,7 @@ class ScheduleManager(QObject):
     initialized = Signal()
     scheduleSwitched = Signal(ScheduleData)
     scheduleModified = Signal(ScheduleData)
+    schedulesChanged = Signal()
 
     def __init__(self, schedules_dir: Path, app_central: "AppCentral"):
         super().__init__()
@@ -44,7 +50,7 @@ class ScheduleManager(QObject):
         self.schedules_dir.mkdir(parents=True, exist_ok=True)
         self.schedule_path: Path = Path(self.schedules_dir) / "schedule.json"
         self.schedule: ScheduleData = _create_empty_schedule()
-        self.current_schedule_name: Optional[str] = None  # 当前选中的课程表
+        self.current_schedule_name: str | None = None  # 当前选中的课程表
 
         self.readonly: bool = False  # 是否只读模式
 
@@ -122,7 +128,7 @@ class ScheduleManager(QObject):
             return False
 
     @Slot(result=bool)
-    def save(self, path: Optional[Path] = None):
+    def save(self, path: Path | None = None):
         try:
             if path is None:
                 path = self.schedule_path
@@ -147,8 +153,10 @@ class ScheduleManager(QObject):
             files.append({
                 "name": p.stem,
                 "path": str(p),
-                "type": "local"  # 未来可以做拓展
+                "type": "local",  # 未来可以做拓展
+                "modifiedAt": datetime.fromtimestamp(p.stat().st_mtime).isoformat(timespec="seconds"),
             })
+        files.sort(key=lambda item: item["name"].casefold())
         return files
 
     @Slot(str)
@@ -163,9 +171,38 @@ class ScheduleManager(QObject):
             with open(path, "w", encoding="utf-8") as f:
                 json.dump(new_schedule.model_dump(), f, ensure_ascii=False, indent=4)
                 logger.success(f"New schedule created: {name}")
+                self.schedulesChanged.emit()
                 return True
         except Exception as e:
             logger.error(f"Error creating new schedule: {e}")
+            return False
+
+    @Slot(str, str, int, result=bool)
+    def create(self, name: str, start_date: str, max_week_cycle: int) -> bool:
+        """Create a configured schedule and make it current."""
+        if not name or self.checkNameExists(name):
+            return False
+        try:
+            datetime.strptime(start_date, "%Y-%m-%d")
+            if max_week_cycle < 1:
+                return False
+
+            path = self.schedules_dir / f"{name}.json"
+            schedule = _create_empty_schedule(start_date, max_week_cycle)
+            self.schedule = schedule
+            self.current_schedule_name = name
+            self.schedule_path = path
+            self.app_central.configs.schedule.current_schedule = name
+            if not self.save():
+                return False
+
+            self.scheduleSwitched.emit(self.schedule)
+            self.scheduleModified.emit(self.schedule)
+            logger.success(f"New schedule created and loaded: {name}")
+            self.schedulesChanged.emit()
+            return True
+        except Exception as e:
+            logger.error(f"Error creating configured schedule: {e}")
             return False
 
     @Slot(str, result=bool)
@@ -180,6 +217,7 @@ class ScheduleManager(QObject):
             if path.exists():
                 path.unlink()
                 logger.info(f"Schedule deleted: {name}")
+                self.schedulesChanged.emit()
             return True
         except Exception as e:
             logger.error(f"Error deleting schedule: {e}")
@@ -194,12 +232,86 @@ class ScheduleManager(QObject):
             return False
         shutil.copy(src_path, dest_path)
         logger.success(f"Schedule copied: {src_name} -> {dest_name}")
+        self.schedulesChanged.emit()
         return True
+
+    @Slot("QVariantList", result=bool)
+    def duplicateSchedules(self, names: list) -> bool:
+        """批量复制课程表，并为目标文件生成不冲突的名称。"""
+        copied = False
+        for source_name in names or []:
+            source = str(source_name)
+            source_path = self.schedules_dir / f"{source}.json"
+            if not source_path.exists():
+                continue
+            suffix = " (Copy)"
+            destination_name = source + suffix
+            index = 2
+            while (self.schedules_dir / f"{destination_name}.json").exists():
+                destination_name = f"{source}{suffix} {index}"
+                index += 1
+            shutil.copy2(source_path, self.schedules_dir / f"{destination_name}.json")
+            copied = True
+        if copied:
+            self.schedulesChanged.emit()
+        return copied
+
+    @Slot("QVariantList", result=bool)
+    def deleteSchedules(self, names: list) -> bool:
+        """批量删除课程表；当前正在使用的课程表始终保留。"""
+        deleted = False
+        for name in names or []:
+            name = str(name)
+            if name == self.current_schedule_name:
+                continue
+            path = self.schedules_dir / f"{name}.json"
+            if path.exists():
+                path.unlink()
+                deleted = True
+        if deleted:
+            self.schedulesChanged.emit()
+        return deleted
+
+    @Slot("QVariantList", str, result=bool)
+    def exportSchedules(self, names: list, format_id: str = "json") -> bool:
+        """将多个课程表按指定格式导出到用户选择的目录。
+
+        format_id: "json" 直接复制 CW2 JSON；"cses" 转换为 CSES YAML。
+        """
+        target_format = (format_id or "json").strip().lower()
+        if target_format not in ("json", "cses"):
+            logger.error(f"不支持的导出格式: {format_id}")
+            return False
+
+        file_path = QFileDialog.getExistingDirectory(
+            None,
+            QApplication.translate("ExportScheduleDialog", "Export Schedules"),
+            str(self.schedules_dir),
+        )
+        if not file_path:
+            return False
+
+        destination = Path(file_path)
+        exported = False
+        for name in names or []:
+            source = self.schedules_dir / f"{str(name)}.json"
+            if not source.exists():
+                continue
+            try:
+                if target_format == "cses":
+                    # CSES 是另一种结构，需要真正转换而不是复制。
+                    convert(source, "cw2", destination / f"{source.stem}.yaml", "cses")
+                else:
+                    shutil.copy2(source, destination / source.name)
+                exported = True
+            except Exception as e:
+                logger.exception(f"导出课程表失败: {name}: {e}")
+        return exported
 
     @Slot(str, str, result=bool)
     def rename(self, old_name: str, new_name: str) -> bool:
         """重命名课程表文件"""
-        if self.app_central.configs.isKeyLocked("schedule.current_schedule"): 
+        if self.app_central.configs.isKeyLocked("schedule.current_schedule"):
             logger.warning("Attempt to modify locked config key: schedule.current_schedule. Blocked.")
             return False
         old_path = self.schedules_dir / f"{old_name}.json"
@@ -223,6 +335,8 @@ class ScheduleManager(QObject):
                 self.app_central.configs.schedule.current_schedule = new_name
                 self.scheduleSwitched.emit(self.schedule)
                 self.scheduleModified.emit(self.schedule)
+
+            self.schedulesChanged.emit()
 
             return True
         except Exception as e:
@@ -249,7 +363,7 @@ class ScheduleManager(QObject):
 
         try:
             # 读取 JSON
-            with open(src_path, "r", encoding="utf-8") as f:
+            with open(src_path, encoding="utf-8") as f:
                 data = json.load(f)
 
             # 解析
@@ -263,6 +377,7 @@ class ScheduleManager(QObject):
 
             self.scheduleSwitched.emit(self.schedule)
             self.scheduleModified.emit(self.schedule)
+            self.schedulesChanged.emit()
             logger.success(f"Schedule imported from {src_path.name}")
             return True
         except Exception as e:
@@ -315,7 +430,7 @@ class ScheduleManager(QObject):
         if not success:
             logger.error(f"Failed to open plugin folder: {SCHEDULES_PATH}")
         return success
-    
+
     def set_readonly(self, readonly: bool) -> None:
         """设置课表是否只读"""
         self.readonly = readonly

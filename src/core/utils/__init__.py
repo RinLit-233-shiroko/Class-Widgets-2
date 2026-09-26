@@ -5,7 +5,12 @@ from packaging.version import Version
 from .json_loader import JsonLoader
 from .calculator import get_cycle_week, get_week_number
 from .tray import TrayIcon
-from .subjects import DEFAULT_SUBJECTS, get_default_subjects, translate_sources
+from .subjects import (
+    DEFAULT_SUBJECTS,
+    get_default_subjects,
+    get_random_subject_color,
+    translate_sources,
+)
 from .translator import AppTranslator
 from .backend import UtilsBackend
 from uuid import uuid4

@@ -26,6 +26,11 @@ Item {
     property real padding: miniMode ? 16 : 24
     property bool contentShadowEnabled: false
 
+    // 整块组件的悬停状态，主题可直接写 `opacity: hovered ? 0.9 : 1`。
+    // 注意：主题 Widget.qml 根部声明的 HoverHandler 会顺 default alias 掉进
+    // contentArea，只能覆盖内容区，所以悬停检测统一由这里提供。
+    readonly property bool hovered: widgetHoverHandler.hovered
+
     property alias text: subtitleLabel.text
     property alias subtitle: subtitleArea.children
     property alias actions: actionButtons.children
@@ -96,7 +101,15 @@ Item {
         RowLayout {
             id: headerRow
             Layout.fillWidth: true
-            visible: (subtitle.length > 1 || actions.length > 1 || widgetBase.text.length > 0) && !miniMode
+            // 用 opacity 而非直接切换 visible，让迷你模式切换时 header 能淡出/淡入。
+            visible: (subtitle.length > 1 || actions.length > 1 || widgetBase.text.length > 0) && opacity > 0
+            opacity: !miniMode
+            Behavior on opacity {
+                NumberAnimation {
+                    duration: 100
+                    easing.type: Easing.OutQuint
+                }
+            }
 
             RowLayout {
                 id: subtitleArea
@@ -131,6 +144,11 @@ Item {
                 color: Qt.alpha("#000000", 0.25)
             }
         }
+    }
+
+    // 悬停检测必须放在外壳里才能覆盖整个组件。
+    HoverHandler {
+        id: widgetHoverHandler
     }
 
     Behavior on implicitWidth {

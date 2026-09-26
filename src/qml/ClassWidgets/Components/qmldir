@@ -16,6 +16,7 @@ WidgetSettingsDialog 1.0 dialogs/WidgetSettingsDialog.qml
 RescheduleDayDialog 1.0 dialogs/RescheduleDayDialog.qml
 ClassSwapDialog 1.0 dialogs/ClassSwapDialog.qml
 PluginReplaceConfirmDialog 1.0 dialogs/PluginReplaceConfirmDialog.qml
+ScheduleSetupDialog 1.0 dialogs/ScheduleSetupDialog.qml
 
 # Settings
 ClipItem 1.0 settings/ClipItem.qml
@@ -23,6 +24,9 @@ ClipItem 1.0 settings/ClipItem.qml
 AddSubjectExpander 1.0 editor/AddSubjectExpander.qml
 SaveFlyout 1.0 editor/SaveFlyout.qml
 SubjectClip 1.0 editor/SubjectClip.qml
+ScheduleFileCard 1.0 editor/ScheduleFileCard.qml
+ScheduleBrowserToolbar 1.0 editor/ScheduleBrowserToolbar.qml
+ScheduleFileView 1.0 editor/ScheduleFileView.qml
 SubjectPickerButton 1.0 editor/SubjectPickerButton.qml
 SpecificWeekEditor 1.0 editor/SpecificWeekEditor.qml
 WeekdaySelector 1.0 editor/WeekdaySelector.qml

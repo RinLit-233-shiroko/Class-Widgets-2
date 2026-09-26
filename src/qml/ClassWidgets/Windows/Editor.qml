@@ -135,6 +135,7 @@ FluentWindow {
             title: qsTr("Home"),
             icon: "ic_fluent_home_20_regular",
             page: PathManager.qml("pages/editor/Home.qml"),
+            position: Position.Top
         },
         {
             title: qsTr("Timeline"),
@@ -151,7 +152,13 @@ FluentWindow {
             title: qsTr("Subjects"),
             icon: "ic_fluent_book_20_regular",
             page: PathManager.qml("pages/editor/Subjects.qml"),
-        }
+        },
+        {
+            title: qsTr("Settings"),
+            icon: "ic_fluent_settings_20_regular",
+            page: PathManager.qml("pages/editor/Settings.qml"),
+            position: Position.Bottom
+        },
     ]
 
     Component {
@@ -180,7 +187,7 @@ FluentWindow {
 
     Connections {
         target: AppCentral.scheduleEditor
-        onUpdated: {
+        function onUpdated() {
             if (!notHint && !hintVisible && settingsWindow.visible) {
                 floatLayer.createCustom(saveHint)
                 hintVisible = true

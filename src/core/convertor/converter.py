@@ -1,40 +1,70 @@
 from pathlib import Path
 
-from .cses import CSESConverter
-from .cw1 import CW1Converter
-from .cw2 import CW2Converter
+from pydantic import BaseModel
+
+from src.core.schedule.model import ScheduleData
+
+from . import cses, cw1, cw2, ics
+from .common import DUMPERS, LOADERS, auto_map
+
+FORMATS = {
+    "cw1": cw1,
+    "cw2": cw2,
+    "cses": cses,
+    "ics": ics,
+}
 
 
-class ScheduleConverter:
-    """
-    Universal timetable converter (facade).
-
-    Delegates to per-format converter modules.
-    Maintains backward compatibility with the original unified API:
-
-        ScheduleConverter.from_cses(path).to_cw2(output)
-        ScheduleConverter.from_cw1(path).to_cw2(output)
-        ScheduleConverter.from_cw2(path).to_cses(output)
-    """
-
-    @staticmethod
-    def from_cses(path: str | Path) -> CSESConverter:
-        """Load a CSES YAML file and return a converter ready for to_cw2()."""
-        return CSESConverter.from_cses(path)
-
-    @staticmethod
-    def from_cw1(path: str | Path) -> CW1Converter:
-        """Load a Class Widgets 1 JSON file and return a converter ready for to_cw2()."""
-        return CW1Converter.from_cw1(path)
-
-    @staticmethod
-    def from_cw2(path: str | Path) -> CW2Converter:
-        """Load a Class Widgets 2 JSON file and return a converter ready for to_cses()."""
-        return CW2Converter.from_cw2(path)
+def _get_format(format_id: str):
+    normalized = format_id.strip().lower()
+    try:
+        return FORMATS[normalized]
+    except KeyError as e:
+        raise ValueError(f"Unsupported schedule format: {format_id}") from e
 
 
-if __name__ == "__main__":
-    from src.core.directories import SCHEDULES_PATH
+def read(source: str | Path, source_format: str, **options) -> ScheduleData:
+    module = _get_format(source_format)
+    custom_reader = getattr(module, "READ", None)
+    if custom_reader:
+        return custom_reader(source, **options)
 
-    ScheduleConverter.from_cw2(Path(SCHEDULES_PATH / "default.json")).to_cses(Path(SCHEDULES_PATH / "New Schedule 1.yaml"))
-    # ScheduleConverter.from_cses(Path(SCHEDULES_PATH / "New Schedule 1.yaml")).to_cw2(Path(SCHEDULES_PATH / "New Schedule 1w.json"))
+    raw = LOADERS[module.SERIALIZER](source)
+    document = module.MODEL.model_validate(raw)
+
+    mapper = getattr(module, "TO_SCHEDULE", None)
+    return mapper(document) if mapper else auto_map(document, ScheduleData)
+
+
+def write(schedule: ScheduleData, target: str | Path, target_format: str) -> Path:
+    module = _get_format(target_format)
+    custom_writer = getattr(module, "WRITE", None)
+    if custom_writer:
+        return custom_writer(schedule, target)
+
+    mapper = getattr(module, "FROM_SCHEDULE", None)
+
+    if not hasattr(module, "MODEL"):
+        raise ValueError(f"Format does not support writing: {target_format}")
+
+    if mapper:
+        document = mapper(schedule)
+    else:
+        try:
+            document = auto_map(schedule, module.MODEL)
+        except Exception as e:
+            raise ValueError(f"Format does not support writing: {target_format}") from e
+
+    data = document.model_dump(mode="json") if isinstance(document, BaseModel) else document
+    return DUMPERS[module.SERIALIZER](data, target)
+
+
+def convert(
+    source: str | Path,
+    source_format: str,
+    target: str | Path,
+    target_format: str,
+    **source_options,
+) -> Path:
+    schedule = read(source, source_format, **source_options)
+    return write(schedule, target, target_format)

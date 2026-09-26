@@ -1,3 +1,5 @@
+from random import choice
+
 from PySide6.QtCore import QCoreApplication
 from src.core.schedule.model import Subject
 
@@ -23,6 +25,16 @@ DEFAULT_SUBJECTS = [
     {"id": "classmeeting", "name": "Class Meeting", "simplifiedName": "Meeting", "icon": "ic_fluent_chat_20_regular", "color": "#3F51B5", "isLocalClassRoom": True},
     {"id": "weeklytest", "name": "Weekly Test", "simplifiedName": "Test", "icon": "ic_fluent_clipboard_20_regular", "color": "#FF5722", "isLocalClassRoom": True}
 ]
+
+DEFAULT_SUBJECT_COLORS = [
+    subj["color"]
+    for subj in DEFAULT_SUBJECTS
+    if subj.get("color")
+]
+
+
+def get_random_subject_color() -> str:
+    return choice(DEFAULT_SUBJECT_COLORS) if DEFAULT_SUBJECT_COLORS else ""
 
 def get_default_subjects() -> list[Subject]:
     result = []

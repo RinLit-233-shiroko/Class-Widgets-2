@@ -555,8 +555,6 @@ Item {
                         spacing: 2
                         Text { text: root.weekCyclePrefix }
                         ComboBox {
-                            Layout.fillWidth: true
-                            Layout.minimumWidth: 72
                             model: root.cycleOptions
                             textRole: "text"
                             valueRole: "value"

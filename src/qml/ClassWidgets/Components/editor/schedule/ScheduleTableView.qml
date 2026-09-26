@@ -33,10 +33,6 @@ Item {
     readonly property int cardTimeLineHeight: 14
     readonly property int mergedContentTopInset: 12
     readonly property int bottomPadding: 28
-    // Courses without an explicit subject color (the default course) use
-    // RinUI's neutral system color instead of the theme accent color.
-    readonly property color defaultCourseColor: Colors.proxy.systemNeutralColor
-
     property int itemWidth: Math.max((width - timeGutterWidth) / 7, 120)
 
     // Current absolute week (calculated from the semester start date).
@@ -106,6 +102,26 @@ Item {
         const isoDay = block.getDay() === 0 ? 7 : block.getDay()
         block.setDate(block.getDate() - (isoDay - 1))
         return block
+    }
+
+    // Absolute week whose Monday (weekStart) holds the given date. The backend
+    // numbers weeks from meta.startDate, which only matches Monday-based weeks
+    // when startDate is itself a Monday. This reverses weekStartFor() so a
+    // non-Monday startDate still resolves "today" to the Monday-based week the
+    // table actually displays. isoweekday(startDate) is invariant under +7d
+    // steps, so the Monday offset is constant and we can solve for W directly.
+    function weekForDate(date) {
+        let start = parseDate(AppCentral.scheduleEditor.meta.startDate)
+        if (!isFinite(start.getTime()))
+            start = new Date()
+        const isoStart = start.getDay() === 0 ? 7 : start.getDay()
+
+        const monday = new Date(date.getTime())
+        const isoDay = monday.getDay() === 0 ? 7 : monday.getDay()
+        monday.setDate(monday.getDate() - (isoDay - 1))
+
+        const delta = (monday.getTime() - start.getTime()) / 86400000 + isoStart - 1
+        return Math.max(1, Math.floor(delta / 7) + 1)
     }
 
     // 1=Monday ... 7=Sunday, matching the backend. Columns run Monday ... Sunday,
@@ -470,9 +486,14 @@ Item {
         // The lead owns the group's painted background, so give it the same
         // bottom edge as the final segment. That segment's inset is only final
         // after every adjacent pair has been normalized above.
+        //
+        // `joinBottom` alone would also match a middle segment of a run of
+        // three or more entries (every interior card is joined both above and
+        // below). Only the head of the run points to itself, so require
+        // `groupLeadIndex === i` to grant it the shared group geometry.
         for (let i = 0; i < result.length; ++i) {
             const lead = result[i]
-            if (lead.joinBottom !== true)
+            if (lead.joinBottom !== true || lead.groupLeadIndex !== i)
                 continue
             let tail = lead
             for (let j = i + 1; j < result.length; ++j) {
@@ -511,17 +532,12 @@ Item {
         // invalidate the clicked entry.
         for (let i = 0; i < result.length; ++i) {
             const visual = result[i]
-            const subject = subjectById(visual.entry.subjectId)
             visual.card = {
                 entry: visual.entry,
                 row: visual.row,
                 startY: visual.span.y,
                 cardHeight: visual.span.height,
-                color: subject && subject.color ? subject.color : defaultCourseColor,
                 title: entryTitle(visual.entry),
-                iconName: subject && subject.icon
-                    ? subject.icon
-                    : "ic_fluent_hexagon_three_20_regular",
                 timeTexts: visual.timeTexts
             }
         }
@@ -856,9 +872,7 @@ Item {
                                 && root.selectedCell.row === modelData.row
 
                             entry: cardData.entry
-                            cardColor: cardData.color
                             cardTitle: cardData.title
-                            iconName: cardData.iconName
                             timeTexts: cardData.timeTexts
                             startY: cardData.startY
                             cardHeight: cardData.cardHeight

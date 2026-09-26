@@ -11,3 +11,6 @@ urllib3~=2.6.0
 idna~=3.11
 charset-normalizer~=3.4.4
 markdown-it-py~=4.2.0
+icalendar~=7.3.0
+recurring-ical-events~=3.8.2
+tzdata~=2026.4

@@ -12,8 +12,8 @@ import RinUI
 Popup {
     id: popup
     focus: true
-    width: 350
-    height: 275
+    width: 400
+    height: 350
 
     signal iconPicked(string name)
 
@@ -52,6 +52,7 @@ Popup {
                 flat: true
                 width: 48
                 height: 48
+                size: 22
                 icon.name: modelData
                 onClicked: {
                     popup.iconPicked(modelData)

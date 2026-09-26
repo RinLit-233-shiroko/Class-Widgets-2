@@ -8,7 +8,7 @@ from src import __SCHEDULE_SCHEMA_VERSION__
 
 class EntryType(str, Enum):
     CLASS = "class"
-    BREAK = "break"
+    BREAK = "break" 
     ACTIVITY = "activity"
     FREE = "free"
     PREPARATION = "preparation"
@@ -110,13 +110,13 @@ def week_rule_kind(weeks) -> str:
     """Classify a week rule.
 
     Returns ``"all"``, ``"odd"``, ``"even"``, ``"cycle"`` (a position inside
-    ``meta.maxWeekCycle``), ``"specific"`` (absolute semester weeks) or
-    ``"invalid"`` for a present-but-unusable value.
+    ``meta.maxWeekCycle``) or ``"specific"`` (absolute semester weeks).
 
-    ``None`` means "no restriction at all", which is exactly ``"all"``: that is
-    how :func:`week_rule_matches` and the editor read it, so it is not reported
-    as a separate state. An empty specific list is still ``"specific"``: it
-    matches no week and must never be mistaken for "every week".
+    ``None`` and any present-but-unusable value both mean "no restriction at
+    all", exactly ``"all"``: that is how :func:`week_rule_matches` and the
+    editor read them, so they are not reported as a separate state. An empty
+    specific list is still ``"specific"``: it matches no week and must never
+    be mistaken for "every week".
 
     ``WeekRule.js`` in the editor mirrors this classification for QML bindings.
     """
@@ -124,7 +124,7 @@ def week_rule_kind(weeks) -> str:
         return "all"
     rule = normalize_week_rule(weeks)
     if rule is None:
-        return "invalid"
+        return "all"
     if rule == WeekType.ALL:
         return "all"
     if rule == WeekType.ODD:
@@ -147,14 +147,15 @@ def week_rule_matches(weeks, absolute_week: int, max_week_cycle: int = 1) -> boo
 
     Integer rules refer to the cycle position; list rules refer to absolute
     semester weeks. Odd/even rules always use the absolute week parity so they
-    remain unambiguous when the configured cycle is not 2.
+    remain unambiguous when the configured cycle is not 2. A missing or
+    unusable rule counts as ``"all"`` and always matches.
     """
     if weeks is None:
         return True
 
     rule = normalize_week_rule(weeks)
     if rule is None:
-        return False
+        return True
     if rule == WeekType.ALL:
         return True
     if rule == WeekType.ODD:

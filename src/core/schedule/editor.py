@@ -1,5 +1,5 @@
 from copy import deepcopy
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Optional
 
 from PySide6.QtCore import QObject, Property, Signal, Slot, QTimer
@@ -47,6 +47,7 @@ class ScheduleEditor(QObject):
     overridesChanged = Signal()
     overridesRevisionChanged = Signal()
     dirtyChanged = Signal()
+    scheduleFilesChanged = Signal()
 
     def __init__(self, manager: ScheduleManager):
         super().__init__()
@@ -66,6 +67,22 @@ class ScheduleEditor(QObject):
         self._rebuild_schedule_caches()
         self.updated.connect(self._on_updated)
         self.manager.scheduleSwitched.connect(self.refresh)
+        self.manager.schedulesChanged.connect(self.scheduleFilesChanged)
+
+    @Slot("QVariantList", result=bool)
+    def duplicateSchedules(self, names: list) -> bool:
+        """编辑器首页的批量复制入口。"""
+        return self.manager.duplicateSchedules(names)
+
+    @Slot("QVariantList", str, result=bool)
+    def exportSchedules(self, names: list, format_id: str = "json") -> bool:
+        """编辑器首页的批量导出入口。format_id 支持 "json"（CW2）与 "cses"。"""
+        return self.manager.exportSchedules(names, format_id)
+
+    @Slot("QVariantList", result=bool)
+    def deleteSchedules(self, names: list) -> bool:
+        """编辑器首页的批量删除入口。当前课表会由管理器保留。"""
+        return self.manager.deleteSchedules(names)
 
     def _validate_time_range(self, start_time: str, end_time: str) -> bool:
         """
@@ -202,18 +219,36 @@ class ScheduleEditor(QObject):
     @Slot(str)
     def removeSubject(self, subject_id: str) -> None:
         """删除科目"""
-        subject = self.getSubject(subject_id)
-        if not subject:
-            return
+        self.removeSubjects([subject_id])
 
+    @Slot("QVariantList", result=int)
+    def removeSubjects(self, subject_ids: list) -> int:
+        """批量删除科目，并移除引用这些科目的课程条目。返回实际删除的科目数量。
+
+        单个与批量共用这一条路径，保证两者对课程条目的清理行为完全一致。
+        """
+        if not self.schedule:
+            return 0
+
+        targets = {str(sid) for sid in (subject_ids or []) if str(sid)}
+        if not targets:
+            return 0
+
+        removed = [s for s in self.schedule.subjects if s.id in targets]
+        if not removed:
+            return 0
+
+        self.schedule.subjects = [
+            s for s in self.schedule.subjects if s.id not in targets
+        ]
         # 删除相关的课程条目
         for day in self.schedule.days:
-            day.entries = [e for e in day.entries if e.subjectId != subject_id]
+            day.entries = [e for e in day.entries if e.subjectId not in targets]
 
-        self.schedule.subjects.remove(subject)
         self._emit_entries_changed()
         self.updated.emit()
         self.subjectsChanged.emit()
+        return len(removed)
 
     @Slot(str, result="QVariant")
     def getSubject(self, subject_id: str) -> Optional[Subject]:
@@ -541,6 +576,10 @@ class ScheduleEditor(QObject):
             if override.title:
                 data["title"] = override.title
                 title_overridden = True
+            if override.startTime:
+                data["startTime"] = override.startTime
+            if override.endTime:
+                data["endTime"] = override.endTime
         if subject_overridden and not title_overridden:
             data["title"] = None
         return data
@@ -574,22 +613,51 @@ class ScheduleEditor(QObject):
         # ISO weekday order, Monday ... Sunday, matching the editor table's
         # Monday-first columns: column index i is dayOfWeek i + 1.
         for day_of_week in (1, 2, 3, 4, 5, 6, 7):
-            day = next(
-                (
-                    candidate
-                    for candidate in self.schedule.days
-                    if not candidate.date
-                    and (
-                        not candidate.dayOfWeek
-                        or day_of_week in candidate.dayOfWeek
-                    )
+            # The editor receives an absolute semester week.  Match the QML
+            # calendar exactly: find the seven-day block from startDate, then
+            # normalize that block to its Monday before resolving columns.
+            try:
+                block_start = datetime.strptime(
+                    self.schedule.meta.startDate, "%Y-%m-%d"
+                ).date() + timedelta(days=(week_list[0] - 1) * 7)
+                week_start = block_start - timedelta(days=block_start.weekday())
+                current_date = week_start + timedelta(days=day_of_week - 1)
+                date_str = current_date.isoformat()
+            except (TypeError, ValueError, IndexError):
+                date_str = None
+
+            # A weekday may be described by several timelines at once, for
+            # example an all-week skeleton plus an independent parity or
+            # specific-week timeline.  Keep the same merge semantics as
+            # ScheduleServices: later timelines replace entries occupying the
+            # same time slot, while disjoint entries are retained.
+            matched_days = []
+            for candidate in self.schedule.days:
+                if candidate.date:
+                    if candidate.date == date_str:
+                        matched_days.append((4, candidate))
+                    continue
+                if (
+                    (not candidate.dayOfWeek or day_of_week in candidate.dayOfWeek)
                     and self._weeks_match(candidate.weeks, week_list, max_week_cycle)
-                ),
-                None,
-            )
-            if not day:
+                ):
+                    rule = normalize_week_rule(candidate.weeks)
+                    if rule is None or rule == WeekType.ALL:
+                        priority = 1
+                    elif isinstance(rule, int) or rule in (WeekType.ODD, WeekType.EVEN):
+                        priority = 2
+                    else:
+                        priority = 3
+                    matched_days.append((priority, candidate))
+            if not matched_days:
                 columns.append([])
                 continue
+
+            merged: dict[tuple[str, str], Entry] = {}
+            for _, day in sorted(matched_days, key=lambda item: item[0]):
+                for entry in day.entries:
+                    if entry.type == EntryType.CLASS:
+                        merged[(entry.startTime, entry.endTime)] = entry
 
             columns.append(
                 [
@@ -599,8 +667,9 @@ class ScheduleEditor(QObject):
                         day_of_week,
                         overrides_by_entry.get(entry.id, []),
                     )
-                    for entry in day.entries
-                    if entry.type == EntryType.CLASS
+                    for entry in sorted(
+                        merged.values(), key=lambda item: item.startTime
+                    )
                 ]
             )
 

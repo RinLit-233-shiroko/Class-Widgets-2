@@ -22,9 +22,7 @@ Item {
         let entry = scheduleTable.getEntryByDayAndRow(day, row, column)
         if (!entry) return;
 
-        // currentWeek is always an absolute week here; it is converted to a
-        // week within the cycle when the override is written.
-        let weeks = scheduleTable.cycleWeekFor(root.currentWeek);
+        let weeks = "all";  // 默认每周
         let dayOfWeek = [scheduleTable.dayOfWeekForColumn(column)]
 
         const existingId = AppCentral.scheduleEditor.findOverride(entry.id, dayOfWeek, weeks)
@@ -62,9 +60,19 @@ Item {
         )
     }
 
-    // Jump back to the backend's current week and focus today's column.
+    // Jump back to the backend's current week and focus today's column. The
+    // week is resolved to the Monday-based week the table displays, so a
+    // semester start date on a non-Monday still lands on today's actual week.
+    function alignToTodayWeek() {
+        const cd = AppCentral.scheduleRuntime.currentDate || {}
+        let today = new Date()
+        if (cd.year && cd.month && cd.day)
+            today = new Date(cd.year, cd.month - 1, cd.day)
+        root.currentWeek = scheduleTable.weekForDate(today)
+    }
+
     function goToToday() {
-        root.currentWeek = Math.max(1, AppCentral.scheduleRuntime.currentWeek || 1)
+        alignToTodayWeek()
         scheduleTable.selectToday()
     }
 
@@ -222,4 +230,9 @@ Item {
         onSubjectClicked: (subjectId) => quickAddSubject(subjectId)
         onNextRequested: advanceQuickAddSelection()
     }
+
+    // `currentWeek` can't reference scheduleTable in its own initializer
+    // because the table is still being constructed, so align to today's
+    // Monday-based week only once the children exist.
+    Component.onCompleted: alignToTodayWeek()
 }
