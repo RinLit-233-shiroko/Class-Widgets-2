@@ -24,6 +24,39 @@ Widget {
     // 实际显示状态（用于布局控制，动画完成后才改变）
     property bool actualVisible: true
 
+    // 灵动通知期间对小组件柱的“临时降回”：隐藏(含完全隐藏)时先降回默认位置显示通知，
+    // 通知完全关闭后再返回隐藏位置。peekRevealPending 表示是否由我们主动揭示了柱。
+    property bool peekRevealPending: false
+
+    // 当前隐藏动作是否为普通“隐藏”（非浮窗）：只有此时灵动通知需要揭示小组件柱；
+    // 浮窗模式下通知由 FloatingWidget 独立显示，不接管。
+    function isPlainHideAction() {
+        return Configs.data.interactions.tapped_action !== "floating_widget"
+            && Configs.data.interactions.hide.action !== "floating_widget"
+    }
+
+    // 隐藏状态下收到通知：立即降回默认位置显示通知；记录待恢复
+    function revealColumnForNotification() {
+        if (!isPlainHideAction()) return
+        if (Configs.data.interactions.hide.state === true) {
+            peekRevealPending = true
+            if (!Configs.isKeyLocked("interactions.hide.state")) {
+                Configs.set("interactions.hide.state", false)
+            }
+        }
+        // 若本来未隐藏，则不接管（peekRevealPending 保持 false）
+    }
+
+    // 通知关闭后：若曾揭示，回到隐藏位置（完全隐藏→完全隐藏位，否则→边缘小条位）
+    function restoreHideAfterNotification() {
+        if (peekRevealPending) {
+            peekRevealPending = false
+            if (!Configs.isKeyLocked("interactions.hide.state")) {
+                Configs.set("interactions.hide.state", true)
+            }
+        }
+    }
+
     // 在目标状态变化时，更新实际可见性（延迟到动画完成）
     function updateVisibility() {
         if (shouldShow) {
@@ -121,6 +154,9 @@ Widget {
     // 手动关闭通知 - 只设置标记，实际重置在动画完成后
     function closeNotification() {
         hasNotification = false
+        // 通知关闭/自动到时即竖直滑回隐藏位（卡片淡出在回程中完成），
+        // 与手动点按隐藏的动效一致。
+        restoreHideAfterNotification()
     }
 
     // 真正重置通知内容（在动画完成后调用）
@@ -205,6 +241,9 @@ Widget {
             // 重启自动消失定时器
             autoHideTimer.interval = payload.duration || 4000
             autoHideTimer.restart()
+
+            // 若小组件处于隐藏(含完全隐藏)状态：先降回默认位置让本通知可见
+            revealColumnForNotification()
         }
     }
 
