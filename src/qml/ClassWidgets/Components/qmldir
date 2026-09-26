@@ -15,6 +15,7 @@ CheckSingleInstanceDialog 1.0 dialogs/CheckSingleInstanceDialog.qml
 WidgetSettingsDialog 1.0 dialogs/WidgetSettingsDialog.qml
 RescheduleDayDialog 1.0 dialogs/RescheduleDayDialog.qml
 ClassSwapDialog 1.0 dialogs/ClassSwapDialog.qml
+NeverHideCoursesPopup 1.0 dialogs/NeverHideCoursesPopup.qml
 PluginReplaceConfirmDialog 1.0 dialogs/PluginReplaceConfirmDialog.qml
 ScheduleSetupDialog 1.0 dialogs/ScheduleSetupDialog.qml
 

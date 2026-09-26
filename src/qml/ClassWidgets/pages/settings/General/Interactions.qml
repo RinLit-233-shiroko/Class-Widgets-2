@@ -14,6 +14,21 @@ FluentPage {
         return PathManager.images("tutorial/" + name + (Theme.isDark() ? "-dark.png" : "-light.png"))
     }
 
+    // ---- “永不自动隐藏的课程”（在弹窗中勾选，按课程名称全局生效） ----
+    // Configs.data 里的列表在 QML 侧不一定是 JS 数组（Array.isArray 为 false），
+    // 需按“类数组”安全展开；读取 Configs.data 也让计数随配置变更刷新。
+    readonly property int exemptCount: {
+        const a = Configs.data.interactions.hide.no_hide_subjects
+        if (Array.isArray(a)) return a.length
+        let count = 0
+        if (a && typeof a.length === "number") {
+            for (let i = 0; i < a.length; i++) {
+                if (String(a[i] || "").trim()) count++
+            }
+        }
+        return count
+    }
+
     ColumnLayout {
         Layout.fillWidth: true
         spacing: 4
@@ -164,5 +179,25 @@ FluentPage {
                 }
             }
         }
+
+        SettingCard {
+            Layout.fillWidth: true
+            icon.name: "ic_fluent_class_20_regular"
+            title: qsTr("永不自动隐藏这些课程")
+            description: qsTr("从课表中挑选课程。它们永远不会被自动隐藏（无论是上课、窗口最大化还是全屏触发）。")
+
+            Button {
+                id: exemptButton
+                text: root.exemptCount > 0
+                    ? qsTr("选择课程（%1）").arg(root.exemptCount)
+                    : qsTr("选择课程")
+                enabled: !Configs.isKeyLocked("interactions.hide.no_hide_subjects")
+                onClicked: exemptPopup.open()
+            }
+        }
+    }
+
+    NeverHideCoursesPopup {
+        id: exemptPopup
     }
 }
