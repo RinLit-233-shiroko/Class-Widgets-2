@@ -129,21 +129,38 @@ class WidgetsWindow(ReleasableWindow, QObject):
         QTimer.singleShot(0, self._finish_theme_reload)
 
     def _finish_theme_reload(self):
+        # Theme components are resolved by QML's type cache. Clear it before
+        # recreating the theme-owned Loader contents. The widget reload is
+        # intentionally deferred until the theme Loader reports Ready.
         try:
-            # Theme components are resolved by QML's type cache. Clear it
-            # before recreating Loader contents, otherwise a cache-busted URL
-            # can still instantiate the component from the previous theme.
             self.engine.clearComponentCache()
-            self._trigger_widget_reload()
-            logger.info("Theme component cache cleared and reload signal sent")
-        finally:
-            self._theme_reloading = False
+            self.app_central.theme_manager.themeReadyToReload.emit()
+        except Exception:
+            logger.exception("Theme component reload failed")
+            self.abort_theme_reload()
+            return
+        logger.info("Theme component cache cleared; waiting for theme readiness")
 
-    
+
     def _trigger_widget_reload(self):
         """触发 widgets 重新加载"""
         logger.info("Triggering widget reload")
-        self.app_central.theme_manager.themeReadyToReload.emit()
+        self.app_central.theme_manager.widgetsReadyToReload.emit()
+
+    def confirm_theme_load_ready(self):
+        """Release the theme reload gate after a theme component is Ready."""
+        if not self._theme_reloading:
+            return
+
+        self._trigger_widget_reload()
+        self._theme_reloading = False
+        logger.info("Theme component is ready; widget reload signal sent")
+
+    def abort_theme_reload(self):
+        """Allow the recovery path to select and load the fallback theme."""
+        if self._theme_reloading:
+            self._theme_reloading = False
+            logger.info("Theme reload aborted; waiting for fallback theme")
 
     def on_qml_ready(self, obj, obj_url):
         if Path(obj_url.toLocalFile()).resolve() != self.qml_main_path.resolve():
@@ -154,6 +171,7 @@ class WidgetsWindow(ReleasableWindow, QObject):
             logger.error(f"Main QML Load Failed for theme '{failed_theme}'")
             self._apply_empty_mask()
             self._qml_ready = False
+            self.abort_theme_reload()
             self.themeLoadFailed.emit(failed_theme)
             return
 
@@ -177,6 +195,7 @@ class WidgetsWindow(ReleasableWindow, QObject):
             return
         logger.error("'widgetsLoader' object has not found'")
         self._apply_empty_mask()
+        self.abort_theme_reload()
         self.themeLoadFailed.emit(self.app_central.theme_manager.currentTheme)
 
     def _on_qml_warnings(self, warnings):

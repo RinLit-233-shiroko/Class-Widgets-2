@@ -206,8 +206,8 @@ Column {
             delegate: Item {
                 id: widgetContainer
                 property real visualScale: scaleFactor
-                width: loader.width * visualScale
-                height: loader.height * visualScale
+                width: loader.loadFailed && !editMode ? 0 : loader.width * visualScale
+                height: loader.loadFailed && !editMode ? 0 : loader.height * visualScale
                 rotation: editMode
                 z: dragHandler.active ? 1 : 0
                 opacity: dragHandler.active ? 0.5 : 1

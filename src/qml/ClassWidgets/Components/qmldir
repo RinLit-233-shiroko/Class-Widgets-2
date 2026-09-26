@@ -2,6 +2,7 @@ module ClassWidgets.Components
 
 WidgetsContainer 1.0 WidgetsContainer.qml
 WidgetLoader 1.0 WidgetLoader.qml
+WidgetLoadError 1.0 WidgetLoadError.qml
 FloatingWidgetContainer 1.0 FloatingWidgetContainer.qml
 Watermark 1.0 Watermark.qml
 Introduction 1.0 Introduction.qml

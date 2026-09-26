@@ -53,7 +53,7 @@ QQW.Window {
                 Layout.fillWidth: true
                 wrapMode: Text.WordWrap
                 text: themeLoadErrorDialogWindow.recovered
-                    ? qsTr("The selected theme could not be loaded.\nClass Widgets has restored the default theme.")
+                    ? qsTr("The selected theme could not be loaded. \nClass Widgets has restored the default theme.")
                     : qsTr("The selected theme could not be loaded, and the default theme is unavailable.")
             }
         }

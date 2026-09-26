@@ -107,6 +107,13 @@ Item {
             Configs.set("preferences.floating_widget_y", Math.round(positionY))
     }
 
+    property int themeReloadSerial: 0
+
+    function cacheBustedThemeUrl(url) {
+        themeReloadSerial += 1
+        var separator = url.indexOf("?") >= 0 ? "&" : "?"
+        return url + separator + "t=" + Date.now() + "-" + themeReloadSerial
+    }
     function reloadTheme() {
         var oldSource = floatingLoader.source.toString()
         if (!oldSource)
@@ -121,8 +128,7 @@ Item {
         }
         floatingLoader.source = ""
         Qt.callLater(function() {
-            var separator = oldSource.indexOf("?") >= 0 ? "&" : "?"
-            floatingLoader.source = oldSource + separator + "t=" + Date.now()
+            floatingLoader.source = cacheBustedThemeUrl(oldSource)
         })
     }
 
@@ -275,6 +281,7 @@ Item {
                 console.error("Failed to load FloatingWidget")
                 AppCentral.reportThemeLoadFailure("FloatingWidget.qml")
             } else if (status === Loader.Ready) {
+                AppCentral.reportThemeLoadReady()
                 root.ensurePosition()
                 root.reconcilePosition()
                 if (root.floatingMode)
