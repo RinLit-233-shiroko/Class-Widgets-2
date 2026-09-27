@@ -15,8 +15,7 @@ FluentPage {
     }
 
     // ---- “永不自动隐藏的课程”（在弹窗中勾选，按课程名称全局生效） ----
-    // Configs.data 里的列表在 QML 侧不一定是 JS 数组（Array.isArray 为 false），
-    // 需按“类数组”安全展开；读取 Configs.data 也让计数随配置变更刷新。
+    // Configs.data 的列表在 QML 侧不是真 JS 数组，需按类数组展开
     readonly property int exemptCount: {
         const a = Configs.data.interactions.hide.no_hide_subjects
         if (Array.isArray(a)) return a.length

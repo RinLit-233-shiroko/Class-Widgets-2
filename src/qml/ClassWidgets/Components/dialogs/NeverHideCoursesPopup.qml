@@ -4,10 +4,7 @@ import QtQuick.Layouts
 import RinUI
 
 
-/*  “永不自动隐藏的课程”选择器。
-    居中弹窗（确认后生效），顶部是课表选择条（可横向滑动），下方是该课表的课程胶囊。
-    勾选结果以课程名称记录、对所有课表生效——同名课程在任意课表中的
-    勾选状态始终一致。 */
+/* “永不自动隐藏的课程”选择器：勾选按课程名称记录，对所有课表生效。 */
 Dialog {
     id: root
 
@@ -18,9 +15,9 @@ Dialog {
 
     // 课表分组：[{ name, isCurrent, subjects: [课程名, ...] }]
     property var scheduleGroups: []
-    // 已勾选的课程名称（全局生效，跨课表共享）
+    // 已勾选的课程名称（对所有课表生效）
     property var selectedNames: []
-    // 已勾选、但不存在于任何课表中的名称（早期手输遗留），单独成组以便取消
+    // 已勾选但不在任何课表中的名称，单独成组以便取消
     property var orphanNames: []
     property int currentGroupIndex: 0
 
@@ -49,11 +46,8 @@ Dialog {
             scheduleBar.currentIndex = currentGroupIndex
     }
 
-    // 每次打开时重新读取课表与当前配置，避免课表改动后列表过期。
-    // 顺序很关键：必须先恢复 selectedNames，最后才赋值 scheduleGroups——
-    // 后者会触发 Repeater 重建胶囊，而胶囊的勾选态只在创建时读一次
-    // （Component.onCompleted: checked = ...）。先建胶囊后填选择，
-    // 会让所有胶囊都显示为未勾选。
+    // 必须先恢复 selectedNames 再赋值 scheduleGroups：
+    // 后者会重建胶囊，而胶囊的勾选态只在创建时读一次
     onAboutToShow: {
         var loadedGroups = AppCentral.scheduleManager.allSchedulesSubjects()
         selectedNames = readSelection()
@@ -64,9 +58,7 @@ Dialog {
 
     onAccepted: Configs.set("interactions.hide.no_hide_subjects", selectedNames)
 
-    // 来自 Python 的 list 在 QML 侧并不是真正的 JS 数组（Array.isArray 为 false），
-    // 这种对象直接当作 Repeater 的 model 会导致一个胶囊都渲染不出来。
-    // 统一转成真正的 JS 数组。
+    // Python 传来的 list 不是真 JS 数组，直接当 Repeater 的 model 会渲染不出胶囊
     function toArray(value) {
         var out = []
         if (!value)
@@ -116,7 +108,6 @@ Dialog {
         }
     }
 
-    // Configs.data 中的列表在 QML 侧不一定是真正的 JS 数组，按类数组安全展开
     function readSelection() {
         var stored = Configs.data.interactions.hide.no_hide_subjects
         var out = []
@@ -229,7 +220,7 @@ Dialog {
                             text: modelData
                             checkable: true
                             enabled: !root.locked
-                            // 勾选状态来自全局选择，不绑定以免被点击时的内部赋值打断
+                            // 不绑定 checked：点击时的内部赋值会打断绑定
                             Component.onCompleted: checked = root.isSelected(modelData)
                             onClicked: root.setSelected(modelData, checked)
                         }

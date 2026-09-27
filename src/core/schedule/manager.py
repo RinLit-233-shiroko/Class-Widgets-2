@@ -161,10 +161,9 @@ class ScheduleManager(QObject):
 
     @Slot(result=list)
     def allSchedulesSubjects(self) -> list[dict]:
-        """列出每张课表及其包含的课程名称，供“永不自动隐藏的课程”选择器使用。
+        """列出每张课表及其课程名称，供“永不自动隐藏的课程”选择器使用。
 
-        课表之间可能存在同名课程，因此只返回名称：勾选结果按名称记录，
-        切换课表时同名课程保持同一勾选状态。
+        只返回名称：课表间的同名课程 id 并不相同，按名称才能跨课表共享勾选状态。
         """
         groups = []
         for path in sorted(self.schedules_dir.glob("*.json"), key=lambda p: p.stem.casefold()):
