@@ -36,8 +36,7 @@ QQW.Window {
     x: screen.virtualX + ((screen.width - width) / 2)  || 0
     y: screen.virtualY + ((screen.height - height) / 2) || 0
     width: screen.width
-    // 比屏幕高度少 1px：这块无边框置顶窗口若正好铺满整个显示器，
-    // Windows 会把它判定为“全屏窗口”，导致任务栏被盖住无法唤出。
+    // 少 1px，避免被 Windows 判定为全屏窗口而遮挡任务栏
     height: screen.height - 1
 
     property bool initialized: false
