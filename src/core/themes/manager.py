@@ -23,6 +23,7 @@ class ThemeManager(QObject):
     themeChanged = Signal()
     themeListChanged = Signal()
     themeReadyToReload = Signal()
+    widgetsReadyToReload = Signal()
     themeImportSucceeded = Signal()
     themeImportFailed = Signal(str)
 

@@ -57,7 +57,12 @@ Item {
                     implicitHeight: Math.max(iconItem.implicitHeight, labelText.implicitHeight) + 16
                     onClicked: {
                         const currentDate = AppCentral.scheduleEditor.getStartDate()
-                        datePicker.setDate(currentDate)
+                        const parts = String(currentDate).split("-")
+                        datePicker.selectedDate = new Date(
+                            Number(parts[0]),
+                            Number(parts[1]) - 1,
+                            Number(parts[2])
+                        )
                         const maxWeekCycle = AppCentral.scheduleEditor.getMaxWeekCycle()
                         maxWeekCycleBox.value = maxWeekCycle
                         datePickerDialog.open()
@@ -108,39 +113,106 @@ Item {
     Dialog {
         id: datePickerDialog
         modal: true
-        title: qsTr("Set date and max weeks")
-        width: 325
+        title: qsTr("Start Date & Maximum Rotation Weeks")
+        width: 480
 
         ColumnLayout {
-            spacing: 8
+            spacing: 12
 
-            Text {
+            RowLayout {
                 Layout.fillWidth: true
-                text: qsTr("Start date:")
-            }
-            DatePicker {
-                Layout.fillWidth: true
-                locale: Qt.locale()
-                id: datePicker
+                spacing: 12
+
+                ColumnLayout {
+                    Layout.preferredWidth: 200
+                    Layout.maximumWidth: 200
+                    spacing: 0
+
+                    Text {
+                        Layout.fillWidth: true
+                        text: qsTr("Start date")
+                        typography: Typography.Body
+                    }
+
+                    Text {
+                        Layout.fillWidth: true
+                        text: qsTr("The first day of the schedule, used for multi-week rotation. Usually a Monday.")
+                        typography: Typography.Caption
+                        color: Colors.proxy.textSecondaryColor
+                        wrapMode: Text.WordWrap
+                    }
+                }
+
+                Item {
+                    Layout.fillWidth: true
+                }
+
+                CalendarDatePicker {
+                    id: datePicker
+                    Layout.preferredWidth: 120
+                    Layout.alignment: Qt.AlignVCenter
+                    textFormat: "yyyy/M/d"
+                }
             }
 
-            Text {
+            RowLayout {
                 Layout.fillWidth: true
-                text: qsTr("Max week cycle:")
-            }
-            SpinBox {
-                Layout.fillWidth: true
-                id: maxWeekCycleBox
-                from: 1
-                to: 12
+                spacing: 12
+
+                ColumnLayout {
+                    Layout.preferredWidth: 200
+                    Layout.maximumWidth: 200
+                    spacing: 0
+
+                    Text {
+                        Layout.fillWidth: true
+                        text: qsTr("Maximum Rotation Weeks")
+                        typography: Typography.Body
+                    }
+
+                    Text {
+                        Layout.fillWidth: true
+                        text: qsTr("Most schools alternate weekly (every 2 weeks). Choose as needed.")
+                        typography: Typography.Caption
+                        color: Colors.proxy.textSecondaryColor
+                        wrapMode: Text.WordWrap
+                    }
+                }
+
+                Item {
+                    Layout.fillWidth: true
+                }
+
+                RowLayout {
+                    spacing: 10
+                    Layout.alignment: Qt.AlignVCenter
+
+                    Text {
+                        text: qsTr("Every")
+                        typography: Typography.Body
+                    }
+
+                    SpinBox {
+                        id: maxWeekCycleBox
+                        Layout.preferredWidth: 124
+                        from: 1
+                        to: 12
+                    }
+
+                    Text {
+                        text: qsTr("weeks")
+                        typography: Typography.Body
+                    }
+                }
             }
         }
 
         standardButtons: Dialog.Ok | Dialog.Cancel
 
         onAccepted: {
-            const newDate = datePicker.date
-            if (!AppCentral.scheduleEditor.setTimelineSettings(newDate, maxWeekCycleBox.value)) {
+            const newDate = datePicker.selectedDate
+            const dateStr = newDate ? Qt.formatDate(newDate, "yyyy-MM-dd") : ""
+            if (!AppCentral.scheduleEditor.setTimelineSettings(dateStr, maxWeekCycleBox.value)) {
                 floatLayer.createInfoBar({
                     title: qsTr("Failed"),
                     text: qsTr("Failed to set start date or max week cycle. Please report this issue to the community or the developer.") ,

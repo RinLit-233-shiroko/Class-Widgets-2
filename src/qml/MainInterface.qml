@@ -1,4 +1,4 @@
-import QtQuick
+﻿import QtQuick
 import QtQuick.Controls
 import QtQuick as QQ
 import QtQuick.Controls as QQC
@@ -111,12 +111,16 @@ QQW.Window {
             : editMode ? 1
             : hide ? 0.75 : 1
 
-        Behavior on x { NumberAnimation { duration: 400 * root.initialized; easing.type: Easing.OutQuint } }
-        Behavior on y { NumberAnimation { duration: 500 * root.initialized; easing.type: Easing.OutQuint } }
+        // x/y 过渡已移入 WidgetsContainer：
+        // 锚点语义走 Behavior，尺寸语义逐帧透传。
+        // 在这里再挂 Behavior 会与尺寸动画互相重定向，
+        // 导致“小组件动画结束后容器才跟进”。
 
         TapHandler {
             id: hideTapHandler
-            enabled: Configs.data.interactions.hide.clicked
+            // 编辑模式下不响应任何点击：
+            // 否则点一下就把整块小组件隐藏，连退出编辑都做不到。
+            enabled: Configs.data.interactions.hide.clicked && !widgetsLoader.editMode
             onTapped: {
                 // 点击小组件：根据 tapped_action 决定隐藏或切换迷你模式
                 if (Configs.data.interactions.tapped_action === "mini_mode") {
