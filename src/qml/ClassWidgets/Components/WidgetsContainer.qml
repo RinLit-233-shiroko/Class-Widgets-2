@@ -70,7 +70,9 @@ Item {
 
     // 直接绑定而非在 onXxxChanged 里赋值：后者在启动时不会触发，
     // 会导致初始就处于隐藏状态时完全没有过渡（甚至位置不对）。
-    property real hideProgress: hide ? 1 : 0
+    // 编辑模式优先于隐藏：隐藏状态下进入编辑时先回到正常/居中位置，
+    // 退出编辑后 hide 仍为真，再滑回隐藏位置。
+    property real hideProgress: (hide && !editMode) ? 1 : 0
     property real editProgress: editMode ? 1 : 0
 
     onHideChanged: hideFade = hide ? 1.0 : 0.0
