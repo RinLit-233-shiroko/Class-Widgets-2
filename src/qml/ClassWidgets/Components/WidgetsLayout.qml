@@ -78,6 +78,15 @@ Item {
         WidgetsModel.moveInstance(fromIndex, toIndex)
     }
 
+    // 删除小组件。非编辑模式下的右键删除不会经过编辑模式的「完成」保存，
+    // 若不在此写入后台配置，删除结果会在重启后丢失；编辑模式内仍统一等
+    // 点击「完成」保存，避免频繁写入造成卡顿。
+    function removeWidget(instanceId) {
+        WidgetsModel.removeInstance(instanceId)
+        if (!editMode)
+            WidgetsModel.save_config()
+    }
+
     // 供 delegate 判断后续是否还有可见小组件（决定是否需要输出间距）
     function itemAt(i) {
         return listView.itemAtIndex(i)

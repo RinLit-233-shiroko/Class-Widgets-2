@@ -178,12 +178,12 @@ Item {
         exitAnim.stop()
 
         if (!ready) {
-            WidgetsModel.removeInstance(widgetInstanceId)
+            host.removeWidget(widgetInstanceId)
             return
         }
 
         if (growFactor <= 0.001) {
-            WidgetsModel.removeInstance(widgetInstanceId)
+            host.removeWidget(widgetInstanceId)
             return
         }
 
@@ -220,7 +220,7 @@ Item {
 
         // 第三阶段：宽度归零后才真正移除，ListView 重排时已无可见内容
         ScriptAction {
-            script: WidgetsModel.removeInstance(widgetContainer.widgetInstanceId)
+            script: host.removeWidget(widgetContainer.widgetInstanceId)
         }
     }
 
