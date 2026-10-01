@@ -34,6 +34,7 @@ Item {
     signal geometryChanged()
     signal editRequested()
     signal menuVisibilityChanged(bool visible)
+    signal widgetTapped()
 
     // 遍历 delegate 求最大高度。水平 ListView 不负责纵向布局，
     // 必须自己算，否则容器高度为 0、外层按钮会压在小组件上。
@@ -124,6 +125,7 @@ Item {
         delegate: WidgetsLayoutDelegate {
             host: layoutRoot
             settingsDialog: settingsDialogInstance
+            onWidgetTapped: layoutRoot.widgetTapped()
         }
 
         onContentWidthChanged: {

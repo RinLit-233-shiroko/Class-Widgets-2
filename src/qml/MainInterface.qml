@@ -1,4 +1,4 @@
-﻿import QtQuick
+import QtQuick
 import QtQuick.Controls
 import QtQuick as QQ
 import QtQuick.Controls as QQC
@@ -74,15 +74,6 @@ QQW.Window {
         onTriggered: root.initialized = true
     }
 
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            if (widgetsLoader.menuVisible) {
-                widgetsLoader.menuVisible = false
-            }
-        }
-    }
-
     Connections {
         target: AppCentral
         function onTogglePanel(pos) {
@@ -111,25 +102,20 @@ QQW.Window {
             : editMode ? 1
             : hide ? 0.75 : 1
 
-        // x/y 过渡已移入 WidgetsContainer：
-        // 锚点语义走 Behavior，尺寸语义逐帧透传。
-        // 在这里再挂 Behavior 会与尺寸动画互相重定向，
-        // 导致“小组件动画结束后容器才跟进”。
+        onWidgetTapped: {
+            // 点击小组件：根据 tapped_action 决定隐藏或切换迷你模式
+            if (Configs.data.interactions.tapped_action === "mini_mode") {
+                if (!Configs.isKeyLocked("preferences.mini_mode"))
+                    Configs.set("preferences.mini_mode", !Configs.data.preferences.mini_mode)
+            } else if (!Configs.isKeyLocked("interactions.hide.state")) {
+                Configs.set("interactions.hide.state", !Configs.data.interactions.hide.state)
+            }
+        }
 
         TapHandler {
-            id: hideTapHandler
-            // 编辑模式下不响应任何点击：
-            // 否则点一下就把整块小组件隐藏，连退出编辑都做不到。
-            enabled: Configs.data.interactions.hide.clicked && !widgetsLoader.editMode
-            onTapped: {
-                // 点击小组件：根据 tapped_action 决定隐藏或切换迷你模式
-                if (Configs.data.interactions.tapped_action === "mini_mode") {
-                    if (!Configs.isKeyLocked("preferences.mini_mode"))
-                        Configs.set("preferences.mini_mode", !Configs.data.preferences.mini_mode)
-                } else if (!Configs.isKeyLocked("interactions.hide.state")) {
-                    Configs.set("interactions.hide.state", !Configs.data.interactions.hide.state)
-                }
-            }
+            acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchScreen | PointerDevice.TouchPad
+            enabled: root.menuVisible
+            onTapped: widgetsLoader.menuVisible = false
         }
 
         signal geometryChanged()

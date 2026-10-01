@@ -15,6 +15,8 @@ Item {
     property string widgetInstanceId: (typeof model !== "undefined" && model)
                                        ? (model.instanceId || "") : ""
 
+    signal widgetTapped()
+
     // 是否处于「应该显示」的状态（用于出现/消失判定）
     readonly property bool contentHidden: loader.status === Loader.Ready
         && loader.item && loader.item.visible === false
@@ -283,8 +285,16 @@ Item {
         onContentFailed: widgetContainer.syncNaturalSize()
         onRemovalRequested: widgetContainer.requestRemove()
 
+        // The loaded widget is the actual touch hit target. Keep the handler
+        // here and forward the tap explicitly instead of relying on bubbling
+        // through Loader and ListView.
         TapHandler {
             id: tapHandler
+            acceptedButtons: Qt.LeftButton
+            acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchScreen | PointerDevice.TouchPad
+            enabled: !host.editMode && Configs.data.interactions.hide.clicked
+            grabPermissions: PointerHandler.CanTakeOverFromAnything
+            onTapped: widgetContainer.widgetTapped()
         }
     }
 

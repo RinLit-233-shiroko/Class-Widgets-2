@@ -33,6 +33,7 @@ Item {
     property real hideFade: 0
 
     signal contentGeometryChanged()
+    signal widgetTapped()
 
     // 「添加」按钮行固定高度，避免与父级高度形成绑定环
     readonly property int addRowHeight: 40
@@ -220,6 +221,7 @@ Item {
         onGeometryChanged: widgetsContainer.contentGeometryChanged()
         onEditRequested: widgetsContainer.editMode = true
         onMenuVisibilityChanged: (visible) => widgetsContainer.menuVisible = visible
+        onWidgetTapped: widgetsContainer.widgetTapped()
     }
 
     // 添加小组件&完成
