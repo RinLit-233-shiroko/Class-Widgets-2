@@ -166,7 +166,7 @@ Window {
     RescheduleDayDialog {
         id: rescheduleDayDialog
         title: qsTr("Reschedule Day")
-        width: panel.width * 0.8
+        width: panel.width * 0.85
 
         ButtonGroup {
             id: buttonGroup
