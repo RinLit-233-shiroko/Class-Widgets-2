@@ -1,7 +1,10 @@
 from random import choice
+from typing import TYPE_CHECKING
 
 from PySide6.QtCore import QCoreApplication
-from src.core.schedule.model import Subject
+
+if TYPE_CHECKING:
+    from src.core.schedule.model import Subject
 
 DEFAULT_SUBJECTS = [
     {"id": "chinese", "name": "Chinese", "simplifiedName": "CHN", "icon": "ic_fluent_book_20_regular", "color": "#FF5722", "isLocalClassRoom": True},
@@ -36,7 +39,11 @@ DEFAULT_SUBJECT_COLORS = [
 def get_random_subject_color() -> str:
     return choice(DEFAULT_SUBJECT_COLORS) if DEFAULT_SUBJECT_COLORS else ""
 
-def get_default_subjects() -> list[Subject]:
+def get_default_subjects() -> list["Subject"]:
+    # Imported lazily on purpose: `utils` is imported very early (central.py),
+    # while schedule imports utils back, so a module-level import would cycle.
+    from src.core.schedule.model import Subject
+
     result = []
     for subj in DEFAULT_SUBJECTS:
         sub = Subject(

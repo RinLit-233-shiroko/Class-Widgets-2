@@ -1248,13 +1248,13 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>ExportScheduleDialog</name>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="23"/>
+        <location filename="../../src/core/converter/slots.py" line="23"/>
         <location filename="../../src/core/schedule/manager.py" line="401"/>
         <source>Export Schedule</source>
         <translation>打包门牌号集合并丢出去</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="27"/>
+        <location filename="../../src/core/converter/slots.py" line="27"/>
         <source>CSES Format (*.yaml *.yml)</source>
         <translation>CSES 格式 (*.yaml *.yml)</translation>
     </message>
@@ -1671,22 +1671,22 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>ImportScheduleDialog</name>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="179"/>
+        <location filename="../../src/core/converter/slots.py" line="179"/>
         <source>Import CSES Schedule</source>
         <translation>让 CSES 的配料表入</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="182"/>
+        <location filename="../../src/core/converter/slots.py" line="182"/>
         <source>CSES YAML Files (*.yaml *.yml)</source>
         <translation>CSES YAML 文件 (*.yaml *.yml)</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="193"/>
+        <location filename="../../src/core/converter/slots.py" line="193"/>
         <source>Import Class Widgets 1 Schedule</source>
         <translation>把WC的配料表丢进来</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="196"/>
+        <location filename="../../src/core/converter/slots.py" line="196"/>
         <source>Class Widgets 1 JSON Files (*.json)</source>
         <translation>WC的杰森文件</translation>
     </message>
@@ -3477,17 +3477,17 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation type="vanished">快捷加入主语</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/cses.py" line="214"/>
+        <location filename="../../src/core/converter/cses.py" line="214"/>
         <source>All Weeks</source>
         <translation>每次微弱</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/cses.py" line="216"/>
+        <location filename="../../src/core/converter/cses.py" line="216"/>
         <source>Odd Weeks</source>
         <translation>Week%2=1</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/cses.py" line="218"/>
+        <location filename="../../src/core/converter/cses.py" line="218"/>
         <source>Even Weeks</source>
         <translation>Week%2=0</translation>
     </message>

@@ -1305,13 +1305,13 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>ExportScheduleDialog</name>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="23"/>
+        <location filename="../../src/core/converter/slots.py" line="23"/>
         <location filename="../../src/core/schedule/manager.py" line="401"/>
         <source>Export Schedule</source>
         <translation type="unfinished">スケジュールをエクスポート</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="25"/>
+        <location filename="../../src/core/converter/slots.py" line="25"/>
         <source>CSES Format (*.yaml *.yml)</source>
         <translation type="unfinished">CSES 形式 (*.yaml *.yml)</translation>
     </message>
@@ -1729,22 +1729,22 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>ImportScheduleDialog</name>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="177"/>
+        <location filename="../../src/core/converter/slots.py" line="177"/>
         <source>Import CSES Schedule</source>
         <translation type="unfinished">CSES 時間割のインポート</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="180"/>
+        <location filename="../../src/core/converter/slots.py" line="180"/>
         <source>CSES YAML Files (*.yaml *.yml)</source>
         <translation type="unfinished">CSES YAML ファイル (*.yaml *.yml)</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="191"/>
+        <location filename="../../src/core/converter/slots.py" line="191"/>
         <source>Import Class Widgets 1 Schedule</source>
         <translation type="unfinished">Class Widgets 1 の時間割をインポート</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="194"/>
+        <location filename="../../src/core/converter/slots.py" line="194"/>
         <source>Class Widgets 1 JSON Files (*.json)</source>
         <translation>クラス・ウィジェット 1 JSONフライス(*.json)</translation>
     </message>
@@ -3655,17 +3655,17 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
         <translation type="vanished">科目の即時追加</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/cses.py" line="213"/>
+        <location filename="../../src/core/converter/cses.py" line="213"/>
         <source>All Weeks</source>
         <translation type="unfinished">すべての週</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/cses.py" line="215"/>
+        <location filename="../../src/core/converter/cses.py" line="215"/>
         <source>Odd Weeks</source>
         <translation type="unfinished">奇数週</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/cses.py" line="217"/>
+        <location filename="../../src/core/converter/cses.py" line="217"/>
         <source>Even Weeks</source>
         <translation type="unfinished">偶数週</translation>
     </message>

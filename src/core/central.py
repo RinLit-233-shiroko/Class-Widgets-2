@@ -15,8 +15,8 @@ from src.core import CONFIGS_PATH, QML_PATH
 from src.core.crash import CrashHandler, CrashReport
 from src.core.directories import PathManager, LOGS_PATH
 from src.core.platform import PlatformIntegration
-from src.core.safe_mode import safe_mode_requested
-from src.core.theme_recovery import ThemeRecoveryController
+from src.core.themes.recovery import ThemeRecoveryController
+from src.core.utils.safe_mode import safe_mode_requested
 
 if TYPE_CHECKING:
     from src.core.notification.manager import NotificationManager, NotificationService
@@ -28,11 +28,11 @@ if TYPE_CHECKING:
     from src.core.themes import ThemeManager
     from src.core.timer import UnionUpdateTimer
     from src.core.updater.bridge import UpdaterBridge
-    from src.core.utils import TrayIcon, AppTranslator, UtilsBackend
-    from src.core.utils.instance_locker import SingleInstanceGuard
+    from src.core.utils import AppTranslator, UtilsBackend
     from src.core.widgets import WidgetsWindow, WidgetListModel
     from src.core.automations.manager import AutomationManager
     from src.core.windows.manager import AppWindowManager
+    from src.core.windows.tray import TrayIcon
 
 # runtime imports
 from src.core.notification import (
@@ -51,7 +51,6 @@ from src.core.themes import ThemeManager
 from src.core.timer import UnionUpdateTimer
 from src.core.updater import UpdaterBridge
 from src.core.utils import AppTranslator, UtilsBackend
-from src.core.utils.instance_locker import SingleInstanceGuard
 from src.core.widgets import WidgetsWindow, WidgetListModel
 from src.core.automations.manager import AutomationManager
 from src.core.windows.manager import AppWindowManager
@@ -522,7 +521,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.plugin_manager.load_plugins()
 
     def _init_tray_icon(self) -> None:
-        from src.core.utils.tray import TrayIcon
+        from src.core.windows.tray import TrayIcon
 
         self.tray_icon = TrayIcon()
         self.tray_icon.togglePanel.connect(self._on_tray_toggle)

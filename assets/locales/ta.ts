@@ -1249,13 +1249,13 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>ExportScheduleDialog</name>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="23"/>
+        <location filename="../../src/core/converter/slots.py" line="23"/>
         <location filename="../../src/core/schedule/manager.py" line="401"/>
         <source>Export Schedule</source>
         <translation>ஏற்றுமதி அட்டவணை</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="27"/>
+        <location filename="../../src/core/converter/slots.py" line="27"/>
         <source>CSES Format (*.yaml *.yml)</source>
         <translation>CSES வடிவம் (*.yaml *.yml)</translation>
     </message>
@@ -1673,22 +1673,22 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>ImportScheduleDialog</name>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="179"/>
+        <location filename="../../src/core/converter/slots.py" line="179"/>
         <source>Import CSES Schedule</source>
         <translation>CSES அட்டவணையை இறக்குமதி செய்யவும்</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="182"/>
+        <location filename="../../src/core/converter/slots.py" line="182"/>
         <source>CSES YAML Files (*.yaml *.yml)</source>
         <translation>CSES YAML கோப்புகள் (*.yaml *.yml)</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="193"/>
+        <location filename="../../src/core/converter/slots.py" line="193"/>
         <source>Import Class Widgets 1 Schedule</source>
         <translation>வகுப்பு விட்செட்டுகள் 1 அட்டவணையை இறக்குமதி செய்யவும்</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="196"/>
+        <location filename="../../src/core/converter/slots.py" line="196"/>
         <source>Class Widgets 1 JSON Files (*.json)</source>
         <translation>வகுப்பு விட்செட்டுகள் 1 சாதொபொகு கோப்புகள் (*.json)</translation>
     </message>
@@ -3463,17 +3463,17 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation type="vanished">விரைவு பொருள் சேர்</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/cses.py" line="214"/>
+        <location filename="../../src/core/converter/cses.py" line="214"/>
         <source>All Weeks</source>
         <translation>அனைத்து வாரங்களும்</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/cses.py" line="216"/>
+        <location filename="../../src/core/converter/cses.py" line="216"/>
         <source>Odd Weeks</source>
         <translation>ஒற்றைப்படை வாரங்கள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/cses.py" line="218"/>
+        <location filename="../../src/core/converter/cses.py" line="218"/>
         <source>Even Weeks</source>
         <translation>வாரங்கள் கூட</translation>
     </message>
