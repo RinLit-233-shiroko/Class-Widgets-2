@@ -149,37 +149,10 @@ jobs:
           uv sync
           uv pip install pyinstaller
 
-      - name: 🔨 Build ClassWidgets-2 (Windows)
-        if: runner.os == 'Windows'
+      - name: 🔨 Build ClassWidgets-2
         shell: bash
         run: |
-          uv run pyinstaller --noconsole \
-            --icon "assets/images/logo.ico" \
-            --add-data "src/qml:src/qml" \
-            --add-data "src/plugins:src/plugins" \
-            --add-data "src/themes:src/themes" \
-            --add-data "assets:assets" \
-            --add-data "LICENSE:." \
-            --paths=. \
-            --contents-directory . \
-            --name="Class Widgets 2" \
-            src/app.py
-
-      - name: 🔨 Build ClassWidgets-2 (macOS)
-        if: runner.os == 'macOS'
-        shell: bash
-        run: |
-          uv run pyinstaller --noconsole \
-            --icon "assets/images/logo.icns" \
-            --add-data "src/qml:src/qml" \
-            --add-data "src/plugins:src/plugins" \
-            --add-data "src/themes:src/themes" \
-            --add-data "assets:assets" \
-            --add-data "LICENSE:." \
-            --paths=. \
-            --contents-directory . \
-            --name="Class Widgets 2" \
-            src/app.py
+          uv run pyinstaller ClassWidgets-2.spec
 
       - name: 🧹 Remove unnecessary PySide6 files (Only Windows)
         if: runner.os == 'Windows'
