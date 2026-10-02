@@ -1,0 +1,406 @@
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import RinUI
+import ClassWidgets.Components
+import QtQuick.Window as QQW
+
+// 问题报告 / Problem Report
+QQW.Window {
+    id: problemReportWindow
+
+    // 普通窗口：可拖动、可被 Alt+Tab / 任务栏选中，且不置顶。
+    visible: false
+    title: qsTr("Problem Report")
+    color: "transparent"
+    flags: Qt.Window | Qt.FramelessWindowHint
+
+    // 面板四周留出的投影空间 / room for the drop shadow
+    readonly property int shadowMargin: 32
+    readonly property int dialogWidth: Math.min(700, Math.max(320, Screen.width - 96))
+    readonly property int dialogRadius: Theme.currentTheme.appearance.windowRadius
+    // 详细信息默认折叠 / Technical details start collapsed
+    property bool detailsExpanded: false
+
+    width: panelRoot.width + shadowMargin * 2
+    height: panelRoot.height + shadowMargin * 2
+
+    Component.onCompleted: {
+        // 首次显示时居中，之后用户可以自由拖动。
+        problemReportWindow.x = Math.round((Screen.width - problemReportWindow.width) / 2) + Screen.virtualX
+        problemReportWindow.y = Math.round((Screen.height - problemReportWindow.height) / 2) + Screen.virtualY
+    }
+
+    onClosing: function(event) {
+        // 必须由用户明确选择后续操作，不允许直接关掉报告。
+        event.accepted = false
+    }
+
+    Connections {
+        target: ProblemReportBridge
+
+        function onReportChanged() {
+            problemReportWindow.detailsExpanded = false
+        }
+    }
+
+    // 运行环境条目：图标 + （标题 / 值）
+    component EnvironmentItem: RowLayout {
+        id: environmentItem
+
+        property string iconName: ""
+        property string label: ""
+        property string value: ""
+
+        spacing: 12
+
+        Icon {
+            Layout.alignment: Qt.AlignVCenter
+            size: 16
+            icon: environmentItem.iconName
+            color: Theme.currentTheme.colors.textColor
+        }
+
+        ColumnLayout {
+            Layout.alignment: Qt.AlignVCenter
+            Layout.maximumWidth: 220
+            spacing: 0
+
+            Text {
+                Layout.fillWidth: true
+                typography: Typography.Caption
+                color: Theme.currentTheme.colors.textSecondaryColor
+                text: environmentItem.label
+                wrapMode: Text.NoWrap
+                elide: Text.ElideRight
+            }
+
+            Text {
+                Layout.fillWidth: true
+                typography: Typography.Body
+                text: environmentItem.value
+                wrapMode: Text.NoWrap
+                elide: Text.ElideRight
+            }
+        }
+    }
+
+    Item {
+        id: panelRoot
+        anchors.centerIn: parent
+        width: problemReportWindow.dialogWidth
+        height: panel.implicitHeight
+
+        // 投影 / Elevation
+        Rectangle {
+            id: shadowSource
+            anchors.fill: parent
+            radius: problemReportWindow.dialogRadius
+            color: Theme.currentTheme.colors.backgroundColor
+
+            layer.enabled: true
+            layer.effect: Shadow {
+                // 投影空间有限，使用较小的投影样式，避免被窗口边缘裁切。
+                style: "flyout"
+                source: shadowSource
+            }
+        }
+
+        // 对话框底板 / Dialog base (fill & stroke)
+        Rectangle {
+            anchors.fill: parent
+            radius: problemReportWindow.dialogRadius
+            color: Theme.currentTheme.colors.backgroundColor
+            border.width: 1
+            border.color: Qt.alpha("#757575", 0.4)
+        }
+
+        ColumnLayout {
+            id: panel
+            anchors.fill: parent
+            spacing: 0
+
+            // ── 标题栏 / Title bar ────────────────────────────────────────
+            Rectangle {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 32
+                color: Theme.currentTheme.colors.cardTertiaryColor
+                topLeftRadius: problemReportWindow.dialogRadius
+                topRightRadius: problemReportWindow.dialogRadius
+
+                Icon {
+                    id: titleBarIcon
+                    anchors.left: parent.left
+                    anchors.leftMargin: 16
+                    anchors.verticalCenter: parent.verticalCenter
+                    size: 16
+                    source: PathManager.images("logo.png")
+                }
+
+                Text {
+                    anchors.left: titleBarIcon.right
+                    anchors.leftMargin: 12
+                    anchors.right: parent.right
+                    anchors.rightMargin: 8
+                    anchors.verticalCenter: parent.verticalCenter
+                    typography: Typography.Caption
+                    text: qsTr("Problem Report - Class Widgets")
+                    elide: Text.ElideRight
+                }
+
+                // 拖动标题栏移动窗口（原生拖动，支持 Windows 贴边）。
+                MouseArea {
+                    id: titleBarDragArea
+                    anchors.fill: parent
+
+                    property real pressX: 0
+                    property real pressY: 0
+                    property bool fallbackMoving: false
+
+                    onPressed: (mouse) => {
+                        pressX = mouse.x
+                        pressY = mouse.y
+                        fallbackMoving = !problemReportWindow.startSystemMove()
+                    }
+                    onReleased: fallbackMoving = false
+                    onPositionChanged: (mouse) => {
+                        if (!fallbackMoving)
+                            return
+                        problemReportWindow.x += mouse.x - pressX
+                        problemReportWindow.y += mouse.y - pressY
+                    }
+                }
+            }
+
+            // ── 内容 / Content ───────────────────────────────────────────
+            Rectangle {
+                Layout.fillWidth: true
+                // 内容区高度 = 内容 + 上下内边距（8 / 23）
+                implicitHeight: contentLayout.implicitHeight + 8 + 23
+                color: Theme.currentTheme.colors.cardTertiaryColor
+
+                ColumnLayout {
+                    id: contentLayout
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.top: parent.top
+                    anchors.topMargin: 8
+                    anchors.leftMargin: 24
+                    anchors.rightMargin: 24
+                    anchors.bottomMargin: 23
+                    spacing: 12
+
+                    // 标题 / Headline
+                    Item {
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: 32
+
+                        Image {
+                            id: headlineIcon
+                            anchors.left: parent.left
+                            anchors.verticalCenter: parent.verticalCenter
+                            width: 32
+                            height: 32
+                            source: PathManager.images("icons/cw2_problem_report.png")
+                            fillMode: Image.PreserveAspectFit
+                            mipmap: true
+                        }
+
+                        Text {
+                            anchors.left: headlineIcon.right
+                            anchors.leftMargin: 10
+                            anchors.right: parent.right
+                            anchors.verticalCenter: parent.verticalCenter
+                            typography: Typography.Subtitle
+                            text: qsTr("Class Widgets ran into a problem  (>_<)")
+                        }
+                    }
+
+                    // 说明 / Body
+                    Text {
+                        Layout.fillWidth: true
+                        typography: Typography.Body
+                        text: qsTr(
+                            "Sorry about that - Class Widgets ran into a problem it could not solve " +
+                            "on its own and had to stop. Your class data has been saved automatically, " +
+                            "so nothing is lost.\n" +
+                            "You can try restarting. If you suspect a plugin or theme is involved, " +
+                            "restart in safe mode to find the problematic component."
+                        )
+                    }
+
+                    // 查看详细情况 / Toggle technical details
+                    Button {
+                        id: detailsToggle
+                        Layout.alignment: Qt.AlignLeft
+                        flat: true
+                        text: qsTr("View details")
+                        icon.name: problemReportWindow.detailsExpanded ?  "ic_fluent_chevron_up_20_regular" : "ic_fluent_chevron_down_20_regular"
+                        icon.width: 16
+                        icon.height: 16
+
+                        onClicked: problemReportWindow.detailsExpanded = !problemReportWindow.detailsExpanded
+                    }
+
+                    // 技术细节 / Technical detail (collapsed by default)
+                    Item {
+                        id: detailsArea
+                        Layout.fillWidth: true
+                        implicitHeight: problemReportWindow.detailsExpanded ? detailsLayout.implicitHeight : 0
+                        // 折叠动画播放期间保持可见，动画结束后再隐藏。
+                        visible: problemReportWindow.detailsExpanded || implicitHeight > 0
+                        clip: true
+
+                        Behavior on implicitHeight {
+                            NumberAnimation { duration: Utils.animationSpeedExpander; easing.type: Easing.OutQuint }
+                        }
+
+                        ColumnLayout {
+                            id: detailsLayout
+                            anchors.left: parent.left
+                            anchors.right: parent.right
+                            anchors.top: parent.top
+                            anchors.leftMargin: 14
+                            anchors.rightMargin: 14
+                            spacing: 8
+
+                            // 运行环境 / Environment summary
+                            RowLayout {
+                                Layout.fillWidth: true
+                                Layout.preferredHeight: 38
+                                spacing: 0
+
+                                EnvironmentItem {
+                                    iconName: "ic_fluent_desktop_20_regular"
+                                    label: qsTr("Operating system")
+                                    value: ProblemReportBridge.osName
+                                }
+
+                                Item { Layout.fillWidth: true }
+
+                                EnvironmentItem {
+                                    iconName: "ic_fluent_apps_20_regular"
+                                    label: qsTr("Class Widgets version")
+                                    value: ProblemReportBridge.appVersion
+                                }
+
+                                Item { Layout.fillWidth: true }
+
+                                EnvironmentItem {
+                                    iconName: "ic_fluent_history_20_regular"
+                                    label: qsTr("Uptime")
+                                    value: ProblemReportBridge.uptimeText
+                                }
+
+                                Item { Layout.fillWidth: true }
+
+                                EnvironmentItem {
+                                    iconName: "ic_fluent_puzzle_piece_20_regular"
+                                    label: qsTr("Installed plugins")
+                                    value: ProblemReportBridge.pluginCount
+                                }
+                            }
+                            // 堆栈信息 / Traceback
+                            Item {
+                                Layout.fillWidth: true
+                                Layout.preferredHeight: 150
+
+                                Rectangle {
+                                    anchors.fill: parent
+                                    radius: Theme.currentTheme.appearance.smallRadius
+                                    color: Theme.currentTheme.colors.controlColor
+                                    border.width: 1
+                                    border.color: Theme.currentTheme.colors.controlBorderColor
+                                }
+
+                                // 报错详情用 TextArea：可以选中、复制（含右键菜单），内容过长时内部滚动。
+                                // 内边距由控件自身提供（12 / 5 / 7），所以这里只让出 1px 描边。
+                                TextArea {
+                                    id: tracebackArea
+                                    objectName: "tracebackArea"
+                                    anchors.fill: parent
+                                    anchors.margins: 1
+                                    clip: true
+                                    frameless: true
+                                    readOnly: true
+                                    persistentSelection: true
+                                    selectByMouse: true
+                                    textFormat: TextEdit.PlainText
+                                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                                    text: ProblemReportBridge.tracebackText
+                                }
+
+                                Button {
+                                    anchors.right: parent.right
+                                    anchors.rightMargin: 12
+                                    anchors.top: parent.top
+                                    anchors.topMargin: 10
+                                    text: qsTr("Copy summary")
+                                    icon.name: "ic_fluent_copy_20_regular"
+                                    onClicked: ProblemReportBridge.copySummary()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // 分隔线 / Divider
+            Rectangle {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 1
+                color: Theme.currentTheme.colors.cardBorderColor
+            }
+
+            // ── 按钮区 / Button grid ─────────────────────────────────────
+            Item {
+                Layout.fillWidth: true
+                Layout.preferredHeight: 80
+
+                RowLayout {
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.leftMargin: 24
+                    anchors.rightMargin: 24
+                    spacing: 8
+
+                    Button {
+                        text: qsTr("Export logs")
+                        icon.name: "ic_fluent_save_20_regular"
+                        onClicked: ProblemReportBridge.exportLogs()
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
+                    Button {
+                        text: qsTr("Ignore and continue")
+                        flat: true
+                        icon.name: "ic_fluent_play_20_regular"
+                        onClicked: ProblemReportBridge.ignoreAndContinue()
+                    }
+
+                    SplitButton {
+                        id: restartButton
+                        text: qsTr("Restart in safe mode")
+                        onAccepted: ProblemReportBridge.restartInSafeMode()
+
+                        MenuItem {
+                            text: qsTr("Restart in safe mode")
+                            icon.name: "ic_fluent_shield_20_regular"
+                            onTriggered: ProblemReportBridge.restartInSafeMode()
+                        }
+
+                        MenuItem {
+                            text: qsTr("Restart")
+                            icon.name: "ic_fluent_arrow_clockwise_20_regular"
+                            onTriggered: ProblemReportBridge.restartNormally()
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

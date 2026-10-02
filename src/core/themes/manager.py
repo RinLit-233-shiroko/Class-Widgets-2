@@ -117,6 +117,11 @@ class ThemeManager(QObject):
     @Slot(str, result=bool)
     def themeChange(self, theme_id: str) -> bool:
         if theme_id == self._currentTheme:
+            # 安全模式下当前主题可能只是临时的默认回退，用户明确选择时
+            # 仍要把选择写回配置，否则下次正常启动会恢复成之前的主题。
+            if (theme_id != self._app_central.configs.preferences.current_theme
+                    and not self._app_central.configs.isKeyLocked("preferences.current_theme")):
+                self._app_central.configs.preferences.current_theme = theme_id
             return True
 
         if not any(t["id"] == theme_id for t in self._themes):
@@ -162,13 +167,26 @@ class ThemeManager(QObject):
         return self._currentTheme == DEFAULT_THEME_ID
 
     def scan(self) -> None:
-        self._themes = self.loader.scan_themes(THEMES_PATH)
+        # 安全模式只保留内置主题，外部主题目录完全不会被读取。
+        include_external = not self._app_central.safeMode
+        self._themes = self.loader.scan_themes(
+            THEMES_PATH, include_external=include_external
+        )
         self._currentTheme = self._app_central.configs.preferences.current_theme
         
         if not self._is_theme_valid(self._currentTheme):
             logger.warning(f"Current theme '{self._currentTheme}' is invalid, falling back to default theme")
-            self._currentTheme = DEFAULT_THEME_ID
-            self._app_central.configs.preferences.current_theme = DEFAULT_THEME_ID
+            if self._app_central.safeMode:
+                # 安全模式只是本次不加载外部主题：本次会话用内置默认主题显示，
+                # 但保留用户保存的主题选择，下次正常启动时会重新应用。
+                logger.info(
+                    "Safe mode: keeping the saved theme '{}' for the next normal start",
+                    self._currentTheme,
+                )
+                self._currentTheme = DEFAULT_THEME_ID
+            else:
+                self._currentTheme = DEFAULT_THEME_ID
+                self._app_central.configs.preferences.current_theme = DEFAULT_THEME_ID
         
         self.themeListChanged.emit()
         self.themeChanged.emit()

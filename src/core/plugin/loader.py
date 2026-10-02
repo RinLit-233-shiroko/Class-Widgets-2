@@ -102,8 +102,12 @@ class PluginLoader:
         sys.modules[module_name] = fake_mod
         logger.debug(f"Injected {module_name} into sys.modules (runtime-backed).")
     
-    def scan_plugins(self, external_path: Path) -> list[PluginMeta]:
-        """扫描所有插件（外部插件 + 内置插件）"""
+    def scan_plugins(
+        self,
+        external_path: Path,
+        include_external: bool = True,
+    ) -> list[PluginMeta]:
+        """扫描所有插件（内置插件，以及可选的外部插件）"""
         metas = []
         
         # 内置插件
@@ -116,6 +120,11 @@ class PluginLoader:
             metas.append(meta)
         
         # 扫描外部插件
+        if not include_external:
+            # 安全模式：外部插件目录完全不会被读取，也不会被导入。
+            logger.warning("Safe mode: external plugins are skipped")
+            return metas
+
         for plugin_dir in self.discover_plugins_in_dir(external_path):
             meta = self._load_meta(plugin_dir, "external")
             if meta:

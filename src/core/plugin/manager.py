@@ -98,7 +98,11 @@ class PluginManager(QObject):
 
     # ---------------- discover / scan ----------------
     def scan(self) -> None:
-        self.metas = self.loader.scan_plugins(self.external_path)
+        # 安全模式只加载内置插件，绝不触碰外部插件目录。
+        include_external = not self.app_central.safeMode
+        self.metas = self.loader.scan_plugins(
+            self.external_path, include_external=include_external
+        )
         for meta in self.metas:
             if meta.get("icon") and meta.get("_path"):
                 meta["icon"] = QUrl.fromLocalFile(str(Path(meta["_path"]) / meta["icon"]))

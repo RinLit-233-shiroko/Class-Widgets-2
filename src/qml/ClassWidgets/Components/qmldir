@@ -11,6 +11,7 @@ Introduction 1.0 Introduction.qml
 Skeleton 1.0 Skeleton.qml
 TrayShortcuts 1.0 TrayShortcuts.qml
 RestartButton 1.0 RestartButton.qml
+SplitButton 1.0 SplitButton.qml
 
 # Dialogs
 AddWidgetsDialog 1.0 dialogs/AddWidgetsDialog.qml
