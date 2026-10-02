@@ -281,7 +281,13 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     @Slot(str)
     def reportThemeLoadFailure(self, source: str = "") -> None:
         """Keep the existing QML entry point while delegating recovery."""
+        self.widgets_window.abort_theme_reload()
         self.theme_recovery.report_component_failure(source)
+
+    @Slot()
+    def reportThemeLoadReady(self) -> None:
+        """Confirm the active theme before reloading ordinary widgets."""
+        self.widgets_window.confirm_theme_load_ready()
 
     def resolve_class_swap_restore(self, *, discard: bool) -> None:
         if discard:

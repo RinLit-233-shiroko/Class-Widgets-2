@@ -26,6 +26,7 @@ Widget {
         if (AppCentral.scheduleRuntime.currentStatus === "class") return qsTr("Class")
         if (AppCentral.scheduleRuntime.currentStatus === "activity") return qsTr("Activity")
         if (AppCentral.scheduleRuntime.currentStatus === "break") return qsTr("Take a break")
+        if (AppCentral.scheduleRuntime.currentStatus === "preparation") return qsTr("Starting soon")
         return qsTr("Nothing right now")
     }
 

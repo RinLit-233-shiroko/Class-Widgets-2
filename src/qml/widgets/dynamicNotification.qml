@@ -73,7 +73,8 @@ Widget {
                 target: root;
                 property: "scale";
                 from: 0.8; to: 1; duration: 400;
-                easing.type: Easing.OutBack
+                easing.type: Easing.Bezier
+                easing.bezierCurve: BezierCurve.popBack
             }
         }
         onFinished: {

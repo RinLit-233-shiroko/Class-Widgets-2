@@ -1,5 +1,5 @@
-from pathlib import Path
-from PySide6.QtCore import QObject, Signal, QRect, Qt, QTimer
+﻿from pathlib import Path
+from PySide6.QtCore import QObject, Signal, QRect, QPointF, Qt, QTimer
 from PySide6.QtGui import QRegion, QCursor
 from loguru import logger
 
@@ -129,21 +129,38 @@ class WidgetsWindow(ReleasableWindow, QObject):
         QTimer.singleShot(0, self._finish_theme_reload)
 
     def _finish_theme_reload(self):
+        # Theme components are resolved by QML's type cache. Clear it before
+        # recreating the theme-owned Loader contents. The widget reload is
+        # intentionally deferred until the theme Loader reports Ready.
         try:
-            # Theme components are resolved by QML's type cache. Clear it
-            # before recreating Loader contents, otherwise a cache-busted URL
-            # can still instantiate the component from the previous theme.
             self.engine.clearComponentCache()
-            self._trigger_widget_reload()
-            logger.info("Theme component cache cleared and reload signal sent")
-        finally:
-            self._theme_reloading = False
+            self.app_central.theme_manager.themeReadyToReload.emit()
+        except Exception:
+            logger.exception("Theme component reload failed")
+            self.abort_theme_reload()
+            return
+        logger.info("Theme component cache cleared; waiting for theme readiness")
 
-    
+
     def _trigger_widget_reload(self):
         """触发 widgets 重新加载"""
         logger.info("Triggering widget reload")
-        self.app_central.theme_manager.themeReadyToReload.emit()
+        self.app_central.theme_manager.widgetsReadyToReload.emit()
+
+    def confirm_theme_load_ready(self):
+        """Release the theme reload gate after a theme component is Ready."""
+        if not self._theme_reloading:
+            return
+
+        self._trigger_widget_reload()
+        self._theme_reloading = False
+        logger.info("Theme component is ready; widget reload signal sent")
+
+    def abort_theme_reload(self):
+        """Allow the recovery path to select and load the fallback theme."""
+        if self._theme_reloading:
+            self._theme_reloading = False
+            logger.info("Theme reload aborted; waiting for fallback theme")
 
     def on_qml_ready(self, obj, obj_url):
         if Path(obj_url.toLocalFile()).resolve() != self.qml_main_path.resolve():
@@ -154,6 +171,7 @@ class WidgetsWindow(ReleasableWindow, QObject):
             logger.error(f"Main QML Load Failed for theme '{failed_theme}'")
             self._apply_empty_mask()
             self._qml_ready = False
+            self.abort_theme_reload()
             self.themeLoadFailed.emit(failed_theme)
             return
 
@@ -177,6 +195,7 @@ class WidgetsWindow(ReleasableWindow, QObject):
             return
         logger.error("'widgetsLoader' object has not found'")
         self._apply_empty_mask()
+        self.abort_theme_reload()
         self.themeLoadFailed.emit(self.app_central.theme_manager.currentTheme)
 
     def _on_qml_warnings(self, warnings):
@@ -238,25 +257,45 @@ class WidgetsWindow(ReleasableWindow, QObject):
             self.root_window.setMask(QRegion())
             return
 
-        # 小组件现位于 Flow 内部，Flow 是根容器的直接子项。浮窗模式切换时
-        # 仍需保留实际几何，才能让小组件完成自身的移出动画后再消失。
-        widgets_flow = widgets_loader.findChild(QObject, "widgetsFlow")
-        if widgets_flow:
-            base_x = widgets_loader.x()
-            base_y = widgets_loader.y()
-            flow_x = widgets_flow.x()
-            flow_y = widgets_flow.y()
+        # 小组件在 WidgetsLayout（水平 ListView）中。ListView 会把 delegate 挂到自己的
+        # contentItem 下，层级不固定，因此递归搜查带 widgetIndex 属性的项。
+        # 位置用 mapToScene 换算，自动处理 contentItem 偏移。
+        widgets_layout = widgets_loader.findChild(QObject, "widgetsFlow")
+        if widgets_layout:
+            def visit(item):
+                for child in item.childItems():
+                    if child.property("widgetIndex") is not None:
+                        if child.width() <= 0 or child.height() <= 0 or not child.isVisible():
+                            continue
+                        scene_pos = child.mapToScene(QPointF(0.0, 0.0))
+                        rect = QRect(
+                            int(scene_pos.x()),
+                            int(scene_pos.y()),
+                            int(child.width()),
+                            int(child.height()),
+                        )
+                        yield rect
+                    else:
+                        yield from visit(child)
 
-            for w in widgets_flow.childItems():
-                if w.width() <= 0 or w.height() <= 0 or not w.isVisible():
-                    continue
-                rect = QRect(
-                    int(w.x() + flow_x + base_x),
-                    int(w.y() + flow_y + base_y),
-                    int(w.width()),
-                    int(w.height())
-                )
+            found = False
+            for rect in visit(widgets_layout):
+                found = True
                 mask = mask.united(QRegion(rect))
+
+            # 兜底：若遍历未找到任何 delegate（例如 QML 层级变动），
+            # 退化为使用容器自身几何。否则 mask 会是空的，
+            # 窗口整体穿透输入，小组件点击（如点击隐藏）会完全失效。
+            if not found:
+                layout_w = int(widgets_layout.width())
+                layout_h = int(widgets_layout.height())
+                if layout_w > 0 and layout_h > 0:
+                    mask = mask.united(QRegion(QRect(
+                        int(widgets_layout.mapToScene(QPointF(0.0, 0.0)).x()),
+                        int(widgets_layout.mapToScene(QPointF(0.0, 0.0)).y()),
+                        layout_w,
+                        layout_h,
+                    )))
 
         # 浮窗区域加入 mask
         floating_container = self.root_window.findChild(QObject, "floatingWidgetContainer")
