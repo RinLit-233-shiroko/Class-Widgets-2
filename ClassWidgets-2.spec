@@ -53,6 +53,7 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
     icon=icon_file,
+    contents_directory='.',
 )
 
 coll = COLLECT(
@@ -64,7 +65,7 @@ coll = COLLECT(
     upx=True,
     upx_exclude=[],
     name='Class Widgets 2',
-    contents_directory='.',
+    # contents_directory='.',
 )
 
 if sys.platform == 'darwin':
