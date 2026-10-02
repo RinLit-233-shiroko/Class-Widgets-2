@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import RinUI
 import ClassWidgets.Components
+import "CoursePalette.js" as CoursePalette
 
 Clip {
     id: subjectClip
@@ -98,41 +99,10 @@ Clip {
         : false
     readonly property real surfaceLuminance: darkTheme ? 0.05 : 0.72
     readonly property real textLuminance: darkTheme ? 0.60 : 0.05
-    readonly property real toneSaturationCap: 0.8
-
-    function channelLuminance(channel) {
-        return channel <= 0.04045
-            ? channel / 12.92
-            : Math.pow((channel + 0.055) / 1.055, 2.4)
-    }
-
-    function relativeLuminance(color) {
-        return 0.2126 * channelLuminance(color.r)
-            + 0.7152 * channelLuminance(color.g)
-            + 0.0722 * channelLuminance(color.b)
-    }
-
-    function atLuminance(base, target) {
-        if (!base || base.hslHue === undefined)
-            return base
-        const hue = base.hslHue < 0 ? 0 : base.hslHue
-        const saturation = Math.min(base.hslSaturation, toneSaturationCap)
-        let low = 0.0
-        let high = 1.0
-        for (let i = 0; i < 20; ++i) {
-            const middle = (low + high) / 2
-            if (relativeLuminance(Qt.hsla(hue, saturation, middle, 1.0)) < target)
-                low = middle
-            else
-                high = middle
-        }
-        return Qt.hsla(hue, saturation, (low + high) / 2, 1.0)
-    }
-
-    readonly property color subjectIconBackgroundColor: atLuminance(
+    readonly property color subjectIconBackgroundColor: CoursePalette.atLuminance(
         subjectBaseColor, surfaceLuminance
     )
-    readonly property color subjectIconColor: atLuminance(
+    readonly property color subjectIconColor: CoursePalette.atLuminance(
         subjectBaseColor, textLuminance
     )
 
