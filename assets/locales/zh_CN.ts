@@ -6637,27 +6637,27 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation>当前活动</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="33"/>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="38"/>
         <source>Time</source>
         <translation>时间</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="39"/>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="44"/>
         <source>Event Countdown</source>
         <translation>事件倒计时</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="45"/>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="50"/>
         <source>Upcoming Activities</source>
         <translation>即将到来的活动</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="57"/>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="62"/>
         <source>Dynamic Notification</source>
         <translation>灵动通知</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="69"/>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="74"/>
         <source>Text</source>
         <translation>自定义文本</translation>
     </message>
@@ -6707,34 +6707,69 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
 <context>
     <name>currentActivity</name>
     <message>
-        <location filename="../../src/qml/widgets/currentActivity.qml" line="12"/>
+        <location filename="../../src/qml/widgets/currentActivity.qml" line="22"/>
         <source>Current Activity</source>
         <translation>当前活动</translation>
     </message>
     <message>
-        <location filename="../../src/qml/widgets/currentActivity.qml" line="77"/>
+        <location filename="../../src/qml/widgets/currentActivity.qml" line="26"/>
         <source>Class</source>
         <translation>课程</translation>
     </message>
     <message>
-        <location filename="../../src/qml/widgets/currentActivity.qml" line="79"/>
+        <location filename="../../src/qml/widgets/currentActivity.qml" line="27"/>
         <source>Activity</source>
         <translation>活动</translation>
     </message>
     <message>
-        <location filename="../../src/qml/widgets/currentActivity.qml" line="81"/>
+        <location filename="../../src/qml/widgets/currentActivity.qml" line="28"/>
         <source>Take a break</source>
         <translation>课间</translation>
     </message>
     <message>
-        <location filename="../../src/qml/widgets/currentActivity.qml" line="83"/>
+        <location filename="../../src/qml/widgets/currentActivity.qml" line="29"/>
         <source>Starting soon</source>
         <translation>即将开始</translation>
     </message>
     <message>
-        <location filename="../../src/qml/widgets/currentActivity.qml" line="84"/>
+        <location filename="../../src/qml/widgets/currentActivity.qml" line="30"/>
         <source>Nothing right now</source>
         <translation>当前无课程</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/currentActivity.qml" line="12"/>
+        <source>Display content</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/currentActivity.qml" line="13"/>
+        <source>Choose whether to display the custom title, subject, or alternate between both.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/currentActivity.qml" line="21"/>
+        <source>Title</source>
+        <translation type="unfinished">标题</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/currentActivity.qml" line="22"/>
+        <source>Subject</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/currentActivity.qml" line="23"/>
+        <source>Alternate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/currentActivity.qml" line="44"/>
+        <source>Alternate interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/currentActivity.qml" line="45"/>
+        <source>Set how often the custom title and subject alternate.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
