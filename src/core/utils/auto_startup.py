@@ -1,12 +1,15 @@
-import os
+import platform
 import sys
-from pathlib import Path
 
 from src import __app_name__
-import platform
+from src.core.storage.directories import SRC_PATH
 
 APP_NAME = __app_name__
-APP_PATH = getattr(sys, "frozen", False) and sys.executable or os.path.abspath(__file__) # 当前脚本或 exe 路径
+APP_SCRIPT = SRC_PATH / "app.py"
+APP_PATH = (
+    f'"{sys.executable}"' if getattr(sys, "frozen", False) 
+    else f'"{sys.executable}" "{APP_SCRIPT}"'
+)
 IS_WINDOWS = platform.system() == "Windows"
 
 if IS_WINDOWS:

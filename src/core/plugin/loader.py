@@ -11,7 +11,7 @@ from loguru import logger
 from packaging.specifiers import SpecifierSet
 from packaging.version import Version
 
-from src.core.directories import BUILTIN_PLUGINS_PATH
+from src.core.storage.directories import BUILTIN_PLUGINS_PATH
 from src.core.plugin import CW2Plugin, PluginAPI
 from src.core.plugin.api import __version__ as __API_VERSION__
 from src.core.plugin.models import PluginMeta

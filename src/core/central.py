@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import sys
 from enum import Enum, auto
-from pathlib import Path
 from typing import Any, Optional, TYPE_CHECKING, Protocol
 
 from PySide6.QtCore import QCoreApplication, QObject, Property, Signal, Slot, QPoint, QProcess, QTimer
@@ -11,9 +10,9 @@ from PySide6.QtWidgets import QApplication
 from loguru import logger
 
 from src.core import CONFIGS_PATH, QML_PATH
-from src.core.directories import PathManager, LOGS_PATH
-from src.core.platform import PlatformIntegration
-from src.core.theme_recovery import ThemeRecoveryController
+from src.core.storage.directories import PathManager, LOGS_PATH, SCHEDULES_PATH
+from src.core.storage.migration import prepare_work_directory
+from src.core.themes.recovery import ThemeRecoveryController
 
 if TYPE_CHECKING:
     from src.core.notification.manager import NotificationManager, NotificationService
@@ -46,6 +45,7 @@ from src.core.themes import ThemeManager
 from src.core.timer import UnionUpdateTimer
 from src.core.updater import UpdaterBridge
 from src.core.utils import AppTranslator, UtilsBackend
+from src.core.utils.platform import PlatformIntegration
 from src.core.utils.instance_locker import SingleInstanceGuard
 from src.core.widgets import WidgetsWindow, WidgetListModel
 from src.core.automations.manager import AutomationManager
@@ -88,6 +88,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         # Singleton pattern - store instance
         if AppCentral._instance is not None:
             raise RuntimeError("AppCentral is a singleton. Use AppCentral.instance() instead.")
+        prepare_work_directory()
         AppCentral._instance = self
 
         self._startup_state = StartupState.CREATED
@@ -187,7 +188,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     def _initialize_schedule_components(self):
         """初始化调度相关组件"""
         self.union_update_timer: UnionUpdateTimer = UnionUpdateTimer()
-        self.schedule_manager: ScheduleManager = ScheduleManager(Path(CONFIGS_PATH / "schedules"), self)
+        self.schedule_manager: ScheduleManager = ScheduleManager(SCHEDULES_PATH, self)
 
         self.runtime: ScheduleRuntime = ScheduleRuntime(self)
         self._schedule_editor: ScheduleEditor = ScheduleEditor(self.schedule_manager)

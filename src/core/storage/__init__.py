@@ -1,0 +1,1 @@
+"""Application paths and user-data storage."""
