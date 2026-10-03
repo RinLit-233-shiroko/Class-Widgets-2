@@ -4,7 +4,7 @@ from pathlib import Path
 from PySide6.QtCore import QUrl, Qt, QObject
 from PySide6.QtQml import QQmlAbstractUrlInterceptor
 from loguru import logger
-from src.core.directories import QML_PATH
+from src.core.storage.directories import QML_PATH
 import time
 from typing import Optional, TYPE_CHECKING
 

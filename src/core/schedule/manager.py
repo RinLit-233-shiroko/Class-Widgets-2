@@ -11,7 +11,7 @@ from PySide6.QtWidgets import QApplication, QFileDialog
 
 from src.core.convertor.converter import convert
 from src.core.convertor.slots import ScheduleIO
-from src.core.directories import SCHEDULES_PATH
+from src.core.storage.directories import SCHEDULES_PATH
 from src.core.parser import ScheduleParser
 from src.core.schedule.model import MetaInfo, ScheduleData
 from src.core.utils import generate_id, get_default_subjects
