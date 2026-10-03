@@ -3,6 +3,7 @@ from pathlib import Path
 
 from platformdirs import user_data_path
 from PySide6.QtCore import QObject, Slot
+from src import __version__
 
 # Resource paths remain inside the application, even when it is installed read-only.
 RESOURCE_PATH = Path(getattr(sys, "_MEIPASS", Path(__file__).parents[3])).resolve()
@@ -34,7 +35,11 @@ INSTALL_PATH = _installation_path()
 PORTABLE_PATH = INSTALL_PATH / "PORTABLE"
 USER_WORK_PATH = Path(user_data_path("Class_Widgets_2", appauthor=False, roaming=False))
 PORTABLE_WORK_PATH = INSTALL_PATH / "data"
-WORK_PATH = PORTABLE_WORK_PATH if PORTABLE_PATH.is_file() else USER_WORK_PATH
+USE_LEGACY_WORK_LAYOUT = __version__ == "2.0.0.dev31546377"
+WORK_PATH = (
+    INSTALL_PATH if USE_LEGACY_WORK_LAYOUT
+    else PORTABLE_WORK_PATH if PORTABLE_PATH.is_file() else USER_WORK_PATH
+)
 
 CONFIGS_PATH = WORK_PATH / "configs"
 SCHEDULES_PATH = CONFIGS_PATH / "schedules"

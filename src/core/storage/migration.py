@@ -12,7 +12,10 @@ from pathlib import Path
 from loguru import logger
 from PySide6.QtCore import QLockFile
 
-from .directories import INSTALL_PATH, PORTABLE_WORK_PATH, RESOURCE_PATH, USER_WORK_PATH, WORK_PATH
+from .directories import (
+    INSTALL_PATH, PORTABLE_WORK_PATH, RESOURCE_PATH, USER_WORK_PATH, WORK_PATH,
+    USE_LEGACY_WORK_LAYOUT,
+)
 
 _JOURNAL = ".data-migration-v1.json"
 _STAGING = ".data-migration-v1-staging"
@@ -302,6 +305,17 @@ def _commit(staging: Path, work_path: Path, journal_path: Path, journal: dict) -
     staging.rmdir()
 
 
+def _prepare_data_directories(work_path: Path) -> None:
+    for relative in ("configs/schedules", "plugins", "themes", "logs", "cache/plugin-cache", "temp", "audio"):
+        destination = work_path
+        for part in Path(relative).parts:
+            destination = destination / part
+            if _is_link(destination):
+                raise DataMigrationError(f"Application data directory is a link: {destination}")
+            destination.mkdir(exist_ok=True)
+    _validate_work_config(work_path)
+
+
 def prepare_work_directory(
     *,
     installation_path: Path = INSTALL_PATH,
@@ -310,6 +324,16 @@ def prepare_work_directory(
     other_work_path: Path | None = None,
 ) -> None:
     """Run once at the start of AppCentral, before any user data is created."""
+    if USE_LEGACY_WORK_LAYOUT and work_path == WORK_PATH and installation_path == INSTALL_PATH:
+        # This development version keeps its data beside the program; never migrate itself.
+        try:
+            if _is_link(work_path):
+                raise DataMigrationError(f"The application data directory is a link: {work_path}")
+            work_path.mkdir(parents=True, exist_ok=True)
+            _prepare_data_directories(work_path)
+        except OSError as error:
+            raise DataMigrationError(f"Cannot prepare application data in {work_path}: {error}") from error
+        return
     if other_work_path is None and work_path == WORK_PATH:
         other_work_path = USER_WORK_PATH if WORK_PATH == PORTABLE_WORK_PATH else PORTABLE_WORK_PATH
     if work_path.resolve() in (installation_path.resolve(), resource_path.resolve()):
@@ -446,14 +470,7 @@ def prepare_work_directory(
                     raise
                 _commit(staging, work_path, journal_path, journal)
 
-        for relative in ("configs/schedules", "plugins", "themes", "logs", "cache/plugin-cache", "temp", "audio"):
-            destination = work_path
-            for part in Path(relative).parts:
-                destination = destination / part
-                if _is_link(destination):
-                    raise DataMigrationError(f"Application data directory is a link: {destination}")
-                destination.mkdir(exist_ok=True)
-        _validate_work_config(work_path)
+        _prepare_data_directories(work_path)
     except (OSError, shutil.Error, ValueError) as error:
         raise DataMigrationError(f"Cannot prepare application data in {work_path}: {error}") from error
     finally:
