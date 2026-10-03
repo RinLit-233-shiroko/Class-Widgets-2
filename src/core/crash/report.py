@@ -23,16 +23,51 @@ def _format_uptime(seconds: float) -> str:
     return f"{hours:02d}:{minutes:02d}:{secs:02d}"
 
 
+def _windows_build_components() -> tuple[int, int]:
+    """返回 ``(build, revision)``，即 26200.9457 中的两段；取不到时为 0。"""
+    parts = platform.version().split(".")
+    try:
+        build = int(parts[2])
+    except (IndexError, ValueError):
+        return 0, 0
+    return build, _windows_revision()
+
+
+def _windows_revision() -> int:
+    """从注册表读取 UBR（补丁修订号）。
+
+    ``platform.version()`` 只到构建号（10.0.26200），完整版本需要 UBR。
+    """
+    try:
+        import winreg
+    except ImportError:
+        return 0
+    try:
+        with winreg.OpenKey(
+            winreg.HKEY_LOCAL_MACHINE,
+            r"SOFTWARE\Microsoft\Windows NT\CurrentVersion",
+            0,
+            winreg.KEY_READ | winreg.KEY_WOW64_64KEY,
+        ) as key:
+            revision, _ = winreg.QueryValueEx(key, "UBR")
+    except OSError:
+        return 0
+    try:
+        return int(revision)
+    except (TypeError, ValueError):
+        return 0
+
+
 def _describe_os() -> str:
-    """短名称，用于报告窗口的运行环境一行。"""
+    """系统名称 + 完整版本号，例如 ``Windows 11 (26200.9457)``。"""
     if platform.system() == "Windows":
-        try:
-            # Windows 11 still reports release "10", only the build tells apart.
-            if int(platform.version().split(".")[2]) >= 22000:
-                return "Windows 11"
-        except (IndexError, ValueError):
-            pass
-        return f"Windows {platform.release()}"
+        build, revision = _windows_build_components()
+        # Windows 11 依旧报告 release "10"，只能用构建号区分。
+        name = "Windows 11" if build >= 22000 else f"Windows {platform.release()}"
+        if build:
+            version = f"{build}.{revision}" if revision else str(build)
+            return f"{name} ({version})"
+        return name
     return f"{platform.system()} {platform.release()}"
 
 
@@ -45,7 +80,7 @@ class CrashReport:
     traceback_text: str = ""
     occurred_at: datetime = field(default_factory=datetime.now)
     os_name: str = field(default_factory=_describe_os)
-    app_version: str = f"{__version__}-{__version_type__}"
+    app_version: str = f"{__version__}({__version_type__})"
     uptime: float = 0.0
     plugin_count: int = 0
     theme_id: str = ""

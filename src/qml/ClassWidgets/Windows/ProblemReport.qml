@@ -53,9 +53,13 @@ QQW.Window {
         property string value: ""
 
         spacing: 12
+        Layout.fillWidth: true
 
         Icon {
             Layout.alignment: Qt.AlignVCenter
+            Layout.preferredWidth: 16
+            Layout.minimumWidth: 16
+            Layout.maximumWidth: 16
             size: 16
             icon: environmentItem.iconName
             color: Theme.currentTheme.colors.textColor
@@ -63,7 +67,8 @@ QQW.Window {
 
         ColumnLayout {
             Layout.alignment: Qt.AlignVCenter
-            Layout.maximumWidth: 220
+            Layout.fillWidth: true
+            Layout.minimumWidth: 0
             spacing: 0
 
             Text {
@@ -265,36 +270,45 @@ QQW.Window {
                             spacing: 8
 
                             // 运行环境 / Environment summary
-                            RowLayout {
+                            // 田字格：两行两列 —— 系统 / 版本 / 运行时间 / 插件。
+                            // 各列给出首选宽度（不够时才省略），多余空间按比例摊到两列。
+                            GridLayout {
                                 Layout.fillWidth: true
-                                Layout.preferredHeight: 38
-                                spacing: 0
+                                columns: 2
+                                columnSpacing: 12
+                                rowSpacing: 10
 
                                 EnvironmentItem {
+                                    Layout.fillWidth: true
+                                    Layout.minimumWidth: 0
+                                    Layout.preferredWidth: 199
                                     iconName: "ic_fluent_desktop_20_regular"
                                     label: qsTr("Operating system")
                                     value: ProblemReportBridge.osName
                                 }
 
-                                Item { Layout.fillWidth: true }
-
                                 EnvironmentItem {
+                                    Layout.fillWidth: true
+                                    Layout.minimumWidth: 0
+                                    Layout.preferredWidth: 197
                                     iconName: "ic_fluent_apps_20_regular"
                                     label: qsTr("Class Widgets version")
                                     value: ProblemReportBridge.appVersion
                                 }
 
-                                Item { Layout.fillWidth: true }
-
                                 EnvironmentItem {
+                                    Layout.fillWidth: true
+                                    Layout.minimumWidth: 0
+                                    Layout.preferredWidth: 82
                                     iconName: "ic_fluent_history_20_regular"
                                     label: qsTr("Uptime")
                                     value: ProblemReportBridge.uptimeText
                                 }
 
-                                Item { Layout.fillWidth: true }
-
                                 EnvironmentItem {
+                                    Layout.fillWidth: true
+                                    Layout.minimumWidth: 0
+                                    Layout.preferredWidth: 123
                                     iconName: "ic_fluent_puzzle_piece_20_regular"
                                     label: qsTr("Installed plugins")
                                     value: ProblemReportBridge.pluginCount
@@ -313,20 +327,15 @@ QQW.Window {
                                     border.color: Theme.currentTheme.colors.controlBorderColor
                                 }
 
-                                // 报错详情用 TextArea：可以选中、复制（含右键菜单），内容过长时内部滚动。
-                                // 内边距由控件自身提供（12 / 5 / 7），所以这里只让出 1px 描边。
-                                TextArea {
-                                    id: tracebackArea
+                                ScrollableTextArea {
+                                    id: tracebackScrollView
                                     objectName: "tracebackArea"
                                     anchors.fill: parent
                                     anchors.margins: 1
-                                    clip: true
-                                    frameless: true
                                     readOnly: true
-                                    persistentSelection: true
-                                    selectByMouse: true
+                                    font.family: "Menlo, Consolas, Ubuntu Mono, Courier New, monospace"
                                     textFormat: TextEdit.PlainText
-                                    wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                                    wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
                                     text: ProblemReportBridge.tracebackText
                                 }
 
@@ -338,6 +347,12 @@ QQW.Window {
                                     text: qsTr("Copy summary")
                                     icon.name: "ic_fluent_copy_20_regular"
                                     onClicked: ProblemReportBridge.copySummary()
+
+
+                                    AcrylicBrush {
+                                        sourceItem: tracebackScrollView
+                                        z: -99
+                                    }
                                 }
                             }
                         }

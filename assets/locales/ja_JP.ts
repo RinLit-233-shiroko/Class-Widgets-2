@@ -3400,8 +3400,8 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="223"/>
         <source>Sorry about that - Class Widgets ran into a problem it could not solve on its own and had to stop. Your class data has been saved automatically, so nothing is lost.
 You can try restarting. If you suspect a plugin or theme is involved, restart in safe mode to find the problematic component.</source>
-        <translation>申し訳ありません。Class Widgets で自動解決できない問題が発生し、実行が中断されました。授業データは自動保存されているのでご安心ください。
-再起動をお試しください。プラグインやテーマなどの第三者のコンテンツが原因の可能性がある場合は、「セーフ モード」での再起動をおすすめします。</translation>
+        <translation>申し訳ありません。Class Widgets で自動解決できない問題が発生し、実行が中断されました。
+再起動をお試しください。プラグインやテーマなどの追加の変更が原因と思われる場合は、「セーフ モード」での再起動をおすすめします。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="237"/>

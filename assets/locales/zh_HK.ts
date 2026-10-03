@@ -3358,8 +3358,8 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="223"/>
         <source>Sorry about that - Class Widgets ran into a problem it could not solve on its own and had to stop. Your class data has been saved automatically, so nothing is lost.
 You can try restarting. If you suspect a plugin or theme is involved, restart in safe mode to find the problematic component.</source>
-        <translation>十分抱歉，Class Widgets 遇到了無法自動解決的問題導致運行中斷。您的課程資料已自動儲存，請放心。
-您可以嘗試重新啟動。若懷疑是插件或主題等第三方內容引起，建議以「安全模式」重新啟動，以排查有問題的組件。</translation>
+        <translation>十分抱歉，Class Widgets 遇到了無法自動解決的問題導致運行中斷。
+您可以嘗試重新啟動。若懷疑是插件或主題等額外修改導致的，建議以「安全模式」重新啟動以排查。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="237"/>
