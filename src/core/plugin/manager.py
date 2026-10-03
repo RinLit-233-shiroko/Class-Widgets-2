@@ -139,6 +139,55 @@ class PluginManager(QObject):
 
     def load_plugins(self) -> None:
         self._plugins = self.loader.load_plugins(self.metas, list(self.enabled_plugins))
+        self._report_plugin_load_failures()
+        self.pluginListChanged.emit()
+
+    @Property("QVariant", notify=pluginListChanged)
+    def pluginLoadFailures(self) -> list[dict]:
+        """扫描/加载失败的插件，供 UI 与崩溃归因查看。"""
+        return [
+            {
+                "id": failure.plugin_id,
+                "name": failure.display_name,
+                "stage": failure.stage,
+                "error": failure.error,
+            }
+            for failure in self.loader.failures
+        ]
+
+    def _report_plugin_load_failures(self) -> None:
+        """把“插件加载失败”从日志里捞到用户面前。
+
+        以前加载失败的插件只会写一行 exception 日志然后悄悄消失，用户既不知道
+        少了什么，也无从排查。
+        """
+        failures = self.loader.failures
+        if not failures:
+            return
+
+        names = ", ".join(failure.display_name for failure in failures)
+        logger.error(
+            "{} plugin(s) failed to load and were skipped: {}", len(failures), names
+        )
+        try:
+            self.app_central.notification.dispatch(
+                NotificationData(
+                    provider_id="com.classwidgets.plugins",
+                    level=NotificationLevel.WARNING,
+                    title=QApplication.translate(
+                        "PluginManager", "Some plugins failed to load"
+                    ),
+                    message=QApplication.translate(
+                        "PluginManager",
+                        "{count} plugin(s) could not be loaded and were skipped: {names}",
+                    ).format(count=len(failures), names=names),
+                    duration=10000,
+                    closable=True,
+                    silent=True,
+                )
+            )
+        except Exception:
+            logger.exception("Failed to report plugin load failures")
 
     def _on_retranslate(self) -> None:
         logger.info("Retranslating plugins...")

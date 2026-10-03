@@ -12,7 +12,7 @@ from PySide6.QtWidgets import QApplication
 from loguru import logger
 
 from src.core import CONFIGS_PATH, QML_PATH
-from src.core.crash import CrashHandler, CrashReport
+from src.core.crash import CrashHandler, CrashReport, PluginRecord
 from src.core.directories import PathManager, LOGS_PATH
 from src.core.platform import PlatformIntegration
 from src.core.themes.recovery import ThemeRecoveryController
@@ -519,6 +519,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         # 加载插件（内置+外部）
         self.plugin_manager.scan()  # 延迟扫描插件，确保翻译器已加载
         self.plugin_manager.load_plugins()
+        raise
 
     def _init_tray_icon(self) -> None:
         from src.core.windows.tray import TrayIcon
@@ -609,7 +610,67 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             "plugin_count": len(getattr(self.plugin_manager, "metas", None) or []),
             "theme_id": self.theme_manager.currentTheme,
             "safe_mode": self._safe_mode,
+            "plugins": self._plugin_records(),
+            "active_plugin_id": self._active_plugin_id(),
         }
+
+    def _plugin_records(self) -> list[PluginRecord]:
+        """把插件清单整理成崩溃归因要用的记录。
+
+        任何一步拿不到都退化成空清单：归因是锦上添花，绝不能在崩溃路径上再抛一次。
+        """
+        records: list[PluginRecord] = []
+        try:
+            metas = getattr(self.plugin_manager, "metas", None) or []
+        except Exception:
+            return records
+
+        for meta in metas:
+            try:
+                plugin_id = str(meta.get("id", "") or "")
+                if not plugin_id:
+                    continue
+                records.append(
+                    PluginRecord(
+                        plugin_id=plugin_id,
+                        name=str(meta.get("name", "") or ""),
+                        version=str(meta.get("version", "") or ""),
+                        icon=self._plugin_icon_url(meta.get("icon")),
+                        path=str(meta.get("_path") or ""),
+                        builtin=meta.get("_type") == "builtin",
+                    )
+                )
+            except Exception:
+                logger.exception("Failed to describe a plugin for crash attribution")
+        return records
+
+    @staticmethod
+    def _plugin_icon_url(icon) -> str:
+        """把插件清单里的 icon 统一成 QML 能直接用的字符串。
+
+        插件清单里的 icon 是 ``QUrl``（见 :meth:`PluginManager.scan`），而 PySide6 的
+        ``str(QUrl)`` 返回的是 repr —— ``PySide6.QtCore.QUrl('file:///...')``，
+        直接塞给 ``Image.source`` 只会得到一张空图，必须走 ``toString()``。
+        """
+        if icon is None:
+            return ""
+        to_string = getattr(icon, "toString", None)
+        if callable(to_string):
+            try:
+                return str(to_string())
+            except Exception:
+                logger.exception("Failed to convert a plugin icon URL")
+                return ""
+        return str(icon or "")
+
+    def _active_plugin_id(self) -> str:
+        """当前正持有 API 上下文的插件（插件生命周期回调期间）。"""
+        try:
+            plugin = getattr(self.plugin_api, "current_plugin", None)
+            meta = getattr(plugin, "meta", None) or {}
+            return str(meta.get("id", "") or "")
+        except Exception:
+            return ""
 
     @Slot(object)
     def _on_crash_reported(self, report: CrashReport) -> None:

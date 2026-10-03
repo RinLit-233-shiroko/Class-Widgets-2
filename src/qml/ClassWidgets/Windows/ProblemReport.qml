@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import RinUI
+import Qt5Compat.GraphicalEffects
 import ClassWidgets.Components
 import QtQuick.Window as QQW
 
@@ -234,6 +235,120 @@ QQW.Window {
                         )
                     }
 
+                    // ── 智能检测 / Smart detection ─────────────────────────
+                    // 只有规则判定崩溃来自第三方插件时才出现。
+                    ColumnLayout {
+                        id: smartDetection
+                        Layout.fillWidth: true
+                        spacing: 8
+                        visible: ProblemReportBridge.pluginDetected
+
+                        Text {
+                            typography: Typography.BodyStrong
+                            text: qsTr("Smart detection")
+                        }
+
+                        Text {
+                            Layout.fillWidth: true
+                            typography: Typography.Body
+                            wrapMode: Text.Wrap
+                            text: qsTr(
+                                "Class Widgets noticed that this problem was caused by the plugin \"%1\". " +
+                                "You can try disabling it and restarting right away."
+                            ).arg(ProblemReportBridge.pluginName)
+                        }
+
+                        // 插件卡片：图标 + 名称 + 快捷禁用 / plugin card
+                        Rectangle {
+                            id: pluginCard
+                            Layout.fillWidth: true
+                            Layout.preferredHeight: 72
+                            radius: Theme.currentTheme.appearance.smallRadius
+                            color: Theme.currentTheme.colors.cardColor
+                            border.width: 1
+                            border.color: Theme.currentTheme.colors.cardBorderColor
+
+                            RowLayout {
+                                anchors.fill: parent
+                                anchors.margins: 12
+                                spacing: 12
+
+                                Rectangle {
+                                    Layout.alignment: Qt.AlignVCenter
+                                    width: 48
+                                    height: 48
+                                    radius: 12
+                                    color: Theme.currentTheme.colors.controlColor
+                                    border.width: 1
+                                    border.color: Theme.currentTheme.colors.controlBorderColor
+
+                                    Icon {
+                                        id: pluginCardIcon
+                                        anchors.fill: parent
+                                        // 有插件图标时铺满卡片，回退到字体图标时留出边距。
+                                        size: ProblemReportBridge.pluginIcon === "" ? 32 : 48
+                                        source: ProblemReportBridge.pluginIcon
+                                        name: ProblemReportBridge.pluginIcon === "" ? "ic_fluent_apps_add_in_20_filled" : ""
+                                        opacity: ProblemReportBridge.pluginIcon === "" ? 0.5 : 1
+
+                                        layer.enabled: true
+                                        layer.effect: OpacityMask {
+                                            anchors.fill: parent
+                                            maskSource: Rectangle {
+                                                width: pluginCardIcon.width
+                                                height: pluginCardIcon.height
+                                                radius: 12
+                                            }
+                                        }
+                                    }
+                                }
+
+                                ColumnLayout {
+                                    Layout.fillWidth: true
+                                    Layout.minimumWidth: 0
+                                    Layout.alignment: Qt.AlignVCenter
+                                    spacing: 2
+
+                                    Text {
+                                        Layout.fillWidth: true
+                                        typography: Typography.Body
+                                        text: ProblemReportBridge.pluginName
+                                        wrapMode: Text.NoWrap
+                                        elide: Text.ElideRight
+                                    }
+
+                                    Text {
+                                        Layout.fillWidth: true
+                                        typography: Typography.Caption
+                                        color: Theme.currentTheme.colors.textSecondaryColor
+                                        text: qsTr("* High risk, disabling it is recommended")
+                                        wrapMode: Text.NoWrap
+                                        elide: Text.ElideRight
+                                    }
+                                }
+
+                                // 快捷禁用：点过一次就变「已禁用」，不可反悔。
+                                Button {
+                                    id: disablePluginButton
+                                    readonly property bool done: ProblemReportBridge.pluginDisabled
+
+                                    Layout.alignment: Qt.AlignVCenter
+                                    Layout.minimumWidth: 120
+
+                                    // 未禁用时是强调色主按钮；禁用后回到普通按钮。
+                                    highlighted: !done
+                                    // 已禁用时不再接受点击（pluginDisableAvailable 也会变 false）。
+                                    enabled: ProblemReportBridge.pluginDisableAvailable || done
+                                    text: done ? qsTr("Disabled") : qsTr("Disable")
+                                    icon.name: done ? "ic_fluent_checkmark_20_filled" : ""
+                                    icon.width: 16
+                                    icon.height: 16
+                                    onClicked: ProblemReportBridge.disableDetectedPlugin()
+                                }
+                            }
+                        }
+                    }
+
                     // 查看详细情况 / Toggle technical details
                     Button {
                         id: detailsToggle
@@ -337,6 +452,11 @@ QQW.Window {
                                     textFormat: TextEdit.PlainText
                                     wrapMode: TextEdit.WrapAtWordBoundaryOrAnywhere
                                     text: ProblemReportBridge.tracebackText
+                                    // RinUI 0.4.4.1 的 ScrollableTextArea 写着
+                                    // `implicitHeight: defaultHeight`，而 defaultHeight 并不存在，
+                                    // 一旦有人读 implicitHeight 就报 ReferenceError。
+                                    // 这里由 anchors 决定尺寸，所以把 implicitHeight 钉死以绕开该绑定。
+                                    implicitHeight: 0
                                 }
 
                                 Button {
@@ -399,8 +519,8 @@ QQW.Window {
 
                     SplitButton {
                         id: restartButton
-                        text: qsTr("Restart in safe mode")
-                        onAccepted: ProblemReportBridge.restartInSafeMode()
+                        text: qsTr("Restart")
+                        onAccepted: ProblemReportBridge.restartNormally()
 
                         MenuItem {
                             text: qsTr("Restart in safe mode")

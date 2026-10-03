@@ -2863,6 +2863,16 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
         <source>{count} incompatible plugin(s) have been loaded, which may cause unknown issues.</source>
         <translation>发现 {count} 个插件可能不兼容，运行过程中可能出现异常。</translation>
     </message>
+    <message>
+        <location filename="../../src/core/plugin/manager.py" line="178"/>
+        <source>Some plugins failed to load</source>
+        <translation>部分插件加载失败</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/manager.py" line="182"/>
+        <source>{count} plugin(s) could not be loaded and were skipped: {names}</source>
+        <translation>{count} 个插件无法加载，已跳过：{names}</translation>
+    </message>
 </context>
 <context>
     <name>PluginPlaza</name>
@@ -3598,15 +3608,40 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
         <translation>忽略并强制继续</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="387"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="391"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="515"/>
         <source>Restart in safe mode</source>
         <translation>重新启动并进入安全模式</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="397"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="511"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="521"/>
         <source>Restart</source>
         <translation>重新启动</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="248"/>
+        <source>Smart detection</source>
+        <translation>智能检测</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="256"/>
+        <source>Class Widgets noticed that this problem was caused by the plugin &quot;%1&quot;. You can try disabling it and restarting right away.</source>
+        <translation>Class Widgets 注意到了该问题由插件“%1”引发。您可以尝试禁用插件，并直接重新启动。</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="321"/>
+        <source>* High risk, disabling it is recommended</source>
+        <translation>* 高风险，建议禁用</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="334"/>
+        <source>Disabled</source>
+        <translation>已禁用</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="335"/>
+        <source>Disable</source>
+        <translation>禁用</translation>
     </message>
 </context>
 <context>

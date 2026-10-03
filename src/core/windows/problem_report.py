@@ -20,6 +20,7 @@ class ProblemReport(ReleasableWindow, QObject):
     """
 
     reportChanged = Signal()
+    pluginStateChanged = Signal()
 
     #: 日志导出时附带的最大日志尾部长度。
     _LOG_TAIL_LIMIT = 256 * 1024
@@ -27,6 +28,7 @@ class ProblemReport(ReleasableWindow, QObject):
     def __init__(self, parent):
         super().__init__(parent)
         self._report: Optional[CrashReport] = None
+        self._plugin_disabled = False
         self._show_when_ready = False
         self.engine.rootContext().setContextProperty("ProblemReportBridge", self)
         self.engine.objectCreated.connect(self._on_object_created)
@@ -70,9 +72,100 @@ class ProblemReport(ReleasableWindow, QObject):
     def tracebackText(self) -> str:
         return self._report.details_text if self._report else ""
 
+    # ---------------- 智能检测 / plugin attribution ----------------
+    @Property(bool, notify=reportChanged)
+    def pluginDetected(self) -> bool:
+        """本次崩溃是否被归因到某个第三方插件。"""
+        return bool(self._report and self._report.blames_plugin)
+
+    @Property(str, notify=reportChanged)
+    def pluginName(self) -> str:
+        suspect = self._report.plugin_suspect if self._report else None
+        return suspect.display_name if suspect else ""
+
+    @Property(str, notify=reportChanged)
+    def pluginId(self) -> str:
+        suspect = self._report.plugin_suspect if self._report else None
+        return suspect.plugin_id if suspect else ""
+
+    @Property(str, notify=reportChanged)
+    def pluginVersion(self) -> str:
+        suspect = self._report.plugin_suspect if self._report else None
+        return suspect.version if suspect else ""
+
+    @Property(str, notify=reportChanged)
+    def pluginIcon(self) -> str:
+        suspect = self._report.plugin_suspect if self._report else None
+        return suspect.icon if suspect else ""
+
+    @Property(bool, notify=pluginStateChanged)
+    def pluginDisabled(self) -> bool:
+        """插件当前是否已禁用（用户点过，或本来就没启用）。"""
+        return self._plugin_disabled
+
+    @Property(bool, notify=pluginStateChanged)
+    def pluginDisableAvailable(self) -> bool:
+        """能不能从报告窗口直接禁用这个插件。"""
+        suspect = self._report.plugin_suspect if self._report else None
+        if suspect is None or suspect.builtin or self._plugin_disabled:
+            return False
+        plugin_manager = getattr(self.central, "plugin_manager", None)
+        if plugin_manager is None:
+            return False
+        try:
+            if self.central.configs.isKeyLocked("plugins.enabled"):
+                return False
+        except Exception:
+            return False
+        return True
+
+    def _suspect_is_enabled(self) -> bool:
+        suspect = self._report.plugin_suspect if self._report else None
+        if suspect is None:
+            return False
+        plugin_manager = getattr(self.central, "plugin_manager", None)
+        if plugin_manager is None:
+            return False
+        try:
+            return bool(plugin_manager.isPluginEnabled(suspect.plugin_id))
+        except Exception:
+            return False
+
     def set_report(self, report: CrashReport) -> None:
         self._report = report
+        # 插件本来就没启用时直接呈现“已禁用”，不给用户一个按了没反应的按钮。
+        self._plugin_disabled = report.blames_plugin and not self._suspect_is_enabled()
         self.reportChanged.emit()
+        self.pluginStateChanged.emit()
+
+    @Slot()
+    def disableDetectedPlugin(self) -> None:
+        """禁用被归因的插件，并立刻落盘（不能反悔）。"""
+        suspect = self._report.plugin_suspect if self._report else None
+        if suspect is None or self._plugin_disabled:
+            return
+        if not self.pluginDisableAvailable:
+            logger.warning(
+                "Disabling plugin {} from the problem report is not available",
+                suspect.plugin_id,
+            )
+            return
+
+        plugin_manager = getattr(self.central, "plugin_manager", None)
+        try:
+            plugin_manager.setPluginEnabled(suspect.plugin_id, False)
+            self.central.configs.save(silent=True)
+        except Exception:
+            logger.exception("Failed to disable plugin {}", suspect.plugin_id)
+            return
+
+        self._plugin_disabled = True
+        self.pluginStateChanged.emit()
+        logger.success(
+            "Plugin {} ({}) disabled from the problem report",
+            suspect.display_name,
+            suspect.plugin_id,
+        )
 
     # ---------------- 显示 / show ----------------
     def show_when_ready(self) -> None:

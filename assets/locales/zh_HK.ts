@@ -2703,6 +2703,16 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
         <source>{count} incompatible plugin(s) have been loaded, which may cause unknown issues.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../../src/core/plugin/manager.py" line="178"/>
+        <source>Some plugins failed to load</source>
+        <translation>部分插件載入失敗</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/manager.py" line="182"/>
+        <source>{count} plugin(s) could not be loaded and were skipped: {names}</source>
+        <translation>有 {count} 個插件無法載入，已略過：{names}</translation>
+    </message>
 </context>
 <context>
     <name>PluginPlaza</name>
@@ -3410,9 +3420,35 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
         <translation>重新啟動並進入安全模式</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="397"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="511"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="521"/>
         <source>Restart</source>
         <translation>重新啟動</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="248"/>
+        <source>Smart detection</source>
+        <translation>智能偵測</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="256"/>
+        <source>Class Widgets noticed that this problem was caused by the plugin &quot;%1&quot;. You can try disabling it and restarting right away.</source>
+        <translation>Class Widgets 注意到該問題由插件「%1」引發。您可以嘗試停用該插件，並直接重新啟動。</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="321"/>
+        <source>* High risk, disabling it is recommended</source>
+        <translation>* 高風險，建議停用</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="334"/>
+        <source>Disabled</source>
+        <translation>已停用</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="335"/>
+        <source>Disable</source>
+        <translation>停用</translation>
     </message>
 </context>
 <context>

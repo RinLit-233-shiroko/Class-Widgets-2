@@ -7,9 +7,17 @@ import traceback
 from dataclasses import dataclass, field
 from datetime import datetime
 from types import TracebackType
-from typing import Optional
+from typing import Optional, Sequence
+
+from loguru import logger
 
 from src import __version__, __version_type__
+from src.core.crash.diagnosis import (
+    CrashDiagnosis,
+    PluginRecord,
+    PluginSuspect,
+    diagnose_exception,
+)
 from src.core.directories import LOGS_PATH
 
 #: Used when a report has to estimate the process uptime on its own.
@@ -88,6 +96,16 @@ class CrashReport:
     source: str = ""
     log_dir: str = field(default_factory=lambda: str(LOGS_PATH))
     safe_mode: bool = False
+    #: 归因结论：这次崩溃是不是由某个插件引发。
+    diagnosis: CrashDiagnosis = field(default_factory=CrashDiagnosis)
+
+    @property
+    def plugin_suspect(self) -> Optional[PluginSuspect]:
+        return self.diagnosis.suspect
+
+    @property
+    def blames_plugin(self) -> bool:
+        return self.diagnosis.blames_plugin
 
     @property
     def headline(self) -> str:
@@ -121,6 +139,13 @@ class CrashReport:
         ]
         if self.log_dir:
             lines.append(f"Logs: {self.log_dir}")
+        if self.diagnosis.blames_plugin:
+            suspect = self.diagnosis.suspect
+            lines.append(
+                f"Suspect plugin: {suspect.display_name} "
+                f"({suspect.plugin_id}) "
+                f"[rule={suspect.rule} confidence={suspect.confidence}]"
+            )
         if self.traceback_text:
             lines.extend(["", self.traceback_text.rstrip()])
         return "\n".join(lines)
@@ -137,8 +162,14 @@ def build_crash_report(
     theme_id: str = "",
     log_dir: Optional[str] = None,
     safe_mode: bool = False,
+    plugins: Sequence[PluginRecord] = (),
+    active_plugin_id: str = "",
 ) -> CrashReport:
-    """Build a report from ``sys.exc_info()`` style arguments."""
+    """Build a report from ``sys.exc_info()`` style arguments.
+
+    ``plugins`` 是当前已知的插件清单，用于按规则判断本次崩溃是否可以归因到
+    某个第三方插件。
+    """
     if exc_type is None and exc_value is None and exc_tb is None:
         exc_type, exc_value, exc_tb = sys.exc_info()
 
@@ -152,6 +183,27 @@ def build_crash_report(
     else:
         traceback_text = f"{exception_type}: {message}" if message else exception_type
 
+    try:
+        diagnosis = diagnose_exception(
+            exc_tb,
+            exc_value,
+            plugins=plugins,
+            active_plugin_id=active_plugin_id,
+            message=message,
+        )
+    except Exception:  # 归因失败绝不能反过来干掉报告
+        diagnosis = CrashDiagnosis()
+
+    if diagnosis.blames_plugin:
+        suspect = diagnosis.suspect
+        logger.warning(
+            "Crash attributed to plugin {} ({}) by rule {} ({})",
+            suspect.display_name,
+            suspect.plugin_id,
+            suspect.rule,
+            suspect.confidence,
+        )
+
     return CrashReport(
         exception_type=exception_type,
         message=message,
@@ -164,4 +216,5 @@ def build_crash_report(
         source=source,
         log_dir=str(LOGS_PATH) if log_dir is None else log_dir,
         safe_mode=safe_mode,
+        diagnosis=diagnosis,
     )
