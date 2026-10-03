@@ -26,10 +26,35 @@ QQW.Window {
     width: panelRoot.width + shadowMargin * 2
     height: panelRoot.height + shadowMargin * 2
 
+    // 展开 / 收起时保持不变，从中心向上下两侧expand
+    property real centerY: 0
+    // 内部重定位标记，避免 onYChanged 把程序自己设的 y 又当成用户拖动。
+    property bool recentering: false
+
+    function moveToCenter(force) {
+        if (force || problemReportWindow.centerY === 0)
+            problemReportWindow.centerY = Screen.virtualY + Screen.height / 2
+        problemReportWindow.recentering = true
+        problemReportWindow.y = Math.round(problemReportWindow.centerY - problemReportWindow.height / 2)
+        problemReportWindow.recentering = false
+    }
+
+    onHeightChanged: moveToCenter(false)
+
+    onYChanged: {
+        if (!problemReportWindow.recentering)
+            problemReportWindow.centerY = problemReportWindow.y + problemReportWindow.height / 2
+    }
+
+    onVisibleChanged: {
+        if (problemReportWindow.visible)
+            moveToCenter(true)
+    }
+
     Component.onCompleted: {
         // 首次显示时居中，之后用户可以自由拖动。
         problemReportWindow.x = Math.round((Screen.width - problemReportWindow.width) / 2) + Screen.virtualX
-        problemReportWindow.y = Math.round((Screen.height - problemReportWindow.height) / 2) + Screen.virtualY
+        moveToCenter(true)
     }
 
     onClosing: function(event) {
