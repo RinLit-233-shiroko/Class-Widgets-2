@@ -519,7 +519,6 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         # 加载插件（内置+外部）
         self.plugin_manager.scan()  # 延迟扫描插件，确保翻译器已加载
         self.plugin_manager.load_plugins()
-        raise
 
     def _init_tray_icon(self) -> None:
         from src.core.windows.tray import TrayIcon
