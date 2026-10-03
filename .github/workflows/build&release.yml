@@ -222,7 +222,13 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
-          Compress-Archive -Path "dist/Class Widgets 2/*" -DestinationPath "dist/ClassWidgets-2-Windows.zip"
+          $portable = "dist/Class Widgets 2/PORTABLE"
+          New-Item -ItemType File -Path $portable -Force | Out-Null
+          try {
+            Compress-Archive -Path "dist/Class Widgets 2/*" -DestinationPath "dist/ClassWidgets-2-Windows.zip"
+          } finally {
+            Remove-Item $portable -Force
+          }
 
       - name: 🔏 Prepare exe for signing (Windows)
         if: runner.os == 'Windows' && inputs.is_signing
@@ -263,7 +269,13 @@ jobs:
             Copy-Item $signedExe "dist/Class Widgets 2/${env:EXE_NAME}" -Force
             # Re-zip with signed exe
             Remove-Item "dist/ClassWidgets-2-Windows.zip" -Force
-            Compress-Archive -Path "dist/Class Widgets 2/*" -DestinationPath "dist/ClassWidgets-2-Windows.zip"
+            $portable = "dist/Class Widgets 2/PORTABLE"
+            New-Item -ItemType File -Path $portable -Force | Out-Null
+            try {
+              Compress-Archive -Path "dist/Class Widgets 2/*" -DestinationPath "dist/ClassWidgets-2-Windows.zip"
+            } finally {
+              Remove-Item $portable -Force
+            }
             echo "✅ 已使用签名后的可执行文件重新打包"
           } else {
             Write-Error "未找到已签名的可执行文件"
