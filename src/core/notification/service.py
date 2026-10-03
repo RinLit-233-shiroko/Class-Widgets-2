@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-from pathlib import Path
 from typing import TYPE_CHECKING
+from PySide6.QtCore import QObject, Signal, Slot, QUrl
+from PySide6.QtMultimedia import QSoundEffect
+from pathlib import Path
 
 from loguru import logger
-from PySide6.QtCore import QObject, QUrl, Signal, Slot
-from PySide6.QtMultimedia import QSoundEffect
 
 from src.core.storage.directories import ASSETS_PATH, CUSTOM_AUDIO_PATH
 
