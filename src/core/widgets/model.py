@@ -52,8 +52,6 @@ class WidgetListModel(QAbstractListModel):
         self._presets: dict[str, list[WidgetEntry]] = {}
         self._current_preset: str = ""
 
-        self.modelChanged.connect(self.save_config)
-
     def roleNames(self):
         return {
             self.InstanceIdRole: b"instanceId",
@@ -122,6 +120,7 @@ class WidgetListModel(QAbstractListModel):
         if current_preset:
             self.load_preset(current_preset)
 
+    @Slot()
     def save_config(self):
         if not self._app_central:
             logger.warning("Cannot save widget presets: AppCentral not available")
@@ -129,7 +128,6 @@ class WidgetListModel(QAbstractListModel):
         # 保存时直接赋值 WidgetEntry 列表，Pydantic 可以处理
         self._app_central.configs.preferences.widgets_presets = self.presets
         self._app_central.configs.preferences.current_preset = self._current_preset
-        logger.info("Widget presets saved")
 
     def syncCurrentPreset(self):
         """同步当前 _instances 到 _presets"""

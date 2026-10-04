@@ -45,7 +45,12 @@ def is_compatible(theme_api_version: str, app_version: Version = APP_API_VERSION
 class ThemeLoader:
     """Theme metadata loader (builtin + external)."""
 
-    def scan_themes(self, external_path: Path = THEMES_PATH) -> list[ThemeMeta]:
+    def scan_themes(
+        self,
+        external_path: Path = THEMES_PATH,
+        include_external: bool = True,
+    ) -> list[ThemeMeta]:
+        """扫描内置主题（以及可选的外部主题）。"""
         metas: list[ThemeMeta] = []
 
         # Built-in themes (authoritative, no fallback)
@@ -86,6 +91,12 @@ class ThemeLoader:
             metas.append(meta)
 
         # External themes
+        if not include_external:
+            # 安全模式：完全不读取外部主题目录。
+            logger.warning("Safe mode: external themes are skipped")
+            logger.info(f"Total themes loaded: {len(metas)}")
+            return metas
+
         logger.info(f"Scanning external themes: {external_path}")
         if not external_path.exists():
             external_path.mkdir(parents=True, exist_ok=True)

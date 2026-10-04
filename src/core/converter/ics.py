@@ -402,11 +402,18 @@ def _collect_infinite(
     return specs
 
 
+def _load_calendar(path: str | Path) -> Any:
+    """读取并解析 ICS，兼容非标准行尾（\\r\\r\\n、裸 \\r）统一为 LF。"""
+    raw = Path(path).read_bytes()
+    raw = raw.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return icalendar.Calendar.from_ical(raw)
+
+
 def _read(path: str | Path, start_date: date | str) -> ScheduleData:
     if isinstance(start_date, str):
         start_date = datetime.strptime(start_date, "%Y-%m-%d").date()
 
-    calendar = icalendar.Calendar.from_ical(Path(path).read_bytes())
+    calendar = _load_calendar(path)
     all_components = list(calendar.walk("VEVENT"))
 
     # 主事件（无 RECURRENCE-ID）与替换子事件（RECURRENCE-ID，同 UID）分开处理。
@@ -882,7 +889,7 @@ def read(path: str | Path, start_date: date | str) -> ScheduleData:
 
 def validate(path: str | Path) -> bool:
     try:
-        calendar = icalendar.Calendar.from_ical(Path(path).read_bytes())
+        calendar = _load_calendar(path)
         return any(component.name == "VEVENT" for component in calendar.walk())
     except Exception:
         return False

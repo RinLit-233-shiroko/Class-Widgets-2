@@ -7,16 +7,16 @@ import RinUI
 import ClassWidgets.Easing
 
 
-Column {
+Item {
     id: widgetsContainer
+    objectName: "widgetsLoader"
+
     property real scaleFactor: Configs.data.preferences.scale_factor || 1.0
-    spacing: 8
+    property real spacing: 8
 
     property bool editMode: false
     property bool menuVisible: false
-    property bool hide: {
-        return Configs.data.interactions.hide.state
-    }
+    property bool hide: Configs.data.interactions.hide.state
     property bool floatingMode: hide
         && (Configs.data.interactions.tapped_action === "floating_widget"
             || Configs.data.interactions.hide.action === "floating_widget")
@@ -24,25 +24,30 @@ Column {
 
     property real dragOffsetX: 0
     property real dragOffsetY: 0
+    property bool settleContainerDrag: false
     property real hideMargin: {
-        if (floatingMode) return 0  // 浮窗模式下完全移出窗口
-        switch (Qt.platform.os) {
-            case "osx":
-                return 48
-            default:
-                return 24
-        }
-    } // 隐藏时保留的可点击空间
+        if (floatingMode) return 0
+        return Qt.platform.os === "osx" ? 48 : 24
+    }
     property bool isTopPosition: preferences.widgets_anchor.indexOf("top_") === 0
     property real hideFade: 0
 
     signal contentGeometryChanged()
+    signal widgetTapped()
+
+    // 「添加」按钮行固定高度，避免与父级高度形成绑定环
+    readonly property int addRowHeight: 40
+
+    implicitWidth: Math.max(widgetsLayout.implicitWidth,
+                            addWidgetsContainer.visible ? addWidgetsContainer.width : 0)
+    implicitHeight: widgetsLayout.implicitHeight
+                    + (addWidgetsContainer.visible ? addRowHeight + spacing : 0)
+
+    width: implicitWidth
+    height: implicitHeight
 
     Behavior on hideFade {
-        NumberAnimation {
-            duration: 300
-            easing.type: Easing.InOutQuad
-        }
+        NumberAnimation { duration: 300; easing.type: Easing.InOutQuad }
     }
 
     layer.enabled: Qt.platform.os === "osx" && isTopPosition
@@ -59,112 +64,140 @@ Column {
         }
     }
 
+    // ============================================================
+    //  离散状态进度：只有这两个属性挂动画
+    // ============================================================
+
+    // 直接绑定而非在 onXxxChanged 里赋值：后者在启动时不会触发，
+    // 会导致初始就处于隐藏状态时完全没有过渡（甚至位置不对）。
+    // 编辑模式优先于隐藏：隐藏状态下进入编辑时先回到正常/居中位置，
+    // 退出编辑后 hide 仍为真，再滑回隐藏位置。
+    property real hideProgress: (hide && !editMode) ? 1 : 0
+    property real editProgress: editMode ? 1 : 0
+
     onHideChanged: hideFade = hide ? 1.0 : 0.0
 
-    // 编辑按钮高度：与首个小组件对齐，无小组件时回退默认值
-    // property real buttonHeight: widgetRepeater.count > 0
-    //     ? widgetRepeater.itemAt(0).height
-    //     : 100 * scaleFactor
+    Component.onCompleted: editMode = widgetsLayout.count === 0
 
-    Component.onCompleted: {
-        editMode = widgetRepeater.count === 0
+    Behavior on hideProgress {
+        NumberAnimation { duration: 420; easing.type: Easing.OutQuint }
+    }
+    Behavior on editProgress {
+        NumberAnimation { duration: 450; easing.type: Easing.OutQuint }
     }
 
-    // 计算 X 坐标
-    function calcX() {
-        let x = 0
-        switch (preferences.widgets_anchor) {
+    // ============================================================
+    //  位置：纯绑定，随宽度/高度逐帧变化
+    // ============================================================
+
+    readonly property string anchorMode: preferences.widgets_anchor
+
+    // 正常显示位置
+    readonly property real shownX: {
+        switch (anchorMode) {
         case "top_left":
         case "bottom_left":
-            x = preferences.widgets_offset_x
-            if (hide) x = - width + hideMargin
-            break
+            return preferences.widgets_offset_x
         case "top_center":
         case "bottom_center":
-            x = (parent.width - width) / 2 + preferences.widgets_offset_x
-            break
+            return (parent.width - width) / 2 + preferences.widgets_offset_x
         case "top_right":
         case "bottom_right":
-            x = parent.width - width - preferences.widgets_offset_x
-            if (hide) x = parent.width - hideMargin
-            break
+            return parent.width - width - preferences.widgets_offset_x
         }
-        return x
+        return 0
     }
 
-    // 计算 Y 坐标
-    function calcY() {
-        let y = 0
-        switch (preferences.widgets_anchor) {
+    readonly property real shownY: {
+        switch (anchorMode) {
         case "top_left":
         case "top_right":
-            if (editMode) {
-                y = (Screen.height - height) / 2
-            } else {
-                y = preferences.widgets_offset_y
-                // 左/右不受 hide 影响
-            }
-            break
         case "top_center":
-            if (editMode) {
-                y = (Screen.height - height) / 2
-            } else {
-                y = preferences.widgets_offset_y
-                if (hide) y = -height + hideMargin  // 仅 center 生效
-            }
-            break
+            return preferences.widgets_offset_y
         case "bottom_left":
         case "bottom_right":
-            y = parent.height - height - preferences.widgets_offset_y
-            // 左/右不受 hide 影响
-            break
         case "bottom_center":
-            y = parent.height - height - preferences.widgets_offset_y
-            if (hide) y = parent.height - hideMargin // 仅 center 生效
-            break
+            return parent.height - height - preferences.widgets_offset_y
         }
-
-        return y
+        return 0
     }
 
-    x: calcX() + dragOffsetX
-    y: calcY() + dragOffsetY
-
-    // Flow items can have different widths, so an index cannot be inferred
-    // from a fixed item width. Compare the dragged item's center with the
-    // centers of the other delegates instead.
-    function dropIndex(draggedItem, fromIndex) {
-        var draggedCenter = draggedItem.x + draggedItem.width / 2
-        var targetIndex = 0
-
-        for (var i = 0; i < widgetRepeater.count; ++i) {
-            if (i === fromIndex)
-                continue
-
-            var item = widgetRepeater.itemAt(i)
-            if (item && draggedCenter > item.x + item.width / 2)
-                ++targetIndex
+    // 隐藏位置（左/右锚点的 Y、以及编辑模式不受隐藏影响）
+    readonly property real hiddenX: {
+        switch (anchorMode) {
+        case "top_left":
+        case "bottom_left":
+            return -width + hideMargin
+        case "top_center":
+        case "bottom_center":
+            return shownX          // 居中锚点不横向隐藏
+        case "top_right":
+        case "bottom_right":
+            return parent.width - hideMargin
         }
-
-        return targetIndex
+        return shownX
     }
 
-    // The window mask must follow the hide/show transition frame by frame.
+    readonly property real hiddenY: {
+        switch (anchorMode) {
+        case "top_center":
+            return -height + hideMargin
+        case "bottom_center":
+            return parent.height - hideMargin
+        }
+        return shownY              // 左/右锚点不纵向隐藏
+    }
+
+    // 编辑模式位置：仅顶部锚点会垂直居中
+    readonly property real editY: {
+        switch (anchorMode) {
+        case "top_left":
+        case "top_right":
+        case "top_center":
+            return (Screen.height - height) / 2
+        }
+        return shownY
+    }
+
+    // x：正常位置 → 隐藏位置，按 hideProgress 混合
+    x: shownX + (hiddenX - shownX) * hideProgress + dragOffsetX
+
+    // y：先按 editProgress 混到编辑位置，再按 hideProgress 混到隐藏位置
+    y: {
+        var visibleY = shownY + (editY - shownY) * editProgress
+        return visibleY + (hiddenY - visibleY) * hideProgress + dragOffsetY
+    }
+
     onXChanged: contentGeometryChanged()
     onYChanged: contentGeometryChanged()
+    onWidthChanged: contentGeometryChanged()
+    onHeightChanged: contentGeometryChanged()
 
-    // 浮窗模式由 MainInterface 的独立容器接管显示。保留这里的坐标动画，
-    // 使退出浮窗模式时普通小组件仍沿原有的边缘动画返回。
+    Behavior on opacity {
+        NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
+    }
+
+    Behavior on dragOffsetX {
+        enabled: widgetsContainer.settleContainerDrag
+        NumberAnimation { duration: 460; easing.type: Easing.OutBack }
+    }
+    Behavior on dragOffsetY {
+        enabled: widgetsContainer.settleContainerDrag
+        NumberAnimation { duration: 460; easing.type: Easing.OutBack }
+    }
 
     DragHandler {
-        id: dragHandler
+        id: containerDragHandler
         enabled: !editMode
         target: null
         onActiveChanged: {
             if (!active) {
+                settleContainerDrag = true
                 dragOffsetX = 0
                 dragOffsetY = 0
+                return
             }
+            settleContainerDrag = false
         }
         onTranslationChanged: {
             if (active) {
@@ -178,214 +211,35 @@ Column {
         }
     }
 
-    Behavior on opacity {
-        NumberAnimation {
-            duration: 200
-            easing.type: Easing.InOutQuad
-        }
-    }
+    WidgetsLayout {
+        id: widgetsLayout
+        editMode: widgetsContainer.editMode
+        hide: widgetsContainer.hide
+        scaleFactor: widgetsContainer.scaleFactor
+        spacing: widgetsContainer.spacing
+        // 水平视口足够大，保证所有 delegate 都被实例化而不被回收
+        viewportWidth: 100000
 
-    Flow {
-        id: widgetsFlow
-        objectName: "widgetsFlow"
-        spacing: 8
-
-        move: Transition {
-            enabled: editMode
-            NumberAnimation {
-                properties: "x,y"
-                duration: 300
-                easing.type: Easing.OutQuint
-            }
-        }
-
-        Repeater {
-            id: widgetRepeater
-            model: WidgetsModel
-
-            delegate: Item {
-                id: widgetContainer
-                property real visualScale: scaleFactor
-                width: loader.width * visualScale
-                height: loader.height * visualScale
-                rotation: editMode
-                z: dragHandler.active ? 1 : 0
-                opacity: dragHandler.active ? 0.5 : 1
-
-                Behavior on visualScale {
-                    NumberAnimation {
-                        duration: 120
-                        easing.type: Easing.OutCubic
-                    }
-                }
-
-                WidgetLoader {
-                    id: loader
-                    transformOrigin: Item.Center
-                    // widgetContainer is sized to the scaled content while
-                    // the loader keeps its native size. Offset the loader so
-                    // its transform center stays at widgetContainer's center.
-                    x: (widgetContainer.width - width) / 2
-                    y: (widgetContainer.height - height) / 2
-                    scale: tapHandler.pressed ? visualScale * 0.975 : visualScale
-                    onWidthChanged: widgetsContainer.contentGeometryChanged()
-                    onHeightChanged: widgetsContainer.contentGeometryChanged()
-
-                    TapHandler {
-                        id: tapHandler
-                    }
-
-                    Behavior on scale {
-                        enabled: tapHandler.pressed
-                        NumberAnimation {
-                            duration: 400
-                            easing.type: Easing.Bezier
-                            easing.bezierCurve: BezierCurve.liquidBack
-                        }
-                    }
-
-                }
-
-                ToolButton {
-                    id: deleteBtn
-                    visible: widgetsContainer.editMode
-                    icon.name: "ic_fluent_line_horizontal_1_20_filled"
-                    size: 12
-                    width: 24
-                    height: 24
-                    anchors.top: parent.top
-                    anchors.left: parent.left
-                    onClicked: WidgetsModel.removeInstance(model.instanceId)
-                }
-
-                // 拖拽
-                DragHandler {
-                    id: dragHandler
-                    enabled: widgetsContainer.editMode
-                    target: widgetContainer
-                    property var originalX: parent.x
-                    property var originalY: parent.y
-                    onActiveChanged: {
-                        if (active) {
-                            originalX = widgetContainer.x
-                            originalY = widgetContainer.y
-                        }
-                        if (!active) {
-                            var from = index
-                            var to = widgetsContainer.dropIndex(widgetContainer, from)
-                            if (to !== from) {
-                                WidgetsModel.moveInstance(from, to)
-                            } else {
-                                widgetContainer.x = originalX
-                                widgetContainer.y = originalY
-                            }
-                        }
-                    }
-                }
-
-                // 右键菜单
-                Menu {
-                    id: widgetMenu
-                    onVisibleChanged: widgetsContainer.menuVisible = visible;
-                    MenuItem {
-                        icon.name: "ic_fluent_info_20_regular"
-                        text: qsTr("Edit ") + "\"" + model.name + "\""
-                        onTriggered: {
-                            if (model.settingsQml) {
-                                widgetsContainer.editMode = true
-                                settingsDialog.setSource(model.settingsQml, {
-                                    "settings": model.settings,
-                                    "instanceId": model.instanceId,
-                                    "widget_id": model.widget_id
-                                })
-                                settingsDialog.open()
-                            }
-                        }
-                        enabled: model.settingsQml
-                    }
-                    MenuItem {
-                        icon.name: "ic_fluent_delete_20_regular"
-                        text: qsTr("Delete")
-                        onTriggered: {
-                            // widgetsContainer.editMode = true
-                            WidgetsModel.removeInstance(model.instanceId)
-                        }
-                    }
-                    MenuSeparator { visible: true }
-                    MenuItem {
-                        icon.name: "ic_fluent_column_edit_20_regular"
-                        text: qsTr("Edit Widgets Screen")
-                        onTriggered: widgetsContainer.editMode = true
-                    }
-                }
-
-                // 鼠标右键打开设置
-                TapHandler {
-                    acceptedButtons: Qt.RightButton
-                    onTapped: (point, button) => {
-                        if (button === Qt.RightButton) {
-                            widgetMenu.open()
-                        }
-                    }
-                }
-
-                // 动画
-                SequentialAnimation on rotation {
-                    id: rotationAnim
-                    property real angle1: 2.0
-                    property real angle2: -2.0
-                    running: editMode
-                    loops: Animation.Infinite
-
-                    NumberAnimation { to: rotationAnim.angle1; duration: 250; easing.type: Easing.InOutQuad }
-                    NumberAnimation { to: rotationAnim.angle2; duration: 250; easing.type: Easing.InOutQuad }
-
-                    onRunningChanged: {
-                        rotationAnim.angle1 = Math.random() * 2.0
-                        rotationAnim.angle2 = -(Math.random() * 2.0)
-                    }
-                }
-
-                // 入场动画
-                SequentialAnimation {
-                    id: anim
-                    NumberAnimation { target: widgetContainer; property: "opacity"; from: 0; to: 0; duration: 1 }
-                    PauseAnimation { duration: index * 125 }
-                    ParallelAnimation {
-                        NumberAnimation {
-                            target: widgetContainer
-                            property: "opacity"
-                            from: 0; to: 1; duration: 300
-                            easing.type: Easing.OutCubic
-                        }
-                        NumberAnimation {
-                            target: widgetContainer;
-                            property: "scale";
-                            from: 0.8; to: 1; duration: 400;
-                            easing.type: Easing.OutBack
-                        }
-                    }
-                }
-
-                Behavior on opacity {
-                    NumberAnimation { duration: 100 }
-                }
-            }
-        }
+        onGeometryChanged: widgetsContainer.contentGeometryChanged()
+        onEditRequested: widgetsContainer.editMode = true
+        onMenuVisibilityChanged: (visible) => widgetsContainer.menuVisible = visible
+        onWidgetTapped: widgetsContainer.widgetTapped()
     }
 
     // 添加小组件&完成
     RowLayout {
         id: addWidgetsContainer
         objectName: "addWidgetsContainer"
-        visible: widgetsContainer.editMode || widgetRepeater.count === 0
+        anchors.top: widgetsLayout.bottom
+        anchors.topMargin: addWidgetsContainer.visible ? widgetsContainer.spacing : 0
         anchors.horizontalCenter: parent.horizontalCenter
+        visible: widgetsContainer.editMode || widgetsLayout.count === 0
         spacing: 4
 
         Button {
             id: addWidgetButton
             Layout.alignment: Qt.AlignCenter
-            Layout.preferredHeight: 40
+            Layout.preferredHeight: widgetsContainer.addRowHeight
 
             icon.name: "ic_fluent_add_20_regular"
             text: qsTr("Add")
@@ -397,24 +251,21 @@ Column {
         }
 
         Button {
-            Layout.preferredHeight: 40
+            Layout.preferredHeight: widgetsContainer.addRowHeight
             Layout.alignment: Qt.AlignCenter
 
             visible: widgetsContainer.editMode
             id: acceptButton
             highlighted: true
             icon.name: "ic_fluent_checkmark_20_regular"
-            onClicked: widgetsContainer.editMode = false
+            onClicked: {
+                WidgetsModel.save_config()
+                widgetsContainer.editMode = false
+            }
         }
     }
 
-    // 添加小组件窗口
     AddWidgetsDialog {
         id: addDialog
-    }
-
-    // 小组件设置窗口
-    WidgetSettingsDialog {
-        id: settingsDialog
     }
 }

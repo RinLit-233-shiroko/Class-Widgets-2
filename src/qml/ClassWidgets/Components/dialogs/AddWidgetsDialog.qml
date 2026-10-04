@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Effects
 import RinUI
+import ClassWidgets.Easing
 
 
 Dialog {
@@ -204,7 +205,8 @@ Dialog {
                             target: widgetLoader;
                             property: "scale";
                             from: 0.8; to: 1; duration: 400;
-                            easing.type: Easing.OutBack
+                            easing.type: Easing.Bezier
+                            easing.bezierCurve: BezierCurve.popBack
                         }
                     }
                 }

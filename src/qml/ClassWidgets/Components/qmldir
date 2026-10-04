@@ -1,13 +1,17 @@
 module ClassWidgets.Components
 
 WidgetsContainer 1.0 WidgetsContainer.qml
+WidgetsLayout 1.0 WidgetsLayout.qml
+WidgetsLayoutDelegate 1.0 WidgetsLayoutDelegate.qml
 WidgetLoader 1.0 WidgetLoader.qml
+WidgetLoadError 1.0 WidgetLoadError.qml
 FloatingWidgetContainer 1.0 FloatingWidgetContainer.qml
 Watermark 1.0 Watermark.qml
 Introduction 1.0 Introduction.qml
 Skeleton 1.0 Skeleton.qml
 TrayShortcuts 1.0 TrayShortcuts.qml
 RestartButton 1.0 RestartButton.qml
+SplitButton 1.0 SplitButton.qml
 
 # Dialogs
 AddWidgetsDialog 1.0 dialogs/AddWidgetsDialog.qml
@@ -16,6 +20,7 @@ WidgetSettingsDialog 1.0 dialogs/WidgetSettingsDialog.qml
 RescheduleDayDialog 1.0 dialogs/RescheduleDayDialog.qml
 ClassSwapDialog 1.0 dialogs/ClassSwapDialog.qml
 NeverHideCoursesPopup 1.0 dialogs/NeverHideCoursesPopup.qml
+ClassSwapTimeline 1.0 dialogs/ClassSwapTimeline.qml
 PluginReplaceConfirmDialog 1.0 dialogs/PluginReplaceConfirmDialog.qml
 ScheduleSetupDialog 1.0 dialogs/ScheduleSetupDialog.qml
 

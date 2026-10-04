@@ -117,7 +117,6 @@ class ClassSwapManager(QObject):
     @Slot(int, int, result=bool)
     def applyPickerToToday(self, day_of_week: int, week_of_cycle: int) -> bool:
         """将换课界面当前选择的 星期/周次 课表立即投射到今天"""
-        logger.debug(f"Applying picker context to today: day_of_week={day_of_week}, week_of_cycle={week_of_cycle}")
         schedule = self.app_central.schedule_manager.schedule
         if not schedule:
             return False
@@ -314,7 +313,6 @@ class ClassSwapManager(QObject):
             "week_of_cycle": week_of_cycle,
         }
         self.app_central.configs.set("schedule.class_swap", swap_data)
-        logger.info(f"Swap records saved: {len(self._swap_records)} records")
 
     @Slot()
     def loadSwapRecords(self):
@@ -340,7 +338,7 @@ class ClassSwapManager(QObject):
 
         if saved_date != today:
             # 跨天，清理临时课表
-            logger.info(f"Swap records expired (saved: {saved_date}, today: {today}), cleaning up")
+            logger.debug(f"Swap records expired (saved: {saved_date}, today: {today}), cleaning up")
             self._cleanup_swap_overrides(swap_data.get("records", []))
             self._swap_records = []
             self._swap_date = ""
@@ -354,7 +352,7 @@ class ClassSwapManager(QObject):
         self.setSwapPickerContext(day_of_week, week_of_cycle)
         self.saveSwapRecords()
         self._rebuild_overrides_from_records(self._swap_records)
-        logger.info(f"Loaded {len(self._swap_records)} swap records for today")
+        logger.debug(f"Loaded {len(self._swap_records)} swap records for today")
 
     @Slot(result=bool)
     def hasTodaySwaps(self) -> bool:
@@ -363,22 +361,16 @@ class ClassSwapManager(QObject):
         if not isinstance(swap_data, dict):
             return False
 
-        logger.debug(f"Checking for today's swaps: swap_data={swap_data}")
-
         # 记录存在
         records = swap_data.get("records")
         if isinstance(records, list) and len(records) > 0:
-            logger.debug(f"Found {len(records)} swap records for today")
             return True
 
         # 仅 picker 上下文（day/week）也视为存在临时课表
         day_of_week = swap_data.get("day_of_week")
         week_of_cycle = swap_data.get("week_of_cycle")
         if isinstance(day_of_week, int) and isinstance(week_of_cycle, int):
-            logger.debug(f"Found swap picker context for today ({day_of_week}, {week_of_cycle})")
             return True
-
-        logger.debug(f"swap records {self._swap_records}")
 
         return len(self._swap_records) > 0
 
@@ -395,7 +387,7 @@ class ClassSwapManager(QObject):
         self._swap_date = ""
         self.app_central.configs.set("schedule.class_swap", {})
         self.updated.emit()
-        logger.info("All today's swaps discarded")
+        logger.debug("All today's swaps discarded")
 
     # ── 内部方法 ─────────────────────────────────────────────
 
@@ -604,10 +596,6 @@ class ClassSwapManager(QObject):
             return []
 
         max_cycle = schedule.meta.maxWeekCycle or 1
-        logger.info(
-            f"[ClassSwap] getDayEntries request day={day_of_week}, week={week_of_cycle}, "
-            f"days={len(schedule.days)}, overrides={len(schedule.overrides)}"
-        )
 
         for day in schedule.days:
             day_of_week_list = [day.dayOfWeek] if isinstance(day.dayOfWeek, int) else day.dayOfWeek
@@ -615,11 +603,6 @@ class ClassSwapManager(QObject):
                 continue
             if not self._is_in_week(day.weeks, week_of_cycle, max_cycle):
                 continue
-
-            logger.info(
-                f"[ClassSwap] matched timeline id={day.id}, entries={len(day.entries)}, "
-                f"dayOfWeek={day.dayOfWeek}, weeks={day.weeks}"
-            )
 
             day_copy = day.model_copy()
             day_copy.entries = [entry.model_copy() for entry in day.entries]
@@ -650,7 +633,6 @@ class ClassSwapManager(QObject):
                 d["subjectIcon"] = subj.icon if subj else ""
                 result.append(d)
 
-            logger.info(f"[ClassSwap] return entries={len(result)}")
             return result
 
         logger.warning(
@@ -690,7 +672,7 @@ class ClassSwapManager(QObject):
         if swap_ids:
             schedule.overrides = [o for o in schedule.overrides if o.id not in swap_ids]
             self.app_central.schedule_manager.modify(schedule)
-            logger.info(f"Cleaned up {len(swap_ids)} swap overrides")
+            logger.debug(f"Cleaned up {len(swap_ids)} swap overrides")
 
     def _rebuild_overrides_from_records(self, records: list):
         """根据持久化换课记录重建当天临时 override（应用启动后内存恢复）"""

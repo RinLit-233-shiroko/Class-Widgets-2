@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import RinUI
+import "../CoursePalette.js" as CoursePalette
 
 /*
  * One logical schedule entry.
@@ -69,56 +70,20 @@ Item {
     // Never inherited from the subject: a near-black or near-white subject
     // color must not be able to make its own label unreadable.
     readonly property real textLuminance: darkTheme ? 0.60 : 0.05
-    readonly property real toneSaturationCap: 0.8
     readonly property real surfaceAlpha: 0.75
     // The selected card is highlighted with a fully opaque tone so it reads
     // as clearly selected instead of just a slightly heavier tint.
     readonly property real highlightAlpha: 1.0
 
-    function channelLuminance(c) {
-        return c <= 0.04045
-            ? c / 12.92
-            : Math.pow((c + 0.055) / 1.055, 2.4)
-    }
-
-    // WCAG relative luminance of a color.
-    function relativeLuminance(c) {
-        return 0.2126 * channelLuminance(c.r)
-            + 0.7152 * channelLuminance(c.g)
-            + 0.0722 * channelLuminance(c.b)
-    }
-
-    // Rebuild `base` at a target luminance, keeping its hue and saturation.
-    // Relative luminance rises monotonically with HSL lightness for a fixed
-    // hue/saturation, so a bisection converges on the wanted tone. Returns
-    // the input untouched when it is not a usable color, so an unresolved
-    // theme cannot turn a binding error into a broken card.
-    function atLuminance(base, target) {
-        if (!base || base.hslHue === undefined)
-            return base
-        const hue = base.hslHue < 0 ? 0 : base.hslHue
-        const saturation = Math.min(base.hslSaturation, toneSaturationCap)
-        let lo = 0.0
-        let hi = 1.0
-        for (let i = 0; i < 20; ++i) {
-            const mid = (lo + hi) / 2
-            if (relativeLuminance(Qt.hsla(hue, saturation, mid, 1.0)) < target)
-                lo = mid
-            else
-                hi = mid
-        }
-        return Qt.hsla(hue, saturation, (lo + hi) / 2, 1.0)
-    }
-
     readonly property color cardSurfaceColor: Qt.alpha(
-        atLuminance(cardColor, surfaceLuminance),
+        CoursePalette.atLuminance(cardColor, surfaceLuminance),
         surfaceAlpha
     )
     readonly property color cardHighlightColor: Qt.alpha(
-        atLuminance(cardColor, highlightLuminance),
+        CoursePalette.atLuminance(cardColor, highlightLuminance),
         highlightAlpha
     )
-    readonly property color cardTextColor: atLuminance(cardColor, textLuminance)
+    readonly property color cardTextColor: CoursePalette.atLuminance(cardColor, textLuminance)
 
     property string cardTitle: ""
     property string timeText: ""

@@ -24,6 +24,7 @@ class AppWindowManager(QObject):
             "class_swap_restore": self._create_class_swap_restore,
             "single_instance": self._create_single_instance,
             "theme_load_error": self._create_theme_load_error,
+            "problem_report": self._create_problem_report,
             "tutorial": self._create_tutorial,
             "debugger": self._create_debugger,
         }
@@ -36,6 +37,7 @@ class AppWindowManager(QObject):
             "class_swap_restore": "ClassSwap restore dialog window not initialized correctly.",
             "single_instance": "Single Instance Dialog not initialized correctly.",
             "theme_load_error": "Theme load error dialog window not initialized correctly.",
+            "problem_report": "Problem report window not initialized correctly.",
             "tutorial": "Tutorial window not initialized correctly.",
             "debugger": "Debugger window not initialized correctly.",
         }
@@ -95,6 +97,10 @@ class AppWindowManager(QObject):
     @Slot()
     def closeThemeLoadError(self) -> None:
         self.close_theme_load_error()
+
+    @Slot()
+    def closeProblemReport(self) -> None:
+        self.close_problem_report()
 
     @Slot()
     def classSwapRestoreContinue(self) -> None:
@@ -157,6 +163,44 @@ class AppWindowManager(QObject):
 
     def close_debugger(self) -> None:
         self.release("debugger")
+
+    def open_problem_report(self, report) -> None:
+        """显示崩溃报告窗口。
+
+        同一时间只保留第一份报告：后续崩溃只记录日志，避免把用户正在阅读的
+        信息替换掉。
+        """
+        if "problem_report" in self._windows:
+            logger.warning(
+                "Problem report window already open, keeping the first report"
+            )
+            return
+
+        try:
+            window = self.ensure("problem_report")
+        except Exception:
+            logger.exception("Failed to create the problem report window")
+            return
+
+        window.set_report(report)
+        window.show_when_ready()
+        self._show_problem_report_when_ready(window, attempts=20)
+
+    def _show_problem_report_when_ready(self, window: Any, attempts: int) -> None:
+        if getattr(window, "root_window", None):
+            self.open("problem_report")
+            logger.info("Problem report window opened")
+            return
+        if attempts <= 0:
+            logger.error("Problem report window root window was not created")
+            return
+        QTimer.singleShot(
+            50,
+            lambda: self._show_problem_report_when_ready(window, attempts - 1),
+        )
+
+    def close_problem_report(self) -> None:
+        self.release("problem_report")
 
     def open_theme_load_error(self, failed_theme_id: str = "", recovered: bool = True) -> None:
         window = self.ensure("theme_load_error")
@@ -280,6 +324,11 @@ class AppWindowManager(QObject):
         from src.core.windows.windows import CheckSingleInstanceDialog
 
         return CheckSingleInstanceDialog(self.central)
+
+    def _create_problem_report(self):
+        from src.core.windows.problem_report import ProblemReport
+
+        return ProblemReport(self.central)
 
     def _create_theme_load_error(self):
         from src.core.windows.windows import ThemeLoadErrorDialog

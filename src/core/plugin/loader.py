@@ -14,11 +14,30 @@ from packaging.version import Version
 from src.core.directories import BUILTIN_PLUGINS_PATH
 from src.core.plugin import CW2Plugin, PluginAPI
 from src.core.plugin.api import __version__ as __API_VERSION__
-from src.core.plugin.models import PluginMeta
+from src.core.plugin.models import PluginLoadFailure, PluginMeta
 from src.plugins import BUILTIN_PLUGINS
 
 if TYPE_CHECKING:
     from src.core.config.model import ConfigBaseModel
+
+
+def _safe_is_dir(path: Path) -> bool:
+    """``Path.is_dir()`` 在目录不可读时会抛 ``PermissionError``（WinError 5）。"""
+    try:
+        return path.is_dir()
+    except OSError as error:
+        logger.warning("Plugin path {} is not readable: {}", path, error)
+        return False
+
+
+def _safe_exists(path: Path) -> bool:
+    """``Path.exists()`` 对 EACCES/EPERM 不返回 False，而是直接抛异常。"""
+    try:
+        return path.exists()
+    except OSError as error:
+        logger.warning("Plugin path {} is not accessible: {}", path, error)
+        return False
+
 
 class PluginLoader:
     def __init__(self, plugin_api: PluginAPI, external_path: Path):
@@ -29,6 +48,8 @@ class PluginLoader:
         self.api: PluginAPI = plugin_api
         self.external_path: Path = external_path
         self.builtin_path: Path = BUILTIN_PLUGINS_PATH
+        #: 扫描/加载过程中失败的插件，供 PluginManager 通知与诊断使用。
+        self.failures: list[PluginLoadFailure] = []
         
         # 注入运行时SDK
         self._inject_runtime_sdk()
@@ -102,8 +123,13 @@ class PluginLoader:
         sys.modules[module_name] = fake_mod
         logger.debug(f"Injected {module_name} into sys.modules (runtime-backed).")
     
-    def scan_plugins(self, external_path: Path) -> list[PluginMeta]:
-        """扫描所有插件（外部插件 + 内置插件）"""
+    def scan_plugins(
+        self,
+        external_path: Path,
+        include_external: bool = True,
+    ) -> list[PluginMeta]:
+        """扫描所有插件（内置插件，以及可选的外部插件）"""
+        self.failures = []
         metas = []
         
         # 内置插件
@@ -116,6 +142,11 @@ class PluginLoader:
             metas.append(meta)
         
         # 扫描外部插件
+        if not include_external:
+            # 安全模式：外部插件目录完全不会被读取，也不会被导入。
+            logger.warning("Safe mode: external plugins are skipped")
+            return metas
+
         for plugin_dir in self.discover_plugins_in_dir(external_path):
             meta = self._load_meta(plugin_dir, "external")
             if meta:
@@ -132,12 +163,28 @@ class PluginLoader:
     
     @staticmethod
     def discover_plugins_in_dir(base_dir: Path) -> list[Path]:
-        """发现指定目录中的插件"""
-        found = []
-        if base_dir.exists() and base_dir.is_dir():
-            for plugin_dir in base_dir.iterdir():
-                if plugin_dir.is_dir() and (plugin_dir / "cwplugin.json").exists():
-                    found.append(plugin_dir)
+        """发现指定目录中的插件。
+
+        外部插件目录位于用户可写区域，权限/占用问题会以 ``PermissionError``
+        （WinError 5）的形式出现在 ``exists()`` / ``is_dir()`` / ``iterdir()`` 上。
+        扫描阶段必须只跳过读不到的条目，绝不能让启动流程因此中断。
+        """
+        found: list[Path] = []
+        if not _safe_is_dir(base_dir):
+            return found
+
+        try:
+            entries = list(base_dir.iterdir())
+        except OSError as error:
+            logger.warning("Failed to list plugin directory {}: {}", base_dir, error)
+            return found
+
+        for plugin_dir in entries:
+            if not _safe_is_dir(plugin_dir):
+                continue
+            if not _safe_exists(plugin_dir / "cwplugin.json"):
+                continue
+            found.append(plugin_dir)
         return found
     
     def _load_meta(self, plugin_dir: Path, type: str = "external") -> Optional[PluginMeta]:
@@ -150,12 +197,65 @@ class PluginLoader:
             
             if not self.validate_meta(meta, plugin_dir):
                 logger.warning(f"Plugin meta invalid, skipped: {plugin_dir}")
+                self._record_failure(
+                    plugin_id=str(meta.get("id") or plugin_dir.name),
+                    name=str(meta.get("name") or ""),
+                    stage="scan",
+                    error="cwplugin.json is missing required fields",
+                )
                 return None
                 
             return meta
         except Exception as e:
             logger.exception(f"Failed to read plugin meta from {plugin_dir}: {e}")
+            self._record_failure(
+                plugin_id=plugin_dir.name,
+                stage="scan",
+                error=f"{type(e).__name__}: {e}",
+            )
             return None
+
+    def _record_failure(
+        self,
+        *,
+        plugin_id: str,
+        stage: str,
+        error: str,
+        name: str = "",
+    ) -> None:
+        """记录一次插件失败，避免“插件悄悄消失”。"""
+        self.failures.append(
+            PluginLoadFailure(
+                plugin_id=str(plugin_id or ""),
+                name=str(name or ""),
+                stage=stage,
+                error=str(error or ""),
+            )
+        )
+
+    def _discard_plugin(self, plugin_instance, plugin_id: str) -> None:
+        """加载失败后的收尾：回调、快捷键、模块缓存都要清干净。"""
+        if plugin_instance is not None:
+            try:
+                plugin_instance.on_unload()
+            except Exception:
+                logger.exception(
+                    "Plugin {} raised while unloading after a failed load", plugin_id
+                )
+        try:
+            self.api.ui.unregister_plugin_shortcuts(plugin_id)
+        except Exception:
+            logger.exception("Failed to unregister shortcuts of plugin {}", plugin_id)
+        self._unregister_module(plugin_id)
+
+    @staticmethod
+    def _unregister_module(plugin_id: str) -> None:
+        module_name = f"cw_plugin_{plugin_id}"
+        if module_name in sys.modules:
+            try:
+                del sys.modules[module_name]
+            except Exception:
+                logger.exception("Failed to drop module {}", module_name)
     
     @staticmethod
     def validate_meta(meta: PluginMeta, plugin_dir: Path) -> bool:
@@ -187,16 +287,40 @@ class PluginLoader:
                     plugin = self.load_plugin(meta)
                     if plugin:
                         loaded_plugins[pid] = plugin
+                    elif not self._has_failure(pid):
+                        # 加载器没给出具体原因时仍要留痕，不能安静地少一个插件。
+                        self._record_failure(
+                            plugin_id=pid,
+                            name=str(meta.get("name") or ""),
+                            stage="load",
+                            error="Plugin did not return an instance",
+                        )
                 except Exception as e:
                     logger.exception(f"Failed to initialize plugin {meta['id']}: {e}")
+                    self._record_failure(
+                        plugin_id=str(pid),
+                        name=str(meta.get("name") or ""),
+                        stage="load",
+                        error=f"{type(e).__name__}: {e}",
+                    )
             else:
                 logger.warning(f"Enabled plugin {pid} not found in metas")
+                self._record_failure(
+                    plugin_id=str(pid),
+                    stage="scan",
+                    error="Enabled plugin was not found during the plugin scan",
+                )
                 
         return loaded_plugins
+
+    def _has_failure(self, plugin_id: str) -> bool:
+        return any(failure.plugin_id == plugin_id for failure in self.failures)
     
     def _load_builtin_plugin(self, meta: PluginMeta) -> Optional[CW2Plugin]:
         """加载内置插件"""
         plugin_id = meta["id"]
+        plugin_instance = None
+        stage = "builtin-load"
         
         try:
             if not check_api_version(meta["api_version"]):
@@ -215,12 +339,22 @@ class PluginLoader:
             if not isinstance(plugin_instance, CW2Plugin):
                 raise TypeError("Builtin plugin must inherit from CW2Plugin")
             
+            stage = "on_load"
             plugin_instance.on_load()
             logger.success(f"Loaded builtin plugin {meta['name']} ({plugin_id}) v{meta['version']}")
             return plugin_instance
             
         except Exception as e:
             logger.exception(f"Failed to load builtin plugin {plugin_id}: {e}")
+            # 内置插件同样可能拿到了 PluginAPI 上下文，失败后必须交还。
+            self._discard_plugin(plugin_instance, plugin_id)
+            self.api.set_current_plugin(None)
+            self._record_failure(
+                plugin_id=str(plugin_id),
+                name=str(meta.get("name") or ""),
+                stage=stage,
+                error=f"{type(e).__name__}: {e}",
+            )
             return None
     
     def _load_external_plugin(self, meta: PluginMeta) -> Optional[CW2Plugin]:
@@ -228,13 +362,9 @@ class PluginLoader:
         plugin_dir: Path = meta["_path"]
         plugin_id = meta["id"]
         module_name = f"cw_plugin_{plugin_id}"
-        
-        def cleanup():
-            if module_name in sys.modules:
-                try:
-                    del sys.modules[module_name]
-                except Exception:
-                    pass
+        plugin_instance = None
+        # 失败时记录卡在哪一步，避免只有在堆栈里才能看出原因。
+        stage = "entry"
         
         try:
             if not check_api_version(meta["api_version"]):
@@ -244,13 +374,13 @@ class PluginLoader:
                 )
             
             entry_file = plugin_dir / meta["entry"]
-            if not entry_file.exists():
+            if not _safe_exists(entry_file):
                 raise FileNotFoundError(f"Entry file not found: {entry_file}")
             
-            cleanup()
+            self._unregister_module(plugin_id)
             
-            plugin_instance = None
             with self.plugin_import_context(plugin_dir):
+                stage = "import"
                 spec = importlib.util.spec_from_file_location(module_name, str(entry_file))
                 if not spec or not spec.loader:
                     raise RuntimeError("Invalid plugin entry (spec loader not found)")
@@ -258,45 +388,27 @@ class PluginLoader:
                 module = importlib.util.module_from_spec(spec)
                 sys.modules[module_name] = module
                 
-                try:
-                    spec.loader.exec_module(module)
-                except Exception as e:
-                    logger.exception(f"Plugin {plugin_id} failed to exec module: {e}")
-                    cleanup()
-                    raise
+                stage = "execute"
+                spec.loader.exec_module(module)
                 
                 if not hasattr(module, "Plugin"):
-                    cleanup()
                     raise AttributeError("Plugin entry file does not define a 'Plugin' class")
                 
                 PluginClass = getattr(module, "Plugin")
                 
-                try:
-                    plugin_instance = PluginClass(self.api)
-                except Exception as e:
-                    logger.exception(f"Failed to instantiate plugin {plugin_id}: {e}")
-                    cleanup()
-                    raise
+                stage = "instantiate"
+                plugin_instance = PluginClass(self.api)
                 
                 # 注入PATH和meta
                 plugin_instance.PATH = plugin_dir
                 plugin_instance.meta = meta
                 
                 if not isinstance(plugin_instance, CW2Plugin):
-                    cleanup()
                     raise TypeError("Plugin class must inherit from CW2Plugin (runtime class)")
                 
+                stage = "on_load"
                 try:
                     plugin_instance.on_load()
-                except Exception as e:
-                    logger.exception(f"Plugin {plugin_id} on_load raised: {e}")
-                    try:
-                        plugin_instance.on_unload()
-                    except Exception:
-                        pass
-                    self.api.ui.unregister_plugin_shortcuts(plugin_id)
-                    cleanup()
-                    raise
                 finally:
                     # Plugin context is only valid while its lifecycle hook runs.
                     self.api.set_current_plugin(None)
@@ -308,7 +420,15 @@ class PluginLoader:
             return plugin_instance
                 
         except Exception as e:
-            logger.exception(f"Failed to load plugin {plugin_id}: {e}")
+            logger.exception(f"Failed to load plugin {plugin_id} during {stage}: {e}")
+            self.api.set_current_plugin(None)
+            self._discard_plugin(plugin_instance, plugin_id)
+            self._record_failure(
+                plugin_id=str(plugin_id),
+                name=str(meta.get("name") or ""),
+                stage=stage,
+                error=f"{type(e).__name__}: {e}",
+            )
             return None
 
     @staticmethod
@@ -316,7 +436,7 @@ class PluginLoader:
         """将插件目录及其 libs/ 持久化到 sys.path，供运行时延迟导入使用"""
         for p in [plugin_dir / "libs", plugin_dir]:
             ps = str(p)
-            if p.is_dir() and ps not in sys.path:
+            if _safe_is_dir(p) and ps not in sys.path:
                 sys.path.append(ps)
                 logger.debug(f"Persisted plugin path: {ps}")
     
@@ -328,7 +448,7 @@ class PluginLoader:
             # 插件目录优先
             to_insert = [str(plugin_dir)]
             libs_dir = plugin_dir / "libs"
-            if libs_dir.exists() and libs_dir.is_dir():
+            if _safe_is_dir(libs_dir):
                 to_insert.insert(0, str(libs_dir))
             for p in reversed(to_insert):
                 if p in sys.path:

@@ -15,7 +15,7 @@ FluentPage {
         SettingExpander {
             Layout.fillWidth: true
             icon.name: "ic_fluent_clock_bill_20_regular"
-            title: qsTr("Select Default Duration")
+            title: qsTr("Default Duration")
             description: qsTr("Set the default duration for new classes, breaks, or activities.")
             expanded: true
 
