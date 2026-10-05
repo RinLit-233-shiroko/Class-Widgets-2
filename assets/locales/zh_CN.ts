@@ -6757,7 +6757,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="276"/>
         <source>Set which screen to display widgets on, and adjust their position</source>
-        <translation>设置小组件显示在哪个屏幕上，亦可调整其位置</translation>
+        <translation>设置小组件显示的屏幕，亦可调整其位置</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="392"/>
