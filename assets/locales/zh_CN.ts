@@ -241,7 +241,7 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/core/central.py" line="703"/>
         <source>Class Widgets started in safe mode. Third-party plugins and themes were skipped; your settings and schedule are used as usual.</source>
-        <translation type="unfinished"></translation>
+        <translation>Class Widgets 已在安全模式下启动。第三方插件和主题没有被加载，你的设置和课表可以照常使用。</translation>
     </message>
     <message>
         <source>Class Widgets started in safe mode. Your configuration and third-party plugins and themes were skipped.</source>
@@ -414,7 +414,7 @@ You can continue to open another one, or close this window.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="120"/>
         <source>Swap</source>
-        <translation type="unfinished"></translation>
+        <translation>换课</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="122"/>
@@ -424,12 +424,12 @@ You can continue to open another one, or close this window.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="123"/>
         <source>Replace</source>
-        <translation type="unfinished">将</translation>
+        <translation>替换</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="442"/>
         <source>Close</source>
-        <translation type="unfinished">关闭</translation>
+        <translation>关闭</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="633"/>
@@ -3548,7 +3548,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="15"/>
         <source>Problem Report</source>
-        <translation type="unfinished"></translation>
+        <translation>问题报告</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="178"/>
