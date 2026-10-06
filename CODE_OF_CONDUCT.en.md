@@ -66,7 +66,7 @@ For minor incidents, maintainers will generally prioritize reminders and communi
 
 When handling reports, maintainers will make reasonable efforts to protect the privacy of reporters, the people involved, and relevant witnesses, and will investigate based on the facts. Maintainers may also decline to act on reports that are clearly malicious, lack a factual basis, or concern normal technical disagreements. Enforcement decisions may be reviewed by other project maintainers when necessary.
 
-Maintainers will determine how to handle violations based on the specific circumstances and do not guarantee that every situation will be handled in exactly the same way. For more detailed information about handling community violations, see the [documentation]().
+Maintainers will determine how to handle violations based on the specific circumstances and do not guarantee that every situation will be handled in exactly the same way. For more detailed information about handling community violations, see the [documentation](https://www.yuque.com/rinlit/standards/fx20gsi7w28m1nsr).
 
 ### How to Report an Issue
 
