@@ -1,4 +1,4 @@
-# Code of Conduct
+# 行为准则
 
 这是行为准则的简体中文版本。[English](/CODE_OF_CONDUCT.en.md)
 
