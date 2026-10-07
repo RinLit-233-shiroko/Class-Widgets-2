@@ -6877,37 +6877,37 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/settings/currentActivity.qml" line="12"/>
         <source>Display content</source>
-        <translation type="unfinished"></translation>
+        <translation>显示内容</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/currentActivity.qml" line="13"/>
         <source>Choose whether to display the custom title, subject, or alternate between both.</source>
-        <translation type="unfinished"></translation>
+        <translation>选择显示自定义标题、主题，或两者交替显示。</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/currentActivity.qml" line="21"/>
         <source>Title</source>
-        <translation type="unfinished">标题</translation>
+        <translation>标题</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/currentActivity.qml" line="22"/>
         <source>Subject</source>
-        <translation type="unfinished"></translation>
+        <translation>科目</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/currentActivity.qml" line="23"/>
         <source>Alternate</source>
-        <translation type="unfinished"></translation>
+        <translation>交替显示</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/currentActivity.qml" line="44"/>
         <source>Alternate interval</source>
-        <translation type="unfinished"></translation>
+        <translation>交替频率</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/currentActivity.qml" line="45"/>
         <source>Set how often the custom title and subject alternate.</source>
-        <translation type="unfinished"></translation>
+        <translation>设置自定义标题与科目交替显示的频率。</translation>
     </message>
 </context>
 <context>
