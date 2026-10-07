@@ -11,7 +11,7 @@ from loguru import logger
 from src.core.themes.loader import ThemeLoader, APP_API_VERSION
 from src.core.themes.model import ThemeMeta, ThemeConflict
 from src.core.themes.worker import ThemeImportWorker
-from src.core.directories import THEMES_PATH
+from src.core.storage.directories import THEMES_PATH
 
 if TYPE_CHECKING:
     from src.core.central import AppCentral

@@ -47,7 +47,6 @@ Class Widgets 2 是新一代的电子化课程表展示工具，基于比前代�
 
 
 ### 开发文档
-
 欢迎开发者为 Class Widgets 2 开发插件！
 - [Class Widgets SDK](https://github.com/Class-Widgets/class-widgets-sdk)
 - [Class Widgets 插件模板v2](https://github.com/Class-Widgets/plugin-template-v2)

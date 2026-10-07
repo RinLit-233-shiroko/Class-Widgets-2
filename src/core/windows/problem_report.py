@@ -9,7 +9,7 @@ from PySide6.QtWidgets import QFileDialog
 from loguru import logger
 
 from src.core.crash.report import CrashReport
-from src.core.directories import CW_PATH, LOGS_PATH
+from src.core.storage.directories import CW_PATH, LOGS_PATH
 from src.core.windows.windows import ReleasableWindow
 
 

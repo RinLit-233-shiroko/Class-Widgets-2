@@ -5,7 +5,7 @@ from typing import Union
 from PySide6.QtCore import QCoreApplication, QObject, Property, Signal, Slot
 
 from RinUI import RinUIWindow
-from src.core.directories import CW_PATH, DEFAULT_THEME
+from src.core.storage.directories import CW_PATH, DEFAULT_THEME
 from src.core.plaza import MarkdownRenderBridge, PlazaBridge, TutorialRecommendationsBridge
 from src.core.plugin.bridge import PluginBackendBridge
 
