@@ -2659,7 +2659,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCommentsDialog.qml" line="14"/>
         <source>Ratings and reviews</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">評分與評價</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCommentsDialog.qml" line="51"/>
@@ -2698,7 +2698,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
         <location filename="../../src/core/plugin/manager.py" line="124"/>
         <source>Incompatible</source>
         <extracomment>归因结论：这次崩溃是不是由某个插件引发。 扫描/加载过程中失败的插件，供 PluginManager 通知与诊断使用。</extracomment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">不相容</translation>
     </message>
     <message>
         <location filename="../../src/core/plugin/manager.py" line="128"/>
@@ -4230,7 +4230,7 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <message>
         <location filename="../../src/core/schedule/runtime.py" line="486"/>
         <source>Preparation Bell</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">預備鈴</translation>
     </message>
 </context>
 <context>
@@ -4532,7 +4532,7 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="56"/>
         <source>Personalization</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">個人化</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="61"/>
@@ -4542,7 +4542,7 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="65"/>
         <source>Notification</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">通知</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="70"/>
@@ -4621,7 +4621,7 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <message>
         <location filename="../../src/core/central.py" line="180"/>
         <source>Reschedule Day</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">調休</translation>
     </message>
     <message>
         <location filename="../../src/core/central.py" line="186"/>
@@ -5298,7 +5298,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Theme.qml" line="93"/>
         <source>Accent Color</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">主題顔色</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Theme.qml" line="94"/>
@@ -5506,7 +5506,7 @@ Class Widgets has restored the default theme.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="168"/>
         <source>Reschedule Day</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">調休</translation>
     </message>
     <message>
         <source>Discover and download plugins</source>
@@ -5808,7 +5808,7 @@ Class Widgets has restored the default theme.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="201"/>
         <source>More options</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">更多選項</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Update.qml" line="207"/>
