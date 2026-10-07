@@ -586,12 +586,12 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="31"/>
         <source>Week {value} of every %1 weeks</source>
-        <translation type="unfinished">毎%1週の{value}週</translation>
+        <translation type="unfinished">毎％１週の｛value｝週</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="40"/>
         <source>Week {value}</source>
-        <translation type="unfinished">第{value}週</translation>
+        <translation type="unfinished">第｛value｝週</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="58"/>
