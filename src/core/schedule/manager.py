@@ -9,8 +9,8 @@ from PySide6.QtCore import Property, QObject, QUrl, Signal, Slot
 from PySide6.QtGui import QDesktopServices
 from PySide6.QtWidgets import QApplication, QFileDialog
 
-from src.core.convertor.converter import convert
-from src.core.convertor.slots import ScheduleIO
+from src.core.converter.converter import convert
+from src.core.converter.slots import ScheduleIO
 from src.core.storage.directories import SCHEDULES_PATH
 from src.core.parser import ScheduleParser
 from src.core.schedule.model import MetaInfo, ScheduleData

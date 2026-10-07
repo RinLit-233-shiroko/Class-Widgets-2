@@ -52,6 +52,8 @@ Class Widgets 2 是新一代的电子化课程表展示工具，基于比前代�
 - [Class Widgets 插件模板v2](https://github.com/Class-Widgets/plugin-template-v2)
 
 ## 社区
+在参与社区活动时，请遵守 [行为准则](/CODE_OF_CONDUCT.md)
+
 <div align="center">
 
 [![Q群](https://img.shields.io/badge/QQ%20%E7%BE%A41-1060640788-blue.svg?logo=qq&color=blue&style=for-the-badge)](https://qm.qq.com/cgi-bin/qm/qr?k=BXGtB7cDFM9CdfIcf9dfmxIWYh9noL6k&jump_from=webapi&authKey=wqfE+jZfLoO52DdVo2KBkVCrzgsxJX78cxx4vaRIHrOKo7tPp9VGsRTx4/kPUZuw)

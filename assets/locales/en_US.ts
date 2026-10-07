@@ -184,6 +184,19 @@ Licensed under the MIT license</source>
     </message>
 </context>
 <context>
+    <name>AppCentral</name>
+    <message>
+        <location filename="../../src/core/central.py" line="699"/>
+        <source>Safe mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/central.py" line="703"/>
+        <source>Class Widgets started in safe mode. Third-party plugins and themes were skipped; your settings and schedule are used as usual.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Appearance</name>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Appearance.qml" line="11"/>
@@ -255,117 +268,122 @@ You can continue to open another one, or close this window.</source>
 <context>
     <name>ClassSwapDialog</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="26"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="17"/>
         <source>Class Swap</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="55"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="68"/>
         <source>Monday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="55"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="68"/>
         <source>Tuesday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="55"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="68"/>
         <source>Wednesday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="55"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="68"/>
         <source>Thursday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="56"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="69"/>
         <source>Friday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="56"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="69"/>
         <source>Saturday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="56"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="69"/>
         <source>Sunday</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="62"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="75"/>
         <source>Week {value}</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="65"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="78"/>
         <source>Week</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="69"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="82"/>
         <source>Odd</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="70"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="83"/>
         <source>Even</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="102"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="115"/>
         <source>Continue</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="106"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="119"/>
         <source>Swap with &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="107"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="120"/>
         <source>Swap</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="109"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="122"/>
         <source>Replace subject with &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="110"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="123"/>
         <source>Replace</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="453"/>
-        <source>Pick a course to swap with another course of the day, or to replace its subject.</source>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="442"/>
+        <source>Close</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="633"/>
+        <source>Pick a course to swap with another course of the day, or to replace its subject.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="785"/>
         <source>Now pick another course of the day to swap with, or a subject to replace it with.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="644"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="796"/>
         <source>Swap with another course</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="651"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="803"/>
         <source>Replace with a subject</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="311"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="545"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="311"/>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="545"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1066,13 +1084,13 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>ExportScheduleDialog</name>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="23"/>
+        <location filename="../../src/core/converter/slots.py" line="23"/>
         <location filename="../../src/core/schedule/manager.py" line="401"/>
         <source>Export Schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="27"/>
+        <location filename="../../src/core/converter/slots.py" line="27"/>
         <source>CSES Format (*.yaml *.yml)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1404,22 +1422,22 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>ImportScheduleDialog</name>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="179"/>
+        <location filename="../../src/core/converter/slots.py" line="179"/>
         <source>Import CSES Schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="182"/>
+        <location filename="../../src/core/converter/slots.py" line="182"/>
         <source>CSES YAML Files (*.yaml *.yml)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="193"/>
+        <location filename="../../src/core/converter/slots.py" line="193"/>
         <source>Import Class Widgets 1 Schedule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="196"/>
+        <location filename="../../src/core/converter/slots.py" line="196"/>
         <source>Class Widgets 1 JSON Files (*.json)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1857,6 +1875,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/core/plaza/notifications.py" line="31"/>
         <source>Plugin Plaza</source>
+        <extracomment>Used when a report has to estimate the process uptime on its own.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2314,13 +2333,24 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
 <context>
     <name>PluginManager</name>
     <message>
-        <location filename="../../src/core/plugin/manager.py" line="120"/>
+        <location filename="../../src/core/plugin/manager.py" line="124"/>
         <source>Incompatible</source>
+        <extracomment>归因结论：这次崩溃是不是由某个插件引发。 扫描/加载过程中失败的插件，供 PluginManager 通知与诊断使用。</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/manager.py" line="124"/>
+        <location filename="../../src/core/plugin/manager.py" line="128"/>
         <source>{count} incompatible plugin(s) have been loaded, which may cause unknown issues.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/manager.py" line="179"/>
+        <source>Some plugins failed to load</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/manager.py" line="183"/>
+        <source>{count} plugin(s) could not be loaded and were skipped: {names}</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2921,6 +2951,108 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     </message>
 </context>
 <context>
+    <name>ProblemReport</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="15"/>
+        <source>Problem Report</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="178"/>
+        <source>Problem Report - Class Widgets</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="246"/>
+        <source>Class Widgets ran into a problem  (&gt;_&lt;)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="254"/>
+        <source>Sorry about that - Class Widgets ran into a problem it could not solve on its own and had to stop. Your class data has been saved automatically, so nothing is lost.
+You can try restarting. If you suspect a plugin or theme is involved, restart in safe mode to find the problematic component.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="273"/>
+        <source>Smart detection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="280"/>
+        <source>Class Widgets noticed that this problem was caused by the plugin &quot;%1&quot;. You can try disabling it and restarting right away.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="349"/>
+        <source>* High risk, disabling it is recommended</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="367"/>
+        <source>Disabled</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="367"/>
+        <source>Disable</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="382"/>
+        <source>View details</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="426"/>
+        <source>Operating system</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="435"/>
+        <source>Class Widgets version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="444"/>
+        <source>Uptime</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="453"/>
+        <source>Installed plugins</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="492"/>
+        <source>Copy summary</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/windows/problem_report.py" line="226"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="529"/>
+        <source>Export logs</source>
+        <extracomment>日志导出时附带的最大日志尾部长度。</extracomment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="539"/>
+        <source>Ignore and continue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="551"/>
+        <source>Restart in safe mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="547"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="557"/>
+        <source>Restart</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>RescheduleDayDialog</name>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/RescheduleDayDialog.qml" line="10"/>
@@ -3067,17 +3199,17 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>Schedule</name>
     <message>
-        <location filename="../../src/core/convertor/cses.py" line="214"/>
+        <location filename="../../src/core/converter/cses.py" line="214"/>
         <source>All Weeks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/cses.py" line="216"/>
+        <location filename="../../src/core/converter/cses.py" line="216"/>
         <source>Odd Weeks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/cses.py" line="218"/>
+        <location filename="../../src/core/converter/cses.py" line="218"/>
         <source>Even Weeks</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4001,27 +4133,27 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>Shortcuts</name>
     <message>
-        <location filename="../../src/core/central.py" line="146"/>
+        <location filename="../../src/core/central.py" line="162"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="152"/>
+        <location filename="../../src/core/central.py" line="168"/>
         <source>Schedules</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="158"/>
+        <location filename="../../src/core/central.py" line="174"/>
         <source>Plugin Plaza</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="164"/>
+        <location filename="../../src/core/central.py" line="180"/>
         <source>Reschedule Day</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="170"/>
+        <location filename="../../src/core/central.py" line="186"/>
         <source>Class Swap</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4042,12 +4174,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>SubjectClip</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="57"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="58"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="67"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="68"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4068,117 +4200,118 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>Subjects</name>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="58"/>
-        <source>Chinese</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/subjects.py" line="59"/>
-        <source>Mathematics</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/subjects.py" line="60"/>
-        <source>English</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/subjects.py" line="61"/>
-        <source>Politics</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/subjects.py" line="62"/>
-        <source>History</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/subjects.py" line="63"/>
-        <source>Physics</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/utils/subjects.py" line="64"/>
-        <source>Chemistry</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../../src/core/utils/subjects.py" line="65"/>
-        <source>Biology</source>
+        <source>Chinese</source>
+        <extracomment>启动参数：不加载任何外部插件与主题（配置、课程表等用户数据照常读取）。</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="66"/>
-        <source>Geography</source>
+        <source>Mathematics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="67"/>
-        <source>Music</source>
+        <source>English</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="68"/>
-        <source>Art</source>
+        <source>Politics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="69"/>
-        <source>Psychology</source>
+        <source>History</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="70"/>
-        <source>Physical Education</source>
+        <source>Physics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="71"/>
-        <source>Information Technology</source>
+        <source>Chemistry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="72"/>
-        <source>General Technology</source>
+        <source>Biology</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="73"/>
-        <source>Elective</source>
+        <source>Geography</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="74"/>
-        <source>Self Study</source>
+        <source>Music</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="75"/>
-        <source>Club</source>
+        <source>Art</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="76"/>
-        <source>Class Meeting</source>
+        <source>Psychology</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="77"/>
-        <source>Weekly Test</source>
+        <source>Physical Education</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="78"/>
-        <source>Economics</source>
+        <source>Information Technology</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="79"/>
-        <source>Philosophy</source>
+        <source>General Technology</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/utils/subjects.py" line="80"/>
+        <source>Elective</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/utils/subjects.py" line="81"/>
+        <source>Self Study</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/core/utils/subjects.py" line="82"/>
+        <source>Club</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/utils/subjects.py" line="83"/>
+        <source>Class Meeting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/utils/subjects.py" line="84"/>
+        <source>Weekly Test</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/utils/subjects.py" line="85"/>
+        <source>Economics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/utils/subjects.py" line="86"/>
+        <source>Philosophy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/utils/subjects.py" line="89"/>
         <source>Computer Science</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4315,127 +4448,127 @@ If it takes place in another location, such as a sport field, lab, or another cl
 <context>
     <name>SubjectsSimplified</name>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="83"/>
+        <location filename="../../src/core/utils/subjects.py" line="90"/>
         <source>CHN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="84"/>
+        <location filename="../../src/core/utils/subjects.py" line="91"/>
         <source>Math</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="85"/>
+        <location filename="../../src/core/utils/subjects.py" line="92"/>
         <source>Eng</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="86"/>
+        <location filename="../../src/core/utils/subjects.py" line="93"/>
         <source>Civics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="87"/>
+        <location filename="../../src/core/utils/subjects.py" line="94"/>
         <source>Hist</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="88"/>
+        <location filename="../../src/core/utils/subjects.py" line="95"/>
         <source>Phys</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="89"/>
+        <location filename="../../src/core/utils/subjects.py" line="96"/>
         <source>Chem</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="90"/>
+        <location filename="../../src/core/utils/subjects.py" line="97"/>
         <source>Bio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="91"/>
+        <location filename="../../src/core/utils/subjects.py" line="98"/>
         <source>Geo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="92"/>
+        <location filename="../../src/core/utils/subjects.py" line="99"/>
         <source>Mus</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="93"/>
+        <location filename="../../src/core/utils/subjects.py" line="100"/>
         <source>Art</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="94"/>
+        <location filename="../../src/core/utils/subjects.py" line="101"/>
         <source>Psy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="95"/>
+        <location filename="../../src/core/utils/subjects.py" line="102"/>
         <source>PE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="96"/>
+        <location filename="../../src/core/utils/subjects.py" line="103"/>
         <source>IT</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="97"/>
+        <location filename="../../src/core/utils/subjects.py" line="104"/>
         <source>GenTech</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="98"/>
+        <location filename="../../src/core/utils/subjects.py" line="105"/>
         <source>Elective</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="99"/>
+        <location filename="../../src/core/utils/subjects.py" line="106"/>
         <source>Study</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="100"/>
+        <location filename="../../src/core/utils/subjects.py" line="107"/>
         <source>Club</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="101"/>
+        <location filename="../../src/core/utils/subjects.py" line="108"/>
         <source>ClassMtg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="102"/>
+        <location filename="../../src/core/utils/subjects.py" line="109"/>
         <source>Weekly</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="103"/>
+        <location filename="../../src/core/utils/subjects.py" line="110"/>
         <source>Econ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="104"/>
+        <location filename="../../src/core/utils/subjects.py" line="111"/>
         <source>Philos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="105"/>
+        <location filename="../../src/core/utils/subjects.py" line="112"/>
         <source>CS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="106"/>
+        <location filename="../../src/core/utils/subjects.py" line="113"/>
         <source>Meeting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="107"/>
+        <location filename="../../src/core/utils/subjects.py" line="114"/>
         <source>Test</source>
         <translation type="unfinished"></translation>
     </message>

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sys
+import time
 from enum import Enum, auto
 from typing import Any, Optional, TYPE_CHECKING, Protocol
 
@@ -12,7 +13,10 @@ from loguru import logger
 from src.core import CONFIGS_PATH, QML_PATH
 from src.core.storage.directories import PathManager, LOGS_PATH, SCHEDULES_PATH
 from src.core.storage.migration import prepare_work_directory
+from src.core.utils.platform import PlatformIntegration
 from src.core.themes.recovery import ThemeRecoveryController
+from src.core.crash import CrashHandler, CrashReport, PluginRecord
+from src.core.utils.safe_mode import safe_mode_requested
 
 if TYPE_CHECKING:
     from src.core.notification.manager import NotificationManager, NotificationService
@@ -24,14 +28,16 @@ if TYPE_CHECKING:
     from src.core.themes import ThemeManager
     from src.core.timer import UnionUpdateTimer
     from src.core.updater.bridge import UpdaterBridge
-    from src.core.utils import TrayIcon, AppTranslator, UtilsBackend
-    from src.core.utils.instance_locker import SingleInstanceGuard
+    from src.core.utils import AppTranslator, UtilsBackend
     from src.core.widgets import WidgetsWindow, WidgetListModel
     from src.core.automations.manager import AutomationManager
     from src.core.windows.manager import AppWindowManager
+    from src.core.windows.tray import TrayIcon
 
 # runtime imports
 from src.core.notification import (
+    NotificationData,
+    NotificationLevel,
     NotificationManager,
     NotificationService,
 )
@@ -45,7 +51,6 @@ from src.core.themes import ThemeManager
 from src.core.timer import UnionUpdateTimer
 from src.core.updater import UpdaterBridge
 from src.core.utils import AppTranslator, UtilsBackend
-from src.core.utils.platform import PlatformIntegration
 from src.core.utils.instance_locker import SingleInstanceGuard
 from src.core.widgets import WidgetsWindow, WidgetListModel
 from src.core.automations.manager import AutomationManager
@@ -92,12 +97,19 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         AppCentral._instance = self
 
         self._startup_state = StartupState.CREATED
+        self._safe_mode = safe_mode_requested()
+        self._started_at = time.monotonic()
         self._startup_swap_restore_pending: bool = False
         self._startup_swap_restore_scheduled: bool = False
         self._cleanup_started = False
         self._restart_requested = False
         self._restart_required = False  # 是否有待应用的重启（UI 提示用）
         self._initialize_cores()
+        # 崩溃处理必须在其它子系统之前就绪，才能捕获启动期间的异常。
+        self.crash_handler = CrashHandler(self)
+        self.crash_handler.set_context_provider(self._crash_context)
+        self.crash_handler.crashReported.connect(self._on_crash_reported)
+        self.crash_handler.install()
         self.platform = PlatformIntegration(self.app_instance)
         self.instance_guard = self.platform.instance_guard
         self.multi_instances = self.platform.multi_instances
@@ -121,6 +133,11 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.app_instance: Optional[QApplication] = QApplication.instance()
         self.path_manager: PathManager = PathManager()  # 统一路径管理
         self.configs: ConfigManager = ConfigManager(path=CONFIGS_PATH, filename="configs.json")
+        if self._safe_mode:
+            # 安全模式只跳过外部插件与主题：配置照常读取，也照常写回。
+            logger.warning(
+                "Safe mode enabled: external plugins and themes will not be loaded"
+            )
         self.theme_manager: ThemeManager = ThemeManager(self)
         self.widgets_model: WidgetListModel = WidgetListModel(self)
         self.tray_icon: Optional[TrayIcon] = None
@@ -245,10 +262,13 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             self._load_runtime()  # 加载运行时(以及插件)
             self._init_tray_icon()  # 初始化托盘图标
             self._run_utils()
-        except Exception:
+        except Exception as error:
             self._startup_state = StartupState.FAILED
             logger.exception("Application initialization failed")
-            raise
+            self.crash_handler.report_exception(
+                type(error), error, error.__traceback__, source="startup"
+            )
+            return
 
         self._startup_state = StartupState.RUNNING
         self.initialized.emit()
@@ -318,15 +338,17 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             return
         self._cleanup_started = True
 
+        # 每一项都在 try 内解析属性：崩溃发生在启动完成前时也要能安全退出。
         cleanup_steps = (
-            ("configuration save", self.configs.save),
-            ("update timer stop", self.union_update_timer.stop),
-            ("main window release", self.widgets_window.release),
-            ("auxiliary window release", self.window_manager.release_all),
-            ("plugin cleanup", self.plugin_manager.cleanup),
-            ("RinUI theme cleanup", self.widgets_window.theme_manager.clean_up),
-            ("tray icon cleanup", self._cleanup_tray_icon),
-            ("single instance lock release", self.instance_guard.release),
+            ("configuration save", lambda: self._save_config_on_exit()),
+            ("update timer stop", lambda: self.union_update_timer.stop()),
+            ("main window release", lambda: self.widgets_window.release()),
+            ("auxiliary window release", lambda: self.window_manager.release_all()),
+            ("plugin cleanup", lambda: self.plugin_manager.cleanup()),
+            ("RinUI theme cleanup", lambda: self.widgets_window.theme_manager.clean_up()),
+            ("tray icon cleanup", lambda: self._cleanup_tray_icon()),
+            ("single instance lock release", lambda: self.instance_guard.release()),
+            ("crash handler uninstall", self.crash_handler.uninstall),
         )
         for step_name, cleanup_step in cleanup_steps:
             try:
@@ -380,12 +402,16 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             return
 
         self._restart_requested = True
-        arguments = sys.argv[1:] if getattr(sys, "frozen", False) else sys.argv
+        arguments = list(sys.argv[1:] if getattr(sys, "frozen", False) else sys.argv)
         if extra_argument and extra_argument not in arguments:
             arguments.append(extra_argument)
-        self.instance_guard.release()
+        # 崩溃后重启时 instance_guard 可能还不存在，必须容忍。
+        guard = getattr(self, "instance_guard", None)
+        if guard is not None:
+            guard.release()
         if not QProcess.startDetached(sys.executable, arguments):
-            self.instance_guard.try_acquire()
+            if guard is not None:
+                guard.try_acquire()
             self._restart_requested = False
             logger.error("Failed to start replacement process for restart")
             return
@@ -471,6 +497,9 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.automation_manager.init_builtin_tasks()
         self.widgets_window.run()
 
+        if self._safe_mode:
+            self._notify_safe_mode()
+
         if "--update-done" in sys.argv:
             sys.argv.remove("--update-done")
             self.window_manager.open_whatsnew()
@@ -484,13 +513,17 @@ class AppCentral(QObject):  # Class Widgets 的中枢
 
         # Plugin files must only change before the plugin scan/load phase.
         self.plugin_manager.set_enabled_plugins(self.configs.plugins.enabled)
-        self.plugin_manager.apply_pending_operations()
+        if self._safe_mode:
+            # 待处理的插件安装/卸载属于外部插件操作，留到下次正常启动再执行。
+            logger.warning("Safe mode: skipping deferred plugin operations")
+        else:
+            self.plugin_manager.apply_pending_operations()
         # 加载插件（内置+外部）
         self.plugin_manager.scan()  # 延迟扫描插件，确保翻译器已加载
         self.plugin_manager.load_plugins()
 
     def _init_tray_icon(self) -> None:
-        from src.core.utils.tray import TrayIcon
+        from src.core.windows.tray import TrayIcon
 
         self.tray_icon = TrayIcon()
         self.tray_icon.togglePanel.connect(self._on_tray_toggle)
@@ -564,3 +597,115 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         f.setFamilies(families)
         f.setStyleHint(QFont.StyleHint.SansSerif)
         return f
+
+    # ---------------- 崩溃处理 / crash handling ----------------
+    @Property(bool, constant=True)
+    def safeMode(self) -> bool:
+        """当前是否以安全模式运行。"""
+        return self._safe_mode
+
+    def _crash_context(self) -> dict:
+        """崩溃报告需要的运行时信息。"""
+        return {
+            "uptime": time.monotonic() - self._started_at,
+            "plugin_count": len(getattr(self.plugin_manager, "metas", None) or []),
+            "theme_id": self.theme_manager.currentTheme,
+            "safe_mode": self._safe_mode,
+            "plugins": self._plugin_records(),
+            "active_plugin_id": self._active_plugin_id(),
+        }
+
+    def _plugin_records(self) -> list[PluginRecord]:
+        """把插件清单整理成崩溃归因要用的记录。
+
+        任何一步拿不到都退化成空清单：归因是锦上添花，绝不能在崩溃路径上再抛一次。
+        """
+        records: list[PluginRecord] = []
+        try:
+            metas = getattr(self.plugin_manager, "metas", None) or []
+        except Exception:
+            return records
+
+        for meta in metas:
+            try:
+                plugin_id = str(meta.get("id", "") or "")
+                if not plugin_id:
+                    continue
+                records.append(
+                    PluginRecord(
+                        plugin_id=plugin_id,
+                        name=str(meta.get("name", "") or ""),
+                        version=str(meta.get("version", "") or ""),
+                        icon=self._plugin_icon_url(meta.get("icon")),
+                        path=str(meta.get("_path") or ""),
+                        builtin=meta.get("_type") == "builtin",
+                    )
+                )
+            except Exception:
+                logger.exception("Failed to describe a plugin for crash attribution")
+        return records
+
+    @staticmethod
+    def _plugin_icon_url(icon) -> str:
+        """把插件清单里的 icon 统一成 QML 能直接用的字符串。
+
+        插件清单里的 icon 是 ``QUrl``（见 :meth:`PluginManager.scan`），而 PySide6 的
+        ``str(QUrl)`` 返回的是 repr —— ``PySide6.QtCore.QUrl('file:///...')``，
+        直接塞给 ``Image.source`` 只会得到一张空图，必须走 ``toString()``。
+        """
+        if icon is None:
+            return ""
+        to_string = getattr(icon, "toString", None)
+        if callable(to_string):
+            try:
+                return str(to_string())
+            except Exception:
+                logger.exception("Failed to convert a plugin icon URL")
+                return ""
+        return str(icon or "")
+
+    def _active_plugin_id(self) -> str:
+        """当前正持有 API 上下文的插件（插件生命周期回调期间）。"""
+        try:
+            plugin = getattr(self.plugin_api, "current_plugin", None)
+            meta = getattr(plugin, "meta", None) or {}
+            return str(meta.get("id", "") or "")
+        except Exception:
+            return ""
+
+    @Slot(object)
+    def _on_crash_reported(self, report: CrashReport) -> None:
+        """把崩溃报告交给报告窗口（可能来自非 UI 线程，信号会自动排队）。"""
+        self.window_manager.open_problem_report(report)
+
+    @Slot()
+    def ignore_crash(self) -> None:
+        """用户选择忽略问题：关闭报告窗口，必要时退出。"""
+        self.window_manager.close_problem_report()
+        if self._startup_state is not StartupState.RUNNING:
+            logger.warning("Startup never completed, quitting instead of continuing")
+            self.quit()
+            return
+        logger.warning("Continuing after an unrecovered problem")
+
+    def _save_config_on_exit(self) -> None:
+        # 安全模式同样会读取配置，退出时照常保存用户本次的修改。
+        self.configs.save()
+
+    def _notify_safe_mode(self) -> None:
+        try:
+            self._notification.dispatch(
+                NotificationData(
+                    provider_id="com.classwidgets.safemode",
+                    level=NotificationLevel.WARNING,
+                    title=QCoreApplication.translate("AppCentral", "Safe mode"),
+                    message=QCoreApplication.translate(
+                        "AppCentral",
+                        "Class Widgets started in safe mode. Third-party plugins and themes were skipped; your settings and schedule are used as usual.",
+                    ),
+                    duration=0,
+                    silent=True,
+                )
+            )
+        except Exception:
+            logger.exception("Failed to notify about safe mode")

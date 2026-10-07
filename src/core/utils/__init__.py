@@ -1,10 +1,5 @@
-from loguru import logger
-from packaging.specifiers import SpecifierSet
-from packaging.version import Version
-
 from .json_loader import JsonLoader
 from .calculator import get_cycle_week, get_week_number
-from .tray import TrayIcon
 from .subjects import (
     DEFAULT_SUBJECTS,
     get_default_subjects,

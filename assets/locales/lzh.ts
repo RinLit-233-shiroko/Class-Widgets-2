@@ -868,13 +868,13 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>ExportScheduleDialog</name>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="24"/>
+        <location filename="../../src/core/converter/slots.py" line="24"/>
         <location filename="../../src/core/schedule/manager.py" line="258"/>
         <source>Export Schedule</source>
         <translation>出课表</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="27"/>
+        <location filename="../../src/core/converter/slots.py" line="27"/>
         <source>CSES Format (*.yaml *.yml)</source>
         <translation>CSES 式 (*.yaml *.yml)</translation>
     </message>
@@ -1034,22 +1034,22 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>ImportScheduleDialog</name>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="42"/>
+        <location filename="../../src/core/converter/slots.py" line="42"/>
         <source>Import CSES Schedule</source>
         <translation>导入 CSES 时间表</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="45"/>
+        <location filename="../../src/core/converter/slots.py" line="45"/>
         <source>CSES YAML Files (*.yaml *.yml)</source>
         <translation>CSES YAML 文件 (*.yaml *.yml)</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="83"/>
+        <location filename="../../src/core/converter/slots.py" line="83"/>
         <source>Import Class Widgets 1 Schedule</source>
         <translation>导入Class Widgets 1 时间表</translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/slots.py" line="86"/>
+        <location filename="../../src/core/converter/slots.py" line="86"/>
         <source>Class Widgets 1 JSON Files (*.json)</source>
         <translation>Class Widgets 1 JSON 文件 (*.json)</translation>
     </message>
@@ -1862,17 +1862,17 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/converter.py" line="63"/>
+        <location filename="../../src/core/converter/converter.py" line="63"/>
         <source>All Weeks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/converter.py" line="65"/>
+        <location filename="../../src/core/converter/converter.py" line="65"/>
         <source>Odd Weeks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/convertor/converter.py" line="67"/>
+        <location filename="../../src/core/converter/converter.py" line="67"/>
         <source>Even Weeks</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2006,7 +2006,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>ScheduleConverter</name>
     <message>
-        <location filename="../../src/core/convertor/converter.py" line="490"/>
+        <location filename="../../src/core/converter/converter.py" line="490"/>
         <source>Class</source>
         <translation>课</translation>
     </message>

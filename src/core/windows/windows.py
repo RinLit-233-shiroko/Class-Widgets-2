@@ -175,6 +175,14 @@ class CheckSingleInstanceDialog(ReleasableWindow):
 
 
 class ClassSwapWindow(ReleasableWindow):
+    """换课窗口。
+
+    与 :class:`src.core.windows.problem_report.ProblemReport` 属于同一类窗口：
+    普通窗口，可拖动、可被 Alt+Tab / 任务栏选中，且不置顶。QML 根窗口默认隐藏
+    （``visible: false``），由 :meth:`AppWindowManager.open` 统一显示并激活，
+    关闭时由 ``WindowManager.closeClassSwap()`` 释放，因此可以反复打开。
+    """
+
     def __init__(self, parent):
         super().__init__(parent)
 
@@ -184,6 +192,7 @@ class ClassSwapWindow(ReleasableWindow):
             / "dialogs"
             / "ClassSwapDialog.qml"
         )
+        logger.info("Class swap window QML requested")
 
 
 class ClassSwapRestoreDialog(ReleasableWindow):

@@ -1,9 +1,28 @@
+from dataclasses import dataclass
 from pathlib import Path
 from typing import NotRequired, Optional, TypedDict
 
 from PySide6.QtCore import QUrl
 
 from src.core.notification.model import NotificationPayload
+
+
+@dataclass(frozen=True)
+class PluginLoadFailure:
+    """一个插件在扫描/加载阶段失败的原因。
+
+    以前这些失败只写日志，插件就这么“消失”了：用户看不到，排查也没线索。
+    现在统一收集，交给通知和崩溃归因使用。
+    """
+
+    plugin_id: str
+    name: str = ""
+    stage: str = ""
+    error: str = ""
+
+    @property
+    def display_name(self) -> str:
+        return self.name or self.plugin_id
 
 
 class PluginNotificationPayload(NotificationPayload):

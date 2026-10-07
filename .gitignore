@@ -189,3 +189,14 @@ RinUI
 
 # Reasonix
 .reasonix/
+
+# Local dev / debug artifacts
+.idea/
+logs/
+.uv-cache/
+.uv-cache-codex/
+.uv-tools/
+.tmp_*/
+.touch_probe/
+wer-kernel-*/
+.cwplugin_backups/
