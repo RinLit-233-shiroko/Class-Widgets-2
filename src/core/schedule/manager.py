@@ -159,6 +159,46 @@ class ScheduleManager(QObject):
         files.sort(key=lambda item: item["name"].casefold())
         return files
 
+    @Slot(result=list)
+    def allSchedulesSubjects(self) -> list[dict]:
+        """列出每张课表及其课程名称，供“永不自动隐藏的课程”选择器使用。
+
+        只返回名称：课表间的同名课程 id 并不相同，按名称才能跨课表共享勾选状态。
+        """
+        groups = []
+        for path in sorted(self.schedules_dir.glob("*.json"), key=lambda p: p.stem.casefold()):
+            groups.append({
+                "name": path.stem,
+                "isCurrent": path.stem == self.current_schedule_name,
+                "subjects": self._collect_subject_names(path),
+            })
+        return groups
+
+    def _collect_subject_names(self, path: Path) -> list[str]:
+        """读取一张课表中的课程名称，去重并保持原有顺序"""
+        subjects = None
+        if path.stem == self.current_schedule_name:
+            # 当前课表以内存数据为准，避免漏掉尚未保存到文件的改动
+            subjects = self.schedule.subjects
+        if subjects is None:
+            try:
+                data = json.loads(path.read_text(encoding="utf-8"))
+            except Exception as e:
+                logger.warning(f"Failed to read subjects from schedule file {path.name}: {e}")
+                return []
+            subjects = data.get("subjects") or []
+
+        names = []
+        for subject in subjects:
+            if isinstance(subject, dict):
+                name = subject.get("name") or subject.get("simplifiedName")
+            else:
+                name = getattr(subject, "name", None) or getattr(subject, "simplifiedName", None)
+            name = str(name).strip() if name else ""
+            if name and name not in names:
+                names.append(name)
+        return names
+
     @Slot(str)
     def add(self, name: str):
         """创建新的空课表"""
