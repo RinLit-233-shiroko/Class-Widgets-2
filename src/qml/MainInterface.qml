@@ -37,7 +37,7 @@ QQW.Window {
     y: screen.virtualY + ((screen.height - height) / 2) || 0
     width: screen.width
     // 少 1px，避免被 Windows 判定为全屏窗口而遮挡任务栏
-    height: screen.height - 1
+    height: Math.max(0, screen.height - 1)
 
     property bool initialized: false
     property alias editMode: widgetsLoader.editMode
