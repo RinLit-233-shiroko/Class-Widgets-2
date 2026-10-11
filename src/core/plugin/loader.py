@@ -143,8 +143,15 @@ class PluginLoader:
         
         # 扫描外部插件
         if not include_external:
-            # 安全模式：外部插件目录完全不会被读取，也不会被导入。
-            logger.warning("Safe mode: external plugins are skipped")
+            # 安全模式：只读取元数据(修改配置)，不导入插件代码
+            logger.warning(
+                "Safe mode: external plugin metadata is listed, but no plugin code is imported"
+            )
+            for plugin_dir in self.discover_plugins_in_dir(external_path):
+                meta = self._load_meta(plugin_dir, "external")
+                if meta:
+                    meta["_compatible"] = check_api_version(meta["api_version"])
+                    metas.append(meta)
             return metas
 
         for plugin_dir in self.discover_plugins_in_dir(external_path):

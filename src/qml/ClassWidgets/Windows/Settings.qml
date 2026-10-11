@@ -27,6 +27,26 @@ FluentWindow {
         }
     }
 
+    // 安全模式：通过 floatLayer 居中显示在窗口顶部
+    Component {
+        id: safeModeNoticeComponent
+
+        SafeModeNotice {
+            closable: true
+            position: Position.Top
+            text: qsTr(
+                "Safe mode skips third-party plugins and themes, and disables Plugin Plaza. " +
+                "Your settings and schedule are used as usual. " +
+                "Restart normally to leave safe mode."
+            )
+        }
+    }
+
+    Component.onCompleted: {
+        if (AppCentral.safeMode)
+            floatLayer.createCustom(safeModeNoticeComponent)
+    }
+
     navigationItems: [
         {
             title: qsTr("Home"),

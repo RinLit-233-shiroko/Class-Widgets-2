@@ -129,6 +129,10 @@ class AppWindowManager(QObject):
         self.release("editor")
 
     def open_plugin_plaza(self) -> None:
+        # 安全模式禁用插件广场
+        if self.central.safeMode:
+            logger.warning("Plugin Plaza is not available in safe mode")
+            return
         self.open("plugin_plaza")
 
     def close_plugin_plaza(self) -> None:

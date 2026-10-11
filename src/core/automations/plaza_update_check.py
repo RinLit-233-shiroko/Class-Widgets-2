@@ -34,6 +34,9 @@ class PlazaUpdateCheckTask(AutomationTask):
 
     def _check_updates(self) -> None:
         self._timer.setInterval(self.INTERVAL_MS)
+        # 安全模式下不加载外部插件
+        if self.app_central.safeMode:
+            return
         if not self.app_central.configs.plugins.auto_check_plaza_updates:
             return
         self.app_central.plugin_manager.check_plaza_updates(background=True)

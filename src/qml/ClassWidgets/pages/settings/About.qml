@@ -215,6 +215,32 @@ FluentPage {
 
         SettingCard {
             Layout.fillWidth: true
+            icon.name: "ic_fluent_shield_20_regular"
+            title: qsTr("Safe Mode")
+            description: AppCentral.safeMode
+                ? qsTr(
+                    "Class Widgets is currently running in safe mode: third-party plugins " +
+                    "and themes are not loaded, and Plugin Plaza is unavailable. " +
+                    "Your settings and schedule work as usual.\n" +
+                    "Restart normally to leave safe mode."
+                )
+                : qsTr(
+                    "Starts Class Widgets without third-party plugins and themes, " +
+                    "so you can find the plugin or theme that caused a problem. " +
+                    "Plugin Plaza is unavailable in safe mode.\n" +
+                    "Your settings and schedule are kept."
+                )
+
+            Button {
+                icon.name: "ic_fluent_arrow_counterclockwise_20_regular"
+                text: qsTr("Restart in safe mode")
+                enabled: !AppCentral.safeMode
+                onClicked: AppCentral.restartInSafeMode()
+            }
+        }
+
+        SettingCard {
+            Layout.fillWidth: true
             icon.name: "ic_fluent_developer_board_search_20_regular"
             title: qsTr("Debug Mode")
             description: qsTr(

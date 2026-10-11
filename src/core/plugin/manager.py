@@ -98,7 +98,6 @@ class PluginManager(QObject):
 
     # ---------------- discover / scan ----------------
     def scan(self) -> None:
-        # 安全模式只加载内置插件，绝不触碰外部插件目录。
         include_external = not self.app_central.safeMode
         self.metas = self.loader.scan_plugins(
             self.external_path, include_external=include_external
@@ -138,7 +137,18 @@ class PluginManager(QObject):
             yield
 
     def load_plugins(self) -> None:
-        self._plugins = self.loader.load_plugins(self.metas, list(self.enabled_plugins))
+        # 安全模式：只加载内置插件。外部插件虽然出现在清单里（供用户配置），
+        # 但它们的代码一行都不会被导入。
+        enabled = list(self.enabled_plugins)
+        if self.app_central.safeMode:
+            builtin_ids = {
+                str(meta.get("id"))
+                for meta in self.metas
+                if meta.get("_type") == "builtin"
+            }
+            enabled = [pid for pid in enabled if pid in builtin_ids]
+            logger.warning("Safe mode: external plugins are not loaded")
+        self._plugins = self.loader.load_plugins(self.metas, enabled)
         self._report_plugin_load_failures()
         self.pluginListChanged.emit()
 
@@ -692,6 +702,9 @@ class PluginManager(QObject):
 
     @Slot()
     def openPlazaDownloads(self) -> None:
+        if self.app_central.safeMode:
+            logger.warning("Plugin Plaza downloads are not available in safe mode")
+            return
         self.app_central.window_manager.open_plugin_plaza()
         self.showPlazaDownloadsRequested.emit()
 

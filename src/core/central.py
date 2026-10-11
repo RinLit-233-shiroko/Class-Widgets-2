@@ -171,12 +171,14 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             self.path_manager.images("icons/cw2_editor.png"),
             self.window_manager.open_editor,
         )
-        shortcuts.register_shortcut(
-            "com.classwidgets.plugin-plaza",
-            QCoreApplication.translate("Shortcuts", "Plugin Plaza"),
-            self.path_manager.images("icons/cw2_plugin.png"),
-            self.window_manager.open_plugin_plaza,
-        )
+        if not self._safe_mode:
+            # 安全模式下不应当注册插件广场快捷方式
+            shortcuts.register_shortcut(
+                "com.classwidgets.plugin-plaza",
+                QCoreApplication.translate("Shortcuts", "Plugin Plaza"),
+                self.path_manager.images("icons/cw2_plugin.png"),
+                self.window_manager.open_plugin_plaza,
+            )
         shortcuts.register_shortcut(
             "com.classwidgets.reschedule-day",
             QCoreApplication.translate("Shortcuts", "Reschedule Day"),
@@ -417,6 +419,12 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             return
 
         self.app_instance.quit()
+
+    @Slot()
+    def restartInSafeMode(self) -> None:
+        """以安全模式重新启动（设置的"关于"页面与崩溃报告共用此入口）。"""
+        logger.warning("Restarting in safe mode on user request")
+        self.restart("--safe-mode")
 
     @Property(bool, notify=restartRequiredChanged)
     def restartRequired(self) -> bool:

@@ -10,7 +10,22 @@ FluentPage {
     id: root
     title: qsTr("Plugins")
 
-    Component.onCompleted: PluginManager.checkPlazaUpdates()
+    Component.onCompleted: {
+        // 安全模式下没有外部插件在运行，跳过广场请求。
+        if (!AppCentral.safeMode)
+            PluginManager.checkPlazaUpdates()
+    }
+
+    // 安全模式：常驻且不可关闭的提示。
+    // 插件列表照常显示，用户仍然可以启用/禁用/卸载，只是本次没有加载。
+    SafeModeNotice {
+        Layout.fillWidth: true
+        text: qsTr(
+            "Plugins are listed so you can still enable, disable or uninstall them, " +
+            "but no third-party plugin is loaded in this session. " +
+            "Changes take effect the next time you start normally."
+        )
+    }
 
     InfoBar {
         Layout.fillWidth: true
@@ -19,6 +34,7 @@ FluentPage {
             "Plugin Plaza is now available!"
         )
         severity: Severity.Info
+        visible: !AppCentral.safeMode
     }
 
     function uninstallPlugin(pluginId) {
@@ -121,7 +137,9 @@ FluentPage {
             icon.source: PathManager.assets("images/icons/cw2_plugin.png")
             // icon.name: "ic_fluent_apps_20_regular"
             title: qsTr("Plugin Plaza")
-            description: qsTr("Manage plugin downloads and updates")
+            description: AppCentral.safeMode
+                ? qsTr("Unavailable in safe mode: Plugin Plaza needs the plugins it manages to be loaded.")
+                : qsTr("Manage plugin downloads and updates")
 
             action: RowLayout {
                 spacing: 8
@@ -135,14 +153,20 @@ FluentPage {
                 Button {
                     icon.name: "ic_fluent_arrow_download_20_regular"
                     text: qsTr("Downloads")
+                    // 安全模式下插件广场不可用
+                    enabled: !AppCentral.safeMode
                     onClicked: PluginManager.openPlazaDownloads()
                 }
             }
 
             SettingItem {
                 title: qsTr("Automatically check for plugin updates")
+                description: AppCentral.safeMode
+                    ? qsTr("Unavailable in safe mode")
+                    : ""
 
                 Switch {
+                    enabled: !AppCentral.safeMode
                     onCheckedChanged: Configs.set("plugins.auto_check_plaza_updates", checked)
                     Component.onCompleted: checked = Configs.data.plugins.auto_check_plaza_updates
                 }
@@ -150,9 +174,14 @@ FluentPage {
 
             SettingItem {
                 title: qsTr("Automatically install plugin updates")
+                description: AppCentral.safeMode
+                    ? qsTr("Unavailable in safe mode")
+                    : ""
 
                 Switch {
-                    enabled: Configs.data.plugins.auto_check_plaza_updates
+                    // 依赖"自动检查"：不检查就没有更新可装；安全模式下整体不可用。
+                    enabled: !AppCentral.safeMode
+                        && Configs.data.plugins.auto_check_plaza_updates
                     onCheckedChanged: Configs.set("plugins.auto_install_plaza_updates", checked)
                     Component.onCompleted: checked = Configs.data.plugins.auto_install_plaza_updates
                 }

@@ -10,9 +10,10 @@ Window {
     title: qsTr("Quick Access Panel")
     // title: Configs.data.app.version
     width: 375
-    height: 475
+    // 安全模式提示条要占一行常驻空间，面板相应加高，避免挤压快捷方式区域。
+    height: AppCentral.safeMode ? 540 : 475
     minimumWidth: 375
-    minimumHeight: 475
+    minimumHeight: AppCentral.safeMode ? 540 : 475
     minimizeVisible: false
     maximizeVisible: false
 
@@ -43,6 +44,11 @@ Window {
         anchors.margins: 14
         anchors.bottomMargin: 22
         spacing: 8
+
+        // 安全模式
+        SafeModeNotice {
+            Layout.fillWidth: true
+        }
 
         RowLayout {
             Layout.margins: 4
