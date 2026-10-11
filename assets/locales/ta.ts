@@ -147,33 +147,55 @@ MIT உரிமத்தின் கீழ் உரிமம் பெற்�
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="219"/>
+        <source>Safe Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="221"/>
+        <source>Class Widgets is currently running in safe mode: third-party plugins and themes are not loaded, and Plugin Plaza is unavailable. Your settings and schedule work as usual.
+Restart normally to leave safe mode.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="227"/>
+        <source>Starts Class Widgets without third-party plugins and themes, so you can find the plugin or theme that caused a problem. Plugin Plaza is unavailable in safe mode.
+Your settings and schedule are kept.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="236"/>
+        <source>Restart in safe mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="245"/>
         <source>Debug Mode</source>
         <translation>பிழைத்திருத்த முறை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="220"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="246"/>
         <source>Enable Debug Mode to access core widget information, and debugging tools 
 * Requires restart</source>
         <translation>முக்கிய விட்செட் செய்தி மற்றும் பிழைத்திருத்த கருவிகளை அணுக பிழைத்திருத்த பயன்முறையை இயக்கவும் 
 * மறுதொடக்கம் தேவை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="236"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="262"/>
         <source>Show Tutorials again</source>
         <translation>டுடோரியல்களை மீண்டும் காட்டு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="239"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="265"/>
         <source>Restart</source>
         <translation>மறுதொடக்கம்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="251"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="277"/>
         <source>License Agreement</source>
         <translation>உரிம ஒப்பந்தத்தின்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="258"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="284"/>
         <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -216,12 +238,12 @@ MIT உரிமத்தின் கீழ் உரிமம் பெற்�
 <context>
     <name>AppCentral</name>
     <message>
-        <location filename="../../src/core/central.py" line="708"/>
+        <location filename="../../src/core/central.py" line="716"/>
         <source>Safe mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="712"/>
+        <location filename="../../src/core/central.py" line="720"/>
         <source>Class Widgets started in safe mode. Third-party plugins and themes were skipped; your settings and schedule are used as usual.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2640,23 +2662,23 @@ If translations are missing after a theme change, please restart</source>
 <context>
     <name>PluginManager</name>
     <message>
-        <location filename="../../src/core/plugin/manager.py" line="124"/>
+        <location filename="../../src/core/plugin/manager.py" line="123"/>
         <source>Incompatible</source>
         <extracomment>归因结论：这次崩溃是不是由某个插件引发。 扫描/加载过程中失败的插件，供 PluginManager 通知与诊断使用。</extracomment>
         <translation>பொருந்தாதது</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/manager.py" line="128"/>
+        <location filename="../../src/core/plugin/manager.py" line="127"/>
         <source>{count} incompatible plugin(s) have been loaded, which may cause unknown issues.</source>
         <translation>{count} பொருந்தாத செருகுநிரல்கள் (கள்) ஏற்றப்பட்டுள்ளன, இது அறியப்படாத சிக்கல்களை ஏற்படுத்தக்கூடும்.</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/manager.py" line="179"/>
+        <location filename="../../src/core/plugin/manager.py" line="189"/>
         <source>Some plugins failed to load</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/manager.py" line="183"/>
+        <location filename="../../src/core/plugin/manager.py" line="193"/>
         <source>{count} plugin(s) could not be loaded and were skipped: {names}</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2954,8 +2976,8 @@ Do you want to %3 this plugin?</source>
         <translation type="vanished">எச்சரிக்கை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="27"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="190"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="43"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="219"/>
         <source>Success</source>
         <translation>செய்</translation>
     </message>
@@ -2964,17 +2986,17 @@ Do you want to %3 this plugin?</source>
         <translation type="vanished">செருகுநிரல் வெற்றிகரமாக நிறுவல் நீக்கப்பட்டது. நடைமுறைக்கு வர மீண்டும் தொடங்கவும்.</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="37"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="53"/>
         <source>Uninstall Failed</source>
         <translation>நிறுவல் நீக்கம் தோல்வியடைந்தது</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="38"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="54"/>
         <source>Failed to uninstall the plugin. Please try again later.</source>
         <translation>செருகுநிரலை நிறுவல் நீக்குவதில் தோல்வி. பிறகு முயற்சிக்கவும்.</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="167"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="196"/>
         <source>Your plugins</source>
         <translation>உங்கள் செருகுநிரல்கள்</translation>
     </message>
@@ -2983,24 +3005,24 @@ Do you want to %3 this plugin?</source>
         <translation type="vanished">செருகுநிரல்களைப் பெறுங்கள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="180"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="209"/>
         <source>Search for plugins</source>
         <translation>செருகுநிரல்களைத் தேடுங்கள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="200"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="229"/>
         <source>The selected plugin could not be imported.
 </source>
         <translation>தேர்ந்தெடுக்கப்பட்ட செருகுநிரலை இறக்குமதி செய்ய முடியவில்லை.
 </translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="209"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="238"/>
         <source>Import</source>
         <translation>இறக்குமதி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="350"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="379"/>
         <source>This plugin requires API version %1, but current API version is %2. 
 It&apos;s incompatible and may cause unexpected issues.</source>
         <translation>இந்த செருகுநிரலுக்கு பநிஇ பதிப்பு %1 தேவைப்படுகிறது, ஆனால் தற்போதைய பநிஇ பதிப்பு %2 ஆகும். 
@@ -3023,7 +3045,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation type="vanished">நீட்டிப்பு பிளாசாவுக்குச் செல்லவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="199"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="228"/>
         <source>Import Failed</source>
         <translation>இறக்குமதி தோல்வி</translation>
     </message>
@@ -3032,12 +3054,12 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation type="vanished">இறக்குமதி செய்கிறது</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="17"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="32"/>
         <source>Note</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="18"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="33"/>
         <source>Plugin Plaza is now available!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3046,109 +3068,125 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation type="vanished">தேர்ந்தெடுக்கப்பட்ட செருகுநிரலை இறக்குமதி செய்கிறது. தயவுசெய்து காத்திருங்கள்...</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="28"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="23"/>
+        <source>Plugins are listed so you can still enable, disable or uninstall them, but no third-party plugin is loaded in this session. Changes take effect the next time you start normally.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="44"/>
         <source>The plugin uninstall has been queued. Restart to apply it.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="108"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="124"/>
         <source>Import queued</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="109"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="125"/>
         <source>The plugin will be installed after restart.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="123"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="139"/>
         <source>Plugin Plaza</source>
         <translation type="unfinished">செருகுநிரல் பிளாசா</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="124"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="141"/>
+        <source>Unavailable in safe mode: Plugin Plaza needs the plugins it manages to be loaded.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="142"/>
         <source>Manage plugin downloads and updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="137"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="155"/>
         <source>Downloads</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="143"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="163"/>
         <source>Automatically check for plugin updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="152"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="165"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="178"/>
+        <source>Unavailable in safe mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="176"/>
         <source>Automatically install plugin updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="191"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="220"/>
         <source>The plugin import has been queued. Restart to apply it.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="222"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="251"/>
         <source>All</source>
         <translation>அனைத்தும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="225"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="360"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="254"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="389"/>
         <source>Enabled</source>
         <translation>இயக்கப்பட்டது</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="228"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="360"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="257"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="389"/>
         <source>Disabled</source>
         <translation>முடக்கப்பட்டது</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="303"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="332"/>
         <source>Built-in</source>
         <translation>உள்ளமைக்கப்பட்ட</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="381"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="410"/>
         <source>Update</source>
         <translation type="unfinished">புதுப்பிப்பு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="392"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="421"/>
         <source>Open In</source>
         <translation>உள்ளே திற</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="395"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="424"/>
         <source>Finder</source>
         <translation>கண்டுபிடிப்பாளர்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="395"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="424"/>
         <source>File Explorer</source>
         <translation>கோப்பு எக்ச்ப்ளோரர்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="400"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="429"/>
         <source>Open Failed</source>
         <translation>திறக்க முடியவில்லை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="401"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="430"/>
         <source>Failed to open the plugin folder.</source>
         <translation>செருகுநிரல் கோப்புறையைத் திறக்க முடியவில்லை.</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="410"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="439"/>
         <source>External Online Repository</source>
         <translation>வெளிப்புற நிகழ்நிலை களஞ்சியம்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="418"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="447"/>
         <source>Uninstall</source>
         <translation>நிறுவல் நீக்கவும்</translation>
     </message>
@@ -3530,6 +3568,19 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/RestartButton.qml" line="18"/>
         <source>Restart to apply changes</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SafeModeNotice</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/SafeModeNotice.qml" line="13"/>
+        <source>Safe mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/SafeModeNotice.qml" line="14"/>
+        <source>Third-party plugins, themes and Plugin Plaza are disabled.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4458,57 +4509,62 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
         <translation>அமைப்புகள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="32"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="37"/>
+        <source>Safe mode skips third-party plugins and themes, and disables Plugin Plaza. Your settings and schedule are used as usual. Restart normally to leave safe mode.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="52"/>
         <source>Home</source>
         <translation>வீடு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="38"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="58"/>
         <source>General</source>
         <translation>பொது</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="46"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="66"/>
         <source>Widgets</source>
         <translation>நிரல்பலகை</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="51"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="71"/>
         <source>Interactions</source>
         <translation>தொடர்புகள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="56"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="76"/>
         <source>Personalization</source>
         <translation>தனிப்பயனாக்கம்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="61"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="81"/>
         <source>Notification &amp; Time</source>
         <translation>அறிவிப்பு &amp; நேரம்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="65"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="85"/>
         <source>Notification</source>
         <translation>அறிவிப்பு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="70"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="90"/>
         <source>Time</source>
         <translation>நேரம்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="77"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="97"/>
         <source>Plugins</source>
         <translation>செருகுநிரல்கள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="84"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="104"/>
         <source>About</source>
         <translation>பற்றி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="90"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="110"/>
         <source>Update</source>
         <translation>புதுப்பிப்பு</translation>
     </message>
@@ -4562,17 +4618,17 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
         <translation type="unfinished">அட்டவணைகள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="176"/>
+        <location filename="../../src/core/central.py" line="178"/>
         <source>Plugin Plaza</source>
         <translation type="unfinished">செருகுநிரல் பிளாசா</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="182"/>
+        <location filename="../../src/core/central.py" line="184"/>
         <source>Reschedule Day</source>
         <translation type="unfinished">மறு அட்டவணை நாள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="188"/>
+        <location filename="../../src/core/central.py" line="190"/>
         <source>Class Swap</source>
         <translation type="unfinished">வகுப்பு இடமாற்று</translation>
     </message>
@@ -5369,7 +5425,7 @@ Class Widgets has restored the default theme.</source>
         <translation type="vanished">உங்கள் அட்டவணை சுயவிவரத்தை திருத்தவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="67"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="73"/>
         <source>What&apos;s New</source>
         <translation>புதியது என்ன</translation>
     </message>
@@ -5394,7 +5450,7 @@ Class Widgets has restored the default theme.</source>
         <translation type="vanished">குறுக்குவழிகள்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="168"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="174"/>
         <source>Reschedule Day</source>
         <translation>மறு அட்டவணை நாள்</translation>
     </message>
@@ -5408,27 +5464,27 @@ Class Widgets has restored the default theme.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="87"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="93"/>
         <source>Switch your schedule</source>
         <translation>உங்கள் அட்டவணையை மாற்றவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="135"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="141"/>
         <source>Debugger</source>
         <translation>பிழைத்திருத்தி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="147"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="153"/>
         <source>Restart</source>
         <translation>மறுதொடக்கம்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="155"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="161"/>
         <source>Restart required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="162"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="168"/>
         <source>Exit</source>
         <translation>வெளியேறு</translation>
     </message>

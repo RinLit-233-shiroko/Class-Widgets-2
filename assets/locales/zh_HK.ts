@@ -153,18 +153,40 @@ Licensed under the MIT license</source>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="219"/>
+        <source>Safe Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="221"/>
+        <source>Class Widgets is currently running in safe mode: third-party plugins and themes are not loaded, and Plugin Plaza is unavailable. Your settings and schedule work as usual.
+Restart normally to leave safe mode.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="227"/>
+        <source>Starts Class Widgets without third-party plugins and themes, so you can find the plugin or theme that caused a problem. Plugin Plaza is unavailable in safe mode.
+Your settings and schedule are kept.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="236"/>
+        <source>Restart in safe mode</source>
+        <translation type="unfinished">重新啟動並進入安全模式</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="245"/>
         <source>Debug Mode</source>
         <translation type="unfinished">除錯模式</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="220"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="246"/>
         <source>Enable Debug Mode to access core widget information, and debugging tools 
 * Requires restart</source>
         <translation>啟用除錯模式可訪問核心部件信息及除錯工具·
 * 需要重啟程式</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="258"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="284"/>
         <source>This project (Class Widgets 2) is licensed under the MIT license. For details, see:</source>
         <translation>本項目（Class Widgets 2）使用MIT許可證。詳情信息請看：</translation>
     </message>
@@ -174,17 +196,17 @@ Licensed under the MIT license</source>
         <translation type="obsolete">啟用除錯模式以存取核心小工具資訊和除錯工具。* 需要重新啟動。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="236"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="262"/>
         <source>Show Tutorials again</source>
         <translation type="unfinished">再次顯示教學</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="239"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="265"/>
         <source>Restart</source>
         <translation type="unfinished">重新啟動應用程式</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="251"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="277"/>
         <source>License Agreement</source>
         <translation type="unfinished">授權協議</translation>
     </message>
@@ -227,12 +249,12 @@ Licensed under the MIT license</source>
 <context>
     <name>AppCentral</name>
     <message>
-        <location filename="../../src/core/central.py" line="708"/>
+        <location filename="../../src/core/central.py" line="716"/>
         <source>Safe mode</source>
         <translation>安全模式</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="712"/>
+        <location filename="../../src/core/central.py" line="720"/>
         <source>Class Widgets started in safe mode. Third-party plugins and themes were skipped; your settings and schedule are used as usual.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2695,23 +2717,23 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
 <context>
     <name>PluginManager</name>
     <message>
-        <location filename="../../src/core/plugin/manager.py" line="124"/>
+        <location filename="../../src/core/plugin/manager.py" line="123"/>
         <source>Incompatible</source>
         <extracomment>归因结论：这次崩溃是不是由某个插件引发。 扫描/加载过程中失败的插件，供 PluginManager 通知与诊断使用。</extracomment>
         <translation type="unfinished">不相容</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/manager.py" line="128"/>
+        <location filename="../../src/core/plugin/manager.py" line="127"/>
         <source>{count} incompatible plugin(s) have been loaded, which may cause unknown issues.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/manager.py" line="179"/>
+        <location filename="../../src/core/plugin/manager.py" line="189"/>
         <source>Some plugins failed to load</source>
         <translation>部分插件載入失敗</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/manager.py" line="183"/>
+        <location filename="../../src/core/plugin/manager.py" line="193"/>
         <source>{count} plugin(s) could not be loaded and were skipped: {names}</source>
         <translation>有 {count} 個插件無法載入，已略過：{names}</translation>
     </message>
@@ -3006,18 +3028,18 @@ Do you want to %3 this plugin?</source>
         <translation type="obsolete">插件系統仍在開發階段，尚未經過測試。使用插件可能會導致嚴重問題。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="17"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="32"/>
         <source>Note</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="18"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="33"/>
         <source>Plugin Plaza is now available!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="27"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="190"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="43"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="219"/>
         <source>Success</source>
         <translation type="unfinished">成功</translation>
     </message>
@@ -3026,17 +3048,17 @@ Do you want to %3 this plugin?</source>
         <translation type="obsolete">插件已成功解除安裝。請重新啟動以生效。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="37"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="53"/>
         <source>Uninstall Failed</source>
         <translation type="unfinished">解除安裝失敗</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="38"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="54"/>
         <source>Failed to uninstall the plugin. Please try again later.</source>
         <translation type="unfinished">解除安裝插件失敗。請稍後再試。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="167"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="196"/>
         <source>Your plugins</source>
         <translation type="unfinished">您的插件</translation>
     </message>
@@ -3053,18 +3075,18 @@ Do you want to %3 this plugin?</source>
         <translation type="obsolete">前往插件廣場</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="180"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="209"/>
         <source>Search for plugins</source>
         <translation type="unfinished">搜尋插件</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="200"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="229"/>
         <source>The selected plugin could not be imported.
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="209"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="238"/>
         <source>Import</source>
         <translation type="unfinished">匯入</translation>
     </message>
@@ -3073,63 +3095,79 @@ Do you want to %3 this plugin?</source>
         <translation type="obsolete">插件已成功匯入。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="28"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="23"/>
+        <source>Plugins are listed so you can still enable, disable or uninstall them, but no third-party plugin is loaded in this session. Changes take effect the next time you start normally.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="44"/>
         <source>The plugin uninstall has been queued. Restart to apply it.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="108"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="124"/>
         <source>Import queued</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="109"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="125"/>
         <source>The plugin will be installed after restart.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="123"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="139"/>
         <source>Plugin Plaza</source>
         <translation type="unfinished">插件廣場</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="124"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="141"/>
+        <source>Unavailable in safe mode: Plugin Plaza needs the plugins it manages to be loaded.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="142"/>
         <source>Manage plugin downloads and updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="137"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="155"/>
         <source>Downloads</source>
         <translation type="unfinished">下載</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="143"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="163"/>
         <source>Automatically check for plugin updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="152"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="165"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="178"/>
+        <source>Unavailable in safe mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="176"/>
         <source>Automatically install plugin updates</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="191"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="220"/>
         <source>The plugin import has been queued. Restart to apply it.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="199"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="228"/>
         <source>Import Failed</source>
         <translation type="unfinished">匯入失敗</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="350"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="379"/>
         <source>This plugin requires API version %1, but current API version is %2. 
 It&apos;s incompatible and may cause unexpected issues.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="381"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="410"/>
         <source>Update</source>
         <translation type="unfinished">更新</translation>
     </message>
@@ -3138,24 +3176,24 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation type="obsolete">選取的 ZIP 檔案不包含有效的插件。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="222"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="251"/>
         <source>All</source>
         <translation type="unfinished">全部</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="225"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="360"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="254"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="389"/>
         <source>Enabled</source>
         <translation type="unfinished">已啟用</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="228"/>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="360"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="257"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="389"/>
         <source>Disabled</source>
         <translation type="unfinished">已停用</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="303"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="332"/>
         <source>Built-in</source>
         <translation type="unfinished">內建</translation>
     </message>
@@ -3165,37 +3203,37 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation type="obsolete">此外掛需要 API 版本 %1，但目前的應用程式版本為 %2。兩者不相容，可能導致意外問題。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="392"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="421"/>
         <source>Open In</source>
         <translation type="unfinished">開啟於</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="395"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="424"/>
         <source>Finder</source>
         <translation type="unfinished">Finder</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="395"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="424"/>
         <source>File Explorer</source>
         <translation type="unfinished">檔案總管</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="400"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="429"/>
         <source>Open Failed</source>
         <translation type="unfinished">開啟失敗</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="401"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="430"/>
         <source>Failed to open the plugin folder.</source>
         <translation type="unfinished">開啟外掛資料夾失敗。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="410"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="439"/>
         <source>External Online Repository</source>
         <translation type="unfinished">外部線上存放庫</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="418"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="447"/>
         <source>Uninstall</source>
         <translation type="unfinished">解除安裝</translation>
     </message>
@@ -3570,6 +3608,19 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/RestartButton.qml" line="18"/>
         <source>Restart to apply changes</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SafeModeNotice</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/SafeModeNotice.qml" line="13"/>
+        <source>Safe mode</source>
+        <translation type="unfinished">安全模式</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/SafeModeNotice.qml" line="14"/>
+        <source>Third-party plugins, themes and Plugin Plaza are disabled.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4510,57 +4561,62 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
         <translation type="unfinished">設定</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="32"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="37"/>
+        <source>Safe mode skips third-party plugins and themes, and disables Plugin Plaza. Your settings and schedule are used as usual. Restart normally to leave safe mode.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="52"/>
         <source>Home</source>
         <translation type="unfinished">首頁</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="38"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="58"/>
         <source>General</source>
         <translation type="unfinished">一般</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="46"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="66"/>
         <source>Widgets</source>
         <translation type="unfinished">控制項 (&amp;W)</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="51"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="71"/>
         <source>Interactions</source>
         <translation type="unfinished">互動</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="56"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="76"/>
         <source>Personalization</source>
         <translation type="unfinished">個人化</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="61"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="81"/>
         <source>Notification &amp; Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="65"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="85"/>
         <source>Notification</source>
         <translation type="unfinished">通知</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="70"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="90"/>
         <source>Time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="77"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="97"/>
         <source>Plugins</source>
         <translation type="unfinished">插件</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="84"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="104"/>
         <source>About</source>
         <translation type="unfinished">關於</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="90"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="110"/>
         <source>Update</source>
         <translation type="unfinished">更新</translation>
     </message>
@@ -4614,17 +4670,17 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
         <translation type="unfinished">時程表</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="176"/>
+        <location filename="../../src/core/central.py" line="178"/>
         <source>Plugin Plaza</source>
         <translation type="unfinished">插件廣場</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="182"/>
+        <location filename="../../src/core/central.py" line="184"/>
         <source>Reschedule Day</source>
         <translation type="unfinished">調休</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="188"/>
+        <location filename="../../src/core/central.py" line="190"/>
         <source>Class Swap</source>
         <translation type="unfinished">換課</translation>
     </message>
@@ -5479,7 +5535,7 @@ Class Widgets has restored the default theme.</source>
 <context>
     <name>TrayPanel</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="67"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="73"/>
         <source>What&apos;s New</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5504,7 +5560,7 @@ Class Widgets has restored the default theme.</source>
         <translation type="obsolete">插件廣場</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="168"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="174"/>
         <source>Reschedule Day</source>
         <translation type="unfinished">調休</translation>
     </message>
@@ -5518,27 +5574,27 @@ Class Widgets has restored the default theme.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="87"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="93"/>
         <source>Switch your schedule</source>
         <translation type="unfinished">切換您的行程</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="135"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="141"/>
         <source>Debugger</source>
         <translation type="unfinished">調試器</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="147"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="153"/>
         <source>Restart</source>
         <translation type="unfinished">重新啟動應用程式</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="155"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="161"/>
         <source>Restart required</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="162"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="168"/>
         <source>Exit</source>
         <translation type="unfinished">退出</translation>
     </message>
