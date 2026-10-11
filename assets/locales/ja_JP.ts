@@ -228,12 +228,12 @@ MITライセンスに基づいて許諾されています</translation>
 <context>
     <name>AppCentral</name>
     <message>
-        <location filename="../../src/core/central.py" line="699"/>
+        <location filename="../../src/core/central.py" line="706"/>
         <source>Safe mode</source>
         <translation>セーフ モード</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="703"/>
+        <location filename="../../src/core/central.py" line="710"/>
         <source>Class Widgets started in safe mode. Third-party plugins and themes were skipped; your settings and schedule are used as usual.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2246,7 +2246,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/core/plaza/notifications.py" line="31"/>
         <source>Plugin Plaza</source>
-        <extracomment>Used when a report has to estimate the process uptime on its own.</extracomment>
+        <extracomment>外部插件模块的导入前缀，见 :meth:`src.core.plugin.loader.PluginLoader._load_external_plugin`。 Used when a report has to estimate the process uptime on its own.</extracomment>
         <translation type="unfinished">Plugin Plaza</translation>
     </message>
 </context>
@@ -3399,97 +3399,97 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="178"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="181"/>
         <source>Problem Report - Class Widgets</source>
         <translation>問題レポート - Class Widgets</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="246"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="249"/>
         <source>Class Widgets ran into a problem  (&gt;_&lt;)</source>
         <translation>Class Widgets で問題が発生しました  (&gt;_&lt;)</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="254"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="257"/>
         <source>Sorry about that - Class Widgets ran into a problem it could not solve on its own and had to stop. Your class data has been saved automatically, so nothing is lost.
 You can try restarting. If you suspect a plugin or theme is involved, restart in safe mode to find the problematic component.</source>
         <translation>申し訳ありません。Class Widgets で自動解決できない問題が発生し、実行が中断されました。
 再起動をお試しください。プラグインやテーマなどの追加の変更が原因と思われる場合は、「セーフ モード」での再起動をおすすめします。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="382"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="385"/>
         <source>View details</source>
         <translation>詳細を表示</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="426"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="429"/>
         <source>Operating system</source>
         <translation>オペレーティング システム</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="435"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="438"/>
         <source>Class Widgets version</source>
         <translation>Class Widgets のバージョン</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="444"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="447"/>
         <source>Uptime</source>
         <translation>実行時間</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="453"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="456"/>
         <source>Installed plugins</source>
         <translation>インストール済みプラグイン</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="492"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="495"/>
         <source>Copy summary</source>
         <translation>概要をコピー</translation>
     </message>
     <message>
         <location filename="../../src/core/windows/problem_report.py" line="226"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="529"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="532"/>
         <source>Export logs</source>
         <extracomment>日志导出时附带的最大日志尾部长度。</extracomment>
         <translation>ログをエクスポート</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="539"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="542"/>
         <source>Ignore and continue</source>
         <translation>無視して続行</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="551"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="554"/>
         <source>Restart in safe mode</source>
         <translation>セーフ モードで再起動</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="547"/>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="557"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="550"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="560"/>
         <source>Restart</source>
         <translation>再起動</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="273"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="276"/>
         <source>Smart detection</source>
         <translation>スマート検出</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="280"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="283"/>
         <source>Class Widgets noticed that this problem was caused by the plugin &quot;%1&quot;. You can try disabling it and restarting right away.</source>
         <translation>Class Widgets は、この問題がプラグイン「%1」によって引き起こされたことを検出しました。プラグインを無効にして、そのまま再起動してみてください。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="349"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="352"/>
         <source>* High risk, disabling it is recommended</source>
         <translation>※ リスクが高いため、無効化を推奨します</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="367"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="370"/>
         <source>Disabled</source>
         <translation>無効</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="367"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="370"/>
         <source>Disable</source>
         <translation>無効にする</translation>
     </message>
