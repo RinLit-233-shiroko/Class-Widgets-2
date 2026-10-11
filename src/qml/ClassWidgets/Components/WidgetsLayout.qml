@@ -13,6 +13,8 @@ Item {
     objectName: "widgetsFlow"
 
     property bool editMode: false
+    // 正在拖动小组件
+    property bool dragging: false
     property bool hide: false
     property real scaleFactor: 1.0
     property real spacing: 8
@@ -60,16 +62,27 @@ Item {
         geometryCoalesce.restart()
     }
 
-    // 编辑模式拖拽落点：比较中心点，兼容不同宽度
-    function dropIndex(draggedItem, fromIndex) {
-        var center = draggedItem.x + draggedItem.dragOffsetX + draggedItem.width / 2
-        var target = 0
+    // 按 widgetIndex 归位的槽位宽度表（moveRows 时 index 同步更新，itemAtIndex()/x 要等下一帧）
+    function restingWidths() {
+        var widths = []
         for (var i = 0; i < listView.count; ++i) {
-            if (i === fromIndex)
-                continue
             var it = listView.itemAtIndex(i)
-            if (it && center > it.x + it.width / 2)
+            if (it && it.widgetIndex >= 0 && it.widgetIndex < listView.count)
+                widths[it.widgetIndex] = it.width
+        }
+        return widths
+    }
+
+    // 编辑模式拖拽落点。用静止槽位而非当前 x：让位动画期间邻居的 x 一直在动，会让落点反复翻转。
+    function dropIndexAt(centerX, fromIndex) {
+        var widths = restingWidths()
+        var x = 0
+        var target = 0
+        for (var i = 0; i < widths.length; ++i) {
+            var w = widths[i] || 0
+            if (i !== fromIndex && centerX > x + w / 2)
                 ++target
+            x += w
         }
         return target
     }
@@ -106,7 +119,9 @@ Item {
 
         model: WidgetsModel
 
+        // 拖动中被拖项的视觉位置由 delegate 偏移粘在指针上，这条动画会和偏移打架
         move: Transition {
+            enabled: !layoutRoot.dragging
             NumberAnimation {
                 properties: "x,y"
                 duration: 240
@@ -115,21 +130,22 @@ Item {
         }
         addDisplaced: Transition { enabled: false }
         removeDisplaced: Transition { enabled: false }
+        // 拖动中让位要跟手：去掉延时并缩短时长
         displaced: Transition {
-    id: displacedTransition
+            id: displacedTransition
 
-    SequentialAnimation {
-        PauseAnimation {
-            duration: 30
-        }
+            SequentialAnimation {
+                PauseAnimation {
+                    duration: layoutRoot.dragging ? 0 : 30
+                }
 
-        NumberAnimation {
-            properties: "x,y"
-            duration: 260
-            easing.type: Easing.OutCubic
+                NumberAnimation {
+                    properties: "x,y"
+                    duration: layoutRoot.dragging ? 180 : 260
+                    easing.type: Easing.OutCubic
+                }
+            }
         }
-    }
-}
 
         delegate: WidgetsLayoutDelegate {
             host: layoutRoot

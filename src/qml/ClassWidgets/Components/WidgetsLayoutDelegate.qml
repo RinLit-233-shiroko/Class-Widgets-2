@@ -248,6 +248,9 @@ Item {
         y: widgetContainer.dragOffsetY + widgetContainer.dragLift
     }
 
+    // 换位后 ListView 要下一帧才更新 x，补一次贴合避免被拖项闪跳
+    onXChanged: if (dragHandler.active) dragHandler.pinToPointer()
+
     WidgetLoader {
         id: loader
         editMode: host.editMode
@@ -321,51 +324,60 @@ Item {
     }
 
     // ---- 编辑模式拖拽排序 ----
+    // 越过邻居中心就立刻换位，邻居走 displaced 让位，松手前即可看到最终顺序
     DragHandler {
         id: dragHandler
         enabled: host.editMode
         target: null
-        property real startOffsetX: 0
-        property real startOffsetY: 0
-        property bool moved: false
+
+        // 按下瞬间 delegate 中心的位置（指针锚点）
+        property real anchorCenterX: 0
+        property real anchorCenterY: 0
+
+        // 写成函数而非绑定属性：处理器先于绑定重算执行，读绑定属性会拿到上一个事件的值
+        function targetCenterX() {
+            return anchorCenterX + dragHandler.translation.x
+        }
+        function targetCenterY() {
+            return anchorCenterY + dragHandler.translation.y
+        }
+
+        // 偏移 = 目标中心 - 当前实际中心
+        function pinToPointer() {
+            widgetContainer.dragOffsetX = targetCenterX()
+                - (widgetContainer.x + widgetContainer.width / 2)
+            widgetContainer.dragOffsetY = targetCenterY()
+                - (widgetContainer.y + widgetContainer.height / 2)
+        }
 
         onActiveChanged: {
             if (active) {
                 settleDrag = false
-                startOffsetX = widgetContainer.dragOffsetX
-                startOffsetY = widgetContainer.dragOffsetY
-                moved = false
+                anchorCenterX = widgetContainer.x + widgetContainer.width / 2
+                anchorCenterY = widgetContainer.y + widgetContainer.height / 2
                 widgetContainer.dragRaiseScale = 1.08
                 widgetContainer.dragLift = -6
+                host.dragging = true
                 return
             }
 
+            host.dragging = false
             widgetContainer.dragRaiseScale = 1.0
             widgetContainer.dragLift = 0
 
-            if (!moved) {
-                settleDrag = true
-                widgetContainer.dragOffsetX = 0
-                widgetContainer.dragOffsetY = 0
-                return
-            }
-
-            var from = widgetContainer.widgetIndex
-            var to = host.dropIndex(widgetContainer, from)
+            // 顺序已在拖动中更新，松手只剩回位
             settleDrag = true
             widgetContainer.dragOffsetX = 0
             widgetContainer.dragOffsetY = 0
-            if (to !== from)
-                host.moveWidget(from, to)
         }
 
         onTranslationChanged: {
             if (!active)
                 return
-            if (Math.abs(translation.x) > 4 || Math.abs(translation.y) > 4)
-                moved = true
-            widgetContainer.dragOffsetX = startOffsetX + translation.x
-            widgetContainer.dragOffsetY = startOffsetY + translation.y
+            var to = host.dropIndexAt(targetCenterX(), widgetContainer.widgetIndex)
+            if (to !== widgetContainer.widgetIndex)
+                host.moveWidget(widgetContainer.widgetIndex, to)
+            pinToPointer()
         }
     }
 
