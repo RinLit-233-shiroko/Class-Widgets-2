@@ -216,12 +216,12 @@ MIT உரிமத்தின் கீழ் உரிமம் பெற்�
 <context>
     <name>AppCentral</name>
     <message>
-        <location filename="../../src/core/central.py" line="706"/>
+        <location filename="../../src/core/central.py" line="708"/>
         <source>Safe mode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="710"/>
+        <location filename="../../src/core/central.py" line="712"/>
         <source>Class Widgets started in safe mode. Third-party plugins and themes were skipped; your settings and schedule are used as usual.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4552,27 +4552,27 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
 <context>
     <name>Shortcuts</name>
     <message>
-        <location filename="../../src/core/central.py" line="162"/>
+        <location filename="../../src/core/central.py" line="164"/>
         <source>Settings</source>
         <translation type="unfinished">அமைப்புகள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="168"/>
+        <location filename="../../src/core/central.py" line="170"/>
         <source>Schedules</source>
         <translation type="unfinished">அட்டவணைகள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="174"/>
+        <location filename="../../src/core/central.py" line="176"/>
         <source>Plugin Plaza</source>
         <translation type="unfinished">செருகுநிரல் பிளாசா</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="180"/>
+        <location filename="../../src/core/central.py" line="182"/>
         <source>Reschedule Day</source>
         <translation type="unfinished">மறு அட்டவணை நாள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="186"/>
+        <location filename="../../src/core/central.py" line="188"/>
         <source>Class Swap</source>
         <translation type="unfinished">வகுப்பு இடமாற்று</translation>
     </message>
@@ -5797,32 +5797,32 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
 மேலும் விவரங்களுக்கு &quot;அமைப்புகள்&quot; → &quot;புதுப்பிப்பு&quot; என்பதற்குச் செல்லவும்.</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="89"/>
+        <location filename="../../src/core/updater/bridge.py" line="88"/>
         <source>Class Widgets has been updated to the latest version: {version}</source>
         <translation>வகுப்பு விட்செட்டுகள் அண்மைக் கால பதிப்பிற்கு புதுப்பிக்கப்பட்டுள்ளன: {version}</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="90"/>
+        <location filename="../../src/core/updater/bridge.py" line="89"/>
         <source>Update Completed ヾ(≧▽≦*)o</source>
         <translation>புதுப்பிப்பு முடிந்தது ヾ(≧▽≦*)o</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="163"/>
+        <location filename="../../src/core/updater/bridge.py" line="162"/>
         <source>Update Downloaded</source>
         <translation>புதுப்பிப்பு பதிவிறக்கப்பட்டது</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="168"/>
+        <location filename="../../src/core/updater/bridge.py" line="167"/>
         <source>Ready to install anytime. Go to &quot;Settings&quot; → &quot;Update&quot; to proceed with installation.</source>
         <translation>எந்த நேரத்திலும் நிறுவ தயாராக உள்ளது. நிறுவலைத் தொடர, &quot;அமைப்புகள்&quot; → &quot;புதுப்பிப்பு&quot; என்பதற்குச் செல்லவும்.</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="205"/>
+        <location filename="../../src/core/updater/bridge.py" line="204"/>
         <source>Applying Update Soon</source>
         <translation>புதுப்பிப்பை விரைவில் பயன்படுத்துகிறது</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="209"/>
+        <location filename="../../src/core/updater/bridge.py" line="208"/>
         <source>The update may take several seconds to complete. (●&apos;◡&apos;●)</source>
         <translation>புதுப்பிப்பு முடிவதற்கு சில வினாடிகள் ஆகலாம். (●&apos;◡&apos;●)</translation>
     </message>

@@ -234,12 +234,12 @@ Licensed under the MIT license</source>
 <context>
     <name>AppCentral</name>
     <message>
-        <location filename="../../src/core/central.py" line="706"/>
+        <location filename="../../src/core/central.py" line="708"/>
         <source>Safe mode</source>
         <translation>安全模式</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="710"/>
+        <location filename="../../src/core/central.py" line="712"/>
         <source>Class Widgets started in safe mode. Third-party plugins and themes were skipped; your settings and schedule are used as usual.</source>
         <translation>Class Widgets 已在安全模式下启动。第三方插件和主题没有被加载，你的设置和课表可以照常使用。</translation>
     </message>
@@ -4860,27 +4860,27 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
 <context>
     <name>Shortcuts</name>
     <message>
-        <location filename="../../src/core/central.py" line="162"/>
+        <location filename="../../src/core/central.py" line="164"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="168"/>
+        <location filename="../../src/core/central.py" line="170"/>
         <source>Schedules</source>
         <translation>课程编辑</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="174"/>
+        <location filename="../../src/core/central.py" line="176"/>
         <source>Plugin Plaza</source>
         <translation>插件广场</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="180"/>
+        <location filename="../../src/core/central.py" line="182"/>
         <source>Reschedule Day</source>
         <translation>调休</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="186"/>
+        <location filename="../../src/core/central.py" line="188"/>
         <source>Class Swap</source>
         <translation>换课</translation>
     </message>
@@ -6300,32 +6300,32 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation>Class Widgets 更新速递</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="89"/>
+        <location filename="../../src/core/updater/bridge.py" line="88"/>
         <source>Class Widgets has been updated to the latest version: {version}</source>
         <translation>Class Widgets 已更新至最新版本：{version}</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="90"/>
+        <location filename="../../src/core/updater/bridge.py" line="89"/>
         <source>Update Completed ヾ(≧▽≦*)o</source>
         <translation>更新完成 ヾ(≧▽≦*)o</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="163"/>
+        <location filename="../../src/core/updater/bridge.py" line="162"/>
         <source>Update Downloaded</source>
         <translation>已下载更新</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="168"/>
+        <location filename="../../src/core/updater/bridge.py" line="167"/>
         <source>Ready to install anytime. Go to &quot;Settings&quot; → &quot;Update&quot; to proceed with installation.</source>
         <translation>随时可以安装。前往“设置”→“更新”以安装。</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="205"/>
+        <location filename="../../src/core/updater/bridge.py" line="204"/>
         <source>Applying Update Soon</source>
         <translation>即将应用更新</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="209"/>
+        <location filename="../../src/core/updater/bridge.py" line="208"/>
         <source>The update may take several seconds to complete. (●&apos;◡&apos;●)</source>
         <translation>本更新可能会耗时数十秒，请稍后 (●&apos;◡&apos;●)</translation>
     </message>

@@ -228,12 +228,12 @@ MITライセンスに基づいて許諾されています</translation>
 <context>
     <name>AppCentral</name>
     <message>
-        <location filename="../../src/core/central.py" line="706"/>
+        <location filename="../../src/core/central.py" line="708"/>
         <source>Safe mode</source>
         <translation>セーフ モード</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="710"/>
+        <location filename="../../src/core/central.py" line="712"/>
         <source>Class Widgets started in safe mode. Third-party plugins and themes were skipped; your settings and schedule are used as usual.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4684,27 +4684,27 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
 <context>
     <name>Shortcuts</name>
     <message>
-        <location filename="../../src/core/central.py" line="162"/>
+        <location filename="../../src/core/central.py" line="164"/>
         <source>Settings</source>
         <translation type="unfinished">設定</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="168"/>
+        <location filename="../../src/core/central.py" line="170"/>
         <source>Schedules</source>
         <translation type="unfinished">スケジュール</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="174"/>
+        <location filename="../../src/core/central.py" line="176"/>
         <source>Plugin Plaza</source>
         <translation type="unfinished">プラグインプラザ</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="180"/>
+        <location filename="../../src/core/central.py" line="182"/>
         <source>Reschedule Day</source>
         <translation type="unfinished">振替日</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="186"/>
+        <location filename="../../src/core/central.py" line="188"/>
         <source>Class Swap</source>
         <translation type="unfinished">授業入替</translation>
     </message>
@@ -6027,32 +6027,32 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation type="unfinished">Class Widgets のアップデートが利用可能</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="89"/>
+        <location filename="../../src/core/updater/bridge.py" line="88"/>
         <source>Class Widgets has been updated to the latest version: {version}</source>
         <translation type="unfinished">Class Widgets は最新バージョンにアップデートされました: {version}</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="90"/>
+        <location filename="../../src/core/updater/bridge.py" line="89"/>
         <source>Update Completed ヾ(≧▽≦*)o</source>
         <translation type="unfinished">アップデート完了 ヾ(≧▽≦*)o</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="163"/>
+        <location filename="../../src/core/updater/bridge.py" line="162"/>
         <source>Update Downloaded</source>
         <translation type="unfinished">アップデートのダウンロード完了</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="168"/>
+        <location filename="../../src/core/updater/bridge.py" line="167"/>
         <source>Ready to install anytime. Go to &quot;Settings&quot; → &quot;Update&quot; to proceed with installation.</source>
         <translation type="unfinished">いつでもインストールできます。「設定」→「アップデート」に移動してインストールを実行してください。</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="205"/>
+        <location filename="../../src/core/updater/bridge.py" line="204"/>
         <source>Applying Update Soon</source>
         <translation type="unfinished">まもなくアップデートを適用します</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="209"/>
+        <location filename="../../src/core/updater/bridge.py" line="208"/>
         <source>The update may take several seconds to complete. (●&apos;◡&apos;●)</source>
         <translation type="unfinished">アップデートの完了には数秒かかる場合があります。(●&apos;◡&apos;●)</translation>
     </message>
