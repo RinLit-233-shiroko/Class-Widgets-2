@@ -48,7 +48,6 @@ class WidgetsWindow(ReleasableWindow, QObject):
         # replaced immediately when the failure handler selects the default.
         self.app_central.theme_manager.themeChanged.connect(self.on_theme_changed)
         self._load_with_theme()
-        raise
 
     def release(self):
         if self.is_released:
