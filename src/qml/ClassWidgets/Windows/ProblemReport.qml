@@ -58,8 +58,11 @@ QQW.Window {
     }
 
     onClosing: function(event) {
-        // 必须由用户明确选择后续操作，不允许直接关掉报告。
+        // 直接关闭报告窗口等同于“忽略并继续”。
+        // 这里先拒绝关闭，再推迟到当前事件处理结束后由桥接释放窗口，
+        // 避免在 closeEvent 执行期间就销毁窗口自己的 QML 引擎。
         event.accepted = false
+        Qt.callLater(ProblemReportBridge.ignoreAndContinue)
     }
 
     Connections {

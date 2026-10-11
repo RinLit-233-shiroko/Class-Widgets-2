@@ -519,6 +519,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         # 加载插件（内置+外部）
         self.plugin_manager.scan()  # 延迟扫描插件，确保翻译器已加载
         self.plugin_manager.load_plugins()
+        # raise
 
     def _init_tray_icon(self) -> None:
         from src.core.windows.tray import TrayIcon
@@ -678,13 +679,19 @@ class AppCentral(QObject):  # Class Widgets 的中枢
 
     @Slot()
     def ignore_crash(self) -> None:
-        """用户选择忽略问题：关闭报告窗口，必要时退出。"""
+        """用户选择忽略问题：只关闭报告窗口，绝不退出程序。
+
+        “强制继续”意味着即使用户在启动完成前就忽略问题，也照常把控制权交回，
+        由用户自己决定下一步，而不是替用户结束进程。
+        """
         self.window_manager.close_problem_report()
-        if self._startup_state is not StartupState.RUNNING:
-            logger.warning("Startup never completed, quitting instead of continuing")
-            self.quit()
-            return
-        logger.warning("Continuing after an unrecovered problem")
+        if self._startup_state is StartupState.RUNNING:
+            logger.warning("Continuing after an unrecovered problem")
+        else:
+            logger.warning(
+                "Continuing after an unrecovered problem before startup completed ({})",
+                self._startup_state.name,
+            )
 
     def _save_config_on_exit(self) -> None:
         # 安全模式同样会读取配置，退出时照常保存用户本次的修改。
