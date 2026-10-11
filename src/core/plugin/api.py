@@ -15,7 +15,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from src.core import AppCentral
 
-__version__ = "0.6.0"
+__version__ = "0.7.0"
 
 
 class PluginAPI:
