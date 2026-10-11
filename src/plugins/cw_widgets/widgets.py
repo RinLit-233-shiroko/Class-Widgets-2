@@ -2,7 +2,7 @@ from pathlib import Path
 
 from PySide6.QtCore import Slot, QCoreApplication
 
-from src.core.directories import QML_PATH
+from src.core.storage.directories import QML_PATH
 from src.core.plugin import CW2Plugin
 
 

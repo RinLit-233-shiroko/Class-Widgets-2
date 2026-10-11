@@ -11,13 +11,13 @@ from packaging.version import InvalidVersion, Version
 from src.core.plaza.client import PlazaClient
 from src.core.plugin.archive import (
     PluginArchiveInstaller,
-    PluginInstallResult,
 )
 from src.core.plugin.download import (
     PluginDownloadCancelled,
     PluginDownloadPaused,
     PluginDownloader,
 )
+from src.core.storage.directories import TEMP_PATH
 
 
 class PluginDownloadWorker(QThread):
@@ -222,7 +222,8 @@ class PlazaUpdateWorker(QThread):
 def create_plugin_download_directory() -> Path:
     """Create a private temporary directory for a plugin release."""
 
-    return Path(tempfile.mkdtemp(prefix="class-widgets-plugin-"))
+    TEMP_PATH.mkdir(parents=True, exist_ok=True)
+    return Path(tempfile.mkdtemp(prefix="class-widgets-plugin-", dir=TEMP_PATH))
 
 
 def remove_plugin_download_directory(path: Path | None) -> None:

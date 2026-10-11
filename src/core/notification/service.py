@@ -4,10 +4,12 @@ from typing import TYPE_CHECKING
 from PySide6.QtCore import QObject, Signal, Slot, QUrl
 from PySide6.QtMultimedia import QSoundEffect
 from pathlib import Path
+
 from loguru import logger
 
+from src.core.storage.directories import ASSETS_PATH, CUSTOM_AUDIO_PATH
+
 from .model import NotificationProviderConfig
-from src.core.directories import ASSETS_PATH
 
 if TYPE_CHECKING:
     from src.core.notification.manager import NotificationManager
@@ -170,7 +172,8 @@ class NotificationService(QObject):
                 if sound_path.is_absolute():
                     sound_file = str(sound_path)
                 else:
-                    sound_file = str(ASSETS_PATH / "audio" / sound_path)
+                    user_audio = CUSTOM_AUDIO_PATH / sound_path
+                    sound_file = str(user_audio if user_audio.is_file() else ASSETS_PATH / "audio" / sound_path)
             else:
                 sound_file = str(ASSETS_PATH / "audio" / audio_filename)
 
@@ -217,14 +220,21 @@ class NotificationService(QObject):
                 selected_files = dialog.selectedFiles()
                 if selected_files:
                     source_path = Path(selected_files[0])
-                    target_path = ASSETS_PATH / "audio" / source_path.name
-                    
-                    # 复制声音文件到assets目录
+                    CUSTOM_AUDIO_PATH.mkdir(parents=True, exist_ok=True)
+                    target_path = CUSTOM_AUDIO_PATH / source_path.name
+                    if source_path.resolve() != target_path.resolve():
+                        suffix = 1
+                        while target_path.exists() or target_path.is_symlink():
+                            target_path = CUSTOM_AUDIO_PATH / f"{source_path.stem}-{suffix}{source_path.suffix}"
+                            suffix += 1
+
+                    # Keep user-selected sounds separate from bundled assets.
                     import shutil
-                    shutil.copy2(source_path, target_path)
-                    
-                    # 设置为默认声音（使用相对路径）
-                    relative_path = target_path.relative_to(ASSETS_PATH / "audio")
+                    if source_path.resolve() != target_path.resolve():
+                        shutil.copy2(source_path, target_path)
+
+                    # Preserve the existing relative-path configuration format.
+                    relative_path = target_path.relative_to(CUSTOM_AUDIO_PATH)
                     self.setLevelSound(level, str(relative_path))
                     logger.debug(f"Copied notification sound from {source_path} to {target_path}, saved as relative path: {relative_path}")
                     return True

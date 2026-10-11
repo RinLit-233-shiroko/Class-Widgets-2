@@ -18,7 +18,7 @@ from src.core.crash.diagnosis import (
     PluginSuspect,
     diagnose_exception,
 )
-from src.core.directories import LOGS_PATH
+from src.core.storage.directories import LOGS_PATH
 
 #: Used when a report has to estimate the process uptime on its own.
 PROCESS_START = time.monotonic()

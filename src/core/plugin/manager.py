@@ -10,7 +10,7 @@ from PySide6.QtGui import QDesktopServices
 from PySide6.QtWidgets import QApplication, QFileDialog
 from loguru import logger
 
-from src.core.directories import PLUGIN_CACHE_PATH, PLUGINS_PATH
+from src.core.storage.directories import PLUGIN_CACHE_PATH, PLUGINS_PATH
 from src.core.plugin import CW2Plugin, PluginAPI
 from src.core.plugin.archive import PluginArchiveInstaller
 from src.core.plugin.errors import plugin_install_error_message

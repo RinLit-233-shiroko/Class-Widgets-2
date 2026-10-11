@@ -1,10 +1,9 @@
 import platform
-import tempfile
-from pathlib import Path
 from PySide6.QtCore import QObject, Signal, Slot, Property
 from PySide6.QtWidgets import QApplication
 from loguru import logger
 from src import __version__
+from src.core.storage.directories import INSTALL_PATH, TEMP_PATH
 
 from .downloader import UpdateDownloader
 from .updater import WindowsUpdater
@@ -25,7 +24,7 @@ class UpdaterBridge(QObject):
         self.app_central = app_central
         self.configs = app_central.configs
 
-        self.temp_dir = Path(tempfile.gettempdir()) / "cw2_update"
+        self.temp_dir = TEMP_PATH / "cw2_update"
         self._status = "Idle"
         self._progress = 0.0
         self._speed = 0.0
@@ -193,7 +192,7 @@ class UpdaterBridge(QObject):
         self._install_worker = InstallWorker(
             WindowsUpdater(self.temp_dir),
             self._downloaded_file,
-            Path.cwd()
+            INSTALL_PATH
         )
         self._install_worker.finished.connect(self._on_install_finished)
         self._install_worker.start()

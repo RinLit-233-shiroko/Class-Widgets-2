@@ -8,7 +8,7 @@ from PySide6.QtCore import Property, Slot, QObject, Signal, QCoreApplication
 from PySide6.QtGui import QGuiApplication
 from loguru import logger
 
-from src.core.directories import LOGS_PATH, ROOT_PATH
+from src.core.storage.directories import LOGS_PATH, ROOT_PATH
 from src.core.notification import NotificationProvider
 from src.core.utils.auto_startup import autostart_supported, enable_autostart, disable_autostart, is_autostart_enabled
 from src.core.utils.log_list_model import LogListModel, LogFilterProxyModel

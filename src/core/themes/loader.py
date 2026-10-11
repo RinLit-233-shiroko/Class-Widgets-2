@@ -18,7 +18,7 @@ from packaging.specifiers import SpecifierSet
 from PySide6.QtCore import QUrl, QCoreApplication
 from loguru import logger
 
-from src.core.directories import THEMES_PATH
+from src.core.storage.directories import THEMES_PATH
 from src.core.themes.model import ThemeMeta
 from src.themes import BUILTIN_THEMES
 

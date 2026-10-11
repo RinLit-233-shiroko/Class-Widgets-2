@@ -4,7 +4,7 @@ from PySide6.QtGui import QRegion, QCursor
 from loguru import logger
 
 from src.core import QML_PATH
-from src.core.directories import CW_PATH
+from src.core.storage.directories import CW_PATH
 
 from src.core.themes.manager import DEFAULT_THEME_ID
 

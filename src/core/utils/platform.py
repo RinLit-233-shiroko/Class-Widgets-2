@@ -7,7 +7,7 @@ from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QApplication
 from loguru import logger
 
-from src.core.directories import ASSETS_PATH
+from src.core.storage.directories import ASSETS_PATH
 
 if TYPE_CHECKING:
     from src.core.utils.instance_locker import SingleInstanceGuard
