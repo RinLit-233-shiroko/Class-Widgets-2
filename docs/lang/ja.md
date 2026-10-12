@@ -13,7 +13,8 @@
 ![Banner - Japanese](../assets/Banner%20-%201%20-%20Japanese.png)
 
 [![スター](https://img.shields.io/github/stars/rinlit-233-shiroko/class-widgets-2?style=for-the-badge&color=orange&label=Stars)](https://github.com/rinlit-233-shiroko/class-widgets-2)
-[![現在のプレビュー](https://img.shields.io/github/v/tag/rinlit-233-shiroko/class-widgets-2?include_prereleases&label=%E7%8F%BE%E5%9C%A8%E3%81%AE%E3%83%97%E3%83%AC%E3%83%93%E3%83%83%E3%83%97&color=yellow&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2/releases)
+[![安定版](https://img.shields.io/github/v/release/rinlit-233-shiroko/class-widgets-2?label=%E5%AE%89%E5%AE%9A%E7%89%88&color=purple&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2/releases)
+[![プレビュー版](https://img.shields.io/github/v/release/rinlit-233-shiroko/class-widgets-2?include_prereleases&label=%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E7%89%88&color=yellow&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2/releases)
 [![オープンソースライセンス](https://img.shields.io/github/license/RinLit-233-shiroko/Class-Widgets-2?label=%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B9%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2)
 [![ダウンロード数](https://img.shields.io/github/downloads/rinlit-233-shiroko/class-widgets-2/total.svg?label=%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E6%95%B0&color=darkgreen&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2)
 [![翻訳状況](https://img.shields.io/weblate/progress/class-widgets?server=https%3A%2F%2Fhosted.weblate.org&style=for-the-badge&label=%E7%BF%BB%E8%A8%B3%E7%8A%B6%E6%B3%81&color=darkcyan)](https://hosted.weblate.org/engage/class-widgets/)
@@ -50,6 +51,8 @@ Class Widgets 2 のプラグイン開発に興味ある開発者は、ぜひ参�
 - [Class Widgets Plugin Template v2](https://github.com/Class-Widgets/plugin-template-v2)
 
 ## コミュニティ
+コミュニティ活動に参加するときは、[「行動規範」](/CODE_OF_CONDUCT.en.md) を守っといてな。
+
 <div align="center">
 
 [![QQ Group](https://img.shields.io/badge/QQ%20Group-1060640788-blue.svg?logo=qq&color=blue&style=for-the-badge)](https://qm.qq.com/cgi-bin/qm/qr?k=BXGtB7cDFM9CdfIcf9dfmxIWYh9noL6k&jump_from=webapi&authKey=wqfE+jZfLoO52DdVo2KBkVCrzgsxJX78cxx4vaRIHrOKo7tPp9VGsRTx4/kPUZuw)

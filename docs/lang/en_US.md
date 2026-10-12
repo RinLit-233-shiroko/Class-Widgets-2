@@ -13,7 +13,8 @@
 ![Banner - English](../assets/Banner%20-%201%20-%20English.png)
 
 [![Stars](https://img.shields.io/github/stars/rinlit-233-shiroko/class-widgets-2?style=for-the-badge&color=orange&label=Stars)](https://github.com/rinlit-233-shiroko/class-widgets-2)
-[![Current Preview](https://img.shields.io/github/v/tag/rinlit-233-shiroko/class-widgets-2?include_prereleases&label=Current%20Preview&color=yellow&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2/releases)
+[![Stable](https://img.shields.io/github/v/release/rinlit-233-shiroko/class-widgets-2?label=Stable&color=purple&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2/releases)
+[![Preview](https://img.shields.io/github/v/release/rinlit-233-shiroko/class-widgets-2?include_prereleases&label=Preview&color=yellow&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2/releases)
 [![Open-Source License](https://img.shields.io/github/license/RinLit-233-shiroko/Class-Widgets-2?label=Open-Source%20License&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2)
 [![Downloads](https://img.shields.io/github/downloads/rinlit-233-shiroko/class-widgets-2/total.svg?label=Downloads&color=darkgreen&style=for-the-badge)](https://github.com/rinlit-233-shiroko/class-widgets-2)
 [![Translation Status](https://img.shields.io/weblate/progress/class-widgets?server=https%3A%2F%2Fhosted.weblate.org&style=for-the-badge&label=Translation%20Status&color=darkcyan)](https://hosted.weblate.org/engage/class-widgets/)
@@ -44,6 +45,8 @@ Developers are welcome to build plugins for Class Widgets 2!
 - [Class Widgets Plugin Template v2](https://github.com/Class-Widgets/plugin-template-v2)
 
 ## Community
+Please adhere to the [Code of Conduct](/CODE_OF_CONDUCT.en.md) when participating in community activities.
+
 <div align="center">
 
 [![QQ Group](https://img.shields.io/badge/QQ%20Group-1060640788-blue.svg?logo=qq&color=blue&style=for-the-badge)](https://qm.qq.com/cgi-bin/qm/qr?k=BXGtB7cDFM9CdfIcf9dfmxIWYh9noL6k&jump_from=webapi&authKey=wqfE+jZfLoO52DdVo2KBkVCrzgsxJX78cxx4vaRIHrOKo7tPp9VGsRTx4/kPUZuw)
