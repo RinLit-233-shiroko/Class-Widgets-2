@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 class PlazaUpdateCheckTask(AutomationTask):
     """Periodically check Plugin Plaza and optionally install updates in order."""
 
-    INTERVAL_MS = 30 * 60 * 1000
+    INTERVAL_MS = 120 * 60 * 1000  # 2hr
     INITIAL_DELAY_MS = 5 * 1000
 
     def __init__(self, central: "AppCentral") -> None:

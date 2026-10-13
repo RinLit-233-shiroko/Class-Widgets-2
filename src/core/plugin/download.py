@@ -7,6 +7,7 @@ from typing import Callable
 
 import requests
 
+from src.core.plaza.client import CLIENT_USER_AGENT
 from src.core.utils.http_stream import call_interruptibly, iter_response_chunks
 
 
@@ -67,7 +68,9 @@ class PluginDownloader:
             temporary.unlink(missing_ok=True)
             raise ValueError("Plugin download is too large.")
 
-        headers = {"Range": f"bytes={resumed_bytes}-"} if resumed_bytes else {}
+        headers = {"User-Agent": CLIENT_USER_AGENT}
+        if resumed_bytes:
+            headers["Range"] = f"bytes={resumed_bytes}-"
 
         try:
             response = call_interruptibly(

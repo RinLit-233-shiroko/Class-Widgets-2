@@ -178,7 +178,40 @@ class PlazaUpdateWorker(QThread):
         self._cancel_event = threading.Event()
 
     def run(self) -> None:
-        results = []
+        # 一次请求核对全部插件版本，替代逐插件请求详情接口。
+        plugin_ids = [
+            str(record.get("id", "")).strip()
+            for record in self.records
+            if str(record.get("id", "")).strip()
+        ]
+        installed = {
+            str(record.get("id", "")): str(record.get("installed_version", ""))
+            for record in self.records
+        }
+
+        results: list[dict] = []
+        versions: dict[str, str | None] = {}
+        if plugin_ids and not self._cancel_event.is_set():
+            try:
+                versions = self.client.get_plugin_versions(
+                    plugin_ids, poll=self._raise_if_cancelled
+                )
+            except PluginDownloadCancelled:
+                return
+            except Exception as error:
+                # 整批失败：逐个标记错误，交给下次轮询重试（不做负缓存）。
+                message = str(error)
+                for plugin_id in plugin_ids:
+                    results.append({
+                        "id": plugin_id,
+                        "latest_version": "",
+                        "update_available": False,
+                        "update_error": message,
+                        "available": False,
+                    })
+                self.completed.emit(results)
+                return
+
         for record in self.records:
             if self._cancel_event.is_set():
                 return
@@ -190,17 +223,17 @@ class PlazaUpdateWorker(QThread):
                 "update_error": "",
                 "available": False,
             }
-            try:
-                plugin = self.client.get_plugin(plugin_id, poll=self._raise_if_cancelled)
+            latest_version = versions.get(plugin_id)
+            if latest_version is None:
+                # 广场不存在/未发布：无 error，供上层做负缓存。
+                pass
+            else:
                 result["available"] = True
-                latest_version = str(plugin.get("version", ""))
                 result["latest_version"] = latest_version
                 result["update_available"] = self._is_newer(
                     latest_version,
-                    str(record.get("installed_version", "")),
+                    installed.get(plugin_id, ""),
                 )
-            except Exception as error:
-                result["update_error"] = str(error)
             results.append(result)
         self.completed.emit(results)
 
