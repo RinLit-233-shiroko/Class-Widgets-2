@@ -15,6 +15,10 @@ Item {
     property bool editMode: false
     // 正在拖动小组件
     property bool dragging: false
+    // 由外部（如「添加小组件」弹窗）同步的弹窗状态
+    property bool externalDialogOpen: false
+    // 任一编辑弹窗打开时禁止拖动排序：模态弹窗挡不住底层 PointerHandler
+    readonly property bool dialogOpen: settingsDialogInstance.visible || externalDialogOpen
     property bool hide: false
     property real scaleFactor: 1.0
     property real spacing: 8
