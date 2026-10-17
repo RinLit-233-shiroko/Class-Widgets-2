@@ -6,7 +6,6 @@ from src.core.storage.directories import QML_PATH
 from src.core.plugin import CW2Plugin
 from .overlay_backend import OverlayBackend
 
-
 META = {
     "id": "builtin.classwidgets.widgets",
     "name": QCoreApplication.translate("Plugins", "Built-in Widgets"),
@@ -15,7 +14,6 @@ META = {
     "api_version": "*",
     "entry": "widgets.py"
 }
-
 
 class Plugin(CW2Plugin):
     def __init__(self, plugin_api):
@@ -108,17 +106,12 @@ class Plugin(CW2Plugin):
         ]
 
     def overlayBackend(self):
-        """堆叠组件的后端（惰性创建，所有实例共用一份）。
-
-        成员选择窗口会直接从这个组件的 backend_obj 上调用 addMember，
-        所以这里返回的必须是 OverlayBackend 本身，而不是插件对象。
-        """
         if not hasattr(self, "_overlay_backend"):
             self._overlay_backend = OverlayBackend(self)
         return self._overlay_backend
 
     def on_load(self):
-        super().on_load()  # 调用父类的on_load来设置插件上下文
+        super().on_load()  
         self.register_widgets()
 
     def register_widgets(self):

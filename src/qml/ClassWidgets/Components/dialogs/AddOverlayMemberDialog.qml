@@ -4,9 +4,6 @@ import QtQuick.Layouts
 import QtQuick.Effects
 import RinUI
 
-
-// 堆叠组件成员选择对话框（复刻官方 AddWidgetsDialog 样式）
-// 从已注册组件中挑选成员，添加到堆叠组件（排除堆叠自身）
 Dialog {
     id: overlayMemberDialog
     title: qsTr("Add Widgets to Overlay")
@@ -15,16 +12,13 @@ Dialog {
     width: 600
     height: 500
 
-    // 堆叠组件后端（从组件定义列表取）
     property var overlayBackend: null
-    // 正在编辑的堆叠组件实例 id（由 WidgetsContainer 编辑行打开前注入）
     property string overlayInstanceId: ""
 
     property var defs: {
         if (typeof WidgetsModel !== "undefined" && WidgetsModel.definitionsList) {
             var list = []
             var raw = WidgetsModel.definitionsList
-            // 只排除堆叠组件自身；同一组件 id 可重复添加（例如多个倒数日/每日一言）
             for (var i = 0; i < raw.length; i++) {
                 if (raw[i].id === "classwidgets.overlay")
                     continue
@@ -40,7 +34,6 @@ Dialog {
         : null
 
     onOpened: {
-        // 刷新后端引用与候选列表
         if (typeof WidgetsModel !== "undefined" && WidgetsModel.definitionsList) {
             for (var i = 0; i < WidgetsModel.definitionsList.length; i++) {
                 if (WidgetsModel.definitionsList[i].id === "classwidgets.overlay") {
@@ -130,7 +123,7 @@ Dialog {
                 source: overlayMemberDialog.selectedWidget
                     ? overlayMemberDialog.selectedWidget.qml_path
                     : ""
-                enabled: false // 阻止事件传递
+                enabled: false
 
                 onItemChanged: {
                     if (item && overlayMemberDialog.selectedWidget) {

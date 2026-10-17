@@ -6,7 +6,6 @@ import Qt5Compat.GraphicalEffects
 import RinUI
 import ClassWidgets.Easing
 
-
 Item {
     id: widgetsContainer
     objectName: "widgetsLoader"
@@ -27,7 +26,6 @@ Item {
     property bool settleContainerDrag: false
     property real hideMargin: {
         if (floatingMode) return 0
-        // 隐藏深度：由「小组件 → 小组件布局」中的滑杆控制，未设置时按平台默认
         var depth = preferences.widgets_hide_depth
         if (depth === undefined || depth === null)
             return Qt.platform.os === "osx" ? 48 : 24
@@ -39,7 +37,6 @@ Item {
     signal contentGeometryChanged()
     signal widgetTapped()
 
-    // 「添加」按钮行固定高度，避免与父级高度形成绑定环
     readonly property int addRowHeight: 40
 
     implicitWidth: Math.max(widgetsLayout.implicitWidth,
@@ -68,14 +65,6 @@ Item {
         }
     }
 
-    // ============================================================
-    //  离散状态进度：只有这两个属性挂动画
-    // ============================================================
-
-    // 直接绑定而非在 onXxxChanged 里赋值：后者在启动时不会触发，
-    // 会导致初始就处于隐藏状态时完全没有过渡（甚至位置不对）。
-    // 编辑模式优先于隐藏：隐藏状态下进入编辑时先回到正常/居中位置，
-    // 退出编辑后 hide 仍为真，再滑回隐藏位置。
     property real hideProgress: (hide && !editMode) ? 1 : 0
     property real editProgress: editMode ? 1 : 0
 
@@ -90,13 +79,8 @@ Item {
         NumberAnimation { duration: 450; easing.type: Easing.OutQuint }
     }
 
-    // ============================================================
-    //  位置：纯绑定，随宽度/高度逐帧变化
-    // ============================================================
-
     readonly property string anchorMode: preferences.widgets_anchor
 
-    // 正常显示位置
     readonly property real shownX: {
         switch (anchorMode) {
         case "top_left":
@@ -126,7 +110,6 @@ Item {
         return 0
     }
 
-    // 隐藏位置（左/右锚点的 Y、以及编辑模式不受隐藏影响）
     readonly property real hiddenX: {
         switch (anchorMode) {
         case "top_left":
@@ -134,7 +117,7 @@ Item {
             return -width + hideMargin
         case "top_center":
         case "bottom_center":
-            return shownX          // 居中锚点不横向隐藏
+            return shownX
         case "top_right":
         case "bottom_right":
             return parent.width - hideMargin
@@ -149,10 +132,9 @@ Item {
         case "bottom_center":
             return parent.height - hideMargin
         }
-        return shownY              // 左/右锚点不纵向隐藏
+        return shownY
     }
 
-    // 编辑模式位置：仅顶部锚点会垂直居中
     readonly property real editY: {
         switch (anchorMode) {
         case "top_left":
@@ -163,10 +145,8 @@ Item {
         return shownY
     }
 
-    // x：正常位置 → 隐藏位置，按 hideProgress 混合
     x: shownX + (hiddenX - shownX) * hideProgress + dragOffsetX
 
-    // y：先按 editProgress 混到编辑位置，再按 hideProgress 混到隐藏位置
     y: {
         var visibleY = shownY + (editY - shownY) * editProgress
         return visibleY + (hiddenY - visibleY) * hideProgress + dragOffsetY
@@ -209,7 +189,7 @@ Item {
                     return max * (1 - Math.exp(-Math.abs(value)/factor)) * Math.sign(value)
                 }
 
-                dragOffsetX = damped(translation.x, 8, 100)  // factor
+                dragOffsetX = damped(translation.x, 8, 100)
                 dragOffsetY = damped(translation.y, 6, 100)
             }
         }
@@ -221,7 +201,6 @@ Item {
         hide: widgetsContainer.hide
         scaleFactor: widgetsContainer.scaleFactor
         spacing: widgetsContainer.spacing
-        // 水平视口足够大，保证所有 delegate 都被实例化而不被回收
         viewportWidth: 100000
 
         onGeometryChanged: widgetsContainer.contentGeometryChanged()
@@ -230,7 +209,6 @@ Item {
         onWidgetTapped: widgetsContainer.widgetTapped()
     }
 
-    // 添加小组件&完成
     RowLayout {
         id: addWidgetsContainer
         objectName: "addWidgetsContainer"

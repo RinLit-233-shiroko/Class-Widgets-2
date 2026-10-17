@@ -7,7 +7,6 @@ import ClassWidgets.Theme
 Widget {
     id: root
 
-    // 时间数据，由内置 backend.getDateTime() 返回
     property var dateTime: {
         "year": 1900,
         "month": 1,
@@ -18,13 +17,11 @@ Widget {
         "second": 0
     }
 
-    // —— 组件设置（见 widgets/settings/Time.qml）；未配置时按官方原有观感处理 ——
     readonly property bool animated: !settings || settings.digit_animation !== false
     readonly property bool showSeconds: !settings || settings.show_seconds !== false
     readonly property bool alternateLayout: settings && settings.title_mode === "alternate"
     readonly property int alternateInterval: settings && settings.alternate_interval ? settings.alternate_interval : 3000
 
-    // —— 标题：并排模式同屏显示日期与星期，交替模式按设定间隔轮流切换 ——
     property int titleMode: 0
 
     text: {
@@ -123,7 +120,6 @@ Widget {
 
     Component.onCompleted: {
         Qt.callLater(function() {
-            // backend 可能尚未注入，稍后才可用，此处不能直接解引用
             if (backend) dateTime = backend.getDateTime()
         })
     }

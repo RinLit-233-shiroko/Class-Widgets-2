@@ -11,9 +11,8 @@ from src.core.storage.directories import USE_LEGACY_WORK_LAYOUT
 if TYPE_CHECKING:
     from src.core.central import AppCentral
 
-
 class UpdateCheckTask(AutomationTask):
-    INTERVAL_MS = 30 * 60 * 1000  # 30min 检查
+    INTERVAL_MS = 30 * 60 * 1000  
 
     def __init__(self, central: "AppCentral", parent: Optional[QTimer] = None) -> None:
         super().__init__(central, parent)
@@ -21,10 +20,10 @@ class UpdateCheckTask(AutomationTask):
 
         if USE_LEGACY_WORK_LAYOUT:
             logger.info("Running from source, update check disabled")
-            return  # 源码运行不检查更新，避免下载发布包覆盖工作区
+            return  
 
         if not self.app_central.configs.network.auto_check_updates:
-            return  # 不检查
+            return  
 
         self._timer: QTimer = QTimer(self)
         self._timer.setInterval(1000)
@@ -45,7 +44,7 @@ class UpdateCheckTask(AutomationTask):
                 "UpdateNotification",
                 '"{version}" is available!\nGo to "Settings" → "Update" for more details.'
             )
-            text = text_template.format(version=version)  # fix translation
+            text = text_template.format(version=version)  
             self.app_central.tray_icon.push_update_notification(
                 title=QApplication.translate("UpdateNotification", "Class Widgets Update Available"),
                 text=text

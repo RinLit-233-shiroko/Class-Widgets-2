@@ -1,17 +1,3 @@
-# -*- coding: utf-8 -*-
-"""堆叠组件后端（QObject，供组件/对话框/设置页调用）。
-
-自 v3 起支持"按实例隔离"：桌面上可同时放置多个堆叠组件（com.overlay），
-每个实例（instanceId）拥有独立的成员列表、成员设置与自定义框尺寸，
-互不干扰。调用方（overlay.qml / AddOverlayMemberDialog / overlay-settings.qml）
-把当前实例的 instanceId 作为首个参数传入。
-
-持久化（兼容旧单组格式，旧数据自动归入 default 组；第一个被识别的实例
-会把 default 组"认领"走，其余实例从空组开始，天然互不干扰）：
-  .overlay_members.json          每实例成员列表
-  .overlay_member_settings.json  每实例成员个性化设置（按成员 key）
-  .overlay_frames.json           每实例自定义框宽高（0 = 跟随内容自适应）
-"""
 
 from __future__ import annotations
 
@@ -23,16 +9,10 @@ from pathlib import Path
 from loguru import logger
 from PySide6.QtCore import Property, QObject, Signal, Slot
 
-_OVERLAY_WIDGET_ID = "classwidgets.overlay"  # 堆叠组件自身 widget id（禁止添加自己）
-_DEFAULT = "default"                # 旧单组数据的归属组
-
+_OVERLAY_WIDGET_ID = "classwidgets.overlay"  
+_DEFAULT = "default"                
 
 def _data_dir() -> Path:
-    """堆叠组件的数据目录：<主程序工作目录>/configs/overlay。
-
-    放在主程序的 configs/ 下而不是组件所在目录，便于随工作目录一起迁移，
-    也不会被程序更新覆盖。
-    """
     try:
         try:
             from src.core.storage.directories import CONFIGS_PATH
@@ -45,9 +25,7 @@ def _data_dir() -> Path:
     except Exception:
         return Path(__file__).resolve().parent
 
-
 def _data_file(name: str) -> Path:
-    """数据文件路径；顺带把旧版写在插件目录里的同名文件迁移一次。"""
     old = Path(__file__).resolve().parent / name
     new = _data_dir() / name
     try:
@@ -58,13 +36,10 @@ def _data_file(name: str) -> Path:
         pass
     return new
 
-
 def _normalize(instance_id) -> str:
     return str(instance_id or "").strip() or _DEFAULT
 
-
 class OverlayBackend(QObject):
-    """堆叠组件后端：按实例隔离的成员管理 + 轮播/框尺寸 + 上课隐藏切换条。"""
 
     membersChanged = Signal()
     frameChanged = Signal()
@@ -73,7 +48,7 @@ class OverlayBackend(QObject):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        # store: gid -> {"members": [{key,typeId}...], "settings": {key: {...}}, "frame": {"w":0,"h":0}}
+        
         self._store: dict[str, dict] = {}
         self._members_file = _data_file(".overlay_members.json")
         self._settings_file = _data_file(".overlay_member_settings.json")
@@ -83,8 +58,6 @@ class OverlayBackend(QObject):
         self._load_member_settings()
         self._load_frames()
         self._load_class_hide()
-
-    # ── 上课隐藏切换条（全局，各实例共用同一时段配置）────────────
 
     def _load_class_hide(self) -> None:
         try:
@@ -101,7 +74,7 @@ class OverlayBackend(QObject):
             self._class_hide_file.write_text(
                 json.dumps(self._class_hide, ensure_ascii=False, indent=2), encoding="utf-8")
         except Exception as e:
-            logger.warning(f"[more_settings] 保存上课时段配置失败: {e}")
+            logger.warning(f"[more_settings] Failed to save class period settings: {e}")
 
     def _get_class_hide_enabled(self) -> bool:
         return bool(self._class_hide.get("enabled"))
@@ -131,26 +104,20 @@ class OverlayBackend(QObject):
     def refreshClassHide(self) -> None:
         self.classHideChanged.emit()
 
-    # ── 实例分组 ─────────────────────────────────────────────
-
     def _claim(self, gid: str) -> None:
-        """旧数据认领：default 组仅被第一个遇到的实名实例取走，并立即落盘。"""
         if gid == _DEFAULT or gid in self._store:
             return
         if self._store.get(_DEFAULT):
             self._store[gid] = self._store.pop(_DEFAULT)
-            self._save_all()  # 迁移立即持久化，避免旧成员设置丢失
+            self._save_all()  
 
     def _group(self, instance_id) -> dict:
         gid = _normalize(instance_id)
         self._claim(gid)
         return self._store.setdefault(gid, {"members": [], "settings": {}, "frame": {"w": 0, "h": 0}})
 
-    # ── 成员管理（按实例）────────────────────────────────────
-
     @Slot(str, result=list)
     def getMembers(self, instance_id: str) -> list:
-        """返回该实例成员对象列表：[{"key", "typeId"}, ...]（副本）。"""
         return [dict(m) for m in self._group(instance_id)["members"]]
 
     @Slot(str, result=int)
@@ -159,7 +126,6 @@ class OverlayBackend(QObject):
 
     @Slot(str, str, result=str)
     def addMember(self, instance_id: str, widget_id: str) -> str:
-        """为该实例添加成员（允许同一组件 id 重复）。返回新成员 key，失败返回空串。"""
         if not isinstance(widget_id, str):
             return ""
         wid = widget_id.strip()
@@ -170,7 +136,7 @@ class OverlayBackend(QObject):
         grp["members"].append({"key": key, "typeId": wid})
         self._save_members()
         self.membersChanged.emit()
-        logger.info(f"[more_settings] 堆叠 {_normalize(instance_id)} 添加成员: {key}")
+        logger.info(f"[more_settings] overlay {_normalize(instance_id)} added member: {key}")
         return key
 
     @Slot(str, str)
@@ -184,7 +150,7 @@ class OverlayBackend(QObject):
                 self._save_members()
                 self._save_member_settings()
                 self.membersChanged.emit()
-                logger.info(f"[more_settings] 堆叠 {_normalize(instance_id)} 移除成员: {k}")
+                logger.info(f"[more_settings] overlay {_normalize(instance_id)} removed member: {k}")
                 return
 
     @Slot(str, str, result=dict)
@@ -200,9 +166,7 @@ class OverlayBackend(QObject):
         grp = self._group(instance_id)
         grp["settings"][k] = dict(settings or {})
         self._save_member_settings()
-        logger.info(f"[more_settings] 已保存堆叠成员设置: {k}")
-
-    # ── 自定义组件框尺寸（按实例，0 = 跟随内容自适应）──────────
+        logger.info(f"[more_settings] saved overlay member settings: {k}")
 
     @Slot(str, result=dict)
     def getFrameSize(self, instance_id: str) -> dict:
@@ -215,9 +179,7 @@ class OverlayBackend(QObject):
         grp["frame"]["h"] = max(0, int(h or 0))
         self._save_frames()
         self.frameChanged.emit()
-        logger.info(f"[more_settings] 堆叠 {_normalize(instance_id)} 框尺寸 -> {grp['frame']}")
-
-    # ── 持久化 ───────────────────────────────────────────────
+        logger.info(f"[more_settings] overlay {_normalize(instance_id)} frame size -> {grp['frame']}")
 
     @staticmethod
     def _atomic_write_json(path: Path, payload: dict) -> None:
@@ -231,7 +193,7 @@ class OverlayBackend(QObject):
                 data = json.loads(self._members_file.read_text(encoding="utf-8"))
                 groups: dict = data.get("instances") if isinstance(data, dict) else None
                 if groups is None and isinstance(data, dict) and "members" in data:
-                    groups = {_DEFAULT: data}  # 旧格式 {"members": [...]}
+                    groups = {_DEFAULT: data}  
                 self._store = {}
                 for gid, obj in (groups or {}).items():
                     raw = obj.get("members") if isinstance(obj, dict) else obj
@@ -263,7 +225,7 @@ class OverlayBackend(QObject):
                 data = json.loads(self._settings_file.read_text(encoding="utf-8"))
                 groups: dict = data.get("instances") if isinstance(data, dict) else None
                 if groups is None and isinstance(data, dict) and "settings" in data:
-                    groups = {_DEFAULT: data}  # 旧格式 {"settings": {...}}
+                    groups = {_DEFAULT: data}  
                 for gid, obj in (groups or {}).items():
                     entry = self._store.setdefault(str(gid),
                                                    {"members": [], "settings": {}, "frame": {"w": 0, "h": 0}})
@@ -300,7 +262,7 @@ class OverlayBackend(QObject):
                                      for gid, v in self._store.items()}}
             self._atomic_write_json(self._members_file, payload)
         except Exception as e:
-            logger.warning(f"[more_settings] 保存成员列表失败: {e}")
+            logger.warning(f"[more_settings] Failed to save member list: {e}")
 
     def _save_member_settings(self) -> None:
         try:
@@ -308,11 +270,11 @@ class OverlayBackend(QObject):
                                      for gid, v in self._store.items()}}
             self._atomic_write_json(self._settings_file, payload)
         except Exception as e:
-            logger.warning(f"[more_settings] 保存成员设置失败: {e}")
+            logger.warning(f"[more_settings] Failed to save member settings: {e}")
 
     def _save_frames(self) -> None:
         try:
             payload = {"instances": {gid: dict(v["frame"]) for gid, v in self._store.items()}}
             self._atomic_write_json(self._frames_file, payload)
         except Exception as e:
-            logger.warning(f"[more_settings] 保存框尺寸失败: {e}")
+            logger.warning(f"[more_settings] Failed to save frame size: {e}")

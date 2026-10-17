@@ -268,37 +268,6 @@ FluentPage {
             text: qsTr("Widget placement")
         }
 
-        SettingCard {
-            Layout.fillWidth: true
-            icon.name: "ic_fluent_arrow_minimize_vertical_20_regular"
-            title: qsTr("Hide Depth")
-            description: qsTr("How far widgets slide out of the screen once hidden. Larger values keep less of the edge visible.")
-
-            Slider {
-                id: hideDepthSlider
-                from: 0
-                to: 200
-                stepSize: 4
-                tickmarks: true
-                tickFrequency: 40
-                toolTip.text: Math.round(value) + " px"
-                toolTip.visible: true
-                enabled: !Configs.isKeyLocked("preferences.widgets_hide_depth")
-
-                function platformDefault() {
-                    return Qt.platform.os === "osx" ? 48 : 24
-                }
-
-                onValueChanged: if (pressed)
-                                    Configs.set("preferences.widgets_hide_depth", Math.round(value))
-
-                Component.onCompleted: {
-                    const saved = Configs.data.preferences.widgets_hide_depth
-                    value = (saved === undefined || saved === null) ? platformDefault() : saved
-                }
-            }
-        }
-
         SettingExpander {
             Layout.fillWidth: true
             expanded: true
@@ -445,6 +414,26 @@ FluentPage {
                             enabled: !Configs.isKeyLocked("preferences.widgets_offset_y")
                             onValueChanged: if (focus) Configs.set("preferences.widgets_offset_y", value)
                             Component.onCompleted: value = Configs.data.preferences.widgets_offset_y || 0
+                        }
+                    }
+                    ColumnLayout {
+                        Text {
+                            Layout.alignment: Qt.AlignLeft
+                            text: qsTr("Hide depth")
+                        }
+                        SpinBox {
+                            Layout.fillWidth: true
+                            from: -1
+                            to: 400
+                            stepSize: 1
+                            editable: true
+                            textFromValue: function(value) { return value < 0 ? qsTr("Auto") : String(value) }
+                            enabled: !Configs.isKeyLocked("preferences.widgets_hide_depth")
+                            onValueChanged: if (focus) Configs.set("preferences.widgets_hide_depth", value < 0 ? null : value)
+                            Component.onCompleted: {
+                                var depth = Configs.data.preferences.widgets_hide_depth
+                                value = (depth === undefined || depth === null) ? -1 : depth
+                            }
                         }
                     }
                 }

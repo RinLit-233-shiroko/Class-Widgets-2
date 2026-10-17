@@ -4,22 +4,17 @@ import QtQuick.Layouts
 import RinUI
 import ClassWidgets.Plugins
 
-// 重叠组件设置页：轮播间隔 + 成员组件管理
-// 成员组件主要入口：桌面组件编辑界面右键 → “编辑重叠组件”
-// 排版按主程序 ClassWidgets/pages/editor/Settings.qml 的写法：
-//   SettingExpander（外层卡片，带 title/description）
-//     └ SettingItem { action: <内容> }（内层行，内容必须放 action:）
 SettingsLayout {
     spacing: 0
+
     property int secValue: 5
     onSecValueChanged: settings.interval_ms = secValue * 1000
+
     Component.onCompleted: {
         secValue = (settings.interval_ms || 5000) / 1000
         reloadFrame()
     }
 
-    // 插件后端：优先用主程序补丁注入的 backendObj（WidgetsContainer 打开设置时注入），
-    // 兜底再从组件定义列表中查找
     property var backendObj: null
     property var overlayBackend: {
         if (backendObj) return backendObj
@@ -33,7 +28,8 @@ SettingsLayout {
         return null
     }
 
-    // 成员 typeId -> 显示名
+    property var memberList: overlayBackend ? overlayBackend.getMembers(instanceId) : []
+
     function nameOf(typeId) {
         if (typeof WidgetsModel !== "undefined" && WidgetsModel.definitionsList) {
             var defs = WidgetsModel.definitionsList
@@ -45,7 +41,6 @@ SettingsLayout {
         return typeId
     }
 
-    // 组件框尺寸（按实例保存于后端）
     property int frameW: 0
     property int frameH: 0
 
@@ -55,6 +50,7 @@ SettingsLayout {
         frameW = f ? (f.w || 0) : 0
         frameH = f ? (f.h || 0) : 0
     }
+
     function stepFrame(dw, dh) {
         if (!overlayBackend) return
         var w = frameW
@@ -70,6 +66,7 @@ SettingsLayout {
         overlayBackend.setFrameSize(instanceId, w, h)
         reloadFrame()
     }
+
     function resetFrame() {
         if (!overlayBackend) return
         overlayBackend.setFrameSize(instanceId, 0, 0)
@@ -79,8 +76,8 @@ SettingsLayout {
 
     SettingExpander {
         Layout.fillWidth: true
-        title: "轮播间隔"
-        description: "每个组件停留后切换到下一个的时间（秒），加减按钮以 1 秒调整。"
+        title: qsTr("Carousel interval")
+        description: qsTr("Time each member stays visible before switching to the next, in seconds.")
         expanded: true
 
         SettingItem {
@@ -89,14 +86,14 @@ SettingsLayout {
                 spacing: 8
 
                 Button {
-                    text: "−"
+                    text: "\u2212"
                     implicitWidth: 36
                     onClicked: secValue = Math.max(1, secValue - 1)
                 }
                 Text {
                     Layout.preferredWidth: 70
                     horizontalAlignment: Text.AlignHCenter
-                    text: secValue + " 秒"
+                    text: secValue + " " + qsTr("s")
                     font.bold: true
                 }
                 Button {
@@ -110,8 +107,8 @@ SettingsLayout {
 
     SettingExpander {
         Layout.fillWidth: true
-        title: "组件框大小模式"
-        description: "固定为最大组件：始终以最大成员组件的边框为组件框大小；跟随当前组件：组件框随当前展示组件的大小平滑变化。"
+        title: qsTr("Frame size mode")
+        description: qsTr("Largest member keeps the frame at the size of the biggest member; Follow current resizes the frame smoothly to the visible member.")
         expanded: true
 
         SettingItem {
@@ -120,8 +117,8 @@ SettingsLayout {
                 textRole: "text"
                 valueRole: "value"
                 model: [
-                    { text: "固定为最大组件", value: "max" },
-                    { text: "跟随当前组件", value: "auto" }
+                    { text: qsTr("Largest member"), value: "max" },
+                    { text: qsTr("Follow current"), value: "auto" }
                 ]
                 Component.onCompleted: {
                     var v = settings.frame_mode || "max"
@@ -135,26 +132,27 @@ SettingsLayout {
 
     SettingExpander {
         Layout.fillWidth: true
-        title: "组件框尺寸"
-        description: "自定义本堆叠组件的框宽高（自适应 = 跟随内容）。"
+        title: qsTr("Frame size")
+        description: qsTr("Custom width and height for this stacked widget. Auto follows the content.")
         expanded: true
 
         SettingItem {
             action: ColumnLayout {
                 spacing: 8
                 Text {
-                    text: (frameW > 0 && frameH > 0) ? frameW + " × " + frameH
-                          : (frameW > 0) ? frameW + " × 自动"
-                          : (frameH > 0) ? "自动 × " + frameH : "自适应"
+                    text: (frameW > 0 && frameH > 0) ? frameW + " \u00d7 " + frameH
+                          : (frameW > 0) ? frameW + " \u00d7 " + qsTr("Auto")
+                          : (frameH > 0) ? qsTr("Auto") + " \u00d7 " + frameH
+                          : qsTr("Auto")
                     font.bold: true
                 }
                 RowLayout {
                     spacing: 6
-                    Button { text: "宽−"; onClicked: stepFrame(-10, 0) }
-                    Button { text: "宽+"; onClicked: stepFrame(10, 0) }
-                    Button { text: "高−"; onClicked: stepFrame(0, -10) }
-                    Button { text: "高+"; onClicked: stepFrame(0, 10) }
-                    Button { text: "自适应"; onClicked: resetFrame() }
+                    Button { text: qsTr("W\u2212"); onClicked: stepFrame(-10, 0) }
+                    Button { text: qsTr("W+"); onClicked: stepFrame(10, 0) }
+                    Button { text: qsTr("H\u2212"); onClicked: stepFrame(0, -10) }
+                    Button { text: qsTr("H+"); onClicked: stepFrame(0, 10) }
+                    Button { text: qsTr("Auto"); onClicked: resetFrame() }
                 }
             }
         }
@@ -162,8 +160,8 @@ SettingsLayout {
 
     SettingExpander {
         Layout.fillWidth: true
-        title: "显示切换条"
-        description: "在组件右侧显示“切换”按钮，点击可手动切换到下一个成员组件。"
+        title: qsTr("Show switch bar")
+        description: qsTr("Show a switch button on the right edge of the widget to step through members manually.")
         expanded: true
 
         SettingItem {
@@ -175,18 +173,27 @@ SettingsLayout {
         }
     }
 
-
     SettingExpander {
         Layout.fillWidth: true
-        title: "成员组件"
-        description: "已叠加到本组件内的成员，可在桌面组件编辑界面中右键“编辑重叠组件”添加/移除。"
+        title: qsTr("Members")
+        description: qsTr("Members stacked inside this widget. Add or remove them from the desktop widget context menu.")
         expanded: true
 
         SettingItem {
             action: ColumnLayout {
                 spacing: 4
+
+                Text {
+                    visible: memberList.length === 0
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignHCenter
+                    opacity: 0.6
+                    wrapMode: Text.Wrap
+                    text: qsTr("No members yet")
+                }
+
                 Repeater {
-                    model: overlayBackend ? overlayBackend.getMembers(instanceId) : []
+                    model: memberList
                     delegate: RowLayout {
                         Layout.fillWidth: true
                         spacing: 8
@@ -196,11 +203,14 @@ SettingsLayout {
                             elide: Text.ElideMiddle
                         }
                         Button {
-                            text: "移除"
-                            implicitWidth: 52
+                            text: qsTr("Remove")
+                            implicitWidth: 72
                             implicitHeight: 26
                             onClicked: {
-                                if (overlayBackend) overlayBackend.removeMember(instanceId, modelData.key)
+                                if (overlayBackend) {
+                                    overlayBackend.removeMember(instanceId, modelData.key)
+                                    memberList = overlayBackend.getMembers(instanceId)
+                                }
                             }
                         }
                     }
