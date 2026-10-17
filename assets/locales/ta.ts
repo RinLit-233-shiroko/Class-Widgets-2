@@ -5,7 +5,7 @@
     <name>About</name>
     <message>
         <source>Reimagining Your Schedule.</source>
-        <translation type="vanished">உங்கள் அட்டவணையை மறுவடிவமைத்தல்.</translation>
+        <translation>உங்கள் அட்டவணையை மறுவடிவமைத்தல்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="73"/>
@@ -32,11 +32,11 @@ MIT உரிமத்தின் கீழ் உரிமம் பெற்�
     </message>
     <message>
         <source>File a bug or request new sample</source>
-        <translation type="vanished">பிழையைப் பதிவு செய்யவும் அல்லது புதிய மாதிரியைக் கோரவும்</translation>
+        <translation>பிழையைப் பதிவு செய்யவும் அல்லது புதிய மாதிரியைக் கோரவும்</translation>
     </message>
     <message>
         <source>Create an issue on GitHub</source>
-        <translation type="vanished">GitHub இல் சிக்கலை உருவாக்கவும்</translation>
+        <translation>GitHub இல் சிக்கலை உருவாக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="130"/>
@@ -75,11 +75,11 @@ MIT உரிமத்தின் கீழ் உரிமம் பெற்�
     </message>
     <message>
         <source>This project is licensed under the GPL-3 license</source>
-        <translation type="vanished">இந்த திட்டம் GPL-3 உரிமத்தின் கீழ் உரிமம் பெற்றது</translation>
+        <translation>இந்த திட்டம் GPL-3 உரிமத்தின் கீழ் உரிமம் பெற்றது</translation>
     </message>
     <message>
         <source>GPL-3 License</source>
-        <translation type="vanished">GPL-3 உரிமம்</translation>
+        <translation>GPL-3 உரிமம்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="116"/>
@@ -98,7 +98,7 @@ MIT உரிமத்தின் கீழ் உரிமம் பெற்�
     </message>
     <message>
         <source>Advances</source>
-        <translation type="vanished">முன்னேற்றங்கள்</translation>
+        <translation>முன்னேற்றங்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="173"/>
@@ -201,7 +201,25 @@ Your settings and schedule are kept.</source>
     </message>
     <message>
         <source>This project (Class Widgets 2) is licensed under the GPL-3 license. For details, see:</source>
-        <translation type="vanished">இந்த திட்டம் (வகுப்பு விட்செட்டுகள் 2) GPL-3 உரிமத்தின் கீழ் உரிமம் பெற்றது. விவரங்களுக்கு, பார்க்கவும்:</translation>
+        <translation>இந்த திட்டம் (வகுப்பு விட்செட்டுகள் 2) GPL-3 உரிமத்தின் கீழ் உரிமம் பெற்றது. விவரங்களுக்கு, பார்க்கவும்:</translation>
+    </message>
+</context>
+<context>
+    <name>AddOverlayMemberDialog</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddOverlayMemberDialog.qml" line="9"/>
+        <source>Add Widgets to Overlay</source>
+        <translation>அடுக்கு விட்ஜெட்டில் விட்ஜெட்டுகளைச் சேர்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddOverlayMemberDialog.qml" line="111"/>
+        <source>No Widget Selected</source>
+        <translation>விட்ஜெட் தேர்ந்தெடுக்கப்படவில்லை</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddOverlayMemberDialog.qml" line="147"/>
+        <source>Add</source>
+        <translation>சேர்</translation>
     </message>
 </context>
 <context>
@@ -233,19 +251,6 @@ Your settings and schedule are kept.</source>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddWidgetsDialog.qml" line="222"/>
         <source>Add</source>
         <translation>கூட்டு</translation>
-    </message>
-</context>
-<context>
-    <name>AppCentral</name>
-    <message>
-        <location filename="../../src/core/central.py" line="716"/>
-        <source>Safe mode</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/central.py" line="720"/>
-        <source>Class Widgets started in safe mode. Third-party plugins and themes were skipped; your settings and schedule are used as usual.</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -329,15 +334,15 @@ You can continue to open another one, or close this window.</source>
     </message>
     <message>
         <source>Odd Week</source>
-        <translation type="vanished">ஒற்றைப்படை வாரம்</translation>
+        <translation>ஒற்றைப்படை வாரம்</translation>
     </message>
     <message>
         <source>Even Week</source>
-        <translation type="vanished">வாரம் கூட</translation>
+        <translation>வாரம் கூட</translation>
     </message>
     <message>
         <source>Week %1</source>
-        <translation type="vanished">வாரம்% 1</translation>
+        <translation>வாரம்% 1</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="68"/>
@@ -451,27 +456,27 @@ You can continue to open another one, or close this window.</source>
     </message>
     <message>
         <source>Click to select a class to swap</source>
-        <translation type="vanished">மாற்றுவதற்கு வகுப்பைத் தேர்ந்தெடுக்க சொடுக்கு செய்யவும்</translation>
+        <translation>மாற்றுவதற்கு வகுப்பைத் தேர்ந்தெடுக்க சொடுக்கு செய்யவும்</translation>
     </message>
     <message>
         <source>(Empty)</source>
-        <translation type="vanished">(காலி)</translation>
+        <translation>(காலி)</translation>
     </message>
     <message>
         <source>All Subjects</source>
-        <translation type="vanished">அனைத்து பாடங்களும்</translation>
+        <translation>அனைத்து பாடங்களும்</translation>
     </message>
     <message>
         <source>Click a class to swap</source>
-        <translation type="vanished">இடமாற்றம் செய்ய ஒரு வகுப்பைக் சொடுக்கு செய்யவும்</translation>
+        <translation>இடமாற்றம் செய்ய ஒரு வகுப்பைக் சொடுக்கு செய்யவும்</translation>
     </message>
     <message>
         <source>Select target class</source>
-        <translation type="vanished">இலக்கு வகுப்பைத் தேர்ந்தெடுக்கவும்</translation>
+        <translation>இலக்கு வகுப்பைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
         <source>Confirm Swap</source>
-        <translation type="vanished">மாற்றத்தை உறுதிப்படுத்தவும்</translation>
+        <translation>மாற்றத்தை உறுதிப்படுத்தவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/ClassSwapDialog.qml" line="545"/>
@@ -541,7 +546,6 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>Configs</name>
     <message>
-        <location filename="../../src/core/config/model.py" line="230"/>
         <source>New Schedule 1</source>
         <translation>புதிய அட்டவணை 1</translation>
     </message>
@@ -646,31 +650,31 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>Mon</source>
-        <translation type="vanished">தி</translation>
+        <translation>தி</translation>
     </message>
     <message>
         <source>Tue</source>
-        <translation type="vanished">செவ்வாய்</translation>
+        <translation>செவ்வாய்</translation>
     </message>
     <message>
         <source>Wed</source>
-        <translation type="vanished">அறிவன்</translation>
+        <translation>அறிவன்</translation>
     </message>
     <message>
         <source>Thu</source>
-        <translation type="vanished">வியாழன்</translation>
+        <translation>வியாழன்</translation>
     </message>
     <message>
         <source>Fri</source>
-        <translation type="vanished">வெள்ளி</translation>
+        <translation>வெள்ளி</translation>
     </message>
     <message>
         <source>Sat</source>
-        <translation type="vanished">காரி</translation>
+        <translation>காரி</translation>
     </message>
     <message>
         <source>Sun</source>
-        <translation type="vanished">சூரியன்</translation>
+        <translation>சூரியன்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/dialogs/DayEditor.qml" line="273"/>
@@ -689,15 +693,15 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>Specific Round</source>
-        <translation type="vanished">குறிப்பிட்ட சுற்று</translation>
+        <translation>குறிப்பிட்ட சுற்று</translation>
     </message>
     <message>
         <source>Custom</source>
-        <translation type="vanished">தனிப்பயன்</translation>
+        <translation>தனிப்பயன்</translation>
     </message>
     <message>
         <source>Week of Cycle</source>
-        <translation type="vanished">சுழற்சியின் வாரம்</translation>
+        <translation>சுழற்சியின் வாரம்</translation>
     </message>
 </context>
 <context>
@@ -784,59 +788,59 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>Set start date and max weeks</source>
-        <translation type="vanished">தொடக்க தேதி மற்றும் அதிகபட்ச வாரங்களை அமைக்கவும்</translation>
+        <translation>தொடக்க தேதி மற்றும் அதிகபட்ச வாரங்களை அமைக்கவும்</translation>
     </message>
     <message>
         <source>Set default duration</source>
-        <translation type="vanished">இயல்புநிலை கால அளவை அமைக்கவும்</translation>
+        <translation>இயல்புநிலை கால அளவை அமைக்கவும்</translation>
     </message>
     <message>
         <source>Set date and max weeks</source>
-        <translation type="vanished">தேதி மற்றும் அதிகபட்ச வாரங்களை அமைக்கவும்</translation>
+        <translation>தேதி மற்றும் அதிகபட்ச வாரங்களை அமைக்கவும்</translation>
     </message>
     <message>
         <source>Start date:</source>
-        <translation type="vanished">தொடக்க தேதி:</translation>
+        <translation>தொடக்க தேதி:</translation>
     </message>
     <message>
         <source>Max week cycle:</source>
-        <translation type="vanished">அதிகபட்ச வார சுழற்சி:</translation>
+        <translation>அதிகபட்ச வார சுழற்சி:</translation>
     </message>
     <message>
         <source>Failed to set start date or max week cycle. Please report this issue to the community or the developer.</source>
-        <translation type="vanished">தொடக்க தேதி அல்லது அதிகபட்ச வார சுழற்சியை அமைக்க முடியவில்லை. இந்தச் சிக்கலைச் சமூகம் அல்லது டெவலப்பரிடம் புகாரளிக்கவும்.</translation>
+        <translation>தொடக்க தேதி அல்லது அதிகபட்ச வார சுழற்சியை அமைக்க முடியவில்லை. இந்தச் சிக்கலைச் சமூகம் அல்லது டெவலப்பரிடம் புகாரளிக்கவும்.</translation>
     </message>
     <message>
         <source>Set the first day of school to calculate week numbers accurately</source>
-        <translation type="vanished">வார எண்களைத் துல்லியமாகக் கணக்கிட பள்ளியின் முதல் நாளை அமைக்கவும்</translation>
+        <translation>வார எண்களைத் துல்லியமாகக் கணக்கிட பள்ளியின் முதல் நாளை அமைக்கவும்</translation>
     </message>
     <message>
         <source>Set</source>
-        <translation type="vanished">கணம்</translation>
+        <translation>கணம்</translation>
     </message>
     <message>
         <source>Set the default duration for new classes, breaks, or activities.</source>
-        <translation type="vanished">புதிய வகுப்புகள், இடைவேளைகள் அல்லது செயல்பாடுகளுக்கான இயல்புநிலை கால அளவை அமைக்கவும்.</translation>
+        <translation>புதிய வகுப்புகள், இடைவேளைகள் அல்லது செயல்பாடுகளுக்கான இயல்புநிலை கால அளவை அமைக்கவும்.</translation>
     </message>
     <message>
         <source>Failed</source>
-        <translation type="vanished">தோல்வியடைந்தது</translation>
+        <translation>தோல்வியடைந்தது</translation>
     </message>
     <message>
         <source>Select Default Duration</source>
-        <translation type="vanished">இயல்புநிலை கால அளவைத் தேர்ந்தெடுக்கவும்</translation>
+        <translation>இயல்புநிலை கால அளவைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
         <source>Class</source>
-        <translation type="vanished">வகுப்பு</translation>
+        <translation>வகுப்பு</translation>
     </message>
     <message>
         <source>Break</source>
-        <translation type="vanished">இடைவேளை</translation>
+        <translation>இடைவேளை</translation>
     </message>
     <message>
         <source>Activity</source>
-        <translation type="vanished">செய்கைப்பாடு</translation>
+        <translation>செய்கைப்பாடு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/DayListView.qml" line="112"/>
@@ -1144,7 +1148,7 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>Edit </source>
-        <translation type="vanished">திருத்தவும் </translation>
+        <translation>திருத்தவும் </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/EntryDetailView.qml" line="142"/>
@@ -1166,7 +1170,7 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>Unknown Type</source>
-        <translation type="vanished">தெரியாத வகை</translation>
+        <translation>தெரியாத வகை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/EntryDetailView.qml" line="161"/>
@@ -1180,11 +1184,11 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>Select Subject</source>
-        <translation type="vanished">பாடத்தைத் தேர்ந்தெடுக்கவும்</translation>
+        <translation>பாடத்தைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
         <source>Set Subject</source>
-        <translation type="vanished">பொருள் அமைக்கவும்</translation>
+        <translation>பொருள் அமைக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/EntryDetailView.qml" line="192"/>
@@ -1289,23 +1293,14 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>ExportScheduleDialog</name>
     <message>
-        <location filename="../../src/core/converter/slots.py" line="23"/>
-        <location filename="../../src/core/schedule/manager.py" line="401"/>
         <source>Export Schedule</source>
         <translation>ஏற்றுமதி அட்டவணை</translation>
     </message>
     <message>
-        <location filename="../../src/core/converter/slots.py" line="27"/>
         <source>CSES Format (*.yaml *.yml)</source>
         <translation>CSES வடிவம் (*.yaml *.yml)</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/manager.py" line="288"/>
-        <source>Export Schedules</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/schedule/manager.py" line="404"/>
         <source>Class Widgets 2 JSON Files (*.json)</source>
         <translation>வகுப்பு விட்செட்டுகள் 2 சாதொபொகு கோப்புகள் (*.json)</translation>
     </message>
@@ -1464,43 +1459,43 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>Import Schedule</source>
-        <translation type="vanished">இறக்குமதி அட்டவணை</translation>
+        <translation>இறக்குமதி அட்டவணை</translation>
     </message>
     <message>
         <source>Import from Class Widgets 2</source>
-        <translation type="vanished">வகுப்பு விட்செட்டுகள் 2 இலிருந்து இறக்குமதி செய்யவும்</translation>
+        <translation>வகுப்பு விட்செட்டுகள் 2 இலிருந்து இறக்குமதி செய்யவும்</translation>
     </message>
     <message>
         <source>Import Failed</source>
-        <translation type="vanished">இறக்குமதி தோல்வி</translation>
+        <translation>இறக்குமதி தோல்வி</translation>
     </message>
     <message>
         <source>Failed to import the schedule.Please check if the schedule file is valid.</source>
-        <translation type="vanished">அட்டவணையை இறக்குமதி செய்ய முடியவில்லை. அட்டவணை கோப்பு சரியானதா என சரிபார்க்கவும்.</translation>
+        <translation>அட்டவணையை இறக்குமதி செய்ய முடியவில்லை. அட்டவணை கோப்பு சரியானதா என சரிபார்க்கவும்.</translation>
     </message>
     <message>
         <source>Import from CSES</source>
-        <translation type="vanished">CSES இலிருந்து இறக்குமதி செய்யவும்</translation>
+        <translation>CSES இலிருந்து இறக்குமதி செய்யவும்</translation>
     </message>
     <message>
         <source>Import Success</source>
-        <translation type="vanished">இறக்குமதி செய்</translation>
+        <translation>இறக்குமதி செய்</translation>
     </message>
     <message>
         <source>The schedule has been imported successfully.</source>
-        <translation type="vanished">அட்டவணை வெற்றிகரமாக இறக்குமதி செய்யப்பட்டது.</translation>
+        <translation>அட்டவணை வெற்றிகரமாக இறக்குமதி செய்யப்பட்டது.</translation>
     </message>
     <message>
         <source>Failed to import the schedule. Please check if the schedule file is valid.</source>
-        <translation type="vanished">அட்டவணையை இறக்குமதி செய்ய முடியவில்லை. அட்டவணை கோப்பு சரியானதா என சரிபார்க்கவும்.</translation>
+        <translation>அட்டவணையை இறக்குமதி செய்ய முடியவில்லை. அட்டவணை கோப்பு சரியானதா என சரிபார்க்கவும்.</translation>
     </message>
     <message>
         <source>Import from Class Widgets 1</source>
-        <translation type="vanished">வகுப்பு விட்செட்டுகள் 1 இலிருந்து இறக்குமதி செய்யவும்</translation>
+        <translation>வகுப்பு விட்செட்டுகள் 1 இலிருந்து இறக்குமதி செய்யவும்</translation>
     </message>
     <message>
         <source>Create a new schedule</source>
-        <translation type="vanished">புதிய அட்டவணையை உருவாக்கவும்</translation>
+        <translation>புதிய அட்டவணையை உருவாக்கவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="97"/>
@@ -1509,7 +1504,7 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>Your schedules</source>
-        <translation type="vanished">உங்கள் அட்டவணைகள்</translation>
+        <translation>உங்கள் அட்டவணைகள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Home.qml" line="155"/>
@@ -1563,43 +1558,43 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>Enter a name for your new schedule</source>
-        <translation type="vanished">உங்கள் புதிய அட்டவணைக்கு ஒரு பெயரை உள்ளிடவும்</translation>
+        <translation>உங்கள் புதிய அட்டவணைக்கு ஒரு பெயரை உள்ளிடவும்</translation>
     </message>
     <message>
         <source>Schedule name</source>
-        <translation type="vanished">அட்டவணை பெயர்</translation>
+        <translation>அட்டவணை பெயர்</translation>
     </message>
     <message>
         <source>Cannot be empty (⊙x⊙;)</source>
-        <translation type="vanished">காலியாக இருக்க முடியாது (⊙x⊙;)</translation>
+        <translation>காலியாக இருக்க முடியாது (⊙x⊙;)</translation>
     </message>
     <message>
         <source>Cannot duplicate existing name (⊙x⊙;)</source>
-        <translation type="vanished">ஏற்கனவே உள்ள பெயரை நகலெடுக்க முடியாது (⊙x⊙;)</translation>
+        <translation>ஏற்கனவே உள்ள பெயரை நகலெடுக்க முடியாது (⊙x⊙;)</translation>
     </message>
     <message>
         <source>Great! That&apos;s it. ヾ(≧▽≦*)o</source>
-        <translation type="vanished">அருமை! அவ்வளவுதான். ヾ(≧▽≦*)o</translation>
+        <translation>அருமை! அவ்வளவுதான். ヾ(≧▽≦*)o</translation>
     </message>
     <message>
         <source>Warning</source>
-        <translation type="vanished">எச்சரிக்கை</translation>
+        <translation>எச்சரிக்கை</translation>
     </message>
     <message>
         <source>This version is still under testing and may contain bugs or incomplete features. You are welcome to submit issues on GitHub</source>
-        <translation type="vanished">இந்தப் பதிப்பு இன்னும் சோதனையில் உள்ளது மற்றும் பிழைகள் அல்லது முழுமையற்ற அம்சங்களைக் கொண்டிருக்கலாம். GitHub இல் சிக்கல்களைச் சமர்ப்பிக்க உங்களை வரவேற்கிறோம்</translation>
+        <translation>இந்தப் பதிப்பு இன்னும் சோதனையில் உள்ளது மற்றும் பிழைகள் அல்லது முழுமையற்ற அம்சங்களைக் கொண்டிருக்கலாம். GitHub இல் சிக்கல்களைச் சமர்ப்பிக்க உங்களை வரவேற்கிறோம்</translation>
     </message>
     <message>
         <source>GitHub</source>
-        <translation type="vanished">அறிவிலிமையம்</translation>
+        <translation>அறிவிலிமையம்</translation>
     </message>
     <message>
         <source>Discord</source>
-        <translation type="vanished">கருத்து வேறுபாடு</translation>
+        <translation>கருத்து வேறுபாடு</translation>
     </message>
     <message>
         <source>https://discord.gg/nNZxaCBh</source>
-        <translation type="vanished">https://discord.gg/nNZxaCBh</translation>
+        <translation>https://discord.gg/nNZxaCBh</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/plaza/Home.qml" line="77"/>
@@ -1713,32 +1708,26 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>ImportScheduleDialog</name>
     <message>
-        <location filename="../../src/core/converter/slots.py" line="179"/>
         <source>Import CSES Schedule</source>
         <translation>CSES அட்டவணையை இறக்குமதி செய்யவும்</translation>
     </message>
     <message>
-        <location filename="../../src/core/converter/slots.py" line="182"/>
         <source>CSES YAML Files (*.yaml *.yml)</source>
         <translation>CSES YAML கோப்புகள் (*.yaml *.yml)</translation>
     </message>
     <message>
-        <location filename="../../src/core/converter/slots.py" line="193"/>
         <source>Import Class Widgets 1 Schedule</source>
         <translation>வகுப்பு விட்செட்டுகள் 1 அட்டவணையை இறக்குமதி செய்யவும்</translation>
     </message>
     <message>
-        <location filename="../../src/core/converter/slots.py" line="196"/>
         <source>Class Widgets 1 JSON Files (*.json)</source>
         <translation>வகுப்பு விட்செட்டுகள் 1 சாதொபொகு கோப்புகள் (*.json)</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/manager.py" line="351"/>
         <source>Import Schedule</source>
         <translation>இறக்குமதி அட்டவணை</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/manager.py" line="354"/>
         <source>Class Widgets 2 JSON Files (*.json)</source>
         <translation>வகுப்பு விட்செட்டுகள் 2 சாதொபொகு கோப்புகள் (*.json)</translation>
     </message>
@@ -1901,7 +1890,7 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>Tap to hide</source>
-        <translation type="vanished">மறைக்க தட்டவும்</translation>
+        <translation>மறைக்க தட்டவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="97"/>
@@ -1910,7 +1899,7 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>Click on the widget to hide it, click it again to bring it back</source>
-        <translation type="vanished">அதை மறைக்க விட்செட்டை சொடுக்கு செய்யவும், அதை மீண்டும் கொண்டு வர மீண்டும் சொடுக்கு செய்யவும்</translation>
+        <translation>அதை மறைக்க விட்செட்டை சொடுக்கு செய்யவும், அதை மீண்டும் கொண்டு வர மீண்டும் சொடுக்கு செய்யவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="29"/>
@@ -1936,7 +1925,7 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>Choose whether widgets hide or switch to Mini Mode when triggered</source>
-        <translation type="vanished">தூண்டப்படும்போது விட்செட்டுகள் மறைக்க வேண்டுமா அல்லது மினி பயன்முறைக்கு மாற வேண்டுமா என்பதைத் தேர்வுசெய்யவும்</translation>
+        <translation>தூண்டப்படும்போது விட்செட்டுகள் மறைக்க வேண்டுமா அல்லது மினி பயன்முறைக்கு மாற வேண்டுமா என்பதைத் தேர்வுசெய்யவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="112"/>
@@ -2176,40 +2165,33 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>NotificationProviders</name>
     <message>
-        <location filename="../../src/core/utils/backend.py" line="62"/>
         <source>Debug Notification</source>
         <translation>பிழைத்திருத்த அறிவிப்பு</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="73"/>
         <source>Class Notifications</source>
         <translation>வகுப்பு அறிவிப்புகள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="82"/>
         <source>Activity Notifications</source>
         <translation>செயல்பாட்டு அறிவிப்புகள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="91"/>
         <source>Break Notifications</source>
         <translation>அறிவிப்புகளை உடைக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="100"/>
         <source>Free Time Notifications</source>
         <translation>இலவச நேர அறிவிப்புகள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="109"/>
         <source>Preparation Bell</source>
         <translation>தயாரிப்பு மணி</translation>
     </message>
     <message>
-        <location filename="../../src/core/plaza/notifications.py" line="31"/>
         <source>Plugin Plaza</source>
         <extracomment>外部插件模块的导入前缀，见 :meth:`src.core.plugin.loader.PluginLoader._load_external_plugin`。 Used when a report has to estimate the process uptime on its own.</extracomment>
-        <translation type="unfinished">செருகுநிரல் பிளாசா</translation>
+        <translation type="obsolete">செருகுநிரல் பிளாசா</translation>
     </message>
 </context>
 <context>
@@ -2251,11 +2233,11 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>No Logs</source>
-        <translation type="vanished">பதிவுகள் இல்லை</translation>
+        <translation>பதிவுகள் இல்லை</translation>
     </message>
     <message>
         <source>Do not save logs to local storage.</source>
-        <translation type="vanished">உள்ளக சேமிப்பகத்தில் பதிவுகளைச் சேமிக்க வேண்டாம்.</translation>
+        <translation>உள்ளக சேமிப்பகத்தில் பதிவுகளைச் சேமிக்க வேண்டாம்.</translation>
     </message>
 </context>
 <context>
@@ -2285,7 +2267,7 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>Warning</source>
-        <translation type="vanished">எச்சரிக்கை</translation>
+        <translation>எச்சரிக்கை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Personalization.qml" line="30"/>
@@ -2341,7 +2323,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
         <source>The theme system is still under development. 
 
 If translations are missing after a theme change, please restart</source>
-        <translation type="vanished">கருப்பொருள் அமைப்பு இன்னும் வளர்ச்சியில் உள்ளது. 
+        <translation>கருப்பொருள் அமைப்பு இன்னும் வளர்ச்சியில் உள்ளது. 
 
 தீம் மாற்றத்திற்குப் பிறகு மொழிபெயர்ப்புகள் இல்லை என்றால், மீண்டும் தொடங்கவும்</translation>
     </message>
@@ -2593,7 +2575,7 @@ If translations are missing after a theme change, please restart</source>
     <name>PluginCard</name>
     <message>
         <source>Unknown</source>
-        <translation type="vanished">தெரியவில்லை</translation>
+        <translation>தெரியவில்லை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCard.qml" line="21"/>
@@ -2662,59 +2644,21 @@ If translations are missing after a theme change, please restart</source>
 <context>
     <name>PluginManager</name>
     <message>
-        <location filename="../../src/core/plugin/manager.py" line="123"/>
         <source>Incompatible</source>
         <extracomment>归因结论：这次崩溃是不是由某个插件引发。 扫描/加载过程中失败的插件，供 PluginManager 通知与诊断使用。</extracomment>
         <translation>பொருந்தாதது</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/manager.py" line="127"/>
         <source>{count} incompatible plugin(s) have been loaded, which may cause unknown issues.</source>
         <translation>{count} பொருந்தாத செருகுநிரல்கள் (கள்) ஏற்றப்பட்டுள்ளன, இது அறியப்படாத சிக்கல்களை ஏற்படுத்தக்கூடும்.</translation>
-    </message>
-    <message>
-        <location filename="../../src/core/plugin/manager.py" line="189"/>
-        <source>Some plugins failed to load</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/plugin/manager.py" line="193"/>
-        <source>{count} plugin(s) could not be loaded and were skipped: {names}</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>PluginPlaza</name>
     <message>
-        <location filename="../../src/core/plaza/notifications.py" line="52"/>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="12"/>
         <source>Plugin Plaza</source>
         <translation>செருகுநிரல் பிளாசா</translation>
-    </message>
-    <message>
-        <location filename="../../src/core/plaza/notifications.py" line="53"/>
-        <source>{action} {name} (v{version}).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/plaza/notifications.py" line="66"/>
-        <source>Plugin Plaza {action} failed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/plaza/notifications.py" line="69"/>
-        <source>{name}: {error}</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/plaza/notifications.py" line="78"/>
-        <source>Plugin updates available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/plaza/notifications.py" line="81"/>
-        <source>{count} plugin update(s) are ready in Plugin Plaza.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="20"/>
@@ -2738,7 +2682,7 @@ If translations are missing after a theme change, please restart</source>
     </message>
     <message>
         <source>Refresh</source>
-        <translation type="vanished">புதுப்பிப்பு</translation>
+        <translation>புதுப்பிப்பு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="182"/>
@@ -2808,51 +2752,6 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="273"/>
         <source>Downloads</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/plugin/errors.py" line="23"/>
-        <source>The package version ({package_version}) does not match the Plugin Plaza version ({release_version}).</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/plugin/errors.py" line="30"/>
-        <source>The plugin package does not match the selected plugin.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/plugin/errors.py" line="32"/>
-        <source>The plugin package could not be found.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/plugin/errors.py" line="38"/>
-        <source>The plugin package is too large.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/plugin/errors.py" line="40"/>
-        <source>The plugin package is invalid.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/plugin/errors.py" line="46"/>
-        <source>The plugin manifest is invalid.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/plugin/errors.py" line="55"/>
-        <source>The plugin package failed security checks.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/plugin/errors.py" line="57"/>
-        <source>Unable to download the plugin. Check your connection and try again.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/core/plugin/errors.py" line="60"/>
-        <source>Plugin installation failed.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2973,7 +2872,7 @@ Do you want to %3 this plugin?</source>
     </message>
     <message>
         <source>Warning</source>
-        <translation type="vanished">எச்சரிக்கை</translation>
+        <translation>எச்சரிக்கை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="43"/>
@@ -2983,7 +2882,7 @@ Do you want to %3 this plugin?</source>
     </message>
     <message>
         <source>The plugin has been uninstalled successfully. Restart to take effect.</source>
-        <translation type="vanished">செருகுநிரல் வெற்றிகரமாக நிறுவல் நீக்கப்பட்டது. நடைமுறைக்கு வர மீண்டும் தொடங்கவும்.</translation>
+        <translation>செருகுநிரல் வெற்றிகரமாக நிறுவல் நீக்கப்பட்டது. நடைமுறைக்கு வர மீண்டும் தொடங்கவும்.</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="53"/>
@@ -3002,7 +2901,7 @@ Do you want to %3 this plugin?</source>
     </message>
     <message>
         <source>Get Plugins</source>
-        <translation type="vanished">செருகுநிரல்களைப் பெறுங்கள்</translation>
+        <translation>செருகுநிரல்களைப் பெறுங்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="209"/>
@@ -3030,19 +2929,19 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     </message>
     <message>
         <source>The plugin has been imported successfully.</source>
-        <translation type="vanished">செருகுநிரல் வெற்றிகரமாக இறக்குமதி செய்யப்பட்டது.</translation>
+        <translation>செருகுநிரல் வெற்றிகரமாக இறக்குமதி செய்யப்பட்டது.</translation>
     </message>
     <message>
         <source>The plugin system is still under development. </source>
-        <translation type="vanished">செருகுநிரல் அமைப்பு இன்னும் வளர்ச்சியில் உள்ளது. </translation>
+        <translation>செருகுநிரல் அமைப்பு இன்னும் வளர்ச்சியில் உள்ளது. </translation>
     </message>
     <message>
         <source>Find and install plugins from the Extension Plaza (WEB)</source>
-        <translation type="vanished">நீட்டிப்பு பிளாசாவில் (WEB) செருகுநிரல்களைக் கண்டுபிடித்து நிறுவவும்</translation>
+        <translation>நீட்டிப்பு பிளாசாவில் (WEB) செருகுநிரல்களைக் கண்டுபிடித்து நிறுவவும்</translation>
     </message>
     <message>
         <source>Go to Extension Plaza</source>
-        <translation type="vanished">நீட்டிப்பு பிளாசாவுக்குச் செல்லவும்</translation>
+        <translation>நீட்டிப்பு பிளாசாவுக்குச் செல்லவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="228"/>
@@ -3051,7 +2950,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     </message>
     <message>
         <source>Importing</source>
-        <translation type="vanished">இறக்குமதி செய்கிறது</translation>
+        <translation>இறக்குமதி செய்கிறது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="32"/>
@@ -3065,7 +2964,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     </message>
     <message>
         <source>Importing the selected plugin. Please wait...</source>
-        <translation type="vanished">தேர்ந்தெடுக்கப்பட்ட செருகுநிரலை இறக்குமதி செய்கிறது. தயவுசெய்து காத்திருங்கள்...</translation>
+        <translation>தேர்ந்தெடுக்கப்பட்ட செருகுநிரலை இறக்குமதி செய்கிறது. தயவுசெய்து காத்திருங்கள்...</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="23"/>
@@ -3191,7 +3090,6 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <translation>நிறுவல் நீக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="11"/>
         <source>Built-in Widgets</source>
         <translation>உள்ளமைக்கப்பட்ட விட்செட்டுகள்</translation>
     </message>
@@ -3343,10 +3241,8 @@ It&apos;s incompatible and may cause unexpected issues.</source>
 <context>
     <name>ProblemReport</name>
     <message>
-        <location filename="../../src/core/windows/problem_report.py" line="226"/>
         <location filename="../../src/qml/ClassWidgets/Windows/ProblemReport.qml" line="532"/>
         <source>Export logs</source>
-        <extracomment>日志导出时附带的最大日志尾部长度。</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3446,11 +3342,11 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <name>RescheduleDayDialog</name>
     <message>
         <source>Reschedule day</source>
-        <translation type="vanished">மறு அட்டவணை நாள்</translation>
+        <translation>மறு அட்டவணை நாள்</translation>
     </message>
     <message>
         <source>Apply a day-of-week schedule to a specific date</source>
-        <translation type="vanished">ஒரு குறிப்பிட்ட தேதிக்கு வாரத்தின் நாள் அட்டவணையைப் பயன்படுத்தவும்</translation>
+        <translation>ஒரு குறிப்பிட்ட தேதிக்கு வாரத்தின் நாள் அட்டவணையைப் பயன்படுத்தவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/RescheduleDayDialog.qml" line="10"/>
@@ -3611,11 +3507,11 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <name>Schedule</name>
     <message>
         <source>Preview</source>
-        <translation type="vanished">முன்னோட்டம்</translation>
+        <translation>முன்னோட்டம்</translation>
     </message>
     <message>
         <source>Edit</source>
-        <translation type="vanished">தொகு</translation>
+        <translation>தொகு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="115"/>
@@ -3639,24 +3535,21 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     </message>
     <message>
         <source>Week Cycle</source>
-        <translation type="vanished">வார சுழற்சி</translation>
+        <translation>வார சுழற்சி</translation>
     </message>
     <message>
         <source>Quick Add Subject</source>
-        <translation type="vanished">விரைவு பொருள் சேர்</translation>
+        <translation>விரைவு பொருள் சேர்</translation>
     </message>
     <message>
-        <location filename="../../src/core/converter/cses.py" line="214"/>
         <source>All Weeks</source>
         <translation>அனைத்து வாரங்களும்</translation>
     </message>
     <message>
-        <location filename="../../src/core/converter/cses.py" line="216"/>
         <source>Odd Weeks</source>
         <translation>ஒற்றைப்படை வாரங்கள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/converter/cses.py" line="218"/>
         <source>Even Weeks</source>
         <translation>வாரங்கள் கூட</translation>
     </message>
@@ -3854,7 +3747,7 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <name>ScheduleConverter</name>
     <message>
         <source>Class</source>
-        <translation type="vanished">வகுப்பு</translation>
+        <translation>வகுப்பு</translation>
     </message>
 </context>
 <context>
@@ -3995,27 +3888,27 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <name>ScheduleFlyout</name>
     <message>
         <source>Edit</source>
-        <translation type="vanished">தொகு</translation>
+        <translation>தொகு</translation>
     </message>
     <message>
         <source>Subject</source>
-        <translation type="vanished">பொருள்</translation>
+        <translation>பொருள்</translation>
     </message>
     <message>
         <source>Select Subject</source>
-        <translation type="vanished">பாடத்தைத் தேர்ந்தெடுக்கவும்</translation>
+        <translation>பாடத்தைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
         <source>Title</source>
-        <translation type="vanished">தலைப்பு</translation>
+        <translation>தலைப்பு</translation>
     </message>
     <message>
         <source>Set</source>
-        <translation type="vanished">கணம்</translation>
+        <translation>கணம்</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation type="vanished">தெளிவு</translation>
+        <translation>தெளிவு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/schedule/ScheduleFlyout.qml" line="639"/>
@@ -4151,83 +4044,62 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
 <context>
     <name>ScheduleRuntime</name>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="310"/>
         <source>Class Started</source>
         <translation>வகுப்பு துவங்கியது</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="327"/>
         <source>Activity Started</source>
         <translation>செயல்பாடு தொடங்கியது</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="336"/>
         <source>Intermission</source>
         <translation>இடைவேளை</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="352"/>
-        <location filename="../../src/core/schedule/runtime.py" line="362"/>
-        <location filename="../../src/core/schedule/runtime.py" line="388"/>
-        <location filename="../../src/core/schedule/runtime.py" line="398"/>
         <source>Next: {}</source>
         <translation>அடுத்து: {}</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="356"/>
-        <location filename="../../src/core/schedule/runtime.py" line="392"/>
         <source>Next: {} at {}</source>
         <translation>அடுத்து: {} மணிக்கு {}</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="358"/>
-        <location filename="../../src/core/schedule/runtime.py" line="394"/>
         <source>Next: {} (Off-site)</source>
         <translation>அடுத்து: {} (ஆஃப்-சைட்)</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="372"/>
         <source>Recess</source>
         <translation>இடைவேளை</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="407"/>
         <source>Enjoy your break</source>
         <translation>உங்கள் இடைவேளையை அனுபவிக்கவும்</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="409"/>
         <source>Free Time</source>
         <translation>இலவச நேரம்</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="414"/>
         <source>Status Changed</source>
         <translation>நிலை மாற்றப்பட்டது</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="414"/>
         <source>Current status: {}</source>
         <translation>தற்போதைய நிலை: {}</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="468"/>
-        <location filename="../../src/core/schedule/runtime.py" line="478"/>
         <source>Coming up: {}</source>
         <translation>வரவிருக்கிறது: {}</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="472"/>
         <source>Coming up: {} at {}</source>
         <translation>வரவிருக்கிறது: {} மணிக்கு {}</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="474"/>
         <source>Coming up: {} (Off-site)</source>
         <translation>வரவிருக்கிறது: {} (ஆஃப்-சைட்)</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="486"/>
         <source>Preparation Bell</source>
         <translation>தயாரிப்பு மணி</translation>
     </message>
@@ -4503,8 +4375,8 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
 <context>
     <name>Settings</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="11"/>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Settings.qml" line="9"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="11"/>
         <source>Settings</source>
         <translation>அமைப்புகள்</translation>
     </message>
@@ -4608,29 +4480,24 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
 <context>
     <name>Shortcuts</name>
     <message>
-        <location filename="../../src/core/central.py" line="164"/>
         <source>Settings</source>
-        <translation type="unfinished">அமைப்புகள்</translation>
+        <translation type="obsolete">அமைப்புகள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="170"/>
         <source>Schedules</source>
-        <translation type="unfinished">அட்டவணைகள்</translation>
+        <translation type="obsolete">அட்டவணைகள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="178"/>
         <source>Plugin Plaza</source>
-        <translation type="unfinished">செருகுநிரல் பிளாசா</translation>
+        <translation type="obsolete">செருகுநிரல் பிளாசா</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="184"/>
         <source>Reschedule Day</source>
-        <translation type="unfinished">மறு அட்டவணை நாள்</translation>
+        <translation type="obsolete">மறு அட்டவணை நாள்</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="190"/>
         <source>Class Swap</source>
-        <translation type="unfinished">வகுப்பு இடமாற்று</translation>
+        <translation type="obsolete">வகுப்பு இடமாற்று</translation>
     </message>
 </context>
 <context>
@@ -4650,60 +4517,60 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <name>SubjectClip</name>
     <message>
         <source>Teacher: </source>
-        <translation type="vanished">ஆசிரியர்: </translation>
+        <translation>ஆசிரியர்: </translation>
     </message>
     <message>
         <source>Location: </source>
-        <translation type="vanished">இடம்: </translation>
+        <translation>இடம்: </translation>
     </message>
     <message>
         <source>Edit Subject</source>
-        <translation type="vanished">தலைப்பைத் திருத்து</translation>
+        <translation>தலைப்பைத் திருத்து</translation>
     </message>
     <message>
         <source>ID</source>
-        <translation type="vanished">ஐடி</translation>
+        <translation>ஐடி</translation>
     </message>
     <message>
         <source>Simplified Name</source>
-        <translation type="vanished">எளிமைப்படுத்தப்பட்ட பெயர்</translation>
+        <translation>எளிமைப்படுத்தப்பட்ட பெயர்</translation>
     </message>
     <message>
         <source>Subject Name</source>
-        <translation type="vanished">பொருள் பெயர்</translation>
+        <translation>பொருள் பெயர்</translation>
     </message>
     <message>
         <source>e.g. Science</source>
-        <translation type="vanished">எ.கா. அறிவியல்</translation>
+        <translation>எ.கா. அறிவியல்</translation>
     </message>
     <message>
         <source>Teacher</source>
-        <translation type="vanished">ஆசிரியர்</translation>
+        <translation>ஆசிரியர்</translation>
     </message>
     <message>
         <source>Location</source>
-        <translation type="vanished">இடம்</translation>
+        <translation>இடம்</translation>
     </message>
     <message>
         <source>e.g. Room 7813</source>
-        <translation type="vanished">எ.கா. அறை 7813</translation>
+        <translation>எ.கா. அறை 7813</translation>
     </message>
     <message>
         <source>Color</source>
-        <translation type="vanished">நிறம்</translation>
+        <translation>நிறம்</translation>
     </message>
     <message>
         <source>Held in homeroom</source>
-        <translation type="vanished">வீட்டு அறையில் நடைபெற்றது</translation>
+        <translation>வீட்டு அறையில் நடைபெற்றது</translation>
     </message>
     <message>
         <source>Icon</source>
-        <translation type="vanished">படவுரு</translation>
+        <translation>படவுரு</translation>
     </message>
     <message>
         <source>Enable if the subject is taught in your homeroom classroom.  
 If it takes place in another location, such as a sport field, lab, or another classroom, leave it off.</source>
-        <translation type="vanished">உங்கள் வீட்டு வகுப்பறையில் பாடம் கற்பிக்கப்படுகிறதா என்பதை இயக்கவும். 
+        <translation>உங்கள் வீட்டு வகுப்பறையில் பாடம் கற்பிக்கப்படுகிறதா என்பதை இயக்கவும். 
 விளையாட்டு மைதானம், ஆய்வகம் அல்லது வேறு வகுப்பறை போன்ற வேறொரு இடத்தில் இது நடந்தால், அதை விட்டுவிடவும்.</translation>
     </message>
     <message>
@@ -4867,118 +4734,95 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="65"/>
         <source>Chinese</source>
         <extracomment>启动参数：不加载任何外部插件与主题（配置、课程表等用户数据照常读取）。</extracomment>
         <translation>சீன</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="66"/>
         <source>Mathematics</source>
         <translation>கணிதம்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="67"/>
         <source>English</source>
         <translation>ஆங்கிலம்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="68"/>
         <source>Politics</source>
         <translation>அரசியல்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="69"/>
         <source>History</source>
         <translation>வரலாறு</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="70"/>
         <source>Physics</source>
         <translation>இயற்பியல்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="71"/>
         <source>Chemistry</source>
         <translation>வேதியியல்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="72"/>
         <source>Biology</source>
         <translation>உயிரியல்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="73"/>
         <source>Geography</source>
         <translation>புவியியல்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="74"/>
         <source>Music</source>
         <translation>இசை</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="75"/>
         <source>Art</source>
         <translation>கலை</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="76"/>
         <source>Psychology</source>
         <translation>உளவியல்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="77"/>
         <source>Physical Education</source>
         <translation>உடற்கல்வி</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="78"/>
         <source>Information Technology</source>
         <translation>செய்தி தொழில்நுட்பம்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="79"/>
         <source>General Technology</source>
         <translation>பொது தொழில்நுட்பம்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="80"/>
         <source>Elective</source>
         <translation>தேர்ந்தெடுக்கப்பட்ட</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="81"/>
         <source>Self Study</source>
         <translation>தன்வய ஆய்வு</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="82"/>
         <source>Club</source>
         <translation>கிளப்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="83"/>
         <source>Class Meeting</source>
         <translation>வகுப்பு கூட்டம்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="84"/>
         <source>Weekly Test</source>
         <translation>வாராந்திர சோதனை</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="85"/>
         <source>Economics</source>
         <translation>பொருளாதாரம்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="86"/>
         <source>Philosophy</source>
         <translation>உண்மை</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="89"/>
         <source>Computer Science</source>
         <translation>கணினி அறிவியல்</translation>
     </message>
@@ -4986,127 +4830,102 @@ If it takes place in another location, such as a sport field, lab, or another cl
 <context>
     <name>SubjectsSimplified</name>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="90"/>
         <source>CHN</source>
         <translation>சிஎச்என்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="91"/>
         <source>Math</source>
         <translation>கணிதம்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="92"/>
         <source>Eng</source>
         <translation>இன்சி</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="93"/>
         <source>Civics</source>
         <translation>குடிமையியல்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="94"/>
         <source>Hist</source>
         <translation>வரலாறு</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="95"/>
         <source>Phys</source>
         <translation>இயற்பியல்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="96"/>
         <source>Chem</source>
         <translation>செம்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="97"/>
         <source>Bio</source>
         <translation>உயிர்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="98"/>
         <source>Geo</source>
         <translation>சியோ</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="99"/>
         <source>Mus</source>
         <translation>முச்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="100"/>
         <source>Art</source>
         <translation>கலை</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="101"/>
         <source>Psy</source>
         <translation>சை</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="102"/>
         <source>PE</source>
         <translation>பீ</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="103"/>
         <source>IT</source>
         <translation>ஐ.டி</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="104"/>
         <source>GenTech</source>
         <translation>சென்டெக்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="105"/>
         <source>Elective</source>
         <translation>தேர்ந்தெடுக்கப்பட்ட</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="106"/>
         <source>Study</source>
         <translation>படிப்பு</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="107"/>
         <source>Club</source>
         <translation>கிளப்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="108"/>
         <source>ClassMtg</source>
         <translation>வகுப்புMtg</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="109"/>
         <source>Weekly</source>
         <translation>வாரந்தோறும்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="110"/>
         <source>Econ</source>
         <translation>பொருளாதாரம்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="111"/>
         <source>Philos</source>
         <translation>பிலோச்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="112"/>
         <source>CS</source>
         <translation>சிஎச்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="113"/>
         <source>Meeting</source>
         <translation>கூட்டம்</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="114"/>
         <source>Test</source>
         <translation>தேர்வு</translation>
     </message>
@@ -5169,12 +4988,10 @@ If it takes place in another location, such as a sport field, lab, or another cl
 <context>
     <name>Theme</name>
     <message>
-        <location filename="../../src/themes/__init__.py" line="11"/>
         <source>Default</source>
         <translation>இயல்புநிலை</translation>
     </message>
     <message>
-        <location filename="../../src/themes/__init__.py" line="12"/>
         <source>Class Widgets Builtin Default Theme</source>
         <translation>கிளாச் விட்செட்டுகள் பில்டின் இயல்புநிலை கருப்பொருள்</translation>
     </message>
@@ -5201,7 +5018,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Theme.qml" line="47"/>
         <source>Auto</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">தானியங்கி</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Theme.qml" line="52"/>
@@ -5278,7 +5095,7 @@ Class Widgets has restored the default theme.</source>
     </message>
     <message>
         <source>Time Offset (minutes)</source>
-        <translation type="vanished">நேர ஆஃப்செட் (நிமிடங்கள்)</translation>
+        <translation>நேர ஆஃப்செட் (நிமிடங்கள்)</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/notificationAndTime/Time.qml" line="27"/>
@@ -5287,7 +5104,112 @@ Class Widgets has restored the default theme.</source>
     </message>
     <message>
         <source>minutes</source>
-        <translation type="vanished">நிமிடங்கள்</translation>
+        <translation>நிமிடங்கள்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="14"/>
+        <source>Digit Animation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="15"/>
+        <source>Animate the clock digits when the time updates. Turn off to display them statically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="28"/>
+        <source>Show Seconds</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="29"/>
+        <source>Display seconds after the hour and minute.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="43"/>
+        <source>Show Date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="44"/>
+        <source>Display the date below the clock. Turn off to hide all date parts.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="57"/>
+        <source>Date Content</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="58"/>
+        <source>Choose which parts of the date to display.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="73"/>
+        <source>Year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="86"/>
+        <source>Month</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="99"/>
+        <source>Day</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="110"/>
+        <source>Show Weekday</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="111"/>
+        <source>Display the weekday below the clock.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="125"/>
+        <source>Date and Weekday Layout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="126"/>
+        <source>Show the date and weekday side by side, or alternate between them.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="134"/>
+        <source>Side by side</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="135"/>
+        <source>Alternate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="155"/>
+        <source>Alternate Interval</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="156"/>
+        <source>Set how long each of the date and weekday stays visible.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="182"/>
+        <source>Alternate Animation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="183"/>
+        <source>Fade between the date and weekday instead of switching instantly.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5410,19 +5332,19 @@ Class Widgets has restored the default theme.</source>
     <name>TrayPanel</name>
     <message>
         <source>Settings</source>
-        <translation type="vanished">அமைப்புகள்</translation>
+        <translation>அமைப்புகள்</translation>
     </message>
     <message>
         <source>Adjust the settings of Class Widgets</source>
-        <translation type="vanished">வகுப்பு விட்செட்களின் அமைப்புகளைச் சரிசெய்யவும்</translation>
+        <translation>வகுப்பு விட்செட்களின் அமைப்புகளைச் சரிசெய்யவும்</translation>
     </message>
     <message>
         <source>Schedules</source>
-        <translation type="vanished">அட்டவணைகள்</translation>
+        <translation>அட்டவணைகள்</translation>
     </message>
     <message>
         <source>Edit your schedule profile</source>
-        <translation type="vanished">உங்கள் அட்டவணை சுயவிவரத்தை திருத்தவும்</translation>
+        <translation>உங்கள் அட்டவணை சுயவிவரத்தை திருத்தவும்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="73"/>
@@ -5431,11 +5353,11 @@ Class Widgets has restored the default theme.</source>
     </message>
     <message>
         <source>Open</source>
-        <translation type="vanished">திற</translation>
+        <translation>திற</translation>
     </message>
     <message>
         <source>Extension Plaza (WEB)</source>
-        <translation type="vanished">நீட்டிப்பு பிளாசா (WEB)</translation>
+        <translation>நீட்டிப்பு பிளாசா (WEB)</translation>
     </message>
     <message>
         <source>Plugin Plaza</source>
@@ -5443,11 +5365,11 @@ Class Widgets has restored the default theme.</source>
     </message>
     <message>
         <source>Discover and download plugins and themes</source>
-        <translation type="vanished">செருகுநிரல்கள் மற்றும் தீம்களைக் கண்டறிந்து பதிவிறக்கவும்</translation>
+        <translation>செருகுநிரல்கள் மற்றும் தீம்களைக் கண்டறிந்து பதிவிறக்கவும்</translation>
     </message>
     <message>
         <source>Shortcuts</source>
-        <translation type="vanished">குறுக்குவழிகள்</translation>
+        <translation>குறுக்குவழிகள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="174"/>
@@ -5456,7 +5378,7 @@ Class Widgets has restored the default theme.</source>
     </message>
     <message>
         <source>Class Swap</source>
-        <translation type="vanished">வகுப்பு இடமாற்று</translation>
+        <translation>வகுப்பு இடமாற்று</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/TrayPanel.qml" line="10"/>
@@ -5505,7 +5427,7 @@ Class Widgets has restored the default theme.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/TrayShortcuts.qml" line="48"/>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">முடிந்தது</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/TrayShortcuts.qml" line="48"/>
@@ -5543,39 +5465,39 @@ Class Widgets has restored the default theme.</source>
     <name>Tutorial</name>
     <message>
         <source>Welcome ╰(*°▽°*)╯</source>
-        <translation type="vanished">வரவேற்கிறோம் ╰(*°▽°*)╯</translation>
+        <translation>வரவேற்கிறோம் ╰(*°▽°*)╯</translation>
     </message>
     <message>
         <source>Welcome to Class Widgets 2</source>
-        <translation type="vanished">வகுப்பு விட்செட்டுகள் 2 க்கு வரவேற்கிறோம்</translation>
+        <translation>வகுப்பு விட்செட்டுகள் 2 க்கு வரவேற்கிறோம்</translation>
     </message>
     <message>
         <source>注意</source>
-        <translation type="vanished">கவனிக்கவும்</translation>
+        <translation>கவனிக்கவும்</translation>
     </message>
     <message>
         <source>初始引导窗口还未完工，在做啦在做啦 
 目前版本为测试版，大多数功能还未补完。若要在教学环境中使用，请三思而后行。
 欢迎到我们的 GitHub 页面提交反馈或建议，谢谢！</source>
-        <translation type="vanished">ஆரம்ப துவக்க சாளரம் இன்னும் முடிவடையவில்லை, அது வேலை செய்கிறது.
+        <translation>ஆரம்ப துவக்க சாளரம் இன்னும் முடிவடையவில்லை, அது வேலை செய்கிறது.
 தற்போதைய பதிப்பு பீட்டா பதிப்பாகும், மேலும் பெரும்பாலான நற்பொருத்தங்கள் இன்னும் முடிக்கப்படவில்லை. கற்பிக்கும் சூழலில் பயன்படுத்துவதற்கு முன் ஒருமுறைக்கு இருமுறை யோசிக்கவும். 
 எங்கள் GitHub பக்கத்தில் கருத்து அல்லது பரிந்துரைகளை சமர்ப்பிக்க தயங்க வேண்டாம், நன்றி!</translation>
     </message>
     <message>
         <source>Select a language</source>
-        <translation type="vanished">ஒரு மொழியைத் தேர்ந்தெடுக்கவும்</translation>
+        <translation>ஒரு மொழியைத் தேர்ந்தெடுக்கவும்</translation>
     </message>
     <message>
         <source>Use System Language</source>
-        <translation type="vanished">கணினி மொழியைப் பயன்படுத்தவும்</translation>
+        <translation>கணினி மொழியைப் பயன்படுத்தவும்</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="vanished">வெளியேறு</translation>
+        <translation>வெளியேறு</translation>
     </message>
     <message>
         <source>Get started</source>
-        <translation type="vanished">தொடங்குங்கள்</translation>
+        <translation>தொடங்குங்கள்</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Tutorial.qml" line="12"/>
@@ -5841,44 +5763,36 @@ Class Widgets has restored the default theme.</source>
 <context>
     <name>UpdateNotification</name>
     <message>
-        <location filename="../../src/core/automations/update_check.py" line="45"/>
         <source>Class Widgets Update Available</source>
         <translation>வகுப்பு விட்செட்கள் புதுப்பிப்பு கிடைக்கிறது</translation>
     </message>
     <message>
-        <location filename="../../src/core/automations/update_check.py" line="43"/>
         <source>&quot;{version}&quot; is available!
 Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation>&quot;{version}&quot; உள்ளது! 
 மேலும் விவரங்களுக்கு &quot;அமைப்புகள்&quot; → &quot;புதுப்பிப்பு&quot; என்பதற்குச் செல்லவும்.</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="88"/>
         <source>Class Widgets has been updated to the latest version: {version}</source>
         <translation>வகுப்பு விட்செட்டுகள் அண்மைக் கால பதிப்பிற்கு புதுப்பிக்கப்பட்டுள்ளன: {version}</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="89"/>
         <source>Update Completed ヾ(≧▽≦*)o</source>
         <translation>புதுப்பிப்பு முடிந்தது ヾ(≧▽≦*)o</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="162"/>
         <source>Update Downloaded</source>
         <translation>புதுப்பிப்பு பதிவிறக்கப்பட்டது</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="167"/>
         <source>Ready to install anytime. Go to &quot;Settings&quot; → &quot;Update&quot; to proceed with installation.</source>
         <translation>எந்த நேரத்திலும் நிறுவ தயாராக உள்ளது. நிறுவலைத் தொடர, &quot;அமைப்புகள்&quot; → &quot;புதுப்பிப்பு&quot; என்பதற்குச் செல்லவும்.</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="204"/>
         <source>Applying Update Soon</source>
         <translation>புதுப்பிப்பை விரைவில் பயன்படுத்துகிறது</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="208"/>
         <source>The update may take several seconds to complete. (●&apos;◡&apos;●)</source>
         <translation>புதுப்பிப்பு முடிவதற்கு சில வினாடிகள் ஆகலாம். (●&apos;◡&apos;●)</translation>
     </message>
@@ -5895,23 +5809,23 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     </message>
     <message>
         <source>Every Week</source>
-        <translation type="vanished">ஒவ்வொரு வாரமும்</translation>
+        <translation>ஒவ்வொரு வாரமும்</translation>
     </message>
     <message>
         <source>Round</source>
-        <translation type="vanished">சுற்று</translation>
+        <translation>சுற்று</translation>
     </message>
     <message>
         <source>Custom</source>
-        <translation type="vanished">தனிப்பயன்</translation>
+        <translation>தனிப்பயன்</translation>
     </message>
     <message>
         <source>Week of Cycle:</source>
-        <translation type="vanished">சுழற்சியின் வாரம்:</translation>
+        <translation>சுழற்சியின் வாரம்:</translation>
     </message>
     <message>
         <source>Week Index:</source>
-        <translation type="vanished">வார அட்டவணை:</translation>
+        <translation>வார அட்டவணை:</translation>
     </message>
 </context>
 <context>
@@ -6235,79 +6149,70 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation>தனிப்பயன்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="247"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="245"/>
         <source>Preview</source>
         <translation>முன்னோட்டம்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="250"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="248"/>
         <source>The quick brown fox jumps over the lazy dog</source>
         <translation>விரைவான பழுப்பு நரி சோம்பேறி நாய் மீது குதிக்கிறது</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="268"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="266"/>
         <source>Widget placement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="275"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="273"/>
         <source>Display and position</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Window</source>
-        <translation type="vanished">சாளரம்</translation>
+        <translation>சாளரம்</translation>
     </message>
     <message>
         <source>Display</source>
-        <translation type="vanished">காட்சி</translation>
+        <translation>காட்சி</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="276"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="274"/>
         <source>Set which screen to display widgets on, and adjust their position</source>
         <translation>எந்தத் திரையில் விட்செட்களைக் காண்பிக்க வேண்டும் என்பதை அமைத்து, அவற்றின் நிலையைச் சரிசெய்யவும்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="392"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="382"/>
         <source>X-axis offset</source>
         <translation>எக்ச்-அச்சு ஆஃப்செட்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="407"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="397"/>
         <source>Y-axis offset</source>
         <translation>ஒய்-அச்சு ஆஃப்செட்</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="27"/>
         <source>Current Activity</source>
         <translation>தற்போதைய செயல்பாடு</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="38"/>
         <source>Time</source>
         <translation>நேரம்</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="44"/>
         <source>Event Countdown</source>
         <translation>நிகழ்வு கவுண்டவுன்</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="50"/>
         <source>Upcoming Activities</source>
         <translation>வரவிருக்கும் செயல்பாடுகள்</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="62"/>
         <source>Dynamic Notification</source>
         <translation>மாறும் அறிவிப்பு</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="74"/>
-        <source>Text</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="412"/>
         <source>Hide depth</source>
         <translation>மறைவு ஆணி</translation>
     </message>
@@ -6320,18 +6225,18 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <name>WidgetsContainer</name>
     <message>
         <source>Edit </source>
-        <translation type="vanished">திருத்தவும் </translation>
+        <translation>திருத்தவும் </translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">நீக்கு</translation>
+        <translation>நீக்கு</translation>
     </message>
     <message>
         <source>Edit Widgets Screen</source>
-        <translation type="vanished">விட்செட்கள் திரையைத் திருத்து</translation>
+        <translation>விட்செட்கள் திரையைத் திருத்து</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="245"/>
+        <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="228"/>
         <source>Add</source>
         <translation>கூட்டு</translation>
     </message>
@@ -6339,17 +6244,32 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
 <context>
     <name>WidgetsLayoutDelegate</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="391"/>
+        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="307"/>
+        <source>Add Member</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="324"/>
+        <source>Done</source>
+        <translation type="unfinished">முடிந்தது</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="402"/>
         <source>Edit </source>
         <translation type="unfinished">திருத்தவும் </translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="407"/>
+        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="418"/>
+        <source>Edit Members</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="427"/>
         <source>Delete</source>
         <translation type="unfinished">நீக்கு</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="413"/>
+        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="433"/>
         <source>Edit Widgets Screen</source>
         <translation type="unfinished">விட்செட்கள் திரையைத் திருத்து</translation>
     </message>
@@ -6447,6 +6367,236 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source> min</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/eventCountdown.qml" line="12"/>
+        <source>Digit Animation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/eventCountdown.qml" line="13"/>
+        <source>Animate the minute and second digits when the countdown updates. Turn off to display them statically.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>overlay</name>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="36"/>
+        <source>Class starts</source>
+        <translation>வகுப்பு தொடங்குகிறது</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="36"/>
+        <source>Class begins</source>
+        <translation>வகுப்பு தொடங்குகிறது</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="40"/>
+        <source>Class over</source>
+        <translation>வகுப்பு முடிந்தது</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="40"/>
+        <source>Class ends</source>
+        <translation>வகுப்பு முடிந்தது</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="41"/>
+        <source>Class dismissed</source>
+        <translation>வகுப்பு முடிந்தது</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="41"/>
+        <source>Class finished</source>
+        <translation>வகுப்பு முடிந்தது</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="42"/>
+        <source>End of class</source>
+        <translation>வகுப்பு முடிந்தது</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="42"/>
+        <source>Break</source>
+        <translation>இடைவேளை</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="391"/>
+        <source>Stacked widget</source>
+        <translation>அடுக்கு விட்ஜெட்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="398"/>
+        <source>Right-click to add members</source>
+        <translation>உறுப்புகளைச் சேர்க்க வலது கிளிக் செய்க</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="527"/>
+        <source>Next</source>
+        <translation>அடுத்து</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="545"/>
+        <source>Member Settings</source>
+        <translation>உறுப்பு அமைப்புகள்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="586"/>
+        <source>Cancel</source>
+        <translation>ரத்து</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="610"/>
+        <source>Save</source>
+        <translation>சேமி</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="640"/>
+        <source>Edit stacked widget</source>
+        <translation>அடுக்கு விட்ஜெட்டைத் திருத்து</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="654"/>
+        <source>No members yet. Use Add member below to include widgets.</source>
+        <translation>உறுப்புகள் இல்லை. கீழே «உறுப்பைச் சேர்» என்பதைப் பயன்படுத்தவும்.</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="684"/>
+        <source>Settings</source>
+        <translation>அமைப்புகள்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="688"/>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="206"/>
+        <source>Remove</source>
+        <translation>நீக்கு</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="706"/>
+        <location filename="../../src/qml/widgets/overlay.qml" line="707"/>
+        <location filename="../../src/qml/widgets/overlay.qml" line="708"/>
+        <location filename="../../src/qml/widgets/overlay.qml" line="717"/>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="144"/>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="145"/>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="146"/>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="155"/>
+        <source>Auto</source>
+        <translation>தானியங்கி</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="713"/>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="151"/>
+        <source>W-</source>
+        <translation>அகல-</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="714"/>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="152"/>
+        <source>W+</source>
+        <translation>அகல+</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="715"/>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="153"/>
+        <source>H-</source>
+        <translation>உயர-</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="716"/>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="154"/>
+        <source>H+</source>
+        <translation>உயர+</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="725"/>
+        <source>Add member</source>
+        <translation>உறுப்பைச் சேர்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="730"/>
+        <source>Done</source>
+        <translation>முடிந்தது</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="739"/>
+        <source>Add member widget</source>
+        <translation>உறுப்பு விட்ஜெட்டைச் சேர்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="786"/>
+        <source>Add</source>
+        <translation>சேர்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="79"/>
+        <source>Carousel interval</source>
+        <translation>சுழற்சி இடைவெளி</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="80"/>
+        <source>Time each member stays visible before switching to the next, in seconds.</source>
+        <translation>அடுத்ததற்கு மாறும் முன் ஒவ்வொரு உறுப்பும் தெரியும் வினாடிகள்.</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="96"/>
+        <source>s</source>
+        <translation>வி</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="110"/>
+        <source>Frame size mode</source>
+        <translation>சட்ட அளவு பயன்முறை</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="111"/>
+        <source>Largest member keeps the frame at the size of the biggest member; Follow current resizes the frame smoothly to the visible member.</source>
+        <translation>மிகப்பெரிய உறுப்பின் அளவில் சட்டத்தை வைத்திருக்கும்; தற்போதையதைப் பின்தொடர் என்பது தெரியும் உறுப்புக்கு ஏற்ப மென்மையாக மாற்றும்.</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="120"/>
+        <source>Largest member</source>
+        <translation>மிகப்பெரிய உறுப்பு</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="121"/>
+        <source>Follow current</source>
+        <translation>தற்போதையதைப் பின்தொடர்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="135"/>
+        <source>Frame size</source>
+        <translation>சட்ட அளவு</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="136"/>
+        <source>Custom width and height for this stacked widget. Auto follows the content.</source>
+        <translation>இந்த அடுக்கு விட்ஜெட்டிற்கான தனிப்பயன் அகலமும் உயரமும். தானியங்கி உள்ளடக்கத்தைப் பின்தொடரும்.</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="163"/>
+        <source>Show switch bar</source>
+        <translation>மாற்றுப் பட்டியைக் காட்டு</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="164"/>
+        <source>Show a switch button on the right edge of the widget to step through members manually.</source>
+        <translation>கைமுறையாக உறுப்புகளுக்கு மாற விட்ஜெட்டின் வலது விளிம்பில் மாற்றுப் பொத்தானைக் காட்டு.</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="178"/>
+        <source>Members</source>
+        <translation>உறுப்புகள்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="179"/>
+        <source>Members stacked inside this widget. Add or remove them from the desktop widget context menu.</source>
+        <translation>இந்த விட்ஜெட்டில் அடுக்கப்பட்ட உறுப்புகள். டெஸ்க்டாப் விட்ஜெட் சூழல் மெனுவிலிருந்து சேர்க்கவும் நீக்கவும்.</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="192"/>
+        <source>No members yet</source>
+        <translation>உறுப்புகள் இல்லை</translation>
+    </message>
 </context>
 <context>
     <name>test</name>
@@ -6507,188 +6657,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="34"/>
         <source>Unset</source>
         <translation>அமைக்கப்படவில்லை</translation>
-    </message>
-</context>
-<context>
-    <name>overlay</name>
-    <message>
-        <source>Class starts</source>
-        <translation>வகுப்பு தொடங்குகிறது</translation>
-    </message>
-    <message>
-        <source>Class begins</source>
-        <translation>வகுப்பு தொடங்குகிறது</translation>
-    </message>
-    <message>
-        <source>Class over</source>
-        <translation>வகுப்பு முடிந்தது</translation>
-    </message>
-    <message>
-        <source>Class ends</source>
-        <translation>வகுப்பு முடிந்தது</translation>
-    </message>
-    <message>
-        <source>Class dismissed</source>
-        <translation>வகுப்பு முடிந்தது</translation>
-    </message>
-    <message>
-        <source>Class finished</source>
-        <translation>வகுப்பு முடிந்தது</translation>
-    </message>
-    <message>
-        <source>End of class</source>
-        <translation>வகுப்பு முடிந்தது</translation>
-    </message>
-    <message>
-        <source>Break</source>
-        <translation>இடைவேளை</translation>
-    </message>
-    <message>
-        <source>Stacked widget</source>
-        <translation>அடுக்கு விட்ஜெட்</translation>
-    </message>
-    <message>
-        <source>Right-click to add members</source>
-        <translation>உறுப்புகளைச் சேர்க்க வலது கிளிக் செய்க</translation>
-    </message>
-    <message>
-        <source>Next</source>
-        <translation>அடுத்து</translation>
-    </message>
-    <message>
-        <source>Member Settings</source>
-        <translation>உறுப்பு அமைப்புகள்</translation>
-    </message>
-    <message>
-        <source>Cancel</source>
-        <translation>ரத்து</translation>
-    </message>
-    <message>
-        <source>Save</source>
-        <translation>சேமி</translation>
-    </message>
-    <message>
-        <source>Edit stacked widget</source>
-        <translation>அடுக்கு விட்ஜெட்டைத் திருத்து</translation>
-    </message>
-    <message>
-        <source>No members yet. Use Add member below to include widgets.</source>
-        <translation>உறுப்புகள் இல்லை. கீழே «உறுப்பைச் சேர்» என்பதைப் பயன்படுத்தவும்.</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation>அமைப்புகள்</translation>
-    </message>
-    <message>
-        <source>Remove</source>
-        <translation>நீக்கு</translation>
-    </message>
-    <message>
-        <source>Auto</source>
-        <translation>தானியங்கி</translation>
-    </message>
-    <message>
-        <source>W-</source>
-        <translation>அகல-</translation>
-    </message>
-    <message>
-        <source>W+</source>
-        <translation>அகல+</translation>
-    </message>
-    <message>
-        <source>H-</source>
-        <translation>உயர-</translation>
-    </message>
-    <message>
-        <source>H+</source>
-        <translation>உயர+</translation>
-    </message>
-    <message>
-        <source>Add member</source>
-        <translation>உறுப்பைச் சேர்</translation>
-    </message>
-    <message>
-        <source>Done</source>
-        <translation>முடிந்தது</translation>
-    </message>
-    <message>
-        <source>Add member widget</source>
-        <translation>உறுப்பு விட்ஜெட்டைச் சேர்</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation>சேர்</translation>
-    </message>
-    <message>
-        <source>Carousel interval</source>
-        <translation>சுழற்சி இடைவெளி</translation>
-    </message>
-    <message>
-        <source>Time each member stays visible before switching to the next, in seconds.</source>
-        <translation>அடுத்ததற்கு மாறும் முன் ஒவ்வொரு உறுப்பும் தெரியும் வினாடிகள்.</translation>
-    </message>
-    <message>
-        <source>s</source>
-        <translation>வி</translation>
-    </message>
-    <message>
-        <source>Frame size mode</source>
-        <translation>சட்ட அளவு பயன்முறை</translation>
-    </message>
-    <message>
-        <source>Largest member keeps the frame at the size of the biggest member; Follow current resizes the frame smoothly to the visible member.</source>
-        <translation>மிகப்பெரிய உறுப்பின் அளவில் சட்டத்தை வைத்திருக்கும்; தற்போதையதைப் பின்தொடர் என்பது தெரியும் உறுப்புக்கு ஏற்ப மென்மையாக மாற்றும்.</translation>
-    </message>
-    <message>
-        <source>Largest member</source>
-        <translation>மிகப்பெரிய உறுப்பு</translation>
-    </message>
-    <message>
-        <source>Follow current</source>
-        <translation>தற்போதையதைப் பின்தொடர்</translation>
-    </message>
-    <message>
-        <source>Frame size</source>
-        <translation>சட்ட அளவு</translation>
-    </message>
-    <message>
-        <source>Custom width and height for this stacked widget. Auto follows the content.</source>
-        <translation>இந்த அடுக்கு விட்ஜெட்டிற்கான தனிப்பயன் அகலமும் உயரமும். தானியங்கி உள்ளடக்கத்தைப் பின்தொடரும்.</translation>
-    </message>
-    <message>
-        <source>Show switch bar</source>
-        <translation>மாற்றுப் பட்டியைக் காட்டு</translation>
-    </message>
-    <message>
-        <source>Show a switch button on the right edge of the widget to step through members manually.</source>
-        <translation>கைமுறையாக உறுப்புகளுக்கு மாற விட்ஜெட்டின் வலது விளிம்பில் மாற்றுப் பொத்தானைக் காட்டு.</translation>
-    </message>
-    <message>
-        <source>Members</source>
-        <translation>உறுப்புகள்</translation>
-    </message>
-    <message>
-        <source>Members stacked inside this widget. Add or remove them from the desktop widget context menu.</source>
-        <translation>இந்த விட்ஜெட்டில் அடுக்கப்பட்ட உறுப்புகள். டெஸ்க்டாப் விட்ஜெட் சூழல் மெனுவிலிருந்து சேர்க்கவும் நீக்கவும்.</translation>
-    </message>
-    <message>
-        <source>No members yet</source>
-        <translation>உறுப்புகள் இல்லை</translation>
-    </message>
-</context>
-<context>
-    <name>AddOverlayMemberDialog</name>
-    <message>
-        <source>Add Widgets to Overlay</source>
-        <translation>அடுக்கு விட்ஜெட்டில் விட்ஜெட்டுகளைச் சேர்</translation>
-    </message>
-    <message>
-        <source>No Widget Selected</source>
-        <translation>விட்ஜெட் தேர்ந்தெடுக்கப்படவில்லை</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation>சேர்</translation>
     </message>
 </context>
 </TS>
