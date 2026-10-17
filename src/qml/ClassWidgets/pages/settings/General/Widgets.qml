@@ -413,16 +413,17 @@ FluentPage {
                         }
                         SpinBox {
                             Layout.fillWidth: true
-                            from: -1
+                            from: 0
                             to: 400
                             stepSize: 1
                             editable: true
-                            textFromValue: function(value) { return value < 0 ? qsTr("Auto") : String(value) }
+
                             enabled: !Configs.isKeyLocked("preferences.widgets_hide_depth")
-                            onValueChanged: if (focus) Configs.set("preferences.widgets_hide_depth", value < 0 ? null : value)
+                            onValueChanged: if (focus) Configs.set("preferences.widgets_hide_depth", value)
                             Component.onCompleted: {
                                 var depth = Configs.data.preferences.widgets_hide_depth
-                                value = (depth === undefined || depth === null) ? -1 : depth
+                                var fallback = Qt.platform.os === "osx" ? 48 : 24
+                                value = (depth === undefined || depth === null) ? fallback : depth
                             }
                         }
                     }
