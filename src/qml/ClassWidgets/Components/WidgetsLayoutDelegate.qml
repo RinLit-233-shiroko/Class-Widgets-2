@@ -55,7 +55,9 @@ Item {
     }
 
     width: (naturalWidth + spacing) * growFactor
-    height: naturalHeight
+    // 编辑堆叠成员时，Add Member / Done 那一行会挂在组件下方，
+    // 这里把它计入布局高度，避免压到下面的组件。
+    height: naturalHeight + (widgetContainer.overlayEditing ? editRow.height + 10 : 0)
 
     property real visOpacity: 0
     property real visScale: 0.8
