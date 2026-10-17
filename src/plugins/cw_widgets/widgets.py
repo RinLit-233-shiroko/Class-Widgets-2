@@ -38,12 +38,29 @@ class Plugin(CW2Plugin):
                 "name": QCoreApplication.translate("Widgets", "Time"),
                 "qml_path": Path(QML_PATH / "widgets" / "Time.qml").as_posix(),
                 "backend_obj": self,
+                "settings_qml": Path(QML_PATH / "widgets" / "settings" / "Time.qml").as_posix(),
+                "default_settings": {
+                    "digit_animation": True,
+                    "show_seconds": True,
+                    "show_date": False,
+                    "show_year": True,
+                    "show_month": True,
+                    "show_day": True,
+                    "show_weekday": False,
+                    "title_mode": "side_by_side",
+                    "alternate_interval": 3000,
+                    "alternate_animation": False
+                }
             },
             {
                 "widget_id": "classwidgets.eventCountdown",
                 "name": QCoreApplication.translate("Widgets", "Event Countdown"),
                 "qml_path": Path(QML_PATH / "widgets" / "eventCountdown.qml").as_posix(),
                 "backend_obj": self,
+                "settings_qml": Path(QML_PATH / "widgets" / "settings" / "eventCountdown.qml").as_posix(),
+                "default_settings": {
+                    "digit_animation": True
+                }
             },
             {
                 "widget_id": "classwidgets.upcomingActivities",
@@ -61,13 +78,7 @@ class Plugin(CW2Plugin):
                 "widget_id": "classwidgets.dynamicNotification",
                 "name": QCoreApplication.translate("Widgets", "Dynamic Notification"),
                 "qml_path": Path(QML_PATH / "widgets" / "dynamicNotification.qml").as_posix(),
-                "backend_obj": self,
-                "settings_qml": Path(QML_PATH / "widgets" / "settings" / "upcomingActivities.qml").as_posix(),
-                "default_settings": {
-                    "marquee": True,
-                    "max_activities": 5,
-                    "full_name": True
-                }
+                "backend_obj": self
             },
             {
                 "widget_id": "classwidgets.customText",

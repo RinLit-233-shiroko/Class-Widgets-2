@@ -13,6 +13,9 @@ Widget {
     }
     property var countdown: AppCentral.scheduleRuntime.remainingTime || { "minute": 0, "second": 0 }
 
+    // 数字滚动动画开关（组件设置面板可关）。未配置时按开启处理，保持原有观感。
+    readonly property bool animated: !settings || settings.digit_animation !== false
+
     // 统一布局，用 RowLayout 并根据 miniMode 控制内部排列
     RowLayout {
         anchors.centerIn: parent
@@ -41,30 +44,29 @@ Widget {
                 Layout.topMargin: miniMode ? 0 : -4
                 Layout.alignment: Qt.AlignHCenter
 
-                AnimatedDigits {
-                    id: fuzzyMinute
+                // 「按分钟」精度：只显示模糊分钟数
+                Loader {
                     visible: Configs.data.preferences.countdown_precision === "minute"
-                    value: String(Math.ceil((countdown.minute * 60 + countdown.second) / 60))
+                    sourceComponent: root.animated ? fuzzyMinuteAnimated : fuzzyMinuteStatic
                 }
                 Title {
                     visible: Configs.data.preferences.countdown_precision === "minute"
                     text: qsTr(" min")
                 }
 
-                AnimatedDigits {
-                    id: minute
+                // 「分:秒」精度
+                Loader {
                     visible: Configs.data.preferences.countdown_precision !== "minute"
-                    value: countdown.minute || "00"
+                    sourceComponent: root.animated ? minuteAnimated : minuteStatic
                 }
                 Title {
                     visible: Configs.data.preferences.countdown_precision !== "minute"
                     Layout.bottomMargin: font.pixelSize * 0.1
                     text: ":"
                 }
-                AnimatedDigits {
-                    id: second
+                Loader {
                     visible: Configs.data.preferences.countdown_precision !== "minute"
-                    value: (countdown.second + "").padStart(2, "0") || "00"
+                    sourceComponent: root.animated ? secondAnimated : secondStatic
                 }
             }
 
@@ -85,6 +87,44 @@ Widget {
                     }
                 }
             }
+        }
+    }
+
+    // —— 四个数字显示变体：动画 / 静态，各两种精度 ——
+    Component {
+        id: fuzzyMinuteAnimated
+        AnimatedDigits {
+            value: String(Math.ceil((countdown.minute * 60 + countdown.second) / 60))
+        }
+    }
+    Component {
+        id: fuzzyMinuteStatic
+        Title {
+            text: String(Math.ceil((countdown.minute * 60 + countdown.second) / 60))
+        }
+    }
+    Component {
+        id: minuteAnimated
+        AnimatedDigits {
+            value: countdown.minute || "00"
+        }
+    }
+    Component {
+        id: minuteStatic
+        Title {
+            text: countdown.minute || "00"
+        }
+    }
+    Component {
+        id: secondAnimated
+        AnimatedDigits {
+            value: (countdown.second + "").padStart(2, "0") || "00"
+        }
+    }
+    Component {
+        id: secondStatic
+        Title {
+            text: (countdown.second + "").padStart(2, "0") || "00"
         }
     }
 }
