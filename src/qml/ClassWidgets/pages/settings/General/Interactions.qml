@@ -142,7 +142,7 @@ FluentPage {
                     Layout.fillWidth: true
                     CheckBox {
                         Layout.fillWidth: true
-                        text: qsTr("Hide completely (no edge strip)")
+                        text: qsTr("Hide completely")
                         enabled: !Configs.isKeyLocked("interactions.hide.fully_hide")
                             && modeSelector.currentValue === "hide"
                         onCheckedChanged: Configs.set("interactions.hide.fully_hide", checked)
