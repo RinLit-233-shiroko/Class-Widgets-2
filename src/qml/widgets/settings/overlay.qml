@@ -148,9 +148,9 @@ SettingsLayout {
                 }
                 RowLayout {
                     spacing: 6
-                    Button { text: qsTr("W\u2212"); onClicked: stepFrame(-10, 0) }
+                    Button { text: qsTr("W-"); onClicked: stepFrame(-10, 0) }
                     Button { text: qsTr("W+"); onClicked: stepFrame(10, 0) }
-                    Button { text: qsTr("H\u2212"); onClicked: stepFrame(0, -10) }
+                    Button { text: qsTr("H-"); onClicked: stepFrame(0, -10) }
                     Button { text: qsTr("H+"); onClicked: stepFrame(0, 10) }
                     Button { text: qsTr("Auto"); onClicked: resetFrame() }
                 }

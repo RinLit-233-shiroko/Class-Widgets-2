@@ -3242,6 +3242,10 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>Dynamic Notification</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Hide depth</source>
+        <translation>隱深</translation>
+    </message>
 </context>
 <context>
     <name>WidgetsContainer</name>
@@ -3374,6 +3378,188 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="31"/>
         <source>Unset</source>
         <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>overlay</name>
+    <message>
+        <source>Class starts</source>
+        <translation>上課</translation>
+    </message>
+    <message>
+        <source>Class begins</source>
+        <translation>始上課</translation>
+    </message>
+    <message>
+        <source>Class over</source>
+        <translation>下課</translation>
+    </message>
+    <message>
+        <source>Class ends</source>
+        <translation>下課</translation>
+    </message>
+    <message>
+        <source>Class dismissed</source>
+        <translation>下課</translation>
+    </message>
+    <message>
+        <source>Class finished</source>
+        <translation>下課</translation>
+    </message>
+    <message>
+        <source>End of class</source>
+        <translation>下課</translation>
+    </message>
+    <message>
+        <source>Break</source>
+        <translation>課間</translation>
+    </message>
+    <message>
+        <source>Stacked widget</source>
+        <translation>疊器</translation>
+    </message>
+    <message>
+        <source>Right-click to add members</source>
+        <translation>右擊以增員</translation>
+    </message>
+    <message>
+        <source>Next</source>
+        <translation>易</translation>
+    </message>
+    <message>
+        <source>Member Settings</source>
+        <translation>員設</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation>罷</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>存</translation>
+    </message>
+    <message>
+        <source>Edit stacked widget</source>
+        <translation>修疊器</translation>
+    </message>
+    <message>
+        <source>No members yet. Use Add member below to include widgets.</source>
+        <translation>尚無員，請按下方「增員」以入。</translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation>設</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>除</translation>
+    </message>
+    <message>
+        <source>Auto</source>
+        <translation>自</translation>
+    </message>
+    <message>
+        <source>W-</source>
+        <translation>寬-</translation>
+    </message>
+    <message>
+        <source>W+</source>
+        <translation>寬+</translation>
+    </message>
+    <message>
+        <source>H-</source>
+        <translation>高-</translation>
+    </message>
+    <message>
+        <source>H+</source>
+        <translation>高+</translation>
+    </message>
+    <message>
+        <source>Add member</source>
+        <translation>增員</translation>
+    </message>
+    <message>
+        <source>Done</source>
+        <translation>畢</translation>
+    </message>
+    <message>
+        <source>Add member widget</source>
+        <translation>增員器</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation>增</translation>
+    </message>
+    <message>
+        <source>Carousel interval</source>
+        <translation>輪轉之隔</translation>
+    </message>
+    <message>
+        <source>Time each member stays visible before switching to the next, in seconds.</source>
+        <translation>每員見時之秒數，屆則易之。</translation>
+    </message>
+    <message>
+        <source>s</source>
+        <translation>秒</translation>
+    </message>
+    <message>
+        <source>Frame size mode</source>
+        <translation>框制</translation>
+    </message>
+    <message>
+        <source>Largest member keeps the frame at the size of the biggest member; Follow current resizes the frame smoothly to the visible member.</source>
+        <translation>以最大之員定框；「隨今」則隨見員而漸易。</translation>
+    </message>
+    <message>
+        <source>Largest member</source>
+        <translation>大員</translation>
+    </message>
+    <message>
+        <source>Follow current</source>
+        <translation>隨今</translation>
+    </message>
+    <message>
+        <source>Frame size</source>
+        <translation>框大小</translation>
+    </message>
+    <message>
+        <source>Custom width and height for this stacked widget. Auto follows the content.</source>
+        <translation>為此疊器定寬高。「自」則隨內容。</translation>
+    </message>
+    <message>
+        <source>Show switch bar</source>
+        <translation>顯易欄</translation>
+    </message>
+    <message>
+        <source>Show a switch button on the right edge of the widget to step through members manually.</source>
+        <translation>於器右顯易鈕，可手易其員。</translation>
+    </message>
+    <message>
+        <source>Members</source>
+        <translation>員</translation>
+    </message>
+    <message>
+        <source>Members stacked inside this widget. Add or remove them from the desktop widget context menu.</source>
+        <translation>疊於此器之小器。可由桌面器右擊菜單增減。</translation>
+    </message>
+    <message>
+        <source>No members yet</source>
+        <translation>尚無員</translation>
+    </message>
+</context>
+<context>
+    <name>AddOverlayMemberDialog</name>
+    <message>
+        <source>Add Widgets to Overlay</source>
+        <translation>增器於疊器</translation>
+    </message>
+    <message>
+        <source>No Widget Selected</source>
+        <translation>未擇器</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation>增</translation>
     </message>
 </context>
 </TS>

@@ -710,9 +710,9 @@ Item {
                     font.pixelSize: 13
                     color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.6) : Qt.rgba(0, 0, 0, 0.6)
                 }
-                Button { text: qsTr("W\u2212"); onClicked: root.stepFrame(-10, 0) }
+                Button { text: qsTr("W-"); onClicked: root.stepFrame(-10, 0) }
                 Button { text: qsTr("W+"); onClicked: root.stepFrame(10, 0) }
-                Button { text: qsTr("H\u2212"); onClicked: root.stepFrame(0, -10) }
+                Button { text: qsTr("H-"); onClicked: root.stepFrame(0, -10) }
                 Button { text: qsTr("H+"); onClicked: root.stepFrame(0, 10) }
                 Button { text: qsTr("Auto"); onClicked: root.resetFrame() }
             }
