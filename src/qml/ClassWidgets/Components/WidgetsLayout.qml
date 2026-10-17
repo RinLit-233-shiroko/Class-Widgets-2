@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import RinUI
 import ClassWidgets.Easing
-
+import "dialogs"
 /*
  * WidgetsLayout —— 小组件横向排布（水平 ListView）
  */
@@ -13,6 +13,8 @@ Item {
     objectName: "widgetsFlow"
 
     property bool editMode: false
+    // 堆叠组件：正在编辑的堆叠组件实例 id（按实例隔离）
+    property string overlayEditingId: ""
     // 正在拖动小组件
     property bool dragging: false
     property bool hide: false
@@ -149,6 +151,8 @@ Item {
 
         delegate: WidgetsLayoutDelegate {
             host: layoutRoot
+            // 堆叠组件：成员选择窗口按属性注入（跨组件文件不能用 id 直引）
+            overlayMemberDialog: overlayMemberDialogInstance
             settingsDialog: settingsDialogInstance
             onWidgetTapped: layoutRoot.widgetTapped()
         }
@@ -163,6 +167,13 @@ Item {
     WidgetSettingsDialog {
         // 独立 id，避免与 delegate 的同名属性形成自引用
         id: settingsDialogInstance
+    }
+
+    // 堆叠组件：成员选择窗口（按需加载，窗口缺失或版本不匹配也不影响主界面启动）
+    Loader {
+        id: overlayMemberDialogInstance
+        source: "dialogs/AddOverlayMemberDialog.qml"
+        active: false
     }
 
     Component.onCompleted: refreshContentHeight()

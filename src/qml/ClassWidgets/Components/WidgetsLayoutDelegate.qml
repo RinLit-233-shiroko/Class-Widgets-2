@@ -9,6 +9,8 @@ Item {
     // ---- 由 WidgetsLayout 注入 ----
     property Item host: null
     property var settingsDialog: null
+    // 堆叠组件：成员选择窗口（由 WidgetsLayout 注入，未接入时为 null）
+    property var overlayMemberDialog: null
 
     property int widgetIndex: index
     property real spacing: host.spacing
