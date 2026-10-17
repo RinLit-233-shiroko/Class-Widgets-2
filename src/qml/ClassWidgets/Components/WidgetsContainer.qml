@@ -237,7 +237,8 @@ Item {
         anchors.top: widgetsLayout.bottom
         anchors.topMargin: addWidgetsContainer.visible ? widgetsContainer.spacing : 0
         anchors.horizontalCenter: parent.horizontalCenter
-        visible: widgetsContainer.editMode || widgetsLayout.count === 0
+        visible: (widgetsContainer.editMode || widgetsLayout.count === 0)
+                 && widgetsLayout.overlayEditingId === ""
         spacing: 4
 
         Button {
@@ -258,7 +259,7 @@ Item {
             Layout.preferredHeight: widgetsContainer.addRowHeight
             Layout.alignment: Qt.AlignCenter
 
-            visible: widgetsContainer.editMode
+            visible: widgetsContainer.editMode && widgetsLayout.overlayEditingId === ""
             id: acceptButton
             highlighted: true
             icon.name: "ic_fluent_checkmark_20_regular"

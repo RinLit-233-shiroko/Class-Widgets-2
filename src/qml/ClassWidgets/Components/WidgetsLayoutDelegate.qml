@@ -317,6 +317,12 @@ Item {
         function onHeightChanged()  { widgetContainer.syncNaturalSize() }
     }
 
+    // 堆叠组件：编辑状态变化时，把 overlayListMode 通知给组件实例
+    onOverlayEditingChanged: {
+        if (widgetContainer.isOverlay && loader.item)
+            loader.item.overlayListMode = widgetContainer.overlayEditing
+    }
+
     // 堆叠组件：成员编辑行（Add Member / Done）
     RowLayout {
         id: editRow
