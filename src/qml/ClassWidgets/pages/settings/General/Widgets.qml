@@ -228,13 +228,11 @@ FluentPage {
                     toolTip.visible: true
                     enabled: !Configs.isKeyLocked("preferences.font_weight")
 
-                    // 初始化
                     Component.onCompleted: {
                         const saved = Configs.data.preferences.font_weight
                         value = saved > 0 ? saved : 400
                     }
 
-                    // 更新
                     onMoved: {
                         let v = parseInt (weightSlider.value)
                         enabled: !Configs.isKeyLocked("preferences.font_weight")
@@ -295,7 +293,6 @@ FluentPage {
                 spacing: 32
 
                 Rectangle {
-                    // 屏幕边框
                     Layout.preferredWidth: Math.min(parent.width * 0.65, 360)
                     // Layout.preferredWidth: 360
                     // Layout.preferredHeight: 200
@@ -314,7 +311,6 @@ FluentPage {
                         id: anchorGroup
                     }
 
-                    // 左上角
                     RadioButton {
                         id: topLeft
                         anchors.left: parent.left; anchors.top: parent.top
@@ -325,7 +321,6 @@ FluentPage {
                         onClicked: Configs.set("preferences.widgets_anchor", "top_left")
                     }
 
-                    // 顶部中
                     RadioButton {
                         id: topCenter
                         anchors.horizontalCenter: parent.horizontalCenter; anchors.top: parent.top
@@ -336,7 +331,6 @@ FluentPage {
                         onClicked: Configs.set("preferences.widgets_anchor", "top_center")
                     }
 
-                    // 右上角
                     RadioButton {
                         id: topRight
                         anchors.right: parent.right; anchors.top: parent.top
@@ -347,7 +341,6 @@ FluentPage {
                         onClicked: Configs.set("preferences.widgets_anchor", "top_right")
                     }
 
-                    // 左下角
                     RadioButton {
                         id: bottomLeft
                         anchors.left: parent.left; anchors.bottom: parent.bottom
@@ -358,7 +351,6 @@ FluentPage {
                         onClicked: Configs.set("preferences.widgets_anchor", "bottom_left")
                     }
 
-                    // 底部中
                     RadioButton {
                         id: bottomCenter
                         anchors.horizontalCenter: parent.horizontalCenter; anchors.bottom: parent.bottom
@@ -369,7 +361,6 @@ FluentPage {
                         onClicked: Configs.set("preferences.widgets_anchor", "bottom_center")
                     }
 
-                    // 右下角
                     RadioButton {
                         id: bottomRight
                         anchors.right: parent.right; anchors.bottom: parent.bottom
@@ -381,7 +372,6 @@ FluentPage {
                     }
                 }
 
-                // 左右侧偏移
                 ColumnLayout {
                     Layout.alignment: Qt.AlignTop
                     Layout.fillWidth: true
