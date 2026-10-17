@@ -123,7 +123,10 @@ Clip {
                 anchors.centerIn: parent
                 size: 24
                 color: subjectIconColor
-                name: subjectIcon || "ic_fluent_hexagon_three_20_regular"
+                name: {
+                    let iconId = subjectIcon
+                    return iconId.replace("regular", "filled") || "ic_fluent_hexagon_three_20_regular"
+                }
             }
 
             // 非本班课程提示
