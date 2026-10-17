@@ -123,7 +123,8 @@ Widget {
 
     Component.onCompleted: {
         Qt.callLater(function() {
-            dateTime = backend.getDateTime()
+            // backend 可能尚未注入，稍后才可用，此处不能直接解引用
+            if (backend) dateTime = backend.getDateTime()
         })
     }
 }
