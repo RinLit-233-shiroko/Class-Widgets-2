@@ -42,6 +42,7 @@ DayListView 1.0 editor/timeline/DayListView.qml
 EntryDelegate 1.0 editor/timeline/EntryDelegate.qml
 EntryDetailView 1.0 editor/timeline/EntryDetailView.qml
 EntryListView 1.0 editor/timeline/EntryListView.qml
+ModalTimePicker 1.0 editor/timeline/ModalTimePicker.qml
 
 # Editor / Schedule
 ScheduleClip 1.0 editor/schedule/ScheduleClip.qml

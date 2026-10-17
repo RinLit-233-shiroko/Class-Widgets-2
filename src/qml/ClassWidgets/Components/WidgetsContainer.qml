@@ -219,6 +219,7 @@ Item {
         spacing: widgetsContainer.spacing
         // 水平视口足够大，保证所有 delegate 都被实例化而不被回收
         viewportWidth: 100000
+        externalDialogOpen: addDialog.visible
 
         onGeometryChanged: widgetsContainer.contentGeometryChanged()
         onEditRequested: widgetsContainer.editMode = true
