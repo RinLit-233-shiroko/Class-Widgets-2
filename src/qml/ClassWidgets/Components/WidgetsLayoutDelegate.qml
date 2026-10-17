@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Layouts
 import RinUI
 import ClassWidgets.Easing
 
@@ -60,12 +61,15 @@ Item {
     property real visScale: 0.8
     property bool removing: false
     property bool initialized: false   // 入场只播一次，避免切主题重播
+    // 堆叠组件：本实例是不是堆叠组件、是不是正在编辑它的成员
+    property bool isOverlay: model.typeId === "classwidgets.overlay"
+    property bool overlayEditing: isOverlay && host.overlayEditingId === model.instanceId
 
     // 隐藏状态不再整体降透明度：收起完全由位置/浮窗表达，
     // opacity 只负责出现/消失动画（拖动时给一点提示性半透明）。
     opacity: (dragHandler.active ? 0.75 : 1) * visOpacity
     scale: visScale * dragRaiseScale
-    rotation: host.editMode ? shakeAngle : 0
+    rotation: (host.editMode && !widgetContainer.overlayEditing) ? shakeAngle : 0
     z: dragHandler.active ? 1 : 0
 
     // 拖拽被拿起
@@ -313,6 +317,46 @@ Item {
         function onHeightChanged()  { widgetContainer.syncNaturalSize() }
     }
 
+    // 堆叠组件：成员编辑行（Add Member / Done）
+    RowLayout {
+        id: editRow
+        objectName: "editRow"
+        visible: widgetContainer.overlayEditing
+        anchors.top: loader.bottom
+        anchors.topMargin: 10
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: implicitWidth
+        height: implicitHeight
+        spacing: 8
+
+        Button {
+            id: addOverlayMemberButton
+            icon.name: "ic_fluent_add_20_regular"
+            text: qsTr("Add Member")
+            onClicked: {
+                var dlg = widgetContainer.overlayMemberDialog
+                if (dlg) {
+                    dlg.active = true
+                    if (dlg.item) {
+                        dlg.item.overlayInstanceId = model.instanceId
+                        dlg.item.open()
+                    }
+                }
+            }
+        }
+
+        Button {
+            id: acceptOverlayButton
+            highlighted: true
+            icon.name: "ic_fluent_checkmark_20_regular"
+            text: qsTr("Done")
+            onClicked: {
+                host.editMode = false
+                host.overlayEditingId = ""
+            }
+        }
+    }
+
     ToolButton {
         id: deleteBtn
         visible: host.editMode
@@ -405,6 +449,17 @@ Item {
             enabled: model.settingsQml
         }
         MenuItem {
+            // 堆叠组件：编辑其内部成员
+            visible: widgetContainer.isOverlay
+            icon.name: "ic_fluent_layers_20_regular"
+            text: qsTr("Edit Members")
+            onTriggered: {
+                widgetMenu.close()
+                host.editRequested()
+                host.overlayEditingId = model.instanceId
+            }
+        }
+        MenuItem {
             icon.name: "ic_fluent_delete_20_regular"
             text: qsTr("Delete")
             onTriggered: widgetContainer.requestRemove()
@@ -419,6 +474,8 @@ Item {
 
     TapHandler {
         acceptedButtons: Qt.RightButton
+        // 堆叠组件：编辑成员时禁用（成员自己的右键交给堆叠组件处理）
+        enabled: !widgetContainer.overlayEditing
         onTapped: (point, button) => {
             if (button === Qt.RightButton)
                 widgetMenu.open()
@@ -427,7 +484,7 @@ Item {
 
     // ---- 编辑模式摇晃 ----
     SequentialAnimation on shakeAngle {
-        running: host.editMode
+        running: host.editMode && !widgetContainer.overlayEditing
         loops: Animation.Infinite
         NumberAnimation { to: 2;  duration: 250; easing.type: Easing.InOutQuad }
         NumberAnimation { to: -2; duration: 250; easing.type: Easing.InOutQuad }
