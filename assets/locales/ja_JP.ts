@@ -6573,6 +6573,10 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>Hide depth</source>
         <translation>隠れる深さ</translation>
     </message>
+    <message>
+        <source>Overlay</source>
+        <translation>スタックウィジェット</translation>
+    </message>
 </context>
 <context>
     <name>WidgetsContainer</name>

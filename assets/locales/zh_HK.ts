@@ -6439,6 +6439,10 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>Hide depth</source>
         <translation>隱藏深度</translation>
     </message>
+    <message>
+        <source>Overlay</source>
+        <translation>堆疊組件</translation>
+    </message>
 </context>
 <context>
     <name>WidgetsContainer</name>

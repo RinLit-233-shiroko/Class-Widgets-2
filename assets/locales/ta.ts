@@ -6311,6 +6311,10 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>Hide depth</source>
         <translation>மறைவு ஆணி</translation>
     </message>
+    <message>
+        <source>Overlay</source>
+        <translation>அடுக்கு விட்ஜெட்</translation>
+    </message>
 </context>
 <context>
     <name>WidgetsContainer</name>

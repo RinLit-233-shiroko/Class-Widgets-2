@@ -5889,6 +5889,10 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>Hide depth</source>
         <translation>Profondità di nascondimento</translation>
     </message>
+    <message>
+        <source>Overlay</source>
+        <translation>Widget impilato</translation>
+    </message>
 </context>
 <context>
     <name>WidgetsContainer</name>
