@@ -6565,7 +6565,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation type="unfinished">ダイナミック通知</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="74"/>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="68"/>
         <source>Text</source>
         <translation type="unfinished">テキスト</translation>
     </message>

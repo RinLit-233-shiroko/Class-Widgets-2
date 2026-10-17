@@ -6312,7 +6312,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation>更优雅的QQ消息</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="74"/>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="68"/>
         <source>Text</source>
         <translation type="unfinished"></translation>
     </message>

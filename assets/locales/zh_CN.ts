@@ -6851,7 +6851,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation>灵动通知</translation>
     </message>
     <message>
-        <location filename="../../src/plugins/cw_widgets/widgets.py" line="74"/>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="68"/>
         <source>Text</source>
         <translation>自定义文本</translation>
     </message>
