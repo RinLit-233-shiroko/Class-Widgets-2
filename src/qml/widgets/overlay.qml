@@ -186,10 +186,8 @@ Item {
     // 右侧切换条占位宽度（仅显示切换条时预留，保证不超出组件边界被裁剪）
     property int switchBarSpace: root.showSwitchBar && root.members.length > 0 ? 48 : 0
 
-    // ── 歌词门控模式（默认关闭，组件设置 lyric_gate 控制）──────────────
-    // 媒体类成员（歌词岛 / MediaWidgets）未获取到歌词或播放信息时，轮播跳过它；
-    // 若全部成员均无内容，则整个堆叠组件自动隐藏，直到再次检测到歌词/播放。
-    property bool lyricGateActive: settings && settings.lyric_gate === true
+    // 歌词门控已下线：保留成员跳过逻辑所需的空实现，避免影响轮播
+    readonly property bool lyricGateActive: false
     property var contentMap: ({})   // 成员 key -> 是否有内容（仅媒体类成员）
 
     function isGatedMember(typeId) {

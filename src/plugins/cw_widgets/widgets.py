@@ -101,7 +101,6 @@ class Plugin(CW2Plugin):
                 "settings_qml": Path(QML_PATH / "widgets" / "settings" / "overlay.qml").as_posix(),
                 "default_settings": {
                     "interval_ms": 5000,
-                    "lyric_gate": False,
                     "frame_mode": "max",
                     "show_switch_bar": True
                 }

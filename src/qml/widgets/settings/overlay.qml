@@ -175,20 +175,6 @@ SettingsLayout {
         }
     }
 
-    SettingExpander {
-        Layout.fillWidth: true
-        title: "歌词感知轮播"
-        description: "开启后：歌词岛 / MediaWidgets 未获取到歌词或播放信息时不参与轮播；若全部成员均无内容则整个组件自动隐藏，直到再次获取到内容。默认关闭。"
-        expanded: true
-
-        SettingItem {
-            action: Switch {
-                primaryColor: Colors.proxy.controlStrongColor
-                checked: settings.lyric_gate === true
-                onCheckedChanged: settings.lyric_gate = checked
-            }
-        }
-    }
 
     SettingExpander {
         Layout.fillWidth: true
