@@ -61,13 +61,7 @@ class Plugin(CW2Plugin):
                 "widget_id": "classwidgets.dynamicNotification",
                 "name": QCoreApplication.translate("Widgets", "Dynamic Notification"),
                 "qml_path": Path(QML_PATH / "widgets" / "dynamicNotification.qml").as_posix(),
-                "backend_obj": self,
-                "settings_qml": Path(QML_PATH / "widgets" / "settings" / "upcomingActivities.qml").as_posix(),
-                "default_settings": {
-                    "marquee": True,
-                    "max_activities": 5,
-                    "full_name": True
-                }
+                "backend_obj": self
             },
             {
                 "widget_id": "classwidgets.customText",
