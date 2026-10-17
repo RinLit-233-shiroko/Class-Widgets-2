@@ -6,6 +6,7 @@ from PySide6.QtWidgets import QApplication
 
 from .base import AutomationTask
 from loguru import logger
+from src.core.storage.directories import USE_LEGACY_WORK_LAYOUT
 
 if TYPE_CHECKING:
     from src.core.central import AppCentral
@@ -17,6 +18,10 @@ class UpdateCheckTask(AutomationTask):
     def __init__(self, central: "AppCentral", parent: Optional[QTimer] = None) -> None:
         super().__init__(central, parent)
         self.app_central: "AppCentral" = central
+
+        if USE_LEGACY_WORK_LAYOUT:
+            logger.info("Running from source, update check disabled")
+            return  # 源码运行不检查更新，避免下载发布包覆盖工作区
 
         if not self.app_central.configs.network.auto_check_updates:
             return  # 不检查
