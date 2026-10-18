@@ -112,9 +112,10 @@ Item {
     readonly property int maxW: root.maxSize().w
     readonly property int maxH: root.maxSize().h
     property string frameMode: (settings && settings.frame_mode) ? settings.frame_mode : "max"
-    readonly property int autoW: Math.max(96,
+    readonly property bool emptyState: root.members.length === 0
+    readonly property int autoW: Math.max(root.emptyState ? 200 : 96,
         (root.frameMode === "auto" ? root.activeSize().w : root.maxW) + root.switchBarSpace)
-    readonly property int autoH: Math.max(80,
+    readonly property int autoH: Math.max(root.emptyState ? 100 : 80,
         root.frameMode === "auto" ? root.activeSize().h : root.maxH)
 
     function maxSize() {
@@ -379,14 +380,15 @@ Item {
     Component.onCompleted: {
         if (backend) refresh()
         root.updateClassState()
+        emptyTitleText.text = qsTr("Stacked widget")
+        emptyHintText.text = qsTr("Right-click to add members")
     }
 
     Rectangle {
         id: emptyStateBox
-        anchors.centerIn: parent
+        anchors.fill: parent
+        anchors.margins: 4
         visible: root.members.length === 0
-        width: Math.max(150, Math.min(parent.width - 24, 220))
-        height: 86
         radius: Math.min(width, height, Configs.data.preferences.widget_corner_radius)
         color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.06) : Qt.rgba(0, 0, 0, 0.04)
         border.width: 1
@@ -394,17 +396,24 @@ Item {
 
         Column {
             anchors.centerIn: parent
+            width: parent.width - 16
             spacing: 6
 
             Text {
-                anchors.horizontalCenter: parent.horizontalCenter
+                id: emptyTitleText
+                width: parent.width
+                horizontalAlignment: Text.AlignHCenter
+                elide: Text.ElideRight
                 text: qsTr("Stacked widget")
                 color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.7) : Qt.rgba(0, 0, 0, 0.7)
                 font.pixelSize: 13
                 font.weight: Font.DemiBold
             }
             Text {
-                anchors.horizontalCenter: parent.horizontalCenter
+                id: emptyHintText
+                width: parent.width
+                horizontalAlignment: Text.AlignHCenter
+                elide: Text.ElideRight
                 text: qsTr("Right-click to add members")
                 color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.5) : Qt.rgba(0, 0, 0, 0.5)
                 font.pixelSize: 12
