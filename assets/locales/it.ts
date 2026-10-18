@@ -5763,6 +5763,14 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>No members yet</source>
         <translation>Nessun membro</translation>
     </message>
+    <message>
+        <source>Width</source>
+        <translation>Larghezza</translation>
+    </message>
+    <message>
+        <source>Height</source>
+        <translation>Altezza</translation>
+    </message>
 </context>
 <context>
     <name>test</name>

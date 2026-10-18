@@ -6668,6 +6668,14 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>No members yet</source>
         <translation>暂无成员</translation>
     </message>
+    <message>
+        <source>Width</source>
+        <translation>宽</translation>
+    </message>
+    <message>
+        <source>Height</source>
+        <translation>高</translation>
+    </message>
 </context>
 <context>
     <name>test</name>

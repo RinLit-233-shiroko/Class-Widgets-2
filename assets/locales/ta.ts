@@ -6597,6 +6597,14 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>No members yet</source>
         <translation>உறுப்புகள் இல்லை</translation>
     </message>
+    <message>
+        <source>Width</source>
+        <translation>அகலம்</translation>
+    </message>
+    <message>
+        <source>Height</source>
+        <translation>உயரம்</translation>
+    </message>
 </context>
 <context>
     <name>test</name>

@@ -3550,6 +3550,14 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>No members yet</source>
         <translation>尚無員</translation>
     </message>
+    <message>
+        <source>Width</source>
+        <translation>闊</translation>
+    </message>
+    <message>
+        <source>Height</source>
+        <translation>高</translation>
+    </message>
 </context>
 <context>
     <name>AddOverlayMemberDialog</name>
