@@ -381,23 +381,34 @@ Item {
         root.updateClassState()
     }
 
-    Column {
+    Rectangle {
+        id: emptyStateBox
         anchors.centerIn: parent
         visible: root.members.length === 0
-        spacing: 6
+        width: Math.max(150, Math.min(parent.width - 24, 220))
+        height: 86
+        radius: Math.min(width, height, Configs.data.preferences.widget_corner_radius)
+        color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.06) : Qt.rgba(0, 0, 0, 0.04)
+        border.width: 1
+        border.color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.18) : Qt.rgba(0, 0, 0, 0.12)
 
-        Text {
-            anchors.horizontalCenter: parent.horizontalCenter
-            text: qsTr("Stacked widget")
-            color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.6) : Qt.rgba(0, 0, 0, 0.6)
-            font.pixelSize: 13
-            font.weight: Font.DemiBold
-        }
-        Text {
-            anchors.horizontalCenter: parent.horizontalCenter
-            text: qsTr("Right-click to add members")
-            color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.5) : Qt.rgba(0, 0, 0, 0.5)
-            font.pixelSize: 12
+        Column {
+            anchors.centerIn: parent
+            spacing: 6
+
+            Text {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("Stacked widget")
+                color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.7) : Qt.rgba(0, 0, 0, 0.7)
+                font.pixelSize: 13
+                font.weight: Font.DemiBold
+            }
+            Text {
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: qsTr("Right-click to add members")
+                color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.5) : Qt.rgba(0, 0, 0, 0.5)
+                font.pixelSize: 12
+            }
         }
     }
 
@@ -522,12 +533,12 @@ Item {
             border.width: 1
         }
 
-        Text {
+        Icon {
             anchors.centerIn: parent
-            text: qsTr("Next")
+            name: "ic_fluent_chevron_right_20_regular"
+            size: 16
+            bold: true
             color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.85) : Qt.rgba(0, 0, 0, 0.75)
-            font.pixelSize: 13
-            font.weight: Font.DemiBold
         }
 
         MouseArea {

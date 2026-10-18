@@ -120,7 +120,7 @@ SettingsLayout {
     SettingCard {
         Layout.fillWidth: true
 
-        icon.name: "ic_fluent_arrow_resize_20_regular"
+        icon.name: "ic_fluent_resize_20_regular"
         title: qsTr("Frame size")
         description: qsTr("Custom width and height for this stacked widget. Auto follows the content.")
 
