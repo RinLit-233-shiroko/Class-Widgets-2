@@ -5,7 +5,6 @@ import RinUI
 import ClassWidgets.Plugins
 
 SettingsLayout {
-    // —— 时钟数字 ——
     SettingCard {
         Layout.fillWidth: true
 
@@ -34,7 +33,6 @@ SettingsLayout {
         }
     }
 
-    // —— 日期与星期 ——
     SettingCard {
         Layout.fillWidth: true
 
@@ -70,7 +68,7 @@ SettingsLayout {
                 }
                 Text {
                     text: qsTr("Year")
-                    font.pixelSize: 12
+                    typography: Typography.Caption
                 }
             }
 
@@ -83,7 +81,7 @@ SettingsLayout {
                 }
                 Text {
                     text: qsTr("Month")
-                    font.pixelSize: 12
+                    typography: Typography.Caption
                 }
             }
 
@@ -96,7 +94,7 @@ SettingsLayout {
                 }
                 Text {
                     text: qsTr("Day")
-                    font.pixelSize: 12
+                    typography: Typography.Caption
                 }
             }
         }
@@ -116,7 +114,6 @@ SettingsLayout {
         }
     }
 
-    // —— 日期与星期的排布 ——
     SettingCard {
         Layout.fillWidth: true
 

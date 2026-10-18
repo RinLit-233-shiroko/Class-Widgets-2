@@ -59,7 +59,6 @@ SettingsLayout {
         heightSpinBox.initialized = true
     }
 
-    // —— 轮播 ——
     SettingCard {
         Layout.fillWidth: true
 
@@ -86,7 +85,6 @@ SettingsLayout {
         }
     }
 
-    // —— 框架 ——
     SettingCard {
         Layout.fillWidth: true
 
@@ -149,7 +147,7 @@ SettingsLayout {
                 }
                 Text {
                     text: qsTr("Width")
-                    font.pixelSize: 12
+                    typography: Typography.Caption
                 }
             }
 
@@ -173,7 +171,7 @@ SettingsLayout {
                 }
                 Text {
                     text: qsTr("Height")
-                    font.pixelSize: 12
+                    typography: Typography.Caption
                 }
             }
         }
@@ -193,7 +191,6 @@ SettingsLayout {
         }
     }
 
-    // —— 成员 ——
     SettingCard {
         Layout.fillWidth: true
 
