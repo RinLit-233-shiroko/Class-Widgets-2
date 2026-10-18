@@ -278,24 +278,33 @@ class WidgetsWindow(ReleasableWindow, QObject):
                     else:
                         yield from visit(child)
 
-            found = False
-            for rect in visit(widgets_layout):
-                found = True
-                mask = mask.united(QRegion(rect))
+            rects = list(visit(widgets_layout))
 
             # 兜底：若遍历未找到任何 delegate（例如 QML 层级变动），
             # 退化为使用容器自身几何。否则 mask 会是空的，
             # 窗口整体穿透输入，小组件点击（如点击隐藏）会完全失效。
-            if not found:
+            if not rects:
                 layout_w = int(widgets_layout.width())
                 layout_h = int(widgets_layout.height())
                 if layout_w > 0 and layout_h > 0:
-                    mask = mask.united(QRegion(QRect(
+                    rects.append(QRect(
                         int(widgets_layout.mapToScene(QPointF(0.0, 0.0)).x()),
                         int(widgets_layout.mapToScene(QPointF(0.0, 0.0)).y()),
                         layout_w,
                         layout_h,
-                    )))
+                    ))
+
+            # 过渡动画期间 QML 不再逐帧更新遮罩，这里把目标位置也并进来，
+            # 保证小组件滑入/滑出过程中仍然可点击；动画结束时 QML 会再通知一次。
+            delta_x = delta_y = 0
+            if widgets_loader.property("positionAnimating"):
+                delta_x = int(widgets_loader.property("animationDeltaX") or 0)
+                delta_y = int(widgets_loader.property("animationDeltaY") or 0)
+
+            for rect in rects:
+                mask = mask.united(QRegion(rect))
+                if delta_x or delta_y:
+                    mask = mask.united(QRegion(rect.translated(delta_x, delta_y)))
 
         # 浮窗区域加入 mask
         floating_container = self.root_window.findChild(QObject, "floatingWidgetContainer")

@@ -16,7 +16,7 @@ Item {
 
     property bool editMode: false
     property bool menuVisible: false
-    property bool hide: Configs.data.interactions.hide.state
+    property bool hide: Configs.hideState
     property bool floatingMode: hide
         && (Configs.data.interactions.tapped_action === "floating_widget"
             || Configs.data.interactions.hide.action === "floating_widget")
@@ -80,10 +80,43 @@ Item {
     Component.onCompleted: editMode = widgetsLayout.count === 0
 
     Behavior on hideProgress {
-        NumberAnimation { duration: 420; easing.type: Easing.OutQuint }
+        NumberAnimation {
+            id: hideProgressAnim
+            duration: 420
+            easing.type: Easing.OutQuint
+        }
     }
     Behavior on editProgress {
-        NumberAnimation { duration: 450; easing.type: Easing.OutQuint }
+        NumberAnimation {
+            id: editProgressAnim
+            duration: 450
+            easing.type: Easing.OutQuint
+        }
+    }
+
+    // 过渡动画期间不逐帧刷新窗口遮罩：Windows 上每次 setMask 都会走
+    // SetWindowRgn 并触发重绘，几十次调用会造成明显的掉帧。改为动画
+    // 开始/结束各通知一次，开始那次由 Python 把目标位置一并并入遮罩。
+    readonly property bool positionAnimating: hideProgressAnim.running || editProgressAnim.running
+
+    readonly property real targetHideProgress: (hide && !editMode) ? 1 : 0
+    readonly property real targetEditProgress: editMode ? 1 : 0
+    readonly property real animationTargetX:
+        shownX + (hiddenX - shownX) * targetHideProgress + dragOffsetX
+    readonly property real animationTargetY: {
+        var visibleY = shownY + (editY - shownY) * targetEditProgress
+        return visibleY + (hiddenY - visibleY) * targetHideProgress + dragOffsetY
+    }
+    readonly property real animationDeltaX: animationTargetX - x
+    readonly property real animationDeltaY: animationTargetY - y
+
+    Connections {
+        target: hideProgressAnim
+        function onRunningChanged() { widgetsContainer.contentGeometryChanged() }
+    }
+    Connections {
+        target: editProgressAnim
+        function onRunningChanged() { widgetsContainer.contentGeometryChanged() }
     }
 
     // ============================================================
@@ -168,10 +201,10 @@ Item {
         return visibleY + (hiddenY - visibleY) * hideProgress + dragOffsetY
     }
 
-    onXChanged: contentGeometryChanged()
-    onYChanged: contentGeometryChanged()
-    onWidthChanged: contentGeometryChanged()
-    onHeightChanged: contentGeometryChanged()
+    onXChanged: if (!positionAnimating) contentGeometryChanged()
+    onYChanged: if (!positionAnimating) contentGeometryChanged()
+    onWidthChanged: if (!positionAnimating) contentGeometryChanged()
+    onHeightChanged: if (!positionAnimating) contentGeometryChanged()
 
     Behavior on opacity {
         NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }

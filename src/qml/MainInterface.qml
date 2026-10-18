@@ -42,7 +42,7 @@ QQW.Window {
     property bool initialized: false
     property alias editMode: widgetsLoader.editMode
     property bool mouseHovered: false
-    property bool isFloatingMode: Configs.data.interactions.hide.state
+    property bool isFloatingMode: Configs.hideState
         && (Configs.data.interactions.tapped_action === "floating_widget"
             || Configs.data.interactions.hide.action === "floating_widget")
 
@@ -109,7 +109,7 @@ QQW.Window {
                 if (!Configs.isKeyLocked("preferences.mini_mode"))
                     Configs.set("preferences.mini_mode", !Configs.data.preferences.mini_mode)
             } else if (!Configs.isKeyLocked("interactions.hide.state")) {
-                Configs.set("interactions.hide.state", !Configs.data.interactions.hide.state)
+                Configs.set("interactions.hide.state", !Configs.hideState)
             }
         }
 
@@ -120,10 +120,12 @@ QQW.Window {
         }
 
         signal geometryChanged()
-        onXChanged: geometryChanged()
-        onYChanged: geometryChanged()
-        onWidthChanged: geometryChanged()
-        onHeightChanged: geometryChanged()
+        // 过渡动画期间由 WidgetsContainer 在动画开始/结束各通知一次，
+        // 这里不能再逐帧转发，否则窗口遮罩会跟着每帧 setMask 造成掉帧。
+        onXChanged: if (!positionAnimating) geometryChanged()
+        onYChanged: if (!positionAnimating) geometryChanged()
+        onWidthChanged: if (!positionAnimating) geometryChanged()
+        onHeightChanged: if (!positionAnimating) geometryChanged()
         onEditModeChanged: geometryChanged()
         onMenuVisibleChanged: geometryChanged()
         onContentGeometryChanged: geometryChanged()

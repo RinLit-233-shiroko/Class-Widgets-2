@@ -11,7 +11,7 @@ Item {
     // Widget-facing API and structural slots. Theme visual treatments belong in
     // Widget.qml or a theme override, not in this base component.
     readonly property bool miniMode: Configs.data.preferences.mini_mode
-    readonly property bool hide: Configs.data.interactions.hide.state
+    readonly property bool hide: Configs.hideState
     property bool editMode: false
     property bool lightingEffect: Configs.data.preferences.lighting_effect || true
     property var backend: null

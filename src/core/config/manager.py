@@ -36,6 +36,11 @@ class RootConfig(ConfigBaseModel):
 # 配置管理器
 class ConfigManager(QObject):
     configChanged = Signal()
+    # `data` 的 notify 单独拆出来：隐藏状态切换仍然发出 configChanged
+    # （外部监听者行为不变），但不再让全量 Configs.data 失效、重算数百个绑定。
+    dataChanged = Signal()
+    # 隐藏状态专用信号：点击切换时立即驱动过渡动画。
+    hideStateChanged = Signal()
 
     def __init__(self, path: Path, filename: str):
         super().__init__()
@@ -44,6 +49,9 @@ class ConfigManager(QObject):
         self.full_path = self.path / filename
 
         self._config = RootConfig()
+        self._hide_state = self._config.interactions.hide.state
+        self._suppress_data_invalidation = False
+        self.configChanged.connect(self._on_config_changed)
 
         self.save_timer = QTimer(self)
         self.save_timer.setInterval(1000 * 60)  # 1分钟保存一次
@@ -119,6 +127,7 @@ class ConfigManager(QObject):
                 logger.info(f"{title} \nloaded config: {self.full_path}")
             except Exception as e:
                 logger.warning(f"Load config failed: {e}, use default config")
+        self._hide_state = self._config.interactions.hide.state
         self.save()
 
     def save(self, silent=False):
@@ -157,9 +166,26 @@ class ConfigManager(QObject):
         # logger.debug(f"Checking if config key is locked: {key}, locked_keys={self.locked_keys}")
         return key in self.locked_keys
 
-    @Property('QVariant', notify=configChanged)
+    @Property('QVariant', notify=dataChanged)
     def data(self):
         return self._config.model_dump()  # 整个配置转 dict
+
+    @Property(bool, notify=hideStateChanged)
+    def hideState(self) -> bool:
+        """供 QML 快速绑定的隐藏状态（不经过全量 Configs.data）。"""
+        return self._config.interactions.hide.state
+
+    def _on_config_changed(self) -> None:
+        self._sync_hide_state()
+        if not self._suppress_data_invalidation:
+            self.dataChanged.emit()
+
+    def _sync_hide_state(self) -> None:
+        """hide.state 变化时补发专用信号（含 Python 侧的直接赋值）。"""
+        state = self._config.interactions.hide.state
+        if state != self._hide_state:
+            self._hide_state = state
+            self.hideStateChanged.emit()
 
     @Slot(str, "QVariant")
     def set(self, key: str, value) -> None:
@@ -182,6 +208,22 @@ class ConfigManager(QObject):
             self._config._on_change()
         else:
             if getattr(cfg, last_key) == value:
+                return
+            if key == "interactions.hide.state":
+                # 只跳过 `Configs.data` 的全量失效：它会同步重算数百个 QML
+                # 绑定、阻塞上百毫秒，导致点击后过渡动画迟迟不出首帧。
+                # configChanged 仍照常发出，外部/插件监听者不受影响。
+                callback = cfg._on_change
+                cfg._on_change = None
+                try:
+                    setattr(cfg, last_key, value)
+                finally:
+                    cfg._on_change = callback
+                self._suppress_data_invalidation = True
+                try:
+                    self.configChanged.emit()
+                finally:
+                    self._suppress_data_invalidation = False
                 return
             setattr(cfg, last_key, value)
 
