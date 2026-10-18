@@ -207,32 +207,11 @@ SettingsLayout {
 
                 Repeater {
                     model: memberList
-                    delegate: Frame {
+                    delegate: PillButton {
                         Layout.alignment: Qt.AlignVCenter
-                        radius: 6
-                        implicitHeight: 26
-                        implicitWidth: memberChip.width + 16
-
-                        RowLayout {
-                            id: memberChip
-                            anchors.centerIn: parent
-                            spacing: 4
-
-                            Text {
-                                text: nameOf(modelData.typeId)
-                                typography: Typography.Caption
-                                elide: Text.ElideRight
-                                Layout.maximumWidth: 100
-                            }
-                            Button {
-                                text: "\u2715"
-                                implicitWidth: 18
-                                implicitHeight: 18
-                                padding: 0
-                                flat: true
-                                onClicked: removeMember(modelData.key)
-                            }
-                        }
+                        text: nameOf(modelData.typeId) + "  \u2715"
+                        implicitHeight: 28
+                        onClicked: removeMember(modelData.key)
                     }
                 }
             }
