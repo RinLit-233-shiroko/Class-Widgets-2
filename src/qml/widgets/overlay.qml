@@ -550,8 +550,8 @@ Item {
         property string currentMemberTypeId: ""
 
         ColumnLayout {
-            anchors.fill: parent
-            anchors.margins: 16
+            Layout.fillWidth: true
+            Layout.fillHeight: true
             spacing: 10
 
             Flickable {
@@ -644,8 +644,8 @@ Item {
         height: 520
 
         ColumnLayout {
-            anchors.fill: parent
-            anchors.margins: 16
+            Layout.fillWidth: true
+            Layout.fillHeight: true
             spacing: 10
 
             Text {
@@ -762,8 +762,8 @@ Item {
         }
 
         ColumnLayout {
-            anchors.fill: parent
-            anchors.margins: 16
+            Layout.fillWidth: true
+            Layout.fillHeight: true
             spacing: 10
 
             ListView {

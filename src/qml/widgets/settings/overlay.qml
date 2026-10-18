@@ -53,6 +53,10 @@ SettingsLayout {
             frameW = f ? (f.w || 0) : 0
             frameH = f ? (f.h || 0) : 0
         }
+        widthSpinBox.value = Math.max(widthSpinBox.from, Math.min(widthSpinBox.to, frameW))
+        heightSpinBox.value = Math.max(heightSpinBox.from, Math.min(heightSpinBox.to, frameH))
+        widthSpinBox.initialized = true
+        heightSpinBox.initialized = true
     }
 
     // —— 轮播 ——
@@ -120,6 +124,8 @@ SettingsLayout {
         title: qsTr("Frame size")
         description: qsTr("Custom width and height for this stacked widget. Auto follows the content.")
 
+        enabled: frameModeComboBox.currentIndex === 0
+
         RowLayout {
             spacing: 16
 
@@ -127,15 +133,18 @@ SettingsLayout {
                 spacing: 2
                 SpinBox {
                     id: widthSpinBox
+                    property bool initialized: false
                     from: 0
                     to: 2000
                     stepSize: 10
                     editable: true
+
                     onValueChanged: {
-                        if (frameW !== value) {
-                            frameW = value
-                            syncFrameSize()
-                        }
+                        if (!initialized) return
+                        frameW = value
+                        syncFrameSize()
+                        if (widthSpinBox.value !== frameW)
+                            widthSpinBox.value = frameW
                     }
                 }
                 Text {
@@ -148,15 +157,18 @@ SettingsLayout {
                 spacing: 2
                 SpinBox {
                     id: heightSpinBox
+                    property bool initialized: false
                     from: 0
                     to: 2000
                     stepSize: 10
                     editable: true
+
                     onValueChanged: {
-                        if (frameH !== value) {
-                            frameH = value
-                            syncFrameSize()
-                        }
+                        if (!initialized) return
+                        frameH = value
+                        syncFrameSize()
+                        if (heightSpinBox.value !== frameH)
+                            heightSpinBox.value = frameH
                     }
                 }
                 Text {
