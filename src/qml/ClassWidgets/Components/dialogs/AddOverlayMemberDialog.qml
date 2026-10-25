@@ -20,7 +20,8 @@ Dialog {
             var list = []
             var raw = WidgetsModel.definitionsList
             for (var i = 0; i < raw.length; i++) {
-                if (raw[i].id === "classwidgets.overlay")
+                if (raw[i].id === "classwidgets.overlay"
+                        || raw[i].id === "classwidgets.dynamicNotification")
                     continue
                 list.push(raw[i])
             }
