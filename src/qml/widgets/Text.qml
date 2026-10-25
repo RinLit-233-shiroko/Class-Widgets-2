@@ -45,17 +45,17 @@ Widget {
 
         RowLayout {
             visible: !editing
-            opacity: settings.text ? 1 : 0.6
+            opacity: (settings && settings.text) ? 1 : 0.6
             MarqueeTitle {
                 visible: settings && settings.marquee
-                width: settings.max_width
-                text: settings.text || qsTr("Enter Text")
+                width: settings ? settings.max_width : 150
+                text: (settings && settings.text) || qsTr("Enter Text")
             }
             Title {
                 id: titleLabel
                 width: !settings ? Math.max(titleLabel.contentWidth, 150) : 150
                 visible: !settings || !settings.marquee
-                text: settings.text || qsTr("Enter Text")
+                text: (settings && settings.text) || qsTr("Enter Text")
             }
         }
 
@@ -63,7 +63,7 @@ Widget {
             Layout.fillHeight: true
             id: textTextField
             visible: editing
-            Layout.preferredWidth: Math.max(settings.max_width, 150, titleLabel.contentWidth)
+            Layout.preferredWidth: Math.max(settings ? settings.max_width : 150, 150, titleLabel.contentWidth)
             font.pixelSize: miniMode ? 20 : 28
 
             onEditingFinished: {
@@ -73,13 +73,13 @@ Widget {
                 console.log(settings.text)
             }
             Component.onCompleted: {
-                textTextField.text = settings.text
+                textTextField.text = settings ? settings.text : ""
             }
         }
     }
 
     onSettingsChanged: {
-        textTextField.text = settings.text
+        textTextField.text = settings ? settings.text : ""
     }
 
     // Component.onCompleted: {
