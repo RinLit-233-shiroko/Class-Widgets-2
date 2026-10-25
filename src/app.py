@@ -32,6 +32,32 @@ def wait_for_process_exit(arguments: list[str]) -> list[str]:
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 sys.path.insert(0, project_root)
 
+
+def _configure_qml_cache(root: str) -> None:
+    if os.environ.get("QML_DISK_CACHE_PATH"):
+        return
+    import hashlib
+    from pathlib import Path
+
+    locales = Path(root) / "assets" / "locales"
+    try:
+        signature = "|".join(
+            f"{path.name}:{path.stat().st_mtime_ns}:{path.stat().st_size}"
+            for path in sorted(locales.glob("*.qm"))
+        )
+    except OSError:
+        return
+    if not signature:
+        return
+    token = hashlib.sha1(signature.encode("utf-8")).hexdigest()[:12]
+    cache_root = Path(os.environ.get("LOCALAPPDATA") or os.path.expanduser("~"))
+    os.environ["QML_DISK_CACHE_PATH"] = str(
+        cache_root / "Class Widgets 2" / "cache" / "qmlcache" / token
+    )
+
+
+_configure_qml_cache(project_root)
+
 from src.core import AppCentral
 from PySide6.QtWidgets import QApplication
 
