@@ -147,7 +147,7 @@ Item {
         root.sizeMap = m
     }
 
-    property int switchBarSpace: root.showSwitchBar && root.members.length > 0 ? 48 : 0
+    property int switchBarSpace: root.showSwitchBar && root.members.length > 1 ? 48 : 0
 
     readonly property bool lyricGateActive: false
     property var contentMap: ({})
@@ -534,7 +534,7 @@ Item {
     Rectangle {
         id: switchBar
         objectName: "switchBar"
-        readonly property bool barVisible: root.showSwitchBar && root.members.length > 0
+        readonly property bool barVisible: root.showSwitchBar && root.members.length > 1
             && !root.overlayListMode
             && !Configs.data.interactions.hide.state && !root.inClass
         visible: opacity > 0.01
