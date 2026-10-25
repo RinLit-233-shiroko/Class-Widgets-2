@@ -239,7 +239,7 @@ Your settings and schedule are kept.</source>
     <message>
         <location filename="../../src/core/central.py" line="716"/>
         <source>Safe mode</source>
-        <translation type="unfinished"></translation>
+        <translation>沙发模式</translation>
     </message>
     <message>
         <location filename="../../src/core/central.py" line="720"/>
