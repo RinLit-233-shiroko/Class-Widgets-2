@@ -262,7 +262,7 @@ Item {
         if (root.activeIndex >= list.length) root.activeIndex = 0
     }
 
-    readonly property bool listPlaceholderVisible: root.overlayListMode && root.members.length > 0
+    readonly property bool listPlaceholderVisible: root.overlayListMode
     readonly property int listPlaceholderHeight: root.maxH > 0 ? root.maxH : (root.miniMode ? 56 : 100)
 
     function listHeaderHeight() {
@@ -355,7 +355,7 @@ Item {
         id: emptyStateBox
         anchors.fill: parent
         anchors.margins: 4
-        visible: root.members.length === 0
+        visible: root.members.length === 0 && !root.overlayListMode
         radius: Math.min(width, height, Configs.data.preferences.widget_corner_radius)
         color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.06) : Qt.rgba(0, 0, 0, 0.04)
         border.width: 1
@@ -394,6 +394,7 @@ Item {
     RowLayout {
         id: listActions
         visible: root.overlayListMode
+        z: 2
         x: (root.width - width) / 2
         y: root.listActionY()
         height: root.listActionHeight
