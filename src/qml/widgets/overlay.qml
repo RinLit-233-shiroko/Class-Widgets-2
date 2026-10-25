@@ -303,14 +303,21 @@ Item {
         root.frameH = 0
     }
 
+    readonly property bool listPlaceholderVisible: root.overlayListMode && root.members.length > 0
+    readonly property int listPlaceholderHeight: 56
+
+    function listHeaderHeight() {
+        return root.listPlaceholderVisible ? root.listPlaceholderHeight + root.listSpacing : 0
+    }
+
     function listY(i) {
-        return i * (root.maxH + root.listSpacing)
+        return root.listHeaderHeight() + i * (root.maxH + root.listSpacing)
     }
 
     function listTotalH() {
         var n = root.members.length
         if (n <= 0) return 0
-        return n * root.maxH + root.listSpacing * (n - 1)
+        return root.listHeaderHeight() + n * root.maxH + root.listSpacing * (n - 1)
     }
 
     function mergedMemberSettings(key, typeId) {
@@ -341,11 +348,6 @@ Item {
         if (root.backend) root.backend.removeMember(root.instanceId, k)
     }
 
-    function openOverlayEditor() {
-        root.refresh()
-        overlayEditDialog.open()
-    }
-
     function openMemberSettings(i) {
         var m = root.members[i]
         if (!m) return
@@ -354,7 +356,6 @@ Item {
         var d = root.findDef(typeId)
         if (!d || !root.backend) return
         var sq = d.settingsQml || d.settings_qml || ""
-        console.log("[overlay] openMemberSettings:", key, "settingsQml:", sq)
         if (!sq) return
         var merged = root.mergedMemberSettings(key, typeId)
         memberSettingsDialog.currentMemberId = key
@@ -418,6 +419,27 @@ Item {
                 color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.5) : Qt.rgba(0, 0, 0, 0.5)
                 font.pixelSize: 12
             }
+        }
+    }
+
+    Rectangle {
+        id: listPlaceholder
+        visible: root.listPlaceholderVisible
+        x: 4
+        y: 4
+        width: Math.max(0, root.width - 8)
+        height: root.listPlaceholderHeight
+        radius: Math.min(width, height, Configs.data.preferences.widget_corner_radius)
+        color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.06) : Qt.rgba(0, 0, 0, 0.04)
+        border.width: 1
+        border.color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.18) : Qt.rgba(0, 0, 0, 0.12)
+
+        Text {
+            anchors.centerIn: parent
+            text: qsTr("Stacked widget")
+            color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.7) : Qt.rgba(0, 0, 0, 0.7)
+            font.pixelSize: 13
+            font.weight: Font.DemiBold
         }
     }
 
@@ -650,167 +672,6 @@ Item {
                             memberSettingsDialog.close()
                         }
                     }
-                }
-            }
-        }
-    }
-
-    Dialog {
-        id: overlayEditDialog
-        title: qsTr("Edit stacked widget")
-        modal: true
-        standardButtons: Dialog.Close
-        width: 620
-        height: 520
-
-        ColumnLayout {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            spacing: 10
-
-            Text {
-                Layout.fillWidth: true
-                visible: root.members.length === 0
-                text: qsTr("No members yet. Use Add member below to include widgets.")
-                color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.55) : Qt.rgba(0, 0, 0, 0.55)
-                font.pixelSize: 13
-            }
-
-            Flickable {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                clip: true
-                contentHeight: memberListColumn.height
-
-                Column {
-                    id: memberListColumn
-                    width: parent.width
-                    spacing: 8
-
-                    Repeater {
-                        model: root.members
-                        delegate: RowLayout {
-                            width: memberListColumn.width
-                            spacing: 8
-
-                            Text {
-                                Layout.fillWidth: true
-                                text: root.nameOf(modelData.typeId)
-                                elide: Text.ElideRight
-                                font.pixelSize: 13
-                                color: Theme.isDark() ? "#eee" : "#222"
-                            }
-                            Button {
-                                text: qsTr("Settings")
-                                onClicked: root.openMemberSettings(index)
-                            }
-                            Button {
-                                text: qsTr("Remove")
-                                onClicked: root.removeMemberByKey(modelData.key)
-                            }
-                        }
-                    }
-                }
-            }
-
-            RowLayout {
-                Layout.alignment: Qt.AlignRight
-                spacing: 6
-
-                Text {
-                    Layout.alignment: Qt.AlignVCenter
-                    text: {
-                        var w = root.frameW
-                        var h = root.frameH
-                        if (w > 0 && h > 0) return w + "×" + h
-                        if (w > 0) return w + " \u00d7 " + qsTr("Auto")
-                        if (h > 0) return qsTr("Auto") + " \u00d7 " + h
-                        return qsTr("Auto")
-                    }
-                    font.pixelSize: 13
-                    color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.6) : Qt.rgba(0, 0, 0, 0.6)
-                }
-                Button { text: qsTr("W-"); onClicked: root.stepFrame(-10, 0) }
-                Button { text: qsTr("W+"); onClicked: root.stepFrame(10, 0) }
-                Button { text: qsTr("H-"); onClicked: root.stepFrame(0, -10) }
-                Button { text: qsTr("H+"); onClicked: root.stepFrame(0, 10) }
-                Button { text: qsTr("Auto"); onClicked: root.resetFrame() }
-            }
-
-            RowLayout {
-                Layout.alignment: Qt.AlignRight
-                spacing: 8
-
-                Button {
-                    text: qsTr("Add member")
-                    highlighted: true
-                    onClicked: addMemberDialog.open()
-                }
-                Button {
-                    text: qsTr("Done")
-                    onClicked: overlayEditDialog.close()
-                }
-            }
-        }
-    }
-
-    Dialog {
-        id: addMemberDialog
-        title: qsTr("Add member widget")
-        modal: true
-        standardButtons: Dialog.Close
-        width: 560
-        height: 480
-
-        property var candidates: {
-            var list = []
-            if (typeof WidgetsModel !== "undefined" && WidgetsModel.definitionsList) {
-                var raw = WidgetsModel.definitionsList
-                for (var i = 0; i < raw.length; i++) {
-                    if (raw[i].id === "classwidgets.overlay") continue
-                    list.push(raw[i])
-                }
-            }
-            return list
-        }
-        property var selected: widgetsListView.currentIndex >= 0
-            ? widgetsListView.model[widgetsListView.currentIndex] : null
-
-        onOpened: {
-            widgetsListView.currentIndex = -1
-            widgetsListView.currentIndex = 0
-        }
-
-        ColumnLayout {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            spacing: 10
-
-            ListView {
-                id: widgetsListView
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                model: addMemberDialog.candidates
-                clip: true
-
-                delegate: ItemDelegate {
-                    width: widgetsListView.width
-                    text: modelData.name || modelData.id
-                    highlighted: index === widgetsListView.currentIndex
-                    onClicked: widgetsListView.currentIndex = index
-                }
-            }
-
-            Button {
-                Layout.alignment: Qt.AlignRight
-                text: qsTr("Add")
-                highlighted: true
-                enabled: addMemberDialog.selected !== null
-                onClicked: {
-                    if (root.backend && addMemberDialog.selected) {
-                        root.backend.addMember(root.instanceId, addMemberDialog.selected.id)
-                    }
-                    addMemberDialog.close()
                 }
             }
         }

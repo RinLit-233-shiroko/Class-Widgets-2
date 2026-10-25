@@ -13,7 +13,6 @@ Widget {
     }
     property var countdown: AppCentral.scheduleRuntime.remainingTime || { "minute": 0, "second": 0 }
 
-    // 数字滚动动画开关（组件设置面板可关）。未配置时按开启处理，保持原有观感。
     readonly property bool animated: !settings || settings.digit_animation !== false
 
     // 统一布局，用 RowLayout 并根据 miniMode 控制内部排列

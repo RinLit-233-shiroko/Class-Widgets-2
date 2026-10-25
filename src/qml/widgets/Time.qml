@@ -6,7 +6,7 @@ import ClassWidgets.Theme
 
 Widget {
     id: root
-
+    // text: qsTr("time")
     property var dateTime: {
         "year": 1900,
         "month": 1,
@@ -29,8 +29,6 @@ Widget {
 
     property int titleMode: 0
 
-    // Build the date from the date parts enabled in settings and let Qt.locale()
-    // paint the pattern, so the year is shown in every locale (e.g. "2026 十月 25").
     function dateString() {
         if (!showDate)
             return ""

@@ -9,8 +9,8 @@ from pathlib import Path
 from loguru import logger
 from PySide6.QtCore import Property, QObject, Signal, Slot
 
-_OVERLAY_WIDGET_ID = "classwidgets.overlay"  
-_DEFAULT = "default"                
+_OVERLAY_WIDGET_ID = "classwidgets.overlay"
+_DEFAULT = "default"
 
 def _data_dir() -> Path:
     try:
@@ -48,7 +48,7 @@ class OverlayBackend(QObject):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        
+
         self._store: dict[str, dict] = {}
         self._members_file = _data_file(".overlay_members.json")
         self._settings_file = _data_file(".overlay_member_settings.json")
@@ -109,7 +109,7 @@ class OverlayBackend(QObject):
             return
         if self._store.get(_DEFAULT):
             self._store[gid] = self._store.pop(_DEFAULT)
-            self._save_all()  
+            self._save_all()
 
     def _group(self, instance_id) -> dict:
         gid = _normalize(instance_id)
@@ -193,7 +193,7 @@ class OverlayBackend(QObject):
                 data = json.loads(self._members_file.read_text(encoding="utf-8"))
                 groups: dict = data.get("instances") if isinstance(data, dict) else None
                 if groups is None and isinstance(data, dict) and "members" in data:
-                    groups = {_DEFAULT: data}  
+                    groups = {_DEFAULT: data}
                 self._store = {}
                 for gid, obj in (groups or {}).items():
                     raw = obj.get("members") if isinstance(obj, dict) else obj
@@ -225,7 +225,7 @@ class OverlayBackend(QObject):
                 data = json.loads(self._settings_file.read_text(encoding="utf-8"))
                 groups: dict = data.get("instances") if isinstance(data, dict) else None
                 if groups is None and isinstance(data, dict) and "settings" in data:
-                    groups = {_DEFAULT: data}  
+                    groups = {_DEFAULT: data}
                 for gid, obj in (groups or {}).items():
                     entry = self._store.setdefault(str(gid),
                                                    {"members": [], "settings": {}, "frame": {"w": 0, "h": 0}})

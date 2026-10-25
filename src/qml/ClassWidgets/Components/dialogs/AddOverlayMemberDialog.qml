@@ -33,6 +33,10 @@ Dialog {
         ? widgetsListView.model[widgetsListView.currentIndex]
         : null
 
+    Component.onCompleted: {
+        standardButton(Dialog.Close).text = qsTr("Close")
+    }
+
     onOpened: {
         if (typeof WidgetsModel !== "undefined" && WidgetsModel.definitionsList) {
             for (var i = 0; i < WidgetsModel.definitionsList.length; i++) {

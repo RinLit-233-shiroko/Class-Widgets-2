@@ -6,6 +6,7 @@ from src.core.storage.directories import QML_PATH
 from src.core.plugin import CW2Plugin
 from .overlay_backend import OverlayBackend
 
+
 META = {
     "id": "builtin.classwidgets.widgets",
     "name": QCoreApplication.translate("Plugins", "Built-in Widgets"),
@@ -14,6 +15,7 @@ META = {
     "api_version": "*",
     "entry": "widgets.py"
 }
+
 
 class Plugin(CW2Plugin):
     def __init__(self, plugin_api):
@@ -48,8 +50,8 @@ class Plugin(CW2Plugin):
                     "show_weekday": False,
                     "title_mode": "side_by_side",
                     "alternate_interval": 3000,
-                    "alternate_animation": False
-                }
+                    "alternate_animation": False,
+                },
             },
             {
                 "widget_id": "classwidgets.eventCountdown",
@@ -58,8 +60,8 @@ class Plugin(CW2Plugin):
                 "backend_obj": self,
                 "settings_qml": Path(QML_PATH / "widgets" / "settings" / "eventCountdown.qml").as_posix(),
                 "default_settings": {
-                    "digit_animation": True
-                }
+                    "digit_animation": True,
+                },
             },
             {
                 "widget_id": "classwidgets.upcomingActivities",
@@ -100,7 +102,7 @@ class Plugin(CW2Plugin):
                 "default_settings": {
                     "interval_ms": 5000,
                     "frame_mode": "max",
-                    "show_switch_bar": True
+                    "show_switch_bar": True,
                 }
             },
         ]
@@ -111,7 +113,7 @@ class Plugin(CW2Plugin):
         return self._overlay_backend
 
     def on_load(self):
-        super().on_load()  
+        super().on_load()  # 调用父类的on_load来设置插件上下文
         self.register_widgets()
 
     def register_widgets(self):

@@ -41,6 +41,10 @@ Dialog {
 
     Connections {
         target: CWThemeManager
+        function onThemeReloadStarted() {
+            addWidgetsDialog.themeReloading = true
+        }
+
         function onThemeReadyToReload() {
             addWidgetsDialog.themeReloading = false
             // 主题重载后强制刷新，参考 WidgetLoader 的实现

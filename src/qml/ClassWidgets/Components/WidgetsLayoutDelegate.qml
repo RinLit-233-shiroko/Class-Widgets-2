@@ -7,6 +7,7 @@ import ClassWidgets.Easing
 Item {
     id: widgetContainer
 
+    // ---- 由 WidgetsLayout 注入 ----
     property Item host: null
     property var settingsDialog: null
     property var overlayMemberDialog: null
@@ -18,6 +19,7 @@ Item {
 
     signal widgetTapped()
 
+    // 是否处于「应该显示」的状态（用于出现/消失判定）
     readonly property bool contentHidden: loader.status === Loader.Ready
         && loader.item && loader.item.visible === false
 
@@ -26,15 +28,23 @@ Item {
         NumberAnimation { duration: 120; easing.type: Easing.OutCubic }
     }
 
+    // ---- 尺寸 ----
+    // naturalWidth/Height 是乘过 visualScale 的最终尺寸；
+    // measuredWidth/Height 是未经缩放的原始尺寸，并且在内容隐藏期间保留。
     property real naturalWidth: 0
     property real naturalHeight: 0
     property real measuredWidth: 0
     property real measuredHeight: 0
 
+    // 宽度因子：0 = 收起（不占位），1 = 展开
     property real growFactor: 0
     property bool ready: false
+    // 是否正在合拢：用来给同一组动画选不同曲线，
+    // 展开平滑铺开（OutCubic），合拢快速收闸（InCubic）避免慢尾。
     property bool collapsing: false
 
+    // 删除期间由 removeAnim 显式驱动 growFactor，这里必须让开，
+    // 否则两条动画会互相重定向，收宽度时机重新变得不可控。
     Behavior on growFactor {
         enabled: widgetContainer.ready && !widgetContainer.removing
         NumberAnimation {
@@ -49,21 +59,25 @@ Item {
     property real visOpacity: 0
     property real visScale: 0.8
     property bool removing: false
-    property bool initialized: false
+    property bool initialized: false   // 入场只播一次，避免切主题重播
     property bool isOverlay: model.typeId === "classwidgets.overlay"
     property bool overlayEditing: isOverlay && host.overlayEditingId === model.instanceId
 
+    // 隐藏状态不再整体降透明度：收起完全由位置/浮窗表达，
+    // opacity 只负责出现/消失动画（拖动时给一点提示性半透明）。
     opacity: (dragHandler.active ? 0.75 : 1) * visOpacity
     scale: visScale * dragRaiseScale
     rotation: (host.editMode && !widgetContainer.overlayEditing) ? shakeAngle : 0
     z: dragHandler.active ? 1 : 0
 
+    // 拖拽被拿起
     property real dragRaiseScale: 1
     Behavior on dragRaiseScale {
         enabled: !dragHandler.active
         NumberAnimation { duration: 260; easing.type: Easing.OutCubic }
     }
 
+    // 编辑模式摇晃角度
     property real shakeAngle: 0
 
     function syncNaturalSize() {
@@ -96,6 +110,7 @@ Item {
             show()
     }
 
+    // 出现
     function show() {
         if (removing)
             return
@@ -136,6 +151,8 @@ Item {
         }
     }
 
+    // 消失：只负责「自己隐藏」的视觉逆行程，绝不在这里移除模型行。
+    // 与宽度合拢（走 growFactor 的 InCubic）保持一致的快节奏，收得干脆。
     SequentialAnimation {
         id: exitAnim
         ParallelAnimation {
@@ -155,6 +172,7 @@ Item {
         }
     }
 
+    // 删除
     function requestRemove() {
         if (removing)
             return
@@ -179,6 +197,8 @@ Item {
     SequentialAnimation {
         id: removeAnim
 
+        // 第一阶段：内容从「当前」状态淡出（不写 from，避免动画中途被删除时跳变）。
+        // 此时宽度不动，邻居留在原地，所以不会重叠。
         ParallelAnimation {
             NumberAnimation {
                 target: widgetContainer
@@ -194,6 +214,7 @@ Item {
             }
         }
 
+        // 第二阶段：内容已不可见，再收起占位宽度让邻居平滑补位
         NumberAnimation {
             target: widgetContainer
             property: "growFactor"
@@ -201,14 +222,16 @@ Item {
             easing.type: Easing.OutCubic
         }
 
+        // 第三阶段：宽度归零后才真正移除，ListView 重排时已无可见内容
         ScriptAction {
             script: host.removeWidget(widgetContainer.widgetInstanceId)
         }
     }
 
+    // ---- 拖拽视觉偏移（不改 x/y，那是 ListView 的属性）----
     property real dragOffsetX: 0
     property real dragOffsetY: 0
-    property real dragLift: 0
+    property real dragLift: 0          // 拿起时的上浮量
     property bool settleDrag: false
 
     Behavior on dragOffsetX {
@@ -229,18 +252,20 @@ Item {
         y: widgetContainer.dragOffsetY + widgetContainer.dragLift
     }
 
+    // 换位后 ListView 要下一帧才更新 x，补一次贴合避免被拖项闪跳
     onXChanged: if (dragHandler.active) dragHandler.pinToPointer()
 
     WidgetLoader {
         id: loader
         editMode: host.editMode
         transformOrigin: Item.Center
-        scale: widgetContainer.visualScale
+        scale: widgetContainer.visualScale  // 补漏掉的scale参
 
         onWidthChanged: widgetContainer.syncNaturalSize()
         onHeightChanged: widgetContainer.syncNaturalSize()
         onStatusChanged: widgetContainer.syncNaturalSize()
 
+        // 宽度含右侧间距，居中时要排除
         x: (widgetContainer.naturalWidth * widgetContainer.growFactor - width) / 2
         y: (widgetContainer.height - height) / 2
 
@@ -249,8 +274,9 @@ Item {
             widgetContainer.ready = true
 
             if (widgetContainer.removing)
-                return
+                return                      // 正在删除，别播入场
             if (widgetContainer.initialized) {
+                // 切主题重载：只补齐可见性，不重播动画
                 widgetContainer.growFactor = widgetContainer.contentHidden ? 0 : 1
                 widgetContainer.visOpacity = widgetContainer.contentHidden ? 0 : 1
                 widgetContainer.visScale = widgetContainer.contentHidden ? 0.8 : 1
@@ -266,6 +292,9 @@ Item {
         onContentFailed: widgetContainer.syncNaturalSize()
         onRemovalRequested: widgetContainer.requestRemove()
 
+        // The loaded widget is the actual touch hit target. Keep the handler
+        // here and forward the tap explicitly instead of relying on bubbling
+        // through Loader and ListView.
         TapHandler {
             id: tapHandler
             acceptedButtons: Qt.LeftButton
@@ -276,6 +305,7 @@ Item {
         }
     }
 
+    // 组件自身显隐 / 尺寸变化（通知展开收起等）也要重算布局
     Connections {
         target: loader.item
         ignoreUnknownSignals: true
@@ -302,7 +332,6 @@ Item {
         spacing: 8
 
         Button {
-            id: addOverlayMemberButton
             icon.name: "ic_fluent_add_20_regular"
             text: qsTr("Add Member")
             onClicked: {
@@ -318,7 +347,6 @@ Item {
         }
 
         Button {
-            id: acceptOverlayButton
             highlighted: true
             icon.name: "ic_fluent_checkmark_20_regular"
             text: qsTr("Done")
@@ -341,14 +369,18 @@ Item {
         onClicked: widgetContainer.requestRemove()
     }
 
+    // ---- 编辑模式拖拽排序 ----
+    // 越过邻居中心就立刻换位，邻居走 displaced 让位，松手前即可看到最终顺序
     DragHandler {
         id: dragHandler
         enabled: host.editMode
         target: null
 
+        // 按下瞬间 delegate 中心的位置（指针锚点）
         property real anchorCenterX: 0
         property real anchorCenterY: 0
 
+        // 写成函数而非绑定属性：处理器先于绑定重算执行，读绑定属性会拿到上一个事件的值
         function targetCenterX() {
             return anchorCenterX + dragHandler.translation.x
         }
@@ -356,6 +388,7 @@ Item {
             return anchorCenterY + dragHandler.translation.y
         }
 
+        // 偏移 = 目标中心 - 当前实际中心
         function pinToPointer() {
             widgetContainer.dragOffsetX = targetCenterX()
                 - (widgetContainer.x + widgetContainer.width / 2)
@@ -378,6 +411,7 @@ Item {
             widgetContainer.dragRaiseScale = 1.0
             widgetContainer.dragLift = 0
 
+            // 顺序已在拖动中更新，松手只剩回位
             settleDrag = true
             widgetContainer.dragOffsetX = 0
             widgetContainer.dragOffsetY = 0
@@ -393,6 +427,7 @@ Item {
         }
     }
 
+    // ---- 右键菜单 ----
     Menu {
         id: widgetMenu
         onVisibleChanged: host.menuVisibilityChanged(visible)
@@ -406,6 +441,7 @@ Item {
                     settingsDialog.setSource(model.settingsQml, {
                         "settings": model.settings,
                         "instanceId": model.instanceId,
+                        "widget_id": model.widget_id
                     })
                     settingsDialog.open()
                 }
@@ -444,6 +480,7 @@ Item {
         }
     }
 
+    // ---- 编辑模式摇晃 ----
     SequentialAnimation on shakeAngle {
         running: host.editMode && !widgetContainer.overlayEditing
         loops: Animation.Infinite

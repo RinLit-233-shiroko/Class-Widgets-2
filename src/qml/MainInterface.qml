@@ -115,7 +115,7 @@ QQW.Window {
 
         TapHandler {
             acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchScreen | PointerDevice.TouchPad
-            enabled: widgetsLoader.menuVisible === true
+            enabled: root.menuVisible
             onTapped: widgetsLoader.menuVisible = false
         }
 
