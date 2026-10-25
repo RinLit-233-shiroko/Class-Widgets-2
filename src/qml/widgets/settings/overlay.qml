@@ -19,8 +19,6 @@ SettingsLayout {
     }
 
     property var memberList: overlayBackend ? overlayBackend.getMembers(instanceId) : []
-    property int frameW: 0
-    property int frameH: 0
 
     function nameOf(typeId) {
         if (typeof WidgetsModel !== "undefined" && WidgetsModel.definitionsList) {
@@ -33,30 +31,10 @@ SettingsLayout {
         return typeId
     }
 
-    function syncFrameSize() {
-        if (!overlayBackend) return
-        overlayBackend.setFrameSize(instanceId, frameW, frameH)
-        var f = overlayBackend.getFrameSize(instanceId)
-        frameW = f ? (f.w || 0) : 0
-        frameH = f ? (f.h || 0) : 0
-    }
-
     function removeMember(key) {
         if (!overlayBackend) return
         overlayBackend.removeMember(instanceId, key)
         memberList = overlayBackend.getMembers(instanceId)
-    }
-
-    Component.onCompleted: {
-        if (overlayBackend) {
-            var f = overlayBackend.getFrameSize(instanceId)
-            frameW = f ? (f.w || 0) : 0
-            frameH = f ? (f.h || 0) : 0
-        }
-        widthSpinBox.value = Math.max(widthSpinBox.from, Math.min(widthSpinBox.to, frameW))
-        heightSpinBox.value = Math.max(heightSpinBox.from, Math.min(heightSpinBox.to, frameH))
-        widthSpinBox.initialized = true
-        heightSpinBox.initialized = true
     }
 
     SettingCard {
@@ -81,98 +59,6 @@ SettingsLayout {
             }
             onValueChanged: {
                 if (initialized) settings.interval_ms = value * 1000
-            }
-        }
-    }
-
-    SettingCard {
-        Layout.fillWidth: true
-
-        icon.name: "ic_fluent_text_align_center_20_regular"
-        title: qsTr("Frame size mode")
-        description: qsTr("Largest member keeps the frame at the size of the biggest member; Follow current resizes the frame smoothly to the visible member.")
-
-        ComboBox {
-            id: frameModeComboBox
-            property bool initialized: false
-            property var modes: ["max", "auto"]
-
-            model: ListModel {
-                ListElement { text: qsTr("Largest member") }
-                ListElement { text: qsTr("Follow current") }
-            }
-            textRole: "text"
-
-            Component.onCompleted: {
-                var index = modes.indexOf(settings.frame_mode)
-                currentIndex = index >= 0 ? index : 0
-                initialized = true
-            }
-            onCurrentIndexChanged: {
-                if (initialized && currentIndex >= 0)
-                    settings.frame_mode = modes[currentIndex]
-            }
-        }
-    }
-
-    SettingCard {
-        Layout.fillWidth: true
-
-        icon.name: "ic_fluent_resize_20_regular"
-        title: qsTr("Frame size")
-        description: qsTr("Custom width and height for this stacked widget. Auto follows the content.")
-
-        enabled: frameModeComboBox.currentIndex === 0
-
-        RowLayout {
-            spacing: 16
-
-            ColumnLayout {
-                spacing: 2
-                SpinBox {
-                    id: widthSpinBox
-                    property bool initialized: false
-                    from: 0
-                    to: 2000
-                    stepSize: 10
-                    editable: true
-
-                    onValueChanged: {
-                        if (!initialized) return
-                        frameW = value
-                        syncFrameSize()
-                        if (widthSpinBox.value !== frameW)
-                            widthSpinBox.value = frameW
-                    }
-                }
-                Text {
-                    text: qsTr("Width")
-                    typography: Typography.Caption
-                }
-            }
-
-            ColumnLayout {
-                spacing: 2
-                SpinBox {
-                    id: heightSpinBox
-                    property bool initialized: false
-                    from: 0
-                    to: 2000
-                    stepSize: 10
-                    editable: true
-
-                    onValueChanged: {
-                        if (!initialized) return
-                        frameH = value
-                        syncFrameSize()
-                        if (heightSpinBox.value !== frameH)
-                            heightSpinBox.value = frameH
-                    }
-                }
-                Text {
-                    text: qsTr("Height")
-                    typography: Typography.Caption
-                }
             }
         }
     }

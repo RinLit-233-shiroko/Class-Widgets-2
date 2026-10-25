@@ -245,15 +245,11 @@ Item {
             Layout.preferredHeight: widgetsContainer.addRowHeight
 
             icon.name: "ic_fluent_add_20_regular"
-            text: widgetsLayout.overlayEditingId === "" ? qsTr("Add") : qsTr("Add Member")
+            text: qsTr("Add")
 
             onClicked: {
                 widgetsContainer.editMode = true
-                if (widgetsLayout.overlayEditingId === "") {
-                    addDialog.open()
-                } else {
-                    widgetsLayout.openOverlayMemberDialog(widgetsLayout.overlayEditingId)
-                }
+                addDialog.open()
             }
         }
 

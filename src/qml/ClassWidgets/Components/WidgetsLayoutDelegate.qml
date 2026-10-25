@@ -312,6 +312,8 @@ Item {
         function onVisibleChanged() { widgetContainer.syncNaturalSize() }
         function onWidthChanged()   { widgetContainer.syncNaturalSize() }
         function onHeightChanged()  { widgetContainer.syncNaturalSize() }
+        function onAddMemberRequested() { widgetContainer.host.openOverlayMemberDialog(model.instanceId) }
+        function onDoneRequested() { widgetContainer.host.overlayEditingId = "" }
     }
 
     onOverlayEditingChanged: {

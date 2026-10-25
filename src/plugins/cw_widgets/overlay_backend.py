@@ -42,7 +42,6 @@ def _normalize(instance_id) -> str:
 class OverlayBackend(QObject):
 
     membersChanged = Signal()
-    frameChanged = Signal()
     classHideChanged = Signal()
     _class_hide = {"enabled": False, "days": "1,2,3,4,5", "start": "08:00", "end": "18:00"}
 
@@ -52,11 +51,9 @@ class OverlayBackend(QObject):
         self._store: dict[str, dict] = {}
         self._members_file = _data_file(".overlay_members.json")
         self._settings_file = _data_file(".overlay_member_settings.json")
-        self._frames_file = _data_file(".overlay_frames.json")
         self._class_hide_file = _data_file(".overlay_class_hide.json")
         self._load_members()
         self._load_member_settings()
-        self._load_frames()
         self._load_class_hide()
 
     def _load_class_hide(self) -> None:
@@ -114,7 +111,7 @@ class OverlayBackend(QObject):
     def _group(self, instance_id) -> dict:
         gid = _normalize(instance_id)
         self._claim(gid)
-        return self._store.setdefault(gid, {"members": [], "settings": {}, "frame": {"w": 0, "h": 0}})
+        return self._store.setdefault(gid, {"members": [], "settings": {}})
 
     @Slot(str, result=list)
     def getMembers(self, instance_id: str) -> list:
@@ -168,19 +165,6 @@ class OverlayBackend(QObject):
         self._save_member_settings()
         logger.info(f"[more_settings] saved overlay member settings: {k}")
 
-    @Slot(str, result=dict)
-    def getFrameSize(self, instance_id: str) -> dict:
-        return dict(self._group(instance_id)["frame"])
-
-    @Slot(str, int, int)
-    def setFrameSize(self, instance_id: str, w: int, h: int) -> None:
-        grp = self._group(instance_id)
-        grp["frame"]["w"] = max(0, int(w or 0))
-        grp["frame"]["h"] = max(0, int(h or 0))
-        self._save_frames()
-        self.frameChanged.emit()
-        logger.info(f"[more_settings] overlay {_normalize(instance_id)} frame size -> {grp['frame']}")
-
     @staticmethod
     def _atomic_write_json(path: Path, payload: dict) -> None:
         tmp = path.with_suffix(path.suffix + ".tmp")
@@ -215,7 +199,7 @@ class OverlayBackend(QObject):
                         if m["key"] not in seen:
                             seen.add(m["key"])
                             uniq.append(m)
-                    self._store[str(gid)] = {"members": uniq, "settings": {}, "frame": {"w": 0, "h": 0}}
+                    self._store[str(gid)] = {"members": uniq, "settings": {}}
         except Exception:
             self._store = {}
 
@@ -228,7 +212,7 @@ class OverlayBackend(QObject):
                     groups = {_DEFAULT: data}
                 for gid, obj in (groups or {}).items():
                     entry = self._store.setdefault(str(gid),
-                                                   {"members": [], "settings": {}, "frame": {"w": 0, "h": 0}})
+                                                   {"members": [], "settings": {}})
                     raw = obj.get("settings") if isinstance(obj, dict) else {}
                     for k, v in (raw or {}).items():
                         if isinstance(v, dict):
@@ -236,25 +220,9 @@ class OverlayBackend(QObject):
         except Exception:
             pass
 
-    def _load_frames(self) -> None:
-        try:
-            if self._frames_file.exists():
-                data = json.loads(self._frames_file.read_text(encoding="utf-8"))
-                groups: dict = data.get("instances") if isinstance(data, dict) else None
-                for gid, obj in (groups or {}).items():
-                    if not isinstance(obj, dict):
-                        continue
-                    entry = self._store.setdefault(str(gid),
-                                                   {"members": [], "settings": {}, "frame": {"w": 0, "h": 0}})
-                    entry["frame"] = {"w": max(0, int(obj.get("w") or 0)),
-                                      "h": max(0, int(obj.get("h") or 0))}
-        except Exception:
-            pass
-
     def _save_all(self) -> None:
         self._save_members()
         self._save_member_settings()
-        self._save_frames()
 
     def _save_members(self) -> None:
         try:
@@ -271,10 +239,3 @@ class OverlayBackend(QObject):
             self._atomic_write_json(self._settings_file, payload)
         except Exception as e:
             logger.warning(f"[more_settings] Failed to save member settings: {e}")
-
-    def _save_frames(self) -> None:
-        try:
-            payload = {"instances": {gid: dict(v["frame"]) for gid, v in self._store.items()}}
-            self._atomic_write_json(self._frames_file, payload)
-        except Exception as e:
-            logger.warning(f"[more_settings] Failed to save frame size: {e}")

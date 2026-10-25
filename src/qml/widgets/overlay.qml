@@ -16,6 +16,9 @@ Item {
     property bool overlayListMode: false
     property string instanceId: ""
 
+    signal addMemberRequested()
+    signal doneRequested()
+
     onBackendChanged: {
         if (backend) Qt.callLater(function() { root.refresh() })
     }
@@ -113,12 +116,10 @@ Item {
     property int listSpacing: 10
     readonly property int maxW: root.maxSize().w
     readonly property int maxH: root.maxSize().h
-    property string frameMode: (settings && settings.frame_mode) ? settings.frame_mode : "max"
     readonly property bool emptyState: root.members.length === 0
-    readonly property int autoW: Math.max(root.emptyState ? 200 : 96,
-        (root.frameMode === "auto" ? root.activeSize().w : root.maxW) + root.switchBarSpace)
-    readonly property int autoH: Math.max(root.emptyState ? 100 : 80,
-        root.frameMode === "auto" ? root.activeSize().h : root.maxH)
+    readonly property int autoW: Math.max(root.overlayListMode ? 260 : (root.emptyState ? 200 : 96),
+        root.maxW + root.switchBarSpace)
+    readonly property int autoH: Math.max(root.emptyState ? 100 : 80, root.maxH)
 
     function maxSize() {
         var w = 0, h = 0
@@ -129,12 +130,6 @@ Item {
         return { w: w, h: h }
     }
 
-    function activeSize() {
-        var m = root.members[root.activeIndex]
-        var s = m ? root.sizeMap[m.key] : null
-        return s ? s : { w: 96, h: 80 }
-    }
-
     function reportSize(key, w, h) {
         var old = root.sizeMap[key]
         if (old && old.w === w && old.h === h) return
@@ -143,9 +138,6 @@ Item {
         m[key] = { w: Math.max(0, w), h: Math.max(0, h) }
         root.sizeMap = m
     }
-
-    property int frameW: 0
-    property int frameH: 0
 
     property int switchBarSpace: root.showSwitchBar && root.members.length > 0 ? 48 : 0
 
@@ -205,20 +197,17 @@ Item {
 
     readonly property bool miniMode: Configs.data.preferences.mini_mode
 
-    implicitWidth: root.gateHide ? 0 : (root.frameW > 0 ? root.frameW : root.autoW)
+    implicitWidth: root.gateHide ? 0 : root.autoW
     implicitHeight: root.gateHide
         ? 0
-        : (root.overlayListMode
-            ? Math.max(80, root.listTotalH())
-            : (root.miniMode ? 56 : (root.frameH > 0 ? root.frameH : root.autoH)))
+        : (root.overlayListMode ? Math.max(80, root.listTotalH())
+                                : (root.miniMode ? 56 : root.autoH))
     Behavior on implicitWidth {
-        enabled: !root.gateHide && (root.overlayListMode
-            || (root.frameW === 0 && root.frameMode === "auto"))
+        enabled: !root.gateHide
         NumberAnimation { duration: 320; easing.type: Easing.InOutCubic }
     }
     Behavior on implicitHeight {
-        enabled: !root.gateHide && (root.overlayListMode
-            || (root.frameH === 0 && root.frameMode === "auto"))
+        enabled: !root.gateHide
         NumberAnimation { duration: 320; easing.type: Easing.InOutCubic }
     }
     visible: root.overlayListMode || !root.gateHide
@@ -257,7 +246,6 @@ Item {
     Connections {
         target: backend
         function onMembersChanged() { root.refresh() }
-        function onFrameChanged() { root.reloadFrame() }
     }
 
     function findDef(widgetId) {
@@ -272,37 +260,6 @@ Item {
         var list = backend.getMembers(root.instanceId)
         root.members = list
         if (root.activeIndex >= list.length) root.activeIndex = 0
-        root.reloadFrame()
-    }
-
-    function reloadFrame() {
-        if (!backend) return
-        var f = backend.getFrameSize(root.instanceId)
-        root.frameW = f ? (f.w || 0) : 0
-        root.frameH = f ? (f.h || 0) : 0
-    }
-
-    function stepFrame(dw, dh) {
-        if (!backend) return
-        var w = root.frameW
-        if (dw !== 0) {
-            w = w > 0 ? w + dw : root.autoW + (dw > 0 ? dw : 0)
-            if (w < 60) w = 60
-        }
-        var h = root.frameH
-        if (dh !== 0) {
-            h = h > 0 ? h + dh : root.autoH + (dh > 0 ? dh : 0)
-            if (h < 40) h = 40
-        }
-        backend.setFrameSize(root.instanceId, w, h)
-        root.reloadFrame()
-    }
-
-    function resetFrame() {
-        if (!backend) return
-        backend.setFrameSize(root.instanceId, 0, 0)
-        root.frameW = 0
-        root.frameH = 0
     }
 
     readonly property bool listPlaceholderVisible: root.overlayListMode && root.members.length > 0
@@ -312,14 +269,23 @@ Item {
         return root.listPlaceholderVisible ? root.listPlaceholderHeight + root.listSpacing : 0
     }
 
+    readonly property int listActionHeight: 44
+
     function listY(i) {
         return root.listHeaderHeight() + i * (root.maxH + root.listSpacing)
     }
 
+    function listActionY() {
+        var n = root.members.length
+        if (n <= 0) return root.listHeaderHeight()
+        return root.listHeaderHeight() + n * root.maxH + (n - 1) * root.listSpacing + root.listSpacing
+    }
+
     function listTotalH() {
         var n = root.members.length
-        if (n <= 0) return 0
-        return root.listHeaderHeight() + n * root.maxH + root.listSpacing * (n - 1)
+        var h = root.listHeaderHeight()
+        if (n > 0) h += n * root.maxH + (n - 1) * root.listSpacing
+        return h + root.listSpacing + root.listActionHeight
     }
 
     function mergedMemberSettings(key, typeId) {
@@ -422,6 +388,27 @@ Item {
             color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.7) : Qt.rgba(0, 0, 0, 0.7)
             font.pixelSize: 13
             font.weight: Font.DemiBold
+        }
+    }
+
+    RowLayout {
+        id: listActions
+        visible: root.overlayListMode
+        x: (root.width - width) / 2
+        y: root.listActionY()
+        height: root.listActionHeight
+        spacing: 8
+
+        Button {
+            icon.name: "ic_fluent_add_20_regular"
+            text: qsTr("Add Member")
+            onClicked: root.addMemberRequested()
+        }
+        Button {
+            highlighted: true
+            icon.name: "ic_fluent_checkmark_20_regular"
+            text: qsTr("Done")
+            onClicked: root.doneRequested()
         }
     }
 
