@@ -66,6 +66,36 @@ SettingsLayout {
     SettingCard {
         Layout.fillWidth: true
 
+        icon.name: "ic_fluent_text_align_center_20_regular"
+        title: qsTr("Frame size mode")
+        description: qsTr("Largest member keeps the frame at the size of the biggest member; Follow current resizes the frame smoothly to the visible member.")
+
+        ComboBox {
+            id: frameModeComboBox
+            property bool initialized: false
+            property var modes: ["max", "auto"]
+
+            model: ListModel {
+                ListElement { text: qsTr("Largest member") }
+                ListElement { text: qsTr("Follow current") }
+            }
+            textRole: "text"
+
+            Component.onCompleted: {
+                var index = modes.indexOf(settings.frame_mode)
+                currentIndex = index >= 0 ? index : 0
+                initialized = true
+            }
+            onCurrentIndexChanged: {
+                if (initialized && currentIndex >= 0)
+                    settings.frame_mode = modes[currentIndex]
+            }
+        }
+    }
+
+    SettingCard {
+        Layout.fillWidth: true
+
         icon.name: "ic_fluent_arrow_sync_20_regular"
         title: qsTr("Show switch bar")
         description: qsTr("Show a switch button on the right edge of the widget to step through members manually.")

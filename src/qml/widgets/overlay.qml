@@ -116,10 +116,12 @@ Item {
     property int listSpacing: 10
     readonly property int maxW: root.maxSize().w
     readonly property int maxH: root.maxSize().h
+    property string frameMode: (settings && settings.frame_mode) ? settings.frame_mode : "max"
     readonly property bool emptyState: root.members.length === 0
     readonly property int autoW: Math.max(root.overlayListMode ? 260 : (root.emptyState ? 200 : 96),
-        root.maxW + root.switchBarSpace)
-    readonly property int autoH: Math.max(root.emptyState ? 100 : 80, root.maxH)
+        (root.frameMode === "auto" ? root.activeSize().w : root.maxW) + root.switchBarSpace)
+    readonly property int autoH: Math.max(root.emptyState ? 100 : 80,
+        root.frameMode === "auto" ? root.activeSize().h : root.maxH)
 
     function maxSize() {
         var w = 0, h = 0
@@ -128,6 +130,12 @@ Item {
             h = Math.max(h, root.sizeMap[k].h)
         }
         return { w: w, h: h }
+    }
+
+    function activeSize() {
+        var m = root.members[root.activeIndex]
+        var s = m ? root.sizeMap[m.key] : null
+        return s ? s : { w: 96, h: 80 }
     }
 
     function reportSize(key, w, h) {
