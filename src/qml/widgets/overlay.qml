@@ -3,6 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import QtQuick.Window
 import RinUI
+import ClassWidgets.Components
 import ClassWidgets.Theme 1.0
 
 Item {
@@ -382,8 +383,6 @@ Item {
     Component.onCompleted: {
         if (backend) refresh()
         root.updateClassState()
-        emptyTitleText.text = qsTr("Stacked widget")
-        emptyHintText.text = qsTr("Right-click to add members")
     }
 
     Rectangle {
@@ -396,30 +395,12 @@ Item {
         border.width: 1
         border.color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.18) : Qt.rgba(0, 0, 0, 0.12)
 
-        Column {
-            anchors.centerIn: parent
-            width: parent.width - 16
-            spacing: 6
-
-            Text {
-                id: emptyTitleText
-                width: parent.width
-                horizontalAlignment: Text.AlignHCenter
-                elide: Text.ElideRight
-                text: qsTr("Stacked widget")
-                color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.7) : Qt.rgba(0, 0, 0, 0.7)
-                font.pixelSize: 13
-                font.weight: Font.DemiBold
-            }
-            Text {
-                id: emptyHintText
-                width: parent.width
-                horizontalAlignment: Text.AlignHCenter
-                elide: Text.ElideRight
-                text: qsTr("Right-click to add members")
-                color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.5) : Qt.rgba(0, 0, 0, 0.5)
-                font.pixelSize: 12
-            }
+        EmptyState {
+            anchors.fill: parent
+            anchors.margins: 6
+            icon.size: 20
+            title: qsTr("Stacked widget")
+            description: qsTr("Right-click to add members")
         }
     }
 
