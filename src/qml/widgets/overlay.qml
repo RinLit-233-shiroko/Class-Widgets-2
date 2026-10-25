@@ -210,6 +210,8 @@ Item {
         ? 0
         : (root.overlayListMode ? Math.max(80, root.listTotalH())
                                 : (root.miniMode ? 56 : root.autoH))
+    width: implicitWidth
+    height: implicitHeight
     Behavior on implicitWidth {
         enabled: !root.gateHide
         NumberAnimation { duration: 320; easing.type: Easing.InOutCubic }
