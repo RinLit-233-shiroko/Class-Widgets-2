@@ -160,26 +160,26 @@ Licensed under the MIT license</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="219"/>
         <source>Safe Mode</source>
-        <translation type="unfinished">安全模式</translation>
+        <translation>安全模式</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="221"/>
         <source>Class Widgets is currently running in safe mode: third-party plugins and themes are not loaded, and Plugin Plaza is unavailable. Your settings and schedule work as usual.
 Restart normally to leave safe mode.</source>
-        <translation type="unfinished">Class Widgets 当前以安全模式运行：不会加载第三方插件和主题，插件广场不可用。你的设置和课程表仍然照常工作。
+        <translation>Class Widgets 当前以安全模式运行：不会加载第三方插件和主题，插件广场不可用。你的设置和课程表仍然照常工作。
 要退出安全模式，请正常重启。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="227"/>
         <source>Starts Class Widgets without third-party plugins and themes, so you can find the plugin or theme that caused a problem. Plugin Plaza is unavailable in safe mode.
 Your settings and schedule are kept.</source>
-        <translation type="unfinished">在不加载第三方插件和主题的情况下启动 Class Widgets，便于定位出问题的插件或主题。安全模式下插件广场不可用。
+        <translation>在不加载第三方插件和主题的情况下启动 Class Widgets，便于定位出问题的插件或主题。安全模式下插件广场不可用。
 你的设置和课程表会被保留。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="236"/>
         <source>Restart in safe mode</source>
-        <translation type="unfinished">重新启动并进入安全模式</translation>
+        <translation>重新启动并进入安全模式</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="245"/>
@@ -240,6 +240,10 @@ Your settings and schedule are kept.</source>
         <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddOverlayMemberDialog.qml" line="147"/>
         <source>Add</source>
         <translation>添加</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>关闭</translation>
     </message>
 </context>
 <context>
@@ -1389,12 +1393,12 @@ You can click the save button in the title bar.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/EntryListView.qml" line="48"/>
         <source>Preview</source>
-        <translation type="unfinished">预览</translation>
+        <translation>预览</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/EntryListView.qml" line="52"/>
         <source>Edit</source>
-        <translation type="unfinished">编辑</translation>
+        <translation>编辑</translation>
     </message>
 </context>
 <context>
@@ -3331,7 +3335,7 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="23"/>
         <source>Plugins are listed so you can still enable, disable or uninstall them, but no third-party plugin is loaded in this session. Changes take effect the next time you start normally.</source>
-        <translation type="unfinished">插件仍会列出，你依然可以启用、禁用或卸载它们，但本次会话不会加载任何第三方插件。改动将在下次正常启动时生效。</translation>
+        <translation>插件仍会列出，你依然可以启用、禁用或卸载它们，但本次会话不会加载任何第三方插件。改动将在下次正常启动时生效。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="32"/>
@@ -3361,13 +3365,13 @@ It&apos;s incompatible and may cause unexpected issues.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="141"/>
         <source>Unavailable in safe mode: Plugin Plaza needs the plugins it manages to be loaded.</source>
-        <translation type="unfinished">安全模式下不可用：插件广场需要它管理的插件处于加载状态。</translation>
+        <translation>安全模式下不可用：插件广场需要它管理的插件处于加载状态。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="165"/>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="178"/>
         <source>Unavailable in safe mode</source>
-        <translation type="unfinished">安全模式下不可用</translation>
+        <translation>安全模式下不可用</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="220"/>
@@ -3812,12 +3816,12 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/SafeModeNotice.qml" line="13"/>
         <source>Safe mode</source>
-        <translation type="unfinished">安全模式</translation>
+        <translation>安全模式</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/SafeModeNotice.qml" line="14"/>
         <source>Third-party plugins, themes and Plugin Plaza are disabled.</source>
-        <translation type="unfinished">第三方插件、主题与插件广场已禁用。</translation>
+        <translation>第三方插件、主题与插件广场已禁用。</translation>
     </message>
 </context>
 <context>
@@ -4778,7 +4782,7 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="37"/>
         <source>Safe mode skips third-party plugins and themes, and disables Plugin Plaza. Your settings and schedule are used as usual. Restart normally to leave safe mode.</source>
-        <translation type="unfinished">安全模式会跳过第三方插件和主题，并禁用插件广场。你的设置和课程表照常使用。要退出安全模式，请正常重启。</translation>
+        <translation>安全模式会跳过第三方插件和主题，并禁用插件广场。你的设置和课程表照常使用。要退出安全模式，请正常重启。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="52"/>
@@ -5666,107 +5670,107 @@ Class Widgets has restored the default theme.</source>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="14"/>
         <source>Digit Animation</source>
-        <translation type="unfinished">数字动画</translation>
+        <translation>数字动画</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="15"/>
         <source>Animate the clock digits when the time updates. Turn off to display them statically.</source>
-        <translation type="unfinished">时间更新时数字滚动切换。关闭后直接静态显示。</translation>
+        <translation>时间更新时数字滚动切换。关闭后直接静态显示。</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="28"/>
         <source>Show Seconds</source>
-        <translation type="unfinished">显示秒</translation>
+        <translation>显示秒</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="29"/>
         <source>Display seconds after the hour and minute.</source>
-        <translation type="unfinished">在时分之后显示秒数。</translation>
+        <translation>在时分之后显示秒数。</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="43"/>
         <source>Show Date</source>
-        <translation type="unfinished">显示日期</translation>
+        <translation>显示日期</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="44"/>
         <source>Display the date below the clock. Turn off to hide all date parts.</source>
-        <translation type="unfinished">在时间下方显示日期。关闭后隐藏所有日期部分。</translation>
+        <translation>在时间下方显示日期。关闭后隐藏所有日期部分。</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="57"/>
         <source>Date Content</source>
-        <translation type="unfinished">日期内容</translation>
+        <translation>日期内容</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="58"/>
         <source>Choose which parts of the date to display.</source>
-        <translation type="unfinished">选择要显示的日期部分。</translation>
+        <translation>选择要显示的日期部分。</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="73"/>
         <source>Year</source>
-        <translation type="unfinished">年</translation>
+        <translation>年</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="86"/>
         <source>Month</source>
-        <translation type="unfinished">月</translation>
+        <translation>月</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="99"/>
         <source>Day</source>
-        <translation type="unfinished">日</translation>
+        <translation>日</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="110"/>
         <source>Show Weekday</source>
-        <translation type="unfinished">显示星期</translation>
+        <translation>显示星期</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="111"/>
         <source>Display the weekday below the clock.</source>
-        <translation type="unfinished">在时间下方显示星期。</translation>
+        <translation>在时间下方显示星期。</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="125"/>
         <source>Date and Weekday Layout</source>
-        <translation type="unfinished">日期与星期布局</translation>
+        <translation>日期与星期布局</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="126"/>
         <source>Show the date and weekday side by side, or alternate between them.</source>
-        <translation type="unfinished">让日期与星期并排显示，或在两者之间轮流切换。</translation>
+        <translation>让日期与星期并排显示，或在两者之间轮流切换。</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="134"/>
         <source>Side by side</source>
-        <translation type="unfinished">并排显示</translation>
+        <translation>并排显示</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="135"/>
         <source>Alternate</source>
-        <translation type="unfinished">交替显示</translation>
+        <translation>交替显示</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="155"/>
         <source>Alternate Interval</source>
-        <translation type="unfinished">轮换间隔</translation>
+        <translation>轮换间隔</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="156"/>
         <source>Set how long each of the date and weekday stays visible.</source>
-        <translation type="unfinished">设置日期和星期各自停留的时长。</translation>
+        <translation>设置日期和星期各自停留的时长。</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="182"/>
         <source>Alternate Animation</source>
-        <translation type="unfinished">轮换动画</translation>
+        <translation>轮换动画</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/Time.qml" line="183"/>
         <source>Fade between the date and weekday instead of switching instantly.</source>
-        <translation type="unfinished">日期与星期之间以淡入淡出过渡，而不是瞬间切换。</translation>
+        <translation>日期与星期之间以淡入淡出过渡，而不是瞬间切换。</translation>
     </message>
 </context>
 <context>
@@ -6893,12 +6897,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="307"/>
         <source>Add Member</source>
-        <translation type="unfinished">添加成员</translation>
+        <translation>添加成员</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="324"/>
         <source>Done</source>
-        <translation type="unfinished">完成</translation>
+        <translation>完成</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="402"/>
@@ -6908,7 +6912,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="418"/>
         <source>Edit Members</source>
-        <translation type="unfinished">编辑成员</translation>
+        <translation>编辑成员</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="427"/>
@@ -7021,12 +7025,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/settings/eventCountdown.qml" line="12"/>
         <source>Digit Animation</source>
-        <translation type="unfinished">数字动画</translation>
+        <translation>数字动画</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/settings/eventCountdown.qml" line="13"/>
         <source>Animate the minute and second digits when the countdown updates. Turn off to display them statically.</source>
-        <translation type="unfinished">倒计时更新时分钟与秒钟数字滚动切换。关闭后直接静态显示。</translation>
+        <translation>倒计时更新时分钟与秒钟数字滚动切换。关闭后直接静态显示。</translation>
     </message>
 </context>
 <context>

@@ -234,6 +234,10 @@ Your settings and schedule are kept.</source>
         <source>Add</source>
         <translation>新增</translation>
     </message>
+    <message>
+        <source>Close</source>
+        <translation>關閉</translation>
+    </message>
 </context>
 <context>
     <name>AddSubjectExpander</name>

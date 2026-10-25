@@ -191,6 +191,10 @@ Your settings and schedule are kept.</source>
         <source>Add</source>
         <translation>Add</translation>
     </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AddSubjectExpander</name>

@@ -222,6 +222,10 @@ Your settings and schedule are kept.</source>
         <source>Add</source>
         <translation>添加</translation>
     </message>
+    <message>
+        <source>Close</source>
+        <translation>关闭</translation>
+    </message>
 </context>
 <context>
     <name>AddSubjectExpander</name>
