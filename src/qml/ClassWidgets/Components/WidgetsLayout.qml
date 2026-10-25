@@ -106,6 +106,14 @@ Item {
         return listView.itemAtIndex(i)
     }
 
+    function openOverlayMemberDialog(instanceId) {
+        overlayMemberDialogInstance.active = true
+        if (overlayMemberDialogInstance.item) {
+            overlayMemberDialogInstance.item.overlayInstanceId = instanceId
+            overlayMemberDialogInstance.item.open()
+        }
+    }
+
     ListView {
         id: listView
 
@@ -150,7 +158,6 @@ Item {
 
         delegate: WidgetsLayoutDelegate {
             host: layoutRoot
-            overlayMemberDialog: overlayMemberDialogInstance
             settingsDialog: settingsDialogInstance
             onWidgetTapped: layoutRoot.widgetTapped()
         }

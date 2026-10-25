@@ -212,13 +212,13 @@ Item {
             ? Math.max(80, root.listTotalH())
             : (root.miniMode ? 56 : (root.frameH > 0 ? root.frameH : root.autoH)))
     Behavior on implicitWidth {
-        enabled: !root.overlayListMode && !root.gateHide && root.frameW === 0
-            && root.frameMode === "auto"
+        enabled: !root.gateHide && (root.overlayListMode
+            || (root.frameW === 0 && root.frameMode === "auto"))
         NumberAnimation { duration: 320; easing.type: Easing.InOutCubic }
     }
     Behavior on implicitHeight {
-        enabled: !root.overlayListMode && !root.gateHide && root.frameH === 0
-            && root.frameMode === "auto"
+        enabled: !root.gateHide && (root.overlayListMode
+            || (root.frameH === 0 && root.frameMode === "auto"))
         NumberAnimation { duration: 320; easing.type: Easing.InOutCubic }
     }
     visible: root.overlayListMode || !root.gateHide

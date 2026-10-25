@@ -6340,6 +6340,10 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>Add</source>
         <translation>கூட்டு</translation>
     </message>
+    <message>
+        <source>Add Member</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WidgetsLayoutDelegate</name>

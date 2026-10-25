@@ -236,8 +236,7 @@ Item {
         anchors.top: widgetsLayout.bottom
         anchors.topMargin: addWidgetsContainer.visible ? widgetsContainer.spacing : 0
         anchors.horizontalCenter: parent.horizontalCenter
-        visible: (widgetsContainer.editMode || widgetsLayout.count === 0)
-                 && widgetsLayout.overlayEditingId === ""
+        visible: widgetsContainer.editMode || widgetsLayout.count === 0
         spacing: 4
 
         Button {
@@ -246,11 +245,15 @@ Item {
             Layout.preferredHeight: widgetsContainer.addRowHeight
 
             icon.name: "ic_fluent_add_20_regular"
-            text: qsTr("Add")
+            text: widgetsLayout.overlayEditingId === "" ? qsTr("Add") : qsTr("Add Member")
 
             onClicked: {
                 widgetsContainer.editMode = true
-                addDialog.open()
+                if (widgetsLayout.overlayEditingId === "") {
+                    addDialog.open()
+                } else {
+                    widgetsLayout.openOverlayMemberDialog(widgetsLayout.overlayEditingId)
+                }
             }
         }
 
@@ -258,13 +261,14 @@ Item {
             Layout.preferredHeight: widgetsContainer.addRowHeight
             Layout.alignment: Qt.AlignCenter
 
-            visible: widgetsContainer.editMode && widgetsLayout.overlayEditingId === ""
+            visible: widgetsContainer.editMode
             id: acceptButton
             highlighted: true
             icon.name: "ic_fluent_checkmark_20_regular"
             onClicked: {
                 WidgetsModel.save_config()
                 widgetsContainer.editMode = false
+                widgetsLayout.overlayEditingId = ""
             }
         }
     }

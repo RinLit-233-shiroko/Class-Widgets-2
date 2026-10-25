@@ -6345,6 +6345,10 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>Done</source>
         <translation>我滴任务完成辣！</translation>
     </message>
+    <message>
+        <source>Add Member</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WidgetsLayoutDelegate</name>

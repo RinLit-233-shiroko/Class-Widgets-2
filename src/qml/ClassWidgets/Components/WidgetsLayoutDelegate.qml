@@ -10,7 +10,6 @@ Item {
     // ---- 由 WidgetsLayout 注入 ----
     property Item host: null
     property var settingsDialog: null
-    property var overlayMemberDialog: null
 
     property int widgetIndex: index
     property real spacing: host.spacing
@@ -54,7 +53,7 @@ Item {
     }
 
     width: (naturalWidth + spacing) * growFactor
-    height: naturalHeight + (widgetContainer.overlayEditing ? editRow.height + 10 : 0)
+    height: naturalHeight
 
     property real visOpacity: 0
     property real visScale: 0.8
@@ -318,43 +317,6 @@ Item {
     onOverlayEditingChanged: {
         if (widgetContainer.isOverlay && loader.item)
             loader.item.overlayListMode = widgetContainer.overlayEditing
-    }
-
-    RowLayout {
-        id: editRow
-        objectName: "editRow"
-        visible: widgetContainer.overlayEditing
-        anchors.top: loader.bottom
-        anchors.topMargin: 10
-        anchors.horizontalCenter: parent.horizontalCenter
-        width: implicitWidth
-        height: implicitHeight
-        spacing: 8
-
-        Button {
-            icon.name: "ic_fluent_add_20_regular"
-            text: qsTr("Add Member")
-            onClicked: {
-                var dlg = widgetContainer.overlayMemberDialog
-                if (dlg) {
-                    dlg.active = true
-                    if (dlg.item) {
-                        dlg.item.overlayInstanceId = model.instanceId
-                        dlg.item.open()
-                    }
-                }
-            }
-        }
-
-        Button {
-            highlighted: true
-            icon.name: "ic_fluent_checkmark_20_regular"
-            text: qsTr("Done")
-            onClicked: {
-                host.editMode = false
-                host.overlayEditingId = ""
-            }
-        }
     }
 
     ToolButton {
