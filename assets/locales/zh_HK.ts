@@ -276,6 +276,11 @@ Your settings and schedule are kept.</source>
         <source>Class Widgets started in safe mode. Your configuration and third-party plugins and themes were skipped.</source>
         <translation>已以安全模式啟動。設定檔以及第三方插件和主題已全部略過。</translation>
     </message>
+    <message>
+        <location filename="../../src/core/central.py" line="720"/>
+        <source>Class Widgets started in safe mode. Third-party plugins and themes were skipped; your settings and schedule are used as usual.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Appearance</name>
@@ -1315,6 +1320,16 @@ Do you want to continue using them, or discard and restore the original schedule
         <source>This time overlaps with an existing schedule (%1 – %2)</source>
         <translation type="unfinished">此時間與現有時間表重疊 (%1 – %2)</translation>
     </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/EntryListView.qml" line="48"/>
+        <source>Preview</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/EntryListView.qml" line="52"/>
+        <source>Edit</source>
+        <translation type="unfinished">編輯</translation>
+    </message>
 </context>
 <context>
     <name>ErrorState</name>
@@ -1342,6 +1357,11 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <source>Class Widgets 2 JSON Files (*.json)</source>
         <translation>Class Widgets 2 JSON 文件 (*.json)</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/manager.py" line="288"/>
+        <source>Export Schedules</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2720,6 +2740,11 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
         <source>{count} plugin(s) could not be loaded and were skipped: {names}</source>
         <translation>有 {count} 個插件無法載入，已略過：{names}</translation>
     </message>
+    <message>
+        <location filename="../../src/core/plugin/manager.py" line="127"/>
+        <source>{count} incompatible plugin(s) have been loaded, which may cause unknown issues.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PluginPlaza</name>
@@ -2817,6 +2842,76 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="273"/>
         <source>Downloads</source>
         <translation type="unfinished">下載</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plaza/notifications.py" line="53"/>
+        <source>{action} {name} (v{version}).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plaza/notifications.py" line="66"/>
+        <source>Plugin Plaza {action} failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plaza/notifications.py" line="69"/>
+        <source>{name}: {error}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plaza/notifications.py" line="78"/>
+        <source>Plugin updates available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plaza/notifications.py" line="81"/>
+        <source>{count} plugin update(s) are ready in Plugin Plaza.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/errors.py" line="23"/>
+        <source>The package version ({package_version}) does not match the Plugin Plaza version ({release_version}).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/errors.py" line="30"/>
+        <source>The plugin package does not match the selected plugin.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/errors.py" line="32"/>
+        <source>The plugin package could not be found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/errors.py" line="38"/>
+        <source>The plugin package is too large.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/errors.py" line="40"/>
+        <source>The plugin package is invalid.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/errors.py" line="46"/>
+        <source>The plugin manifest is invalid.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/errors.py" line="55"/>
+        <source>The plugin package failed security checks.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/errors.py" line="57"/>
+        <source>Unable to download the plugin. Check your connection and try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/errors.py" line="60"/>
+        <source>Plugin installation failed.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3250,6 +3345,11 @@ It&apos;s incompatible and may cause unexpected issues.</source>
         <source>%1 installed, %2 failed. Retry the failed plugins or continue without them.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="11"/>
+        <source>Built-in Widgets</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Preferences</name>
@@ -3585,6 +3685,21 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <message>
         <source>Quick Add Subject</source>
         <translation type="obsolete">快速新增科目</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/converter/cses.py" line="214"/>
+        <source>All Weeks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/converter/cses.py" line="216"/>
+        <source>Odd Weeks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/converter/cses.py" line="218"/>
+        <source>Even Weeks</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4095,6 +4210,82 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <message>
         <source>Preparation Bell</source>
         <translation type="obsolete">預備鈴</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="310"/>
+        <source>Class Started</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="327"/>
+        <source>Activity Started</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="336"/>
+        <source>Intermission</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="352"/>
+        <location filename="../../src/core/schedule/runtime.py" line="362"/>
+        <location filename="../../src/core/schedule/runtime.py" line="388"/>
+        <location filename="../../src/core/schedule/runtime.py" line="398"/>
+        <source>Next: {}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="356"/>
+        <location filename="../../src/core/schedule/runtime.py" line="392"/>
+        <source>Next: {} at {}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="358"/>
+        <location filename="../../src/core/schedule/runtime.py" line="394"/>
+        <source>Next: {} (Off-site)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="372"/>
+        <source>Recess</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="407"/>
+        <source>Enjoy your break</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="409"/>
+        <source>Free Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="414"/>
+        <source>Status Changed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="414"/>
+        <source>Current status: {}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="468"/>
+        <location filename="../../src/core/schedule/runtime.py" line="478"/>
+        <source>Coming up: {}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="472"/>
+        <source>Coming up: {} at {}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/runtime.py" line="474"/>
+        <source>Coming up: {} (Off-site)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4996,6 +5187,16 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <source>CS</source>
         <translation type="obsolete">CSV</translation>
     </message>
+    <message>
+        <location filename="../../src/core/utils/subjects.py" line="113"/>
+        <source>Meeting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/utils/subjects.py" line="114"/>
+        <source>Test</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TableEntryDelegate</name>
@@ -5101,6 +5302,16 @@ If it takes place in another location, such as a sport field, lab, or another cl
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Theme.qml" line="94"/>
         <source>Choose the color used for highlights and controls</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/themes/__init__.py" line="11"/>
+        <source>Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/themes/__init__.py" line="12"/>
+        <source>Class Widgets Builtin Default Theme</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6221,6 +6432,31 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>Overlay</source>
         <translation>堆疊組件</translation>
     </message>
+    <message>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="38"/>
+        <source>Time</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="44"/>
+        <source>Event Countdown</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="50"/>
+        <source>Upcoming Activities</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="62"/>
+        <source>Dynamic Notification</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="68"/>
+        <source>Text</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WidgetsContainer</name>
@@ -6670,6 +6906,50 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="34"/>
         <source>Unset</source>
         <translation type="unfinished">未設定</translation>
+    </message>
+</context>
+<context>
+    <name>UpdateNotification</name>
+    <message>
+        <location filename="../../src/core/automations/update_check.py" line="43"/>
+        <source>&quot;{version}&quot; is available!
+Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/automations/update_check.py" line="45"/>
+        <source>Class Widgets Update Available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/updater/bridge.py" line="88"/>
+        <source>Class Widgets has been updated to the latest version: {version}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/updater/bridge.py" line="89"/>
+        <source>Update Completed ヾ(≧▽≦*)o</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/updater/bridge.py" line="162"/>
+        <source>Update Downloaded</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/updater/bridge.py" line="167"/>
+        <source>Ready to install anytime. Go to &quot;Settings&quot; → &quot;Update&quot; to proceed with installation.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/updater/bridge.py" line="204"/>
+        <source>Applying Update Soon</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/updater/bridge.py" line="208"/>
+        <source>The update may take several seconds to complete. (●&apos;◡&apos;●)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

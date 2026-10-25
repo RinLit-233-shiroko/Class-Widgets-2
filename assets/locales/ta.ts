@@ -1276,6 +1276,16 @@ Do you want to continue using them, or discard and restore the original schedule
         <source>This time overlaps with an existing schedule (%1 – %2)</source>
         <translation>இந்த நேரம் ஏற்கனவே உள்ள அட்டவணையுடன் மேலெழுகிறது (% 1 - %2)</translation>
     </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/EntryListView.qml" line="48"/>
+        <source>Preview</source>
+        <translation type="unfinished">முன்னோட்டம்</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/EntryListView.qml" line="52"/>
+        <source>Edit</source>
+        <translation type="unfinished">தொகு</translation>
+    </message>
 </context>
 <context>
     <name>ErrorState</name>
@@ -1303,6 +1313,11 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <source>Class Widgets 2 JSON Files (*.json)</source>
         <translation>வகுப்பு விட்செட்டுகள் 2 சாதொபொகு கோப்புகள் (*.json)</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/manager.py" line="288"/>
+        <source>Export Schedules</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2652,6 +2667,16 @@ If translations are missing after a theme change, please restart</source>
         <source>{count} incompatible plugin(s) have been loaded, which may cause unknown issues.</source>
         <translation>{count} பொருந்தாத செருகுநிரல்கள் (கள்) ஏற்றப்பட்டுள்ளன, இது அறியப்படாத சிக்கல்களை ஏற்படுத்தக்கூடும்.</translation>
     </message>
+    <message>
+        <location filename="../../src/core/plugin/manager.py" line="189"/>
+        <source>Some plugins failed to load</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/manager.py" line="193"/>
+        <source>{count} plugin(s) could not be loaded and were skipped: {names}</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PluginPlaza</name>
@@ -2752,6 +2777,76 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Windows/PluginPlaza.qml" line="273"/>
         <source>Downloads</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plaza/notifications.py" line="53"/>
+        <source>{action} {name} (v{version}).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plaza/notifications.py" line="66"/>
+        <source>Plugin Plaza {action} failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plaza/notifications.py" line="69"/>
+        <source>{name}: {error}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plaza/notifications.py" line="78"/>
+        <source>Plugin updates available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plaza/notifications.py" line="81"/>
+        <source>{count} plugin update(s) are ready in Plugin Plaza.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/errors.py" line="23"/>
+        <source>The package version ({package_version}) does not match the Plugin Plaza version ({release_version}).</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/errors.py" line="30"/>
+        <source>The plugin package does not match the selected plugin.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/errors.py" line="32"/>
+        <source>The plugin package could not be found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/errors.py" line="38"/>
+        <source>The plugin package is too large.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/errors.py" line="40"/>
+        <source>The plugin package is invalid.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/errors.py" line="46"/>
+        <source>The plugin manifest is invalid.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/errors.py" line="55"/>
+        <source>The plugin package failed security checks.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/errors.py" line="57"/>
+        <source>Unable to download the plugin. Check your connection and try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/errors.py" line="60"/>
+        <source>Plugin installation failed.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6220,6 +6315,11 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>Overlay</source>
         <translation>அடுக்கு விட்ஜெட்</translation>
     </message>
+    <message>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="68"/>
+        <source>Text</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WidgetsContainer</name>
@@ -6665,6 +6765,19 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="34"/>
         <source>Unset</source>
         <translation>அமைக்கப்படவில்லை</translation>
+    </message>
+</context>
+<context>
+    <name>AppCentral</name>
+    <message>
+        <location filename="../../src/core/central.py" line="716"/>
+        <source>Safe mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/central.py" line="720"/>
+        <source>Class Widgets started in safe mode. Third-party plugins and themes were skipped; your settings and schedule are used as usual.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

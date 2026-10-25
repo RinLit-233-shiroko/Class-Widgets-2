@@ -275,6 +275,11 @@ Your settings and schedule are kept.</source>
         <source>Class Widgets started in safe mode. Your configuration and third-party plugins and themes were skipped.</source>
         <translation>Class Widgets はセーフ モードで起動しました。構成ファイルとサードパーティのプラグインおよびテーマはスキップされました。</translation>
     </message>
+    <message>
+        <location filename="../../src/core/central.py" line="720"/>
+        <source>Class Widgets started in safe mode. Third-party plugins and themes were skipped; your settings and schedule are used as usual.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Appearance</name>
@@ -1321,6 +1326,16 @@ Do you want to continue using them, or discard and restore the original schedule
         <source>This time overlaps with an existing schedule (%1 – %2)</source>
         <translation>この時間は既存のスケジュール (%1 – %2) と重なっています</translation>
     </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/EntryListView.qml" line="48"/>
+        <source>Preview</source>
+        <translation type="unfinished">プレビュー</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/EntryListView.qml" line="52"/>
+        <source>Edit</source>
+        <translation type="unfinished">編集</translation>
+    </message>
 </context>
 <context>
     <name>ErrorState</name>
@@ -1348,6 +1363,11 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <source>Class Widgets 2 JSON Files (*.json)</source>
         <translation type="obsolete">Class Widgets 2 JSON ファイル (*.json)</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/manager.py" line="288"/>
+        <source>Export Schedules</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -23,8 +23,36 @@ ColumnLayout {
     // dragging it does not start Flickable scrolling.
     property bool selectedEntryHovered: false
 
+    // Preview mode only scrolls; all entry editing is disabled.
+    property bool editMode: false
+
     Layout.fillWidth: true
     Layout.fillHeight: true
+
+    // 模式切换放在时间线右上角
+    RowLayout {
+        Layout.fillWidth: true
+        Layout.fillHeight: false
+        enabled: root.currentDayIndex >= 0
+
+        Item { Layout.fillWidth: true }
+
+        Segmented {
+            id: modeSwitch
+            Layout.alignment: Qt.AlignVCenter
+            currentIndex: root.editMode ? 1 : 0
+            onCurrentIndexChanged: root.editMode = currentIndex === 1
+
+            SegmentedItem {
+                icon.name: "ic_fluent_eye_20_regular"
+                text: qsTr("Preview")
+            }
+            SegmentedItem {
+                icon.name: "ic_fluent_edit_20_regular"
+                text: qsTr("Edit")
+            }
+        }
+    }
 
     // 空白提示
     Item {
@@ -67,7 +95,7 @@ ColumnLayout {
         Layout.fillWidth: true
         Layout.fillHeight: true
         clip: true
-        interactive: !root.selectedEntryHovered
+        interactive: !root.editMode || !root.selectedEntryHovered
         contentHeight: 24 * 60 * pxPerMin
 
         Behavior on contentY {
@@ -161,6 +189,7 @@ ColumnLayout {
             flat: true
             icon.name: "ic_fluent_class_20_regular"
             text: qsTr("Class")
+            enabled: root.editMode
             onClicked: addEntry("class")
             visible: parent.expanded
         }
@@ -169,6 +198,7 @@ ColumnLayout {
             flat: true
             icon.name: "ic_fluent_drink_coffee_20_regular"
             text: qsTr("Break")
+            enabled: root.editMode
             onClicked: addEntry("break")
             visible: parent.expanded
         }
@@ -177,6 +207,7 @@ ColumnLayout {
             flat: true
             icon.name: "ic_fluent_alert_20_regular"
             text: qsTr("Activity")
+            enabled: root.editMode
             onClicked: addEntry("activity")
             visible: parent.expanded
         }
@@ -185,6 +216,7 @@ ColumnLayout {
             flat: true
             icon.name: "ic_fluent_add_20_regular"
             text: qsTr("New Schedule")
+            enabled: root.editMode
             visible: !parent.expanded
 
             MenuItem {

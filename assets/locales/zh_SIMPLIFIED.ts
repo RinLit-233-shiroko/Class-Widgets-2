@@ -1277,6 +1277,16 @@ Do you want to continue using them, or discard and restore the original schedule
         <source>This time overlaps with an existing schedule (%1 – %2)</source>
         <translation>这个安排和之前的安排 (%1 – %2) 有冲突</translation>
     </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/EntryListView.qml" line="48"/>
+        <source>Preview</source>
+        <translation type="unfinished">预习</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/EntryListView.qml" line="52"/>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ErrorState</name>
@@ -1304,6 +1314,11 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <source>Class Widgets 2 JSON Files (*.json)</source>
         <translation>2WC杰森文件 (*.json)</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/schedule/manager.py" line="288"/>
+        <source>Export Schedules</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2667,6 +2682,16 @@ If translations are missing after a theme change, please restart</source>
     <message>
         <source>{count} incompatible plugin(s) have been loaded, which may cause unknown issues.</source>
         <translation>发现 {count} 个屁股可能不合适Class Widgets，运行过程中可能会把 Class Widgets 弄坏。</translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/manager.py" line="189"/>
+        <source>Some plugins failed to load</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/plugin/manager.py" line="193"/>
+        <source>{count} plugin(s) could not be loaded and were skipped: {names}</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6287,6 +6312,11 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>Overlay</source>
         <translation>堆叠组件</translation>
     </message>
+    <message>
+        <location filename="../../src/plugins/cw_widgets/widgets.py" line="68"/>
+        <source>Text</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WidgetsContainer</name>
@@ -6736,6 +6766,19 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="34"/>
         <source>Unset</source>
         <translation>滚木</translation>
+    </message>
+</context>
+<context>
+    <name>AppCentral</name>
+    <message>
+        <location filename="../../src/core/central.py" line="716"/>
+        <source>Safe mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/core/central.py" line="720"/>
+        <source>Class Widgets started in safe mode. Third-party plugins and themes were skipped; your settings and schedule are used as usual.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
