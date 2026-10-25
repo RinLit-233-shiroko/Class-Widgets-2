@@ -46,8 +46,8 @@ Dialog {
                 }
             }
         }
-        widgetsListView.currentIndex = -1
-        widgetsListView.currentIndex = 0
+        if (widgetsListView.currentIndex < 0 && widgetsListView.count > 0)
+            widgetsListView.currentIndex = 0
     }
 
     RowLayout {

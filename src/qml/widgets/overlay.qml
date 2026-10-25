@@ -7,6 +7,7 @@ import ClassWidgets.Theme 1.0
 
 Item {
     id: root
+    clip: true
 
     property var backend: null
     property var settings: null
@@ -304,7 +305,7 @@ Item {
     }
 
     readonly property bool listPlaceholderVisible: root.overlayListMode && root.members.length > 0
-    readonly property int listPlaceholderHeight: 56
+    readonly property int listPlaceholderHeight: root.maxH > 0 ? root.maxH : (root.miniMode ? 56 : 100)
 
     function listHeaderHeight() {
         return root.listPlaceholderVisible ? root.listPlaceholderHeight + root.listSpacing : 0
@@ -510,8 +511,23 @@ Item {
                 }
                 if (item) {
                     root.reportSize(memberId, item.implicitWidth, item.height)
+                    Qt.callLater(function() {
+                        if (memberLoader.item)
+                            root.reportSize(memberId, memberLoader.item.implicitWidth,
+                                            memberLoader.item.height)
+                    })
                 }
                 root.reportContent(memberId, root.backendHasContent(item))
+            }
+
+            Connections {
+                target: memberLoader.item
+                ignoreUnknownSignals: true
+                function onImplicitWidthChanged() {
+                    if (memberLoader.item)
+                        root.reportSize(memberLoader.memberId, memberLoader.item.implicitWidth,
+                                        memberLoader.item.height)
+                }
             }
 
             onHeightChanged: {
