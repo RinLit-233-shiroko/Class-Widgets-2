@@ -44,7 +44,10 @@ Item {
 
     Behavior on liftY { NumberAnimation { duration: 260; easing.type: Easing.OutCubic } }
 
-    // 独立不透明圆角矩形作为阴影源（透明背景卡片无法直接对控件做 layer 阴影）
+    // 悬停阴影：用 opacity 显隐，但 layer 必须常驻。
+    // 悬停由 QQuickDeliveryAgent 在派发 HoverEvent 时同步计算，若此时翻转
+    // layer.enabled 就会同步创建/销毁 layer 及其 effect 子项，派发器遍历的
+    // 子项快照会因此出现悬垂指针，滚动时踩到 isVisible() 直接 SIGSEGV。
     Rectangle {
         id: shadowSource
         anchors.fill: parent
@@ -52,9 +55,7 @@ Item {
         color: Colors.proxy.backgroundColor
         opacity: card.hovered && !root.isLoading ? 1 : 0
 
-        // Behavior on opacity { NumberAnimation { duration: 260; easing.type: Easing.OutCubic } }
-
-        layer.enabled: opacity > 0
+        layer.enabled: true
         layer.effect: MultiEffect {
             autoPaddingEnabled: true
             shadowEnabled: true
