@@ -2679,7 +2679,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
         <translation type="unfinished">作者不明</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCard.qml" line="209"/>
+        <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCard.qml" line="210"/>
         <source>Unknown plugin</source>
         <translation type="unfinished">不明なプラグイン</translation>
     </message>

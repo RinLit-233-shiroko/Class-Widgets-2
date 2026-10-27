@@ -2612,7 +2612,7 @@ If translations are missing after a theme change, please restart</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCard.qml" line="209"/>
+        <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCard.qml" line="210"/>
         <source>Unknown plugin</source>
         <translation type="unfinished"></translation>
     </message>
