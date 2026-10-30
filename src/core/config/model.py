@@ -16,7 +16,6 @@ type JsonData = JsonScalar | dict[str, "JsonData"] | list["JsonData"]
 
 GITHUB_MIRRORS: dict[str, str] = {
     "gh_proxy": "https://gh-proxy.com/",
-    "kkgithub": "https://kkgithub.com/",
     "gitfast": "https://gitfast.top/",
 }
 
