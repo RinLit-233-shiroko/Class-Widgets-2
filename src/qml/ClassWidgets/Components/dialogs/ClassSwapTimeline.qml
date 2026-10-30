@@ -3,7 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import RinUI
 import ClassWidgets.Components
-import "../editor/CoursePalette.js" as Palette
+import "../editor/ColorPalette.js" as Palette
 /*
  * Single-column course timeline, the one-column sibling of the editor's
  * ScheduleTableView.

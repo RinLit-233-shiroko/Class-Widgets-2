@@ -255,7 +255,7 @@ Your settings and schedule are kept.</source>
         <translation>セーフ モード</translation>
     </message>
     <message>
-        <location filename="../../src/core/central.py" line="720"/>
+        <location filename="../../src/core/central.py" line="717"/>
         <source>Class Widgets started in safe mode. Third-party plugins and themes were skipped; your settings and schedule are used as usual.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -568,7 +568,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation type="vanished">デフォルト</translation>
     </message>
     <message>
-        <location filename="../../src/core/config/model.py" line="230"/>
+        <location filename="../../src/core/config/model.py" line="229"/>
         <source>New Schedule 1</source>
         <translation type="unfinished">新規スケジュール 1</translation>
     </message>
@@ -1343,7 +1343,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation type="unfinished">スケジュールをエクスポート</translation>
     </message>
     <message>
-        <location filename="../../src/core/converter/slots.py" line="27"/>
+        <location filename="../../src/core/converter/slots.py" line="25"/>
         <source>CSES Format (*.yaml *.yml)</source>
         <translation type="unfinished">CSES 形式 (*.yaml *.yml)</translation>
     </message>
@@ -1353,7 +1353,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/manager.py" line="404"/>
+        <location filename="../../src/core/schedule/manager.py" line="403"/>
         <source>Class Widgets 2 JSON Files (*.json)</source>
         <translation type="unfinished">Class Widgets 2 JSON ファイル (*.json)</translation>
     </message>
@@ -1761,22 +1761,22 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>ImportScheduleDialog</name>
     <message>
-        <location filename="../../src/core/converter/slots.py" line="179"/>
+        <location filename="../../src/core/converter/slots.py" line="177"/>
         <source>Import CSES Schedule</source>
         <translation type="unfinished">CSES 時間割のインポート</translation>
     </message>
     <message>
-        <location filename="../../src/core/converter/slots.py" line="182"/>
+        <location filename="../../src/core/converter/slots.py" line="180"/>
         <source>CSES YAML Files (*.yaml *.yml)</source>
         <translation type="unfinished">CSES YAML ファイル (*.yaml *.yml)</translation>
     </message>
     <message>
-        <location filename="../../src/core/converter/slots.py" line="193"/>
+        <location filename="../../src/core/converter/slots.py" line="191"/>
         <source>Import Class Widgets 1 Schedule</source>
         <translation type="unfinished">Class Widgets 1 の時間割をインポート</translation>
     </message>
     <message>
-        <location filename="../../src/core/converter/slots.py" line="196"/>
+        <location filename="../../src/core/converter/slots.py" line="194"/>
         <source>Class Widgets 1 JSON Files (*.json)</source>
         <translation>クラス・ウィジェット 1 JSONフライス(*.json)</translation>
     </message>
@@ -1786,7 +1786,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation type="unfinished">時間割のインポート</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/manager.py" line="354"/>
+        <location filename="../../src/core/schedule/manager.py" line="353"/>
         <source>Class Widgets 2 JSON Files (*.json)</source>
         <translation type="unfinished">Class Widgets 2 JSON ファイル (*.json)</translation>
     </message>
@@ -2278,7 +2278,6 @@ Do you want to continue using them, or discard and restore the original schedule
     <message>
         <location filename="../../src/core/plaza/notifications.py" line="31"/>
         <source>Plugin Plaza</source>
-        <extracomment>外部插件模块的导入前缀，见 :meth:`src.core.plugin.loader.PluginLoader._load_external_plugin`。 Used when a report has to estimate the process uptime on its own.</extracomment>
         <translation type="unfinished">Plugin Plaza</translation>
     </message>
 </context>
@@ -2741,21 +2740,20 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
     <message>
         <location filename="../../src/core/plugin/manager.py" line="123"/>
         <source>Incompatible</source>
-        <extracomment>归因结论：这次崩溃是不是由某个插件引发。 扫描/加载过程中失败的插件，供 PluginManager 通知与诊断使用。</extracomment>
         <translation type="unfinished">非互換</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/manager.py" line="127"/>
+        <location filename="../../src/core/plugin/manager.py" line="124"/>
         <source>{count} incompatible plugin(s) have been loaded, which may cause unknown issues.</source>
         <translation type="unfinished">互換性のないプラグインが {count} 個読み込まれました。予期しない問題が発生する可能性があります。</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/manager.py" line="189"/>
+        <location filename="../../src/core/plugin/manager.py" line="187"/>
         <source>Some plugins failed to load</source>
         <translation>一部のプラグインを読み込めませんでした</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/manager.py" line="193"/>
+        <location filename="../../src/core/plugin/manager.py" line="190"/>
         <source>{count} plugin(s) could not be loaded and were skipped: {names}</source>
         <translation>{count} 個のプラグインを読み込めず、スキップしました: {names}</translation>
     </message>
@@ -2789,7 +2787,7 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
         <translation type="unfinished">利用可能なプラグインの更新があります</translation>
     </message>
     <message>
-        <location filename="../../src/core/plaza/notifications.py" line="81"/>
+        <location filename="../../src/core/plaza/notifications.py" line="79"/>
         <source>{count} plugin update(s) are ready in Plugin Plaza.</source>
         <translation type="unfinished">プラグインプラザで {count} 件のプラグイン更新の準備ができています。</translation>
     </message>
@@ -2893,42 +2891,42 @@ Applying an incompatible theme may cause serious errors, crashes, or unexpected 
         <translation type="unfinished">パッケージのバージョン（{package_version}）がPlugin Plazaのバージョン（{release_version}）と一致しません。</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/errors.py" line="30"/>
+        <location filename="../../src/core/plugin/errors.py" line="29"/>
         <source>The plugin package does not match the selected plugin.</source>
         <translation type="unfinished">プラグインパッケージが選択したプラグインと一致しません。</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/errors.py" line="32"/>
+        <location filename="../../src/core/plugin/errors.py" line="31"/>
         <source>The plugin package could not be found.</source>
         <translation type="unfinished">プラグインパッケージが見つかりませんでした。</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/errors.py" line="38"/>
+        <location filename="../../src/core/plugin/errors.py" line="37"/>
         <source>The plugin package is too large.</source>
         <translation type="unfinished">プラグインパッケージのサイズが大きすぎます。</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/errors.py" line="40"/>
+        <location filename="../../src/core/plugin/errors.py" line="39"/>
         <source>The plugin package is invalid.</source>
         <translation type="unfinished">プラグインパッケージが無効です。</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/errors.py" line="46"/>
+        <location filename="../../src/core/plugin/errors.py" line="45"/>
         <source>The plugin manifest is invalid.</source>
         <translation type="unfinished">プラグインのマニフェストが無効です。</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/errors.py" line="55"/>
+        <location filename="../../src/core/plugin/errors.py" line="54"/>
         <source>The plugin package failed security checks.</source>
         <translation type="unfinished">プラグインパッケージのセキュリティチェックに失敗しました。</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/errors.py" line="57"/>
+        <location filename="../../src/core/plugin/errors.py" line="56"/>
         <source>Unable to download the plugin. Check your connection and try again.</source>
         <translation type="unfinished">プラグインをダウンロードできません。接続を確認して再試行してください。</translation>
     </message>
     <message>
-        <location filename="../../src/core/plugin/errors.py" line="60"/>
+        <location filename="../../src/core/plugin/errors.py" line="57"/>
         <source>Plugin installation failed.</source>
         <translation type="unfinished">プラグインのインストールに失敗しました。</translation>
     </message>
@@ -3753,17 +3751,17 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
         <translation type="vanished">科目の即時追加</translation>
     </message>
     <message>
-        <location filename="../../src/core/converter/cses.py" line="214"/>
+        <location filename="../../src/core/converter/cses.py" line="213"/>
         <source>All Weeks</source>
         <translation type="unfinished">すべての週</translation>
     </message>
     <message>
-        <location filename="../../src/core/converter/cses.py" line="216"/>
+        <location filename="../../src/core/converter/cses.py" line="215"/>
         <source>Odd Weeks</source>
         <translation type="unfinished">奇数週</translation>
     </message>
     <message>
-        <location filename="../../src/core/converter/cses.py" line="218"/>
+        <location filename="../../src/core/converter/cses.py" line="217"/>
         <source>Even Weeks</source>
         <translation type="unfinished">偶数週</translation>
     </message>
@@ -4282,17 +4280,17 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
 <context>
     <name>ScheduleRuntime</name>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="310"/>
+        <location filename="../../src/core/schedule/runtime.py" line="309"/>
         <source>Class Started</source>
         <translation type="unfinished">授業開始</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="327"/>
+        <location filename="../../src/core/schedule/runtime.py" line="326"/>
         <source>Activity Started</source>
         <translation type="unfinished">アクティビティ開始</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="336"/>
+        <location filename="../../src/core/schedule/runtime.py" line="335"/>
         <source>Intermission</source>
         <translation type="unfinished">授業準備</translation>
     </message>
@@ -4317,22 +4315,22 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
         <translation type="unfinished">次: {}（教室外）</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="372"/>
+        <location filename="../../src/core/schedule/runtime.py" line="370"/>
         <source>Recess</source>
         <translation type="unfinished">休み時間</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="407"/>
+        <location filename="../../src/core/schedule/runtime.py" line="405"/>
         <source>Enjoy your break</source>
         <translation type="unfinished">ゆっくり休んでください</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="409"/>
+        <location filename="../../src/core/schedule/runtime.py" line="408"/>
         <source>Free Time</source>
         <translation type="unfinished">自由時間</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/runtime.py" line="414"/>
+        <location filename="../../src/core/schedule/runtime.py" line="413"/>
         <source>Status Changed</source>
         <translation type="unfinished">ステータス変更</translation>
     </message>
@@ -4641,8 +4639,8 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
 <context>
     <name>Settings</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="11"/>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Settings.qml" line="9"/>
+        <location filename="../../src/qml/ClassWidgets/Windows/Settings.qml" line="11"/>
         <source>Settings</source>
         <translation>設定</translation>
     </message>
@@ -5013,88 +5011,87 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="65"/>
+        <location filename="../../src/core/utils/subjects.py" line="64"/>
         <source>Chinese</source>
-        <extracomment>启动参数：不加载任何外部插件与主题（配置、课程表等用户数据照常读取）。</extracomment>
         <translation>中国語</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="66"/>
+        <location filename="../../src/core/utils/subjects.py" line="65"/>
         <source>Mathematics</source>
         <translation>数学</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="67"/>
+        <location filename="../../src/core/utils/subjects.py" line="66"/>
         <source>English</source>
         <translation>英語</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="68"/>
+        <location filename="../../src/core/utils/subjects.py" line="67"/>
         <source>Politics</source>
         <translation>政治学</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="69"/>
+        <location filename="../../src/core/utils/subjects.py" line="68"/>
         <source>History</source>
         <translation>履歴</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="70"/>
+        <location filename="../../src/core/utils/subjects.py" line="69"/>
         <source>Physics</source>
         <translation>物理学</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="71"/>
+        <location filename="../../src/core/utils/subjects.py" line="70"/>
         <source>Chemistry</source>
         <translation>化学</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="72"/>
+        <location filename="../../src/core/utils/subjects.py" line="71"/>
         <source>Biology</source>
         <translation>生物学</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="73"/>
+        <location filename="../../src/core/utils/subjects.py" line="72"/>
         <source>Geography</source>
         <translation>地理</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="74"/>
+        <location filename="../../src/core/utils/subjects.py" line="73"/>
         <source>Music</source>
         <translation>音楽</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="75"/>
+        <location filename="../../src/core/utils/subjects.py" line="74"/>
         <source>Art</source>
         <translation>芸術</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="76"/>
+        <location filename="../../src/core/utils/subjects.py" line="75"/>
         <source>Psychology</source>
         <translation>心理学</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="77"/>
+        <location filename="../../src/core/utils/subjects.py" line="76"/>
         <source>Physical Education</source>
         <translation>体育</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="78"/>
+        <location filename="../../src/core/utils/subjects.py" line="77"/>
         <source>Information Technology</source>
         <translation>情報技術</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="79"/>
+        <location filename="../../src/core/utils/subjects.py" line="78"/>
         <source>General Technology</source>
         <translation>一般技術</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="80"/>
+        <location filename="../../src/core/utils/subjects.py" line="79"/>
         <source>Elective</source>
         <translation>選択科目</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="81"/>
+        <location filename="../../src/core/utils/subjects.py" line="80"/>
         <source>Self Study</source>
         <translation>自習</translation>
     </message>
@@ -5131,27 +5128,27 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="vanished">哲学</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="83"/>
+        <location filename="../../src/core/utils/subjects.py" line="82"/>
         <source>Class Meeting</source>
         <translation>クラスミーティング</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="84"/>
+        <location filename="../../src/core/utils/subjects.py" line="83"/>
         <source>Weekly Test</source>
         <translation>週次テスト</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="85"/>
+        <location filename="../../src/core/utils/subjects.py" line="84"/>
         <source>Economics</source>
         <translation>経済学</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="86"/>
+        <location filename="../../src/core/utils/subjects.py" line="85"/>
         <source>Philosophy</source>
         <translation>哲学</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="89"/>
+        <location filename="../../src/core/utils/subjects.py" line="86"/>
         <source>Computer Science</source>
         <translation>コンピュータ科学</translation>
     </message>
@@ -5196,7 +5193,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="vanished">情報技術</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="82"/>
+        <location filename="../../src/core/utils/subjects.py" line="81"/>
         <source>Club</source>
         <translation>クラブ</translation>
     </message>
@@ -5212,127 +5209,127 @@ If it takes place in another location, such as a sport field, lab, or another cl
 <context>
     <name>SubjectsSimplified</name>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="90"/>
+        <location filename="../../src/core/utils/subjects.py" line="89"/>
         <source>CHN</source>
         <translation type="unfinished">国</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="91"/>
+        <location filename="../../src/core/utils/subjects.py" line="90"/>
         <source>Math</source>
         <translation type="unfinished">数</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="92"/>
+        <location filename="../../src/core/utils/subjects.py" line="91"/>
         <source>Eng</source>
         <translation type="unfinished">英</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="93"/>
+        <location filename="../../src/core/utils/subjects.py" line="92"/>
         <source>Civics</source>
         <translation type="unfinished">政</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="94"/>
+        <location filename="../../src/core/utils/subjects.py" line="93"/>
         <source>Hist</source>
         <translation type="unfinished">歴</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="95"/>
+        <location filename="../../src/core/utils/subjects.py" line="94"/>
         <source>Phys</source>
         <translation type="unfinished">物</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="96"/>
+        <location filename="../../src/core/utils/subjects.py" line="95"/>
         <source>Chem</source>
         <translation type="unfinished">化</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="97"/>
+        <location filename="../../src/core/utils/subjects.py" line="96"/>
         <source>Bio</source>
         <translation type="unfinished">生</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="98"/>
+        <location filename="../../src/core/utils/subjects.py" line="97"/>
         <source>Geo</source>
         <translation type="unfinished">地</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="99"/>
+        <location filename="../../src/core/utils/subjects.py" line="98"/>
         <source>Mus</source>
         <translation type="unfinished">音</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="100"/>
+        <location filename="../../src/core/utils/subjects.py" line="99"/>
         <source>Art</source>
         <translation type="unfinished">芸術</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="101"/>
+        <location filename="../../src/core/utils/subjects.py" line="100"/>
         <source>Psy</source>
         <translation type="unfinished">心</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="102"/>
+        <location filename="../../src/core/utils/subjects.py" line="101"/>
         <source>PE</source>
         <translation type="unfinished">体</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="103"/>
+        <location filename="../../src/core/utils/subjects.py" line="102"/>
         <source>IT</source>
         <translation type="unfinished">情</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="104"/>
+        <location filename="../../src/core/utils/subjects.py" line="103"/>
         <source>GenTech</source>
         <translation type="unfinished">技</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="105"/>
+        <location filename="../../src/core/utils/subjects.py" line="104"/>
         <source>Elective</source>
         <translation type="unfinished">選択科目</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="106"/>
+        <location filename="../../src/core/utils/subjects.py" line="105"/>
         <source>Study</source>
         <translation type="unfinished">自</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="107"/>
+        <location filename="../../src/core/utils/subjects.py" line="106"/>
         <source>Club</source>
         <translation type="unfinished">クラブ</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="108"/>
+        <location filename="../../src/core/utils/subjects.py" line="107"/>
         <source>ClassMtg</source>
         <translation type="unfinished">HR</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="109"/>
+        <location filename="../../src/core/utils/subjects.py" line="108"/>
         <source>Weekly</source>
         <translation type="unfinished">週</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="110"/>
+        <location filename="../../src/core/utils/subjects.py" line="109"/>
         <source>Econ</source>
         <translation type="unfinished">経</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="111"/>
+        <location filename="../../src/core/utils/subjects.py" line="110"/>
         <source>Philos</source>
         <translation type="unfinished">哲</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="112"/>
+        <location filename="../../src/core/utils/subjects.py" line="111"/>
         <source>CS</source>
         <translation type="unfinished">情科</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="113"/>
+        <location filename="../../src/core/utils/subjects.py" line="112"/>
         <source>Meeting</source>
         <translation type="unfinished">会</translation>
     </message>
     <message>
-        <location filename="../../src/core/utils/subjects.py" line="114"/>
+        <location filename="../../src/core/utils/subjects.py" line="113"/>
         <source>Test</source>
         <translation type="unfinished">テスト</translation>
     </message>
@@ -5549,58 +5546,97 @@ Class Widgets はデフォルトテーマを復元しました。</translation>
         <translation type="obsolete">新しい授業、休憩、またはアクティビティのデフォルトの所要時間を設定します。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="21"/>
-        <source>Customize default durations</source>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="175"/>
+        <source>Conflict with existing schedule</source>
+        <translation type="unfinished">既存のスケジュールと競合しています</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="176"/>
+        <source>This time overlaps with an existing schedule (%1 – %2)</source>
+        <translation type="unfinished">この時間は既存のスケジュール (%1 – %2) と重なっています</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="350"/>
+        <source>All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="22"/>
-        <source>Choose default durations for new classes, breaks, and activities to speed up editing.</source>
-        <translation type="unfinished"></translation>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="351"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="525"/>
+        <source>By Week</source>
+        <translation type="unfinished">週別</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="26"/>
-        <source>Open Editor Settings</source>
-        <translation type="unfinished"></translation>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="352"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="438"/>
+        <source>By Date</source>
+        <translation type="unfinished">日別</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="97"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="360"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="363"/>
         <source>Set Start Date &amp; Maximum Rotation Weeks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="116"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="370"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="373"/>
+        <source>New Timeline</source>
+        <translation type="unfinished">新しいタイムライン</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="446"/>
+        <source>All months</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="461"/>
+        <source>All years</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="533"/>
+        <source>All weekdays</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="746"/>
         <source>Start Date &amp; Maximum Rotation Weeks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="133"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="757"/>
         <source>Start date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="139"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="760"/>
         <source>The first day of the schedule, used for multi-week rotation. Usually a Monday.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="169"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="780"/>
         <source>Maximum Rotation Weeks</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="175"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="783"/>
         <source>Most schools alternate weekly (every 2 weeks). Choose as needed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="191"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="793"/>
         <source>Every</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="203"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="800"/>
         <source>weeks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="809"/>
+        <source>Failed to set start date or max week cycle.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5616,14 +5652,13 @@ Class Widgets はデフォルトテーマを復元しました。</translation>
         <translation type="obsolete">最大週サイクル:</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="217"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="808"/>
         <source>Failed</source>
         <translation type="unfinished">失敗</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="218"/>
         <source>Failed to set start date or max week cycle. Please report this issue to the community or the developer.</source>
-        <translation type="unfinished">開始日または最大週サイクルの設定に失敗しました。この問題をコミュニティまたは開発者に報告してください。</translation>
+        <translation type="obsolete">開始日または最大週サイクルの設定に失敗しました。この問題をコミュニティまたは開発者に報告してください。</translation>
     </message>
     <message>
         <source>Select Default Duration</source>
@@ -5640,6 +5675,144 @@ Class Widgets はデフォルトテーマを復元しました。</translation>
     <message>
         <source>Activity</source>
         <translation type="obsolete">活動</translation>
+    </message>
+</context>
+<context>
+    <name>TimelineActivityCard</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineActivityCard.qml" line="63"/>
+        <source>Class</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineActivityCard.qml" line="64"/>
+        <source>Break</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineActivityCard.qml" line="64"/>
+        <source>Activity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineActivityCard.qml" line="274"/>
+        <source>%1 min</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TimelineRow</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="60"/>
+        <source>Timeline</source>
+        <translation type="unfinished">タイムライン</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="62"/>
+        <source>Weekdays</source>
+        <translation type="unfinished">平日</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="64"/>
+        <source>Weekends</source>
+        <translation type="unfinished">休日</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="66"/>
+        <source>, </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="71"/>
+        <source>%1 year</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="75"/>
+        <source>Odd Week</source>
+        <translation type="unfinished">奇数週</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="77"/>
+        <source>Even Week</source>
+        <translation type="unfinished">偶数週</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="79"/>
+        <source>Weeks %1</source>
+        <translation type="unfinished">%1週</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="81"/>
+        <source>Every %1 weeks</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="82"/>
+        <source>Every week</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="185"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="188"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="215"/>
+        <source>Adjust rules</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="209"/>
+        <source>More actions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="220"/>
+        <source>Duplicate</source>
+        <translation type="unfinished">複製</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="225"/>
+        <source>Delete</source>
+        <translation type="unfinished">削除</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="301"/>
+        <source>AM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="301"/>
+        <source>PM</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="373"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="378"/>
+        <source>Undo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="384"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="389"/>
+        <source>Redo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="407"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="411"/>
+        <source>Class</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="417"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="421"/>
+        <source>Break</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="427"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="431"/>
+        <source>Activity</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6081,7 +6254,7 @@ Class Widgets はデフォルトテーマを復元しました。</translation>
 <context>
     <name>UpdateNotification</name>
     <message>
-        <location filename="../../src/core/automations/update_check.py" line="43"/>
+        <location filename="../../src/core/automations/update_check.py" line="39"/>
         <source>&quot;{version}&quot; is available!
 Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation type="unfinished">&quot;{version}&quot; が利用可能です！
@@ -6093,7 +6266,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation type="unfinished">Class Widgets のアップデートが利用可能</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="88"/>
+        <location filename="../../src/core/updater/bridge.py" line="84"/>
         <source>Class Widgets has been updated to the latest version: {version}</source>
         <translation type="unfinished">Class Widgets は最新バージョンにアップデートされました: {version}</translation>
     </message>
@@ -6108,7 +6281,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation type="unfinished">アップデートのダウンロード完了</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="167"/>
+        <location filename="../../src/core/updater/bridge.py" line="163"/>
         <source>Ready to install anytime. Go to &quot;Settings&quot; → &quot;Update&quot; to proceed with installation.</source>
         <translation type="unfinished">いつでもインストールできます。「設定」→「アップデート」に移動してインストールを実行してください。</translation>
     </message>
@@ -6118,7 +6291,7 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
         <translation type="unfinished">まもなくアップデートを適用します</translation>
     </message>
     <message>
-        <location filename="../../src/core/updater/bridge.py" line="208"/>
+        <location filename="../../src/core/updater/bridge.py" line="205"/>
         <source>The update may take several seconds to complete. (●&apos;◡&apos;●)</source>
         <translation type="unfinished">アップデートの完了には数秒かかる場合があります。(●&apos;◡&apos;●)</translation>
     </message>

@@ -42,6 +42,14 @@ DayListView 1.0 editor/timeline/DayListView.qml
 EntryDelegate 1.0 editor/timeline/EntryDelegate.qml
 EntryDetailView 1.0 editor/timeline/EntryDetailView.qml
 EntryListView 1.0 editor/timeline/EntryListView.qml
+TimelineRow 1.0 editor/timeline/TimelineRow.qml
+TimelineRowHeader 1.0 editor/timeline/TimelineRowHeader.qml
+TimelineAxis 1.0 editor/timeline/TimelineAxis.qml
+TimelineToolbar 1.0 editor/timeline/TimelineToolbar.qml
+TimelineActivityCard 1.0 editor/timeline/TimelineActivityCard.qml
+TimelineTopBar 1.0 editor/timeline/TimelineTopBar.qml
+TimelineSectionHeader 1.0 editor/timeline/TimelineSectionHeader.qml
+TimelineSettingsDialog 1.0 editor/timeline/TimelineSettingsDialog.qml
 
 # Editor / Schedule
 ScheduleClip 1.0 editor/schedule/ScheduleClip.qml

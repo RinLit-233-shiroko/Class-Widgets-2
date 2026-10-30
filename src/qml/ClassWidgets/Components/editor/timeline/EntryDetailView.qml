@@ -9,6 +9,15 @@ Flyout {
     property var currentEntry: null
     property Item sourceItem: null
     property var subjects: AppCentral.scheduleRuntime.subjects || []
+    readonly property int horizontalPosition: {
+        const overlay = Overlay.overlay
+        if (!overlay || !sourceItem)
+            return Position.Right
+        const origin = sourceItem.mapToItem(overlay, 0, 0)
+        const leftSpace = origin.x
+        const rightSpace = overlay.width - origin.x - sourceItem.width
+        return rightSpace >= leftSpace ? Position.Right : Position.Left
+    }
 
     background: Item {
         id: backgroundContainer
@@ -60,7 +69,7 @@ Flyout {
     }
 
     function applyChanges() {
-        if (!currentEntry) return;
+        if (!currentEntry) return false
 
         const newType = typeSegmented.currentIndex === 0 ? "class"
                   : typeSegmented.currentIndex === 1 ? "break"
@@ -80,19 +89,34 @@ Flyout {
                 startTimePicker.setTime(currentEntry.startTime || "08:00")
                 endTimePicker.setTime(currentEntry.endTime || "09:00")
             })
-            return
+            return false
         }
 
-        AppCentral.scheduleEditor.updateEntry(
+        const result = AppCentral.scheduleEditor.updateEntryChecked(
             currentEntry.id, newType,
             startTime,
             endTime,
             entrySubject.subjectId || null,
             entryTitle.text || null
         )
+        if (!result.ok) {
+            if (result.reason === "conflict") {
+                const conflict = result.conflict
+                floatLayer.createInfoBar({
+                    title: qsTr("Conflict with existing schedule"),
+                    text: qsTr("This time overlaps with an existing schedule (%1 – %2)")
+                        .arg(conflict ? conflict.startTime : "")
+                        .arg(conflict ? conflict.endTime : ""),
+                    severity: Severity.Warning
+                })
+            }
+            return false
+        }
+        return true
     }
 
-    position: Position.Bottom
+    anchorItem: root.sourceItem
+    position: root.horizontalPosition
     // width: 460
 
     ColumnLayout {
@@ -249,8 +273,8 @@ Flyout {
             icon.name: "ic_fluent_checkmark_20_regular"
             text: qsTr("OK")
             onClicked: {
-                root.applyChanges()
-                root.close()
+                if (root.applyChanges())
+                    root.close()
             }
         },
         Button {
