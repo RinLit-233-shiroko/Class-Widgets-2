@@ -38,13 +38,13 @@ Item {
     property bool inClass: root.scheduleInClass || root.notificationInClass || root.classHideInClass
 
     function containsClassStart(txt) {
-        return txt.indexOf(qsTr("Class starts")) >= 0 || txt.indexOf(qsTr("Class begins")) >= 0
+        return txt.indexOf(qsTranslate("overlay", "Class starts")) >= 0 || txt.indexOf(qsTranslate("overlay", "Class begins")) >= 0
     }
 
     function containsClassEnd(txt) {
-        return txt.indexOf(qsTr("Class over")) >= 0 || txt.indexOf(qsTr("Class ends")) >= 0
-            || txt.indexOf(qsTr("Class dismissed")) >= 0 || txt.indexOf(qsTr("Class finished")) >= 0
-            || txt.indexOf(qsTr("End of class")) >= 0 || txt.indexOf(qsTr("Break")) >= 0
+        return txt.indexOf(qsTranslate("overlay", "Class over")) >= 0 || txt.indexOf(qsTranslate("overlay", "Class ends")) >= 0
+            || txt.indexOf(qsTranslate("overlay", "Class dismissed")) >= 0 || txt.indexOf(qsTranslate("overlay", "Class finished")) >= 0
+            || txt.indexOf(qsTranslate("overlay", "End of class")) >= 0 || txt.indexOf(qsTranslate("overlay", "Break")) >= 0
     }
 
     Connections {
@@ -375,8 +375,8 @@ Item {
             anchors.fill: parent
             anchors.margins: 6
             icon.size: 20
-            title: qsTr("Stacked widget")
-            description: qsTr("Right-click to add members")
+            title: qsTranslate("overlay", "Stacked widget")
+            description: qsTranslate("overlay", "Right-click to add members")
         }
     }
 
@@ -396,8 +396,8 @@ Item {
             anchors.fill: parent
             anchors.margins: 6
             icon.size: 20
-            title: qsTr("Stacked widget")
-            description: qsTr("This is the stacked widget itself. Deleting it removes the whole widget.")
+            title: qsTranslate("overlay", "Stacked widget")
+            description: qsTranslate("overlay", "This is the stacked widget itself. Deleting it removes the whole widget.")
         }
     }
 
@@ -412,13 +412,13 @@ Item {
 
         Button {
             icon.name: "ic_fluent_add_20_regular"
-            text: qsTr("Add Member")
+            text: qsTranslate("overlay", "Add Member")
             onClicked: root.addMemberRequested()
         }
         Button {
             highlighted: true
             icon.name: "ic_fluent_checkmark_20_regular"
-            text: qsTr("Done")
+            text: qsTranslate("overlay", "Done")
             onClicked: root.doneRequested()
         }
     }
@@ -579,7 +579,7 @@ Item {
     Dialog {
         id: memberSettingsDialog
         objectName: "memberSettingsDialog"
-        title: qsTr("Member Settings")
+        title: qsTranslate("overlay", "Member Settings")
         modal: true
         width: Math.min(520, Screen.width * 0.6)
         height: 420
@@ -620,7 +620,7 @@ Item {
 
                     Text {
                         anchors.centerIn: parent
-                        text: qsTr("Cancel")
+                        text: qsTranslate("overlay", "Cancel")
                         font.pixelSize: 13
                         color: Theme.isDark() ? "#ddd" : "#333"
                     }
@@ -644,7 +644,7 @@ Item {
 
                     Text {
                         anchors.centerIn: parent
-                        text: qsTr("Save")
+                        text: qsTranslate("overlay", "Save")
                         font.pixelSize: 13
                         color: "#fff"
                     }

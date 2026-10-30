@@ -9,7 +9,7 @@ Widget {
     id: root
     text: {
         AppCentral.translator.language
-        return qsTr("Remaining")
+        return qsTranslate("eventCountdown", "Remaining")
     }
     property var countdown: AppCentral.scheduleRuntime.remainingTime || { "minute": 0, "second": 0 }
 
@@ -50,7 +50,7 @@ Widget {
                 }
                 Title {
                     visible: Configs.data.preferences.countdown_precision === "minute"
-                    text: qsTr(" min")
+                    text: qsTranslate("eventCountdown", " min")
                 }
 
                 // 「分:秒」精度
