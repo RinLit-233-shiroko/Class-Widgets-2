@@ -447,14 +447,7 @@ Item {
             x: root.overlayListMode
                 ? 0
                 : (Math.max(0, parent.width - root.switchBarSpace - width)) / 2
-            y: root.overlayListMode ? root.listY(index) : (parent.height - height) / 2
-            Behavior on x {
-                NumberAnimation { duration: 260; easing.type: Easing.OutCubic }
-            }
-            Behavior on y {
-                NumberAnimation { duration: 260; easing.type: Easing.OutCubic }
-            }
-            opacity: root.overlayListMode
+            y: root.overlayListMode ? root.listY(index) : (parent.height - height) / 2            opacity: root.overlayListMode
                 ? 1
                 : (index === root.activeIndex ? 1 : 0)
             scale: root.overlayListMode
