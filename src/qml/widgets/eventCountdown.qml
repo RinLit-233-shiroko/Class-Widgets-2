@@ -43,7 +43,6 @@ Widget {
                 Layout.topMargin: miniMode ? 0 : -4
                 Layout.alignment: Qt.AlignHCenter
 
-                // 「按分钟」精度：只显示模糊分钟数
                 Loader {
                     visible: Configs.data.preferences.countdown_precision === "minute"
                     sourceComponent: root.animated ? fuzzyMinuteAnimated : fuzzyMinuteStatic
@@ -53,7 +52,6 @@ Widget {
                     text: qsTranslate("eventCountdown", " min")
                 }
 
-                // 「分:秒」精度
                 Loader {
                     visible: Configs.data.preferences.countdown_precision !== "minute"
                     sourceComponent: root.animated ? minuteAnimated : minuteStatic
@@ -89,7 +87,6 @@ Widget {
         }
     }
 
-    // —— 四个数字显示变体：动画 / 静态，各两种精度 ——
     Component {
         id: fuzzyMinuteAnimated
         AnimatedDigits {
