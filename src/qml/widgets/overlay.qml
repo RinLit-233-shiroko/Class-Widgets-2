@@ -365,7 +365,11 @@ Item {
         id: emptyStateBox
         anchors.fill: parent
         anchors.margins: 4
-        visible: root.members.length === 0 && !root.overlayListMode
+        visible: opacity > 0.001
+        opacity: (root.members.length === 0 && !root.overlayListMode) ? 1 : 0
+        Behavior on opacity {
+            NumberAnimation { duration: 220; easing.type: Easing.InOutQuad }
+        }
         radius: Math.min(width, height, Configs.data.preferences.widget_corner_radius)
         color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.06) : Qt.rgba(0, 0, 0, 0.04)
         border.width: 1
@@ -382,7 +386,11 @@ Item {
 
     Rectangle {
         id: listPlaceholder
-        visible: root.listPlaceholderVisible
+        visible: opacity > 0.001
+        opacity: root.overlayListMode ? 1 : 0
+        Behavior on opacity {
+            NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
+        }
         x: 4
         y: 4
         width: Math.max(0, root.width - 8)
@@ -403,7 +411,11 @@ Item {
 
     RowLayout {
         id: listActions
-        visible: root.overlayListMode
+        visible: opacity > 0.001
+        opacity: root.overlayListMode ? 1 : 0
+        Behavior on opacity {
+            NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }
+        }
         z: 2
         x: (root.width - width) / 2
         y: root.listActionY()
@@ -436,6 +448,12 @@ Item {
                 ? 0
                 : (Math.max(0, parent.width - root.switchBarSpace - width)) / 2
             y: root.overlayListMode ? root.listY(index) : (parent.height - height) / 2
+            Behavior on x {
+                NumberAnimation { duration: 260; easing.type: Easing.OutCubic }
+            }
+            Behavior on y {
+                NumberAnimation { duration: 260; easing.type: Easing.OutCubic }
+            }
             opacity: root.overlayListMode
                 ? 1
                 : (index === root.activeIndex ? 1 : 0)
