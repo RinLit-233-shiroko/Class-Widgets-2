@@ -6851,8 +6851,10 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>This is the stacked widget itself. Deleting it removes the whole widget.</source>
-        <translation>這是堆疊組件本身，刪除它會刪除整個組件。</translation>
+        <source>This is the stacked widget itself.
+Deleting it removes the whole widget.</source>
+        <translation>這是堆疊組件本身
+刪除它會刪除整個組件。</translation>
     </message>
 </context>
 <context>

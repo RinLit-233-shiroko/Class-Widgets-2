@@ -397,7 +397,7 @@ Item {
             anchors.margins: 6
             icon.size: 20
             title: qsTranslate("overlay", "Stacked widget")
-            description: qsTranslate("overlay", "This is the stacked widget itself. Deleting it removes the whole widget.")
+            description: qsTranslate("overlay", "This is the stacked widget itself.\nDeleting it removes the whole widget.")
         }
     }
 

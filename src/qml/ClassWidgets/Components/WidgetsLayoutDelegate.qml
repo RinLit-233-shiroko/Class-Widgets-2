@@ -66,7 +66,7 @@ Item {
     // opacity 只负责出现/消失动画（拖动时给一点提示性半透明）。
     opacity: (dragHandler.active ? 0.75 : 1) * visOpacity
     scale: visScale * dragRaiseScale
-    rotation: (host.editMode && !widgetContainer.overlayEditing) ? shakeAngle : 0
+    rotation: (host.editMode && host.overlayEditingId === "") ? shakeAngle : 0
     z: dragHandler.active ? 1 : 0
 
     // 拖拽被拿起
@@ -446,7 +446,7 @@ Item {
 
     // ---- 编辑模式摇晃 ----
     SequentialAnimation on shakeAngle {
-        running: host.editMode && !widgetContainer.overlayEditing
+        running: host.editMode && host.overlayEditingId === ""
         loops: Animation.Infinite
         NumberAnimation { to: 2;  duration: 250; easing.type: Easing.InOutQuad }
         NumberAnimation { to: -2; duration: 250; easing.type: Easing.InOutQuad }
