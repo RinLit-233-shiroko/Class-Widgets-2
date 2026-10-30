@@ -395,9 +395,9 @@ Item {
         EmptyState {
             anchors.fill: parent
             anchors.margins: 6
-            icon.size: 20
+            icon.visible: false
             title: qsTranslate("overlay", "Stacked widget")
-            description: qsTranslate("overlay", "This is the stacked widget itself.\nDeleting it removes the whole widget.")
+            description: qsTranslate("overlay", "This is the stacked widget itself.\nDeleting it removes the whole widget")
         }
     }
 
