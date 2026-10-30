@@ -443,6 +443,16 @@ Item {
                 ? 1
                 : (index === root.activeIndex ? 1 : 0.96)
 
+            property real memberShake: 0
+            rotation: root.overlayListMode ? memberShake : 0
+            SequentialAnimation on memberShake {
+                running: root.overlayListMode
+                loops: Animation.Infinite
+                PauseAnimation { duration: (index % 4) * 90 }
+                NumberAnimation { to: 2; duration: 260; easing.type: Easing.InOutQuad }
+                NumberAnimation { to: -2; duration: 260; easing.type: Easing.InOutQuad }
+            }
+
             Behavior on opacity {
                 NumberAnimation { duration: 380; easing.type: Easing.InOutQuad }
             }
