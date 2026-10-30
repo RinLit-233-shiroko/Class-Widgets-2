@@ -5753,6 +5753,10 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>Add Member</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>This is the stacked widget itself. Deleting it removes the whole widget.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>test</name>

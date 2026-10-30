@@ -392,12 +392,12 @@ Item {
         border.width: 1
         border.color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.18) : Qt.rgba(0, 0, 0, 0.12)
 
-        Text {
-            anchors.centerIn: parent
-            text: qsTr("Stacked widget")
-            color: Theme.isDark() ? Qt.rgba(1, 1, 1, 0.7) : Qt.rgba(0, 0, 0, 0.7)
-            font.pixelSize: 13
-            font.weight: Font.DemiBold
+        EmptyState {
+            anchors.fill: parent
+            anchors.margins: 6
+            icon.size: 20
+            title: qsTr("Stacked widget")
+            description: qsTr("This is the stacked widget itself. Deleting it removes the whole widget.")
         }
     }
 
