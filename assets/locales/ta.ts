@@ -6663,16 +6663,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation>தற்போதையதைப் பின்தொடர்</translation>
     </message>
     <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="135"/>
-        <source>Frame size</source>
-        <translation>சட்ட அளவு</translation>
-    </message>
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="136"/>
-        <source>Custom width and height for this stacked widget. Auto follows the content.</source>
-        <translation>இந்த அடுக்கு விட்ஜெட்டிற்கான தனிப்பயன் அகலமும் உயரமும். தானியங்கி உள்ளடக்கத்தைப் பின்தொடரும்.</translation>
-    </message>
-    <message>
         <location filename="../../src/qml/widgets/settings/overlay.qml" line="163"/>
         <source>Show switch bar</source>
         <translation>மாற்றுப் பட்டியைக் காட்டு</translation>
@@ -6681,29 +6671,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/qml/widgets/settings/overlay.qml" line="164"/>
         <source>Show a switch button on the right edge of the widget to step through members manually.</source>
         <translation>கைமுறையாக உறுப்புகளுக்கு மாற விட்ஜெட்டின் வலது விளிம்பில் மாற்றுப் பொத்தானைக் காட்டு.</translation>
-    </message>
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="178"/>
-        <source>Members</source>
-        <translation>உறுப்புகள்</translation>
-    </message>
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="179"/>
-        <source>Members stacked inside this widget. Add or remove them from the desktop widget context menu.</source>
-        <translation>இந்த விட்ஜெட்டில் அடுக்கப்பட்ட உறுப்புகள். டெஸ்க்டாப் விட்ஜெட் சூழல் மெனுவிலிருந்து சேர்க்கவும் நீக்கவும்.</translation>
-    </message>
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="192"/>
-        <source>No members yet</source>
-        <translation>உறுப்புகள் இல்லை</translation>
-    </message>
-    <message>
-        <source>Width</source>
-        <translation>அகலம்</translation>
-    </message>
-    <message>
-        <source>Height</source>
-        <translation>உயரம்</translation>
     </message>
     <message>
         <source>Add Member</source>

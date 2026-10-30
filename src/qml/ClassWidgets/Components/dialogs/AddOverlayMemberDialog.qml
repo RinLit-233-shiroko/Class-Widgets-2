@@ -138,6 +138,9 @@ Dialog {
                         if (overlayMemberDialog.selectedWidget.default_settings) {
                             item.settings = overlayMemberDialog.selectedWidget.default_settings
                         }
+                        if (item.hasOwnProperty('widget_id')) {
+                            item.widget_id = overlayMemberDialog.selectedWidget.id
+                        }
                     }
                 }
             }

@@ -6804,16 +6804,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation>跟隨目前</translation>
     </message>
     <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="135"/>
-        <source>Frame size</source>
-        <translation>框大小</translation>
-    </message>
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="136"/>
-        <source>Custom width and height for this stacked widget. Auto follows the content.</source>
-        <translation>為這個堆疊組件指定寬高。自動表示跟隨內容。</translation>
-    </message>
-    <message>
         <location filename="../../src/qml/widgets/settings/overlay.qml" line="163"/>
         <source>Show switch bar</source>
         <translation>顯示切換欄</translation>
@@ -6822,29 +6812,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/qml/widgets/settings/overlay.qml" line="164"/>
         <source>Show a switch button on the right edge of the widget to step through members manually.</source>
         <translation>在組件右側顯示切換按鈕，可手動切換到下一個成員。</translation>
-    </message>
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="178"/>
-        <source>Members</source>
-        <translation>成員</translation>
-    </message>
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="179"/>
-        <source>Members stacked inside this widget. Add or remove them from the desktop widget context menu.</source>
-        <translation>堆疊在此組件內的小工具。可透過桌面組件的右鍵選單新增或移除。</translation>
-    </message>
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="192"/>
-        <source>No members yet</source>
-        <translation>暫無成員</translation>
-    </message>
-    <message>
-        <source>Width</source>
-        <translation>寬</translation>
-    </message>
-    <message>
-        <source>Height</source>
-        <translation>高</translation>
     </message>
     <message>
         <source>Add Member</source>

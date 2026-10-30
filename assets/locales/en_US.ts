@@ -5707,16 +5707,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation>Follow current</translation>
     </message>
     <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="135"/>
-        <source>Frame size</source>
-        <translation>Frame size</translation>
-    </message>
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="136"/>
-        <source>Custom width and height for this stacked widget. Auto follows the content.</source>
-        <translation>Custom width and height for this stacked widget. Auto follows the content.</translation>
-    </message>
-    <message>
         <location filename="../../src/qml/widgets/settings/overlay.qml" line="163"/>
         <source>Show switch bar</source>
         <translation>Show switch bar</translation>
@@ -5725,29 +5715,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/qml/widgets/settings/overlay.qml" line="164"/>
         <source>Show a switch button on the right edge of the widget to step through members manually.</source>
         <translation>Show a switch button on the right edge of the widget to step through members manually.</translation>
-    </message>
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="178"/>
-        <source>Members</source>
-        <translation>Members</translation>
-    </message>
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="179"/>
-        <source>Members stacked inside this widget. Add or remove them from the desktop widget context menu.</source>
-        <translation>Members stacked inside this widget. Add or remove them from the desktop widget context menu.</translation>
-    </message>
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="192"/>
-        <source>No members yet</source>
-        <translation>No members yet</translation>
-    </message>
-    <message>
-        <source>Width</source>
-        <translation>Width</translation>
-    </message>
-    <message>
-        <source>Height</source>
-        <translation>Height</translation>
     </message>
     <message>
         <source>Add Member</source>

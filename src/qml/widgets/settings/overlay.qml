@@ -5,38 +5,6 @@ import RinUI
 import ClassWidgets.Plugins
 
 SettingsLayout {
-    property var backendObj: null
-    property var overlayBackend: {
-        if (backendObj) return backendObj
-        if (typeof WidgetsModel !== "undefined" && WidgetsModel.definitionsList) {
-            var defs = WidgetsModel.definitionsList
-            for (var i = 0; i < defs.length; i++) {
-                if (defs[i].typeId === "classwidgets.overlay") return defs[i].backendObj || defs[i].backend_obj
-                if (defs[i].id === "classwidgets.overlay") return defs[i].backendObj || defs[i].backend_obj
-            }
-        }
-        return null
-    }
-
-    property var memberList: overlayBackend ? overlayBackend.getMembers(instanceId) : []
-
-    function nameOf(typeId) {
-        if (typeof WidgetsModel !== "undefined" && WidgetsModel.definitionsList) {
-            var defs = WidgetsModel.definitionsList
-            for (var i = 0; i < defs.length; i++) {
-                if (defs[i].id === typeId || defs[i].typeId === typeId)
-                    return defs[i].name || typeId
-            }
-        }
-        return typeId
-    }
-
-    function removeMember(key) {
-        if (!overlayBackend) return
-        overlayBackend.removeMember(instanceId, key)
-        memberList = overlayBackend.getMembers(instanceId)
-    }
-
     SettingCard {
         Layout.fillWidth: true
 
@@ -107,39 +75,4 @@ SettingsLayout {
         }
     }
 
-    SettingCard {
-        Layout.fillWidth: true
-
-        icon.name: "ic_fluent_stack_20_regular"
-        title: qsTr("Members")
-        description: memberList.length === 0
-                     ? qsTr("No members yet")
-                     : qsTr("Members stacked inside this widget. Add or remove them from the desktop widget context menu.")
-
-        Flickable {
-            Layout.preferredWidth: 220
-            Layout.preferredHeight: 32
-            contentWidth: memberRow.width
-            contentHeight: 32
-            clip: true
-            boundsBehavior: Flickable.StopAtBounds
-            flickableDirection: Flickable.HorizontalFlick
-
-            RowLayout {
-                id: memberRow
-                spacing: 6
-                height: 32
-
-                Repeater {
-                    model: memberList
-                    delegate: PillButton {
-                        Layout.alignment: Qt.AlignVCenter
-                        text: nameOf(modelData.typeId) + "  \u2715"
-                        implicitHeight: 28
-                        onClicked: removeMember(modelData.key)
-                    }
-                }
-            }
-        }
-    }
 }

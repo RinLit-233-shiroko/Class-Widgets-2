@@ -3523,40 +3523,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <translation>隨今</translation>
     </message>
     <message>
-        <source>Frame size</source>
-        <translation>框大小</translation>
-    </message>
-    <message>
-        <source>Custom width and height for this stacked widget. Auto follows the content.</source>
-        <translation>為此疊器定寬高。「自」則隨內容。</translation>
-    </message>
-    <message>
         <source>Show switch bar</source>
         <translation>顯易欄</translation>
     </message>
     <message>
         <source>Show a switch button on the right edge of the widget to step through members manually.</source>
         <translation>於器右顯易鈕，可手易其員。</translation>
-    </message>
-    <message>
-        <source>Members</source>
-        <translation>員</translation>
-    </message>
-    <message>
-        <source>Members stacked inside this widget. Add or remove them from the desktop widget context menu.</source>
-        <translation>疊於此器之小器。可由桌面器右擊菜單增減。</translation>
-    </message>
-    <message>
-        <source>No members yet</source>
-        <translation>尚無員</translation>
-    </message>
-    <message>
-        <source>Width</source>
-        <translation>闊</translation>
-    </message>
-    <message>
-        <source>Height</source>
-        <translation>高</translation>
     </message>
     <message>
         <source>Add Member</source>

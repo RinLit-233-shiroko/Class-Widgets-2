@@ -506,6 +506,8 @@ Item {
                     if (d.backend_obj && item) item.backend = d.backend_obj
                     if (item) {
                         if (item.hasOwnProperty("animateSize")) item.animateSize = false
+                        if (item.hasOwnProperty("instanceId")) item.instanceId = memberId
+                        if (item.hasOwnProperty("widget_id")) item.widget_id = memberTypeId
                         item.settings = root.mergedMemberSettings(memberId, memberTypeId)
                     }
                 }
