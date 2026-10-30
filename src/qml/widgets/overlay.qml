@@ -448,9 +448,8 @@ Item {
             SequentialAnimation on memberShake {
                 running: root.overlayListMode
                 loops: Animation.Infinite
-                PauseAnimation { duration: (index % 4) * 90 }
-                NumberAnimation { to: 2; duration: 260; easing.type: Easing.InOutQuad }
-                NumberAnimation { to: -2; duration: 260; easing.type: Easing.InOutQuad }
+                NumberAnimation { to: 2; duration: 250; easing.type: Easing.InOutQuad }
+                NumberAnimation { to: -2; duration: 250; easing.type: Easing.InOutQuad }
             }
 
             Behavior on opacity {
