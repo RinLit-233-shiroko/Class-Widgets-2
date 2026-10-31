@@ -22,6 +22,32 @@ class ScheduleServices:
     def _get_reschedule_map(self) -> dict:
         return self.app_central.configs.schedule.reschedule_day
 
+    @staticmethod
+    def _timeline_priority(day: Timeline) -> tuple[int, int, int, tuple[int, ...]]:
+        """Return the merge priority, from broad rules to specific rules.
+
+        The editor and runtime must agree on which timeline wins when several
+        timelines provide the same time slot.  A date rule is absolute; among
+        weekly rules, a narrower weekday and a narrower week rule are more
+        specific than their broad counterparts.
+        """
+        if day.date:
+            return (4, 0, 0, ())
+
+        weekdays = day.dayOfWeek
+        day_priority = 7 - len(weekdays) if weekdays else 0
+        weekday_order = tuple(sorted(weekdays or []))
+        rule = normalize_week_rule(day.weeks)
+        if isinstance(rule, list):
+            week_priority = 3
+        elif rule is None or rule == WeekType.ALL:
+            week_priority = 1
+        else:
+            week_priority = 2
+        # For equal specificity, show/apply weekday rules in Monday-first
+        # order instead of relying on their storage order.
+        return (0, day_priority, week_priority, weekday_order)
+
     def get_day_entries(self, schedule: ScheduleData, now: datetime) -> Optional[Timeline]:
         """
         返回当前日期对应的 Timeline（深拷贝，应用 override，不修改原始数据）。
@@ -74,6 +100,9 @@ class ScheduleServices:
                     day.weeks, absolute_week, max_week_cycle, cycle_week
                 )
             ]
+            # Merge from least specific to most specific so specific rules
+            # replace the entries from broad weekly skeletons.
+            matched_days.sort(key=self._timeline_priority)
         else:
             matched_days = [matched_day]
 

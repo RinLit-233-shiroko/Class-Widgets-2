@@ -16,6 +16,7 @@ Item {
     signal collapseRequested()
     signal editRulesRequested(var timeline)
     signal deleteRequested(var timeline)
+    signal duplicateRequested(string dayId)
 
     height: 32
 
@@ -108,7 +109,7 @@ Item {
             visible: root.expanded
             flat: true
             icon.name: "ic_fluent_document_copy_20_regular"
-            onClicked: AppCentral.scheduleEditor.duplicateDay(root.timeline.id)
+            onClicked: root.duplicateRequested(root.timeline.id)
         }
         Button {
             visible: root.expanded
@@ -137,7 +138,7 @@ Item {
                 MenuItem {
                     text: qsTr("Duplicate")
                     icon.name: "ic_fluent_document_copy_20_regular"
-                    onTriggered: AppCentral.scheduleEditor.duplicateDay(root.timeline.id)
+                    onTriggered: root.duplicateRequested(root.timeline.id)
                 }
                 MenuItem {
                     text: qsTr("Delete")

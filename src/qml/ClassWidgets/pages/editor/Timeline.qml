@@ -6,6 +6,7 @@ import RinUI
 import ClassWidgets.Components
 import ClassWidgets.Easing
 import "../../Components/editor/WeekRule.js" as WeekRule
+import "../../Components/editor/ZoomMath.js" as ZoomMath
 
 Item {
     id: root
@@ -39,6 +40,7 @@ Item {
     property int transitionTargetIndex: -1
     property bool transitionActive: false
     property bool replacingTransition: false
+    property string pendingCreatedTimelineId: ""
     property real motionProgress: 1
     property var motionFromGeometry: []
     property real sectionHeadersOpacity: 1
@@ -157,9 +159,39 @@ Item {
             weeks.push({
                 day: day,
                 sourceIndex: i,
-                sectionIndex: weeks.length
+                    sectionIndex: weeks.length
             })
         }
+        function priority(item) {
+            const day = item.day
+            if (day.date)
+                return [4, 0, 0]
+            const days = WeekRule.dayList(day.dayOfWeek)
+            const dayPriority = days.length ? 7 - days.length : 0
+            const kind = WeekRule.kind(day.weeks)
+            const weekPriority = kind === "specific" ? 3
+                : (kind === "all" ? 1 : 2)
+            return [0, dayPriority, weekPriority, days.length ? days[0] : 8]
+        }
+        function compare(left, right) {
+            const a = priority(left)
+            const b = priority(right)
+            for (let i = 0; i < a.length - 1; ++i) {
+                if (a[i] !== b[i])
+                    return b[i] - a[i]
+            }
+            // Equal-specificity weekday rules use Monday-first ordering.
+            if (a[a.length - 1] !== b[b.length - 1])
+                return a[a.length - 1] - b[b.length - 1]
+            // Keep the original order for equal-priority rules.
+            return left.sourceIndex - right.sourceIndex
+        }
+        dates.sort(compare)
+        weeks.sort(compare)
+        for (let i = 0; i < dates.length; ++i)
+            dates[i].sectionIndex = i
+        for (let i = 0; i < weeks.length; ++i)
+            weeks[i].sectionIndex = i
         if (viewMode === 1)
             return weeks
         if (viewMode === 2)
@@ -240,6 +272,12 @@ Item {
             return false
         const row = timelineRepeater.itemAt(expandedIndex)
         return row ? row.axisHovered : false
+    }
+    readonly property bool activeDetailOpen: {
+        if (expandedIndex < 0)
+            return false
+        const row = timelineRepeater.itemAt(expandedIndex)
+        return row ? row.detailOpen : false
     }
 
     function sectionHeaderY(isDate) {
@@ -604,10 +642,11 @@ Item {
         if (!row || transitionActive)
             return
 
-        const minZoom = Math.max(0.25,
+        const overviewMinZoom = Math.max(0.25,
             Math.min(2.1, row.previewScale))
-        const maxZoom = 4.4 - minZoom
-        const next = Math.max(minZoom, Math.min(maxZoom, value))
+        const minZoom = Math.max(1.5, overviewMinZoom)
+        const maxZoom = 4.4 - overviewMinZoom
+        const next = ZoomMath.clamp(value, minZoom, maxZoom)
 
         replacingZoomAnimation = true
         zoomAnimation.stop()
@@ -631,9 +670,13 @@ Item {
         const row = timelineRepeater.itemAt(expandedIndex)
         if (!row)
             return
-        const minZoom = Math.max(0.25, Math.min(2.1, row.previewScale))
-        const maxZoom = 4.4 - minZoom
-        setZoom(Math.max(minZoom, Math.min(maxZoom, animatedZoom + delta)))
+        const overviewMinZoom = Math.max(0.25,
+            Math.min(2.1, row.previewScale))
+        const minZoom = Math.max(1.5, overviewMinZoom)
+        const maxZoom = 4.4 - overviewMinZoom
+        setZoom(ZoomMath.steppedZoom(
+            animatedZoom, delta, minZoom, maxZoom
+        ))
     }
 
     function addEntry(type) {
@@ -709,6 +752,23 @@ Item {
             return
         pendingDeleteTimeline = timeline
         deleteTimelineDialog.open()
+    }
+
+    function duplicateTimeline(dayId) {
+        pendingCreatedTimelineId = AppCentral.scheduleEditor.duplicateDay(dayId) || ""
+    }
+
+    function revealCreatedTimeline() {
+        if (!pendingCreatedTimelineId)
+            return
+        for (let i = 0; i < filteredTimelines.length; ++i) {
+            if (String(filteredTimelines[i].day.id)
+                    !== String(pendingCreatedTimelineId))
+                continue
+            pendingCreatedTimelineId = ""
+            Qt.callLater(function() { root.setExpanded(i) })
+            return
+        }
     }
 
     property bool toolbarVisible: false
@@ -795,6 +855,7 @@ Item {
         }
         function onDaysChanged() {
             root.rebuildEntriesByDayId()
+            root.revealCreatedTimeline()
             if (root.activeTimelineId
                     && !AppCentral.scheduleEditor.getDay(root.activeTimelineId))
                 root.collapseTimeline()
@@ -859,7 +920,9 @@ Item {
                 }
             }
             onSettingsRequested: root.openTimelineSettings()
-            onNewTimelineRequested: dayEditor.openFor(null)
+            onNewTimelineRequested: function(ruleMode) {
+                dayEditor.openFor(null, ruleMode)
+            }
         }
 
         Item {
@@ -876,6 +939,7 @@ Item {
                 DragHandler {
                     id: verticalGesture
                     target: null
+                    enabled: !root.activeDetailOpen
                     xAxis.enabled: false
                     yAxis.enabled: true
                     grabPermissions: PointerHandler.CanTakeOverFromAnything
@@ -905,6 +969,7 @@ Item {
 
                 WheelHandler {
                     id: sceneWheel
+                    enabled: !root.activeDetailOpen
                     onWheel: function(event) {
                         const horizontal = event.pixelDelta.x || event.angleDelta.x
                         const vertical = event.pixelDelta.y || event.angleDelta.y
@@ -1034,6 +1099,7 @@ Item {
                         onDeleteRequested: function(day) {
                             root.requestTimelineDelete(day)
                         }
+                        onDuplicateRequested: root.duplicateTimeline(dayId)
                         onEntrySelected: function(entryId, entryIndex) {
                             if (root.sceneFocusIndex === index || root.transitionTargetIndex === index)
                                 root.selectedEntryId = entryId
@@ -1065,6 +1131,7 @@ Item {
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
                     visible: root.showOverviewScrollBar
+                    z: 5
                     policy: visible ? ScrollBar.AsNeeded : ScrollBar.AlwaysOff
                     size: root.overviewContentHeight > 0
                         ? Math.min(1, timelineScene.height / root.overviewContentHeight) : 1
@@ -1111,7 +1178,14 @@ Item {
 
     }
 
-    DayEditor { id: dayEditor }
+    DayEditor {
+        id: dayEditor
+        onTimelineCreated: function(dayId) {
+            root.pendingCreatedTimelineId = dayId
+            close()
+            root.revealCreatedTimeline()
+        }
+    }
 
     TimelineSettingsDialog {
         id: settingsDialog

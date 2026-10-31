@@ -901,19 +901,23 @@ class ScheduleEditor(QObject):
             for candidate in self.schedule.days:
                 if candidate.date:
                     if candidate.date == date_str:
-                        matched_days.append((4, candidate))
+                        matched_days.append(((4, 0, 0, ()), candidate))
                     continue
                 if (
                     (not candidate.dayOfWeek or day_of_week in candidate.dayOfWeek)
                     and self._weeks_match(candidate.weeks, week_list, max_week_cycle)
                 ):
                     rule = normalize_week_rule(candidate.weeks)
-                    if rule is None or rule == WeekType.ALL:
-                        priority = 1
-                    elif isinstance(rule, int) or rule in (WeekType.ODD, WeekType.EVEN):
-                        priority = 2
+                    day_priority = 7 - len(candidate.dayOfWeek) \
+                        if candidate.dayOfWeek else 0
+                    weekday_order = tuple(sorted(candidate.dayOfWeek or []))
+                    if isinstance(rule, list):
+                        week_priority = 3
+                    elif rule is None or rule == WeekType.ALL:
+                        week_priority = 1
                     else:
-                        priority = 3
+                        week_priority = 2
+                    priority = (0, day_priority, week_priority, weekday_order)
                     matched_days.append((priority, candidate))
             if not matched_days:
                 columns.append([])

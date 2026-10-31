@@ -12,6 +12,7 @@ Dialog {
     title: currentId ? qsTr("Edit Timeline") : qsTr("New Timeline")
 
     property string currentId: ""         // 如果有 id = 编辑，否则 = 新建
+    property bool fixedRuleMode: false
     property var currentData: ({})        // 临时缓存的数据副本
 
     // 周循环文案格式
@@ -21,6 +22,7 @@ Dialog {
     property var customWeeks: []
     property bool canAccept: false
     property bool initialized: false
+    signal timelineCreated(string dayId)
     onRoundWeekChanged: checkValid()
     onCustomWeeksChanged: {
         checkValid()
@@ -141,13 +143,17 @@ Dialog {
     }
 
     // 打开方式
-    function openFor(data) {
+    function openFor(data, ruleMode) {
         if (data) {
             currentId = data.id
+            fixedRuleMode = false
             reload(data)
         } else {
             currentId = ""
+            fixedRuleMode = ruleMode === 0 || ruleMode === 1
             reload({})   // 新建时重置
+            if (fixedRuleMode)
+                daySegmented.currentIndex = ruleMode
         }
         open()
     }
@@ -227,6 +233,7 @@ Dialog {
 
         Segmented {
             id: daySegmented
+            visible: !dayEditor.fixedRuleMode
             Layout.fillWidth: true
             onCurrentIndexChanged: checkValid()
             SegmentedItem { text: qsTr("By Week"); icon.name: "ic_fluent_calendar_week_numbers_20_regular" }
@@ -349,7 +356,8 @@ Dialog {
             if (currentId) {
                 AppCentral.scheduleEditor.updateDay(currentId, dayOfWeekValue, weeks, date)
             } else {
-                AppCentral.scheduleEditor.addDay(dayOfWeekValue, weeks, date)
+                var newId = AppCentral.scheduleEditor.addDay(dayOfWeekValue, weeks, date)
+                dayEditor.timelineCreated(newId)
             }
         }
         onRejected: dayEditor.close()

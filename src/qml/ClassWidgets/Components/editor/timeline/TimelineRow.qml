@@ -54,6 +54,7 @@ Item {
     signal selectionCleared()
     signal editRulesRequested(var timeline)
     signal deleteRequested(var timeline)
+    signal duplicateRequested(string dayId)
     signal undoRequested()
     signal redoRequested()
     signal addRequested(string type)
@@ -157,6 +158,7 @@ Item {
         onCollapseRequested: root.requestCollapse()
         onEditRulesRequested: function(day) { root.editRulesRequested(day) }
         onDeleteRequested: function(day) { root.deleteRequested(day) }
+        onDuplicateRequested: function(dayId) { root.duplicateRequested(dayId) }
     }
 
     TimelineAxis {
