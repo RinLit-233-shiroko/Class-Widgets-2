@@ -3600,7 +3600,7 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/SafeModeNotice.qml" line="13"/>
         <source>Safe mode</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">沙发模式</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/SafeModeNotice.qml" line="14"/>
