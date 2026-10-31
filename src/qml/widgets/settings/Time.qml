@@ -57,44 +57,19 @@ SettingsLayout {
         enabled: dateSwitch.checked
 
         RowLayout {
-            spacing: 16
+            spacing: 8
 
-            ColumnLayout {
-                spacing: 2
-                Switch {
-                    id: yearSwitch
-                    onCheckedChanged: settings.show_year = yearSwitch.checked
-                    Component.onCompleted: yearSwitch.checked = settings.show_year !== false
-                }
-                Text {
-                    text: qsTr("Year")
-                    typography: Typography.Caption
-                }
-            }
+            Repeater {
+                model: [
+                    { label: qsTr("Year"), key: "show_year" },
+                    { label: qsTr("Month"), key: "show_month" },
+                    { label: qsTr("Day"), key: "show_day" }
+                ]
 
-            ColumnLayout {
-                spacing: 2
-                Switch {
-                    id: monthSwitch
-                    onCheckedChanged: settings.show_month = monthSwitch.checked
-                    Component.onCompleted: monthSwitch.checked = settings.show_month !== false
-                }
-                Text {
-                    text: qsTr("Month")
-                    typography: Typography.Caption
-                }
-            }
-
-            ColumnLayout {
-                spacing: 2
-                Switch {
-                    id: daySwitch
-                    onCheckedChanged: settings.show_day = daySwitch.checked
-                    Component.onCompleted: daySwitch.checked = settings.show_day !== false
-                }
-                Text {
-                    text: qsTr("Day")
-                    typography: Typography.Caption
+                PillButton {
+                    text: modelData.label
+                    checked: settings[modelData.key] !== false
+                    onClicked: settings[modelData.key] = checked
                 }
             }
         }
@@ -148,25 +123,25 @@ SettingsLayout {
         Layout.fillWidth: true
 
         icon.name: "ic_fluent_timer_20_regular"
-        title: qsTr("Alternate Interval")
+        title: qsTr("Alternate Interval (Seconds)")
         description: qsTr("Set how long each of the date and weekday stays visible.")
 
         SpinBox {
             id: intervalSpinBox
             property bool initialized: false
-            from: 500
-            to: 10000
-            stepSize: 100
+            from: 1
+            to: 10
+            stepSize: 1
             editable: true
             enabled: layoutComboBox.currentIndex === 1
 
             Component.onCompleted: {
-                var value = Number(settings.alternate_interval)
-                intervalSpinBox.value = isNaN(value) ? 3000 : Math.max(from, Math.min(to, value))
+                var value = Math.round(Number(settings.alternate_interval) / 1000)
+                intervalSpinBox.value = isNaN(value) ? 3 : Math.max(from, Math.min(to, value))
                 initialized = true
             }
             onValueChanged: {
-                if (initialized) settings.alternate_interval = value
+                if (initialized) settings.alternate_interval = value * 1000
             }
         }
     }
