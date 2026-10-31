@@ -3242,6 +3242,11 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>Dynamic Notification</source>
         <translation type="unfinished"></translation>
     </message>
+
+    <message>
+        <source>Hide depth</source>
+        <translation>隱深</translation>
+    </message>
 </context>
 <context>
     <name>WidgetsContainer</name>
