@@ -22,9 +22,11 @@ Item {
     readonly property real panelPadding: 6
     readonly property real baseZoom: 2.2
     readonly property real recommendedMinZoom: 1.5
-    readonly property real minZoom: Math.max(0.25,
+    readonly property real overviewMinZoom: Math.max(0.25,
         Math.min(baseZoom - 0.1, overviewScale))
-    readonly property real maxZoom: baseZoom * 2 - minZoom
+    readonly property real minZoom: Math.max(recommendedMinZoom,
+        overviewMinZoom)
+    readonly property real maxZoom: baseZoom * 2 - overviewMinZoom
     readonly property real zoomRange: Math.max(0.001, maxZoom - minZoom)
     readonly property int zoomSnapIntervals: 12
     readonly property real normalizedZoom: Math.max(0,

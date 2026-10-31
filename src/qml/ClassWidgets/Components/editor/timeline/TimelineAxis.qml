@@ -16,9 +16,10 @@ Item {
     property real visualProgress: 0
     property real pxPerMinute: 0.5
     property real overviewScale: 0.25
-    readonly property real minimumZoom: Math.max(0.25,
+    readonly property real overviewMinimumZoom: Math.max(0.25,
         Math.min(2.1, overviewScale))
-    readonly property real maximumZoom: 4.4 - minimumZoom
+    readonly property real minimumZoom: Math.max(1.5, overviewMinimumZoom)
+    readonly property real maximumZoom: 4.4 - overviewMinimumZoom
     property real sceneContentX: 0
     property bool layoutControlled: false
     property bool detailsVisible: false
@@ -33,6 +34,14 @@ Item {
     property real dropPreviewEnd: -1
     property bool dropPreviewValid: true
     property real dragPointerSceneX: -1
+    readonly property bool detailOpen: {
+        for (let i = 0; i < entryRepeater.count; ++i) {
+            const card = entryRepeater.itemAt(i)
+            if (card && card.detailOpen)
+                return true
+        }
+        return false
+    }
     readonly property real autoScrollEdge: 54
     readonly property real autoScrollPixelsPerTick: 14
     readonly property bool autoScrollActive: {
@@ -244,7 +253,7 @@ Item {
         flickableDirection: Flickable.HorizontalFlick
         boundsBehavior: Flickable.StopAtBounds
         interactive: root.interactionEnabled && !root.layoutControlled
-            && !root.draggingEntry
+            && !root.draggingEntry && !root.detailOpen
         onMovementStarted: {
             wheelAnimation.stop()
             focusAnimation.stop()
@@ -258,6 +267,7 @@ Item {
 
         WheelHandler {
             enabled: root.interactionEnabled && !root.draggingEntry
+                && !root.detailOpen
             onWheel: function(event) {
                 let delta = event.pixelDelta.x || event.angleDelta.x
                 if (!delta)
@@ -292,7 +302,7 @@ Item {
             id: pinchHandler
             target: null
             enabled: root.interactionEnabled && !root.layoutControlled
-                && !root.draggingEntry
+                && !root.draggingEntry && !root.detailOpen
             grabPermissions: PointerHandler.CanTakeOverFromAnything
             property real startZoom: 1
             minimumScale: startZoom > 0

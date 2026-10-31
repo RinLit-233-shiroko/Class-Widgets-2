@@ -34,6 +34,7 @@ Item {
     readonly property real axisWidth: axisView.axisWidth
     readonly property real axisContentX: axisView.axisContentX
     readonly property bool axisHovered: axisView.axisHovered
+    readonly property bool detailOpen: axisView.detailOpen
     readonly property var entries: {
         if (entriesOverride !== undefined && entriesOverride !== null)
             return entriesOverride
