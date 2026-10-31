@@ -6865,6 +6865,12 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>Text</source>
         <translation>自定义文本</translation>
     </message>
+
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="412"/>
+        <source>Hide depth</source>
+        <translation>隐藏深度</translation>
+    </message>
 </context>
 <context>
     <name>WidgetsContainer</name>

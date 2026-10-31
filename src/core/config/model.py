@@ -156,6 +156,7 @@ class PreferencesConfig(ConfigBaseModel):
     widgets_anchor: LayoutAnchor = LayoutAnchor.TOP_CENTER  # 对齐方式
     widgets_offset_x: int = 0  # 水平偏移
     widgets_offset_y: int = 24  # 垂直偏移
+    widgets_hide_depth: Optional[int] = None  # 隐藏深度（px）；None 表示按平台默认
     widgets_layer: ZOrder = ZOrder.TOP  # 小组件置顶/置底
 
     display: Optional[str] = None  # 指定显示器

@@ -27,7 +27,10 @@ Item {
     property bool settleContainerDrag: false
     property real hideMargin: {
         if (floatingMode) return 0
-        return Qt.platform.os === "osx" ? 48 : 24
+        var depth = preferences.widgets_hide_depth
+        if (depth === undefined || depth === null)
+            return Qt.platform.os === "osx" ? 48 : 24
+        return depth
     }
     property bool isTopPosition: preferences.widgets_anchor.indexOf("top_") === 0
     property real hideFade: 0
