@@ -40,6 +40,7 @@ RowLayout {
     ComboBox {
         visible: root.filterModel1.length > 0
         Layout.preferredHeight: 32
+        Layout.minimumWidth: 128
         implicitContentWidthPolicy: ComboBox.WidestText
         model: root.filterModel1
         currentIndex: root.filterIndex1
@@ -49,6 +50,7 @@ RowLayout {
     ComboBox {
         visible: root.filterModel2.length > 0
         Layout.preferredHeight: 32
+        Layout.minimumWidth: 128
         implicitContentWidthPolicy: ComboBox.WidestText
         model: root.filterModel2
         currentIndex: root.filterIndex2

@@ -92,7 +92,7 @@ Item {
     readonly property var yearFilterModel:
         [qsTr("All years")].concat(availableYears)
     readonly property var weekdayFilterModel: {
-        const values = [qsTr("All weekdays")]
+        const values = [qsTr("All days of the week")]
         for (let i = 0; i < availableWeekdays.length; ++i)
             values.push(Qt.locale().dayName(
                 availableWeekdays[i], Locale.ShortFormat

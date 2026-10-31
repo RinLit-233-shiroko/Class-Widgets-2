@@ -65,8 +65,9 @@ Item {
     function titleForTimeline() {
         if (timeline.date) {
             const date = new Date(timeline.date)
-            return Qt.locale().monthName(date.getMonth() + 1, Locale.LongFormat)
-                + " " + date.getDate()
+            return qsTr("%1 %2 date")
+                .arg(Qt.locale().monthName(date.getMonth() + 1, Locale.LongFormat))
+                .arg(date.getDate())
         }
         const days = WeekRule.dayList(timeline.dayOfWeek)
         if (!days || !days.length)
@@ -88,8 +89,27 @@ Item {
             return qsTr("Odd Week")
         if (kind === "even")
             return qsTr("Even Week")
-        if (kind === "specific")
-            return qsTr("Weeks %1").arg(WeekRule.specificWeeks(rule).join(", "))
+        if (kind === "specific") {
+            const weeks = WeekRule.specificWeeks(rule)
+            const parts = []
+            let start = weeks.length ? weeks[0] : 0
+            let end = start
+            for (let i = 1; i <= weeks.length; ++i) {
+                const value = i < weeks.length ? weeks[i] : 0
+                if (value === end + 1) {
+                    end = value
+                    continue
+                }
+                // Keep the range itself plain text. The outer "Weeks %1"
+                // message supplies the locale-specific week wording; using
+                // another translated week message here would nest it.
+                parts.push(start === end ? String(start)
+                    : String(start) + "-" + String(end))
+                start = value
+                end = value
+            }
+            return qsTr("Weeks %1").arg(parts.join(qsTr(", ")))
+        }
         if (kind === "cycle")
             return qsTr("Every %1 weeks").arg(maxWeekCycle)
         return qsTr("Every week")

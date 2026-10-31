@@ -128,7 +128,7 @@ Item {
                 id: controlsContent
                 anchors.fill: parent
                 anchors.margins: root.panelPadding
-                spacing: 8
+                spacing: 4
 
                 Slider {
                     id: zoomSlider

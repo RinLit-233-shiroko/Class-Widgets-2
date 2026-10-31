@@ -64,7 +64,10 @@ Dialog {
         }
         // 单双周 is a rule of its own and must stay selectable next to the cycle
         // positions whenever the two are not the same thing.
-        if (cycleLength !== 2) {
+        // Odd/even only describe a meaningful split when the schedule has
+        // more than one rotating week. With a one-week cycle they are the
+        // same as the single weekly rule and must not be offered.
+        if (cycleLength > 2) {
             options.push({ text: qsTr("Odd Week"), value: "odd" })
             options.push({ text: qsTr("Even Week"), value: "even" })
         }
