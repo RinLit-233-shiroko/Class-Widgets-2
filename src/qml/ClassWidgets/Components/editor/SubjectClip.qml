@@ -3,7 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import RinUI
 import ClassWidgets.Components
-import "CoursePalette.js" as CoursePalette
+import "ColorPalette.js" as ColorPalette
 
 Clip {
     id: subjectClip
@@ -99,10 +99,10 @@ Clip {
         : false
     readonly property real surfaceLuminance: darkTheme ? 0.05 : 0.72
     readonly property real textLuminance: darkTheme ? 0.60 : 0.05
-    readonly property color subjectIconBackgroundColor: CoursePalette.atLuminance(
+    readonly property color subjectIconBackgroundColor: ColorPalette.atLuminance(
         subjectBaseColor, surfaceLuminance
     )
-    readonly property color subjectIconColor: CoursePalette.atLuminance(
+    readonly property color subjectIconColor: ColorPalette.atLuminance(
         subjectBaseColor, textLuminance
     )
 

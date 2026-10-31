@@ -13,11 +13,79 @@ DropDownButton {
 
     signal subjectSelected(string subjectId)
 
-    text: subjectId
+    readonly property string displayText: subjectId
         ? (AppCentral.scheduleEditor.subjectNameById(subjectId) || placeholderText)
         : placeholderText
+    readonly property real textAvailableWidth: Math.max(1,
+            root.width - root.leftPadding - root.rightPadding
+                - (root.icon.name ? root.icon.width + 8 : 0)
+                - (root.suffixIconName !== "" ? 20 : 0)
+                - 4
+    )
+
+    text: displayText
     icon.name: showSubjectIcon ? subjectIcon(subjectId) : ""
     onClicked: subjectsFlyout.open()
+
+    contentItem: Item {
+        clip: true
+
+        Row {
+            anchors.centerIn: parent
+            spacing: 8
+
+            Item {
+                width: root.icon.name ? root.icon.width : 0
+                height: root.font.pixelSize * 1.5
+                visible: root.icon.name !== ""
+
+                IconWidget {
+                    anchors.centerIn: parent
+                    width: root.icon.width
+                    height: root.icon.height
+                    icon: root.icon.name
+                    color: root.highlighted
+                        ? (root.flat
+                            ? Theme.currentTheme.colors.textAccentColor
+                            : Theme.currentTheme.colors.textOnAccentColor)
+                        : Theme.currentTheme.colors.textColor
+                }
+            }
+
+            Text {
+                width: root.textAvailableWidth
+                height: root.font.pixelSize * 1.5
+                text: root.displayText
+                typography: Typography.Body
+                color: root.highlighted
+                    ? (root.flat
+                        ? Theme.currentTheme.colors.textAccentColor
+                        : Theme.currentTheme.colors.textOnAccentColor)
+                    : Theme.currentTheme.colors.textColor
+                elide: Text.ElideRight
+                verticalAlignment: Text.AlignVCenter
+            }
+
+            Item {
+                width: root.suffixIconName !== "" ? 12 : 0
+                height: root.font.pixelSize * 1.5
+                visible: root.suffixIconName !== ""
+
+                IconWidget {
+                    anchors.centerIn: parent
+                    width: 12
+                    height: 12
+                    icon: root.suffixIconName
+                    color: Theme.currentTheme.colors.textSecondaryColor
+                }
+            }
+        }
+    }
+
+    ToolTip {
+        text: root.displayText
+        visible: parent.hovered && text !== root.text
+    }
 
     function subjectIcon(id) {
         for (let i = 0; i < subjects.length; ++i) {

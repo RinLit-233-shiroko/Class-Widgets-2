@@ -5,6 +5,7 @@ import RinUI
 import ClassWidgets.Components
 
 import QtQuick.Effects  // shadow
+import "../../Components/editor/ZoomMath.js" as ZoomMath
 
 Item {
     id: root
@@ -74,6 +75,12 @@ Item {
     function goToToday() {
         alignToTodayWeek()
         scheduleTable.selectToday()
+    }
+
+    function adjustZoom(delta) {
+        zoomSlider.value = ZoomMath.steppedZoom(
+            zoomSlider.value, delta, zoomSlider.from, zoomSlider.to
+        )
     }
 
     property bool editable: !AppCentral.scheduleManager.isReadonly()
@@ -160,6 +167,10 @@ Item {
             currentWeek: root.currentWeek
             zoomFactor: zoomSlider.value
 
+            onZoomRequested: function(value) {
+                zoomSlider.value = value
+            }
+
             onCellClicked: (row, column, entry, delegate) => {
                 if (!editable) {
                     return
@@ -207,6 +218,13 @@ Item {
                 to: 2.0
                 stepSize: 0.25
                 value: 1.0
+                Behavior on value {
+                    enabled: !scheduleTable.pinching && !zoomSlider.pressed
+                    NumberAnimation {
+                        duration: 140
+                        easing.type: Easing.OutCubic
+                    }
+                }
                 // The percentage is already shown on the left, so disable the
                 // hover tooltip to avoid duplicating it.
                 toolTip.visible: false
@@ -235,4 +253,17 @@ Item {
     // because the table is still being constructed, so align to today's
     // Monday-based week only once the children exist.
     Component.onCompleted: alignToTodayWeek()
+
+    Shortcut {
+        sequence: "Ctrl++"
+        onActivated: root.adjustZoom(0.1)
+    }
+    Shortcut {
+        sequence: "Ctrl+="
+        onActivated: root.adjustZoom(0.1)
+    }
+    Shortcut {
+        sequence: "Ctrl+-"
+        onActivated: root.adjustZoom(-0.1)
+    }
 }

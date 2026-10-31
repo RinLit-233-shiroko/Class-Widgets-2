@@ -43,11 +43,13 @@ class ScheduleEditor(QObject):
     subjectsChanged = Signal()
     daysChanged = Signal()
     entriesChanged = Signal()
+    dayEntriesChanged = Signal(str)
     metaChanged = Signal()
     overridesChanged = Signal()
     overridesRevisionChanged = Signal()
     dirtyChanged = Signal()
     scheduleFilesChanged = Signal()
+    entryHistoryChanged = Signal(str)
 
     def __init__(self, manager: ScheduleManager):
         super().__init__()
@@ -59,12 +61,17 @@ class ScheduleEditor(QObject):
         self._overrides_revision = 0
         self._days_data: list[dict] = []
         self._entries_data: list[dict] = []
+        self._entry_undo: dict[str, list[list[dict]]] = {}
+        self._entry_redo: dict[str, list[list[dict]]] = {}
+        self._entry_last: dict[str, list[dict]] = {}
+        self._replaying_entry_history = False
         self._suppress_update = False
         self._refresh_timer = QTimer(self)
         self._refresh_timer.setSingleShot(True)
         self._refresh_timer.setInterval(100)
         self._refresh_timer.timeout.connect(self.refresh_manager)
         self._rebuild_schedule_caches()
+        self._reset_entry_history()
         self.updated.connect(self._on_updated)
         self.manager.scheduleSwitched.connect(self.refresh)
         self.manager.schedulesChanged.connect(self.scheduleFilesChanged)
@@ -109,12 +116,81 @@ class ScheduleEditor(QObject):
             logger.error(f"Invalid time format: {e}")
             return False
 
+    @staticmethod
+    def _time_to_minutes(value: str) -> int:
+        parsed = datetime.strptime(value, "%H:%M")
+        return parsed.hour * 60 + parsed.minute
+
+    @staticmethod
+    def _minutes_to_time(value: int) -> str:
+        return f"{value // 60:02d}:{value % 60:02d}"
+
+    @staticmethod
+    def _entry_snapshot(day: Timeline) -> list[dict]:
+        return [deepcopy(entry.model_dump(mode="json")) for entry in day.entries]
+
+    @staticmethod
+    def _find_conflict(
+        day: Timeline,
+        start_minutes: int,
+        end_minutes: int,
+        ignore_entry_id: str = "",
+    ) -> Optional[Entry]:
+        for entry in day.entries:
+            if ignore_entry_id and entry.id == ignore_entry_id:
+                continue
+            entry_start = ScheduleEditor._time_to_minutes(entry.startTime)
+            entry_end = ScheduleEditor._time_to_minutes(entry.endTime)
+            if not (end_minutes <= entry_start or start_minutes >= entry_end):
+                return entry
+        return None
+
+    @staticmethod
+    def _conflict_payload(entry: Optional[Entry]) -> Optional[dict]:
+        return entry.model_dump(mode="json") if entry else None
+
+    def _reset_entry_history(self):
+        self._entry_undo.clear()
+        self._entry_redo.clear()
+        self._entry_last.clear()
+        if self.schedule:
+            for day in self.schedule.days:
+                self._entry_last[day.id] = self._entry_snapshot(day)
+
+    def _prune_entry_history(self):
+        valid_ids = {day.id for day in self.schedule.days} if self.schedule else set()
+        for mapping in (self._entry_undo, self._entry_redo, self._entry_last):
+            for day_id in list(mapping):
+                if day_id not in valid_ids:
+                    mapping.pop(day_id, None)
+        if self.schedule:
+            for day in self.schedule.days:
+                self._entry_last.setdefault(day.id, self._entry_snapshot(day))
+
+    def _record_entry_history(self, day: Timeline) -> bool:
+        current = self._entry_snapshot(day)
+        previous = self._entry_last.get(day.id)
+        if previous is None:
+            self._entry_last[day.id] = current
+            return False
+        if current == previous:
+            return False
+
+        undo = self._entry_undo.setdefault(day.id, [])
+        undo.append(previous)
+        if len(undo) > 50:
+            undo.pop(0)
+        self._entry_redo[day.id] = []
+        self._entry_last[day.id] = current
+        return True
+
     def refresh(self, schedule: ScheduleData):  # 接受来自 manager 的更新
         self._refresh_timer.stop()
         self.schedule = schedule
         self._filename = self.manager.schedule_path.stem
         self._rebuild_schedule_caches()
         self._dirty = False
+        self._reset_entry_history()
         self._suppress_update = True
         self.updated.emit()
         self._suppress_update = False
@@ -144,10 +220,12 @@ class ScheduleEditor(QObject):
 
     def _emit_days_changed(self):
         self._rebuild_schedule_caches()
+        self._prune_entry_history()
         self.daysChanged.emit()
 
     def _emit_entries_changed(self, changed_day: Optional[Timeline] = None):
         """Refresh the QML entry cache without serializing unrelated days."""
+        history_changed = False
         if not self.schedule:
             self._entries_data = []
         elif changed_day is None:
@@ -166,8 +244,17 @@ class ScheduleEditor(QObject):
                 entries_data = self._entries_data.copy()
                 entries_data[day_index] = changed_day.model_dump()
                 self._entries_data = entries_data
+                if self._replaying_entry_history:
+                    self._entry_last[changed_day.id] = self._entry_snapshot(
+                        changed_day
+                    )
+                else:
+                    history_changed = self._record_entry_history(changed_day)
         self._entries_revision += 1
         self.entriesChanged.emit()
+        self.dayEntriesChanged.emit(changed_day.id if changed_day else "")
+        if history_changed:
+            self.entryHistoryChanged.emit(changed_day.id)
 
     def refresh_manager(self):
         self.manager.modify(self.schedule)  # 提交给 manager
@@ -340,6 +427,123 @@ class ScheduleEditor(QObject):
         return next((d for d in self.schedule.days if d.id == day_id), None)
 
     # Entry 操作
+    @Slot(str, str, str, result="QVariant")
+    def findEntryConflict(
+        self, entry_id: str, start_time: str, end_time: str
+    ) -> Optional[dict]:
+        """Return the first entry overlapping a proposed time range."""
+        entry = self.getEntry(entry_id)
+        if not entry:
+            return None
+        day = next(
+            (candidate for candidate in self.schedule.days
+             if entry in candidate.entries),
+            None,
+        )
+        if not day:
+            return None
+        try:
+            start = self._time_to_minutes(start_time)
+            end = self._time_to_minutes(end_time)
+        except ValueError:
+            return None
+        return self._conflict_payload(
+            self._find_conflict(day, start, end, entry_id)
+        )
+
+    @Slot(str, str, str, int, result="QVariant")
+    def addEntryAfter(
+        self,
+        day_id: str,
+        entry_type: str,
+        selected_entry_id: str,
+        duration_minutes: int,
+    ) -> dict:
+        """Add a default entry after the selected or final existing entry."""
+        day = self.getDay(day_id)
+        if not day:
+            return {"ok": False, "reason": "missing_day"}
+
+        duration = max(5, int(duration_minutes or 5))
+        start = 8 * 60
+        selected = next(
+            (entry for entry in day.entries
+             if entry.id == selected_entry_id),
+            None,
+        )
+        if selected:
+            start = self._time_to_minutes(selected.endTime)
+        elif day.entries:
+            start = self._time_to_minutes(day.entries[-1].endTime)
+
+        end = start + duration
+        if end > 24 * 60:
+            return {"ok": False, "reason": "range"}
+
+        conflict = self._find_conflict(day, start, end)
+        if conflict:
+            return {
+                "ok": False,
+                "reason": "conflict",
+                "conflict": self._conflict_payload(conflict),
+            }
+
+        entry_id = self.addEntry(
+            day_id,
+            entry_type,
+            self._minutes_to_time(start),
+            self._minutes_to_time(end),
+            "",
+            "",
+        )
+        return {
+            "ok": bool(entry_id),
+            "reason": "" if entry_id else "invalid",
+            "id": entry_id,
+            "startTime": self._minutes_to_time(start),
+            "endTime": self._minutes_to_time(end),
+        }
+
+    @Slot(str, str, str, str, str, str, result="QVariant")
+    def updateEntryChecked(
+        self,
+        entry_id: str,
+        entry_type: str,
+        start_time: str,
+        end_time: str,
+        subject_id: str,
+        title: str,
+    ) -> dict:
+        """Update an entry after validating its time range and overlap."""
+        entry = self.getEntry(entry_id)
+        if not entry:
+            return {"ok": False, "reason": "missing_entry"}
+        if not self._validate_time_range(start_time, end_time):
+            return {"ok": False, "reason": "range"}
+
+        day = next(
+            (candidate for candidate in self.schedule.days
+             if entry in candidate.entries),
+            None,
+        )
+        if not day:
+            return {"ok": False, "reason": "missing_day"}
+
+        start = self._time_to_minutes(start_time)
+        end = self._time_to_minutes(end_time)
+        conflict = self._find_conflict(day, start, end, entry_id)
+        if conflict:
+            return {
+                "ok": False,
+                "reason": "conflict",
+                "conflict": self._conflict_payload(conflict),
+            }
+
+        self.updateEntry(
+            entry_id, entry_type, start_time, end_time, subject_id, title
+        )
+        return {"ok": True, "reason": ""}
+
     @Slot(str, str, str, str, str, str, result=str)
     def addEntry(self, day_id: str, entry_type: str,
                   start_time: str, end_time: str,
@@ -416,6 +620,68 @@ class ScheduleEditor(QObject):
                 self._emit_entries_changed(day)
                 self.updated.emit()
                 return
+
+    @Slot(str, result=bool)
+    def canUndoEntryChanges(self, day_id: str) -> bool:
+        return bool(self._entry_undo.get(day_id))
+
+    @Slot(str, result=bool)
+    def canRedoEntryChanges(self, day_id: str) -> bool:
+        return bool(self._entry_redo.get(day_id))
+
+    def _restore_entry_snapshot(self, day: Timeline, entries: list[dict]):
+        day.entries = [Entry.model_validate(item) for item in entries]
+        day.entries.sort(key=lambda entry: entry.startTime)
+        self._replaying_entry_history = True
+        try:
+            self._entry_last[day.id] = self._entry_snapshot(day)
+            self._emit_entries_changed(day)
+        finally:
+            self._replaying_entry_history = False
+        self.updated.emit()
+
+    @Slot(str, result=bool)
+    def undoEntryChanges(self, day_id: str) -> bool:
+        undo = self._entry_undo.get(day_id, [])
+        day = self.getDay(day_id)
+        if not undo or not day:
+            return False
+        current = self._entry_snapshot(day)
+        previous = undo.pop()
+        self._entry_redo.setdefault(day_id, []).append(current)
+        self._restore_entry_snapshot(day, previous)
+        self.entryHistoryChanged.emit(day_id)
+        return True
+
+    @Slot(str, result=bool)
+    def redoEntryChanges(self, day_id: str) -> bool:
+        redo = self._entry_redo.get(day_id, [])
+        day = self.getDay(day_id)
+        if not redo or not day:
+            return False
+        current = self._entry_snapshot(day)
+        target = redo.pop()
+        self._entry_undo.setdefault(day_id, []).append(current)
+        self._restore_entry_snapshot(day, target)
+        self.entryHistoryChanged.emit(day_id)
+        return True
+
+    @Slot(str, "QVariantList", result=bool)
+    def restoreDayEntries(self, day_id: str, entries: list) -> bool:
+        """Replace one timeline's entries from an editor-local undo snapshot."""
+        day = self.getDay(day_id)
+        if not day:
+            return False
+        try:
+            restored = [Entry.model_validate(item) for item in entries]
+        except (TypeError, ValueError):
+            logger.exception("Invalid timeline undo snapshot")
+            return False
+        restored.sort(key=lambda entry: entry.startTime)
+        day.entries = restored
+        self._emit_entries_changed(day)
+        self.updated.emit()
+        return True
 
     @Slot(str, result="QVariant")
     def getEntry(self, entry_id: str) -> Optional[Entry]:
@@ -635,19 +901,23 @@ class ScheduleEditor(QObject):
             for candidate in self.schedule.days:
                 if candidate.date:
                     if candidate.date == date_str:
-                        matched_days.append((4, candidate))
+                        matched_days.append(((4, 0, 0, ()), candidate))
                     continue
                 if (
                     (not candidate.dayOfWeek or day_of_week in candidate.dayOfWeek)
                     and self._weeks_match(candidate.weeks, week_list, max_week_cycle)
                 ):
                     rule = normalize_week_rule(candidate.weeks)
-                    if rule is None or rule == WeekType.ALL:
-                        priority = 1
-                    elif isinstance(rule, int) or rule in (WeekType.ODD, WeekType.EVEN):
-                        priority = 2
+                    day_priority = 7 - len(candidate.dayOfWeek) \
+                        if candidate.dayOfWeek else 0
+                    weekday_order = tuple(sorted(candidate.dayOfWeek or []))
+                    if isinstance(rule, list):
+                        week_priority = 3
+                    elif rule is None or rule == WeekType.ALL:
+                        week_priority = 1
                     else:
-                        priority = 3
+                        week_priority = 2
+                    priority = (0, day_priority, week_priority, weekday_order)
                     matched_days.append((priority, candidate))
             if not matched_days:
                 columns.append([])

@@ -4,6 +4,7 @@ import QtQuick.Layouts
 import RinUI
 import ClassWidgets.Components
 import "../WeekRule.js" as WeekRule
+import "../ZoomMath.js" as ZoomMath
 
 /*
  * Calendar-style schedule table.
@@ -19,6 +20,7 @@ Item {
     readonly property int timeGutterWidth: 60
     readonly property int headerHeight: 60
     property real zoomFactor: 1.0
+    property bool pinching: false
     readonly property real pxPerMin: 1.45 * zoomFactor
     // One grid division is always half an hour, matching the timeline ruler.
     readonly property int gridIntervalMinutes: 30
@@ -83,6 +85,7 @@ Item {
     signal cellClicked(int row, int column, var entry, Item delegate)
     // Emitted when the selection is dropped by clicking the background.
     signal selectionCleared()
+    signal zoomRequested(real value)
 
     // ── Date / weekday helpers ─────────────────────────
 
@@ -350,6 +353,33 @@ Item {
         return { y: y, height: Math.max(2, mapTime(endMinutes) - y) }
     }
 
+    function tightInsetForGap(gapMinutes, joined) {
+        if (gapMinutes < 0)
+            return cardTopInset
+        const desiredGap = joined ? 0 : compactGapHeight
+        return -(gapMinutes * pxPerMin - desiredGap) / 2
+    }
+
+    function canShowEntryTime(item) {
+        const span = visualSpan(timeAxis, item.start, item.end)
+        const topInset = item.joinTop
+            ? (item.tightAbove
+                ? tightInsetForGap(item.gapAbove, item.joinedAbove) : 0)
+            : (item.tightAbove
+                ? tightInsetForGap(item.gapAbove, item.joinedAbove)
+                : cardTopInset)
+        const bottomInset = item.joinBottom
+            ? (item.tightBelow
+                ? tightInsetForGap(item.gapBelow, item.joinedBelow) : 0)
+            : (item.tightBelow
+                ? tightInsetForGap(item.gapBelow, item.joinedBelow)
+                : cardTopInset)
+        const visualHeight = Math.max(2,
+            span.height - topInset - bottomInset)
+        return visualHeight
+            >= mergedContentTopInset + cardTimeLineHeight
+    }
+
     // One tick per half-hour division, matching EntryListView. Ticks are placed
     // through the same proportional segments the courses use, so every division
     // is exactly `pxPerMin * gridIntervalMinutes` tall. A tick that falls inside
@@ -419,22 +449,24 @@ Item {
                 entry: entry,
                 start: start,
                 end: end,
-                span: visualSpan(timeAxis, start, end),
                 key: entryVisualKey(entry),
                 // A course without a subject has nothing to connect to.
                 mergeable: !!entry.subjectId,
+                gapAbove: -1,
+                gapBelow: -1,
                 tightAbove: false,
                 tightBelow: false,
-                tightTopInset: cardTopInset,
-                tightBottomInset: cardTopInset,
+                joinedAbove: false,
+                joinedBelow: false,
                 joinTop: false,
                 joinBottom: false,
                 showContent: true,
-                groupContentHeight: 0,
-                groupTailBottomInset: 0,
+                groupTailStart: start,
+                groupTailEnd: start,
+                groupTailGapBelow: -1,
+                groupTailJoinedBelow: false,
                 groupLeadIndex: 0,
                 timeTextIndex: -1,
-                canShowOwnTime: false,
                 timeTexts: [root.entryTimeRange(entry)]
             })
         }
@@ -453,21 +485,14 @@ Item {
             if (gap < 0 || gap > dividerBandMinutes)
                 continue
 
-            const axisGap = current.span.y
-                - (previous.span.y + previous.span.height)
             const joined = previous.mergeable && current.mergeable
                 && previous.key === current.key
-
-            // Normalize the visual gap per day: short breaks keep the axis
-            // height they really take, but the cards only leave a fixed slit
-            // between them. Same-subject cards meet exactly but remain separate
-            // delegates.
-            const desiredGap = joined ? 0 : compactGapHeight
-            const edgeOffset = (axisGap - desiredGap) / 2
             previous.tightBelow = true
             current.tightAbove = true
-            previous.tightBottomInset = -edgeOffset
-            current.tightTopInset = -edgeOffset
+            previous.gapBelow = gap
+            current.gapAbove = gap
+            previous.joinedBelow = joined
+            current.joinedAbove = joined
 
             if (!joined)
                 continue
@@ -502,29 +527,10 @@ Item {
                     break
                 tail = result[j]
             }
-            lead.groupContentHeight = tail.span.y
-                + tail.span.height - lead.span.y
-            lead.groupTailBottomInset = tail.tightBelow
-                ? tail.tightBottomInset
-                : cardTopInset
-        }
-
-        // Mirror ScheduleCourseCard's geometry so a selected continuation only
-        // suppresses the matching lead time line when it can actually show it.
-        for (let i = 0; i < result.length; ++i) {
-            const item = result[i]
-            const effectiveTopInset = item.joinTop
-                ? (item.tightAbove ? item.tightTopInset : 0)
-                : (item.tightAbove ? item.tightTopInset : cardTopInset)
-            const effectiveBottomInset = item.joinBottom
-                ? (item.tightBelow ? item.tightBottomInset : 0)
-                : (item.tightBelow ? item.tightBottomInset : cardTopInset)
-            const visualHeight = Math.max(
-                2,
-                item.span.height - effectiveTopInset - effectiveBottomInset
-            )
-            item.canShowOwnTime = visualHeight
-                >= root.mergedContentTopInset + root.cardTimeLineHeight
+            lead.groupTailStart = tail.start
+            lead.groupTailEnd = tail.end
+            lead.groupTailGapBelow = tail.tightBelow ? tail.gapBelow : -1
+            lead.groupTailJoinedBelow = tail.tightBelow && tail.joinedBelow
         }
 
         // Resolve selection-independent card properties here. Selection is
@@ -536,8 +542,6 @@ Item {
             visual.card = {
                 entry: visual.entry,
                 row: visual.row,
-                startY: visual.span.y,
-                cardHeight: visual.span.height,
                 title: entryTitle(visual.entry),
                 timeTexts: visual.timeTexts
             }
@@ -561,7 +565,7 @@ Item {
                     || item.showContent !== false
                     || item.row !== selected.row)
                 continue
-            return item.canShowOwnTime ? item.timeTextIndex : -1
+            return canShowEntryTime(item) ? item.timeTextIndex : -1
         }
         return -1
     }
@@ -587,9 +591,10 @@ Item {
         const maxX = Math.max(0, calendarFlick.contentWidth - viewportWidth)
         const maxY = Math.max(0, calendarFlick.contentHeight - viewportHeight)
         const cardX = column * root.itemWidth
-        const cardY = Number(target.card.startY) || 0
+        const span = visualSpan(timeAxis, target.start, target.end)
+        const cardY = Number(span.y) || 0
         const cardWidth = root.itemWidth
-        const cardHeight = Math.max(1, Number(target.card.cardHeight) || 0)
+        const cardHeight = Math.max(1, Number(span.height) || 0)
         const viewportRight = calendarFlick.contentX + viewportWidth
         const viewportBottom = calendarFlick.contentY + viewportHeight
         const needsHorizontal = cardX < calendarFlick.contentX
@@ -616,6 +621,35 @@ Item {
             verticalScrollAnimation.to = Math.max(0, Math.min(maxY, contentY))
             verticalScrollAnimation.start()
         }
+    }
+
+    function minutesAtContentY(y) {
+        const segments = timeAxis.segments || []
+        for (let i = 0; i < segments.length; ++i) {
+            const segment = segments[i]
+            const segmentEnd = segment.visualStart
+                + (segment.end - segment.start) * pxPerMin
+            if (y <= segment.visualStart)
+                return segment.start
+            if (y <= segmentEnd)
+                return segment.start
+                    + (y - segment.visualStart) / Math.max(0.001, pxPerMin)
+        }
+        return segments.length
+            ? segments[segments.length - 1].end : 0
+    }
+
+    function contentYForMinute(minute) {
+        const segments = timeAxis.segments || []
+        for (let i = 0; i < segments.length; ++i) {
+            const segment = segments[i]
+            if (minute <= segment.start)
+                return segment.visualStart
+            if (minute <= segment.end)
+                return segment.visualStart
+                    + (minute - segment.start) * pxPerMin
+        }
+        return timeAxis.height
     }
 
     NumberAnimation {
@@ -781,6 +815,84 @@ Item {
                 verticalScrollAnimation.stop()
             }
 
+            PinchHandler {
+                id: pinchHandler
+                target: null
+                grabPermissions: PointerHandler.CanTakeOverFromAnything
+                property real startZoom: 1
+                property real anchorMinute: 0
+                minimumScale: startZoom > 0
+                    ? 0.75 / startZoom : 0.1
+                maximumScale: startZoom > 0
+                    ? 2.0 / startZoom : 10
+
+                function localCenterY() {
+                    return calendarFlick.mapFromItem(null,
+                        centroid.scenePosition.x,
+                        centroid.scenePosition.y
+                    ).y
+                }
+
+                onActiveChanged: {
+                    root.pinching = active
+                    if (!active)
+                        return
+                    horizontalScrollAnimation.stop()
+                    verticalScrollAnimation.stop()
+                    calendarFlick.cancelFlick()
+                    startZoom = root.zoomFactor
+                    minimumScale = 0.75 / startZoom
+                    maximumScale = 2.0 / startZoom
+                    anchorMinute = root.minutesAtContentY(
+                        calendarFlick.contentY + localCenterY()
+                    )
+                }
+                onScaleChanged: {
+                    if (!active)
+                        return
+                    const nextZoom = ZoomMath.pinchZoom(
+                        startZoom, scale, 0.75, 2.0
+                    )
+                    root.zoomRequested(nextZoom)
+                    const centerY = localCenterY()
+                    const maximumY = Math.max(0,
+                        calendarFlick.contentHeight - calendarFlick.height)
+                    calendarFlick.contentY = Math.max(0, Math.min(maximumY,
+                        root.contentYForMinute(anchorMinute) - centerY))
+                }
+            }
+
+            WheelHandler {
+                enabled: true
+                acceptedModifiers: Qt.ControlModifier
+                onWheel: function(event) {
+                    if (!(event.modifiers & Qt.ControlModifier)) {
+                        event.accepted = false
+                        return
+                    }
+                    const rawDelta = event.angleDelta.y || event.pixelDelta.y
+                    if (!rawDelta)
+                        return
+
+                    event.accepted = true
+                    const centerY = root.mapFromItem(calendarFlick,
+                        point.position.x, point.position.y).y
+                    const anchorMinute = root.minutesAtContentY(
+                        calendarFlick.contentY + centerY)
+                    root.zoomRequested(ZoomMath.wheelZoom(
+                        root.zoomFactor,
+                        event.angleDelta.y,
+                        rawDelta,
+                        0.75,
+                        2.0
+                    ))
+                    const maximumY = Math.max(0,
+                        calendarFlick.contentHeight - calendarFlick.height)
+                    calendarFlick.contentY = Math.max(0, Math.min(maximumY,
+                        root.contentYForMinute(anchorMinute) - centerY))
+                }
+            }
+
             ScrollBar.vertical: ScrollBar {
                 policy: ScrollBar.AsNeeded
             }
@@ -872,6 +984,19 @@ Item {
 
                         delegate: ScheduleCourseCard {
                             readonly property var cardData: modelData.card
+                            readonly property var spanData: root.visualSpan(
+                                root.timeAxis, modelData.start, modelData.end
+                            )
+                            readonly property var groupTailSpan: modelData.groupTailEnd
+                                > modelData.groupTailStart
+                                ? root.visualSpan(
+                                    root.timeAxis,
+                                    modelData.groupTailStart,
+                                    modelData.groupTailEnd
+                                )
+                                : ({ y: spanData.y, height: 0 })
+                            readonly property real resolvedGroupContentHeight:
+                                groupTailSpan.y + groupTailSpan.height - spanData.y
                             readonly property bool visualSelected: root.selectedCell
                                 && root.selectedCell.column === dayLayer.columnIndex
                                 && root.selectedCell.row === modelData.row
@@ -879,17 +1004,24 @@ Item {
                             entry: cardData.entry
                             cardTitle: cardData.title
                             timeTexts: cardData.timeTexts
-                            startY: cardData.startY
-                            cardHeight: cardData.cardHeight
+                            startY: spanData.y
+                            cardHeight: spanData.height
                             tightAbove: modelData.tightAbove
                             tightBelow: modelData.tightBelow
-                            tightTopInset: modelData.tightTopInset
-                            tightBottomInset: modelData.tightBottomInset
+                            tightTopInset: root.tightInsetForGap(
+                                modelData.gapAbove, modelData.joinedAbove)
+                            tightBottomInset: root.tightInsetForGap(
+                                modelData.gapBelow, modelData.joinedBelow)
                             hasJoinAbove: modelData.joinTop
                             hasJoinBelow: modelData.joinBottom
                             showContent: modelData.showContent
-                            groupContentHeight: modelData.groupContentHeight
-                            groupTailBottomInset: modelData.groupTailBottomInset
+                            groupContentHeight: resolvedGroupContentHeight
+                            groupTailBottomInset: modelData.groupTailGapBelow >= 0
+                                ? root.tightInsetForGap(
+                                    modelData.groupTailGapBelow,
+                                    modelData.groupTailJoinedBelow
+                                )
+                                : root.cardTopInset
                             hiddenGroupTimeIndex: modelData.showContent !== false
                                 ? root.selectedContinuationTimeIndex(
                                     dayLayer.entries,
@@ -898,7 +1030,7 @@ Item {
                                 )
                                 : -1
                             showOnlyFirstTime: modelData.showContent !== false
-                                && modelData.groupContentHeight > 0
+                                && resolvedGroupContentHeight > 0
                                 && visualSelected
                             horizontalInset: root.cardHorizontalInset
                             topInset: root.cardTopInset

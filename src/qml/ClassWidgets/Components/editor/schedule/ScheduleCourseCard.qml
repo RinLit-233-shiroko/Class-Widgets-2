@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import RinUI
-import "../CoursePalette.js" as CoursePalette
+import "../ColorPalette.js" as ColorPalette
 
 /*
  * One logical schedule entry.
@@ -76,14 +76,14 @@ Item {
     readonly property real highlightAlpha: 1.0
 
     readonly property color cardSurfaceColor: Qt.alpha(
-        CoursePalette.atLuminance(cardColor, surfaceLuminance),
+        ColorPalette.atLuminance(cardColor, surfaceLuminance),
         surfaceAlpha
     )
     readonly property color cardHighlightColor: Qt.alpha(
-        CoursePalette.atLuminance(cardColor, highlightLuminance),
+        ColorPalette.atLuminance(cardColor, highlightLuminance),
         highlightAlpha
     )
-    readonly property color cardTextColor: CoursePalette.atLuminance(cardColor, textLuminance)
+    readonly property color cardTextColor: ColorPalette.atLuminance(cardColor, textLuminance)
 
     property string cardTitle: ""
     property string timeText: ""
