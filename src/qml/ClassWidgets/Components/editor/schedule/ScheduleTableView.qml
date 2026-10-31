@@ -864,9 +864,12 @@ Item {
 
             WheelHandler {
                 enabled: true
+                acceptedModifiers: Qt.ControlModifier
                 onWheel: function(event) {
-                    if (!(event.modifiers & Qt.ControlModifier))
+                    if (!(event.modifiers & Qt.ControlModifier)) {
+                        event.accepted = false
                         return
+                    }
                     const rawDelta = event.angleDelta.y || event.pixelDelta.y
                     if (!rawDelta)
                         return
