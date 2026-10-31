@@ -5822,16 +5822,19 @@ Class Widgets has restored the default theme.</source>
         <translation type="vanished">为新创建的班级、休息时段或活动设置默认持续时间。</translation>
     </message>
     <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/DefaultDurationHint.qml" line="11"/>
         <source>Customize default durations</source>
-        <translation type="vanished">自定义默认时长</translation>
+        <translation>自定义默认时长</translation>
     </message>
     <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/DefaultDurationHint.qml" line="12"/>
         <source>Choose default durations for new classes, breaks, and activities to speed up editing.</source>
-        <translation type="vanished">为新建的课程、课间和活动设置默认时长，让排课更加高效。</translation>
+        <translation>为新建的课程、课间和活动设置默认时长，让排课更加高效。</translation>
     </message>
     <message>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/DefaultDurationHint.qml" line="15"/>
         <source>Open Editor Settings</source>
-        <translation type="vanished">打开编辑器设置</translation>
+        <translation>打开编辑器设置</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="95"/>
@@ -5839,12 +5842,12 @@ Class Widgets has restored the default theme.</source>
         <translation>全部星期</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="693"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="723"/>
         <source>Conflict with existing schedule</source>
         <translation>与现有课表冲突</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="694"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="724"/>
         <source>This time overlaps with an existing schedule (%1 – %2)</source>
         <translation>此时间段与现有课表（%1 – %2）重叠</translation>
     </message>
@@ -5853,12 +5856,12 @@ Class Widgets has restored the default theme.</source>
         <translation type="vanished">全部</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="1038"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineOverview.qml" line="156"/>
         <source>By Week</source>
         <translation>按周</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="1007"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineOverview.qml" line="124"/>
         <source>By Date</source>
         <translation>按日期</translation>
     </message>
@@ -5885,12 +5888,12 @@ Class Widgets has restored the default theme.</source>
         <translation type="vanished">所有工作日</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="1208"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="974"/>
         <source>Delete timeline?</source>
         <translation>删除时间线？</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="1212"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="978"/>
         <source>This timeline and all its activities will be removed. This action cannot be undone.</source>
         <translation>此时间线及其所有活动将被删除。此操作无法撤销。</translation>
     </message>
@@ -5923,7 +5926,7 @@ Class Widgets has restored the default theme.</source>
         <translation type="vanished">周</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="1197"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="958"/>
         <source>Failed to set start date or max week cycle.</source>
         <translation>设置开学日期或最大周循环失败。</translation>
     </message>
@@ -5940,7 +5943,7 @@ Class Widgets has restored the default theme.</source>
         <translation type="vanished">多周循环上限：</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="1196"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Timeline.qml" line="957"/>
         <source>Failed</source>
         <translation>失败</translation>
     </message>
@@ -6026,23 +6029,23 @@ Class Widgets has restored the default theme.</source>
 <context>
     <name>TimelineRow</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="74"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="75"/>
         <source>Timeline</source>
         <translation>时间线</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="76"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="77"/>
         <source>Weekdays</source>
         <translation>工作日</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="78"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="79"/>
         <source>Weekends</source>
         <translation>周末</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="80"/>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="111"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="81"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="112"/>
         <source>, </source>
         <translation>、</translation>
     </message>
@@ -6051,22 +6054,22 @@ Class Widgets has restored the default theme.</source>
         <translation type="vanished">第 %1 年</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="68"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="69"/>
         <source>%1 %2 date</source>
         <translation>%1 %2 日</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="85"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="86"/>
         <source>%1 year</source>
         <translation>%1 年</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="89"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="90"/>
         <source>Odd Week</source>
         <translation>单周</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="91"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="92"/>
         <source>Even Week</source>
         <translation>双周</translation>
     </message>
@@ -6075,17 +6078,17 @@ Class Widgets has restored the default theme.</source>
         <translation type="vanished">第 %1-%2 周</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="111"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="112"/>
         <source>Weeks %1</source>
         <translation>第 %1 周</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="114"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="115"/>
         <source>Every %1 weeks</source>
         <translation>每 %1 周</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="115"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRow.qml" line="116"/>
         <source>Every week</source>
         <translation>每周</translation>
     </message>
@@ -6109,24 +6112,24 @@ Class Widgets has restored the default theme.</source>
 <context>
     <name>TimelineRowHeader</name>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRowHeader.qml" line="100"/>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRowHeader.qml" line="103"/>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRowHeader.qml" line="134"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRowHeader.qml" line="99"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRowHeader.qml" line="102"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRowHeader.qml" line="138"/>
         <source>Adjust rules</source>
         <translation>调整规则</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRowHeader.qml" line="127"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRowHeader.qml" line="129"/>
         <source>More actions</source>
         <translation>更多操作</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRowHeader.qml" line="139"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRowHeader.qml" line="143"/>
         <source>Duplicate</source>
         <translation>复制</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRowHeader.qml" line="144"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/TimelineRowHeader.qml" line="148"/>
         <source>Delete</source>
         <translation>删除</translation>
     </message>

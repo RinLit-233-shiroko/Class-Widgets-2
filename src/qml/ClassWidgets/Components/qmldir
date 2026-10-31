@@ -50,6 +50,8 @@ TimelineActivityCard 1.0 editor/timeline/TimelineActivityCard.qml
 TimelineTopBar 1.0 editor/timeline/TimelineTopBar.qml
 TimelineSectionHeader 1.0 editor/timeline/TimelineSectionHeader.qml
 TimelineSettingsDialog 1.0 editor/timeline/TimelineSettingsDialog.qml
+TimelineOverview 1.0 editor/timeline/TimelineOverview.qml
+DefaultDurationHint 1.0 editor/timeline/DefaultDurationHint.qml
 
 # Editor / Schedule
 ScheduleClip 1.0 editor/schedule/ScheduleClip.qml

@@ -93,8 +93,7 @@ Item {
 
         Button {
             visible: root.expanded
-            Layout.minimumWidth: root.compactLayout ? 40 : 132
-            Layout.preferredWidth: root.compactLayout ? 40 : 132
+            Layout.maximumWidth: root.compactLayout ? 40 : 999
             flat: true
             icon.name: "ic_fluent_edit_20_regular"
             text: root.compactLayout ? "" : qsTr("Adjust rules")

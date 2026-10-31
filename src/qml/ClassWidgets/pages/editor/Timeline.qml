@@ -110,6 +110,10 @@ Item {
         return item !== null && item.cursorPosition !== undefined
     }
 
+    function showDefaultDurationHint() {
+        floatLayer.createCustom(defaultDurationHint)
+    }
+
     onAvailableMonthsChanged: {
         if (monthFilterIndex < 0 || monthFilterIndex > availableMonths.length)
             monthFilterIndex = 0
@@ -231,7 +235,7 @@ Item {
         for (let i = 0; i < filteredTimelines.length; ++i) {
             if (String(filteredTimelines[i].day.id) !== key)
                 continue
-            const row = timelineRepeater.itemAt(i)
+            const row = overview.rowRepeater.itemAt(i)
             if (row)
                 row.setEntries(entries)
             break
@@ -240,7 +244,7 @@ Item {
     readonly property var filteredDates: matchingTimelines.filter(item => !!item.day.date)
     readonly property var filteredWeeks: matchingTimelines.filter(item => !item.day.date)
     readonly property real expandedTimelineHeight: {
-        return Math.max(180, timelineScene.height - 2 * 116 - 24)
+        return Math.max(180, overview.sceneItem.height - 2 * 116 - 24)
     }
     readonly property bool hasDateSection: viewMode !== 1 && filteredDates.length > 0
     readonly property bool hasWeekSection: viewMode !== 2 && filteredWeeks.length > 0
@@ -262,21 +266,21 @@ Item {
         return height
     }
     readonly property real overviewMaximumOffset: Math.max(
-        0, overviewContentHeight - timelineScene.height
+        0, overviewContentHeight - overview.sceneItem.height
     )
     readonly property bool showOverviewScrollBar:
         !transitionActive && !sceneExpanded
-        && overviewContentHeight > timelineScene.height + 0.5
+        && overviewContentHeight > overview.sceneItem.height + 0.5
     readonly property bool activeAxisHovered: {
         if (expandedIndex < 0)
             return false
-        const row = timelineRepeater.itemAt(expandedIndex)
+        const row = overview.rowRepeater.itemAt(expandedIndex)
         return row ? row.axisHovered : false
     }
     readonly property bool activeDetailOpen: {
         if (expandedIndex < 0)
             return false
-        const row = timelineRepeater.itemAt(expandedIndex)
+        const row = overview.rowRepeater.itemAt(expandedIndex)
         return row ? row.detailOpen : false
     }
 
@@ -298,13 +302,14 @@ Item {
     }
 
     function syncPageIndicator() {
-        if (!timelinePageIndicator)
+        const indicator = overview.pageIndicatorControl
+        if (!indicator)
             return
         const index = Math.max(0, expandedIndex)
-        if (timelinePageIndicator.currentIndex === index)
+        if (indicator.currentIndex === index)
             return
         syncingPageIndicator = true
-        timelinePageIndicator.currentIndex = index
+        indicator.currentIndex = index
         syncingPageIndicator = false
     }
 
@@ -312,6 +317,7 @@ Item {
     Component.onCompleted: {
         syncPageIndicator()
         rebuildEntriesByDayId()
+        Qt.callLater(root.showDefaultDurationHint)
     }
 
     function timelineDataAt(index) {
@@ -348,13 +354,14 @@ Item {
     }
 
     function rowTargetGeometry(index, focusIndex, isExpanded) {
-        const targetWidth = Math.max(0, timelineScene.width - (isExpanded ? 32 : 0))
+        const targetWidth = Math.max(0,
+            overview.sceneItem.width - (isExpanded ? 32 : 0))
         const previewScale = Math.max(0.25, (targetWidth - 16) / 1440)
         const activeScale = isExpanded && index === focusIndex
             ? animatedZoom : previewScale
         let contentX = 0
         if (isExpanded && index === focusIndex) {
-            const row = timelineRepeater.itemAt(index)
+            const row = overview.rowRepeater.itemAt(index)
             const entries = row ? row.entries : timelineDataAt(index).entries || []
             if (entries.length) {
                 const parts = String(entries[0].startTime).split(":")
@@ -372,15 +379,17 @@ Item {
             return {
                 x: 0,
                 y: rowOverviewY(index) - scrollOffset,
-                width: timelineScene.width,
+                width: overview.sceneItem.width,
                 height: rowOverviewHeight(index),
-                scale: Math.max(0.25, (timelineScene.width - 16) / 1440),
+                scale: Math.max(0.25,
+                    (overview.sceneItem.width - 16) / 1440),
                 contentX: 0,
                 visualProgress: 0
             }
         }
 
-        const expandedTop = (timelineScene.height - expandedTimelineHeight) / 2
+        const expandedTop =
+            (overview.sceneItem.height - expandedTimelineHeight) / 2
         let y = expandedTop
         let height = expandedTimelineHeight
         let visualProgress = 1
@@ -470,12 +479,14 @@ Item {
     function captureRowGeometry() {
         const result = []
         for (let i = 0; i < filteredTimelines.length; ++i) {
-            const row = timelineRepeater.itemAt(i)
+            const row = overview.rowRepeater.itemAt(i)
             if (!row) {
                 result.push({
                     x: 0, y: rowOverviewY(i) - overviewScrollOffset,
-                    width: timelineScene.width, height: rowOverviewHeight(i),
-                    scale: Math.max(0.25, (timelineScene.width - 16) / 1440),
+                    width: overview.sceneItem.width,
+                    height: rowOverviewHeight(i),
+                    scale: Math.max(0.25,
+                        (overview.sceneItem.width - 16) / 1440),
                     contentX: 0,
                     visualProgress: 0
                 })
@@ -509,11 +520,11 @@ Item {
         overviewWheelAnimation.stop()
 
         const fromHeaderOpacity = sectionHeaderOpacity()
-        const fromDateHeaderY = dateSectionHeader.y
-        const fromWeekHeaderY = weekSectionHeader.y
+        const fromDateHeaderY = overview.dateHeader.y
+        const fromWeekHeaderY = overview.weekHeader.y
         const from = captureRowGeometry()
         for (let i = 0; i < filteredTimelines.length; ++i) {
-            const row = timelineRepeater.itemAt(i)
+            const row = overview.rowRepeater.itemAt(i)
             if (row)
                 row.releaseScaleAnchor()
         }
@@ -523,7 +534,8 @@ Item {
         transitionTargetScrollOffset = isExpanded
             ? overviewScrollOffset
             : clampOverviewOffset(
-                rowOverviewY(focusIndex) - (timelineScene.height - 104) / 2
+                rowOverviewY(focusIndex)
+                    - (overview.sceneItem.height - 104) / 2
             )
         motionFromGeometry = from
         motionFromDateHeaderY = fromDateHeaderY
@@ -624,7 +636,7 @@ Item {
         transitionActive = false
         motionFromGeometry = []
         for (let i = 0; i < filteredTimelines.length; ++i) {
-            const row = timelineRepeater.itemAt(i)
+            const row = overview.rowRepeater.itemAt(i)
             if (row)
                 row.releaseScaleAnchor()
         }
@@ -636,7 +648,8 @@ Item {
     }
 
     function setZoom(value) {
-        const row = expandedIndex >= 0 ? timelineRepeater.itemAt(expandedIndex) : null
+        const row = expandedIndex >= 0
+            ? overview.rowRepeater.itemAt(expandedIndex) : null
         if (!row || transitionActive)
             return
 
@@ -655,7 +668,7 @@ Item {
 
     function applyPinchZoom(value, anchorMinute, anchorPixel) {
         const row = expandedIndex >= 0
-            ? timelineRepeater.itemAt(expandedIndex) : null
+            ? overview.rowRepeater.itemAt(expandedIndex) : null
         if (!row || transitionActive)
             return
 
@@ -675,7 +688,7 @@ Item {
 
     function finishPinchZoom() {
         const row = expandedIndex >= 0
-            ? timelineRepeater.itemAt(expandedIndex) : null
+            ? overview.rowRepeater.itemAt(expandedIndex) : null
         if (row)
             row.releaseScaleAnchor()
         zoom = animatedZoom
@@ -684,7 +697,7 @@ Item {
     function adjustZoomBy(delta) {
         if (expandedIndex < 0 || transitionActive)
             return
-        const row = timelineRepeater.itemAt(expandedIndex)
+        const row = overview.rowRepeater.itemAt(expandedIndex)
         if (!row)
             return
         const overviewMinZoom = Math.max(0.25,
@@ -720,7 +733,7 @@ Item {
             selectedEntryId = newEntryId
             Qt.callLater(function() {
                 const row = expandedIndex >= 0
-                    ? timelineRepeater.itemAt(expandedIndex) : null
+                    ? overview.rowRepeater.itemAt(expandedIndex) : null
                 if (row)
                     row.focusEntry(newEntryId, true)
             })
@@ -743,6 +756,18 @@ Item {
         settingsDialog.openFor(
             startDate, AppCentral.scheduleEditor.getMaxWeekCycle()
         )
+    }
+
+    function createTimeline(ruleMode) {
+        dayEditor.openFor(null, ruleMode)
+    }
+
+    function editTimelineRules(day) {
+        dayEditor.openFor(day)
+    }
+
+    function stopOverviewWheelAnimation() {
+        overviewWheelAnimation.stop()
     }
 
     function refreshHistoryAvailability() {
@@ -813,7 +838,7 @@ Item {
         easing.type: Easing.OutCubic
         onStopped: {
             if (!root.replacingZoomAnimation && root.expandedIndex >= 0) {
-                const row = timelineRepeater.itemAt(root.expandedIndex)
+                const row = overview.rowRepeater.itemAt(root.expandedIndex)
                 if (row)
                     row.releaseScaleAnchor()
             }
@@ -853,11 +878,6 @@ Item {
         property: "pageIndicatorOpacity"
         duration: 180
         easing.type: Easing.OutCubic
-    }
-    Timer {
-        id: wheelGestureTimer
-        interval: 380
-        onTriggered: root.wheelPagePending = false
     }
     Connections {
         target: AppCentral.scheduleEditor
@@ -913,288 +933,10 @@ Item {
         onActivated: root.redo()
     }
 
-    Column {
+    TimelineOverview {
+        id: overview
         anchors.fill: parent
-        anchors.leftMargin: 32
-        anchors.rightMargin: 32
-        anchors.topMargin: 16
-        anchors.bottomMargin: 16
-        spacing: 8
-
-        TimelineTopBar {
-            id: topActions
-            width: parent.width
-            compactTopBar: root.compactTopBar
-            viewMode: root.viewMode
-            pendingViewMode: root.pendingViewMode
-
-            onViewModeRequested: function(index) {
-                if (root.sceneExpanded || root.transitionTargetExpanded) {
-                    root.pendingViewMode = index
-                    root.collapseTimeline()
-                } else {
-                    root.viewMode = index
-                }
-            }
-            onSettingsRequested: root.openTimelineSettings()
-            onNewTimelineRequested: function(ruleMode) {
-                dayEditor.openFor(null, ruleMode)
-            }
-        }
-
-        Item {
-            id: sceneHost
-            width: parent.width
-            height: Math.max(0, parent.height - topActions.height - 8)
-
-            Item {
-                id: timelineScene
-                anchors.fill: parent
-                clip: true
-                z: 1
-
-                DragHandler {
-                    id: verticalGesture
-                    target: null
-                    enabled: !root.activeDetailOpen
-                    xAxis.enabled: false
-                    yAxis.enabled: true
-                    grabPermissions: PointerHandler.CanTakeOverFromAnything
-                    property real startingOverviewOffset: 0
-                    property bool changedPage: false
-                    onActiveChanged: {
-                        if (!active)
-                            return
-                        // The animation id is local to this component, not a root property.
-                        overviewWheelAnimation.stop()
-                        startingOverviewOffset = root.overviewScrollOffset
-                        changedPage = false
-                    }
-                    onTranslationChanged: {
-                        if (!active)
-                            return
-                        if (root.sceneExpanded || root.transitionTargetExpanded) {
-                            if (changedPage || Math.abs(translation.y) < 48)
-                                return
-                            changedPage = true
-                            root.navigateTimeline(translation.y < 0 ? 1 : -1)
-                            return
-                        }
-                        root.setOverviewOffset(startingOverviewOffset - translation.y)
-                    }
-                }
-
-                WheelHandler {
-                    id: sceneWheel
-                    enabled: !root.activeDetailOpen
-                    onWheel: function(event) {
-                        const horizontal = event.pixelDelta.x || event.angleDelta.x
-                        const vertical = event.pixelDelta.y || event.angleDelta.y
-                        if (Math.abs(horizontal) > Math.abs(vertical))
-                            return
-                        if (!vertical)
-                            return
-
-                        if (root.sceneExpanded || root.transitionTargetExpanded) {
-                            if (root.activeAxisHovered)
-                                return
-                            event.accepted = true
-                            if (root.wheelPagePending)
-                                return
-                            root.wheelPagePending = true
-                            wheelGestureTimer.restart()
-                            root.navigateTimeline(vertical < 0 ? 1 : -1)
-                            return
-                        }
-
-                        event.accepted = true
-                        const delta = event.pixelDelta.y
-                            || Math.sign(event.angleDelta.y) * 44
-                        root.scrollOverviewByWheel(delta)
-                    }
-                }
-
-                TimelineSectionHeader {
-                    id: dateSectionHeader
-                    x: 0
-                    y: root.sectionHeaderY(true)
-                    opacity: root.sectionHeaderOpacity()
-                    width: timelineScene.width
-                    visible: root.hasDateSection && opacity > 0
-                    title: qsTr("By Date")
-                    expanded: root.dateSectionExpanded
-                    expansionProgress: root.dateSectionProgress
-                    filterModel1: root.monthFilterModel
-                    filterModel2: root.yearFilterModel
-                    filterIndex1: root.monthFilterIndex
-                    filterIndex2: Math.max(0,
-                        root.yearFilterModel.indexOf(root.yearFilter))
-
-                    onExpandedToggled: function(expanded) {
-                        root.dateSectionExpanded = expanded
-                        if (!expanded && root.expandedIndex >= 0
-                                && root.timelineDataAt(root.expandedIndex).date)
-                            root.collapseTimeline()
-                    }
-                    onFilterActivated1: function(index) {
-                        root.monthFilterIndex = index
-                        root.collapseTimeline()
-                    }
-                    onFilterActivated2: function(index, text) {
-                        root.yearFilter = index === 0 ? "" : text
-                        root.collapseTimeline()
-                    }
-                }
-
-                TimelineSectionHeader {
-                    id: weekSectionHeader
-                    x: 0
-                    y: root.sectionHeaderY(false)
-                    opacity: root.sectionHeaderOpacity()
-                    width: timelineScene.width
-                    visible: root.hasWeekSection && opacity > 0
-                    title: qsTr("By Week")
-                    expanded: root.weekSectionExpanded
-                    expansionProgress: root.weekSectionProgress
-                    filterModel1: root.weekdayFilterModel
-                    filterIndex1: root.weekFilterIndex
-
-                    onExpandedToggled: function(expanded) {
-                        root.weekSectionExpanded = expanded
-                        if (!expanded && root.expandedIndex >= 0
-                                && !root.timelineDataAt(root.expandedIndex).date)
-                            root.collapseTimeline()
-                    }
-                    onFilterActivated1: function(index) {
-                        root.weekFilterIndex = index
-                        root.collapseTimeline()
-                    }
-                }
-
-                Repeater {
-                    id: timelineRepeater
-                    objectName: "timelineRepeater"
-                    model: root.filteredTimelines.length
-                    delegate: TimelineRow {
-                        id: timelineRow
-                        property var sceneGeometry: root.rowGeometry(index)
-                        x: sceneGeometry.x
-                        y: sceneGeometry.y
-                        width: sceneGeometry.width
-                        layoutHeight: sceneGeometry.height
-                        animatedScale: sceneGeometry.scale
-                        visualProgress: sceneGeometry.visualProgress
-                        sceneContentX: sceneGeometry.contentX
-                        layoutControlled: root.transitionActive
-                        detailsVisible: root.toolbarVisible && expanded
-                        visible: root.rowIsVisible(index)
-                        opacity: root.rowOpacity(index)
-                        timeline: root.filteredTimelines[index].day
-                        subjects: root.subjects
-                        readOnlyTimeline: root.readOnlyTimeline
-                        maxWeekCycle: root.maxWeekCycle
-                        entriesOverride: root.entriesByDayId[
-                            String(root.filteredTimelines[index].day.id)
-                        ]
-                        timelineIndex: index
-                        expanded: root.transitionActive
-                            ? root.transitionTargetExpanded
-                                && index === root.transitionTargetIndex
-                            : root.sceneExpanded && index === root.sceneFocusIndex
-                        interactionEnabled: root.sceneExpanded
-                            && !root.transitionActive && index === root.sceneFocusIndex
-                        zoom: root.animatedZoom
-                        toolbarVisible: root.toolbarVisible && expanded
-                        selectedEntryId: expanded ? root.selectedEntryId : ""
-                        undoAvailable: expanded && root.undoAvailable
-                        redoAvailable: expanded && root.redoAvailable
-                        z: expanded ? 3 : 1
-
-                        onRequestExpand: function(rowIndex) {
-                            root.setExpanded(rowIndex)
-                        }
-                        onRequestCollapse: root.collapseTimeline()
-                        onEditRulesRequested: function(day) { dayEditor.openFor(day) }
-                        onDeleteRequested: function(day) {
-                            root.requestTimelineDelete(day)
-                        }
-                        onDuplicateRequested: root.duplicateTimeline(dayId)
-                        onEntrySelected: function(entryId, entryIndex) {
-                            if (root.sceneFocusIndex === index || root.transitionTargetIndex === index)
-                                root.selectedEntryId = entryId
-                        }
-                        onSelectionCleared: {
-                            if (!root.transitionActive
-                                    && root.sceneFocusIndex === index)
-                                root.selectedEntryId = ""
-                        }
-                        onUndoRequested: root.undo()
-                        onRedoRequested: root.redo()
-                        onAddRequested: function(type) { root.addEntry(type) }
-                        onZoomRequested: function(value) { root.setZoom(value) }
-                        onPinchZoomRequested: function(value, anchorMinute, anchorPixel) {
-                            root.applyPinchZoom(value, anchorMinute, anchorPixel)
-                        }
-                        onPinchZoomFinished: root.finishPinchZoom()
-                    }
-                }
-
-                ScrollBar {
-                    id: overviewScrollBar
-                    objectName: "overviewScrollBar"
-                    orientation: Qt.Vertical
-                    // RinUI's ScrollBar anchors its center by default; clear
-                    // that before constraining it to this fixed scene.
-                    anchors.verticalCenter: undefined
-                    anchors.right: parent.right
-                    anchors.top: parent.top
-                    anchors.bottom: parent.bottom
-                    visible: root.showOverviewScrollBar
-                    z: 5
-                    policy: visible ? ScrollBar.AsNeeded : ScrollBar.AlwaysOff
-                    size: root.overviewContentHeight > 0
-                        ? Math.min(1, timelineScene.height / root.overviewContentHeight) : 1
-                    position: root.overviewContentHeight > 0
-                        ? root.overviewScrollOffset / root.overviewContentHeight : 0
-                    onPositionChanged: {
-                        if (pressed)
-                            root.setOverviewOffset(position * root.overviewContentHeight)
-                    }
-                }
-            }
-
-            Item {
-                id: pageIndicator
-                visible: root.pageIndicatorOpacity > 0.001
-                opacity: root.pageIndicatorOpacity
-                z: 4
-                width: 24
-                height: Math.min(sceneHost.height,
-                    Math.max(48, root.filteredTimelines.length * 12 + 48))
-                anchors.right: parent.right
-                anchors.rightMargin: 0
-                anchors.verticalCenter: sceneHost.verticalCenter
-                PageIndicator {
-                    id: timelinePageIndicator
-                    anchors.centerIn: parent
-                    width: parent.height
-                    height: parent.width
-                    rotation: 90
-                    caret: true
-                    count: root.filteredTimelines.length
-                    currentIndex: 0
-                    interactive: root.filteredTimelines.length > 1
-                    onCurrentIndexChanged: {
-                        if (!root.syncingPageIndicator
-                                && pageIndicator.visible && currentIndex >= 0
-                                && currentIndex < root.filteredTimelines.length
-                                && currentIndex !== root.expandedIndex)
-                            root.setExpanded(currentIndex)
-                    }
-                }
-            }
-        }
-
+        page: root
     }
 
     DayEditor {
@@ -1219,6 +961,11 @@ Item {
                 })
             }
         }
+    }
+
+    Component {
+        id: defaultDurationHint
+        DefaultDurationHint {}
     }
 
     Dialog {
