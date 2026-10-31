@@ -8,6 +8,9 @@ RowLayout {
 
     property string title: ""
     property bool expanded: true
+    // Driven by the owning page so the chevron follows the accordion instead
+    // of switching glyphs independently.
+    property real expansionProgress: expanded ? 1 : 0
     property var filterModel1: []
     property var filterModel2: []
     property int filterIndex1: 0
@@ -21,12 +24,25 @@ RowLayout {
     spacing: 4
 
     Button {
+        id: toggleButton
         Layout.preferredWidth: 32
         Layout.preferredHeight: 32
         flat: true
-        icon.name: root.expanded
-            ? "ic_fluent_chevron_down_20_regular"
-            : "ic_fluent_chevron_right_20_regular"
+        icon.name: root.expanded ? "ic_fluent_chevron_down_20_regular" : "ic_fluent_chevron_right_20_regular"
+        scale: hovered ? 1.06 : 1
+        opacity: hovered ? 1 : 0.78
+        Behavior on scale {
+            NumberAnimation {
+                duration: 140
+                easing.type: Easing.OutCubic
+            }
+        }
+        Behavior on opacity {
+            NumberAnimation {
+                duration: 140
+                easing.type: Easing.OutCubic
+            }
+        }
         onClicked: root.expandedToggled(!root.expanded)
     }
 
@@ -40,7 +56,6 @@ RowLayout {
     ComboBox {
         visible: root.filterModel1.length > 0
         Layout.preferredHeight: 32
-        Layout.minimumWidth: 128
         implicitContentWidthPolicy: ComboBox.WidestText
         model: root.filterModel1
         currentIndex: root.filterIndex1
@@ -50,7 +65,6 @@ RowLayout {
     ComboBox {
         visible: root.filterModel2.length > 0
         Layout.preferredHeight: 32
-        Layout.minimumWidth: 128
         implicitContentWidthPolicy: ComboBox.WidestText
         model: root.filterModel2
         currentIndex: root.filterIndex2

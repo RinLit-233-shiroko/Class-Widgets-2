@@ -324,9 +324,27 @@ Item {
             return 0
         const item = filteredTimelines[index]
         if (item.day.date)
-            return (38 + item.sectionIndex * 112) * dateSectionProgress
+            return 38 + item.sectionIndex * 112 * dateSectionProgress
         return weekSectionY
-            + (38 + item.sectionIndex * 112) * weekSectionProgress
+            + 38 + item.sectionIndex * 112 * weekSectionProgress
+    }
+
+    function rowOverviewHeight(index) {
+        if (index < 0 || index >= filteredTimelines.length)
+            return 0
+        const progress = filteredTimelines[index].day.date
+            ? dateSectionProgress : weekSectionProgress
+        return 104 * progress
+    }
+
+    function rowSectionOpacity(index) {
+        if (index < 0 || index >= filteredTimelines.length)
+            return 0
+        const progress = filteredTimelines[index].day.date
+            ? dateSectionProgress : weekSectionProgress
+        // Keep a little presence while the cards are compressing, then let
+        // them leave with the last part of the section motion.
+        return Math.pow(Math.max(0, Math.min(1, progress)), 0.7)
     }
 
     function rowTargetGeometry(index, focusIndex, isExpanded) {
@@ -355,7 +373,7 @@ Item {
                 x: 0,
                 y: rowOverviewY(index) - scrollOffset,
                 width: timelineScene.width,
-                height: 104,
+                height: rowOverviewHeight(index),
                 scale: Math.max(0.25, (timelineScene.width - 16) / 1440),
                 contentX: 0,
                 visualProgress: 0
@@ -422,8 +440,7 @@ Item {
     function rowOpacity(index) {
         if (sceneExpanded || transitionTargetExpanded)
             return 1
-        const day = timelineDataAt(index)
-        return day.date ? dateSectionProgress : weekSectionProgress
+        return rowSectionOpacity(index)
     }
 
     function clampOverviewOffset(value) {
@@ -457,7 +474,7 @@ Item {
             if (!row) {
                 result.push({
                     x: 0, y: rowOverviewY(i) - overviewScrollOffset,
-                    width: timelineScene.width, height: 104,
+                    width: timelineScene.width, height: rowOverviewHeight(i),
                     scale: Math.max(0.25, (timelineScene.width - 16) / 1440),
                     contentX: 0,
                     visualProgress: 0
@@ -813,15 +830,15 @@ Item {
         id: dateSectionAnimation
         target: root
         property: "dateSectionProgress"
-        duration: 220
-        easing.type: Easing.OutCubic
+        duration: 280
+        easing.type: Easing.OutQuint
     }
     NumberAnimation {
         id: weekSectionAnimation
         target: root
         property: "weekSectionProgress"
-        duration: 220
-        easing.type: Easing.OutCubic
+        duration: 280
+        easing.type: Easing.OutQuint
     }
     NumberAnimation {
         id: overviewWheelAnimation
@@ -1006,6 +1023,7 @@ Item {
                     visible: root.hasDateSection && opacity > 0
                     title: qsTr("By Date")
                     expanded: root.dateSectionExpanded
+                    expansionProgress: root.dateSectionProgress
                     filterModel1: root.monthFilterModel
                     filterModel2: root.yearFilterModel
                     filterIndex1: root.monthFilterIndex
@@ -1037,6 +1055,7 @@ Item {
                     visible: root.hasWeekSection && opacity > 0
                     title: qsTr("By Week")
                     expanded: root.weekSectionExpanded
+                    expansionProgress: root.weekSectionProgress
                     filterModel1: root.weekdayFilterModel
                     filterIndex1: root.weekFilterIndex
 

@@ -35,6 +35,7 @@ Item {
     readonly property real axisContentX: axisView.axisContentX
     readonly property bool axisHovered: axisView.axisHovered
     readonly property bool detailOpen: axisView.detailOpen
+    clip: true
     readonly property var entries: {
         if (entriesOverride !== undefined && entriesOverride !== null)
             return entriesOverride
@@ -186,11 +187,13 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: rowHeader.bottom
-        anchors.bottom: parent.bottom
         anchors.leftMargin: 10
         anchors.rightMargin: 12
         anchors.topMargin: 6
-        anchors.bottomMargin: 8
+        // The row height is animated by the overview accordion. Clamp the
+        // content height so an almost-collapsed row never receives a
+        // negative geometry before it fades out.
+        height: Math.max(0, root.height - rowHeader.height - 14)
         z: root.expanded ? 5 : 0
         entries: root.entries
         subjects: root.subjects

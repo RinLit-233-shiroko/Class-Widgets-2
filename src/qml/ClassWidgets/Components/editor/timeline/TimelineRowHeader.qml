@@ -124,8 +124,13 @@ Item {
             z: 2
             flat: true
             icon.name: "ic_fluent_more_vertical_20_regular"
-            text: root.compactLayout ? "" : qsTr("More actions")
             onClicked: actionsMenu.open()
+
+            ToolTip {
+                text: qsTr("More actions")
+                visible: parent.hovered
+                delay: 250
+            }
 
             Menu {
                 id: actionsMenu
