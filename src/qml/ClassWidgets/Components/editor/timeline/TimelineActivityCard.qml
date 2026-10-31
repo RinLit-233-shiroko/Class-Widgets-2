@@ -37,7 +37,9 @@ Item {
     property real visualOverrideStart: -1
     property real visualOverrideEnd: -1
     property bool contextMenuSuppressed: false
-    property bool touchGestureRejected: false
+    // Windows may cancel the left sequence before delivering its synthesized
+    // right-click. Keep the context menu disabled for that short handoff.
+    property bool syntheticContextMenuGuard: false
     property int lastConflictRevision: -1
     property real lastConflictStart: -1
     property real lastConflictEnd: -1
@@ -114,6 +116,8 @@ Item {
     }
     // Figma variants: Full 82px, Medium 64px, Thin 40px.
     readonly property int responsiveVariant: width >= 82 ? 2 : width >= 64 ? 1 : 0
+    readonly property bool edgeResizeAvailable: root.editable && root.selected
+        && !root.compact && root.width >= 36
     readonly property var subject: subjectForEntry()
     readonly property color baseColor: entry.type === "class"
         ? (subject && subject.color ? subject.color : "#B1EDF6")
@@ -242,25 +246,6 @@ Item {
         color: root.highlightColor
     }
 
-    TapHandler {
-        enabled: root.editable
-            && !(root.selected && root.longPressToDrag && !root.detailOpen)
-        onTapped: {
-            root.activateFromTap()
-        }
-    }
-
-    TapHandler {
-        acceptedButtons: Qt.RightButton
-        // TouchScreen long-press is reserved for card dragging. Restrict the
-        // context menu to actual mouse/trackpad right-clicks so the mobile
-        // long-press gesture cannot interrupt an active drag.
-        acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
-        enabled: root.editable && !root.touchPlatform
-            && !root.contextMenuSuppressed
-        onTapped: contextMenu.popup()
-    }
-
     Menu {
         id: contextMenu
         position: Position.None
@@ -276,6 +261,13 @@ Item {
         }
     }
 
+    Timer {
+        id: syntheticContextMenuGuardTimer
+        interval: 700
+        repeat: false
+        onTriggered: root.syntheticContextMenuGuard = false
+    }
+
     HoverHandler {
         cursorShape: root.editable && !root.compact
             ? Qt.SizeAllCursor : Qt.PointingHandCursor
@@ -284,70 +276,44 @@ Item {
     Item {
         id: moveSurface
         anchors.fill: parent
-        anchors.leftMargin: 14
-        anchors.rightMargin: 14
         visible: root.editable && !root.compact
         enabled: visible && !root.detailOpen
-
-        DragHandler {
-            id: desktopMoveHandler
-            target: null
-            acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
-            enabled: root.editable && root.selected && !root.compact
-                && !root.detailOpen && !root.longPressToDrag
-            xAxis.enabled: true
-            yAxis.enabled: true
-            grabPermissions: PointerHandler.CanTakeOverFromAnything
-
-            onActiveChanged: {
-                if (active)
-                    root.beginManipulation("move")
-                else
-                    root.finishManipulation()
-            }
-            onTranslationChanged: {
-                if (!active)
-                    return
-                root.dragPointerDeltaX = translation.x
-                root.dragPointerOffsetY = translation.y
-                root.updateManipulationFromDelta(
-                    root.dragPointerDeltaX + root.dragAutoScrollPixels
-                )
-                root.dragPointerMoved(centroid.scenePosition.x)
-            }
-        }
 
         MouseArea {
             id: moveArea
             anchors.fill: parent
-            acceptedButtons: Qt.LeftButton
+            acceptedButtons: Qt.LeftButton | Qt.RightButton
             hoverEnabled: true
             cursorShape: Qt.SizeAllCursor
             enabled: parent.enabled
-                && (!root.selected || root.longPressToDrag)
-            preventStealing: !root.longPressToDrag || dragReady
+            preventStealing: dragReady
+                || (pressed && root.selected && !root.longPressToDrag
+                    && !touchPointer)
 
             property bool dragReady: false
             property bool dragMoved: false
+            property bool holdCancelled: false
+            property bool touchPointer: false
             property real pressSceneX: 0
             property real pressSceneY: 0
 
             Timer {
                 id: longPressTimer
-                interval: 250
+                interval: 400
                 repeat: false
                 running: moveArea.pressed && !moveArea.dragReady
-                    && (!root.selected || root.longPressToDrag)
-                    && !root.touchPlatform
+                    && !moveArea.holdCancelled
+                    && (!root.selected || root.longPressToDrag
+                        || moveArea.touchPointer)
                 onTriggered: {
                     if (!moveArea.pressed || moveArea.dragReady)
                         return
+                    moveArea.dragReady = true
                     if (!root.selected) {
                         root.suppressDetailView = true
                         root.detailRequested = false
                         root.activated(root.entry, root)
                     }
-                    moveArea.dragReady = true
                     moveArea.dragMoved = false
                     root.beginManipulation("move")
                 }
@@ -355,6 +321,14 @@ Item {
 
             function activateCard() {
                 root.activateFromTap()
+            }
+
+            function showContextMenu() {
+                if (root.touchPlatform || root.contextMenuSuppressed
+                        || root.syntheticContextMenuGuard
+                        || root.directManipulation)
+                    return
+                contextMenu.popup()
             }
 
             function updateMove() {
@@ -377,67 +351,72 @@ Item {
                 root.dragPointerMoved(scenePoint.x)
             }
 
-            function updateTouchGesture() {
-                if (!pressed || dragReady || touchGestureRejected
-                        || !root.touchPlatform)
+            onPressed: function(mouse) {
+                if (mouse.button !== Qt.LeftButton)
                     return
-                const scenePoint = moveArea.mapToItem(null, moveArea.mouseX,
-                    moveArea.mouseY)
-                const deltaX = scenePoint.x - pressSceneX
-                const deltaY = scenePoint.y - pressSceneY
-                const distance = Math.max(Math.abs(deltaX), Math.abs(deltaY))
-                if (distance < 8)
-                    return
-
-                // Decide the axis from the first meaningful movement instead
-                // of waiting for a long-press event that the OS may turn into
-                // a context-menu gesture.
-                if (Math.abs(deltaY) > Math.abs(deltaX)) {
-                    touchGestureRejected = true
-                    root.cancelManipulation()
-                    return
-                }
-                if (!root.selected) {
-                    root.suppressDetailView = true
-                    root.activated(root.entry, root)
-                }
-                dragReady = true
-                dragMoved = true
-                root.beginManipulation("move")
-                updateMove()
-            }
-
-            onPressed: {
                 const scenePoint = moveArea.mapToItem(null, moveArea.mouseX,
                     moveArea.mouseY)
                 pressSceneX = scenePoint.x
                 pressSceneY = scenePoint.y
+                // QQuickMouseEvent.source: 0 is a real mouse event, non-zero
+                // is Qt/Windows-synthesized input (including touch).
+                touchPointer = Number(mouse.source) !== 0
                 root.contextMenuSuppressed = true
+                root.syntheticContextMenuGuard = false
+                syntheticContextMenuGuardTimer.stop()
                 dragMoved = false
                 dragReady = false
-                touchGestureRejected = false
+                holdCancelled = false
             }
 
-            onPositionChanged: {
-                updateTouchGesture()
+            onPositionChanged: function(mouse) {
+                if (!(mouse.buttons & Qt.LeftButton))
+                    return
+                const scenePoint = moveArea.mapToItem(null, moveArea.mouseX,
+                    moveArea.mouseY)
+                const dx = scenePoint.x - pressSceneX
+                const dy = scenePoint.y - pressSceneY
+                if (!dragReady && !holdCancelled) {
+                    if (Math.max(Math.abs(dx), Math.abs(dy)) > 8) {
+                        holdCancelled = true
+                        longPressTimer.stop()
+                    }
+                }
+                if (!dragReady && root.selected && !root.longPressToDrag
+                        && !touchPointer
+                        && Math.max(Math.abs(dx), Math.abs(dy)) > 4) {
+                    dragReady = true
+                    dragMoved = false
+                    root.beginManipulation("move")
+                }
                 updateMove()
             }
 
-            onReleased: {
+            onReleased: function(mouse) {
+                if (mouse.button === Qt.RightButton) {
+                    showContextMenu()
+                    return
+                }
+                const hadDrag = dragReady && dragMoved
                 if (dragReady) {
                     if (dragMoved)
                         root.finishManipulation()
                     else
                         root.cancelManipulation()
-                } else if (!touchGestureRejected) {
+                } else {
                     root.cancelManipulation()
                     if (root.editable)
                         activateCard()
                 }
                 dragReady = false
                 dragMoved = false
-                touchGestureRejected = false
+                holdCancelled = false
+                touchPointer = false
                 root.contextMenuSuppressed = false
+                if (hadDrag) {
+                    root.syntheticContextMenuGuard = true
+                    syntheticContextMenuGuardTimer.restart()
+                }
             }
 
             onCanceled: {
@@ -447,7 +426,10 @@ Item {
                 root.cancelManipulation()
                 dragReady = false
                 dragMoved = false
-                touchGestureRejected = false
+                holdCancelled = false
+                touchPointer = false
+                root.syntheticContextMenuGuard = true
+                syntheticContextMenuGuardTimer.restart()
                 root.contextMenuSuppressed = false
             }
         }
@@ -472,7 +454,7 @@ Item {
     }
 
     Item {
-        visible: root.editable && root.selected && !root.compact
+        visible: root.edgeResizeAvailable
         enabled: visible && !root.detailOpen
         width: 14
         height: parent.height
@@ -503,7 +485,7 @@ Item {
     }
 
     Item {
-        visible: root.editable && root.selected && !root.compact
+        visible: root.edgeResizeAvailable
         enabled: visible && !root.detailOpen
         width: 14
         height: parent.height
@@ -553,6 +535,15 @@ Item {
             if (detailViewLoader.item)
                 detailViewLoader.item.refresh(root.entry)
         })
+    }
+
+    function cancelTouchGesture() {
+        cancelManipulation()
+        if (typeof moveArea !== "undefined") {
+            moveArea.dragReady = false
+            moveArea.dragMoved = false
+        }
+        contextMenuSuppressed = false
     }
 
     function updateManipulationFromDelta(pixelDelta) {

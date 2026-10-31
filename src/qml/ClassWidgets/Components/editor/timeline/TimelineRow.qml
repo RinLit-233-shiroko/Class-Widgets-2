@@ -177,6 +177,7 @@ Item {
         compactLayout: root.compactLayout
         visualProgress: root.visualProgress
         pxPerMinute: root.pxPerMinute
+        overviewScale: root.previewScale
         sceneContentX: root.sceneContentX
         layoutControlled: root.layoutControlled
         detailsVisible: root.detailsVisible

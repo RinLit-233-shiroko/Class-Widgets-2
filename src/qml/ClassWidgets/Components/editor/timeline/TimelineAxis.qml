@@ -3,6 +3,7 @@ import QtQuick.Controls
 import Qt5Compat.GraphicalEffects
 import RinUI
 import ClassWidgets.Components
+import "../ZoomMath.js" as ZoomMath
 
 Item {
     id: root
@@ -14,6 +15,10 @@ Item {
     property bool readOnlyTimeline: false
     property real visualProgress: 0
     property real pxPerMinute: 0.5
+    property real overviewScale: 0.25
+    readonly property real minimumZoom: Math.max(0.25,
+        Math.min(2.1, overviewScale))
+    readonly property real maximumZoom: 4.4 - minimumZoom
     property real sceneContentX: 0
     property bool layoutControlled: false
     property bool detailsVisible: false
@@ -21,6 +26,7 @@ Item {
     property bool axisHovered: false
     property bool compactLayout: false
     property bool draggingEntry: false
+    property bool pinching: false
     property bool dropPreviewActive: false
     property string dropPreviewEntryId: ""
     property real dropPreviewStart: -1
@@ -111,6 +117,14 @@ Item {
             if (card && card.manipulationMode
                     && String(card.entry.id) === dropPreviewEntryId)
                 card.applyAutoScrollDelta(delta)
+        }
+    }
+
+    function cancelCardTouchGestures() {
+        for (let i = 0; i < entryRepeater.count; ++i) {
+            const card = entryRepeater.itemAt(i)
+            if (card && card.cancelTouchGesture)
+                card.cancelTouchGesture()
         }
     }
 
@@ -256,11 +270,14 @@ Item {
                     const anchorPixel = point.position.x
                     const anchorMinute = (horizontalFlick.contentX + anchorPixel)
                         / Math.max(0.001, root.pxPerMinute)
-                    const step = event.angleDelta.y
-                        ? event.angleDelta.y / 1200
-                        : Math.sign(delta) * 0.02
                     root.pinchZoomRequested(
-                        root.pxPerMinute * (1 + step),
+                        ZoomMath.wheelZoom(
+                            root.pxPerMinute,
+                            event.angleDelta.x || event.angleDelta.y,
+                            event.pixelDelta.x || event.pixelDelta.y,
+                            root.minimumZoom,
+                            root.maximumZoom
+                        ),
                         anchorMinute,
                         anchorPixel
                     )
@@ -277,19 +294,25 @@ Item {
             enabled: root.interactionEnabled && !root.layoutControlled
                 && !root.draggingEntry
             grabPermissions: PointerHandler.CanTakeOverFromAnything
-            minimumScale: 0.1
-            maximumScale: 10
             property real startZoom: 1
+            minimumScale: startZoom > 0
+                ? root.minimumZoom / startZoom : 0.1
+            maximumScale: startZoom > 0
+                ? root.maximumZoom / startZoom : 10
 
             onActiveChanged: {
+                root.pinching = active
                 if (!active) {
                     root.pinchZoomFinished()
                     return
                 }
+                root.cancelCardTouchGestures()
                 wheelAnimation.stop()
                 focusAnimation.stop()
                 horizontalFlick.cancelFlick()
                 startZoom = root.pxPerMinute
+                minimumScale = root.minimumZoom / startZoom
+                maximumScale = root.maximumZoom / startZoom
             }
             onScaleChanged: {
                 if (!active || startZoom <= 0)
@@ -300,7 +323,12 @@ Item {
                 const anchorMinute = (horizontalFlick.contentX + center.x)
                     / Math.max(0.001, root.pxPerMinute)
                 root.pinchZoomRequested(
-                    startZoom * scale, anchorMinute, center.x
+                    ZoomMath.pinchZoom(
+                        startZoom, scale,
+                        root.minimumZoom, root.maximumZoom
+                    ),
+                    anchorMinute,
+                    center.x
                 )
             }
         }
@@ -386,6 +414,7 @@ Item {
                 entry: modelData
                 subjects: root.subjects
                 editable: root.interactionEnabled && !root.readOnlyTimeline
+                    && !root.pinching
                 compact: root.visualProgress < 0.999
                 compactLayout: root.compactLayout
                 expandedProgress: root.visualProgress

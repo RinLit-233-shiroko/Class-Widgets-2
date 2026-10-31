@@ -60,7 +60,7 @@ Item {
         : implicitWidth
     height: implicitHeight
     anchors.bottom: parent.bottom
-    anchors.bottomMargin: 32
+    anchors.bottomMargin: 16
     anchors.horizontalCenter: parent.horizontalCenter
 
     transform: Translate {

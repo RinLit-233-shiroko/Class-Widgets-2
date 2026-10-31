@@ -5,6 +5,7 @@ import RinUI
 import ClassWidgets.Components
 
 import QtQuick.Effects  // shadow
+import "../../Components/editor/ZoomMath.js" as ZoomMath
 
 Item {
     id: root
@@ -77,8 +78,9 @@ Item {
     }
 
     function adjustZoom(delta) {
-        zoomSlider.value = Math.max(zoomSlider.from,
-            Math.min(zoomSlider.to, zoomSlider.value + delta))
+        zoomSlider.value = ZoomMath.steppedZoom(
+            zoomSlider.value, delta, zoomSlider.from, zoomSlider.to
+        )
     }
 
     property bool editable: !AppCentral.scheduleManager.isReadonly()
@@ -216,6 +218,13 @@ Item {
                 to: 2.0
                 stepSize: 0.25
                 value: 1.0
+                Behavior on value {
+                    enabled: !scheduleTable.pinching && !zoomSlider.pressed
+                    NumberAnimation {
+                        duration: 140
+                        easing.type: Easing.OutCubic
+                    }
+                }
                 // The percentage is already shown on the left, so disable the
                 // hover tooltip to avoid duplicating it.
                 toolTip.visible: false
