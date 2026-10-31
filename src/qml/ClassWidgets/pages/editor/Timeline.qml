@@ -1,13 +1,21 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Layouts
+import QtQuick.Window
 import RinUI
 import ClassWidgets.Components
+import ClassWidgets.Easing
 import "../../Components/editor/WeekRule.js" as WeekRule
 
 Item {
     id: root
 
     property var timelines: AppCentral.scheduleEditor.days || []
+    readonly property var subjects: AppCentral.scheduleEditor.subjects || []
+    readonly property bool readOnlyTimeline:
+        AppCentral.scheduleManager.isReadonly()
+    readonly property int maxWeekCycle:
+        AppCentral.scheduleEditor.meta.maxWeekCycle || 1
     property int viewMode: 0 // 0: all, 1: weekly rules, 2: date rules
     property int pendingViewMode: -1
     property string activeTimelineId: ""
@@ -95,6 +103,10 @@ Item {
     readonly property int selectedWeekday:
         weekFilterIndex > 0 && weekFilterIndex <= availableWeekdays.length
             ? availableWeekdays[weekFilterIndex - 1] : 0
+    readonly property bool textInputFocused: {
+        const item = Window.activeFocusItem
+        return item !== null && item.cursorPosition !== undefined
+    }
 
     onAvailableMonthsChanged: {
         if (monthFilterIndex < 0 || monthFilterIndex > availableMonths.length)
@@ -120,7 +132,6 @@ Item {
     }
 
     readonly property var matchingTimelines: {
-        const revision = AppCentral.scheduleEditor.entriesRevision
         const dates = []
         const weeks = []
         for (let i = 0; i < timelines.length; ++i) {
@@ -132,14 +143,22 @@ Item {
                 if (yearFilter !== ""
                         && String(date.getFullYear()) !== yearFilter)
                     continue
-                dates.push({ day: day, sourceIndex: i })
+                dates.push({
+                    day: day,
+                    sourceIndex: i,
+                    sectionIndex: dates.length
+                })
                 continue
             }
             const selectedDays = WeekRule.dayList(day.dayOfWeek)
             if (selectedWeekday > 0
                     && selectedDays.indexOf(selectedWeekday) < 0)
                 continue
-            weeks.push({ day: day, sourceIndex: i })
+            weeks.push({
+                day: day,
+                sourceIndex: i,
+                sectionIndex: weeks.length
+            })
         }
         if (viewMode === 1)
             return weeks
@@ -148,6 +167,44 @@ Item {
         return dates.concat(weeks)
     }
     readonly property var filteredTimelines: matchingTimelines
+    property var entriesByDayId: ({})
+
+    function rebuildEntriesByDayId() {
+        const days = AppCentral.scheduleEditor.entriesData || []
+        const result = ({})
+        for (let i = 0; i < days.length; ++i)
+            result[String(days[i].id)] = days[i].entries || []
+        entriesByDayId = result
+    }
+
+    function refreshEntriesForDay(dayId) {
+        const days = AppCentral.scheduleEditor.entriesData || []
+        const key = String(dayId)
+        let found = false
+        let entries = []
+        for (let i = 0; i < days.length; ++i) {
+            if (String(days[i].id) !== key)
+                continue
+            entries = days[i].entries || []
+            found = true
+            break
+        }
+        if (!found)
+            return
+
+        // Mutate the lookup in place. Replacing the whole object would
+        // invalidate every row's entries binding even though only one day
+        // changed.
+        entriesByDayId[key] = entries
+        for (let i = 0; i < filteredTimelines.length; ++i) {
+            if (String(filteredTimelines[i].day.id) !== key)
+                continue
+            const row = timelineRepeater.itemAt(i)
+            if (row)
+                row.setEntries(entries)
+            break
+        }
+    }
     readonly property var filteredDates: matchingTimelines.filter(item => !!item.day.date)
     readonly property var filteredWeeks: matchingTimelines.filter(item => !item.day.date)
     readonly property real expandedTimelineHeight: {
@@ -214,7 +271,10 @@ Item {
     }
 
     onExpandedIndexChanged: syncPageIndicator()
-    Component.onCompleted: syncPageIndicator()
+    Component.onCompleted: {
+        syncPageIndicator()
+        rebuildEntriesByDayId()
+    }
 
     function timelineDataAt(index) {
         return index >= 0 && index < filteredTimelines.length
@@ -224,16 +284,11 @@ Item {
     function rowOverviewY(index) {
         if (index < 0 || index >= filteredTimelines.length)
             return 0
-        const day = filteredTimelines[index].day
-        if (day.date) {
-            const localIndex = filteredDates.findIndex(item =>
-                String(item.day.id) === String(day.id))
-            return (38 + localIndex * 112) * dateSectionProgress
-        }
-        const localIndex = filteredWeeks.findIndex(item =>
-            String(item.day.id) === String(day.id))
+        const item = filteredTimelines[index]
+        if (item.day.date)
+            return (38 + item.sectionIndex * 112) * dateSectionProgress
         return weekSectionY
-            + (38 + localIndex * 112) * weekSectionProgress
+            + (38 + item.sectionIndex * 112) * weekSectionProgress
     }
 
     function rowTargetGeometry(index, focusIndex, isExpanded) {
@@ -248,9 +303,11 @@ Item {
             if (entries.length) {
                 const parts = String(entries[0].startTime).split(":")
                 const firstMinute = Number(parts[0]) * 60 + Number(parts[1])
-                const target = Math.max(0, firstMinute - 40) * activeScale
-                const axisWidth = Math.max(0, targetWidth - 16)
-                contentX = Math.min(target, Math.max(0, 1440 * activeScale - axisWidth))
+                const axisWidth = Math.max(0, targetWidth - 22)
+                const target = firstMinute * activeScale - axisWidth * 0.4
+                contentX = Math.max(0, Math.min(
+                    target, 1440 * activeScale - axisWidth
+                ))
             }
         }
         if (!isExpanded) {
@@ -541,6 +598,44 @@ Item {
         zoomAnimation.restart()
     }
 
+    function applyPinchZoom(value, anchorMinute, anchorPixel) {
+        const row = expandedIndex >= 0
+            ? timelineRepeater.itemAt(expandedIndex) : null
+        if (!row || transitionActive)
+            return
+
+        const minZoom = Math.max(0.25,
+            Math.min(2.1, row.previewScale))
+        const maxZoom = 4.4 - minZoom
+        const next = Math.max(minZoom, Math.min(maxZoom, value))
+
+        replacingZoomAnimation = true
+        zoomAnimation.stop()
+        replacingZoomAnimation = false
+        row.setScaleAnchor(anchorMinute, anchorPixel)
+        zoom = next
+        animatedZoom = next
+    }
+
+    function finishPinchZoom() {
+        const row = expandedIndex >= 0
+            ? timelineRepeater.itemAt(expandedIndex) : null
+        if (row)
+            row.releaseScaleAnchor()
+        zoom = animatedZoom
+    }
+
+    function adjustZoomBy(delta) {
+        if (expandedIndex < 0 || transitionActive)
+            return
+        const row = timelineRepeater.itemAt(expandedIndex)
+        if (!row)
+            return
+        const minZoom = Math.max(0.25, Math.min(2.1, row.previewScale))
+        const maxZoom = 4.4 - minZoom
+        setZoom(Math.max(minZoom, Math.min(maxZoom, animatedZoom + delta)))
+    }
+
     function addEntry(type) {
         let duration = Configs.data.schedule.default_duration.class_ || 40
         if (type === "break")
@@ -609,16 +704,25 @@ Item {
             refreshHistoryAvailability()
     }
 
+    function requestTimelineDelete(timeline) {
+        if (!timeline || !timeline.id)
+            return
+        pendingDeleteTimeline = timeline
+        deleteTimelineDialog.open()
+    }
+
     property bool toolbarVisible: false
     property bool replacingZoomAnimation: false
+    property var pendingDeleteTimeline: null
 
     NumberAnimation {
         id: sceneAnimation
         target: root
         property: "motionProgress"
         to: 1
-        duration: 460
-        easing.type: Easing.InOutCubic
+        duration: 420
+        easing.type: Easing.Bezier
+        easing.bezierCurve: BezierCurve.timelineScene
         onStopped: {
             if (!root.replacingTransition)
                 root.finishSceneTransition()
@@ -690,10 +794,45 @@ Item {
                 root.refreshHistoryAvailability()
         }
         function onDaysChanged() {
+            root.rebuildEntriesByDayId()
             if (root.activeTimelineId
                     && !AppCentral.scheduleEditor.getDay(root.activeTimelineId))
                 root.collapseTimeline()
         }
+        function onDayEntriesChanged(dayId) {
+            if (dayId === "")
+                root.rebuildEntriesByDayId()
+            else
+                root.refreshEntriesForDay(dayId)
+        }
+    }
+
+    Shortcut {
+        sequence: "Ctrl++"
+        onActivated: root.adjustZoomBy(0.1)
+    }
+    Shortcut {
+        sequence: "Ctrl+="
+        onActivated: root.adjustZoomBy(0.1)
+    }
+    Shortcut {
+        sequence: "Ctrl+-"
+        onActivated: root.adjustZoomBy(-0.1)
+    }
+    Shortcut {
+        sequence: "Ctrl+Z"
+        enabled: root.activeTimelineId !== "" && !root.textInputFocused
+        onActivated: root.undo()
+    }
+    Shortcut {
+        sequence: "Ctrl+Y"
+        enabled: root.activeTimelineId !== "" && !root.textInputFocused
+        onActivated: root.redo()
+    }
+    Shortcut {
+        sequence: "Ctrl+Shift+Z"
+        enabled: root.activeTimelineId !== "" && !root.textInputFocused
+        onActivated: root.redo()
     }
 
     Column {
@@ -867,6 +1006,12 @@ Item {
                         visible: root.rowIsVisible(index)
                         opacity: root.rowOpacity(index)
                         timeline: root.filteredTimelines[index].day
+                        subjects: root.subjects
+                        readOnlyTimeline: root.readOnlyTimeline
+                        maxWeekCycle: root.maxWeekCycle
+                        entriesOverride: root.entriesByDayId[
+                            String(root.filteredTimelines[index].day.id)
+                        ]
                         timelineIndex: index
                         expanded: root.transitionActive
                             ? root.transitionTargetExpanded
@@ -875,7 +1020,6 @@ Item {
                         interactionEnabled: root.sceneExpanded
                             && !root.transitionActive && index === root.sceneFocusIndex
                         zoom: root.animatedZoom
-                        readOnlyTimeline: AppCentral.scheduleManager.isReadonly()
                         toolbarVisible: root.toolbarVisible && expanded
                         selectedEntryId: expanded ? root.selectedEntryId : ""
                         undoAvailable: expanded && root.undoAvailable
@@ -887,6 +1031,9 @@ Item {
                         }
                         onRequestCollapse: root.collapseTimeline()
                         onEditRulesRequested: function(day) { dayEditor.openFor(day) }
+                        onDeleteRequested: function(day) {
+                            root.requestTimelineDelete(day)
+                        }
                         onEntrySelected: function(entryId, entryIndex) {
                             if (root.sceneFocusIndex === index || root.transitionTargetIndex === index)
                                 root.selectedEntryId = entryId
@@ -900,6 +1047,10 @@ Item {
                         onRedoRequested: root.redo()
                         onAddRequested: function(type) { root.addEntry(type) }
                         onZoomRequested: function(value) { root.setZoom(value) }
+                        onPinchZoomRequested: function(value, anchorMinute, anchorPixel) {
+                            root.applyPinchZoom(value, anchorMinute, anchorPixel)
+                        }
+                        onPinchZoomFinished: root.finishPinchZoom()
                     }
                 }
 
@@ -975,5 +1126,24 @@ Item {
                 })
             }
         }
+    }
+
+    Dialog {
+        id: deleteTimelineDialog
+        modal: true
+        title: qsTr("Delete timeline?")
+
+        Text {
+            Layout.fillWidth: true
+            text: qsTr("This timeline and all its activities will be removed. This action cannot be undone.")
+        }
+
+        standardButtons: Dialog.Yes | Dialog.No
+        onAccepted: {
+            if (root.pendingDeleteTimeline)
+                AppCentral.scheduleEditor.removeDay(root.pendingDeleteTimeline.id)
+            root.pendingDeleteTimeline = null
+        }
+        onRejected: root.pendingDeleteTimeline = null
     }
 }

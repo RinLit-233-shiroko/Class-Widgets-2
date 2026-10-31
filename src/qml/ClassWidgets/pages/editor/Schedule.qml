@@ -76,6 +76,11 @@ Item {
         scheduleTable.selectToday()
     }
 
+    function adjustZoom(delta) {
+        zoomSlider.value = Math.max(zoomSlider.from,
+            Math.min(zoomSlider.to, zoomSlider.value + delta))
+    }
+
     property bool editable: !AppCentral.scheduleManager.isReadonly()
 
     // Absolute week currently shown; defaults to the current week, which is
@@ -160,6 +165,10 @@ Item {
             currentWeek: root.currentWeek
             zoomFactor: zoomSlider.value
 
+            onZoomRequested: function(value) {
+                zoomSlider.value = value
+            }
+
             onCellClicked: (row, column, entry, delegate) => {
                 if (!editable) {
                     return
@@ -235,4 +244,17 @@ Item {
     // because the table is still being constructed, so align to today's
     // Monday-based week only once the children exist.
     Component.onCompleted: alignToTodayWeek()
+
+    Shortcut {
+        sequence: "Ctrl++"
+        onActivated: root.adjustZoom(0.1)
+    }
+    Shortcut {
+        sequence: "Ctrl+="
+        onActivated: root.adjustZoom(0.1)
+    }
+    Shortcut {
+        sequence: "Ctrl+-"
+        onActivated: root.adjustZoom(-0.1)
+    }
 }

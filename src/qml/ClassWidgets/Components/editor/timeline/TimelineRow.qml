@@ -18,6 +18,8 @@ Item {
     property string selectedEntryId: ""
     property var subjects: AppCentral.scheduleEditor.subjects || []
     property bool readOnlyTimeline: AppCentral.scheduleManager.isReadonly()
+    property int maxWeekCycle: AppCentral.scheduleEditor.meta.maxWeekCycle || 1
+    property var entriesOverride: undefined
     property bool toolbarVisible: false
     property real animatedScale: previewScale
     property real sceneContentX: 0
@@ -33,6 +35,8 @@ Item {
     readonly property real axisContentX: axisView.axisContentX
     readonly property bool axisHovered: axisView.axisHovered
     readonly property var entries: {
+        if (entriesOverride !== undefined && entriesOverride !== null)
+            return entriesOverride
         const revision = AppCentral.scheduleEditor.entriesRevision
         const currentDays = AppCentral.scheduleEditor.entriesData || []
         for (let i = 0; i < currentDays.length; ++i) {
@@ -48,10 +52,13 @@ Item {
     signal entrySelected(string entryId, int index)
     signal selectionCleared()
     signal editRulesRequested(var timeline)
+    signal deleteRequested(var timeline)
     signal undoRequested()
     signal redoRequested()
     signal addRequested(string type)
     signal zoomRequested(real value)
+    signal pinchZoomRequested(real value, real anchorMinute, real anchorPixel)
+    signal pinchZoomFinished()
 
     function titleForTimeline() {
         if (timeline.date) {
@@ -82,7 +89,7 @@ Item {
         if (kind === "specific")
             return qsTr("Weeks %1").arg(WeekRule.specificWeeks(rule).join(", "))
         if (kind === "cycle")
-            return qsTr("Every %1 weeks").arg(AppCentral.scheduleEditor.meta.maxWeekCycle)
+            return qsTr("Every %1 weeks").arg(maxWeekCycle)
         return qsTr("Every week")
     }
 
@@ -100,7 +107,14 @@ Item {
             return
         const parts = String(target.startTime).split(":")
         const firstMinute = Number(parts[0]) * 60 + Number(parts[1])
-        axisView.setContentX((firstMinute - 40) * pxPerMinute, animated === true)
+        axisView.setContentX(
+            firstMinute * pxPerMinute - axisView.axisWidth * 0.4,
+            animated === true
+        )
+    }
+
+    function setEntries(value) {
+        entriesOverride = value
     }
 
     height: layoutHeight
@@ -141,6 +155,7 @@ Item {
         compactLayout: root.compactLayout
         onCollapseRequested: root.requestCollapse()
         onEditRulesRequested: function(day) { root.editRulesRequested(day) }
+        onDeleteRequested: function(day) { root.deleteRequested(day) }
     }
 
     TimelineAxis {
@@ -170,22 +185,58 @@ Item {
             root.entrySelected(entryId, index)
         }
         onSelectionCleared: root.selectionCleared()
+        onPinchZoomRequested: function(value, anchorMinute, anchorPixel) {
+            root.pinchZoomRequested(value, anchorMinute, anchorPixel)
+        }
+        onPinchZoomFinished: root.pinchZoomFinished()
     }
 
-    TimelineToolbar {
-        toolbarVisible: root.expanded && root.toolbarVisible
-        compactLayout: root.compactLayout
-        zoomValue: root.zoom
-        overviewScale: root.previewScale
-        // Sample the axis and activity cards behind the floating toolbar.
-        // Using the row itself would make the acrylic source contain the
-        // toolbar, preventing it from rendering a stable backdrop.
-        sourceItem: axisView
-        undoAvailable: root.undoAvailable
-        redoAvailable: root.redoAvailable
-        onUndoRequested: root.undoRequested()
-        onRedoRequested: root.redoRequested()
-        onAddRequested: function(type) { root.addRequested(type) }
-        onZoomRequested: function(value) { root.zoomRequested(value) }
+    Loader {
+        id: toolbarLoader
+        objectName: "timelineToolbarLoader"
+        anchors.fill: parent
+        z: 20
+        active: false
+        sourceComponent: Component {
+            // Loader resizes its root item to its own bounds. Keep the toolbar
+            // inside an unscaled container so it can retain its intrinsic size.
+            Item {
+                TimelineToolbar {
+                    toolbarVisible: root.expanded && root.toolbarVisible
+                    compactLayout: root.compactLayout
+                    zoomValue: root.zoom
+                    overviewScale: root.previewScale
+                    // Sample the axis and activity cards behind the floating
+                    // toolbar so the acrylic backdrop does not include itself.
+                    sourceItem: axisView
+                    undoAvailable: root.undoAvailable
+                    redoAvailable: root.redoAvailable
+                    onUndoRequested: root.undoRequested()
+                    onRedoRequested: root.redoRequested()
+                    onAddRequested: function(type) { root.addRequested(type) }
+                    onZoomRequested: function(value) { root.zoomRequested(value) }
+                }
+            }
+        }
+    }
+
+    Timer {
+        id: toolbarUnloadTimer
+        // Keep the toolbar alive through the row's collapse transition.
+        interval: 480
+        onTriggered: toolbarLoader.active = false
+    }
+
+    onExpandedChanged: {
+        if (expanded) {
+            toolbarUnloadTimer.stop()
+            toolbarLoader.active = true
+        } else if (toolbarLoader.active) {
+            toolbarUnloadTimer.restart()
+        }
+    }
+    Component.onCompleted: {
+        if (expanded)
+            toolbarLoader.active = true
     }
 }

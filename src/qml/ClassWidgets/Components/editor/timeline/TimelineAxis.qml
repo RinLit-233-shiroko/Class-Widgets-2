@@ -60,6 +60,8 @@ Item {
 
     signal entrySelected(string entryId, int index)
     signal selectionCleared()
+    signal pinchZoomRequested(real value, real anchorMinute, real anchorPixel)
+    signal pinchZoomFinished()
 
     function showDropPreview(entryId, startMinute, endMinute, valid) {
         dropPreviewEntryId = String(entryId)
@@ -250,7 +252,56 @@ Item {
                     return
 
                 event.accepted = true
+                if (event.modifiers & Qt.ControlModifier) {
+                    const anchorPixel = point.position.x
+                    const anchorMinute = (horizontalFlick.contentX + anchorPixel)
+                        / Math.max(0.001, root.pxPerMinute)
+                    const step = event.angleDelta.y
+                        ? event.angleDelta.y / 1200
+                        : Math.sign(delta) * 0.02
+                    root.pinchZoomRequested(
+                        root.pxPerMinute * (1 + step),
+                        anchorMinute,
+                        anchorPixel
+                    )
+                    root.pinchZoomFinished()
+                    return
+                }
                 root.scrollByWheel(delta)
+            }
+        }
+
+        PinchHandler {
+            id: pinchHandler
+            target: null
+            enabled: root.interactionEnabled && !root.layoutControlled
+                && !root.draggingEntry
+            grabPermissions: PointerHandler.CanTakeOverFromAnything
+            minimumScale: 0.1
+            maximumScale: 10
+            property real startZoom: 1
+
+            onActiveChanged: {
+                if (!active) {
+                    root.pinchZoomFinished()
+                    return
+                }
+                wheelAnimation.stop()
+                focusAnimation.stop()
+                horizontalFlick.cancelFlick()
+                startZoom = root.pxPerMinute
+            }
+            onScaleChanged: {
+                if (!active || startZoom <= 0)
+                    return
+                const center = root.mapFromItem(
+                    null, centroid.scenePosition.x, centroid.scenePosition.y
+                )
+                const anchorMinute = (horizontalFlick.contentX + center.x)
+                    / Math.max(0.001, root.pxPerMinute)
+                root.pinchZoomRequested(
+                    startZoom * scale, anchorMinute, center.x
+                )
             }
         }
 
@@ -341,6 +392,7 @@ Item {
                 detailsVisible: root.detailsVisible
                 selected: String(modelData.id) === root.selectedEntryId
                 pxPerMinute: root.pxPerMinute
+                acrylicSourceItem: root
                 onActivated: function(item, card) {
                     root.entrySelected(String(item.id), index)
                 }

@@ -17,8 +17,10 @@ Item {
     property bool detailsVisible: false
     property real detailsOpacity: detailsVisible ? 1 : 0
     property bool suppressDetailView: false
+    property bool detailRequested: false
     property real pxPerMinute: 0.58
     property real timelineHeight: 128
+    property Item acrylicSourceItem: null
     property real movingStart: -1
     property real movingEnd: -1
     property bool directManipulation: false
@@ -148,6 +150,18 @@ Item {
         if (snapAnimation.running || manipulationMode !== "")
             cancelManipulation()
     }
+    onSelectedChanged: {
+        if (!selected)
+            detailRequested = false
+    }
+    onEditableChanged: {
+        if (!editable)
+            detailRequested = false
+    }
+    onCompactChanged: {
+        if (compact)
+            detailRequested = false
+    }
 
     width: Math.max(2,
         (visualEndMinute - visualStartMinute) * pxPerMinute)
@@ -244,11 +258,17 @@ Item {
         acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
         enabled: root.editable && !root.touchPlatform
             && !root.contextMenuSuppressed
-        onTapped: contextMenu.open()
+        onTapped: contextMenu.popup()
     }
 
     Menu {
         id: contextMenu
+        position: Position.None
+        MenuItem {
+            icon.name: "ic_fluent_edit_20_regular"
+            text: qsTr("Edit")
+            onTriggered: root.openDetails()
+        }
         MenuItem {
             icon.name: "ic_fluent_delete_20_regular"
             text: qsTr("Remove")
@@ -324,6 +344,7 @@ Item {
                         return
                     if (!root.selected) {
                         root.suppressDetailView = true
+                        root.detailRequested = false
                         root.activated(root.entry, root)
                     }
                     moveArea.dragReady = true
@@ -434,11 +455,14 @@ Item {
 
     Loader {
         id: detailViewLoader
-        active: root.selected && root.editable && !root.compact
+        active: root.detailRequested
+            && root.selected && root.editable && !root.compact
             && !root.suppressDetailView
         sourceComponent: Component {
             EntryDetailView {
                 sourceItem: root
+                acrylicSourceItem: root.acrylicSourceItem
+                onClosed: root.detailRequested = false
             }
         }
         onLoaded: Qt.callLater(function() {
@@ -514,7 +538,14 @@ Item {
     }
 
     function activateFromTap() {
+        openDetails()
+    }
+
+    function openDetails() {
+        if (!editable || compact)
+            return
         suppressDetailView = false
+        detailRequested = true
         root.activated(root.entry, root)
         // Reopening the already selected card must refresh its flyout
         // instead of relying on a selection-id change.

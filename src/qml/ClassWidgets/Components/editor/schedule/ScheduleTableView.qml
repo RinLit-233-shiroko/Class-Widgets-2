@@ -83,6 +83,7 @@ Item {
     signal cellClicked(int row, int column, var entry, Item delegate)
     // Emitted when the selection is dropped by clicking the background.
     signal selectionCleared()
+    signal zoomRequested(real value)
 
     // ── Date / weekday helpers ─────────────────────────
 
@@ -618,6 +619,35 @@ Item {
         }
     }
 
+    function minutesAtContentY(y) {
+        const segments = timeAxis.segments || []
+        for (let i = 0; i < segments.length; ++i) {
+            const segment = segments[i]
+            const segmentEnd = segment.visualStart
+                + (segment.end - segment.start) * pxPerMin
+            if (y <= segment.visualStart)
+                return segment.start
+            if (y <= segmentEnd)
+                return segment.start
+                    + (y - segment.visualStart) / Math.max(0.001, pxPerMin)
+        }
+        return segments.length
+            ? segments[segments.length - 1].end : 0
+    }
+
+    function contentYForMinute(minute) {
+        const segments = timeAxis.segments || []
+        for (let i = 0; i < segments.length; ++i) {
+            const segment = segments[i]
+            if (minute <= segment.start)
+                return segment.visualStart
+            if (minute <= segment.end)
+                return segment.visualStart
+                    + (minute - segment.start) * pxPerMin
+        }
+        return timeAxis.height
+    }
+
     NumberAnimation {
         id: horizontalScrollAnimation
         target: calendarFlick
@@ -779,6 +809,73 @@ Item {
             onMovementStarted: {
                 horizontalScrollAnimation.stop()
                 verticalScrollAnimation.stop()
+            }
+
+            PinchHandler {
+                id: pinchHandler
+                target: null
+                grabPermissions: PointerHandler.CanTakeOverFromAnything
+                minimumScale: 0.1
+                maximumScale: 10
+                property real startZoom: 1
+                property real anchorMinute: 0
+
+                function localCenterY() {
+                    return root.mapFromItem(null,
+                        centroid.scenePosition.x,
+                        centroid.scenePosition.y
+                    ).y
+                }
+
+                onActiveChanged: {
+                    if (!active)
+                        return
+                    horizontalScrollAnimation.stop()
+                    verticalScrollAnimation.stop()
+                    calendarFlick.cancelFlick()
+                    startZoom = root.zoomFactor
+                    anchorMinute = root.minutesAtContentY(
+                        calendarFlick.contentY + localCenterY()
+                    )
+                }
+                onScaleChanged: {
+                    if (!active)
+                        return
+                    const nextZoom = Math.max(0.75,
+                        Math.min(2.0, startZoom * scale))
+                    root.zoomRequested(nextZoom)
+                    const centerY = localCenterY()
+                    const maximumY = Math.max(0,
+                        calendarFlick.contentHeight - calendarFlick.height)
+                    calendarFlick.contentY = Math.max(0, Math.min(maximumY,
+                        root.contentYForMinute(anchorMinute) - centerY))
+                }
+            }
+
+            WheelHandler {
+                enabled: true
+                onWheel: function(event) {
+                    if (!(event.modifiers & Qt.ControlModifier))
+                        return
+                    const rawDelta = event.angleDelta.y || event.pixelDelta.y
+                    if (!rawDelta)
+                        return
+
+                    event.accepted = true
+                    const centerY = root.mapFromItem(calendarFlick,
+                        point.position.x, point.position.y).y
+                    const anchorMinute = root.minutesAtContentY(
+                        calendarFlick.contentY + centerY)
+                    const step = event.angleDelta.y
+                        ? event.angleDelta.y / 1200
+                        : Math.sign(rawDelta) * 0.02
+                    root.zoomRequested(Math.max(0.75, Math.min(2.0,
+                        root.zoomFactor * (1 + step))))
+                    const maximumY = Math.max(0,
+                        calendarFlick.contentHeight - calendarFlick.height)
+                    calendarFlick.contentY = Math.max(0, Math.min(maximumY,
+                        root.contentYForMinute(anchorMinute) - centerY))
+                }
             }
 
             ScrollBar.vertical: ScrollBar {

@@ -43,6 +43,7 @@ class ScheduleEditor(QObject):
     subjectsChanged = Signal()
     daysChanged = Signal()
     entriesChanged = Signal()
+    dayEntriesChanged = Signal(str)
     metaChanged = Signal()
     overridesChanged = Signal()
     overridesRevisionChanged = Signal()
@@ -251,6 +252,7 @@ class ScheduleEditor(QObject):
                     history_changed = self._record_entry_history(changed_day)
         self._entries_revision += 1
         self.entriesChanged.emit()
+        self.dayEntriesChanged.emit(changed_day.id if changed_day else "")
         if history_changed:
             self.entryHistoryChanged.emit(changed_day.id)
 

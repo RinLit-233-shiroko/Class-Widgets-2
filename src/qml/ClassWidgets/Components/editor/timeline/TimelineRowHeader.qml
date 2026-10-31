@@ -15,6 +15,7 @@ Item {
 
     signal collapseRequested()
     signal editRulesRequested(var timeline)
+    signal deleteRequested(var timeline)
 
     height: 32
 
@@ -33,12 +34,22 @@ Item {
 
     Row {
         id: headingGroup
-        anchors.left: root.expanded ? collapseButton.right : parent.left
-        anchors.leftMargin: root.expanded ? 8 : 0
+        anchors.left: parent.left
+        anchors.leftMargin: 0
         anchors.right: actionGroup.left
         anchors.rightMargin: 12
         anchors.verticalCenter: parent.verticalCenter
         spacing: 12
+
+        transform: Translate {
+            x: root.expanded ? collapseButton.width + 8 : 0
+            Behavior on x {
+                NumberAnimation {
+                    duration: 180
+                    easing.type: Easing.OutCubic
+                }
+            }
+        }
 
         Text {
             id: titleLabel
@@ -103,7 +114,7 @@ Item {
             visible: root.expanded
             flat: true
             icon.name: "ic_fluent_delete_20_regular"
-            onClicked: AppCentral.scheduleEditor.removeDay(root.timeline.id)
+            onClicked: root.deleteRequested(root.timeline)
         }
         Button {
             id: moreActionsButton
@@ -131,7 +142,7 @@ Item {
                 MenuItem {
                     text: qsTr("Delete")
                     icon.name: "ic_fluent_delete_20_regular"
-                    onTriggered: AppCentral.scheduleEditor.removeDay(root.timeline.id)
+                    onTriggered: root.deleteRequested(root.timeline)
                 }
             }
         }
