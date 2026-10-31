@@ -565,7 +565,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <name>Configs</name>
     <message>
         <source>default</source>
-        <translation type="vanished">デフォルト</translation>
+        <translation>デフォルト</translation>
     </message>
     <message>
         <location filename="../../src/core/config/model.py" line="229"/>
@@ -1182,7 +1182,7 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>Edit </source>
-        <translation type="vanished">編集 </translation>
+        <translation>編集 </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/EntryDetailView.qml" line="142"/>
@@ -2107,7 +2107,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <name>Notification</name>
     <message>
         <source>Class begins</source>
-        <translation type="vanished">活動を開始する</translation>
+        <translation>活動を開始する</translation>
     </message>
     <message>
         <source>School is over</source>
@@ -4102,7 +4102,7 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <name>ScheduleFlyout</name>
     <message>
         <source>Edit</source>
-        <translation type="vanished">編集</translation>
+        <translation>編集</translation>
     </message>
     <message>
         <source>Subject</source>
@@ -4114,11 +4114,11 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     </message>
     <message>
         <source>Title</source>
-        <translation type="vanished">タイトル</translation>
+        <translation>タイトル</translation>
     </message>
     <message>
         <source>Set</source>
-        <translation type="vanished">設定</translation>
+        <translation>設定</translation>
     </message>
     <message>
         <source>Clear</source>
@@ -4276,7 +4276,7 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     </message>
     <message>
         <source>to</source>
-        <translation type="vanished">～</translation>
+        <translation>～</translation>
     </message>
 </context>
 <context>
@@ -4844,7 +4844,7 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     </message>
     <message>
         <source>Icon</source>
-        <translation type="vanished">アイコン</translation>
+        <translation>アイコン</translation>
     </message>
     <message>
         <source>Enable if the subject is taught in your homeroom classroom.  
@@ -5157,7 +5157,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     </message>
     <message>
         <source>Math</source>
-        <translation type="vanished">数学</translation>
+        <translation>数学</translation>
     </message>
     <message>
         <source>Eng</source>
@@ -5181,7 +5181,7 @@ If it takes place in another location, such as a sport field, lab, or another cl
     </message>
     <message>
         <source>Geo</source>
-        <translation type="vanished">地学</translation>
+        <translation>地学</translation>
     </message>
     <message>
         <source>Mus</source>
@@ -5525,6 +5525,12 @@ Class Widgets はデフォルトテーマを復元しました。</translation>
         <source>minutes</source>
         <translation type="obsolete">分</translation>
     </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/settings/Time.qml" line="99"/>
+        <source>Day</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Timeline</name>
@@ -5651,7 +5657,7 @@ Class Widgets はデフォルトテーマを復元しました。</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation type="vanished">設定</translation>
+        <translation>設定</translation>
     </message>
     <message>
         <source>Adjust the settings of Class Widgets</source>
@@ -5811,7 +5817,7 @@ Class Widgets はデフォルトテーマを復元しました。</translation>
     </message>
     <message>
         <source>Exit</source>
-        <translation type="vanished">終了</translation>
+        <translation>終了</translation>
     </message>
     <message>
         <source>Get started</source>
@@ -6127,11 +6133,11 @@ Go to &quot;Settings&quot; → &quot;Update&quot; for more details.</source>
     <name>WeekSelector</name>
     <message>
         <source>1</source>
-        <translation type="vanished">单</translation>
+        <translation>单</translation>
     </message>
     <message>
         <source>2</source>
-        <translation type="vanished">双</translation>
+        <translation>双</translation>
     </message>
     <message>
         <source>Week %1</source>
@@ -6528,7 +6534,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     </message>
     <message>
         <source>Window</source>
-        <translation type="vanished">ウィンドウ</translation>
+        <translation>ウィンドウ</translation>
     </message>
     <message>
         <source>Display</source>
@@ -6579,20 +6585,25 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>Text</source>
         <translation type="unfinished">テキスト</translation>
     </message>
+
+    <message>
+        <source>Overlay</source>
+        <translation>スタックウィジェット</translation>
+    </message>
 </context>
 <context>
     <name>WidgetsContainer</name>
     <message>
         <source>Edit </source>
-        <translation type="vanished">編集 </translation>
+        <translation>編集 </translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation type="vanished">削除</translation>
+        <translation>削除</translation>
     </message>
     <message>
         <source>Edit Widgets Screen</source>
-        <translation type="vanished">ウィジェット編集画面</translation>
+        <translation>ウィジェット編集画面</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="245"/>
@@ -6616,6 +6627,24 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="413"/>
         <source>Edit Widgets Screen</source>
         <translation type="unfinished">ウィジェット編集画面</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="307"/>
+        <source>Add Member</source>
+        <translation type="unfinished"></translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="324"/>
+        <source>Done</source>
+        <translation type="unfinished">完了</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="418"/>
+        <source>Edit Members</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6764,7 +6793,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     </message>
     <message>
         <source>Unknown</source>
-        <translation type="vanished">不明</translation>
+        <translation>不明</translation>
     </message>
     <message>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="38"/>
@@ -6775,6 +6804,192 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="34"/>
         <source>Unset</source>
         <translation>Unset</translation>
+    </message>
+</context>
+
+<context>
+    <name>AddOverlayMemberDialog</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddOverlayMemberDialog.qml" line="9"/>
+        <source>Add Widgets to Overlay</source>
+        <translation>スタックウィジェットにウィジェットを追加</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddOverlayMemberDialog.qml" line="111"/>
+        <source>No Widget Selected</source>
+        <translation>ウィジェットが選択されていません</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddOverlayMemberDialog.qml" line="147"/>
+        <source>Add</source>
+        <translation>追加</translation>
+    </message>
+</context>
+
+<context>
+    <name>overlay</name>
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="36"/>
+        <source>Class starts</source>
+        <translation>授業開始</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="36"/>
+        <source>Class begins</source>
+        <translation>授業開始</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="40"/>
+        <source>Class over</source>
+        <translation>授業終了</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="40"/>
+        <source>Class ends</source>
+        <translation>授業終了</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="41"/>
+        <source>Class dismissed</source>
+        <translation>授業終了</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="41"/>
+        <source>Class finished</source>
+        <translation>授業終了</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="42"/>
+        <source>End of class</source>
+        <translation>授業終了</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="42"/>
+        <source>Break</source>
+        <translation>休み時間</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="391"/>
+        <source>Stacked widget</source>
+        <translation>スタックウィジェット</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="398"/>
+        <source>Right-click to add members</source>
+        <translation>右クリックでメンバーを追加</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="545"/>
+        <source>Member Settings</source>
+        <translation>メンバー設定</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="586"/>
+        <source>Cancel</source>
+        <translation>キャンセル</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="610"/>
+        <source>Save</source>
+        <translation>保存</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="684"/>
+        <source>Settings</source>
+        <translation>設定</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="688"/>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="206"/>
+        <source>Remove</source>
+        <translation>削除</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="730"/>
+        <source>Done</source>
+        <translation>完了</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/overlay.qml" line="786"/>
+        <source>Add</source>
+        <translation>追加</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="79"/>
+        <source>Carousel interval</source>
+        <translation>切り替え間隔</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="80"/>
+        <source>Time each member stays visible before switching to the next, in seconds.</source>
+        <translation>各メンバーを表示する秒数です。経過すると次へ切り替わります。</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="96"/>
+        <source>s</source>
+        <translation>秒</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="110"/>
+        <source>Frame size mode</source>
+        <translation>フレームサイズモード</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="111"/>
+        <source>Largest member keeps the frame at the size of the biggest member; Follow current resizes the frame smoothly to the visible member.</source>
+        <translation>一番大きいメンバーに合わせてフレームサイズを固定します。「現在のメンバーに合わせる」は表示中のメンバーに合わせて滑らかにサイズを変更します。</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="120"/>
+        <source>Largest member</source>
+        <translation>最大のメンバー</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="121"/>
+        <source>Follow current</source>
+        <translation>現在のメンバーに合わせる</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="163"/>
+        <source>Show switch bar</source>
+        <translation>切り替えバーを表示</translation>
+    </message>
+
+    <message>
+        <location filename="../../src/qml/widgets/settings/overlay.qml" line="164"/>
+        <source>Show a switch button on the right edge of the widget to step through members manually.</source>
+        <translation>ウィジェット右端に切り替えボタンを表示し、手動でメンバーを切り替えられます。</translation>
+    </message>
+
+    <message>
+        <source>Add Member</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
