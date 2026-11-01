@@ -51,9 +51,4 @@ if __name__ == "__main__":
         handler = getattr(instance, "crash_handler", None)
         if handler is not None:
             handler.report_exception(type(error), error, error.__traceback__, source="startup")
-        else:
-            from PySide6.QtWidgets import QMessageBox
-
-            QMessageBox.critical(None, "Class Widgets", str(error))
-            raise SystemExit(1) from error
     app.exec()
