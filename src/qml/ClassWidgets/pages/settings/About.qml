@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import RinUI
+import ClassWidgets.Components
 import Qt5Compat.GraphicalEffects
 
 
@@ -171,6 +172,10 @@ FluentPage {
         Text {
             typography: Typography.BodyStrong
             text: qsTr("Diagnostics & maintenance")
+        }
+
+        DiagnosticConsent {
+            Layout.fillWidth: true
         }
 
         SettingExpander {

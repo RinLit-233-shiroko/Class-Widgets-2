@@ -13,6 +13,7 @@ TrayShortcuts 1.0 TrayShortcuts.qml
 RestartButton 1.0 RestartButton.qml
 SplitButton 1.0 SplitButton.qml
 SafeModeNotice 1.0 SafeModeNotice.qml
+DiagnosticConsent 1.0 DiagnosticConsent.qml
 
 # Dialogs
 AddWidgetsDialog 1.0 dialogs/AddWidgetsDialog.qml
