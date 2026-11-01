@@ -301,7 +301,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             self._run_utils()
         except Exception as error:
             self._startup_state = StartupState.FAILED
-            logger.exception("Application initialization failed")
+            logger.bind(telemetry_skip=True).exception("Application initialization failed")
             self.crash_handler.report_exception(
                 type(error), error, error.__traceback__, source="startup"
             )

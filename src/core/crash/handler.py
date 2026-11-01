@@ -111,7 +111,7 @@ class CrashHandler(QObject):
             return None
 
         self._print_traceback(exc_type, exc_value, exc_tb)
-        logger.critical("Unhandled exception: {}", report.headline)
+        logger.bind(telemetry_skip=True).critical("Unhandled exception: {}", report.headline)
         if self._exception_reporter is not None and not self._handling:
             try:
                 self._exception_reporter((exc_type, exc_value, exc_tb), report)
