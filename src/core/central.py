@@ -4,6 +4,7 @@ import sys
 import time
 from enum import Enum, auto
 from typing import Any, Optional, TYPE_CHECKING, Protocol
+from types import TracebackType
 
 from PySide6.QtCore import QCoreApplication, QObject, Property, Signal, Slot, QPoint, QProcess, QTimer
 from PySide6.QtGui import QFont
@@ -20,6 +21,7 @@ from src.core.utils.safe_mode import safe_mode_requested
 from src.core.telemetry import TelemetryService
 
 if TYPE_CHECKING:
+    from src.core.telemetry import Operation
     from src.core.notification.manager import NotificationManager, NotificationService
     from src.core.plugin.api import PluginAPI
     from src.core.plugin.manager import PluginManager
@@ -106,23 +108,26 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self._cleanup_started = False
         self._restart_requested = False
         self._restart_required = False  # 是否有待应用的重启（UI 提示用）
-        self.app_instance = QApplication.instance()
+        app_instance = QApplication.instance()
+        if not isinstance(app_instance, QApplication):
+            raise RuntimeError("AppCentral requires a QApplication instance")
+        self.app_instance: QApplication = app_instance
         self.app_instance.aboutToQuit.connect(self.cleanup)
-        self.telemetry = TelemetryService()
+        self.telemetry: TelemetryService = TelemetryService()
         self._telemetry_choice = False
         self._telemetry_error = ""
         self._syncing_telemetry = False
-        self._crash_snapshot = {"safe_mode": self._safe_mode}
-        self._startup_operation = None
-        self._startup_render_operation = None
+        self._crash_snapshot: dict[str, Any] = {"safe_mode": self._safe_mode}
+        self._startup_operation: Operation | None = None
+        self._startup_render_operation: Operation | None = None
         # 崩溃处理必须在其它子系统之前就绪，才能捕获启动期间的异常。
         self.crash_handler = CrashHandler(self)
         self.crash_handler.set_context_provider(self._crash_context)
         self.crash_handler.set_exception_reporter(self._capture_crash)
         self.crash_handler.crashReported.connect(self._on_crash_reported)
         self.crash_handler.install()
-        self.path_manager = PathManager()
-        self.configs = ConfigManager(path=CONFIGS_PATH, filename="configs.json")
+        self.path_manager: PathManager = PathManager()
+        self.configs: ConfigManager = ConfigManager(path=CONFIGS_PATH, filename="configs.json")
         self._load_config()
         self._telemetry_choice = self.configs.telemetry.enabled
         self.telemetry.set_context(
@@ -318,7 +323,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             self._finish_startup("ok")
             self.telemetry.set_context(phase="runtime")
 
-    def _finish_startup(self, status) -> None:
+    def _finish_startup(self, status: str) -> None:
         if self._startup_render_operation is not None:
             self._startup_render_operation.finish(status)
             self._startup_render_operation = None
@@ -401,7 +406,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             ("tray icon cleanup", lambda: self._cleanup_tray_icon()),
             ("single instance lock release", lambda: self.instance_guard.release()),
             ("crash handler uninstall", self.crash_handler.uninstall),
-            ("telemetry shutdown", lambda: self.telemetry.shutdown()),
+            ("telemetry shutdown", self.telemetry.shutdown),
         )
         for step_name, cleanup_step in cleanup_steps:
             try:
@@ -710,7 +715,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         """当前是否以安全模式运行。"""
         return self._safe_mode
 
-    def _crash_context(self) -> dict:
+    def _crash_context(self) -> dict[str, Any]:
         """工作线程读取普通数据快照，避免在异常路径访问 GUI 对象。"""
         return {
             **self._crash_snapshot,
@@ -727,9 +732,13 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             "plugins": self._plugin_records(),
         }
 
-    def _capture_crash(self, exc_info, report: CrashReport) -> None:
+    def _capture_crash(
+        self,
+        exc_info: tuple[type[BaseException], BaseException | None, TracebackType | None],
+        report: CrashReport,
+    ) -> None:
         self._finish_startup("internal_error")
-        context = {
+        context: dict[str, object] = {
             "component": "app", "source": "thread" if report.source.startswith("thread") else report.source,
             "theme_id": report.theme_id, "safe_mode": report.safe_mode,
         }
