@@ -740,7 +740,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
                 plugin_type="builtin" if suspect.builtin else "external",
                 attribution_rule=suspect.rule, attribution_confidence=suspect.confidence,
             )
-        self.telemetry.capture_exception(exc_info, context)
+        self.telemetry.capture_exception(exc_info, context, handled=False)
 
     def _plugin_records(self) -> list[PluginRecord]:
         """把插件清单整理成崩溃归因要用的记录。

@@ -125,7 +125,10 @@ class TelemetryService:
         client, self._client = self._client, None
         if client is not None:
             # 不调用 close()/flush()：撤销授权时必须丢弃发送队列。
-            client.transport.kill()
+            try:
+                client.transport.kill()
+            except Exception:
+                logger.warning("Unable to stop telemetry transport")
 
     @contextmanager
     def _scope(self, context):
@@ -133,18 +136,34 @@ class TelemetryService:
         from sentry_sdk.scope import use_scope
 
         scope = Scope(client=self._client)
+        scope.set_context(
+            "os",
+            {
+                "name": platform.system(),
+                "version": platform.release(),
+                "build": platform.version(),
+            },
+        )
+        scope.set_context("runtime", {"name": "CPython", "version": platform.python_version()})
         for key, value in {**self._tags, **technical_tags(context)}.items():
             scope.set_tag(key, value)
         with use_scope(scope):
             yield scope
 
-    def capture_exception(self, exc_info, context=None):
+    def capture_exception(self, exc_info, context=None, *, handled=True):
         with self._lock:
             if not self.enabled:
                 return None
             try:
                 with self._scope(context or {}) as scope:
-                    return scope.capture_exception(exc_info)
+                    from sentry_sdk.utils import event_from_exception
+
+                    event, hint = event_from_exception(
+                        exc_info,
+                        client_options=self._client.options,
+                        mechanism={"type": "classwidgets", "handled": handled},
+                    )
+                    return scope.capture_event(event, hint=hint)
             except Exception:
                 logger.warning("Unable to capture telemetry exception")
                 return None
