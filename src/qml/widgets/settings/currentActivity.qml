@@ -68,8 +68,7 @@ SettingsLayout {
     Text {
         Layout.topMargin: 8
         Layout.leftMargin: 4
-        typography: Typography.Caption
-        color: Theme.currentTheme.colors.textSecondaryColor
+        typography: Typography.BodyStrong
         text: qsTr("Custom status texts")
     }
 
