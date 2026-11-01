@@ -20,20 +20,10 @@ ColumnLayout {
         }
     }
 
-    SettingCard {
-        Layout.fillWidth: true
-        visible: root.inlineDetails
-        icon.name: "ic_fluent_shield_20_regular"
-        title: consentExpander.title
-        description: consentExpander.description
-
-        ConsentSwitch {}
-    }
-
     SettingExpander {
         id: consentExpander
         Layout.fillWidth: true
-        visible: !root.inlineDetails
+        expanded: root.inlineDetails
         icon.name: "ic_fluent_shield_20_regular"
         title: qsTr("Send diagnostics")
         description: qsTr("Optional error reports, INFO+ logs, and operation timings via Sentry. Off by default.")
@@ -41,6 +31,7 @@ ColumnLayout {
         action: ConsentSwitch {}
 
         SettingItem {
+            visible: !root.inlineDetails
             title: qsTr("About diagnostics")
 
             Hyperlink {
@@ -48,12 +39,12 @@ ColumnLayout {
                 onClicked: detailsDialog.open()
             }
         }
-    }
 
-    Details {
-        Layout.fillWidth: true
-        Layout.topMargin: 8
-        visible: root.inlineDetails
+        Details {
+            Layout.fillWidth: true
+            Layout.margins: 16
+            visible: root.inlineDetails
+        }
     }
 
     property Dialog detailsDialog: Dialog {
