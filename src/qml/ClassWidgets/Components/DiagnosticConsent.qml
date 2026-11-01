@@ -26,7 +26,7 @@ ColumnLayout {
         expanded: root.inlineDetails
         icon.name: "ic_fluent_shield_20_regular"
         title: qsTr("Send diagnostics")
-        description: qsTr("Optional error reports, INFO+ logs, and operation timings via Sentry. Off by default.")
+        description: qsTr("Optional error reports, logs, and operation timings via Sentry. Off by default.")
 
         action: ConsentSwitch {}
 
