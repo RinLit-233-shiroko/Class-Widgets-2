@@ -127,11 +127,11 @@ ApplicationWindow {
     readonly property var pageUrls: [
         Qt.resolvedUrl("../pages/tutorial/Welcome.qml"),
         Qt.resolvedUrl("../pages/tutorial/Language.qml"),
+        Qt.resolvedUrl("../pages/tutorial/Privacy.qml"),
         Qt.resolvedUrl("../pages/tutorial/Theme.qml"),
         Qt.resolvedUrl("../pages/tutorial/Appearance.qml"),
         Qt.resolvedUrl("../pages/tutorial/Interactions.qml"),
         Qt.resolvedUrl("../pages/tutorial/Preferences.qml"),
-        Qt.resolvedUrl("../pages/tutorial/Privacy.qml"),
         Qt.resolvedUrl("../pages/tutorial/Plugins.qml"),
         Qt.resolvedUrl("../pages/tutorial/Complete.qml")
     ]

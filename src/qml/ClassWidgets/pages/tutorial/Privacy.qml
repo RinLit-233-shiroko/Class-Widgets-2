@@ -9,7 +9,7 @@ TutorialComponents.TutorialPage {
 
     title: qsTr("License terms")
     description: qsTr("Read our privacy policy. Optional diagnostics are sent through the Sentry SDK to help us improve Class Widgets.")
-    currentStep: 6
+    currentStep: 2
     totalSteps: 7
     fillOperationHeight: true
     nextText: qsTr("Agree and continue")

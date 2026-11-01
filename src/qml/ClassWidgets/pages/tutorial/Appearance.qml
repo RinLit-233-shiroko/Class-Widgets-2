@@ -10,7 +10,7 @@ TutorialComponents.TutorialPage {
     property var tutorial
     title: qsTr("Tune your widgets")
     description: qsTr("Adjust the size and finish of your widgets. The preview updates as you make changes.")
-    currentStep: 3
+    currentStep: 4
     totalSteps: 7
 
     rightContent: TutorialComponents.TutorialVisual {
