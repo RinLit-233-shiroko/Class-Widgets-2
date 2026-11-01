@@ -99,12 +99,14 @@ dependencies = [
     { name = "loguru" },
     { name = "markdown-it-py" },
     { name = "packaging" },
+    { name = "platformdirs" },
     { name = "pydantic" },
     { name = "pyside6" },
     { name = "pyyaml" },
     { name = "recurring-ical-events" },
     { name = "requests" },
     { name = "rinui" },
+    { name = "sentry-sdk" },
     { name = "tzdata" },
 ]
 
@@ -119,12 +121,14 @@ requires-dist = [
     { name = "loguru" },
     { name = "markdown-it-py", specifier = "~=4.2.0" },
     { name = "packaging" },
+    { name = "platformdirs" },
     { name = "pydantic" },
     { name = "pyside6", specifier = "~=6.10.3" },
     { name = "pyyaml" },
     { name = "recurring-ical-events", specifier = "~=3.8.2" },
     { name = "requests" },
     { name = "rinui", specifier = ">=0.4.4.1" },
+    { name = "sentry-sdk", specifier = "~=2.73.0" },
     { name = "tzdata", specifier = "~=2026.4" },
 ]
 
@@ -500,6 +504,19 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/da/60/ca051ed4c5014b3d26e8dd20d2859358ea9b8b57e3ee9aeb4405e7fb4a00/rinui-0.4.4.1.tar.gz", hash = "sha256:16dd5e6cd6e7daccb79431753d112f1c20c69633dd5b4fa320374115e333b7db", size = 1069346, upload-time = "2026-08-30T13:27:30.021Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/7d/a0/d82bfddd5851c51a638e3f911a3423bc1f975b70c6321c73611e16864395/rinui-0.4.4.1-py3-none-any.whl", hash = "sha256:a4e85e8f1c0eede8a36b2520d201b80e589e88d41a9e7a67b5ac98546bd8744c", size = 1134696, upload-time = "2026-08-30T13:27:28.592Z" },
+]
+
+[[package]]
+name = "sentry-sdk"
+version = "2.73.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "certifi" },
+    { name = "urllib3" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c5/3b/1e47acf2456781c26e12007379ecc154bf310b8f64d40390d78b791d55c3/sentry_sdk-2.73.0.tar.gz", hash = "sha256:4a2ab97b16e4693c325ab361c7bbbb346dbc7d0bc0150922d795a25bac8d5280", size = 1079078, upload-time = "2026-10-22T09:08:49.63Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b2/88/cabf98d017d7b940720e514e5f8ee02e3e6f7495caf93c30735a38387ec4/sentry_sdk-2.73.0-py3-none-any.whl", hash = "sha256:0bcfa6928ea5adbb89591858b514d27adac27c7a3cccc31b20ed10e0b09eda9e", size = 549011, upload-time = "2026-10-22T09:08:47.88Z" },
 ]
 
 [[package]]
