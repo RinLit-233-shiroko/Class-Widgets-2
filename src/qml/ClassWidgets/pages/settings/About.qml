@@ -170,7 +170,7 @@ FluentPage {
                     Layout.fillWidth: true
                     spacing: 8
 
-                    Button {
+                    Hyperlink {
                         objectName: "privacyPolicyButton"
                         Layout.alignment: Qt.AlignRight
                         text: qsTr("Privacy policy")
