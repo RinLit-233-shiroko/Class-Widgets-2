@@ -41,6 +41,23 @@ ColumnLayout {
         }
 
         SettingItem {
+            visible: !root.inlineDetails
+            title: qsTr("Installation ID")
+
+            TextEdit {
+                objectName: "telemetryInstallationId"
+                Layout.fillWidth: true
+                Layout.minimumWidth: 0
+                Layout.preferredWidth: 260
+                text: Configs.data.telemetry.installation_id
+                readOnly: true
+                selectByMouse: true
+                wrapMode: TextEdit.WrapAnywhere
+                color: Colors.proxy.textColor
+            }
+        }
+
+        SettingItem {
             visible: root.inlineDetails
 
             Details {
@@ -86,7 +103,7 @@ ColumnLayout {
         Text {
             Layout.fillWidth: true
             wrapMode: Text.WordWrap
-            text: qsTr("Session reports include duration, error count, and exit status. A random ID is generated for each diagnostic session; no persistent user or device ID is sent.")
+            text: qsTr("Session reports include duration, error count, and exit status. A random installation ID stored in your settings links diagnostic reports and sessions from this installation. It is sent only while diagnostics are enabled and is not derived from your hardware, username, or email.")
         }
         Text {
             Layout.fillWidth: true
