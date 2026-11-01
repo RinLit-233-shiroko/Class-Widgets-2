@@ -40,12 +40,13 @@ def _safe_exists(path: Path) -> bool:
 
 
 class PluginLoader:
-    def __init__(self, plugin_api: PluginAPI, external_path: Path):
+    def __init__(self, plugin_api: PluginAPI, external_path: Path, *, telemetry=None):
         """
         :param plugin_api: PluginAPI实例
         :param external_path: 外部插件目录路径
         """
         self.api: PluginAPI = plugin_api
+        self.telemetry = telemetry
         self.external_path: Path = external_path
         self.builtin_path: Path = BUILTIN_PLUGINS_PATH
         #: 扫描/加载过程中失败的插件，供 PluginManager 通知与诊断使用。
@@ -229,6 +230,8 @@ class PluginLoader:
         stage: str,
         error: str,
         name: str = "",
+        exception: Optional[Exception] = None,
+        meta: Optional[PluginMeta] = None,
     ) -> None:
         """记录一次插件失败，避免“插件悄悄消失”。"""
         self.failures.append(
@@ -239,6 +242,13 @@ class PluginLoader:
                 error=str(error or ""),
             )
         )
+        if self.telemetry is not None and exception is not None:
+            self.telemetry.capture_failure(
+                "plugin.load", {"component": "plugin", "stage": stage,
+                                "plugin_id": plugin_id,
+                                "plugin_version": (meta or {}).get("version", "unknown"),
+                                "plugin_type": (meta or {}).get("_type", "unknown")}, error=exception,
+            )
 
     def _discard_plugin(self, plugin_instance, plugin_id: str) -> None:
         """加载失败后的收尾：回调、快捷键、模块缓存都要清干净。"""
@@ -277,10 +287,21 @@ class PluginLoader:
     
     def load_plugin(self, meta: PluginMeta) -> Optional[CW2Plugin]:
         """加载单个插件实例"""
-        if meta["_type"] == "builtin":
-            return self._load_builtin_plugin(meta)
-        else:
-            return self._load_external_plugin(meta)
+        operation = self.telemetry.start_operation("plugin.load", {
+            "component": "plugin", "plugin_id": meta["id"],
+            "plugin_version": meta.get("version", "unknown"),
+            "plugin_type": meta["_type"],
+        }) if self.telemetry is not None else None
+        plugin = None
+        try:
+            if meta["_type"] == "builtin":
+                plugin = self._load_builtin_plugin(meta)
+            else:
+                plugin = self._load_external_plugin(meta)
+            return plugin
+        finally:
+            if operation is not None:
+                operation.finish("ok" if plugin is not None else "internal_error")
     
     def load_plugins(self, metas: list[PluginMeta], enabled_plugins: list[str]) -> dict[str, CW2Plugin]:
         """加载多个插件实例"""
@@ -309,6 +330,7 @@ class PluginLoader:
                         name=str(meta.get("name") or ""),
                         stage="load",
                         error=f"{type(e).__name__}: {e}",
+                        exception=e, meta=meta,
                     )
             else:
                 logger.warning(f"Enabled plugin {pid} not found in metas")
@@ -361,6 +383,7 @@ class PluginLoader:
                 name=str(meta.get("name") or ""),
                 stage=stage,
                 error=f"{type(e).__name__}: {e}",
+                exception=e, meta=meta,
             )
             return None
     
@@ -435,6 +458,7 @@ class PluginLoader:
                 name=str(meta.get("name") or ""),
                 stage=stage,
                 error=f"{type(e).__name__}: {e}",
+                exception=e, meta=meta,
             )
             return None
 

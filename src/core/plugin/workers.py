@@ -69,9 +69,11 @@ class PlazaDownloadWorker(QThread):
         *,
         max_size: int = PluginArchiveInstaller.MAX_ARCHIVE_SIZE,
         parent=None,
+        telemetry=None,
     ):
         super().__init__(parent)
         self.plugin_id = plugin_id
+        self.telemetry = telemetry
         self.client = PlazaClient(base_url)
         self.destination = Path(destination)
         self.max_size = max_size
@@ -80,6 +82,10 @@ class PlazaDownloadWorker(QThread):
         self._pause_event = threading.Event()
 
     def run(self) -> None:
+        operation = self.telemetry.start_operation("plugin.download", {
+            "component": "plugin", "stage": "download", "plugin_id": self.plugin_id,
+        }) if self.telemetry is not None else None
+        status = "internal_error"
         try:
             self._raise_if_cancelled()
             self._raise_if_paused()
@@ -100,12 +106,22 @@ class PlazaDownloadWorker(QThread):
             archive_path = self._downloader.download(self.progress.emit)
             self._raise_if_cancelled()
             self.completed.emit(str(archive_path), plugin)
+            status = "ok"
         except PluginDownloadCancelled:
+            status = "cancelled"
             self.cancelled.emit()
         except PluginDownloadPaused:
+            status = "cancelled"
             self.paused.emit()
         except Exception as error:
+            if self.telemetry is not None:
+                self.telemetry.capture_failure("plugin.download", {
+                    "component": "plugin", "stage": "download", "plugin_id": self.plugin_id,
+                }, error=error)
             self.failed.emit(str(error))
+        finally:
+            if operation is not None:
+                operation.finish(status)
 
     def cancel(self) -> None:
         self._cancel_event.set()
