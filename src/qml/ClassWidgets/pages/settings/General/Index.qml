@@ -211,9 +211,18 @@ FluentPage {
             objectName: "telemetrySettingsCard"
             Layout.fillWidth: true
             title: qsTr("Telemetry & diagnostics")
+            description: qsTr("Enable anonymous diagnostics")
             icon.name: "ic_fluent_data_usage_20_regular"
 
-            action: DiagnosticConsent {}
+            action: Switch {
+                objectName: "telemetrySwitch"
+                checked: Configs.data.telemetry.enabled
+                enabled: !Configs.isKeyLocked("telemetry.enabled")
+                onToggled: {
+                    AppCentral.setTelemetryEnabled(checked)
+                    checked = Qt.binding(function() { return Configs.data.telemetry.enabled })
+                }
+            }
 
             SettingItem {
                 id: installationIdItem
