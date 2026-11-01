@@ -40,10 +40,12 @@ ColumnLayout {
             }
         }
 
-        Details {
-            Layout.fillWidth: true
-            Layout.margins: 16
+        SettingItem {
             visible: root.inlineDetails
+
+            Details {
+                Layout.fillWidth: true
+            }
         }
     }
 
