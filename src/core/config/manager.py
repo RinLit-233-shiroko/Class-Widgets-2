@@ -1,4 +1,5 @@
 import platform
+import tempfile
 from datetime import datetime
 from pathlib import Path
 
@@ -11,7 +12,7 @@ from PySide6.QtCore import QObject, QTimer, Signal, Property, Slot
 from typing import Optional
 
 from .model import AppConfig, ScheduleConfig, PreferencesConfig, PluginsConfig, LocaleConfig, InteractionsConfig, \
-    ConfigBaseModel, NetworkConfig, NotificationsConfig
+    ConfigBaseModel, NetworkConfig, NotificationsConfig, TelemetryConfig
 from src import __version__, __version_type__
 
 
@@ -24,6 +25,7 @@ class RootConfig(ConfigBaseModel):
     plugins: PluginsConfig = Field(default_factory=PluginsConfig)
     network: NetworkConfig = Field(default_factory=NetworkConfig)
     notifications: NotificationsConfig = Field(default_factory=NotificationsConfig)
+    telemetry: TelemetryConfig = Field(default_factory=TelemetryConfig)
 
     _on_change: callable = PrivateAttr(default=None)
 
@@ -119,16 +121,33 @@ class ConfigManager(QObject):
                 logger.info(f"{title} \nloaded config: {self.full_path}")
             except Exception as e:
                 logger.warning(f"Load config failed: {e}, use default config")
+                self._config = RootConfig()
+                self._bind_nested_on_change(self._config)
         self.save()
 
-    def save(self, silent=False):
+    def save(self, silent=False) -> bool:
+        temporary_path = None
         try:
             self.path.mkdir(parents=True, exist_ok=True)
-            self.full_path.write_text(self._config.model_dump_json(indent=4), encoding="utf-8")
+            with tempfile.NamedTemporaryFile(
+                mode="w", encoding="utf-8", dir=self.path,
+                prefix=self.filename, suffix=".tmp", delete=False,
+            ) as handle:
+                temporary_path = Path(handle.name)
+                handle.write(self._config.model_dump_json(indent=4))
+            temporary_path.replace(self.full_path)
             if not silent:
                 logger.success(f"Save config success: {self.full_path}")
+            return True
         except Exception as e:
             logger.error(f"Save config failed: {e}")
+            return False
+        finally:
+            if temporary_path is not None:
+                try:
+                    temporary_path.unlink(missing_ok=True)
+                except OSError:
+                    pass
 
     def __getattr__(self, name: str):
         """代理属性获取"""

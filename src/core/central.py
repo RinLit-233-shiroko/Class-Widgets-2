@@ -17,6 +17,7 @@ from src.core.utils.platform import PlatformIntegration
 from src.core.themes.recovery import ThemeRecoveryController
 from src.core.crash import CrashHandler, CrashReport, PluginRecord
 from src.core.utils.safe_mode import safe_mode_requested
+from src.core.telemetry import TelemetryService
 
 if TYPE_CHECKING:
     from src.core.notification.manager import NotificationManager, NotificationService
@@ -86,6 +87,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     retranslate = Signal()  # 新增：翻译信号
     trayShortcutRequested = Signal(str)
     restartRequiredChanged = Signal(bool)  # 新增：需要重启以应用更改
+    telemetryErrorChanged = Signal()
 
     def __init__(self) -> None:  # 初始化
         super().__init__()
@@ -104,12 +106,28 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self._cleanup_started = False
         self._restart_requested = False
         self._restart_required = False  # 是否有待应用的重启（UI 提示用）
-        self._initialize_cores()
+        self.app_instance = QApplication.instance()
+        self.app_instance.aboutToQuit.connect(self.cleanup)
+        self.telemetry = TelemetryService()
+        self._telemetry_choice = False
+        self._telemetry_error = ""
+        self._syncing_telemetry = False
         # 崩溃处理必须在其它子系统之前就绪，才能捕获启动期间的异常。
         self.crash_handler = CrashHandler(self)
         self.crash_handler.set_context_provider(self._crash_context)
         self.crash_handler.crashReported.connect(self._on_crash_reported)
         self.crash_handler.install()
+        self.path_manager = PathManager()
+        self.configs = ConfigManager(path=CONFIGS_PATH, filename="configs.json")
+        self._load_config()
+        self._telemetry_choice = self.configs.telemetry.enabled
+        self.telemetry.set_context(
+            safe_mode=self._safe_mode,
+            phase="startup" if self.configs.app.tutorial_completed else "oobe",
+        )
+        self.telemetry.configure(self._telemetry_choice)
+        self.configs.configChanged.connect(self._sync_telemetry_config)
+        self._initialize_cores()
         self.platform = PlatformIntegration(self.app_instance)
         self.instance_guard = self.platform.instance_guard
         self.multi_instances = self.platform.multi_instances
@@ -118,7 +136,6 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self._initialize_schedule_components()
         self._initialize_utils()
         self._initialize_ui_components()
-        self.app_instance.aboutToQuit.connect(self.cleanup)
         logger.info("AppCentral initialization completed")
 
     @classmethod
@@ -130,9 +147,6 @@ class AppCentral(QObject):  # Class Widgets 的中枢
 
     def _initialize_cores(self) -> None:
         """初始化核心"""
-        self.app_instance: Optional[QApplication] = QApplication.instance()
-        self.path_manager: PathManager = PathManager()  # 统一路径管理
-        self.configs: ConfigManager = ConfigManager(path=CONFIGS_PATH, filename="configs.json")
         if self._safe_mode:
             # 安全模式只跳过外部插件与主题：配置照常读取，也照常写回。
             logger.warning(
@@ -227,7 +241,6 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             self.window_manager.ensure("single_instance")
 
     def run(self) -> None:  # 运行
-        self._load_config()  # 加载配置
         self._load_translator()  # 加载翻译
 
         if self.multi_instances:
@@ -351,6 +364,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             ("tray icon cleanup", lambda: self._cleanup_tray_icon()),
             ("single instance lock release", lambda: self.instance_guard.release()),
             ("crash handler uninstall", self.crash_handler.uninstall),
+            ("telemetry shutdown", lambda: self.telemetry.shutdown()),
         )
         for step_name, cleanup_step in cleanup_steps:
             try:
@@ -396,6 +410,52 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     @Slot()
     def quit(self):
         self.app_instance.quit()
+
+    @Property(str, notify=telemetryErrorChanged)
+    def telemetryError(self) -> str:
+        return self._telemetry_error
+
+    @Slot(bool, result=bool)
+    def setTelemetryEnabled(self, enabled: bool) -> bool:
+        if self.configs.isKeyLocked("telemetry.enabled"):
+            return False
+        self._telemetry_error = ""
+        self.configs.set("telemetry.enabled", enabled)
+        self.telemetryErrorChanged.emit()
+        return not self._telemetry_error and self.configs.telemetry.enabled == enabled
+
+    @Slot()
+    def _sync_telemetry_config(self) -> None:
+        enabled = self.configs.telemetry.enabled
+        if self._syncing_telemetry or enabled == self._telemetry_choice:
+            return
+        self._syncing_telemetry = True
+        try:
+            if not enabled:
+                self.telemetry.configure(False)
+            if self.configs.save(silent=True):
+                self._telemetry_choice = enabled
+                self._telemetry_error = ""
+                self.telemetry.configure(enabled)
+            else:
+                if enabled:
+                    self.configs.set("telemetry.enabled", False)
+                self._telemetry_choice = False
+                self._telemetry_error = QCoreApplication.translate(
+                    "AppCentral", "Unable to save your diagnostic preference. Diagnostics are off for this session."
+                )
+            self.telemetryErrorChanged.emit()
+        finally:
+            self._syncing_telemetry = False
+
+    @Slot(result=bool)
+    def completeTutorial(self) -> bool:
+        self.configs.set("app.tutorial_completed", True)
+        if not self.configs.app.tutorial_completed or not self.configs.save(silent=True):
+            self.configs.set("app.tutorial_completed", False)
+            return False
+        self.restart("--update-done")
+        return self._restart_requested
 
     @Slot()
     @Slot(str)

@@ -133,6 +133,12 @@ class HideInteractionsConfig(ConfigBaseModel):
         use_enum_values = True
         validate_assignment = True
 
+class TelemetryConfig(ConfigBaseModel):
+    """远程诊断默认关闭，仅在用户明确选择后启用。"""
+
+    enabled: bool = False
+
+
 class AppConfig(ConfigBaseModel):
     """
     应用程序配置
