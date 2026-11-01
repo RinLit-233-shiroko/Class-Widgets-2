@@ -1,10 +1,8 @@
 import QtQuick
-import QtQuick.Layouts
 import RinUI
 
 InfoBar {
-    Layout.fillWidth: true
-    position: Position.BottomRight
+    position: Position.Top
     severity: Severity.Info
     timeout: 10000
     isDynamic: true

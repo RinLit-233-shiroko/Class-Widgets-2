@@ -110,10 +110,6 @@ Item {
         return item !== null && item.cursorPosition !== undefined
     }
 
-    function showDefaultDurationHint() {
-        floatLayer.createCustom(defaultDurationHint)
-    }
-
     onAvailableMonthsChanged: {
         if (monthFilterIndex < 0 || monthFilterIndex > availableMonths.length)
             monthFilterIndex = 0
@@ -317,7 +313,6 @@ Item {
     Component.onCompleted: {
         syncPageIndicator()
         rebuildEntriesByDayId()
-        Qt.callLater(root.showDefaultDurationHint)
     }
 
     function timelineDataAt(index) {
@@ -961,11 +956,6 @@ Item {
                 })
             }
         }
-    }
-
-    Component {
-        id: defaultDurationHint
-        DefaultDurationHint {}
     }
 
     Dialog {

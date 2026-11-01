@@ -22,6 +22,10 @@ Item {
         anchors.bottomMargin: 16
         spacing: 8
 
+        DefaultDurationHint {
+            width: parent.width
+        }
+
         TimelineTopBar {
             id: topActions
             width: parent.width

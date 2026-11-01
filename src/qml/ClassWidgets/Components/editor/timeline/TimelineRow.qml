@@ -12,6 +12,7 @@ Item {
     property bool expanded: false
     property real expandedHeight: 450
     property real layoutHeight: expanded ? expandedHeight : 104
+    readonly property real contentBottomPadding: 8
     property real visualProgress: expanded ? 1 : 0
     property bool interactionEnabled: expanded
     property real zoom: 1.5
@@ -193,7 +194,8 @@ Item {
         // The row height is animated by the overview accordion. Clamp the
         // content height so an almost-collapsed row never receives a
         // negative geometry before it fades out.
-        height: Math.max(0, root.height - rowHeader.height - 14)
+        height: Math.max(0, root.height - rowHeader.y - rowHeader.height
+            - anchors.topMargin - root.contentBottomPadding)
         z: root.expanded ? 5 : 0
         entries: root.entries
         subjects: root.subjects
