@@ -28,7 +28,9 @@ class CrashHandler(QObject):
         self._previous_excepthook: Optional[Callable] = sys.excepthook
         self._previous_thread_excepthook: Optional[Callable] = threading.excepthook
         self._context_provider: Optional[Callable[[], dict]] = None
-        self._exception_reporter: Optional[Callable] = None
+        self._exception_reporter: Callable[
+            [tuple[type[BaseException], BaseException | None, TracebackType | None], CrashReport], None
+        ] | None = None
         self._handling = False
 
     # ---------------- setup ----------------
@@ -36,7 +38,12 @@ class CrashHandler(QObject):
         """Register a callable returning extra report fields (uptime, plugins...)."""
         self._context_provider = provider
 
-    def set_exception_reporter(self, reporter: Callable) -> None:
+    def set_exception_reporter(
+        self,
+        reporter: Callable[
+            [tuple[type[BaseException], BaseException | None, TracebackType | None], CrashReport], None
+        ],
+    ) -> None:
         """注入可选的远程上报，不让崩溃处理依赖具体 SDK。"""
         self._exception_reporter = reporter
 
