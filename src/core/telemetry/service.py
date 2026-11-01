@@ -8,7 +8,7 @@ from contextlib import contextmanager
 import requests
 from loguru import logger
 
-from src import __version__, __version_type__
+from src import BUILD_DIST, SENTRY_DSN, __version__, __version_type__
 
 from .privacy import sanitize_event, technical_tags
 
@@ -40,8 +40,6 @@ class Operation:
 class TelemetryService:
     def __init__(self, *, dsn=None, dist=None, transport_factory=None, clock=time.monotonic):
         import os
-
-        from src._build_info import BUILD_DIST, SENTRY_DSN
 
         self._dsn = os.environ.get("SENTRY_DSN", SENTRY_DSN) if dsn is None else dsn
         self._dist = dist or BUILD_DIST or f"{platform.system()}-{platform.machine()}-local"
