@@ -163,6 +163,25 @@ FluentPage {
                     }
                 }
             }
+            SettingItem {
+                title: qsTr("Privacy policy")
+
+                ColumnLayout {
+                    Layout.fillWidth: true
+                    spacing: 8
+
+                    Button {
+                        objectName: "privacyPolicyButton"
+                        Layout.alignment: Qt.AlignRight
+                        text: qsTr("Privacy policy")
+                        onClicked: privacyDialog.open()
+                    }
+
+                    DiagnosticConsent {
+                        Layout.fillWidth: true
+                    }
+                }
+            }
         }
     }
 
@@ -171,11 +190,7 @@ FluentPage {
         spacing: 4
         Text {
             typography: Typography.BodyStrong
-            text: qsTr("Diagnostics & maintenance")
-        }
-
-        DiagnosticConsent {
-            Layout.fillWidth: true
+            text: qsTr("Maintenance")
         }
 
         SettingExpander {
@@ -274,6 +289,33 @@ FluentPage {
                     AppCentral.restart()
                 }
             }
+        }
+    }
+
+    Dialog {
+        id: privacyDialog
+        objectName: "privacyPolicyDialog"
+        title: qsTr("Privacy policy")
+        width: root.width * 0.8
+        height: root.height * 0.8
+        modal: true
+        standardButtons: Dialog.Close
+
+        PrivacyPolicyText {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+        }
+
+        Text {
+            text: qsTr("Installation ID")
+        }
+
+        TextField {
+            objectName: "telemetryInstallationId"
+            Layout.fillWidth: true
+            text: Configs.data.telemetry.installation_id
+            readOnly: true
+            clearEnabled: false
         }
     }
 
