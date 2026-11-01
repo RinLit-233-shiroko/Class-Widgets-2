@@ -175,17 +175,27 @@ FluentPage {
                 }
             }
             SettingItem {
+                id: installationIdItem
                 visible: Configs.data.telemetry.enabled
                 title: qsTr("Installation ID")
 
                 TextField {
+                    id: installationIdField
                     objectName: "telemetryInstallationId"
-                    Layout.fillWidth: true
                     Layout.minimumWidth: 0
-                    Layout.preferredWidth: 300
+                    Layout.preferredWidth: Math.ceil(installationIdMetrics.advanceWidth) + leftPadding + rightPadding
+                    Layout.maximumWidth: installationIdItem.width * 0.6
+                    Layout.alignment: Qt.AlignRight
+                    horizontalAlignment: TextInput.AlignRight
                     text: Configs.data.telemetry.installation_id
                     readOnly: true
                     clearEnabled: false
+
+                    TextMetrics {
+                        id: installationIdMetrics
+                        font: installationIdField.font
+                        text: installationIdField.text
+                    }
                 }
             }
         }
