@@ -5,7 +5,7 @@ from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, cast
 
 if TYPE_CHECKING:
-    from sentry_sdk._types import Event, Hint
+    from sentry_sdk._types import Attributes, Event, Hint, Log
 
 TAG_KEYS = {
     "component",
@@ -56,6 +56,30 @@ def sanitize_log_message(message: str) -> str:
         text,
     )
     return text[:1000]
+
+
+def sanitize_log(log: "Log") -> "Log":
+    attributes = log["attributes"]
+    clean_attributes: Attributes = {
+        key: technical_value(attributes[key])
+        for key in ("sentry.origin", "logger.name", "code.function.name")
+        if key in attributes
+    }
+    filename = attributes.get("code.file.path")
+    if isinstance(filename, str):
+        clean_attributes["code.file.path"] = relative_filename(filename)
+    lineno = attributes.get("code.line.number")
+    if isinstance(lineno, int):
+        clean_attributes["code.line.number"] = lineno
+    return {
+        "severity_text": log["severity_text"],
+        "severity_number": log["severity_number"],
+        "body": sanitize_log_message(log["body"]),
+        "attributes": clean_attributes,
+        "time_unix_nano": log["time_unix_nano"],
+        "trace_id": log["trace_id"],
+        "span_id": log["span_id"],
+    }
 
 
 def sanitize_event(event: "Event", _hint: "Hint") -> "Event":

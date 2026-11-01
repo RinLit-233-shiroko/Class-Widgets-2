@@ -16,11 +16,11 @@ from loguru import logger
 
 from src import BUILD_DIST, SENTRY_DSN, __version__, __version_type__
 
-from .privacy import sanitize_event, technical_tags
+from .privacy import sanitize_event, sanitize_log, technical_tags
 
 if TYPE_CHECKING:
     from sentry_sdk import Client, Scope
-    from sentry_sdk._types import Event, Hint
+    from sentry_sdk._types import Event, Hint, Log
     from sentry_sdk.client import BaseClient
     from sentry_sdk.envelope import Envelope
     from sentry_sdk.tracing import Span
@@ -113,6 +113,10 @@ class TelemetryService:
                 allowed = threading.Event()
 
                 class ConsentTransport(HttpTransport):
+                    def capture_envelope(self, envelope: Envelope) -> None:
+                        if allowed.is_set():
+                            super().capture_envelope(envelope)
+
                     def _send_envelope(self, envelope: Envelope) -> None:
                         if allowed.is_set():
                             super()._send_envelope(envelope)
@@ -131,15 +135,15 @@ class TelemetryService:
                             level=None,
                             event_level=logging.ERROR,
                             event_format="{message}",
-                            sentry_logs_level=None,
-                            capture_sentry_logs=False,
+                            sentry_logs_level=logging.INFO,
+                            capture_sentry_logs=True,
                         ),
                     ],
                     auto_session_tracking=False,
                     send_default_pii=False,
                     include_local_variables=False,
                     include_source_context=False,
-                    enable_logs=False,
+                    enable_logs=True,
                     enable_metrics=False,
                     enable_backpressure_handling=False,
                     send_client_reports=False,
@@ -152,6 +156,7 @@ class TelemetryService:
                     transport_queue_size=100,
                     shutdown_timeout=2,
                     before_send=self._before_send,
+                    before_send_log=self._before_send_log,
                     before_send_transaction=sanitize_event,
                     in_app_include=["src"],
                 )
@@ -180,10 +185,39 @@ class TelemetryService:
             self._previous_global_client = None
             # 不调用 close()/flush()：撤销授权时必须丢弃发送队列。
             try:
+                if client.log_batcher is not None:
+                    client.log_batcher.kill()
+                    with client.log_batcher._lock:
+                        client.log_batcher._buffer.clear()
                 if client.transport is not None:
                     client.transport.kill()
             except Exception:
                 logger.warning("Unable to stop telemetry transport")
+
+    def _before_send_log(self, log: Log, _hint: Hint) -> Log | None:
+        with self._lock:
+            if not self.enabled or log["severity_number"] < 9:
+                return None
+            name = str(log["attributes"].get("logger.name", ""))
+            if name.startswith(("src.core.telemetry", "sentry_sdk")):
+                return None
+            clean = sanitize_log(log)
+            attributes = clean["attributes"]
+            attributes.update(self._tags)
+            attributes.update(
+                {
+                    "sentry.release": f"classwidgets-2@{__version__}-{__version_type__}",
+                    "sentry.environment": __version_type__,
+                    "dist": self._dist,
+                }
+            )
+            if name.startswith("cw_plugin_"):
+                attributes.update(
+                    technical_tags(
+                        {"component": "plugin", "plugin_id": name.removeprefix("cw_plugin_")}
+                    )
+                )
+            return clean
 
     def _before_send(self, event: Event, hint: Hint) -> Event | None:
         with self._lock:
