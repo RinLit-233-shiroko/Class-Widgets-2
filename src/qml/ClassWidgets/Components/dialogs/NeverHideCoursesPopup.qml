@@ -310,7 +310,6 @@ Dialog {
                         required property var modelData
                         required property int index
 
-                        // 默认右边距只有 5，当前课表标记会贴住边框
                         rightPadding: 16
                         highlighted: index === root.currentGroupIndex
 
@@ -330,13 +329,6 @@ Dialog {
                                 typography: Typography.Body
                                 elide: Text.ElideRight
                                 maximumLineCount: 1
-                            }
-
-                            Text {
-                                visible: modelData.isCurrent
-                                typography: Typography.Caption
-                                color: Theme.currentTheme.colors.textSecondaryColor
-                                text: qsTr("Current")
                             }
                         }
                     }
