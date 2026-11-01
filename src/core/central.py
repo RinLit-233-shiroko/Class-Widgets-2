@@ -113,6 +113,8 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self._telemetry_error = ""
         self._syncing_telemetry = False
         self._crash_snapshot = {"safe_mode": self._safe_mode}
+        self._startup_operation = None
+        self._startup_render_operation = None
         # 崩溃处理必须在其它子系统之前就绪，才能捕获启动期间的异常。
         self.crash_handler = CrashHandler(self)
         self.crash_handler.set_context_provider(self._crash_context)
@@ -128,6 +130,8 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             phase="startup" if self.configs.app.tutorial_completed else "oobe",
         )
         self.telemetry.configure(self._telemetry_choice)
+        if self.configs.app.tutorial_completed:
+            self._startup_operation = self.telemetry.start_operation("app.startup")
         self.configs.configChanged.connect(self._sync_telemetry_config)
         self._initialize_cores()
         self.platform = PlatformIntegration(self.app_instance)
@@ -235,6 +239,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         """初始化启动必需的UI组件"""
         self.widgets_window: WidgetsWindow = WidgetsWindow(self)
         self.widgets_window.qmlReady.connect(self._schedule_startup_swap_restore_prompt)
+        self.widgets_window.qmlReady.connect(self._on_startup_qml_ready)
         self.theme_recovery = ThemeRecoveryController(
             self.theme_manager,
             self.window_manager,
@@ -243,6 +248,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         )
         self.widgets_window.themeLoadFailed.connect(self.theme_recovery.handle_failure)
         if self.multi_instances:
+            self._finish_startup("cancelled")
             self.window_manager.ensure("single_instance")
 
     def run(self) -> None:  # 运行
@@ -267,6 +273,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
 
         # 如果教程未完成，先显示引导窗口
         if not getattr(self.configs.app, "tutorial_completed", False):
+            self._finish_startup("cancelled")
             logger.info("Tutorial not completed, showing tutorial window first.")
             self._startup_state = StartupState.WAITING_FOR_TUTORIAL
             self.window_manager.open_tutorial()
@@ -275,12 +282,17 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self._startup_state = StartupState.INITIALIZING
         try:
             self._setup_logging()  # 设置日志
-            self._load_schedule()  # 加载课程表
-            self._load_class_swap()  # 加载换课记录（跨天清理）
+            with self.telemetry.operation("startup.schedule", parent=self._startup_operation):
+                self._load_schedule()  # 加载课程表
+                self._load_class_swap()  # 加载换课记录（跨天清理）
             self._startup_swap_restore_pending = self._class_swap_manager.hasTodaySwaps()
 
-            self._load_runtime()  # 加载运行时(以及插件)
+            with self.telemetry.operation("startup.runtime", parent=self._startup_operation):
+                self._load_runtime()  # 加载运行时(以及插件)
             self._init_tray_icon()  # 初始化托盘图标
+            self._startup_render_operation = self.telemetry.start_operation(
+                "startup.qml", parent=self._startup_operation
+            )
             self._run_utils()
         except Exception as error:
             self._startup_state = StartupState.FAILED
@@ -294,6 +306,25 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.initialized.emit()
         logger.info("Initialization completed.")
         self._schedule_startup_swap_restore_prompt()
+        if self.widgets_window.is_qml_ready:
+            self._on_startup_qml_ready()
+
+    @Slot()
+    def _on_startup_qml_ready(self) -> None:
+        if self._startup_render_operation is not None:
+            self._startup_render_operation.finish()
+            self._startup_render_operation = None
+        if self._startup_state is StartupState.RUNNING:
+            self._finish_startup("ok")
+            self.telemetry.set_context(phase="runtime")
+
+    def _finish_startup(self, status) -> None:
+        if self._startup_render_operation is not None:
+            self._startup_render_operation.finish(status)
+            self._startup_render_operation = None
+        if self._startup_operation is not None:
+            self._startup_operation.finish(status)
+            self._startup_operation = None
 
     @Slot()
     def _schedule_startup_swap_restore_prompt(self) -> None:
@@ -357,6 +388,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         if self._cleanup_started:
             return
         self._cleanup_started = True
+        self._finish_startup("cancelled")
 
         # 每一项都在 try 内解析属性：崩溃发生在启动完成前时也要能安全退出。
         cleanup_steps = (
@@ -696,6 +728,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         }
 
     def _capture_crash(self, exc_info, report: CrashReport) -> None:
+        self._finish_startup("internal_error")
         context = {
             "component": "app", "source": "thread" if report.source.startswith("thread") else report.source,
             "theme_id": report.theme_id, "safe_mode": report.safe_mode,

@@ -16,10 +16,11 @@ from .privacy import sanitize_event, technical_tags
 class Operation:
     """一个异步操作的生命周期，重复完成或撤销授权后完成均为空操作。"""
 
-    def __init__(self, service, transaction=None, generation=0):
+    def __init__(self, service, transaction=None, generation=0, scope=None):
         self._service = service
         self._transaction = transaction
         self._generation = generation
+        self._scope = scope
         self._lock = threading.Lock()
         self._finished = False
 
@@ -49,7 +50,7 @@ class TelemetryService:
         self._client = None
         self._allowed = threading.Event()
         self._generation = 0
-        self._operations = set()
+        self._operations = {}
         self._last_failure = {}
         self._tags = {"phase": "startup"}
 
@@ -96,6 +97,7 @@ class TelemetryService:
                     include_source_context=False,
                     enable_logs=False,
                     enable_metrics=False,
+                    enable_backpressure_handling=False,
                     send_client_reports=False,
                     traces_sample_rate=0.1,
                     sample_rate=1.0,
@@ -178,23 +180,37 @@ class TelemetryService:
                 logger.warning("Unable to capture telemetry failure")
                 return None
 
-    def start_operation(self, name, context=None):
+    def start_operation(self, name, context=None, *, parent=None):
         with self._lock:
             transaction = None
+            operation_scope = None
             if self.enabled:
                 try:
-                    with self._scope(context or {}) as scope:
-                        transaction = scope.start_transaction(name=name, op=name)
+                    if (
+                        parent is not None
+                        and parent._transaction is not None
+                        and parent._generation == self._generation
+                        and not parent._finished
+                    ):
+                        from sentry_sdk.scope import use_scope
+
+                        with use_scope(parent._scope):
+                            transaction = parent._transaction.start_child(op=name, description=name)
+                        operation_scope = parent._scope
+                    else:
+                        with self._scope(context or {}) as scope:
+                            transaction = scope.start_transaction(name=name, op=name)
+                            operation_scope = scope
                 except Exception:
                     logger.warning("Unable to start telemetry operation")
-            operation = Operation(self, transaction, self._generation)
+            operation = Operation(self, transaction, self._generation, operation_scope)
             if transaction is not None:
-                self._operations.add(operation)
+                self._operations[operation] = None
             return operation
 
     def finish_operation(self, operation, status):
         with self._lock:
-            self._operations.discard(operation)
+            self._operations.pop(operation, None)
             if (
                 not self.enabled
                 or operation._generation != self._generation
@@ -205,19 +221,19 @@ class TelemetryService:
                 from sentry_sdk.scope import use_scope
 
                 operation._transaction.set_status(status)
-                with use_scope(operation._transaction.scope):
+                with use_scope(operation._scope):
                     operation._transaction.finish()
             except Exception:
                 logger.warning("Unable to finish telemetry operation")
 
     @contextmanager
-    def operation(self, name, context=None):
-        with self.start_operation(name, context) as operation:
+    def operation(self, name, context=None, *, parent=None):
+        with self.start_operation(name, context, parent=parent) as operation:
             yield operation
 
     def shutdown(self, timeout=2):
         with self._lock:
-            for operation in list(self._operations):
+            for operation in reversed(list(self._operations)):
                 operation.finish("cancelled")
             client = self._client
         if client is not None:
