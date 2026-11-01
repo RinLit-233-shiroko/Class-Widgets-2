@@ -86,6 +86,11 @@ ColumnLayout {
         Text {
             Layout.fillWidth: true
             wrapMode: Text.WordWrap
+            text: qsTr("Session reports include duration, error count, and exit status. A random ID is generated for each diagnostic session; no persistent user or device ID is sent.")
+        }
+        Text {
+            Layout.fillWidth: true
+            wrapMode: Text.WordWrap
             text: qsTr("Full settings, log files, local variables, and device names are not attached. Log messages are redacted before sending to Sentry SaaS. Earlier errors and logs are not uploaded after you enable diagnostics.")
         }
         Text {
