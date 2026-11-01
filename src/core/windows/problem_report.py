@@ -206,7 +206,11 @@ class ProblemReport(ReleasableWindow, QObject):
         if not self._report:
             return
         try:
-            QGuiApplication.clipboard().setText(self._report.summary_text)
+            summary = self._report.summary_text
+            telemetry = self.central.configs.telemetry
+            if telemetry.enabled:
+                summary += f"\n\nInstallation ID: {telemetry.installation_id}"
+            QGuiApplication.clipboard().setText(summary)
         except Exception:
             logger.exception("Failed to copy the crash summary")
             return
