@@ -40,13 +40,20 @@ if __name__ == "__main__":
     sys.argv[1:] = wait_for_process_exit(sys.argv[1:])
     app = QApplication(sys.argv)
     app.setQuitOnLastWindowClosed(False)
-    instance = AppCentral()
+    instance = None
     try:
+        instance = AppCentral()
         instance.run()
     except Exception as error:
         # 启动流程中 init() 之外的步骤出错时，也要交给崩溃处理：
         # 这样报告窗口能显示，事件循环也仍然会启动。
-        instance.crash_handler.report_exception(
-            type(error), error, error.__traceback__, source="startup"
-        )
+        instance = instance or AppCentral._instance
+        handler = getattr(instance, "crash_handler", None)
+        if handler is not None:
+            handler.report_exception(type(error), error, error.__traceback__, source="startup")
+        else:
+            from PySide6.QtWidgets import QMessageBox
+
+            QMessageBox.critical(None, "Class Widgets", str(error))
+            raise SystemExit(1) from error
     app.exec()

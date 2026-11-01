@@ -112,9 +112,11 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self._telemetry_choice = False
         self._telemetry_error = ""
         self._syncing_telemetry = False
+        self._crash_snapshot = {"safe_mode": self._safe_mode}
         # 崩溃处理必须在其它子系统之前就绪，才能捕获启动期间的异常。
         self.crash_handler = CrashHandler(self)
         self.crash_handler.set_context_provider(self._crash_context)
+        self.crash_handler.set_exception_reporter(self._capture_crash)
         self.crash_handler.crashReported.connect(self._on_crash_reported)
         self.crash_handler.install()
         self.path_manager = PathManager()
@@ -167,6 +169,8 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.app_translator: AppTranslator = AppTranslator(self)
         self._register_shortcuts()
         self.plugin_manager: PluginManager = PluginManager(self.plugin_api, self)
+        self.plugin_manager.pluginListChanged.connect(self._refresh_crash_context)
+        self.theme_manager.themeChanged.connect(self._refresh_crash_context)
         self.utils_backend: UtilsBackend = UtilsBackend(self)
         self.automation_manager: AutomationManager = AutomationManager(self)
         self.updater_bridge: UpdaterBridge = UpdaterBridge(self)
@@ -674,15 +678,35 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         return self._safe_mode
 
     def _crash_context(self) -> dict:
-        """崩溃报告需要的运行时信息。"""
+        """工作线程读取普通数据快照，避免在异常路径访问 GUI 对象。"""
         return {
+            **self._crash_snapshot,
             "uptime": time.monotonic() - self._started_at,
+            "active_plugin_id": self._active_plugin_id(),
+        }
+
+    @Slot()
+    def _refresh_crash_context(self) -> None:
+        self._crash_snapshot = {
             "plugin_count": len(getattr(self.plugin_manager, "metas", None) or []),
             "theme_id": self.theme_manager.currentTheme,
             "safe_mode": self._safe_mode,
             "plugins": self._plugin_records(),
-            "active_plugin_id": self._active_plugin_id(),
         }
+
+    def _capture_crash(self, exc_info, report: CrashReport) -> None:
+        context = {
+            "component": "app", "source": "thread" if report.source.startswith("thread") else report.source,
+            "theme_id": report.theme_id, "safe_mode": report.safe_mode,
+        }
+        if report.plugin_suspect:
+            suspect = report.plugin_suspect
+            context.update(
+                plugin_id=suspect.plugin_id, plugin_version=suspect.version,
+                plugin_type="builtin" if suspect.builtin else "external",
+                attribution_rule=suspect.rule, attribution_confidence=suspect.confidence,
+            )
+        self.telemetry.capture_exception(exc_info, context)
 
     def _plugin_records(self) -> list[PluginRecord]:
         """把插件清单整理成崩溃归因要用的记录。
@@ -745,7 +769,13 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     @Slot(object)
     def _on_crash_reported(self, report: CrashReport) -> None:
         """把崩溃报告交给报告窗口（可能来自非 UI 线程，信号会自动排队）。"""
-        self.window_manager.open_problem_report(report)
+        manager = getattr(self, "window_manager", None)
+        if manager is not None:
+            manager.open_problem_report(report)
+        else:
+            from PySide6.QtWidgets import QMessageBox
+
+            QMessageBox.critical(None, "Class Widgets", report.summary_text)
 
     @Slot()
     def ignore_crash(self) -> None:
