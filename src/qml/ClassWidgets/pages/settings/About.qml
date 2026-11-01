@@ -174,6 +174,20 @@ FluentPage {
                     onClicked: privacyDialog.open()
                 }
             }
+            SettingItem {
+                visible: Configs.data.telemetry.enabled
+                title: qsTr("Installation ID")
+
+                TextField {
+                    objectName: "telemetryInstallationId"
+                    Layout.fillWidth: true
+                    Layout.minimumWidth: 0
+                    Layout.preferredWidth: 300
+                    text: Configs.data.telemetry.installation_id
+                    readOnly: true
+                    clearEnabled: false
+                }
+            }
         }
     }
 
@@ -298,17 +312,6 @@ FluentPage {
             Layout.fillHeight: true
         }
 
-        Text {
-            text: qsTr("Installation ID")
-        }
-
-        TextField {
-            objectName: "telemetryInstallationId"
-            Layout.fillWidth: true
-            text: Configs.data.telemetry.installation_id
-            readOnly: true
-            clearEnabled: false
-        }
     }
 
     Dialog {
