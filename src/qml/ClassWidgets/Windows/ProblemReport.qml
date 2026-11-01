@@ -413,7 +413,7 @@ QQW.Window {
                             spacing: 8
 
                             // 运行环境 / Environment summary
-                            // 田字格：两行两列 —— 系统 / 版本 / 运行时间 / 插件。
+                            // 两列显示系统 / 版本 / 运行时间 / 插件，安装 ID 单独占一行。
                             // 各列给出首选宽度（不够时才省略），多余空间按比例摊到两列。
                             GridLayout {
                                 Layout.fillWidth: true
@@ -455,6 +455,16 @@ QQW.Window {
                                     iconName: "ic_fluent_puzzle_piece_20_regular"
                                     label: qsTr("Installed plugins")
                                     value: ProblemReportBridge.pluginCount
+                                }
+
+                                EnvironmentItem {
+                                    objectName: "crashInstallationId"
+                                    Layout.columnSpan: 2
+                                    Layout.minimumWidth: 0
+                                    visible: ProblemReportBridge.installationId.length > 0
+                                    iconName: "ic_fluent_key_20_regular"
+                                    label: qsTr("Installation ID")
+                                    value: ProblemReportBridge.installationId
                                 }
                             }
                             // 堆栈信息 / Traceback

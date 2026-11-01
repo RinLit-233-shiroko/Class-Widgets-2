@@ -21,6 +21,7 @@ class ProblemReport(ReleasableWindow, QObject):
 
     reportChanged = Signal()
     pluginStateChanged = Signal()
+    installationIdChanged = Signal()
 
     #: 日志导出时附带的最大日志尾部长度。
     _LOG_TAIL_LIMIT = 256 * 1024
@@ -30,6 +31,7 @@ class ProblemReport(ReleasableWindow, QObject):
         self._report: Optional[CrashReport] = None
         self._plugin_disabled = False
         self._show_when_ready = False
+        self.central.configs.configChanged.connect(self.installationIdChanged.emit)
         self.engine.rootContext().setContextProperty("ProblemReportBridge", self)
         self.engine.objectCreated.connect(self._on_object_created)
         self.load(CW_PATH / "Windows" / "ProblemReport.qml")
@@ -59,6 +61,11 @@ class ProblemReport(ReleasableWindow, QObject):
     @Property(int, notify=reportChanged)
     def pluginCount(self) -> int:
         return self._report.plugin_count if self._report else 0
+
+    @Property(str, notify=installationIdChanged)
+    def installationId(self) -> str:
+        telemetry = self.central.configs.telemetry
+        return telemetry.installation_id if telemetry.enabled else ""
 
     @Property(str, notify=reportChanged)
     def themeId(self) -> str:
@@ -207,9 +214,8 @@ class ProblemReport(ReleasableWindow, QObject):
             return
         try:
             summary = self._report.summary_text
-            telemetry = self.central.configs.telemetry
-            if telemetry.enabled:
-                summary += f"\n\nInstallation ID: {telemetry.installation_id}"
+            if self.installationId:
+                summary += f"\n\nInstallation ID: {self.installationId}"
             QGuiApplication.clipboard().setText(summary)
         except Exception:
             logger.exception("Failed to copy the crash summary")
