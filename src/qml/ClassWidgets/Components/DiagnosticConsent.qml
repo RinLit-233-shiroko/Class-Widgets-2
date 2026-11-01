@@ -6,13 +6,13 @@ import RinUI
 ColumnLayout {
     spacing: 8
 
-    SettingCard {
+    SettingExpander {
         Layout.fillWidth: true
         icon.name: "ic_fluent_shield_20_regular"
         title: qsTr("Send diagnostics")
         description: qsTr("Optional error reports and operation timings via Sentry. Off by default.")
 
-        Switch {
+        action: Switch {
             objectName: "diagnosticConsentSwitch"
             checked: Configs.data.telemetry.enabled
             enabled: !Configs.isKeyLocked("telemetry.enabled")
@@ -21,11 +21,15 @@ ColumnLayout {
                 checked = Qt.binding(function() { return Configs.data.telemetry.enabled })
             }
         }
-    }
 
-    Hyperlink {
-        text: qsTr("About diagnostics")
-        onClicked: detailsDialog.open()
+        SettingItem {
+            title: qsTr("About diagnostics")
+
+            Hyperlink {
+                text: qsTr("View details")
+                onClicked: detailsDialog.open()
+            }
+        }
     }
 
     property Dialog detailsDialog: Dialog {
