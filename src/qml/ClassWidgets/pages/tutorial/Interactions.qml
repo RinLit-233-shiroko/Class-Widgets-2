@@ -11,7 +11,7 @@ TutorialComponents.TutorialPage {
     title: qsTr("Choose widget interactions")
     description: qsTr("Decide how widgets get out of your way while you work.")
     currentStep: 4
-    totalSteps: 6
+    totalSteps: 7
     icon.source: PathManager.images("icons/cw2_settings.png")
 
     function hidePreviewSource(name) {

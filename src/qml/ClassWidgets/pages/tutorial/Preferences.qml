@@ -12,7 +12,7 @@ TutorialComponents.TutorialPage {
     title: qsTr("Preferences")
     description: qsTr("Choose a few defaults before selecting plugins.")
     currentStep: 5
-    totalSteps: 6
+    totalSteps: 7
     // nextText: qsTr("Choose plugins")
     icon.source: PathManager.images("icons/cw2_settings.png")
     nextIcon: "ic_fluent_arrow_right_20_regular"
