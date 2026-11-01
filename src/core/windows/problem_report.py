@@ -213,9 +213,7 @@ class ProblemReport(ReleasableWindow, QObject):
         if not self._report:
             return
         try:
-            summary = self._report.summary_text
-            if self.installationId:
-                summary += f"\n\nInstallation ID: {self.installationId}"
+            summary = self._report.format_summary(installation_id=self.installationId)
             QGuiApplication.clipboard().setText(summary)
         except Exception:
             logger.exception("Failed to copy the crash summary")
