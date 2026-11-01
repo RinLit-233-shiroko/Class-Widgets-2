@@ -10,6 +10,7 @@ from collections.abc import Callable, Iterator, Mapping
 from contextlib import contextmanager
 from types import TracebackType
 from typing import TYPE_CHECKING, Self
+from uuid import UUID
 
 import requests
 from loguru import logger
@@ -84,6 +85,7 @@ class TelemetryService:
         self._previous_global_client: BaseClient | None = None
         self._session: Session | None = None
         self._session_started = 0.0
+        self._installation_id: str | None = None
         self._allowed = threading.Event()
         self._generation = 0
         self._operations: dict[Operation, None] = {}
@@ -99,15 +101,26 @@ class TelemetryService:
         with self._lock:
             self._tags.update(technical_tags(context))
 
-    def configure(self, enabled: bool) -> None:
+    def configure(self, enabled: bool, *, installation_id: str | None = None) -> None:
         with self._lock:
-            if enabled and self.enabled:
-                return
             if not enabled:
                 self._disable()
                 return
+            identity = None
+            if installation_id:
+                try:
+                    parsed = UUID(installation_id)
+                    if parsed.version == 4:
+                        identity = str(parsed)
+                except ValueError:
+                    pass
+            if self.enabled:
+                if identity == self._installation_id:
+                    return
+                self.shutdown()
             if not self._dsn:
                 return
+            self._installation_id = identity
             try:
                 from sentry_sdk import Client, get_global_scope
                 from sentry_sdk.integrations.loguru import LoguruIntegration
@@ -161,7 +174,7 @@ class TelemetryService:
                     shutdown_timeout=2,
                     before_send=self._before_send,
                     before_send_log=self._before_send_log,
-                    before_send_transaction=sanitize_event,
+                    before_send_transaction=self._before_send_transaction,
                     in_app_include=["src"],
                 )
                 self._allowed = allowed
@@ -170,6 +183,7 @@ class TelemetryService:
                 self._previous_global_client = global_scope.client
                 global_scope.set_client(self._client)
                 self._session = Session(
+                    did=self._installation_id,
                     release=self._client.options["release"],
                     environment=self._client.options["environment"],
                     session_mode="application",
@@ -187,6 +201,7 @@ class TelemetryService:
         self._last_failure.clear()
         self._reported_exceptions.clear()
         self._session = None
+        self._installation_id = None
         client, self._client = self._client, None
         if client is not None:
             from sentry_sdk import get_global_scope
@@ -220,6 +235,8 @@ class TelemetryService:
             clean = sanitize_log(log)
             attributes = clean["attributes"]
             attributes.update(self._tags)
+            if self._installation_id is not None:
+                attributes["user.id"] = self._installation_id
             attributes.update(
                 {
                     "sentry.release": f"classwidgets-2@{__version__}-{__version_type__}",
@@ -291,6 +308,8 @@ class TelemetryService:
                 key: value for key, value in self._last_failure.items() if now - value < 60
             }
             clean = sanitize_event(event, hint)
+            if self._installation_id is not None:
+                clean["user"] = {"id": self._installation_id}
             if self._session is not None and self._client is not None:
                 exceptions = clean.get("exception", {}).get("values", [])
                 crashed = any(
@@ -301,6 +320,15 @@ class TelemetryService:
                     errors=self._session.errors + 1,
                 )
                 self._client.capture_session(self._session)
+            return clean
+
+    def _before_send_transaction(self, event: Event, hint: Hint) -> Event | None:
+        with self._lock:
+            if not self.enabled:
+                return None
+            clean = sanitize_event(event, hint)
+            if self._installation_id is not None:
+                clean["user"] = {"id": self._installation_id}
             return clean
 
     @contextmanager

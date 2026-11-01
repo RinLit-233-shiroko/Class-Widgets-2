@@ -134,7 +134,9 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             safe_mode=self._safe_mode,
             phase="startup" if self.configs.app.tutorial_completed else "oobe",
         )
-        self.telemetry.configure(self._telemetry_choice)
+        self.telemetry.configure(
+            self._telemetry_choice, installation_id=self.configs.telemetry.installation_id,
+        )
         if self.configs.app.tutorial_completed:
             self._startup_operation = self.telemetry.start_operation("app.startup")
         self.configs.configChanged.connect(self._sync_telemetry_config)
@@ -478,7 +480,9 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             if self.configs.save(silent=True):
                 self._telemetry_choice = enabled
                 self._telemetry_error = ""
-                self.telemetry.configure(enabled)
+                self.telemetry.configure(
+                    enabled, installation_id=self.configs.telemetry.installation_id,
+                )
             else:
                 if enabled:
                     self.configs.set("telemetry.enabled", False)
