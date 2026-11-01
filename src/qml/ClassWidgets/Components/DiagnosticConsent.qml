@@ -59,12 +59,12 @@ ColumnLayout {
                 Text {
                     Layout.fillWidth: true
                     wrapMode: Text.WordWrap
-                    text: qsTr("Reports include exception types and sanitized stack traces, app and system versions, relevant plugin or theme identifiers, and operation timings.")
+                    text: qsTr("Reports include exception types and sanitized stack traces, redacted error log messages, app and system versions, relevant plugin or theme identifiers, and operation timings.")
                 }
                 Text {
                     Layout.fillWidth: true
                     wrapMode: Text.WordWrap
-                    text: qsTr("Schedule contents, full settings, log files, local variables, and device names are not collected. Reports go to Sentry SaaS. Earlier errors are not uploaded after you enable diagnostics.")
+                    text: qsTr("Full settings, log files, local variables, and device names are not attached. Error log messages are redacted before sending to Sentry SaaS. Earlier errors are not uploaded after you enable diagnostics.")
                 }
                 Text {
                     Layout.fillWidth: true
