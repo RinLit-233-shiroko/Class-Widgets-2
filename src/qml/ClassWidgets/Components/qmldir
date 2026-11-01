@@ -13,7 +13,6 @@ TrayShortcuts 1.0 TrayShortcuts.qml
 RestartButton 1.0 RestartButton.qml
 SplitButton 1.0 SplitButton.qml
 SafeModeNotice 1.0 SafeModeNotice.qml
-DiagnosticConsent 1.0 DiagnosticConsent.qml
 
 # Dialogs
 AddWidgetsDialog 1.0 dialogs/AddWidgetsDialog.qml
@@ -27,6 +26,7 @@ ScheduleSetupDialog 1.0 dialogs/ScheduleSetupDialog.qml
 
 # Settings
 ClipItem 1.0 settings/ClipItem.qml
+DiagnosticConsent 1.0 settings/DiagnosticConsent.qml
 # Editor / Shared
 AddSubjectExpander 1.0 editor/AddSubjectExpander.qml
 SaveFlyout 1.0 editor/SaveFlyout.qml
