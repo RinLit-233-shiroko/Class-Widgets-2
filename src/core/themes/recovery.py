@@ -44,7 +44,7 @@ class ThemeRecoveryController(QObject):
             return
 
         self._handling = True
-        logger.error(
+        logger.bind(telemetry_skip=True).error(
             "Theme '{}' failed to load; restoring default theme",
             failed_theme_id,
         )
@@ -55,7 +55,7 @@ class ThemeRecoveryController(QObject):
                 "recovered": recovered,
             })
         if not recovered:
-            logger.critical("Unable to recover from theme load failure")
+            logger.bind(telemetry_skip=True).critical("Unable to recover from theme load failure")
 
         if not self._dialog_scheduled:
             self._dialog_scheduled = True
@@ -67,7 +67,7 @@ class ThemeRecoveryController(QObject):
     @Slot(str)
     def report_component_failure(self, source: str = "") -> None:
         failed_theme_id = str(self.theme_manager.currentTheme)
-        logger.error(
+        logger.bind(telemetry_skip=True).error(
             "Theme component failed to load for theme '{}'{}",
             failed_theme_id,
             f": {source}" if source else "",

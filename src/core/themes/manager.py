@@ -355,7 +355,7 @@ class ThemeManager(QObject):
             self.thread.deleteLater()
 
         def on_error(msg):
-            logger.error(f"Theme import error: {msg}")
+            logger.bind(telemetry_skip=True).error(f"Theme import error: {msg}")
             self.themeImportFailed.emit(msg)
             self.thread.quit()
             self.worker.deleteLater()
