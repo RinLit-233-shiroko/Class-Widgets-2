@@ -11,7 +11,6 @@ TutorialComponents.TutorialPage {
     description: qsTr("Choose whether to help us diagnose problems. You can continue with diagnostics turned off.")
     currentStep: 6
     totalSteps: 7
-    icon.source: ""
 
     DiagnosticConsent {
         width: parent.width
