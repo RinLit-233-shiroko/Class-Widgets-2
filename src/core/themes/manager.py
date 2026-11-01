@@ -322,7 +322,10 @@ class ThemeManager(QObject):
             return False
 
         self.thread: QThread = QThread()
-        self.worker: ThemeImportWorker = ThemeImportWorker(zip_path, THEMES_PATH, self.scan, self._themes)
+        self.worker: ThemeImportWorker = ThemeImportWorker(
+            zip_path, THEMES_PATH, self.scan, self._themes,
+            telemetry=self._app_central.telemetry,
+        )
         self.worker.moveToThread(self.thread)
 
         self.thread.started.connect(self.worker.run)
@@ -352,7 +355,7 @@ class ThemeManager(QObject):
             self.thread.deleteLater()
 
         def on_error(msg):
-            logger.error(f"Theme import error: {msg}")
+            logger.bind(telemetry_skip=True).error(f"Theme import error: {msg}")
             self.themeImportFailed.emit(msg)
             self.thread.quit()
             self.worker.deleteLater()

@@ -127,6 +127,7 @@ ApplicationWindow {
     readonly property var pageUrls: [
         Qt.resolvedUrl("../pages/tutorial/Welcome.qml"),
         Qt.resolvedUrl("../pages/tutorial/Language.qml"),
+        Qt.resolvedUrl("../pages/tutorial/Privacy.qml"),
         Qt.resolvedUrl("../pages/tutorial/Theme.qml"),
         Qt.resolvedUrl("../pages/tutorial/Appearance.qml"),
         Qt.resolvedUrl("../pages/tutorial/Interactions.qml"),
@@ -197,8 +198,26 @@ ApplicationWindow {
     }
 
     function completeTutorial() {
-        Configs.set("app.tutorial_completed", true)
-        AppCentral.restart("--update-done")
+        if (!AppCentral.completeTutorial()) {
+            completionErrorDialog.open()
+            return false
+        }
+        return true
+    }
+
+    property Dialog completionErrorDialog: Dialog {
+        parent: Overlay.overlay
+        anchors.centerIn: parent
+        modal: true
+        title: qsTr("Setup could not be completed")
+        width: 390
+        standardButtons: Dialog.Ok
+
+        Text {
+            Layout.fillWidth: true
+            wrapMode: Text.WordWrap
+            text: qsTr("Unable to save your settings or restart Class Widgets. Please try again.")
+        }
     }
 
     StackView {

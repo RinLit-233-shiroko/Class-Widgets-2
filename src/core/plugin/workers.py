@@ -4,8 +4,9 @@ import shutil
 import tempfile
 import threading
 from pathlib import Path
+from typing import TYPE_CHECKING
 
-from PySide6.QtCore import QThread, Signal
+from PySide6.QtCore import QObject, QThread, Signal
 from packaging.version import InvalidVersion, Version
 
 from src.core.plaza.client import PlazaClient
@@ -18,6 +19,10 @@ from src.core.plugin.download import (
     PluginDownloader,
 )
 from src.core.storage.directories import TEMP_PATH
+
+
+if TYPE_CHECKING:
+    from src.core.telemetry import TelemetryService
 
 
 class PluginDownloadWorker(QThread):
@@ -68,10 +73,12 @@ class PlazaDownloadWorker(QThread):
         destination: Path,
         *,
         max_size: int = PluginArchiveInstaller.MAX_ARCHIVE_SIZE,
-        parent=None,
-    ):
+        parent: QObject | None = None,
+        telemetry: TelemetryService | None = None,
+    ) -> None:
         super().__init__(parent)
         self.plugin_id = plugin_id
+        self.telemetry = telemetry
         self.client = PlazaClient(base_url)
         self.destination = Path(destination)
         self.max_size = max_size
@@ -80,6 +87,10 @@ class PlazaDownloadWorker(QThread):
         self._pause_event = threading.Event()
 
     def run(self) -> None:
+        operation = self.telemetry.start_operation("plugin.download", {
+            "component": "plugin", "stage": "download", "plugin_id": self.plugin_id,
+        }) if self.telemetry is not None else None
+        status = "internal_error"
         try:
             self._raise_if_cancelled()
             self._raise_if_paused()
@@ -100,12 +111,22 @@ class PlazaDownloadWorker(QThread):
             archive_path = self._downloader.download(self.progress.emit)
             self._raise_if_cancelled()
             self.completed.emit(str(archive_path), plugin)
+            status = "ok"
         except PluginDownloadCancelled:
+            status = "cancelled"
             self.cancelled.emit()
         except PluginDownloadPaused:
+            status = "cancelled"
             self.paused.emit()
         except Exception as error:
+            if self.telemetry is not None:
+                self.telemetry.capture_failure("plugin.download", {
+                    "component": "plugin", "stage": "download", "plugin_id": self.plugin_id,
+                }, error=error)
             self.failed.emit(str(error))
+        finally:
+            if operation is not None:
+                operation.finish(status)
 
     def cancel(self) -> None:
         self._cancel_event.set()

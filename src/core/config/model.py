@@ -3,6 +3,7 @@ from __future__ import annotations
 from enum import Enum
 from typing import Optional
 from collections.abc import Callable
+from uuid import UUID, uuid4
 
 from pydantic import BaseModel, Field, Extra, PrivateAttr, field_validator, model_validator
 from PySide6.QtCore import QLocale, QCoreApplication, Property
@@ -132,6 +133,25 @@ class HideInteractionsConfig(ConfigBaseModel):
     class Config:
         use_enum_values = True
         validate_assignment = True
+
+class TelemetryConfig(ConfigBaseModel):
+    """远程诊断默认关闭，仅在用户明确选择后启用。"""
+
+    enabled: bool = False
+    installation_id: str = Field(default_factory=lambda: str(uuid4()))
+
+    @field_validator("installation_id", mode="before")
+    @classmethod
+    def normalize_installation_id(cls, value: object) -> str:
+        if isinstance(value, str):
+            try:
+                identity = UUID(value)
+                if identity.version == 4:
+                    return str(identity)
+            except ValueError:
+                pass
+        return str(uuid4())
+
 
 class AppConfig(ConfigBaseModel):
     """

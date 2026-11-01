@@ -26,6 +26,8 @@ ScheduleSetupDialog 1.0 dialogs/ScheduleSetupDialog.qml
 
 # Settings
 ClipItem 1.0 settings/ClipItem.qml
+DiagnosticConsent 1.0 settings/DiagnosticConsent.qml
+PrivacyPolicyText 1.0 settings/PrivacyPolicyText.qml
 # Editor / Shared
 AddSubjectExpander 1.0 editor/AddSubjectExpander.qml
 SaveFlyout 1.0 editor/SaveFlyout.qml

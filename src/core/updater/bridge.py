@@ -100,7 +100,9 @@ class UpdaterBridge(QObject):
         if self._check_worker and self._check_worker.isRunning():
             self._check_worker.terminate()
 
-        self._check_worker = CheckUpdateWorker(channel, current_version)
+        self._check_worker = CheckUpdateWorker(
+            channel, current_version, telemetry=self.app_central.telemetry
+        )
         self._check_worker.finished.connect(self._on_check_finished)
         self._check_worker.start(self.app_central.configs.network.releases_url)
 
@@ -144,7 +146,9 @@ class UpdaterBridge(QObject):
         self._downloaded_file = self.temp_dir / "update.zip"
 
         self._downloader = UpdateDownloader(self._latest_url, self._downloaded_file, self.app_central.configs)
-        self._download_worker = DownloadWorker(self._downloader)
+        self._download_worker = DownloadWorker(
+            self._downloader, telemetry=self.app_central.telemetry
+        )
         self._download_worker.progress.connect(self._set_progress)
         self._download_worker.finished.connect(self._on_download_finished)
         self._download_worker.start()
@@ -192,7 +196,8 @@ class UpdaterBridge(QObject):
         self._install_worker = InstallWorker(
             WindowsUpdater(self.temp_dir),
             self._downloaded_file,
-            INSTALL_PATH
+            INSTALL_PATH,
+            telemetry=self.app_central.telemetry,
         )
         self._install_worker.finished.connect(self._on_install_finished)
         self._install_worker.start()

@@ -201,3 +201,13 @@ logs/
 .touch_probe/
 wer-kernel-*/
 .cwplugin_backups/
+central_control/
+/configs1
+/temp
+/weather-design
+uv.lock
+/central-control
+pyproject copy.toml
+uv.lock
+pyproject copy.toml
+pyproject copy1.toml
