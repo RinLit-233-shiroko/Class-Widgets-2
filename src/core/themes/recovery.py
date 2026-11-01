@@ -1,15 +1,30 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from PySide6.QtCore import QObject, QTimer, Slot
 from loguru import logger
 
 from src.core.themes.manager import DEFAULT_THEME_ID
 
 
+if TYPE_CHECKING:
+    from src.core.telemetry import TelemetryService
+    from src.core.themes.manager import ThemeManager
+    from src.core.windows.manager import AppWindowManager
+
+
 class ThemeRecoveryController(QObject):
     """Handles asynchronous QML theme-load failures."""
 
-    def __init__(self, theme_manager, window_manager, parent=None, *, telemetry=None) -> None:
+    def __init__(
+        self,
+        theme_manager: ThemeManager,
+        window_manager: AppWindowManager,
+        parent: QObject | None = None,
+        *,
+        telemetry: TelemetryService | None = None,
+    ) -> None:
         super().__init__(parent)
         self.theme_manager = theme_manager
         self.window_manager = window_manager
@@ -51,7 +66,7 @@ class ThemeRecoveryController(QObject):
 
     @Slot(str)
     def report_component_failure(self, source: str = "") -> None:
-        failed_theme_id = self.theme_manager.currentTheme
+        failed_theme_id = str(self.theme_manager.currentTheme)
         logger.error(
             "Theme component failed to load for theme '{}'{}",
             failed_theme_id,

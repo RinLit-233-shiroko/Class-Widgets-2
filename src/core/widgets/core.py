@@ -1,4 +1,7 @@
-﻿from pathlib import Path
+﻿from __future__ import annotations
+
+from pathlib import Path
+from typing import TYPE_CHECKING
 from PySide6.QtCore import QObject, Signal, QRect, QPointF, Qt, QTimer
 from PySide6.QtGui import QRegion, QCursor
 from loguru import logger
@@ -12,12 +15,17 @@ from src.core.themes.interceptor import ThemeUrlInterceptor
 from src.core.windows.windows import ReleasableWindow
 
 
+if TYPE_CHECKING:
+    from src.core.central import AppCentral
+    from src.core.telemetry import Operation
+
+
 class WidgetsWindow(ReleasableWindow, QObject):
     themeReadyToReload = Signal()
     qmlReady = Signal()
     themeLoadFailed = Signal(str)
 
-    def __init__(self, app_central: QObject):
+    def __init__(self, app_central: AppCentral) -> None:
         super().__init__(app_central)
         self.app_central = app_central
         self.accepts_input = True
@@ -28,7 +36,7 @@ class WidgetsWindow(ReleasableWindow, QObject):
         self.interactive_rect = QRegion()
         self._mask_update_pending = False
         self._qml_ready = False
-        self._theme_operation = None
+        self._theme_operation: Operation | None = None
         
         # 初始化主题拦截器
         self.interceptor = ThemeUrlInterceptor(self)
@@ -69,7 +77,7 @@ class WidgetsWindow(ReleasableWindow, QObject):
         # 确保 src/qml 在导入路径中，以便能找到 ClassWidgets 模块
         self.engine.addImportPath(str(QML_PATH))
 
-        current_theme_id = self.app_central.theme_manager.currentTheme
+        current_theme_id = str(self.app_central.theme_manager.currentTheme)
         self._start_theme_operation(current_theme_id)
         if current_theme_id:
             # 验证主题是否存在
@@ -78,7 +86,7 @@ class WidgetsWindow(ReleasableWindow, QObject):
                 logger.info(f"Falling back to default theme: {DEFAULT_THEME_ID}")
                 # 切换到默认主题
                 self.app_central.theme_manager.themeChange(DEFAULT_THEME_ID)
-                current_theme_id = self.app_central.theme_manager.currentTheme
+                current_theme_id = str(self.app_central.theme_manager.currentTheme)
 
             current_theme_path = self.app_central.theme_manager.getThemePath(current_theme_id)
             if current_theme_path:
@@ -106,14 +114,14 @@ class WidgetsWindow(ReleasableWindow, QObject):
         self._theme_reloading = True
         logger.info("Theme changed, starting reload process")
 
-        current_theme_id = self.app_central.theme_manager.currentTheme
+        current_theme_id = str(self.app_central.theme_manager.currentTheme)
         self._start_theme_operation(current_theme_id)
 
         if not self.app_central.theme_manager.isThemePathValid(current_theme_id):
             logger.error(f"Theme '{current_theme_id}' path is invalid during theme change")
             logger.info(f"Falling back to default theme: {DEFAULT_THEME_ID}")
             self.app_central.theme_manager.themeChange(DEFAULT_THEME_ID)
-            current_theme_id = self.app_central.theme_manager.currentTheme
+            current_theme_id = str(self.app_central.theme_manager.currentTheme)
 
         if current_theme_id:
             current_theme_path = self.app_central.theme_manager.getThemePath(current_theme_id)
@@ -172,13 +180,13 @@ class WidgetsWindow(ReleasableWindow, QObject):
             self._theme_reloading = False
             logger.info("Theme reload aborted; waiting for fallback theme")
 
-    def _start_theme_operation(self, theme_id):
+    def _start_theme_operation(self, theme_id: str) -> None:
         self._finish_theme_operation("cancelled")
         self._theme_operation = self.app_central.telemetry.start_operation("theme.load", {
             "component": "theme", "stage": "qml", "theme_id": theme_id,
         })
 
-    def _finish_theme_operation(self, status):
+    def _finish_theme_operation(self, status: str) -> None:
         operation, self._theme_operation = self._theme_operation, None
         if operation is not None:
             operation.finish(status)
@@ -228,7 +236,7 @@ class WidgetsWindow(ReleasableWindow, QObject):
         warnings alone are not.
         """
         theme_path = self.app_central.theme_manager.getThemePath(
-            self.app_central.theme_manager.currentTheme
+            str(self.app_central.theme_manager.currentTheme)
         )
         if not theme_path:
             return
