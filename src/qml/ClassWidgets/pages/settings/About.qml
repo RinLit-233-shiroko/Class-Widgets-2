@@ -177,24 +177,35 @@ FluentPage {
             SettingItem {
                 id: installationIdItem
                 visible: Configs.data.telemetry.enabled
-                title: qsTr("Installation ID")
 
-                TextField {
-                    id: installationIdField
-                    objectName: "telemetryInstallationId"
-                    Layout.minimumWidth: 0
-                    Layout.preferredWidth: Math.ceil(installationIdMetrics.advanceWidth) + leftPadding + rightPadding
-                    Layout.maximumWidth: installationIdItem.width * 0.6
-                    Layout.alignment: Qt.AlignRight
-                    horizontalAlignment: TextInput.AlignRight
-                    text: Configs.data.telemetry.installation_id
-                    readOnly: true
-                    clearEnabled: false
+                RowLayout {
+                    Layout.fillWidth: true
+                    // 抵消 SettingItem 在空标题旁保留的间距，与相邻设置项标题对齐。
+                    Layout.leftMargin: -16
+                    spacing: 16
 
-                    TextMetrics {
-                        id: installationIdMetrics
-                        font: installationIdField.font
-                        text: installationIdField.text
+                    Text {
+                        Layout.fillWidth: true
+                        text: qsTr("Installation ID")
+                    }
+
+                    TextField {
+                        id: installationIdField
+                        objectName: "telemetryInstallationId"
+                        Layout.minimumWidth: 0
+                        Layout.preferredWidth: Math.ceil(installationIdMetrics.advanceWidth) + leftPadding + rightPadding
+                        Layout.maximumWidth: installationIdItem.width * 0.6
+                        Layout.alignment: Qt.AlignRight
+                        horizontalAlignment: TextInput.AlignRight
+                        text: Configs.data.telemetry.installation_id
+                        readOnly: true
+                        clearEnabled: false
+
+                        TextMetrics {
+                            id: installationIdMetrics
+                            font: installationIdField.font
+                            text: installationIdField.text
+                        }
                     }
                 }
             }
