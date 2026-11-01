@@ -5895,12 +5895,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>Text</source>
         <translation type="unfinished"></translation>
     </message>
-
-    <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="412"/>
-        <source>Hide depth</source>
-        <translation>Profondità di nascondimento</translation>
-    </message>
 </context>
 <context>
     <name>WidgetsContainer</name>

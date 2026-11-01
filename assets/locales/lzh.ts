@@ -1661,7 +1661,7 @@ Do you want to %3 this plugin?</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="35"/>
         <source>Uninstall Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>除之而不得</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="36"/>
@@ -3241,11 +3241,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="57"/>
         <source>Dynamic Notification</source>
         <translation type="unfinished"></translation>
-    </message>
-
-    <message>
-        <source>Hide depth</source>
-        <translation>隱深</translation>
     </message>
 </context>
 <context>

@@ -239,7 +239,7 @@ Your settings and schedule are kept.</source>
     <message>
         <location filename="../../src/core/central.py" line="716"/>
         <source>Safe mode</source>
-        <translation type="unfinished"></translation>
+        <translation>沙发模式</translation>
     </message>
     <message>
         <location filename="../../src/core/central.py" line="720"/>
@@ -3600,7 +3600,7 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/SafeModeNotice.qml" line="13"/>
         <source>Safe mode</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">沙发模式</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/SafeModeNotice.qml" line="14"/>
@@ -6325,12 +6325,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/plugins/cw_widgets/widgets.py" line="68"/>
         <source>Text</source>
         <translation type="unfinished"></translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Widgets.qml" line="412"/>
-        <source>Hide depth</source>
-        <translation>隐藏深度</translation>
     </message>
 </context>
 <context>
