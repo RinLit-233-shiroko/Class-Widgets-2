@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 import platform
 import threading
 import time
@@ -19,6 +20,8 @@ from .privacy import sanitize_event, technical_tags
 
 if TYPE_CHECKING:
     from sentry_sdk import Client, Scope
+    from sentry_sdk._types import Event, Hint
+    from sentry_sdk.client import BaseClient
     from sentry_sdk.envelope import Envelope
     from sentry_sdk.tracing import Span
     from sentry_sdk.transport import Transport
@@ -77,10 +80,12 @@ class TelemetryService:
         self._clock = clock
         self._lock = threading.RLock()
         self._client: Client | None = None
+        self._previous_global_client: BaseClient | None = None
         self._allowed = threading.Event()
         self._generation = 0
         self._operations: dict[Operation, None] = {}
         self._last_failure: dict[tuple[str, ...], float] = {}
+        self._reported_exceptions: dict[int, tuple[BaseException, float]] = {}
         self._tags: dict[str, str] = {"phase": "startup"}
 
     @property
@@ -101,7 +106,8 @@ class TelemetryService:
             if not self._dsn:
                 return
             try:
-                from sentry_sdk import Client
+                from sentry_sdk import Client, get_global_scope
+                from sentry_sdk.integrations.loguru import LoguruIntegration
                 from sentry_sdk.transport import HttpTransport
 
                 allowed = threading.Event()
@@ -120,6 +126,15 @@ class TelemetryService:
                     server_name="",
                     default_integrations=False,
                     auto_enabling_integrations=False,
+                    integrations=[
+                        LoguruIntegration(
+                            level=None,
+                            event_level=logging.ERROR,
+                            event_format="{message}",
+                            sentry_logs_level=None,
+                            capture_sentry_logs=False,
+                        ),
+                    ],
                     auto_session_tracking=False,
                     send_default_pii=False,
                     include_local_variables=False,
@@ -136,12 +151,15 @@ class TelemetryService:
                     transport=factory,
                     transport_queue_size=100,
                     shutdown_timeout=2,
-                    before_send=sanitize_event,
+                    before_send=self._before_send,
                     before_send_transaction=sanitize_event,
                     in_app_include=["src"],
                 )
                 self._allowed = allowed
                 self._allowed.set()
+                global_scope = get_global_scope()
+                self._previous_global_client = global_scope.client
+                global_scope.set_client(self._client)
             except Exception:
                 self._client = None
                 logger.warning("Unable to initialize telemetry; continuing locally")
@@ -151,14 +169,78 @@ class TelemetryService:
         self._generation += 1
         self._operations.clear()
         self._last_failure.clear()
+        self._reported_exceptions.clear()
         client, self._client = self._client, None
         if client is not None:
+            from sentry_sdk import get_global_scope
+
+            global_scope = get_global_scope()
+            if global_scope.client is client:
+                global_scope.set_client(self._previous_global_client)
+            self._previous_global_client = None
             # 不调用 close()/flush()：撤销授权时必须丢弃发送队列。
             try:
                 if client.transport is not None:
                     client.transport.kill()
             except Exception:
                 logger.warning("Unable to stop telemetry transport")
+
+    def _before_send(self, event: Event, hint: Hint) -> Event | None:
+        with self._lock:
+            if not self.enabled:
+                return None
+            record = hint.get("log_record")
+            exc_info = hint.get("exc_info")
+            error = exc_info[1] if exc_info is not None else None
+            if isinstance(error, (requests.ConnectionError, requests.Timeout)):
+                return None
+            now = self._clock()
+            if record is not None:
+                extra = getattr(record, "extra", {})
+                if extra.get("telemetry_skip") or record.name.startswith(
+                    ("src.core.telemetry", "sentry_sdk")
+                ):
+                    return None
+                key = (
+                    "loguru",
+                    record.name,
+                    record.funcName,
+                    str(record.lineno),
+                    str(record.levelno),
+                )
+                if now - self._last_failure.get(key, float("-inf")) < 60:
+                    return None
+                self._last_failure[key] = now
+                context = dict(self._tags)
+                if record.name.startswith("cw_plugin_"):
+                    context.update(
+                        component="plugin", plugin_id=record.name.removeprefix("cw_plugin_")
+                    )
+                event["tags"] = {
+                    **context,
+                    **event.get("tags", {}),
+                    "source": "loguru",
+                }
+                event["fingerprint"] = ["loguru", record.name, record.funcName, str(record.lineno)]
+                event.setdefault("contexts", {}).update(
+                    os={"name": platform.system(), "version": platform.release()},
+                    runtime={"name": "CPython", "version": platform.python_version()},
+                )
+            if error is not None:
+                self._reported_exceptions = {
+                    key: value
+                    for key, value in self._reported_exceptions.items()
+                    if now - value[1] < 60
+                }
+                if id(error) in self._reported_exceptions:
+                    return None
+                if len(self._reported_exceptions) >= 100:
+                    self._reported_exceptions.pop(next(iter(self._reported_exceptions)))
+                self._reported_exceptions[id(error)] = (error, now)
+            self._last_failure = {
+                key: value for key, value in self._last_failure.items() if now - value < 60
+            }
+            return sanitize_event(event, hint)
 
     @contextmanager
     def _scope(self, context: Mapping[str, object]) -> Iterator[Scope]:

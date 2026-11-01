@@ -45,6 +45,19 @@ def relative_filename(filename: str) -> str:
     return "<external>"
 
 
+def sanitize_log_message(message: str) -> str:
+    text = re.sub(r"https?://[^\s<>]+", "<url>", message[:4000])
+    text = re.sub(r"\b[A-Za-z]:[\\/][^\r\n]*|(?<!\w)/[^\r\n]*", "<path>", text)
+    text = re.sub(r"[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}", "<email>", text)
+    text = re.sub(r"(?i)\bBearer\s+\S+", "Bearer <redacted>", text)
+    text = re.sub(
+        r'''(?i)\b(password|passwd|(?:access_|refresh_|api_)?token|(?:client_)?secret|api[_-]?key|authorization)\b["']?\s*[:=]\s*(?:"[^"]*"|'[^']*'|[^\s,;]+)''',
+        r"\1=<redacted>",
+        text,
+    )
+    return text[:1000]
+
+
 def sanitize_event(event: "Event", _hint: "Hint") -> "Event":
     # SDK payload 包含可选键和异构字段，在此边界解包后按白名单重建。
     data: dict[str, Any] = dict(event)
@@ -60,6 +73,7 @@ def sanitize_event(event: "Event", _hint: "Hint") -> "Event":
             "environment",
             "dist",
             "type",
+            "fingerprint",
         )
         if key in data
     }
@@ -100,8 +114,15 @@ def sanitize_event(event: "Event", _hint: "Hint") -> "Event":
         values.append(item)
     if values:
         clean["exception"] = {"values": values}
+    elif "logentry" in data:
+        entry = data["logentry"]
+        clean["logentry"] = {
+            "message": sanitize_log_message(str(entry.get("formatted") or entry.get("message", "")))
+        }
     elif "message" in data:
         clean["message"] = technical_value(data["message"])
+    if "logger" in data:
+        clean["logger"] = technical_value(data["logger"])
     if data.get("type") == "transaction":
         clean["transaction"] = technical_value(data.get("transaction", "operation"))
         clean["spans"] = [
