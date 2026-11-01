@@ -333,7 +333,7 @@ class PluginLoader:
                             error="Plugin did not return an instance",
                         )
                 except Exception as e:
-                    logger.exception(f"Failed to initialize plugin {meta['id']}: {e}")
+                    logger.bind(telemetry_skip=True).exception(f"Failed to initialize plugin {meta['id']}: {e}")
                     self._record_failure(
                         plugin_id=str(pid),
                         name=str(meta.get("name") or ""),
@@ -362,7 +362,7 @@ class PluginLoader:
         
         try:
             if not check_api_version(meta["api_version"]):
-                logger.error(
+                logger.bind(telemetry_skip=True).error(
                     f"Builtin-Plugin {plugin_id} (api_version {meta.get('api_version')}) "
                     f"is not compatible with app version"
                 )
@@ -383,7 +383,7 @@ class PluginLoader:
             return plugin_instance
             
         except Exception as e:
-            logger.exception(f"Failed to load builtin plugin {plugin_id}: {e}")
+            logger.bind(telemetry_skip=True).exception(f"Failed to load builtin plugin {plugin_id}: {e}")
             # 内置插件同样可能拿到了 PluginAPI 上下文，失败后必须交还。
             self._discard_plugin(plugin_instance, plugin_id)
             self.api.set_current_plugin(None)
@@ -459,7 +459,7 @@ class PluginLoader:
             return plugin_instance
                 
         except Exception as e:
-            logger.exception(f"Failed to load plugin {plugin_id} during {stage}: {e}")
+            logger.bind(telemetry_skip=True).exception(f"Failed to load plugin {plugin_id} during {stage}: {e}")
             self.api.set_current_plugin(None)
             self._discard_plugin(plugin_instance, plugin_id)
             self._record_failure(
