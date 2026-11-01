@@ -20,6 +20,7 @@ Item {
     property bool floatingMode: hide
         && (Configs.data.interactions.tapped_action === "floating_widget"
             || Configs.data.interactions.hide.action === "floating_widget")
+    property bool fullyHide: Configs.data.interactions.hide.fully_hide
     property var preferences: Configs.data.preferences
 
     property real dragOffsetX: 0
@@ -27,6 +28,7 @@ Item {
     property bool settleContainerDrag: false
     property real hideMargin: {
         if (floatingMode) return 0
+        if (fullyHide) return 0  // 完全隐藏：不残留边缘小条
         return Qt.platform.os === "osx" ? 48 : 24
     }
     property bool isTopPosition: preferences.widgets_anchor.indexOf("top_") === 0
