@@ -44,16 +44,14 @@ ColumnLayout {
             visible: !root.inlineDetails
             title: qsTr("Installation ID")
 
-            TextEdit {
+            TextField {
                 objectName: "telemetryInstallationId"
                 Layout.fillWidth: true
                 Layout.minimumWidth: 0
                 Layout.preferredWidth: 260
                 text: Configs.data.telemetry.installation_id
                 readOnly: true
-                selectByMouse: true
-                wrapMode: TextEdit.WrapAnywhere
-                color: Colors.proxy.textColor
+                clearEnabled: false
             }
         }
 
