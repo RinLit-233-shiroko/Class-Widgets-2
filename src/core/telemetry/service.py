@@ -23,6 +23,7 @@ if TYPE_CHECKING:
     from sentry_sdk._types import Event, Hint, Log
     from sentry_sdk.client import BaseClient
     from sentry_sdk.envelope import Envelope
+    from sentry_sdk.session import Session
     from sentry_sdk.tracing import Span
     from sentry_sdk.transport import Transport
 
@@ -81,6 +82,8 @@ class TelemetryService:
         self._lock = threading.RLock()
         self._client: Client | None = None
         self._previous_global_client: BaseClient | None = None
+        self._session: Session | None = None
+        self._session_started = 0.0
         self._allowed = threading.Event()
         self._generation = 0
         self._operations: dict[Operation, None] = {}
@@ -108,6 +111,7 @@ class TelemetryService:
             try:
                 from sentry_sdk import Client, get_global_scope
                 from sentry_sdk.integrations.loguru import LoguruIntegration
+                from sentry_sdk.session import Session
                 from sentry_sdk.transport import HttpTransport
 
                 allowed = threading.Event()
@@ -165,6 +169,13 @@ class TelemetryService:
                 global_scope = get_global_scope()
                 self._previous_global_client = global_scope.client
                 global_scope.set_client(self._client)
+                self._session = Session(
+                    release=self._client.options["release"],
+                    environment=self._client.options["environment"],
+                    session_mode="application",
+                )
+                self._session_started = self._clock()
+                self._client.capture_session(self._session)
             except Exception:
                 self._client = None
                 logger.warning("Unable to initialize telemetry; continuing locally")
@@ -175,6 +186,7 @@ class TelemetryService:
         self._operations.clear()
         self._last_failure.clear()
         self._reported_exceptions.clear()
+        self._session = None
         client, self._client = self._client, None
         if client is not None:
             from sentry_sdk import get_global_scope
@@ -185,6 +197,10 @@ class TelemetryService:
             self._previous_global_client = None
             # 不调用 close()/flush()：撤销授权时必须丢弃发送队列。
             try:
+                client.session_flusher.kill()
+                client.session_flusher.pending_sessions.clear()
+                with client.session_flusher._aggregate_lock:
+                    client.session_flusher.pending_aggregates.clear()
                 if client.log_batcher is not None:
                     client.log_batcher.kill()
                     with client.log_batcher._lock:
@@ -274,7 +290,18 @@ class TelemetryService:
             self._last_failure = {
                 key: value for key, value in self._last_failure.items() if now - value < 60
             }
-            return sanitize_event(event, hint)
+            clean = sanitize_event(event, hint)
+            if self._session is not None and self._client is not None:
+                exceptions = clean.get("exception", {}).get("values", [])
+                crashed = any(
+                    item.get("mechanism", {}).get("handled") is False for item in exceptions
+                )
+                self._session.update(
+                    status="crashed" if crashed else None,
+                    errors=self._session.errors + 1,
+                )
+                self._client.capture_session(self._session)
+            return clean
 
     @contextmanager
     def _scope(self, context: Mapping[str, object]) -> Iterator[Scope]:
@@ -427,6 +454,11 @@ class TelemetryService:
             for operation in reversed(list(self._operations)):
                 operation.finish("cancelled")
             client = self._client
+            if client is not None and self._session is not None:
+                self._session.update(duration=max(0.0, self._clock() - self._session_started))
+                self._session.close()
+                client.capture_session(self._session)
+                self._session = None
         if client is not None:
             try:
                 client.flush(timeout=min(max(timeout, 0), 2))
