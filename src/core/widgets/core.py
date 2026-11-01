@@ -28,6 +28,7 @@ class WidgetsWindow(ReleasableWindow, QObject):
         self.interactive_rect = QRegion()
         self._mask_update_pending = False
         self._qml_ready = False
+        self._theme_operation = None
         
         # 初始化主题拦截器
         self.interceptor = ThemeUrlInterceptor(self)
@@ -52,6 +53,7 @@ class WidgetsWindow(ReleasableWindow, QObject):
     def release(self):
         if self.is_released:
             return
+        self._finish_theme_operation("cancelled")
 
         timer = getattr(self, "timer", None)
         if timer:
@@ -68,6 +70,7 @@ class WidgetsWindow(ReleasableWindow, QObject):
         self.engine.addImportPath(str(QML_PATH))
 
         current_theme_id = self.app_central.theme_manager.currentTheme
+        self._start_theme_operation(current_theme_id)
         if current_theme_id:
             # 验证主题是否存在
             if not self.app_central.theme_manager.isThemePathValid(current_theme_id):
@@ -104,6 +107,7 @@ class WidgetsWindow(ReleasableWindow, QObject):
         logger.info("Theme changed, starting reload process")
 
         current_theme_id = self.app_central.theme_manager.currentTheme
+        self._start_theme_operation(current_theme_id)
 
         if not self.app_central.theme_manager.isThemePathValid(current_theme_id):
             logger.error(f"Theme '{current_theme_id}' path is invalid during theme change")
@@ -135,8 +139,12 @@ class WidgetsWindow(ReleasableWindow, QObject):
         try:
             self.engine.clearComponentCache()
             self.app_central.theme_manager.themeReadyToReload.emit()
-        except Exception:
+        except Exception as error:
             logger.exception("Theme component reload failed")
+            self.app_central.telemetry.capture_failure("theme.reload", {
+                "component": "theme", "stage": "reload",
+                "theme_id": self.app_central.theme_manager.currentTheme,
+            }, error=error)
             self.abort_theme_reload()
             return
         logger.info("Theme component cache cleared; waiting for theme readiness")
@@ -149,6 +157,7 @@ class WidgetsWindow(ReleasableWindow, QObject):
 
     def confirm_theme_load_ready(self):
         """Release the theme reload gate after a theme component is Ready."""
+        self._finish_theme_operation("ok")
         if not self._theme_reloading:
             return
 
@@ -158,9 +167,21 @@ class WidgetsWindow(ReleasableWindow, QObject):
 
     def abort_theme_reload(self):
         """Allow the recovery path to select and load the fallback theme."""
+        self._finish_theme_operation("internal_error")
         if self._theme_reloading:
             self._theme_reloading = False
             logger.info("Theme reload aborted; waiting for fallback theme")
+
+    def _start_theme_operation(self, theme_id):
+        self._finish_theme_operation("cancelled")
+        self._theme_operation = self.app_central.telemetry.start_operation("theme.load", {
+            "component": "theme", "stage": "qml", "theme_id": theme_id,
+        })
+
+    def _finish_theme_operation(self, status):
+        operation, self._theme_operation = self._theme_operation, None
+        if operation is not None:
+            operation.finish(status)
 
     def on_qml_ready(self, obj, obj_url):
         if Path(obj_url.toLocalFile()).resolve() != self.qml_main_path.resolve():

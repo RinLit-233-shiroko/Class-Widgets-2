@@ -9,10 +9,11 @@ from src.core.themes.manager import DEFAULT_THEME_ID
 class ThemeRecoveryController(QObject):
     """Handles asynchronous QML theme-load failures."""
 
-    def __init__(self, theme_manager, window_manager, parent=None) -> None:
+    def __init__(self, theme_manager, window_manager, parent=None, *, telemetry=None) -> None:
         super().__init__(parent)
         self.theme_manager = theme_manager
         self.window_manager = window_manager
+        self.telemetry = telemetry
         self._handling = False
         self._dialog_scheduled = False
 
@@ -33,6 +34,11 @@ class ThemeRecoveryController(QObject):
             failed_theme_id,
         )
         recovered = self.theme_manager.rollback_to_default(failed_theme_id)
+        if self.telemetry is not None:
+            self.telemetry.capture_failure("theme.load", {
+                "component": "theme", "stage": "qml", "theme_id": failed_theme_id,
+                "recovered": recovered,
+            })
         if not recovered:
             logger.critical("Unable to recover from theme load failure")
 

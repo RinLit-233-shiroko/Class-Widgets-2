@@ -9,15 +9,20 @@ class ThemeImportWorker(QObject):
     finished = Signal(list)
     error = Signal(str)
 
-    def __init__(self, zip_path, external_path, scan_func, metas_ref):
+    def __init__(self, zip_path, external_path, scan_func, metas_ref, *, telemetry=None):
         super().__init__()
         self.zip_path = zip_path
         self.external_path = external_path
         self.scan_func = scan_func
         self.metas_ref = metas_ref
+        self.telemetry = telemetry
 
     @Slot()
     def run(self):
+        operation = self.telemetry.start_operation("theme.import", {
+            "component": "theme", "stage": "import",
+        }) if self.telemetry is not None else None
+        status = "internal_error"
         try:
             old_ids = {m["id"] for m in self.metas_ref}
             old_meta_by_id = {m["id"]: m for m in self.metas_ref}
@@ -55,6 +60,14 @@ class ThemeImportWorker(QObject):
             }
             
             self.finished.emit([result])
+            status = "ok"
 
         except Exception as e:
+            if self.telemetry is not None:
+                self.telemetry.capture_failure("theme.import", {
+                    "component": "theme", "stage": "import",
+                }, error=e)
             self.error.emit(str(e))
+        finally:
+            if operation is not None:
+                operation.finish(status)

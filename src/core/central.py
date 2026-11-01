@@ -239,6 +239,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             self.theme_manager,
             self.window_manager,
             self,
+            telemetry=self.telemetry,
         )
         self.widgets_window.themeLoadFailed.connect(self.theme_recovery.handle_failure)
         if self.multi_instances:
