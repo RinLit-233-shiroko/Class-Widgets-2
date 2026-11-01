@@ -4,8 +4,9 @@ import shutil
 import tempfile
 import threading
 from pathlib import Path
+from typing import TYPE_CHECKING
 
-from PySide6.QtCore import QThread, Signal
+from PySide6.QtCore import QObject, QThread, Signal
 from packaging.version import InvalidVersion, Version
 
 from src.core.plaza.client import PlazaClient
@@ -18,6 +19,10 @@ from src.core.plugin.download import (
     PluginDownloader,
 )
 from src.core.storage.directories import TEMP_PATH
+
+
+if TYPE_CHECKING:
+    from src.core.telemetry import TelemetryService
 
 
 class PluginDownloadWorker(QThread):
@@ -68,9 +73,9 @@ class PlazaDownloadWorker(QThread):
         destination: Path,
         *,
         max_size: int = PluginArchiveInstaller.MAX_ARCHIVE_SIZE,
-        parent=None,
-        telemetry=None,
-    ):
+        parent: QObject | None = None,
+        telemetry: TelemetryService | None = None,
+    ) -> None:
         super().__init__(parent)
         self.plugin_id = plugin_id
         self.telemetry = telemetry

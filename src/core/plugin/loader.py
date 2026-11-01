@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import importlib
 import importlib.util
 import json
@@ -19,6 +21,7 @@ from src.plugins import BUILTIN_PLUGINS
 
 if TYPE_CHECKING:
     from src.core.config.model import ConfigBaseModel
+    from src.core.telemetry import TelemetryService
 
 
 def _safe_is_dir(path: Path) -> bool:
@@ -40,7 +43,13 @@ def _safe_exists(path: Path) -> bool:
 
 
 class PluginLoader:
-    def __init__(self, plugin_api: PluginAPI, external_path: Path, *, telemetry=None):
+    def __init__(
+        self,
+        plugin_api: PluginAPI,
+        external_path: Path,
+        *,
+        telemetry: TelemetryService | None = None,
+    ) -> None:
         """
         :param plugin_api: PluginAPI实例
         :param external_path: 外部插件目录路径
@@ -230,8 +239,8 @@ class PluginLoader:
         stage: str,
         error: str,
         name: str = "",
-        exception: Optional[Exception] = None,
-        meta: Optional[PluginMeta] = None,
+        exception: Exception | None = None,
+        meta: PluginMeta | None = None,
     ) -> None:
         """记录一次插件失败，避免“插件悄悄消失”。"""
         self.failures.append(
@@ -288,9 +297,9 @@ class PluginLoader:
     def load_plugin(self, meta: PluginMeta) -> Optional[CW2Plugin]:
         """加载单个插件实例"""
         operation = self.telemetry.start_operation("plugin.load", {
-            "component": "plugin", "plugin_id": meta["id"],
+            "component": "plugin", "plugin_id": meta.get("id", "unknown"),
             "plugin_version": meta.get("version", "unknown"),
-            "plugin_type": meta["_type"],
+            "plugin_type": meta.get("_type", "unknown"),
         }) if self.telemetry is not None else None
         plugin = None
         try:
