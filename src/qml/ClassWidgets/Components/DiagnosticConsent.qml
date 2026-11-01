@@ -6,18 +6,13 @@ import RinUI
 ColumnLayout {
     spacing: 8
 
-    Text {
-        Layout.fillWidth: true
-        wrapMode: Text.WordWrap
-        text: qsTr("Send error reports and sampled operation timings to Sentry to help improve Class Widgets. Optional, off by default, and effective immediately when enabled.")
-    }
-
-    SettingExpander {
+    SettingCard {
         Layout.fillWidth: true
         icon.name: "ic_fluent_shield_20_regular"
         title: qsTr("Send diagnostics")
+        description: qsTr("Optional error reports and operation timings via Sentry. Off by default.")
 
-        action: Switch {
+        Switch {
             objectName: "diagnosticConsentSwitch"
             checked: Configs.data.telemetry.enabled
             enabled: !Configs.isKeyLocked("telemetry.enabled")
@@ -26,10 +21,35 @@ ColumnLayout {
                 checked = Qt.binding(function() { return Configs.data.telemetry.enabled })
             }
         }
+    }
 
-        SettingItem {
+    Hyperlink {
+        text: qsTr("About diagnostics")
+        onClicked: detailsDialog.open()
+    }
+
+    property Dialog detailsDialog: Dialog {
+        parent: Overlay.overlay
+        anchors.centerIn: parent
+        title: qsTr("About diagnostics")
+        width: Math.min(520, parent.width - 48)
+        height: Math.min(440, parent.height - 48)
+        modal: true
+        standardButtons: Dialog.Close
+
+        Flickable {
+            clip: true
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            contentWidth: width
+            contentHeight: details.implicitHeight
+            flickableDirection: Flickable.VerticalFlick
+
+            ScrollBar.vertical: ScrollBar {}
+
             ColumnLayout {
-                Layout.fillWidth: true
+                id: details
+                width: parent.width
                 spacing: 12
 
                 Text {
@@ -53,13 +73,5 @@ ColumnLayout {
                 }
             }
         }
-    }
-
-    InfoBar {
-        Layout.fillWidth: true
-        visible: AppCentral.telemetryError.length > 0
-        severity: Severity.Error
-        title: qsTr("Preference could not be saved")
-        text: AppCentral.telemetryError
     }
 }
