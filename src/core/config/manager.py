@@ -1,5 +1,6 @@
 import platform
 import tempfile
+from contextlib import suppress
 from datetime import datetime
 from pathlib import Path
 
@@ -125,8 +126,8 @@ class ConfigManager(QObject):
                 self._bind_nested_on_change(self._config)
         self.save()
 
-    def save(self, silent=False) -> bool:
-        temporary_path = None
+    def save(self, silent: bool = False) -> bool:
+        temporary_path: Path | None = None
         try:
             self.path.mkdir(parents=True, exist_ok=True)
             with tempfile.NamedTemporaryFile(
@@ -144,10 +145,8 @@ class ConfigManager(QObject):
             return False
         finally:
             if temporary_path is not None:
-                try:
+                with suppress(OSError):
                     temporary_path.unlink(missing_ok=True)
-                except OSError:
-                    pass
 
     def __getattr__(self, name: str):
         """代理属性获取"""
