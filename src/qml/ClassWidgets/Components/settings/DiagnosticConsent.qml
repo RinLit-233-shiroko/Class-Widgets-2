@@ -6,7 +6,7 @@ CheckBox {
     objectName: "diagnosticConsentCheckBox"
     checked: Configs.data.telemetry.enabled
     enabled: !Configs.isKeyLocked("telemetry.enabled")
-    text: qsTr("Enable anonymous diagnostics to help improve your everyday experience (optional)")
+    text: qsTr("Enable anonymous diagnostics")
     onToggled: {
         AppCentral.setTelemetryEnabled(checked)
         checked = Qt.binding(function() { return Configs.data.telemetry.enabled })

@@ -166,20 +166,12 @@ FluentPage {
             SettingItem {
                 title: qsTr("Privacy policy")
 
-                ColumnLayout {
-                    Layout.fillWidth: true
-                    spacing: 8
+                DiagnosticConsent {}
 
-                    Hyperlink {
-                        objectName: "privacyPolicyButton"
-                        Layout.alignment: Qt.AlignRight
-                        text: qsTr("Privacy policy")
-                        onClicked: privacyDialog.open()
-                    }
-
-                    DiagnosticConsent {
-                        Layout.fillWidth: true
-                    }
+                Hyperlink {
+                    objectName: "privacyPolicyButton"
+                    text: qsTr("Privacy policy")
+                    onClicked: privacyDialog.open()
                 }
             }
         }
