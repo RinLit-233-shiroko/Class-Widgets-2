@@ -1,6 +1,11 @@
 """仅保留远程定位问题所需的技术信息；本地报告仍保留原始详情。"""
 
 import re
+from collections.abc import Mapping
+from typing import TYPE_CHECKING, Any, cast
+
+if TYPE_CHECKING:
+    from sentry_sdk._types import Event, Hint
 
 TAG_KEYS = {
     "component",
@@ -20,12 +25,12 @@ TAG_KEYS = {
 }
 
 
-def technical_value(value) -> str:
+def technical_value(value: object) -> str:
     text = str(value)
     return text if re.fullmatch(r"[\w.+:-]{1,128}", text, flags=re.ASCII) else "unknown"
 
 
-def technical_tags(context: dict) -> dict:
+def technical_tags(context: Mapping[str, object]) -> dict[str, str]:
     return {key: technical_value(value) for key, value in context.items() if key in TAG_KEYS}
 
 
@@ -40,10 +45,11 @@ def relative_filename(filename: str) -> str:
     return "<external>"
 
 
-def sanitize_event(event: dict, _hint: dict) -> dict:
-    # 使用白名单重建 payload，避免 SDK 升级增加未经审查的上下文。
-    clean = {
-        key: event[key]
+def sanitize_event(event: "Event", _hint: "Hint") -> "Event":
+    # SDK payload 包含可选键和异构字段，在此边界解包后按白名单重建。
+    data: dict[str, Any] = dict(event)
+    clean: dict[str, Any] = {
+        key: data[key]
         for key in (
             "event_id",
             "timestamp",
@@ -55,10 +61,10 @@ def sanitize_event(event: dict, _hint: dict) -> dict:
             "dist",
             "type",
         )
-        if key in event
+        if key in data
     }
-    clean["tags"] = technical_tags(event.get("tags", {}))
-    contexts = event.get("contexts", {})
+    clean["tags"] = technical_tags(data.get("tags", {}))
+    contexts = data.get("contexts", {})
     clean["contexts"] = {
         name: {
             key: technical_value(value)
@@ -73,8 +79,8 @@ def sanitize_event(event: dict, _hint: dict) -> dict:
         if name in contexts
     }
     values = []
-    for exception in event.get("exception", {}).get("values", []):
-        item = {"type": technical_value(exception.get("type", "Exception"))}
+    for exception in data.get("exception", {}).get("values", []):
+        item: dict[str, Any] = {"type": technical_value(exception.get("type", "Exception"))}
         # 异常文本可能含课表、校验输入或第三方 Token，保留类型和堆栈即可。
         frames = []
         for frame in exception.get("stacktrace", {}).get("frames", []):
@@ -94,10 +100,10 @@ def sanitize_event(event: dict, _hint: dict) -> dict:
         values.append(item)
     if values:
         clean["exception"] = {"values": values}
-    elif "message" in event:
-        clean["message"] = technical_value(event["message"])
-    if event.get("type") == "transaction":
-        clean["transaction"] = technical_value(event.get("transaction", "operation"))
+    elif "message" in data:
+        clean["message"] = technical_value(data["message"])
+    if data.get("type") == "transaction":
+        clean["transaction"] = technical_value(data.get("transaction", "operation"))
         clean["spans"] = [
             {
                 key: (technical_value(value) if isinstance(value, str) else value)
@@ -114,6 +120,6 @@ def sanitize_event(event: dict, _hint: dict) -> dict:
                     "status",
                 }
             }
-            for span in event.get("spans", [])
+            for span in data.get("spans", [])
         ]
-    return clean
+    return cast("Event", clean)
