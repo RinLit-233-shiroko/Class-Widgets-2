@@ -815,10 +815,6 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         manager = getattr(self, "window_manager", None)
         if manager is not None:
             manager.open_problem_report(report)
-        else:
-            from PySide6.QtWidgets import QMessageBox
-
-            QMessageBox.critical(None, "Class Widgets", report.summary_text)
 
     @Slot()
     def ignore_crash(self) -> None:
