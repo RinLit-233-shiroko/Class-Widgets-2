@@ -23,6 +23,10 @@ ColumnLayout {
     // dragging it does not start Flickable scrolling.
     property bool selectedEntryHovered: false
 
+    // Set while a time picker popup is open. Pointer handlers can steal a drag
+    // from a modal popup, so the timeline drag/flick handlers must be disabled.
+    property bool timelineInputLocked: false
+
     // Preview mode only scrolls; all entry editing is disabled.
     property bool editMode: false
 
@@ -95,7 +99,8 @@ ColumnLayout {
         Layout.fillWidth: true
         Layout.fillHeight: true
         clip: true
-        interactive: !root.editMode || !root.selectedEntryHovered
+        interactive: (!root.editMode || !root.selectedEntryHovered)
+            && !root.timelineInputLocked
         contentHeight: 24 * 60 * pxPerMin
 
         Behavior on contentY {

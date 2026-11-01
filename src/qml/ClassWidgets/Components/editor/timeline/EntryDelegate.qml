@@ -31,6 +31,11 @@ Clip {
     property int tempEnd: parseTime(entry.endTime)
     readonly property bool enabledDrag: height > 20
 
+    // A modal time picker still lets DragHandlers underneath take over the
+    // pointer grab, so the timeline explicitly locks them while it is open.
+    readonly property bool inputLocked: listViewRoot
+        ? (listViewRoot.timelineInputLocked || false) : false
+
     // Preview mode leaves the timeline read-only.
     readonly property bool editing: listViewRoot
         ? (listViewRoot.editMode || false) : false
@@ -131,7 +136,8 @@ Clip {
         }
 
         visible: enabledDrag && entryDelegate.editing
-        enabled: enabledDrag && entryDelegate.editing && !entryDelegate.detailOpen
+        enabled: enabledDrag && entryDelegate.editing
+            && !entryDelegate.detailOpen && !entryDelegate.inputLocked
     }
 
     // 下拖拽调整时间
@@ -143,7 +149,8 @@ Clip {
         z: 2
 
         visible: enabledDrag && entryDelegate.editing
-        enabled: enabledDrag && entryDelegate.editing && !entryDelegate.detailOpen
+        enabled: enabledDrag && entryDelegate.editing
+            && !entryDelegate.detailOpen && !entryDelegate.inputLocked
 
         Rectangle {
             anchors.bottom: parent.bottom
@@ -180,7 +187,8 @@ Clip {
         id: moveHandler
         // The selected entry must be able to take the pointer from Flickable.
         // 详情/时间选择器打开时禁用，避免拖拽穿透把本条带跑。
-        enabled: entryDelegate.editing && checked && !entryDelegate.detailOpen
+        enabled: entryDelegate.editing && checked
+            && !entryDelegate.detailOpen && !entryDelegate.inputLocked
             && !startResizeHandler.active && !endResizeHandler.active
         target: null
         yAxis.enabled: true
