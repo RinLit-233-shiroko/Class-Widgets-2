@@ -173,7 +173,8 @@ Restart normally to leave safe mode.</source>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="227"/>
         <source>Starts Class Widgets without third-party plugins and themes, so you can find the plugin or theme that caused a problem. Plugin Plaza is unavailable in safe mode.
 Your settings and schedule are kept.</source>
-        <translation type="unfinished"></translation>
+        <translation>在不使用第三方插件和主题的情况下启动Class Widgets,这样你就可以找出产生问题的插件或者主题。插件广场在安全模式下不可用。
+你的设置和课表将会保留。</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/About.qml" line="236"/>
