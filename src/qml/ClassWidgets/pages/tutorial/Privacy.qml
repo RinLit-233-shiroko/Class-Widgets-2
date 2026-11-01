@@ -15,5 +15,6 @@ TutorialComponents.TutorialPage {
 
     DiagnosticConsent {
         width: parent.width
+        inlineDetails: true
     }
 }
