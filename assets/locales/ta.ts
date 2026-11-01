@@ -812,7 +812,7 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>Set</source>
-        <translation>கணம்</translation>
+        <translation type="vanished">கணம்</translation>
     </message>
     <message>
         <source>Set the default duration for new classes, breaks, or activities.</source>
@@ -820,7 +820,7 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>Failed</source>
-        <translation>தோல்வியடைந்தது</translation>
+        <translation type="vanished">தோல்வியடைந்தது</translation>
     </message>
     <message>
         <source>Select Default Duration</source>
@@ -828,11 +828,11 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>Class</source>
-        <translation>வகுப்பு</translation>
+        <translation type="vanished">வகுப்பு</translation>
     </message>
     <message>
         <source>Break</source>
-        <translation>இடைவேளை</translation>
+        <translation type="vanished">இடைவேளை</translation>
     </message>
     <message>
         <source>Activity</source>
@@ -1144,7 +1144,7 @@ Do you want to continue using them, or discard and restore the original schedule
     </message>
     <message>
         <source>Edit </source>
-        <translation>திருத்தவும் </translation>
+        <translation type="vanished">திருத்தவும் </translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/editor/timeline/EntryDetailView.qml" line="142"/>
@@ -2603,7 +2603,7 @@ If translations are missing after a theme change, please restart</source>
     <name>PluginCard</name>
     <message>
         <source>Unknown</source>
-        <translation>தெரியவில்லை</translation>
+        <translation type="vanished">தெரியவில்லை</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCard.qml" line="21"/>
@@ -3625,7 +3625,7 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     </message>
     <message>
         <source>Edit</source>
-        <translation>தொகு</translation>
+        <translation type="vanished">தொகு</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Schedule.qml" line="115"/>
@@ -3864,7 +3864,7 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <name>ScheduleConverter</name>
     <message>
         <source>Class</source>
-        <translation>வகுப்பு</translation>
+        <translation type="vanished">வகுப்பு</translation>
     </message>
 </context>
 <context>
@@ -4005,7 +4005,7 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <name>ScheduleFlyout</name>
     <message>
         <source>Edit</source>
-        <translation>தொகு</translation>
+        <translation type="vanished">தொகு</translation>
     </message>
     <message>
         <source>Subject</source>
@@ -4017,11 +4017,11 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     </message>
     <message>
         <source>Title</source>
-        <translation>தலைப்பு</translation>
+        <translation type="vanished">தலைப்பு</translation>
     </message>
     <message>
         <source>Set</source>
-        <translation>கணம்</translation>
+        <translation type="vanished">கணம்</translation>
     </message>
     <message>
         <source>Clear</source>
@@ -4708,7 +4708,7 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     </message>
     <message>
         <source>Icon</source>
-        <translation>படவுரு</translation>
+        <translation type="vanished">படவுரு</translation>
     </message>
     <message>
         <source>Enable if the subject is taught in your homeroom classroom.  
@@ -5299,12 +5299,6 @@ Class Widgets has restored the default theme.</source>
         <source>minutes</source>
         <translation type="vanished">நிமிடங்கள்</translation>
     </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/Time.qml" line="99"/>
-        <source>Day</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>Timeline</name>
@@ -5426,7 +5420,7 @@ Class Widgets has restored the default theme.</source>
     <name>TrayPanel</name>
     <message>
         <source>Settings</source>
-        <translation>அமைப்புகள்</translation>
+        <translation type="vanished">அமைப்புகள்</translation>
     </message>
     <message>
         <source>Adjust the settings of Class Widgets</source>
@@ -5447,7 +5441,7 @@ Class Widgets has restored the default theme.</source>
     </message>
     <message>
         <source>Open</source>
-        <translation>திற</translation>
+        <translation type="vanished">திற</translation>
     </message>
     <message>
         <source>Extension Plaza (WEB)</source>
@@ -5587,7 +5581,7 @@ Class Widgets has restored the default theme.</source>
     </message>
     <message>
         <source>Exit</source>
-        <translation>வெளியேறு</translation>
+        <translation type="vanished">வெளியேறு</translation>
     </message>
     <message>
         <source>Get started</source>
@@ -6272,7 +6266,7 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     </message>
     <message>
         <source>Window</source>
-        <translation>சாளரம்</translation>
+        <translation type="vanished">சாளரம்</translation>
     </message>
     <message>
         <source>Display</source>
@@ -6323,25 +6317,20 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>Text</source>
         <translation type="unfinished"></translation>
     </message>
-
-    <message>
-        <source>Overlay</source>
-        <translation>அடுக்கு விட்ஜெட்</translation>
-    </message>
 </context>
 <context>
     <name>WidgetsContainer</name>
     <message>
         <source>Edit </source>
-        <translation>திருத்தவும் </translation>
+        <translation type="vanished">திருத்தவும் </translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>நீக்கு</translation>
+        <translation type="vanished">நீக்கு</translation>
     </message>
     <message>
         <source>Edit Widgets Screen</source>
-        <translation>விட்செட்கள் திரையைத் திருத்து</translation>
+        <translation type="vanished">விட்செட்கள் திரையைத் திருத்து</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsContainer.qml" line="245"/>
@@ -6365,24 +6354,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="413"/>
         <source>Edit Widgets Screen</source>
         <translation type="unfinished">விட்செட்கள் திரையைத் திருத்து</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="307"/>
-        <source>Add Member</source>
-        <translation type="unfinished"></translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="324"/>
-        <source>Done</source>
-        <translation type="unfinished">முடிந்தது</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="418"/>
-        <source>Edit Members</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -6538,192 +6509,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="34"/>
         <source>Unset</source>
         <translation>அமைக்கப்படவில்லை</translation>
-    </message>
-</context>
-
-<context>
-    <name>AddOverlayMemberDialog</name>
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddOverlayMemberDialog.qml" line="9"/>
-        <source>Add Widgets to Overlay</source>
-        <translation>அடுக்கு விட்ஜெட்டில் விட்ஜெட்டுகளைச் சேர்</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddOverlayMemberDialog.qml" line="111"/>
-        <source>No Widget Selected</source>
-        <translation>விட்ஜெட் தேர்ந்தெடுக்கப்படவில்லை</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddOverlayMemberDialog.qml" line="147"/>
-        <source>Add</source>
-        <translation>சேர்</translation>
-    </message>
-</context>
-
-<context>
-    <name>overlay</name>
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="36"/>
-        <source>Class starts</source>
-        <translation>வகுப்பு தொடங்குகிறது</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="36"/>
-        <source>Class begins</source>
-        <translation>வகுப்பு தொடங்குகிறது</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="40"/>
-        <source>Class over</source>
-        <translation>வகுப்பு முடிந்தது</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="40"/>
-        <source>Class ends</source>
-        <translation>வகுப்பு முடிந்தது</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="41"/>
-        <source>Class dismissed</source>
-        <translation>வகுப்பு முடிந்தது</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="41"/>
-        <source>Class finished</source>
-        <translation>வகுப்பு முடிந்தது</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="42"/>
-        <source>End of class</source>
-        <translation>வகுப்பு முடிந்தது</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="42"/>
-        <source>Break</source>
-        <translation>இடைவேளை</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="391"/>
-        <source>Stacked widget</source>
-        <translation>அடுக்கு விட்ஜெட்</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="398"/>
-        <source>Right-click to add members</source>
-        <translation>உறுப்புகளைச் சேர்க்க வலது கிளிக் செய்க</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="545"/>
-        <source>Member Settings</source>
-        <translation>உறுப்பு அமைப்புகள்</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="586"/>
-        <source>Cancel</source>
-        <translation>ரத்து</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="610"/>
-        <source>Save</source>
-        <translation>சேமி</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="684"/>
-        <source>Settings</source>
-        <translation>அமைப்புகள்</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="688"/>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="206"/>
-        <source>Remove</source>
-        <translation>நீக்கு</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="730"/>
-        <source>Done</source>
-        <translation>முடிந்தது</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="786"/>
-        <source>Add</source>
-        <translation>சேர்</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="79"/>
-        <source>Carousel interval</source>
-        <translation>சுழற்சி இடைவெளி</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="80"/>
-        <source>Time each member stays visible before switching to the next, in seconds.</source>
-        <translation>அடுத்ததற்கு மாறும் முன் ஒவ்வொரு உறுப்பும் தெரியும் வினாடிகள்.</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="96"/>
-        <source>s</source>
-        <translation>வி</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="110"/>
-        <source>Frame size mode</source>
-        <translation>சட்ட அளவு பயன்முறை</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="111"/>
-        <source>Largest member keeps the frame at the size of the biggest member; Follow current resizes the frame smoothly to the visible member.</source>
-        <translation>மிகப்பெரிய உறுப்பின் அளவில் சட்டத்தை வைத்திருக்கும்; தற்போதையதைப் பின்தொடர் என்பது தெரியும் உறுப்புக்கு ஏற்ப மென்மையாக மாற்றும்.</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="120"/>
-        <source>Largest member</source>
-        <translation>மிகப்பெரிய உறுப்பு</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="121"/>
-        <source>Follow current</source>
-        <translation>தற்போதையதைப் பின்தொடர்</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="163"/>
-        <source>Show switch bar</source>
-        <translation>மாற்றுப் பட்டியைக் காட்டு</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="164"/>
-        <source>Show a switch button on the right edge of the widget to step through members manually.</source>
-        <translation>கைமுறையாக உறுப்புகளுக்கு மாற விட்ஜெட்டின் வலது விளிம்பில் மாற்றுப் பொத்தானைக் காட்டு.</translation>
-    </message>
-
-    <message>
-        <source>Add Member</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

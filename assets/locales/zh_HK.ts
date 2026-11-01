@@ -4207,7 +4207,7 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     </message>
     <message>
         <source>to</source>
-        <translation>至</translation>
+        <translation type="vanished">至</translation>
     </message>
 </context>
 <context>
@@ -5429,12 +5429,6 @@ Class Widgets has restored the default theme.</source>
         <source>Adjust schedule time to match your school&apos;s broadcast; Increase the offset to compensate for early bells, decrease to compensate for late bells</source>
         <translation type="unfinished"></translation>
     </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/Time.qml" line="99"/>
-        <source>Day</source>
-        <translation type="unfinished">日</translation>
-    </message>
 </context>
 <context>
     <name>Timeline</name>
@@ -6451,11 +6445,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>Text</source>
         <translation type="unfinished"></translation>
     </message>
-
-    <message>
-        <source>Overlay</source>
-        <translation>堆疊組件</translation>
-    </message>
 </context>
 <context>
     <name>WidgetsContainer</name>
@@ -6493,24 +6482,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="413"/>
         <source>Edit Widgets Screen</source>
         <translation type="unfinished">編輯小工具畫面</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="307"/>
-        <source>Add Member</source>
-        <translation type="unfinished">新增成員</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="324"/>
-        <source>Done</source>
-        <translation type="unfinished">完成</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="418"/>
-        <source>Edit Members</source>
-        <translation type="unfinished">編輯成員</translation>
     </message>
 </context>
 <context>
@@ -6670,197 +6641,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <location filename="../../src/qml/widgets/upcomingActivities.qml" line="34"/>
         <source>Unset</source>
         <translation type="unfinished">未設定</translation>
-    </message>
-</context>
-
-<context>
-    <name>AddOverlayMemberDialog</name>
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddOverlayMemberDialog.qml" line="9"/>
-        <source>Add Widgets to Overlay</source>
-        <translation>向堆疊組件新增小工具</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddOverlayMemberDialog.qml" line="111"/>
-        <source>No Widget Selected</source>
-        <translation>未選擇小工具</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddOverlayMemberDialog.qml" line="147"/>
-        <source>Add</source>
-        <translation>新增</translation>
-    </message>
-
-    <message>
-        <source>Close</source>
-        <translation>關閉</translation>
-    </message>
-</context>
-
-<context>
-    <name>overlay</name>
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="36"/>
-        <source>Class starts</source>
-        <translation>上課</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="36"/>
-        <source>Class begins</source>
-        <translation>開始上課</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="40"/>
-        <source>Class over</source>
-        <translation>下課</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="40"/>
-        <source>Class ends</source>
-        <translation>下課</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="41"/>
-        <source>Class dismissed</source>
-        <translation>下課</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="41"/>
-        <source>Class finished</source>
-        <translation>下課</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="42"/>
-        <source>End of class</source>
-        <translation>下課</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="42"/>
-        <source>Break</source>
-        <translation>課間休息</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="391"/>
-        <source>Stacked widget</source>
-        <translation>堆疊組件</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="398"/>
-        <source>Right-click to add members</source>
-        <translation>右鍵編輯新增成員</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="545"/>
-        <source>Member Settings</source>
-        <translation>成員設定</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="586"/>
-        <source>Cancel</source>
-        <translation>取消</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="610"/>
-        <source>Save</source>
-        <translation>儲存</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="684"/>
-        <source>Settings</source>
-        <translation>設定</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="688"/>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="206"/>
-        <source>Remove</source>
-        <translation>移除</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="730"/>
-        <source>Done</source>
-        <translation>完成</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="786"/>
-        <source>Add</source>
-        <translation>新增</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="79"/>
-        <source>Carousel interval</source>
-        <translation>輪播間隔</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="80"/>
-        <source>Time each member stays visible before switching to the next, in seconds.</source>
-        <translation>每個成員停留的秒數，到時自動切換到下一個。</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="96"/>
-        <source>s</source>
-        <translation>秒</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="110"/>
-        <source>Frame size mode</source>
-        <translation>框大小模式</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="111"/>
-        <source>Largest member keeps the frame at the size of the biggest member; Follow current resizes the frame smoothly to the visible member.</source>
-        <translation>以尺寸最大的成員決定框的大小；跟隨目前則隨目前成員平滑調整。</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="120"/>
-        <source>Largest member</source>
-        <translation>最大成員</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="121"/>
-        <source>Follow current</source>
-        <translation>跟隨目前</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="163"/>
-        <source>Show switch bar</source>
-        <translation>顯示切換欄</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="164"/>
-        <source>Show a switch button on the right edge of the widget to step through members manually.</source>
-        <translation>在組件右側顯示切換按鈕，可手動切換到下一個成員。</translation>
-    </message>
-
-    <message>
-        <source>Add Member</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -3740,7 +3740,7 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     </message>
     <message>
         <source>to</source>
-        <translation>to</translation>
+        <translation type="vanished">to</translation>
     </message>
 </context>
 <context>
@@ -4809,12 +4809,6 @@ Class Widgets has restored the default theme.</source>
         <source>Adjust schedule time to match your school&apos;s broadcast; Increase the offset to compensate for early bells, decrease to compensate for late bells</source>
         <translation type="unfinished"></translation>
     </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/Time.qml" line="99"/>
-        <source>Day</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>Timeline</name>
@@ -5674,11 +5668,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
         <source>Y-axis offset</source>
         <translation type="unfinished"></translation>
     </message>
-
-    <message>
-        <source>Overlay</source>
-        <translation>Overlay</translation>
-    </message>
 </context>
 <context>
     <name>WidgetsContainer</name>
@@ -5703,24 +5692,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="413"/>
         <source>Edit Widgets Screen</source>
-        <translation type="unfinished"></translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="307"/>
-        <source>Add Member</source>
-        <translation type="unfinished"></translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="324"/>
-        <source>Done</source>
-        <translation type="unfinished">Done</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/WidgetsLayoutDelegate.qml" line="418"/>
-        <source>Edit Members</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5876,197 +5847,6 @@ then tap &quot;Edit Widget Screen&quot; in the menu to experience it.</source>
     <message>
         <location filename="../../src/qml/widgets/settings/upcomingActivities.qml" line="46"/>
         <source>Show full name of the activities</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-
-<context>
-    <name>AddOverlayMemberDialog</name>
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddOverlayMemberDialog.qml" line="9"/>
-        <source>Add Widgets to Overlay</source>
-        <translation>Add Widgets to Overlay</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddOverlayMemberDialog.qml" line="111"/>
-        <source>No Widget Selected</source>
-        <translation>No Widget Selected</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/ClassWidgets/Components/dialogs/AddOverlayMemberDialog.qml" line="147"/>
-        <source>Add</source>
-        <translation>Add</translation>
-    </message>
-
-    <message>
-        <source>Close</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-
-<context>
-    <name>overlay</name>
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="36"/>
-        <source>Class starts</source>
-        <translation>Class starts</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="36"/>
-        <source>Class begins</source>
-        <translation>Class begins</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="40"/>
-        <source>Class over</source>
-        <translation>Class over</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="40"/>
-        <source>Class ends</source>
-        <translation>Class ends</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="41"/>
-        <source>Class dismissed</source>
-        <translation>Class dismissed</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="41"/>
-        <source>Class finished</source>
-        <translation>Class finished</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="42"/>
-        <source>End of class</source>
-        <translation>End of class</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="42"/>
-        <source>Break</source>
-        <translation>Break</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="391"/>
-        <source>Stacked widget</source>
-        <translation>Stacked widget</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="398"/>
-        <source>Right-click to add members</source>
-        <translation>Right-click to add members</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="545"/>
-        <source>Member Settings</source>
-        <translation>Member Settings</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="586"/>
-        <source>Cancel</source>
-        <translation>Cancel</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="610"/>
-        <source>Save</source>
-        <translation>Save</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="684"/>
-        <source>Settings</source>
-        <translation>Settings</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="688"/>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="206"/>
-        <source>Remove</source>
-        <translation>Remove</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="730"/>
-        <source>Done</source>
-        <translation>Done</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/overlay.qml" line="786"/>
-        <source>Add</source>
-        <translation>Add</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="79"/>
-        <source>Carousel interval</source>
-        <translation>Carousel interval</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="80"/>
-        <source>Time each member stays visible before switching to the next, in seconds.</source>
-        <translation>Time each member stays visible before switching to the next, in seconds.</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="96"/>
-        <source>s</source>
-        <translation>s</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="110"/>
-        <source>Frame size mode</source>
-        <translation>Frame size mode</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="111"/>
-        <source>Largest member keeps the frame at the size of the biggest member; Follow current resizes the frame smoothly to the visible member.</source>
-        <translation>Largest member keeps the frame at the size of the biggest member; Follow current resizes the frame smoothly to the visible member.</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="120"/>
-        <source>Largest member</source>
-        <translation>Largest member</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="121"/>
-        <source>Follow current</source>
-        <translation>Follow current</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="163"/>
-        <source>Show switch bar</source>
-        <translation>Show switch bar</translation>
-    </message>
-
-    <message>
-        <location filename="../../src/qml/widgets/settings/overlay.qml" line="164"/>
-        <source>Show a switch button on the right edge of the widget to step through members manually.</source>
-        <translation>Show a switch button on the right edge of the widget to step through members manually.</translation>
-    </message>
-
-    <message>
-        <source>Add Member</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
