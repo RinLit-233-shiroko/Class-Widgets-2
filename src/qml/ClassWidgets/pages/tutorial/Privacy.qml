@@ -16,7 +16,7 @@ TutorialComponents.TutorialPage {
     nextIcon: "ic_fluent_checkmark_20_regular"
 
     rightContent: TutorialComponents.TutorialVisual {
-        icon.source: PathManager.images("icons/cw2_plugin.png")
+        icon.source: PathManager.images("tutorial/cw2_privacy.png")
         icon.size: 176
     }
 
