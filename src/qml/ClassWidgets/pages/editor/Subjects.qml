@@ -224,6 +224,8 @@ Item {
                 model: root.visibleSubjects
 
                 delegate: SubjectClip {
+                    width: subjectsGrid.cellWidth - 8
+                    height: subjectsGrid.cellHeight - 6
                     enabled: !root.readOnly
                     selectionMode: root.selectionMode
                     selected: root.isSelected(modelData.id)

@@ -159,6 +159,57 @@ class ScheduleManager(QObject):
         files.sort(key=lambda item: item["name"].casefold())
         return files
 
+    @Slot(result=list)
+    def allSchedulesSubjects(self) -> list[dict]:
+        """列出每张课表及其课程，供“永不自动隐藏的课程”选择器使用。
+
+        勾选仍按课程名称记录：课表间的同名课程 id 并不相同，按名称才能跨课表共享
+        勾选状态。这里额外返回完整课程信息，供选择器复用编辑器里的学科卡片。
+        """
+        groups = []
+        for path in sorted(self.schedules_dir.glob("*.json"), key=lambda p: p.stem.casefold()):
+            groups.append({
+                "name": path.stem,
+                "isCurrent": path.stem == self.current_schedule_name,
+                "subjects": self._collect_subjects(path),
+            })
+        return groups
+
+    def _collect_subjects(self, path: Path) -> list[dict]:
+        """读取一张课表中的课程（按名称去重并保持原有顺序）"""
+        subjects = None
+        if path.stem == self.current_schedule_name:
+            # 当前课表以内存数据为准，避免漏掉尚未保存到文件的改动
+            subjects = self.schedule.subjects
+        if subjects is None:
+            try:
+                data = json.loads(path.read_text(encoding="utf-8"))
+            except Exception as e:
+                logger.warning(f"Failed to read subjects from schedule file {path.name}: {e}")
+                return []
+            subjects = data.get("subjects") or []
+
+        result = []
+        names = set()
+        for subject in subjects:
+            if not isinstance(subject, dict):
+                subject = subject.model_dump()
+            name = str(subject.get("name") or subject.get("simplifiedName") or "").strip()
+            if not name or name in names:
+                continue
+            names.add(name)
+            result.append({
+                "id": str(subject.get("id") or ""),
+                "name": name,
+                "simplifiedName": str(subject.get("simplifiedName") or ""),
+                "teacher": str(subject.get("teacher") or ""),
+                "icon": str(subject.get("icon") or ""),
+                "color": str(subject.get("color") or ""),
+                "location": str(subject.get("location") or ""),
+                "isLocalClassroom": subject.get("isLocalClassroom", True) is not False,
+            })
+        return result
+
     @Slot(str)
     def add(self, name: str):
         """创建新的空课表"""
