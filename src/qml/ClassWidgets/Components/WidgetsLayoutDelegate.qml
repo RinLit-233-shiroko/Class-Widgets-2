@@ -327,7 +327,9 @@ Item {
     // 越过邻居中心就立刻换位，邻居走 displaced 让位，松手前即可看到最终顺序
     DragHandler {
         id: dragHandler
-        enabled: host.editMode
+        // A modal dialog blocks regular clicks, but DragHandlers underneath can
+        // still take over the pointer grab, so disable reordering explicitly.
+        enabled: host.editMode && !host.dialogOpen
         target: null
 
         // 按下瞬间 delegate 中心的位置（指针锚点）
