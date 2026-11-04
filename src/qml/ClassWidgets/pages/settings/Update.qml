@@ -456,8 +456,7 @@ FluentPage {
 
                     Button {
                         flat: true
-                        icon.name: "ic_fluent_wifi_20_regular"
-                        text: root.pingState(root.serverUrl("official")) === "testing" ? qsTr("Testing...") : qsTr("Test latency")
+                        icon.name: "ic_fluent_network_check_20_regular"
                         enabled: root.pingState(root.serverUrl("official")) !== "testing"
                         onPressedChanged: {
                             if (pressed)
@@ -490,8 +489,7 @@ FluentPage {
 
                     Button {
                         flat: true
-                        icon.name: "ic_fluent_wifi_20_regular"
-                        text: root.pingState(root.serverUrl("wnam")) === "testing" ? qsTr("Testing...") : qsTr("Test latency")
+                        icon.name: "ic_fluent_network_check_20_regular"
                         enabled: root.pingState(root.serverUrl("wnam")) !== "testing"
                         onPressedChanged: {
                             if (pressed)
@@ -524,8 +522,7 @@ FluentPage {
 
                     Button {
                         flat: true
-                        icon.name: "ic_fluent_wifi_20_regular"
-                        text: root.pingState(root.serverUrl("apac")) === "testing" ? qsTr("Testing...") : qsTr("Test latency")
+                        icon.name: "ic_fluent_network_check_20_regular"
                         enabled: root.pingState(root.serverUrl("apac")) !== "testing"
                         onPressedChanged: {
                             if (pressed)
