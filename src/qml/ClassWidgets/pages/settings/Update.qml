@@ -19,7 +19,7 @@ FluentPage {
     // { url: { state: "testing" | "success" | "error", text: "..." } }
     property var pingResults: ({})
     // 按下测试按钮期间抑制整行点击，避免 Button 的点击冒泡到 SettingItem。
-    property bool suppressServerClick: false
+    property bool suppressItemClick: false
 
     readonly property string activeServerId: {
         const server = String(Configs.data.network.releases_server || "");
@@ -58,7 +58,7 @@ FluentPage {
     }
 
     function selectServer(serverId) {
-        if (root.suppressServerClick || root.serverLocked())
+        if (root.suppressItemClick || root.serverLocked())
             return;
         const url = root.serverUrl(serverId);
         if (!url)
@@ -68,7 +68,7 @@ FluentPage {
     }
 
     function selectCustomServer() {
-        if (root.suppressServerClick || root.serverLocked())
+        if (root.suppressItemClick || root.serverLocked())
             return;
         const url = String(customUrlField.text || "").trim();
         if (!root.isValidUrl(url)) {
@@ -96,13 +96,13 @@ FluentPage {
         }
     }
 
-    function holdServerClick() {
-        root.suppressServerClick = true;
+    function holdItemClick() {
+        root.suppressItemClick = true;
     }
 
-    function releaseServerClick() {
+    function releaseItemClick() {
         Qt.callLater(function () {
-            root.suppressServerClick = false;
+            root.suppressItemClick = false;
         });
     }
 
@@ -149,6 +149,56 @@ FluentPage {
         }
         setPingResult(target, "testing", "");
         UpdaterBridge.pingServer(target);
+    }
+
+    // 镜像源与更新服务器共用同一套选择/测速样式。
+    readonly property string githubUrl: "https://github.com/"
+    readonly property var mirrors: Configs.data.network.mirrors || ({})
+    readonly property bool mirrorEnabled: Boolean(Configs.data.network.mirror_enabled)
+    readonly property string activeMirrorId: {
+        const mirror = String(Configs.data.network.current_mirror || "");
+        return root.mirrorUrl(mirror) !== "" ? mirror : "";
+    }
+
+    function mirrorUrl(mirrorId) {
+        return String((root.mirrors || {})[mirrorId] || "");
+    }
+
+    function mirrorLocked() {
+        return Configs.isKeyLocked("network.current_mirror") || Configs.isKeyLocked("network.mirror_enabled");
+    }
+
+    function selectGithub() {
+        if (root.suppressItemClick || root.mirrorLocked())
+            return;
+        Configs.set("network.mirror_enabled", false);
+    }
+
+    function selectMirror(mirrorId) {
+        if (root.suppressItemClick || root.mirrorLocked())
+            return;
+        if (!root.mirrorUrl(mirrorId))
+            return;
+        Configs.set("network.current_mirror", mirrorId);
+        Configs.set("network.mirror_enabled", true);
+    }
+
+    function pingEndpoint(url) {
+        const target = String(url || "").trim();
+        if (!root.isValidUrl(target)) {
+            root.setPingResult(target, "error", qsTr("Enter a valid URL first."));
+            return;
+        }
+        root.setPingResult(target, "testing", "");
+        UpdaterBridge.pingUrl(target);
+    }
+
+    function pingGithub() {
+        root.pingEndpoint(root.githubUrl);
+    }
+
+    function pingMirror(mirrorId) {
+        root.pingEndpoint(root.mirrorUrl(mirrorId));
     }
 
     ColumnLayout {
@@ -382,36 +432,72 @@ FluentPage {
             title: qsTr("Use Mirror Source")
             description: qsTr("If GitHub is slow or unavailable in your region, use a mirror to download updates faster")
 
-            action: Switch {
-                enabled: !Configs.isKeyLocked("network.mirror_enabled")
-                onCheckedChanged: Configs.set("network.mirror_enabled", checked)
-                Component.onCompleted: checked = Configs.data.network.mirror_enabled
-            }
-
             SettingItem {
-                title: qsTr("Select Mirror")
-                description: qsTr("Choose a mirror source for downloading updates")
+                title: qsTr("GitHub")
+                description: root.githubUrl
+                clickable: !root.mirrorLocked()
+                actionIcon.name: !root.mirrorEnabled ? "ic_fluent_checkmark_circle_20_filled" : "ic_fluent_chevron_right_20_regular"
+                actionIcon.color: !root.mirrorEnabled ? Theme.currentTheme.colors.primaryColor : Theme.currentTheme.colors.textSecondaryColor
+                onClicked: root.selectGithub()
 
-                ComboBox {
-                    id: mirrorCombo
-                    Layout.fillWidth: true
-                    model: Object.keys(Configs.data.network.mirrors)
-                    textRole: ""
+                RowLayout {
+                    spacing: 6
 
-                    enabled: !Configs.isKeyLocked("network.current_mirror")
-                    onCurrentTextChanged: if (focus)
-                        Configs.set("network.current_mirror", currentText)
-                    Component.onCompleted: {
-                        for (var i = 0; i < model.count; i++) {
-                            if (model.get(i) === Configs.data.network.current_mirror) {
-                                currentIndex = i;
-                                break;
-                            }
-                        }
+                    Text {
+                        visible: text !== ""
+                        text: root.pingText(root.githubUrl)
+                        color: root.pingColor(root.githubUrl)
+                        typography: Typography.Caption
                     }
 
-                    delegate: ItemDelegate {
-                        text: modelData + " (" + Configs.data.network.mirrors[modelData] + ")"
+                    Button {
+                        flat: true
+                        icon.name: "ic_fluent_network_check_20_regular"
+                        enabled: root.pingState(root.githubUrl) !== "testing"
+                        onPressedChanged: {
+                            if (pressed)
+                                root.holdItemClick();
+                            else
+                                root.releaseItemClick();
+                        }
+                        onClicked: root.pingGithub()
+                    }
+                }
+            }
+
+            Repeater {
+                model: Object.keys(root.mirrors)
+
+                SettingItem {
+                    title: modelData
+                    description: root.mirrorUrl(modelData)
+                    clickable: !root.mirrorLocked()
+                    actionIcon.name: root.mirrorEnabled && root.activeMirrorId === modelData ? "ic_fluent_checkmark_circle_20_filled" : "ic_fluent_chevron_right_20_regular"
+                    actionIcon.color: root.mirrorEnabled && root.activeMirrorId === modelData ? Theme.currentTheme.colors.primaryColor : Theme.currentTheme.colors.textSecondaryColor
+                    onClicked: root.selectMirror(modelData)
+
+                    RowLayout {
+                        spacing: 6
+
+                        Text {
+                            visible: text !== ""
+                            text: root.pingText(root.mirrorUrl(modelData))
+                            color: root.pingColor(root.mirrorUrl(modelData))
+                            typography: Typography.Caption
+                        }
+
+                        Button {
+                            flat: true
+                            icon.name: "ic_fluent_network_check_20_regular"
+                            enabled: root.pingState(root.mirrorUrl(modelData)) !== "testing"
+                            onPressedChanged: {
+                                if (pressed)
+                                    root.holdItemClick();
+                                else
+                                    root.releaseItemClick();
+                            }
+                            onClicked: root.pingMirror(modelData)
+                        }
                     }
                 }
             }
@@ -460,9 +546,9 @@ FluentPage {
                         enabled: root.pingState(root.serverUrl("official")) !== "testing"
                         onPressedChanged: {
                             if (pressed)
-                                root.holdServerClick();
+                                root.holdItemClick();
                             else
-                                root.releaseServerClick();
+                                root.releaseItemClick();
                         }
                         onClicked: root.pingServer(root.serverUrl("official"))
                     }
@@ -493,9 +579,9 @@ FluentPage {
                         enabled: root.pingState(root.serverUrl("wnam")) !== "testing"
                         onPressedChanged: {
                             if (pressed)
-                                root.holdServerClick();
+                                root.holdItemClick();
                             else
-                                root.releaseServerClick();
+                                root.releaseItemClick();
                         }
                         onClicked: root.pingServer(root.serverUrl("wnam"))
                     }
@@ -526,9 +612,9 @@ FluentPage {
                         enabled: root.pingState(root.serverUrl("apac")) !== "testing"
                         onPressedChanged: {
                             if (pressed)
-                                root.holdServerClick();
+                                root.holdItemClick();
                             else
-                                root.releaseServerClick();
+                                root.releaseItemClick();
                         }
                         onClicked: root.pingServer(root.serverUrl("apac"))
                     }
@@ -572,9 +658,9 @@ FluentPage {
                         enabled: root.pingState(customUrlField.text) !== "testing"
                         onPressedChanged: {
                             if (pressed)
-                                root.holdServerClick();
+                                root.holdItemClick();
                             else
-                                root.releaseServerClick();
+                                root.releaseItemClick();
                         }
                         onClicked: root.pingServer(customUrlField.text)
                     }

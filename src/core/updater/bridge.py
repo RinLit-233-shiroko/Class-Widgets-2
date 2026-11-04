@@ -103,13 +103,21 @@ class UpdaterBridge(QObject):
     @Slot(str)
     def pingServer(self, url):
         """测试更新服务器的响应延迟，结果通过 pingFinished 返回。"""
+        self._start_ping(url, require_json=True)
+
+    @Slot(str)
+    def pingUrl(self, url):
+        """测试 GitHub 或镜像源根地址的响应延迟；这类地址不是 JSON，只校验能否访问。"""
+        self._start_ping(url, require_json=False)
+
+    def _start_ping(self, url, require_json):
         url = (url or "").strip()
         if not url:
             logger.warning("[UpdaterBridge] Ping failed: empty URL")
             self.pingFinished.emit(url, False, 0.0, "Empty URL")
             return
 
-        worker = PingWorker(url)
+        worker = PingWorker(url, require_json)
         self._ping_workers.append(worker)
         worker.finished.connect(self._on_ping_finished)
         worker.finished.connect(worker.deleteLater)

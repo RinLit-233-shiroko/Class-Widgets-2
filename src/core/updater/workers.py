@@ -47,9 +47,10 @@ class CheckUpdateWorker(QThread):
 class PingWorker(QThread):
     finished = Signal(str, bool, float, str)  # url, success, latency_ms, error
 
-    def __init__(self, url: str):
+    def __init__(self, url: str, require_json: bool = True):
         super().__init__()
         self.url = url
+        self.require_json = require_json
 
     def run(self):
         started = time.perf_counter()
@@ -57,11 +58,12 @@ class PingWorker(QThread):
             # 只等待响应头，不读取正文；既测到了真实网络延迟，又不会下载整个文件。
             with requests.get(self.url, timeout=5, stream=True) as resp:
                 resp.raise_for_status()
-                content_type = (resp.headers.get("Content-Type") or "").lower()
-                if "json" not in content_type:
-                    raise ValueError(
-                        f"Unexpected Content-Type: {content_type or 'missing'}"
-                    )
+                if self.require_json:
+                    content_type = (resp.headers.get("Content-Type") or "").lower()
+                    if "json" not in content_type:
+                        raise ValueError(
+                            f"Unexpected Content-Type: {content_type or 'missing'}"
+                        )
                 latency = (time.perf_counter() - started) * 1000
             self.finished.emit(self.url, True, latency, "")
         except Exception as e:
