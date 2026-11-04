@@ -22,12 +22,20 @@ Widget {
         return qsTr("Current Activity")
     }
 
+    function statusText(key, defaultText) {
+        return settings && settings[key] ? settings[key] : defaultText
+    }
+
     function fallbackText() {
-        if (AppCentral.scheduleRuntime.currentStatus === "class") return qsTr("Class")
-        if (AppCentral.scheduleRuntime.currentStatus === "activity") return qsTr("Activity")
-        if (AppCentral.scheduleRuntime.currentStatus === "break") return qsTr("Take a break")
-        if (AppCentral.scheduleRuntime.currentStatus === "preparation") return qsTr("Starting soon")
-        return qsTr("Nothing right now")
+        if (AppCentral.scheduleRuntime.currentStatus === "class")
+            return qsTr("Class")
+        if (AppCentral.scheduleRuntime.currentStatus === "activity")
+            return qsTr("Activity")
+        if (AppCentral.scheduleRuntime.currentStatus === "break")
+            return statusText("break_text", qsTr("Take a break"))
+        if (AppCentral.scheduleRuntime.currentStatus === "preparation")
+            return statusText("preparation_text", qsTr("Starting soon"))
+        return statusText("free_text", qsTr("Nothing right now"))
     }
 
     function displayedActivityText() {
