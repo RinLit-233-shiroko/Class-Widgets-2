@@ -19,6 +19,41 @@ GITHUB_MIRRORS: dict[str, str] = {
     "gitfast": "https://gitfast.top/",
 }
 
+DEFAULT_RELEASES_URL: str = "https://classwidgets.rinlit.cn/2/releases.json"
+RELEASES_SERVERS: dict[str, str] = {
+    "official": DEFAULT_RELEASES_URL,
+    "apac": "https://cw2-apac.helloswx.top/releases.json",
+    "wnam": "https://cw2.helloswx.top/releases.json",
+}
+DEFAULT_RELEASES_SERVER: str = "official"
+CUSTOM_RELEASES_SERVER: str = "custom"
+VALID_RELEASES_SERVERS: set[str] = {*RELEASES_SERVERS, CUSTOM_RELEASES_SERVER}
+
+
+def _normalize_releases_url(url: str | None) -> str:
+    return str(url or "").strip().rstrip("/")
+
+
+BUILTIN_RELEASES_URLS: set[str] = {
+    _normalize_releases_url(server_url) for server_url in RELEASES_SERVERS.values()
+}
+
+
+def _releases_server_for_url(url: str | None) -> str:
+    normalized = _normalize_releases_url(url)
+    for server, server_url in RELEASES_SERVERS.items():
+        if normalized == _normalize_releases_url(server_url):
+            return server
+    return CUSTOM_RELEASES_SERVER if normalized else DEFAULT_RELEASES_SERVER
+
+
+def _releases_url_for_server(server: str, custom_url: str = "") -> str:
+    if server in RELEASES_SERVERS:
+        return RELEASES_SERVERS[server]
+    if server == CUSTOM_RELEASES_SERVER:
+        return custom_url.strip()
+    return DEFAULT_RELEASES_URL
+
 
 class ConfigBaseModel(BaseModel):
     _on_change: Optional[Callable[[], None]] = PrivateAttr(default=None)
@@ -240,10 +275,52 @@ class NetworkConfig(ConfigBaseModel):
     mirrors: dict[str, str] = GITHUB_MIRRORS  # 镜像源
     current_mirror: str = "gh_proxy"  # 当前镜像源
     mirror_enabled: bool = True  # 是否启用网络功能
-    releases_url: str = "https://classwidgets.rinlit.cn/2/releases.json"  # 版本更新地址
+    releases_server: str = DEFAULT_RELEASES_SERVER  # 当前选择的更新服务器（official/apac/wnam/custom）
+    releases_url: str = DEFAULT_RELEASES_URL  # 已解析的更新地址（兼容旧版本，仅作镜像保存）
+    custom_releases_url: str = ""  # 用户自定义的版本更新地址（独立保存）
     auto_check_updates: bool = True  # 自动检查更新
 
     plaza_url: str = "https://plaza.cw.rinlit.cn"
+
+    @model_validator(mode="before")
+    @classmethod
+    def migrate_releases_settings(cls, values):
+        """迁移旧配置，并保证 releases_url 与所选服务器保持一致。"""
+        if not isinstance(values, dict):
+            return values
+
+        migrated = dict(values)
+        server = str(migrated.get("releases_server") or "").strip()
+        custom_url = str(migrated.get("custom_releases_url") or "").strip()
+        legacy_url = str(migrated.get("releases_url") or "").strip()
+
+        # releases_server 是唯一事实来源；缺失或非法时才从旧版 releases_url 推断。
+        if server not in VALID_RELEASES_SERVERS:
+            server = _releases_server_for_url(legacy_url)
+
+        if server == CUSTOM_RELEASES_SERVER and not custom_url:
+            # 旧版本把自定义地址直接写在 releases_url 里。
+            if legacy_url and (
+                _normalize_releases_url(legacy_url) not in BUILTIN_RELEASES_URLS
+            ):
+                custom_url = legacy_url
+            else:
+                # 自定义地址为空时回退到官方，避免保存一个不可用的更新地址。
+                server = DEFAULT_RELEASES_SERVER
+
+        migrated["releases_server"] = server
+        migrated["custom_releases_url"] = custom_url
+        migrated["releases_url"] = _releases_url_for_server(server, custom_url)
+        return migrated
+
+    def resolve_releases_url(self) -> str:
+        """返回当前选择实际应该请求的更新地址。"""
+        if self.releases_server == CUSTOM_RELEASES_SERVER:
+            return self.custom_releases_url.strip()
+        if self.releases_server in RELEASES_SERVERS:
+            return RELEASES_SERVERS[self.releases_server]
+        return self.releases_url.strip() or DEFAULT_RELEASES_URL
+
 
 class NotificationsConfig(ConfigBaseModel):
     """
