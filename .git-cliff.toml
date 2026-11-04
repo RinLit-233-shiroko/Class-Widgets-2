@@ -46,9 +46,7 @@ body = """
 {%- endmacro -%}
 
 > [!TIP]
-> 对于不方便使用 GitHub 的用户，欢迎使用 123 网盘和 OneDrive 来下载测试版本  
-> [123 网盘下载](https://www.123912.com/s/DCyBTd-3iWxH) （无密码，以后的测试版也会持续同步至本链）  
-> [OneDrive 下载](https://dl.gemen.pp.ua)
+> 对于不方便使用 GitHub 的用户，欢迎使用 Cloudflare R2 和 OneDrive 来下载。
 
 <!-- SHA256_CHECKSUMS -->
 """
