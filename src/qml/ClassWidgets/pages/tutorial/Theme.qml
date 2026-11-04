@@ -10,8 +10,8 @@ TutorialComponents.TutorialPage {
     property var tutorial
     title: qsTr("Choose your look")
     description: qsTr("Set the app appearance and an accent color that feels right to you.")
-    currentStep: 2
-    totalSteps: 6
+    currentStep: 3
+    totalSteps: 7
     icon.source: PathManager.images("tutorial/cw2_personalization.png")
 
     readonly property var recommendedColors: [

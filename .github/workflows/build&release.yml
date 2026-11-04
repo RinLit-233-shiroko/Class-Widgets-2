@@ -121,9 +121,12 @@ jobs:
         env:
           CW_VERSION: ${{ steps.version.outputs.version }}
           CW_VERSION_TYPE: ${{ steps.version.outputs.version_type }}
+          SENTRY_DSN: ${{ vars.SENTRY_DSN }}
+          CW_BUILD_DIST: ${{ runner.os }}-${{ runner.arch }}-${{ github.sha }}
         run: |
           python - <<'PY'
           from pathlib import Path
+          import json
           import os
           import re
 
@@ -131,6 +134,11 @@ jobs:
           content = path.read_text(encoding='utf-8')
           content = re.sub(r'__version__ = ["\'][^"\']*["\']', f'__version__ = "{os.environ["CW_VERSION"]}"', content)
           content = re.sub(r'__version_type__ = ["\'][^"\']*["\']', f'__version_type__ = "{os.environ["CW_VERSION_TYPE"]}"', content)
+          for key, value in {
+              'SENTRY_DSN': os.environ.get('SENTRY_DSN', ''),
+              'BUILD_DIST': os.environ['CW_BUILD_DIST'].rsplit('-', 1)[0] + '-' + os.environ['GITHUB_SHA'][:12],
+          }.items():
+              content = re.sub(rf'^{key} = .*$', lambda _: f'{key} = {json.dumps(value)}', content, flags=re.MULTILINE)
           path.write_text(content, encoding='utf-8')
           PY
 

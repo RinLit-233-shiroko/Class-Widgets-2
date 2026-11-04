@@ -61,6 +61,7 @@ class PluginManager(QObject):
         super().__init__()
         self.api: PluginAPI = plugin_api
         self.app_central: "AppCentral" = app_central
+        self.telemetry = app_central.telemetry
 
         # 存放 plugin_id -> plugin instance
         self._plugins: dict[str, CW2Plugin] = {}
@@ -91,7 +92,9 @@ class PluginManager(QObject):
         self._plaza_activity.changed.connect(self.plazaActivityChanged)
         self._plaza_notifications = PlazaNotificationPublisher(app_central, parent=self)
 
-        self.loader: PluginLoader = PluginLoader(plugin_api, self.external_path)
+        self.loader: PluginLoader = PluginLoader(
+            plugin_api, self.external_path, telemetry=self.telemetry
+        )
         app_central.retranslate.connect(self._on_retranslate)
         logger.info("Plugin Manager initialized.")
         self.initialized.emit()
@@ -176,7 +179,7 @@ class PluginManager(QObject):
             return
 
         names = ", ".join(failure.display_name for failure in failures)
-        logger.error(
+        logger.bind(telemetry_skip=True).error(
             "{} plugin(s) failed to load and were skipped: {}", len(failures), names
         )
         try:
@@ -210,6 +213,9 @@ class PluginManager(QObject):
                     plugin.register_widgets()
                 except Exception as error:
                     logger.warning(f"Failed to re-register widgets for plugin {plugin_id}: {error}")
+                    self.telemetry.capture_failure("plugin.register", {
+                        "component": "plugin", "stage": "register_widgets", "plugin_id": plugin_id,
+                    }, error=error)
 
     def _initialized_plugin(self, meta: PluginMeta) -> Optional[CW2Plugin]:
         return self.loader.load_plugin(meta)
@@ -235,7 +241,12 @@ class PluginManager(QObject):
             try:
                 plugin.on_unload()
             except Exception as e:
-                logger.error(f"Failed to unload plugin {pid}: {e}")
+                logger.bind(telemetry_skip=True).error(f"Failed to unload plugin {pid}: {e}")
+                self.telemetry.capture_failure("plugin.unload", {
+                    "component": "plugin", "stage": "on_unload", "plugin_id": pid,
+                    "plugin_version": plugin.meta.get("version", "unknown"),
+                    "plugin_type": plugin.meta.get("_type", "unknown"),
+                }, error=e)
             self.api.ui.unregister_plugin_shortcuts(pid)
             # 尝试从 sys.modules 移除对应模块（使用标准模块前缀 cw_plugin_{id}）
             mod_name = f"cw_plugin_{pid}"
@@ -324,6 +335,9 @@ class PluginManager(QObject):
             self.app_central.markRestartRequired()
             return True
         except Exception as error:
+            self.telemetry.capture_failure("plugin.install", {
+                "component": "plugin", "stage": "validate", "plugin_id": plugin_id,
+            }, error=error)
             archive = locals().get("archive")
             if isinstance(archive, Path):
                 archive.unlink(missing_ok=True)
@@ -347,6 +361,10 @@ class PluginManager(QObject):
         remaining: list[dict] = []
         for operation in operations:
             plugin_id = self._operation_plugin_id(operation)
+            trace = self.telemetry.start_operation("plugin.install", {
+                "component": "plugin", "stage": "apply", "plugin_id": plugin_id,
+            })
+            status = "internal_error"
             try:
                 operation_type = operation.get("type")
                 if not plugin_id or operation_type not in {"install", "uninstall"}:
@@ -373,10 +391,16 @@ class PluginManager(QObject):
                         shutil.rmtree(target)
                     self.enabled_plugins.discard(plugin_id)
                 logger.info(f"Applied pending plugin {operation_type}: {plugin_id}")
+                status = "ok"
             except Exception as error:
-                logger.exception(f"Failed to apply pending plugin operation for {plugin_id}: {error}")
+                logger.bind(telemetry_skip=True).exception(f"Failed to apply pending plugin operation for {plugin_id}: {error}")
+                self.telemetry.capture_failure("plugin.install", {
+                    "component": "plugin", "stage": "apply", "plugin_id": plugin_id,
+                }, error=error)
                 remaining.append(operation)
                 self._install_error = plugin_install_error_message(str(error))
+            finally:
+                trace.finish(status)
         self.app_central.configs.plugins.enabled = list(self.enabled_plugins)
         self._save_pending_operations(remaining)
         if remaining:
@@ -386,7 +410,7 @@ class PluginManager(QObject):
         return next((meta for meta in self.metas if meta.get("id") == plugin_id), None)
 
     def _fail_install(self, error: str) -> None:
-        logger.error(f"Plugin installation failed: {error}")
+        logger.bind(telemetry_skip=True).error(f"Plugin installation failed: {error}")
         message = plugin_install_error_message(error)
         self._install_error = message
         if self._install_tracks_plaza:
@@ -916,6 +940,7 @@ class PluginManager(QObject):
             self._install_plugin_id,
             base_url,
             self._download_dir / "plugin.cwplugin",
+            telemetry=self.telemetry,
         )
         self._download_thread = worker
         self._set_install_status("Downloading")

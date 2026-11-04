@@ -4,6 +4,7 @@ import sys
 import time
 from enum import Enum, auto
 from typing import Any, Optional, TYPE_CHECKING, Protocol
+from types import TracebackType
 
 from PySide6.QtCore import QCoreApplication, QObject, Property, Signal, Slot, QPoint, QProcess, QTimer
 from PySide6.QtGui import QFont
@@ -17,8 +18,10 @@ from src.core.utils.platform import PlatformIntegration
 from src.core.themes.recovery import ThemeRecoveryController
 from src.core.crash import CrashHandler, CrashReport, PluginRecord
 from src.core.utils.safe_mode import safe_mode_requested
+from src.core.telemetry import TelemetryService
 
 if TYPE_CHECKING:
+    from src.core.telemetry import Operation
     from src.core.notification.manager import NotificationManager, NotificationService
     from src.core.plugin.api import PluginAPI
     from src.core.plugin.manager import PluginManager
@@ -86,6 +89,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     retranslate = Signal()  # 新增：翻译信号
     trayShortcutRequested = Signal(str)
     restartRequiredChanged = Signal(bool)  # 新增：需要重启以应用更改
+    telemetryErrorChanged = Signal()
 
     def __init__(self) -> None:  # 初始化
         super().__init__()
@@ -104,12 +108,39 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self._cleanup_started = False
         self._restart_requested = False
         self._restart_required = False  # 是否有待应用的重启（UI 提示用）
-        self._initialize_cores()
+        app_instance = QApplication.instance()
+        if not isinstance(app_instance, QApplication):
+            raise RuntimeError("AppCentral requires a QApplication instance")
+        self.app_instance: QApplication = app_instance
+        self.app_instance.aboutToQuit.connect(self.cleanup)
+        self.telemetry: TelemetryService = TelemetryService()
+        self._telemetry_choice = False
+        self._telemetry_error = ""
+        self._syncing_telemetry = False
+        self._crash_snapshot: dict[str, Any] = {"safe_mode": self._safe_mode}
+        self._startup_operation: Operation | None = None
+        self._startup_render_operation: Operation | None = None
         # 崩溃处理必须在其它子系统之前就绪，才能捕获启动期间的异常。
         self.crash_handler = CrashHandler(self)
         self.crash_handler.set_context_provider(self._crash_context)
+        self.crash_handler.set_exception_reporter(self._capture_crash)
         self.crash_handler.crashReported.connect(self._on_crash_reported)
         self.crash_handler.install()
+        self.path_manager: PathManager = PathManager()
+        self.configs: ConfigManager = ConfigManager(path=CONFIGS_PATH, filename="configs.json")
+        self._load_config()
+        self._telemetry_choice = self.configs.telemetry.enabled
+        self.telemetry.set_context(
+            safe_mode=self._safe_mode,
+            phase="startup" if self.configs.app.tutorial_completed else "oobe",
+        )
+        self.telemetry.configure(
+            self._telemetry_choice, installation_id=self.configs.telemetry.installation_id,
+        )
+        if self.configs.app.tutorial_completed:
+            self._startup_operation = self.telemetry.start_operation("app.startup")
+        self.configs.configChanged.connect(self._sync_telemetry_config)
+        self._initialize_cores()
         self.platform = PlatformIntegration(self.app_instance)
         self.instance_guard = self.platform.instance_guard
         self.multi_instances = self.platform.multi_instances
@@ -118,7 +149,6 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self._initialize_schedule_components()
         self._initialize_utils()
         self._initialize_ui_components()
-        self.app_instance.aboutToQuit.connect(self.cleanup)
         logger.info("AppCentral initialization completed")
 
     @classmethod
@@ -130,9 +160,6 @@ class AppCentral(QObject):  # Class Widgets 的中枢
 
     def _initialize_cores(self) -> None:
         """初始化核心"""
-        self.app_instance: Optional[QApplication] = QApplication.instance()
-        self.path_manager: PathManager = PathManager()  # 统一路径管理
-        self.configs: ConfigManager = ConfigManager(path=CONFIGS_PATH, filename="configs.json")
         if self._safe_mode:
             # 安全模式只跳过外部插件与主题：配置照常读取，也照常写回。
             logger.warning(
@@ -153,6 +180,8 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.app_translator: AppTranslator = AppTranslator(self)
         self._register_shortcuts()
         self.plugin_manager: PluginManager = PluginManager(self.plugin_api, self)
+        self.plugin_manager.pluginListChanged.connect(self._refresh_crash_context)
+        self.theme_manager.themeChanged.connect(self._refresh_crash_context)
         self.utils_backend: UtilsBackend = UtilsBackend(self)
         self.automation_manager: AutomationManager = AutomationManager(self)
         self.updater_bridge: UpdaterBridge = UpdaterBridge(self)
@@ -217,17 +246,19 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         """初始化启动必需的UI组件"""
         self.widgets_window: WidgetsWindow = WidgetsWindow(self)
         self.widgets_window.qmlReady.connect(self._schedule_startup_swap_restore_prompt)
+        self.widgets_window.qmlReady.connect(self._on_startup_qml_ready)
         self.theme_recovery = ThemeRecoveryController(
             self.theme_manager,
             self.window_manager,
             self,
+            telemetry=self.telemetry,
         )
         self.widgets_window.themeLoadFailed.connect(self.theme_recovery.handle_failure)
         if self.multi_instances:
+            self._finish_startup("cancelled")
             self.window_manager.ensure("single_instance")
 
     def run(self) -> None:  # 运行
-        self._load_config()  # 加载配置
         self._load_translator()  # 加载翻译
 
         if self.multi_instances:
@@ -249,6 +280,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
 
         # 如果教程未完成，先显示引导窗口
         if not getattr(self.configs.app, "tutorial_completed", False):
+            self._finish_startup("cancelled")
             logger.info("Tutorial not completed, showing tutorial window first.")
             self._startup_state = StartupState.WAITING_FOR_TUTORIAL
             self.window_manager.open_tutorial()
@@ -257,16 +289,21 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self._startup_state = StartupState.INITIALIZING
         try:
             self._setup_logging()  # 设置日志
-            self._load_schedule()  # 加载课程表
-            self._load_class_swap()  # 加载换课记录（跨天清理）
+            with self.telemetry.operation("startup.schedule", parent=self._startup_operation):
+                self._load_schedule()  # 加载课程表
+                self._load_class_swap()  # 加载换课记录（跨天清理）
             self._startup_swap_restore_pending = self._class_swap_manager.hasTodaySwaps()
 
-            self._load_runtime()  # 加载运行时(以及插件)
+            with self.telemetry.operation("startup.runtime", parent=self._startup_operation):
+                self._load_runtime()  # 加载运行时(以及插件)
             self._init_tray_icon()  # 初始化托盘图标
+            self._startup_render_operation = self.telemetry.start_operation(
+                "startup.qml", parent=self._startup_operation
+            )
             self._run_utils()
         except Exception as error:
             self._startup_state = StartupState.FAILED
-            logger.exception("Application initialization failed")
+            logger.bind(telemetry_skip=True).exception("Application initialization failed")
             self.crash_handler.report_exception(
                 type(error), error, error.__traceback__, source="startup"
             )
@@ -276,6 +313,25 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         self.initialized.emit()
         logger.info("Initialization completed.")
         self._schedule_startup_swap_restore_prompt()
+        if self.widgets_window.is_qml_ready:
+            self._on_startup_qml_ready()
+
+    @Slot()
+    def _on_startup_qml_ready(self) -> None:
+        if self._startup_render_operation is not None:
+            self._startup_render_operation.finish()
+            self._startup_render_operation = None
+        if self._startup_state is StartupState.RUNNING:
+            self._finish_startup("ok")
+            self.telemetry.set_context(phase="runtime")
+
+    def _finish_startup(self, status: str) -> None:
+        if self._startup_render_operation is not None:
+            self._startup_render_operation.finish(status)
+            self._startup_render_operation = None
+        if self._startup_operation is not None:
+            self._startup_operation.finish(status)
+            self._startup_operation = None
 
     @Slot()
     def _schedule_startup_swap_restore_prompt(self) -> None:
@@ -339,6 +395,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         if self._cleanup_started:
             return
         self._cleanup_started = True
+        self._finish_startup("cancelled")
 
         # 每一项都在 try 内解析属性：崩溃发生在启动完成前时也要能安全退出。
         cleanup_steps = (
@@ -351,6 +408,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
             ("tray icon cleanup", lambda: self._cleanup_tray_icon()),
             ("single instance lock release", lambda: self.instance_guard.release()),
             ("crash handler uninstall", self.crash_handler.uninstall),
+            ("telemetry shutdown", self.telemetry.shutdown),
         )
         for step_name, cleanup_step in cleanup_steps:
             try:
@@ -396,6 +454,54 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     @Slot()
     def quit(self):
         self.app_instance.quit()
+
+    @Property(str, notify=telemetryErrorChanged)
+    def telemetryError(self) -> str:
+        return self._telemetry_error
+
+    @Slot(bool, result=bool)
+    def setTelemetryEnabled(self, enabled: bool) -> bool:
+        if self.configs.isKeyLocked("telemetry.enabled"):
+            return False
+        self._telemetry_error = ""
+        self.configs.set("telemetry.enabled", enabled)
+        self.telemetryErrorChanged.emit()
+        return not self._telemetry_error and self.configs.telemetry.enabled == enabled
+
+    @Slot()
+    def _sync_telemetry_config(self) -> None:
+        enabled = self.configs.telemetry.enabled
+        if self._syncing_telemetry or enabled == self._telemetry_choice:
+            return
+        self._syncing_telemetry = True
+        try:
+            if not enabled:
+                self.telemetry.configure(False)
+            if self.configs.save(silent=True):
+                self._telemetry_choice = enabled
+                self._telemetry_error = ""
+                self.telemetry.configure(
+                    enabled, installation_id=self.configs.telemetry.installation_id,
+                )
+            else:
+                if enabled:
+                    self.configs.set("telemetry.enabled", False)
+                self._telemetry_choice = False
+                self._telemetry_error = QCoreApplication.translate(
+                    "AppCentral", "Unable to save your diagnostic preference. Diagnostics are off for this session."
+                )
+            self.telemetryErrorChanged.emit()
+        finally:
+            self._syncing_telemetry = False
+
+    @Slot(result=bool)
+    def completeTutorial(self) -> bool:
+        self.configs.set("app.tutorial_completed", True)
+        if not self.configs.app.tutorial_completed or not self.configs.save(silent=True):
+            self.configs.set("app.tutorial_completed", False)
+            return False
+        self.restart("--update-done")
+        return self._restart_requested
 
     @Slot()
     @Slot(str)
@@ -613,16 +719,41 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         """当前是否以安全模式运行。"""
         return self._safe_mode
 
-    def _crash_context(self) -> dict:
-        """崩溃报告需要的运行时信息。"""
+    def _crash_context(self) -> dict[str, Any]:
+        """工作线程读取普通数据快照，避免在异常路径访问 GUI 对象。"""
         return {
+            **self._crash_snapshot,
             "uptime": time.monotonic() - self._started_at,
+            "active_plugin_id": self._active_plugin_id(),
+        }
+
+    @Slot()
+    def _refresh_crash_context(self) -> None:
+        self._crash_snapshot = {
             "plugin_count": len(getattr(self.plugin_manager, "metas", None) or []),
             "theme_id": self.theme_manager.currentTheme,
             "safe_mode": self._safe_mode,
             "plugins": self._plugin_records(),
-            "active_plugin_id": self._active_plugin_id(),
         }
+
+    def _capture_crash(
+        self,
+        exc_info: tuple[type[BaseException], BaseException | None, TracebackType | None],
+        report: CrashReport,
+    ) -> None:
+        self._finish_startup("internal_error")
+        context: dict[str, object] = {
+            "component": "app", "source": "thread" if report.source.startswith("thread") else report.source,
+            "theme_id": report.theme_id, "safe_mode": report.safe_mode,
+        }
+        if report.plugin_suspect:
+            suspect = report.plugin_suspect
+            context.update(
+                plugin_id=suspect.plugin_id, plugin_version=suspect.version,
+                plugin_type="builtin" if suspect.builtin else "external",
+                attribution_rule=suspect.rule, attribution_confidence=suspect.confidence,
+            )
+        self.telemetry.capture_exception(exc_info, context, handled=False)
 
     def _plugin_records(self) -> list[PluginRecord]:
         """把插件清单整理成崩溃归因要用的记录。
@@ -685,7 +816,9 @@ class AppCentral(QObject):  # Class Widgets 的中枢
     @Slot(object)
     def _on_crash_reported(self, report: CrashReport) -> None:
         """把崩溃报告交给报告窗口（可能来自非 UI 线程，信号会自动排队）。"""
-        self.window_manager.open_problem_report(report)
+        manager = getattr(self, "window_manager", None)
+        if manager is not None:
+            manager.open_problem_report(report)
 
     @Slot()
     def ignore_crash(self) -> None:

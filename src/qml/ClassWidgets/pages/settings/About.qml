@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import RinUI
+import ClassWidgets.Components
 import Qt5Compat.GraphicalEffects
 
 
@@ -162,6 +163,15 @@ FluentPage {
                     }
                 }
             }
+            SettingItem {
+                title: qsTr("Privacy policy")
+
+                Hyperlink {
+                    objectName: "privacyPolicyButton"
+                    text: qsTr("Privacy policy")
+                    onClicked: privacyDialog.open()
+                }
+            }
         }
     }
 
@@ -170,7 +180,7 @@ FluentPage {
         spacing: 4
         Text {
             typography: Typography.BodyStrong
-            text: qsTr("Diagnostics & maintenance")
+            text: qsTr("Maintenance")
         }
 
         SettingExpander {
@@ -270,6 +280,22 @@ FluentPage {
                 }
             }
         }
+    }
+
+    Dialog {
+        id: privacyDialog
+        objectName: "privacyPolicyDialog"
+        title: qsTr("Privacy policy")
+        width: root.width * 0.8
+        height: root.height * 0.8
+        modal: true
+        standardButtons: Dialog.Close
+
+        PrivacyPolicyText {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+        }
+
     }
 
     Dialog {
