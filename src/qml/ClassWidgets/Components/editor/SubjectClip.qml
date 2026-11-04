@@ -7,8 +7,9 @@ import "CoursePalette.js" as CoursePalette
 
 Clip {
     id: subjectClip
-    width: subjectsGrid.cellWidth - 8
-    height: subjectsGrid.cellHeight - 6
+    // 组件本身不依赖外部 GridView 的 id，调用方按自己的单元格尺寸设置 width/height。
+    implicitWidth: 248
+    implicitHeight: 86
 
     // 选择模式：由 Subjects.qml 顶部工具栏切换；selected 表示本卡片已被选中。
     property bool selectionMode: false
