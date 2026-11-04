@@ -22,10 +22,6 @@ Item {
         anchors.bottomMargin: 16
         spacing: 8
 
-        DefaultDurationHint {
-            width: parent.width
-        }
-
         TimelineTopBar {
             id: topActions
             width: parent.width
@@ -313,6 +309,18 @@ Item {
                 }
             }
         }
+
+    }
+
+    DefaultDurationHint {
+        id: defaultDurationHint
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.leftMargin: 32
+        anchors.rightMargin: 32
+        anchors.bottomMargin: 16
+        z: 10
     }
 
     Timer {
