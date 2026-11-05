@@ -85,7 +85,7 @@ Item {
         const values = [qsTr("All months")]
         for (let i = 0; i < availableMonths.length; ++i)
             values.push(Qt.locale().monthName(
-                availableMonths[i], Locale.LongFormat
+                availableMonths[i] - 1, Locale.LongFormat
             ))
         return values
     }

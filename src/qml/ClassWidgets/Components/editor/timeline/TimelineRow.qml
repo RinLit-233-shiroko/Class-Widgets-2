@@ -68,7 +68,7 @@ Item {
         if (timeline.date) {
             const date = new Date(timeline.date)
             return qsTr("%1 %2 date")
-                .arg(Qt.locale().monthName(date.getMonth() + 1, Locale.LongFormat))
+                .arg(Qt.locale().monthName(date.getMonth(), Locale.LongFormat))
                 .arg(date.getDate())
         }
         const days = WeekRule.dayList(timeline.dayOfWeek)
