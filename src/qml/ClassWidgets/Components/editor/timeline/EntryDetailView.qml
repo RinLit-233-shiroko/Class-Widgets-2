@@ -8,7 +8,22 @@ Flyout {
     id: root
     property var currentEntry: null
     property Item sourceItem: null
+    property Item acrylicSourceItem: null
     property var subjects: AppCentral.scheduleRuntime.subjects || []
+    readonly property real anchorY: {
+        if (!sourceItem)
+            return y
+        const scene = sourceItem.mapToItem(null, 0, 0)
+        const overlay = Overlay.overlay
+        if (!overlay || !parent)
+            return scene.y
+        const origin = sourceItem.mapToItem(overlay, 0, 0)
+        const local = overlay.mapToItem(parent, 0, origin.y)
+        return Math.max(8, Math.min(
+            parent.height - height - 8,
+            local.y
+        ))
+    }
 
     background: Item {
         id: backgroundContainer
@@ -22,8 +37,8 @@ Flyout {
 
         AcrylicBrush {
             anchors.fill: parent
-            sourceItem: root.sourceItem
-            enabled: root.sourceItem !== null
+            sourceItem: root.acrylicSourceItem || root.sourceItem
+            enabled: sourceItem !== null
             radius: parent.radius || 8
             z: 0
         }
@@ -47,8 +62,6 @@ Flyout {
         entrySubject.subjectId = currentEntry.subjectId || ""
         entryTitle.text = currentEntry.title || ""
 
-        root.open()
-
         Qt.callLater(function() {
             startTimePicker.setTime(currentEntry.startTime || "08:00")
             endTimePicker.setTime(currentEntry.endTime || "09:00")
@@ -56,11 +69,20 @@ Flyout {
             if (currentEntry.type === "class") btnClass.checked = true
             else if (currentEntry.type === "break") btnBreak.checked = true
             else btnActivity.checked = true
+
+            // Wait for the new card's geometry before asking Popup to place
+            // itself; otherwise a freshly inserted entry can anchor on stale
+            // coordinates and choose the wrong side of the timeline.
+            root.open()
         });
     }
 
+    function alignToAnchorPoint() {
+        y = anchorY
+    }
+
     function applyChanges() {
-        if (!currentEntry) return;
+        if (!currentEntry) return false
 
         const newType = typeSegmented.currentIndex === 0 ? "class"
                   : typeSegmented.currentIndex === 1 ? "break"
@@ -80,19 +102,82 @@ Flyout {
                 startTimePicker.setTime(currentEntry.startTime || "08:00")
                 endTimePicker.setTime(currentEntry.endTime || "09:00")
             })
-            return
+            return false
         }
 
-        AppCentral.scheduleEditor.updateEntry(
+        const result = AppCentral.scheduleEditor.updateEntryChecked(
             currentEntry.id, newType,
             startTime,
             endTime,
             entrySubject.subjectId || null,
             entryTitle.text || null
         )
+        if (!result.ok) {
+            if (result.reason === "conflict") {
+                const conflict = result.conflict
+                floatLayer.createInfoBar({
+                    title: qsTr("Conflict with existing schedule"),
+                    text: qsTr("This time overlaps with an existing schedule (%1 – %2)")
+                        .arg(conflict ? conflict.startTime : "")
+                        .arg(conflict ? conflict.endTime : ""),
+                    severity: Severity.Warning
+                })
+            }
+            return false
+        }
+        return true
     }
 
-    position: Position.Bottom
+    anchorItem: root.sourceItem
+    position: Position.Right
+    width: Math.min(320,
+        Overlay.overlay ? Overlay.overlay.width - 48 : 320)
+    onOpened: alignToAnchorPoint()
+    onAnchorYChanged: {
+        if (opened)
+            Qt.callLater(alignToAnchorPoint)
+    }
+
+    Connections {
+        target: root.sourceItem
+        function onYChanged() {
+            if (root.opened)
+                Qt.callLater(root.alignToAnchorPoint)
+        }
+        function onHeightChanged() {
+            if (root.opened)
+                Qt.callLater(root.alignToAnchorPoint)
+        }
+    }
+
+    enter: Transition {
+        SequentialAnimation {
+            // Let Popup's deferred auto-reposition run before overriding y.
+            PauseAnimation { duration: 16 }
+            ScriptAction {
+                script: root.alignToAnchorPoint()
+            }
+            ParallelAnimation {
+                NumberAnimation {
+                    target: root
+                    property: "opacity"
+                    from: 0
+                    to: 1
+                    duration: Utils.appearanceSpeed
+                    easing.type: Easing.OutQuint
+                }
+                NumberAnimation {
+                    target: root
+                    property: "x"
+                    from: root.posX + (root._resolvedPosition === Position.Left
+                        ? 15 : root._resolvedPosition === Position.Right ? -15 : 0)
+                    to: root.posX
+                    duration: Utils.animationSpeedMiddle * 1.25
+                    easing.type: Easing.OutQuint
+                }
+            }
+        }
+    }
     // width: 460
 
     ColumnLayout {
@@ -168,34 +253,36 @@ Flyout {
         }
 
         RowLayout {
-            visible: typeSegmented.currentIndex === 0
-            Text { text: qsTr("Default Subject"); }
-
-            Item {
-                Layout.fillWidth: true
-            }
-
-            SubjectPickerButton {
-                id: entrySubject
-                subjects: root.subjects
-                onSubjectSelected: entrySubject.subjectId = subjectId
-            }
-
-            onVisibleChanged: {
-                if (!visible)
-                    entrySubject.subjectId = ""
-            }
-        }
-
-        RowLayout {
             Layout.fillWidth: true
-            Text { text: qsTr("Title"); width: 80 }
+            spacing: 6
 
-            Item { Layout.fillWidth: true }
+            RowLayout {
+                id: subjectGroup
+                spacing: 8
+                visible: typeSegmented.currentIndex === 0
+
+                Text { text: qsTr("Subject") }
+                SubjectPickerButton {
+                    id: entrySubject
+                    Layout.preferredWidth: 95
+                    Layout.minimumWidth: 80
+                    subjects: root.subjects
+                    placeholderText: qsTr("Select")
+                    onSubjectSelected: entrySubject.subjectId = subjectId
+                }
+
+                onVisibleChanged: {
+                    if (!visible)
+                        entrySubject.subjectId = ""
+                }
+            }
+
+            Text { text: qsTr("Title") }
 
             TextField {
                 id: entryTitle
-                Layout.minimumWidth: 200
+                Layout.fillWidth: true
+                Layout.minimumWidth: 100
                 placeholderText: {
                     switch (typeSegmented.currentIndex) {
                         case 0:
@@ -249,8 +336,8 @@ Flyout {
             icon.name: "ic_fluent_checkmark_20_regular"
             text: qsTr("OK")
             onClicked: {
-                root.applyChanges()
-                root.close()
+                if (root.applyChanges())
+                    root.close()
             }
         },
         Button {

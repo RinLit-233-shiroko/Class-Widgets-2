@@ -12,4 +12,8 @@ QtObject {
 
     // popBack 的镜像，用于退场（scale 1 → 0.8）
     property var popBackIn: [0.65, -0.2, 0.85, 0.15, 1, 1]
+
+    // Timeline scene transition: decisive at the start, then settles without
+    // overshooting the row geometry.
+    property var timelineScene: [0.18, 0.82, 0.32, 1, 1, 1]
 }

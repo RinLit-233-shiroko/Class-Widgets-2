@@ -1,10 +1,8 @@
 /*
- * Shared course palette.
+ * Shared palette helpers for schedule cards and related entry surfaces.
  *
- * ScheduleCourseCard, SubjectClip and the class-swap cards all tint a subject
- * the same way: keep the subject's hue, cap its saturation, and move the colour
- * to a pinned *relative luminance* so surface/text contrast never depends on
- * how bright the chosen subject colour happens to be.
+ * Keep the source hue, cap its saturation, and move the colour to a pinned
+ * relative luminance so surface/text contrast stays consistent across types.
  *
  * No `.pragma library` here on purpose: the Qt JS parser used by this project
  * rejects that directive and then fails to load the whole file.

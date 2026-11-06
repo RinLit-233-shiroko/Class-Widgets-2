@@ -12,6 +12,7 @@ FluentWindow {
     width: Math.max(Screen.width * 0.6, 800)
     height: Math.max(Screen.height * 0.7, 700)
     minimumWidth: 600
+    minimumHeight: 640
     // visible: true
     // navigationView.navMinimumExpandWidth: Screen.width
     // navigationView.navigationBar.collapsed: true

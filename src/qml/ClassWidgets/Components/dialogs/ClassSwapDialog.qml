@@ -4,7 +4,7 @@ import QtQuick.Layouts
 import RinUI
 import ClassWidgets.Components
 import QtQuick.Window as QQW
-import "../editor/CoursePalette.js" as CoursePalette
+import "../editor/ColorPalette.js" as ColorPalette
 
 // 换课窗口 / Class Swap
 // 普通窗口：可拖动、可被 Alt+Tab / 任务栏选中，且不置顶。样式与行为对齐
@@ -756,10 +756,10 @@ QQW.Window {
                         ? Theme.currentTheme.isDark : false
                     readonly property real surfaceLuminance: darkTheme ? 0.05 : 0.72
                     readonly property real textLuminance: darkTheme ? 0.60 : 0.05
-                    readonly property color iconBackgroundColor: CoursePalette.atLuminance(
+                    readonly property color iconBackgroundColor: ColorPalette.atLuminance(
                         subjectBaseColor, surfaceLuminance
                     )
-                    readonly property color iconColor: CoursePalette.atLuminance(
+                    readonly property color iconColor: ColorPalette.atLuminance(
                         subjectBaseColor, textLuminance
                     )
                 }

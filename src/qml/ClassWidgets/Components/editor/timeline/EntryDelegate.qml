@@ -31,10 +31,6 @@ Clip {
     property int tempEnd: parseTime(entry.endTime)
     readonly property bool enabledDrag: height > 20
 
-    // Preview mode leaves the timeline read-only.
-    readonly property bool editing: listViewRoot
-        ? (listViewRoot.editMode || false) : false
-
     x: 52
     width: parent.width - x
     y: tempStart * pxPerMin
@@ -61,13 +57,10 @@ Clip {
 
     TapHandler {
         acceptedButtons: Qt.RightButton
-        enabled: entryDelegate.editing
         onTapped: contextMenu.open()
     }
 
     onClicked: {
-        if (!entryDelegate.editing)
-            return
         currentIndex = entryDelegate.index
         // Loader creation is asynchronous when the selection changes.
         Qt.callLater(function() {
@@ -80,7 +73,7 @@ Clip {
     // one instance per entry makes large schedules expensive to build.
     Loader {
         id: detailViewLoader
-        active: entryDelegate.checked && entryDelegate.editing
+        active: entryDelegate.checked
         sourceComponent: Component {
             EntryDetailView {
                 sourceItem: entryDelegate.listViewRoot
@@ -130,8 +123,8 @@ Clip {
             cursorShape: Qt.SizeVerCursor
         }
 
-        visible: enabledDrag && entryDelegate.editing
-        enabled: enabledDrag && entryDelegate.editing && !entryDelegate.detailOpen
+        visible: enabledDrag
+        enabled: enabledDrag && !entryDelegate.detailOpen
     }
 
     // 下拖拽调整时间
@@ -142,8 +135,8 @@ Clip {
         anchors.bottom: parent.bottom
         z: 2
 
-        visible: enabledDrag && entryDelegate.editing
-        enabled: enabledDrag && entryDelegate.editing && !entryDelegate.detailOpen
+        visible: enabledDrag
+        enabled: enabledDrag && !entryDelegate.detailOpen
 
         Rectangle {
             anchors.bottom: parent.bottom
@@ -180,8 +173,7 @@ Clip {
         id: moveHandler
         // The selected entry must be able to take the pointer from Flickable.
         // 详情/时间选择器打开时禁用，避免拖拽穿透把本条带跑。
-        enabled: entryDelegate.editing && checked && !entryDelegate.detailOpen
-            && !startResizeHandler.active && !endResizeHandler.active
+        enabled: checked && !entryDelegate.detailOpen && !startResizeHandler.active && !endResizeHandler.active
         target: null
         yAxis.enabled: true
         grabPermissions: PointerHandler.CanTakeOverFromAnything
@@ -210,7 +202,7 @@ Clip {
     }
 
     HoverHandler {
-        enabled: checked && entryDelegate.editing
+        enabled: checked
         cursorShape: Qt.SizeAllCursor
     }
 
