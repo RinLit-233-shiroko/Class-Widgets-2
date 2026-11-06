@@ -239,7 +239,7 @@ Your settings and schedule are kept.</source>
     <message>
         <location filename="../../src/core/central.py" line="716"/>
         <source>Safe mode</source>
-        <translation type="unfinished"></translation>
+        <translation>沙发模式</translation>
     </message>
     <message>
         <location filename="../../src/core/central.py" line="720"/>
@@ -540,7 +540,7 @@ Do you want to continue using them, or discard and restore the original schedule
 <context>
     <name>Configs</name>
     <message>
-        <location filename="../../src/core/config/model.py" line="230"/>
+        <location filename="../../src/core/config/model.py" line="231"/>
         <source>New Schedule 1</source>
         <translation>新的配料表 1</translation>
     </message>
@@ -1299,7 +1299,7 @@ Do you want to continue using them, or discard and restore the original schedule
     <name>ExportScheduleDialog</name>
     <message>
         <location filename="../../src/core/converter/slots.py" line="23"/>
-        <location filename="../../src/core/schedule/manager.py" line="401"/>
+        <location filename="../../src/core/schedule/manager.py" line="452"/>
         <source>Export Schedule</source>
         <translation>打包门牌号集合并丢出去</translation>
     </message>
@@ -1309,12 +1309,12 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation>CSES 格式 (*.yaml *.yml)</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/manager.py" line="288"/>
+        <location filename="../../src/core/schedule/manager.py" line="339"/>
         <source>Export Schedules</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/manager.py" line="404"/>
+        <location filename="../../src/core/schedule/manager.py" line="455"/>
         <source>Class Widgets 2 JSON Files (*.json)</source>
         <translation>2WC杰森文件 (*.json)</translation>
     </message>
@@ -1741,12 +1741,12 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation>WC的杰森文件</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/manager.py" line="351"/>
+        <location filename="../../src/core/schedule/manager.py" line="402"/>
         <source>Import Schedule</source>
         <translation>把打包好的门牌号集合丢进来</translation>
     </message>
     <message>
-        <location filename="../../src/core/schedule/manager.py" line="354"/>
+        <location filename="../../src/core/schedule/manager.py" line="405"/>
         <source>Class Widgets 2 JSON Files (*.json)</source>
         <translation>2WC杰森文件 (*.json)</translation>
     </message>
@@ -1892,18 +1892,18 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation>摆弄可爱 CW</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="22"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="37"/>
         <source>Widgets</source>
         <translation>显示用小方块</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="28"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="43"/>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="29"/>
         <source>Tap Action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="96"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="111"/>
         <source>Hover fade</source>
         <translation>我放上去你就得死</translation>
     </message>
@@ -1912,7 +1912,7 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation type="vanished">含羞草</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="97"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="112"/>
         <source>Hover to make the widget transparent and let clicks go through, move away to bring it back</source>
         <translation>薛定谔的minecraft:barrier</translation>
     </message>
@@ -1921,19 +1921,19 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation type="vanished">戳一戳戳出小方块</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="29"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="44"/>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="30"/>
         <source>Choose whether tapping a widget hides it, switches to mini mode, or opens a floating widget</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="62"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="77"/>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="62"/>
         <source>Floating Widget</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="116"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="131"/>
         <source>Automations</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1952,50 +1952,75 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="121"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="136"/>
         <source>Automatic hide behavior</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="123"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="138"/>
         <source>Choose what happens when an automatic hide rule is triggered</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="129"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="144"/>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="117"/>
         <source>Hide Widgets</source>
         <translation>捉迷藏</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="130"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="145"/>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="118"/>
         <source>Switch to mini mode</source>
         <translation>变得小小的</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="131"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="146"/>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="119"/>
         <source>Floating widget</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="145"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="160"/>
+        <source>Hide completely (no edge strip)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="168"/>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="132"/>
         <source>Hide when in class</source>
         <translation>上课时藏起来</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="152"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="175"/>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="139"/>
         <source>Hide when a window is maximized</source>
         <translation>允许被挤掉</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="159"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="182"/>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="146"/>
         <source>Hide when a window enters fullscreen</source>
         <translation>允许被挤掉（严格）</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="195"/>
+        <source>Never Auto-Hide These Courses</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="196"/>
+        <source>Pick courses from your schedules. They will never be auto-hidden, whether triggered by class time, maximized windows or fullscreen.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="201"/>
+        <source>Select Courses (%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="202"/>
+        <source>Select Courses</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="11"/>
@@ -2016,13 +2041,13 @@ Do you want to continue using them, or discard and restore the original schedule
         <translation type="vanished">小型桌宠如何退场</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="52"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="67"/>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="52"/>
         <source>Hide</source>
         <translation>你看不见我</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="57"/>
+        <location filename="../../src/qml/ClassWidgets/pages/settings/General/Interactions.qml" line="72"/>
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Interactions.qml" line="57"/>
         <source>Mini Mode</source>
         <translation>小小的也很可爱</translation>
@@ -2067,6 +2092,74 @@ Do you want to continue using them, or discard and restore the original schedule
         <location filename="../../src/qml/ClassWidgets/pages/tutorial/Language.qml" line="40"/>
         <source>Use System Language</source>
         <translation>学系统精</translation>
+    </message>
+</context>
+<context>
+    <name>NeverHideCoursesPopup</name>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/NeverHideCoursesPopup.qml" line="14"/>
+        <source>Never Auto-Hide These Courses</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/NeverHideCoursesPopup.qml" line="57"/>
+        <source>Not in any schedule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/NeverHideCoursesPopup.qml" line="285"/>
+        <source>Selected courses will never be auto-hidden. Applies to all schedules.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/NeverHideCoursesPopup.qml" line="357"/>
+        <source>Search courses</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/NeverHideCoursesPopup.qml" line="412"/>
+        <source>Clear selection</source>
+        <translation type="unfinished">嫑</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/NeverHideCoursesPopup.qml" line="413"/>
+        <source>Select all</source>
+        <translation type="unfinished">我！全！都！要！</translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/NeverHideCoursesPopup.qml" line="428"/>
+        <source>Clear all selections</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/NeverHideCoursesPopup.qml" line="469"/>
+        <source>No schedules</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/NeverHideCoursesPopup.qml" line="471"/>
+        <source>No courses in this schedule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/NeverHideCoursesPopup.qml" line="472"/>
+        <source>No matching courses</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/NeverHideCoursesPopup.qml" line="474"/>
+        <source>Create a schedule in the schedule editor first.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/NeverHideCoursesPopup.qml" line="476"/>
+        <source>Add subjects in the schedule editor to choose them here.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/qml/ClassWidgets/Components/dialogs/NeverHideCoursesPopup.qml" line="477"/>
+        <source>Try a different search term.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2626,7 +2719,7 @@ If translations are missing after a theme change, please restart</source>
         <translation>不知道是谁</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCard.qml" line="209"/>
+        <location filename="../../src/qml/ClassWidgets/Components/plaza/PluginCard.qml" line="210"/>
         <source>Unknown plugin</source>
         <translation>un知道屁股</translation>
     </message>
@@ -3600,7 +3693,7 @@ You can try restarting. If you suspect a plugin or theme is involved, restart in
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/SafeModeNotice.qml" line="13"/>
         <source>Safe mode</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">沙发模式</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/Components/SafeModeNotice.qml" line="14"/>
@@ -4730,12 +4823,12 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="vanished">在这里吗？在这里就打开不在这里就关掉。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="58"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="59"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="68"/>
+        <location filename="../../src/qml/ClassWidgets/Components/editor/SubjectClip.qml" line="69"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4768,13 +4861,13 @@ If it takes place in another location, such as a sport field, lab, or another cl
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="203"/>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="280"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="282"/>
         <source>Add Subject</source>
         <translation>增加主语</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="92"/>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="370"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="372"/>
         <source>Subject</source>
         <translation>主语</translation>
     </message>
@@ -4814,17 +4907,17 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="263"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="265"/>
         <source>No subjects yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="269"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="271"/>
         <source>Add subjects to start building your schedule.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="280"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="282"/>
         <source>Edit Subject</source>
         <translation>编辑主语</translation>
     </message>
@@ -4833,58 +4926,58 @@ If it takes place in another location, such as a sport field, lab, or another cl
         <translation type="vanished">身份证号</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="290"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="292"/>
         <source>Simplified Name</source>
         <translation>简体名称</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="295"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="297"/>
         <source>Subject Name</source>
         <translation>主语名字</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="296"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="298"/>
         <source>e.g. Science</source>
         <translation>蛋：科学家</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="300"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="302"/>
         <source>Teacher</source>
         <translation>sensei</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="305"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="307"/>
         <source>Location</source>
         <translation>本地人</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="306"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="308"/>
         <source>e.g. Room 7813</source>
         <translation>例如：114514 号房</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="310"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="312"/>
         <source>Color</source>
         <translation>色</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="321"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="323"/>
         <source>Held in homeroom</source>
         <translation>别跑</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="333"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="335"/>
         <source>Icon</source>
         <translation>艾科</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="353"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="355"/>
         <source>Enable if the subject is taught in your homeroom classroom.  
 If it takes place in another location, such as a sport field, lab, or another classroom, leave it off.</source>
         <translation>在这里吗？在这里就打开不在这里就关掉。</translation>
     </message>
     <message>
-        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="398"/>
+        <location filename="../../src/qml/ClassWidgets/pages/editor/Subjects.qml" line="400"/>
         <source>Remove Subject</source>
         <translation type="unfinished"></translation>
     </message>

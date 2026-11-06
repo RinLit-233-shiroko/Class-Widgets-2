@@ -1661,7 +1661,7 @@ Do you want to %3 this plugin?</source>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="35"/>
         <source>Uninstall Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>除之而不得</translation>
     </message>
     <message>
         <location filename="../../src/qml/ClassWidgets/pages/settings/Plugins.qml" line="36"/>

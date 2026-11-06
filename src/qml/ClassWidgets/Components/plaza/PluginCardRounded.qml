@@ -40,7 +40,9 @@ Item {
 
     Behavior on liftY { NumberAnimation { duration: 260; easing.type: Easing.OutCubic } }
 
-    // 独立不透明圆角矩形作为阴影源（透明背景卡片无法直接对控件做 layer 阴影）
+    // 悬停阴影：用 opacity 显隐，但 layer 必须常驻（同 PluginCard.qml）：
+    // 悬停与 layer 翻转同帧发生会释放 effect 子项，使 QQuickDeliveryAgent
+    // 的遍历快照失效并触发 SIGSEGV。
     Rectangle {
         id: shadowSource
         anchors.fill: parent
@@ -48,7 +50,7 @@ Item {
         color: Colors.proxy.backgroundColor
         opacity: card.hovered ? 1 : 0
 
-        layer.enabled: opacity > 0
+        layer.enabled: true
         layer.effect: MultiEffect {
             autoPaddingEnabled: true
             shadowEnabled: true
