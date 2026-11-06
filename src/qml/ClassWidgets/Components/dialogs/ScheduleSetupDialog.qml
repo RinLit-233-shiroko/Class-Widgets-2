@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Effects
 import RinUI
 
 
@@ -16,6 +17,15 @@ Dialog {
     property string startDate: Qt.formatDate(new Date(), "yyyy-MM-dd")
     property int maxWeekCycle: 2
     property string errorText: ""
+
+    // Pages are built once when the dialog is created and then reused by the
+    // StackView. Pushing a component would rebuild every control (including
+    // the calendar) at the start of each transition, which makes the animation
+    // drop frames. Building them up front moves that one-time cost out of the
+    // dialog's open/navigation animations.
+    property Item pageOneItem: null
+    property Item pageTwoItem: null
+    property Item pageThreeItem: null
 
     readonly property string effectiveName: enteredName.length > 0 ? enteredName : suggestedName
     readonly property bool nameValid: effectiveName.length > 0
@@ -103,7 +113,70 @@ Dialog {
     modal: true
     width: 500
 
+    // The default RinUI dialog background renders its shadow through a
+    // layer-enabled Qt5Compat DropShadow. That effect is expensive to
+    // rasterize (blur radius 64, 129 samples) and has to be re-rendered on
+    // every frame while the dialog height animates, which is exactly what this
+    // wizard does between pages. RectangularShadow is rendered as part of the
+    // scene graph and keeps the dialog animation smooth.
+    background: Item {
+        RectangularShadow {
+            anchors.fill: dialogPanel
+            radius: dialogPanel.radius
+            blur: Theme.currentTheme.shadows.dialog.blur
+            offset.y: Theme.currentTheme.shadows.dialog.offsetY
+            color: Theme.currentTheme.shadows.dialog.color
+        }
+
+        Rectangle {
+            id: dialogPanel
+            anchors.fill: parent
+            color: Theme.currentTheme.colors.backgroundAcrylicColor
+            border.color: Theme.currentTheme.colors.windowBorderColor
+            border.width: 1
+            radius: Theme.currentTheme.appearance.windowRadius
+
+            Behavior on color {
+                ColorAnimation {
+                    duration: Utils.backdropEnabled ? 0 : 150
+                }
+            }
+        }
+    }
+
+    function pageContentWidth() {
+        return pageStack.width > 1
+            ? pageStack.width
+            : Math.max(1, root.width - root.leftPadding - root.rightPadding)
+    }
+
+    function preparePages() {
+        const width = pageContentWidth()
+
+        if (!pageOneItem)
+            pageOneItem = pageOneComponent.createObject(pageCache, { width: width })
+        if (!pageTwoItem)
+            pageTwoItem = pageTwoComponent.createObject(pageCache, { width: width })
+        if (!pageThreeItem)
+            pageThreeItem = pageThreeComponent.createObject(pageCache, { width: width })
+
+        if (pageStack.depth === 0 && pageOneItem)
+            pageStack.push(pageOneItem, StackView.Immediate)
+    }
+
+    function syncPageWidth() {
+        const width = pageContentWidth()
+        if (pageOneItem)
+            pageOneItem.width = width
+        if (pageTwoItem)
+            pageTwoItem.width = width
+        if (pageThreeItem)
+            pageThreeItem.width = width
+    }
+
     function resetDialog() {
+        preparePages()
+
         currentStep = 0
         selectedMode = 0
         selectedFormat = 0
@@ -121,8 +194,22 @@ Dialog {
         if (pageStack.depth > 1)
             pageStack.pop(pageStack.get(0), StackView.Immediate)
 
-        pageStack.currentItem.x = 0
-        pageStack.currentItem.opacity = 1
+        syncPageWidth()
+
+        if (pageStack.currentItem) {
+            pageStack.currentItem.x = 0
+            pageStack.currentItem.opacity = 1
+        }
+
+        // The pages now live across dialog openings, so their field values and
+        // selections have to be reset explicitly.
+        if (pageOneItem && pageOneItem.resetPage)
+            pageOneItem.resetPage()
+        if (pageTwoItem && pageTwoItem.resetPage)
+            pageTwoItem.resetPage()
+        if (pageThreeItem && pageThreeItem.resetPage)
+            pageThreeItem.resetPage()
+
         suppressHeightAnimation = false
     }
 
@@ -169,10 +256,15 @@ Dialog {
         pendingStep = -1
         navigationPending = false
 
-        if (step > currentStep)
-            pageStack.push(step === 1 ? pageTwoComponent : pageThreeComponent)
-        else
+        if (step > currentStep) {
+            const page = step === 1 ? pageTwoItem : pageThreeItem
+            if (page) {
+                page.width = pageContentWidth()
+                pageStack.push(page)
+            }
+        } else {
             pageStack.pop()
+        }
         currentStep = step
     }
 
@@ -253,6 +345,15 @@ Dialog {
 
     onAboutToShow: resetDialog()
     onClosed: selectedFile = ""
+    Component.onCompleted: preparePages()
+
+    // Holds the pre-built pages while they are not on the stack. StackView
+    // reparents pushed items back here on pop instead of destroying them, so
+    // the same instances can be reused for the next transition.
+    Item {
+        id: pageCache
+        visible: false
+    }
 
     ColumnLayout {
         Layout.fillWidth: true
@@ -264,7 +365,6 @@ Dialog {
             Layout.fillWidth: true
             Layout.preferredHeight: currentItem ? currentItem.implicitHeight : 0
             clip: true
-            initialItem: pageOneComponent
 
             Behavior on Layout.preferredHeight {
                 enabled: !root.suppressHeightAnimation
@@ -372,6 +472,11 @@ Dialog {
         ColumnLayout {
             spacing: 12
 
+            function resetPage() {
+                modeList.currentIndex = 0
+                modeList.positionViewAtBeginning()
+            }
+
             Text {
                 Layout.fillWidth: true
                 text: qsTr("Create a brand-new schedule or import an existing schedule file.")
@@ -380,6 +485,7 @@ Dialog {
             }
 
             ListView {
+                id: modeList
                 Layout.fillWidth: true
                 Layout.preferredHeight: contentHeight
                 clip: true
@@ -433,6 +539,11 @@ Dialog {
         ColumnLayout {
             spacing: 12
 
+            function resetPage() {
+                formatList.currentIndex = 0
+                formatList.positionViewAtBeginning()
+            }
+
             Text {
                 Layout.fillWidth: true
                 text: qsTr("Choose the file format to import.")
@@ -441,6 +552,7 @@ Dialog {
             }
 
             ListView {
+                id: formatList
                 Layout.fillWidth: true
                 Layout.preferredHeight: contentHeight
                 clip: true
@@ -459,13 +571,36 @@ Dialog {
                     contentItem: RowLayout {
                         spacing: 12
 
-                        Icon {
-                            size: 16
+                        Item {
+                            id: formatIcon
+
+                            readonly property bool hasImage: !!(modelData.image
+                                && modelData.image.length > 0)
+
+                            Layout.preferredWidth: 16
+                            Layout.preferredHeight: 16
                             Layout.alignment: Qt.AlignVCenter
-                            source: modelData.image && modelData.image.length > 0
-                                ? modelData.image : ""
-                            name: modelData.image && modelData.image.length > 0
-                                ? "" : modelData.icon
+
+                            Icon {
+                                anchors.fill: parent
+                                size: 16
+                                visible: !formatIcon.hasImage
+                                name: formatIcon.hasImage ? "" : modelData.icon
+                            }
+
+                            // Some format icons (e.g. smart_teach.svg) are
+                            // high-resolution vectors. Without sourceSize the
+                            // SVG is rasterized at its intrinsic size when it
+                            // is first painted, which stalls the opening
+                            // animation for several frames.
+                            Image {
+                                anchors.fill: parent
+                                visible: formatIcon.hasImage
+                                source: modelData.image || ""
+                                sourceSize: Qt.size(32, 32)
+                                fillMode: Image.PreserveAspectFit
+                                mipmap: true
+                            }
                         }
 
                         ColumnLayout {
@@ -508,6 +643,11 @@ Dialog {
 
         ColumnLayout {
             spacing: 12
+
+            function resetPage() {
+                nameField.text = ""
+                datePicker.selectedDate = new Date(root.startDate)
+            }
 
             Text {
                 Layout.fillWidth: true
