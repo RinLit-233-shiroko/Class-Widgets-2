@@ -261,6 +261,7 @@ Item {
             onClicked: {
                 WidgetsModel.save_config()
                 widgetsContainer.editMode = false
+                widgetsLayout.overlayEditingId = ""
             }
         }
     }

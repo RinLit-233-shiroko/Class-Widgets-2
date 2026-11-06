@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Layouts
 import RinUI
 import ClassWidgets.Easing
 
@@ -58,12 +59,14 @@ Item {
     property real visScale: 0.8
     property bool removing: false
     property bool initialized: false   // 入场只播一次，避免切主题重播
+    property bool isOverlay: model.typeId === "classwidgets.overlay"
+    property bool overlayEditing: isOverlay && host.overlayEditingId === model.instanceId
 
     // 隐藏状态不再整体降透明度：收起完全由位置/浮窗表达，
     // opacity 只负责出现/消失动画（拖动时给一点提示性半透明）。
     opacity: (dragHandler.active ? 0.75 : 1) * visOpacity
     scale: visScale * dragRaiseScale
-    rotation: host.editMode ? shakeAngle : 0
+    rotation: (host.editMode && host.overlayEditingId === "") ? shakeAngle : 0
     z: dragHandler.active ? 1 : 0
 
     // 拖拽被拿起
@@ -309,6 +312,13 @@ Item {
         function onVisibleChanged() { widgetContainer.syncNaturalSize() }
         function onWidthChanged()   { widgetContainer.syncNaturalSize() }
         function onHeightChanged()  { widgetContainer.syncNaturalSize() }
+        function onAddMemberRequested() { widgetContainer.host.openOverlayMemberDialog(model.instanceId) }
+        function onDoneRequested() { widgetContainer.host.overlayEditingId = "" }
+    }
+
+    onOverlayEditingChanged: {
+        if (widgetContainer.isOverlay && loader.item)
+            loader.item.overlayListMode = widgetContainer.overlayEditing
     }
 
     ToolButton {
@@ -403,6 +413,16 @@ Item {
             enabled: model.settingsQml
         }
         MenuItem {
+            visible: widgetContainer.isOverlay
+            icon.name: "ic_fluent_layers_20_regular"
+            text: qsTr("Edit Members")
+            onTriggered: {
+                widgetMenu.close()
+                host.editRequested()
+                host.overlayEditingId = model.instanceId
+            }
+        }
+        MenuItem {
             icon.name: "ic_fluent_delete_20_regular"
             text: qsTr("Delete")
             onTriggered: widgetContainer.requestRemove()
@@ -417,6 +437,7 @@ Item {
 
     TapHandler {
         acceptedButtons: Qt.RightButton
+        enabled: !widgetContainer.overlayEditing
         onTapped: (point, button) => {
             if (button === Qt.RightButton)
                 widgetMenu.open()
@@ -425,7 +446,7 @@ Item {
 
     // ---- 编辑模式摇晃 ----
     SequentialAnimation on shakeAngle {
-        running: host.editMode
+        running: host.editMode && host.overlayEditingId === ""
         loops: Animation.Infinite
         NumberAnimation { to: 2;  duration: 250; easing.type: Easing.InOutQuad }
         NumberAnimation { to: -2; duration: 250; easing.type: Easing.InOutQuad }

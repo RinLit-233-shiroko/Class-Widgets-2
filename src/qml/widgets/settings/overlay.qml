@@ -1,0 +1,78 @@
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import RinUI
+import ClassWidgets.Plugins
+
+SettingsLayout {
+    SettingCard {
+        Layout.fillWidth: true
+
+        icon.name: "ic_fluent_timer_20_regular"
+        title: qsTr("Carousel interval")
+        description: qsTr("Time each member stays visible before switching to the next, in seconds.")
+
+        SpinBox {
+            id: intervalSpinBox
+            property bool initialized: false
+            from: 1
+            to: 60
+            editable: true
+
+            Component.onCompleted: {
+                var value = Number(settings.interval_ms) / 1000
+                intervalSpinBox.value = isNaN(value) || value <= 0
+                        ? 5 : Math.max(from, Math.min(to, Math.round(value)))
+                initialized = true
+            }
+            onValueChanged: {
+                if (initialized) settings.interval_ms = value * 1000
+            }
+        }
+    }
+
+    SettingCard {
+        Layout.fillWidth: true
+
+        icon.name: "ic_fluent_text_align_center_20_regular"
+        title: qsTr("Frame size mode")
+        description: qsTr("Largest member keeps the frame at the size of the biggest member; Follow current resizes the frame smoothly to the visible member.")
+
+        ComboBox {
+            id: frameModeComboBox
+            property bool initialized: false
+            property var modes: ["max", "auto"]
+
+            model: ListModel {
+                ListElement { text: qsTr("Largest member") }
+                ListElement { text: qsTr("Follow current") }
+            }
+            textRole: "text"
+
+            Component.onCompleted: {
+                var index = modes.indexOf(settings.frame_mode)
+                currentIndex = index >= 0 ? index : 0
+                initialized = true
+            }
+            onCurrentIndexChanged: {
+                if (initialized && currentIndex >= 0)
+                    settings.frame_mode = modes[currentIndex]
+            }
+        }
+    }
+
+    SettingCard {
+        Layout.fillWidth: true
+
+        icon.name: "ic_fluent_arrow_sync_20_regular"
+        title: qsTr("Show switch bar")
+        description: qsTr("Show a switch button on the right edge of the widget to step through members manually.")
+
+        Switch {
+            id: switchBarSwitch
+            onCheckedChanged: settings.show_switch_bar = switchBarSwitch.checked
+            Component.onCompleted: switchBarSwitch.checked = settings.show_switch_bar !== false
+        }
+    }
+
+}

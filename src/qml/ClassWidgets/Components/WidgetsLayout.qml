@@ -13,6 +13,7 @@ Item {
     objectName: "widgetsFlow"
 
     property bool editMode: false
+    property string overlayEditingId: ""
     // 正在拖动小组件
     property bool dragging: false
     property bool hide: false
@@ -105,6 +106,14 @@ Item {
         return listView.itemAtIndex(i)
     }
 
+    function openOverlayMemberDialog(instanceId) {
+        overlayMemberDialogInstance.active = true
+        if (overlayMemberDialogInstance.item) {
+            overlayMemberDialogInstance.item.overlayInstanceId = instanceId
+            overlayMemberDialogInstance.item.open()
+        }
+    }
+
     ListView {
         id: listView
 
@@ -163,6 +172,12 @@ Item {
     WidgetSettingsDialog {
         // 独立 id，避免与 delegate 的同名属性形成自引用
         id: settingsDialogInstance
+    }
+
+    Loader {
+        id: overlayMemberDialogInstance
+        source: "dialogs/AddOverlayMemberDialog.qml"
+        active: false
     }
 
     Component.onCompleted: refreshContentHeight()
