@@ -9,9 +9,11 @@ Widget {
     id: root
     text: {
         AppCentral.translator.language
-        return qsTr("Remaining")
+        return qsTranslate("eventCountdown", "Remaining")
     }
     property var countdown: AppCentral.scheduleRuntime.remainingTime || { "minute": 0, "second": 0 }
+
+    readonly property bool animated: !settings || settings.digit_animation !== false
 
     // 统一布局，用 RowLayout 并根据 miniMode 控制内部排列
     RowLayout {
@@ -41,30 +43,27 @@ Widget {
                 Layout.topMargin: miniMode ? 0 : -4
                 Layout.alignment: Qt.AlignHCenter
 
-                AnimatedDigits {
-                    id: fuzzyMinute
+                Loader {
                     visible: Configs.data.preferences.countdown_precision === "minute"
-                    value: String(Math.ceil((countdown.minute * 60 + countdown.second) / 60))
+                    sourceComponent: root.animated ? fuzzyMinuteAnimated : fuzzyMinuteStatic
                 }
                 Title {
                     visible: Configs.data.preferences.countdown_precision === "minute"
-                    text: qsTr(" min")
+                    text: qsTranslate("eventCountdown", " min")
                 }
 
-                AnimatedDigits {
-                    id: minute
+                Loader {
                     visible: Configs.data.preferences.countdown_precision !== "minute"
-                    value: countdown.minute || "00"
+                    sourceComponent: root.animated ? minuteAnimated : minuteStatic
                 }
                 Title {
                     visible: Configs.data.preferences.countdown_precision !== "minute"
                     Layout.bottomMargin: font.pixelSize * 0.1
                     text: ":"
                 }
-                AnimatedDigits {
-                    id: second
+                Loader {
                     visible: Configs.data.preferences.countdown_precision !== "minute"
-                    value: (countdown.second + "").padStart(2, "0") || "00"
+                    sourceComponent: root.animated ? secondAnimated : secondStatic
                 }
             }
 
@@ -85,6 +84,43 @@ Widget {
                     }
                 }
             }
+        }
+    }
+
+    Component {
+        id: fuzzyMinuteAnimated
+        AnimatedDigits {
+            value: String(Math.ceil((countdown.minute * 60 + countdown.second) / 60))
+        }
+    }
+    Component {
+        id: fuzzyMinuteStatic
+        Title {
+            text: String(Math.ceil((countdown.minute * 60 + countdown.second) / 60))
+        }
+    }
+    Component {
+        id: minuteAnimated
+        AnimatedDigits {
+            value: countdown.minute || "00"
+        }
+    }
+    Component {
+        id: minuteStatic
+        Title {
+            text: countdown.minute || "00"
+        }
+    }
+    Component {
+        id: secondAnimated
+        AnimatedDigits {
+            value: (countdown.second + "").padStart(2, "0") || "00"
+        }
+    }
+    Component {
+        id: secondStatic
+        Title {
+            text: (countdown.second + "").padStart(2, "0") || "00"
         }
     }
 }
