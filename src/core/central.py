@@ -344,6 +344,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         cleanup_steps = (
             ("configuration save", lambda: self._save_config_on_exit()),
             ("update timer stop", lambda: self.union_update_timer.stop()),
+            ("updater cleanup", lambda: self.updater_bridge.shutdown()),
             ("main window release", lambda: self.widgets_window.release()),
             ("auxiliary window release", lambda: self.window_manager.release_all()),
             ("plugin cleanup", lambda: self.plugin_manager.cleanup()),

@@ -1,13 +1,16 @@
 import platform
+import time
+
 from PySide6.QtCore import QObject, Signal, Slot, Property
 from PySide6.QtWidgets import QApplication
 from loguru import logger
 from src import __version__
+from src.core.config.model import RELEASES_SERVERS
 from src.core.storage.directories import INSTALL_PATH, TEMP_PATH
 
 from .downloader import UpdateDownloader
 from .updater import WindowsUpdater
-from .workers import CheckUpdateWorker, DownloadWorker, InstallWorker
+from .workers import CheckUpdateWorker, DownloadWorker, InstallWorker, PingWorker
 
 
 class UpdaterBridge(QObject):
@@ -18,6 +21,7 @@ class UpdaterBridge(QObject):
     updateAvailable = Signal(str, str)
     installReady = Signal(str)
     errorOccurred = Signal(str)
+    pingFinished = Signal(str, bool, float, str)  # url, success, latency_ms, error
 
     def __init__(self, app_central, parent=None):
         super().__init__(parent)
@@ -33,6 +37,7 @@ class UpdaterBridge(QObject):
         self._check_worker = None
         self._download_worker = None
         self._downloader = None
+        self._ping_workers: list[PingWorker] = []
 
         self._latest_version = ""
         self._latest_url = ""
@@ -53,6 +58,11 @@ class UpdaterBridge(QObject):
     @Property(str, notify=errorDetailsChanged)
     def errorDetails(self):
         return self._error_details
+
+    @Property("QVariantMap", constant=True)
+    def releasesServers(self):
+        """预设更新服务器地址，供 QML 复用，避免前后端各维护一份常量。"""
+        return dict(RELEASES_SERVERS)
 
     def _set_status(self, s):
         if self._status != s:
@@ -90,9 +100,64 @@ class UpdaterBridge(QObject):
             text=text_template.format(version=__version__),
         )
 
+    @Slot(str)
+    def pingServer(self, url):
+        """测试更新服务器的响应延迟，结果通过 pingFinished 返回。"""
+        self._start_ping(url, require_json=True)
+
+    @Slot(str)
+    def pingUrl(self, url):
+        """测试 GitHub 或镜像源根地址的响应延迟；这类地址不是 JSON，只校验能否访问。"""
+        self._start_ping(url, require_json=False)
+
+    def _start_ping(self, url, require_json):
+        url = (url or "").strip()
+        if not url:
+            logger.warning("[UpdaterBridge] Ping failed: empty URL")
+            self.pingFinished.emit(url, False, 0.0, "Empty URL")
+            return
+
+        worker = PingWorker(url, require_json)
+        self._ping_workers.append(worker)
+        worker.finished.connect(self._on_ping_finished)
+        worker.finished.connect(worker.deleteLater)
+        worker.start()
+
+    def _on_ping_finished(self, url, success, latency, error):
+        worker = self.sender()
+        if worker in self._ping_workers:
+            self._ping_workers.remove(worker)
+        if success:
+            logger.debug(f"[UpdaterBridge] Ping succeeded: {url} ({latency:.0f} ms)")
+        else:
+            logger.warning(f"[UpdaterBridge] Ping failed: {url}: {error}")
+        self.pingFinished.emit(url, success, latency, error)
+
+    def shutdown(self):
+        """停止仍在运行的调试线程，避免退出时销毁运行中的 QThread。"""
+        workers = list(self._ping_workers)
+        self._ping_workers.clear()
+        deadline = time.monotonic() + 1.5
+        for worker in workers:
+            if not worker.isRunning():
+                continue
+            worker.requestInterruption()
+            remaining_ms = int(max(0.0, deadline - time.monotonic()) * 1000)
+            if remaining_ms and worker.wait(remaining_ms):
+                continue
+            logger.warning("[UpdaterBridge] Ping worker did not stop in time; terminating")
+            worker.terminate()
+            worker.wait(500)
+
     @Slot()
     def checkUpdate(self):
         """检查更新：所有平台通用"""
+        releases_url = self.configs.network.resolve_releases_url()
+        if not releases_url:
+            self._set_status("Error")
+            self._set_error("No update server configured.")
+            return
+
         self._set_status("Checking")
         channel = self.configs.app.channel
         current_version = self.configs.app.version
@@ -100,9 +165,9 @@ class UpdaterBridge(QObject):
         if self._check_worker and self._check_worker.isRunning():
             self._check_worker.terminate()
 
-        self._check_worker = CheckUpdateWorker(channel, current_version)
+        self._check_worker = CheckUpdateWorker(channel, current_version, releases_url)
         self._check_worker.finished.connect(self._on_check_finished)
-        self._check_worker.start(self.app_central.configs.network.releases_url)
+        self._check_worker.start()
 
     def _on_check_finished(self, status, version, url_or_err):
         if status == "Error":
