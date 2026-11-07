@@ -27,8 +27,11 @@ on:
         type: choice
         options:
           - None
-          - 123Pan
+          # Bye, 123Pan
+          # - 123Pan
           - OneDrive
+          # Hello, Cloudflare R2
+          - R2
           - Both
       is_signing:
         description: 'Sign Windows executable (SignPath)'
@@ -444,3 +447,66 @@ jobs:
           curl -u "${{ secrets.ONEDRIVE_USER }}:${{ secrets.ONEDRIVE_PASS }}" \
             -T "dist/ClassWidgets-2-macOS-ARM64.dmg" \
             "https://app.koofr.net/dav/1Drv/Class-Widgets/${ENCODED_VERSION}/ClassWidgets-2-macOS-ARM64.dmg"
+
+      - name: 📤 Upload packages to Cloudflare R2
+        # 推送/手动+上传 ==> 上传
+        if: success() &&
+          (github.event_name == 'push' ||
+          github.event.inputs.upload2webdav == 'R2' ||
+          github.event.inputs.upload2webdav == 'Both')
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+          R2_ENDPOINT: https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
+          R2_BUCKET: ${{ vars.R2_BUCKET }}
+          R2_BUCKET_2: ${{ vars.R2_BUCKET_2 }}
+        run: |
+          VERSION="${{ steps.version.outputs.version_tag }}"
+
+          R2_BUCKETS=("$R2_BUCKET")
+          if [[ -n "$R2_BUCKET_2" ]]; then
+            R2_BUCKETS+=("$R2_BUCKET_2")
+          fi
+
+          if [[ -z "${R2_BUCKETS[0]}" ]]; then
+            echo "::error::R2 bucket is not configured"
+            exit 1
+          fi
+
+          upload_to_r2() {
+            local file="$1"
+            if [[ ! -f "$file" ]]; then
+              echo "::error::Missing file: $file"
+              exit 1
+            fi
+
+            local name
+            name="$(basename "$file")"
+
+            for bucket in "${R2_BUCKETS[@]}"; do
+              local key="${VERSION}/${name}"
+              echo "Uploading $file -> s3://${bucket}/${key}"
+              aws s3 cp "$file" "s3://${bucket}/${key}" \
+                --endpoint-url "$R2_ENDPOINT" \
+                --checksum-algorithm CRC32 \
+                --only-show-errors
+            done
+          }
+
+          upload_to_r2 "dist/ClassWidgets-2-Windows.zip"
+
+          installer_found=false
+          for installer in dist/ClassWidgets-*-Win-Installer.exe; do
+            if [[ -f "$installer" ]]; then
+              installer_found=true
+              upload_to_r2 "$installer"
+            fi
+          done
+          if [[ "$installer_found" == "false" ]]; then
+            echo "::error::Missing Windows installer: dist/ClassWidgets-*-Win-Installer.exe"
+            exit 1
+          fi
+
+          upload_to_r2 "dist/ClassWidgets-2-macOS-X64.dmg"
+          upload_to_r2 "dist/ClassWidgets-2-macOS-ARM64.dmg"
