@@ -80,10 +80,28 @@ Item {
     Component.onCompleted: editMode = widgetsLayout.count === 0
 
     Behavior on hideProgress {
-        NumberAnimation { duration: 420; easing.type: Easing.OutQuint }
+        NumberAnimation {
+            id: hideProgressAnim
+            duration: 420
+            easing.type: Easing.OutQuint
+        }
     }
     Behavior on editProgress {
         NumberAnimation { duration: 450; easing.type: Easing.OutQuint }
+    }
+
+    // 显示/隐藏动画期间，窗口遮罩由 Python 端临时清空并在动画结束后恢复。
+    // 这样避免逐帧 setMask 在 Windows 上触发整窗重绘。
+    property bool maskAnimationActive: false
+
+    function refreshMaskAnimationState() {
+        maskAnimationActive = hideProgressAnim.running
+        contentGeometryChanged()
+    }
+
+    Connections {
+        target: hideProgressAnim
+        function onRunningChanged() { widgetsContainer.refreshMaskAnimationState() }
     }
 
     // ============================================================
@@ -168,10 +186,10 @@ Item {
         return visibleY + (hiddenY - visibleY) * hideProgress + dragOffsetY
     }
 
-    onXChanged: contentGeometryChanged()
-    onYChanged: contentGeometryChanged()
-    onWidthChanged: contentGeometryChanged()
-    onHeightChanged: contentGeometryChanged()
+    onXChanged: if (!maskAnimationActive) contentGeometryChanged()
+    onYChanged: if (!maskAnimationActive) contentGeometryChanged()
+    onWidthChanged: if (!maskAnimationActive) contentGeometryChanged()
+    onHeightChanged: if (!maskAnimationActive) contentGeometryChanged()
 
     Behavior on opacity {
         NumberAnimation { duration: 200; easing.type: Easing.InOutQuad }

@@ -120,10 +120,10 @@ QQW.Window {
         }
 
         signal geometryChanged()
-        onXChanged: geometryChanged()
-        onYChanged: geometryChanged()
-        onWidthChanged: geometryChanged()
-        onHeightChanged: geometryChanged()
+        onXChanged: if (!widgetsLoader.maskAnimationActive) geometryChanged()
+        onYChanged: if (!widgetsLoader.maskAnimationActive) geometryChanged()
+        onWidthChanged: if (!widgetsLoader.maskAnimationActive) geometryChanged()
+        onHeightChanged: if (!widgetsLoader.maskAnimationActive) geometryChanged()
         onEditModeChanged: geometryChanged()
         onMenuVisibleChanged: geometryChanged()
         onContentGeometryChanged: geometryChanged()

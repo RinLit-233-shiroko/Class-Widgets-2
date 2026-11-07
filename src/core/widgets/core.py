@@ -35,6 +35,7 @@ class WidgetsWindow(ReleasableWindow, QObject):
 
         self.engine.objectCreated.connect(self.on_qml_ready, type=Qt.ConnectionType.QueuedConnection)
         self.engine.warnings.connect(self._on_qml_warnings)
+        self._mask_animation_active = False
 
     def _start_listening(self):
         self.timer = QTimer(self)
@@ -250,11 +251,27 @@ class WidgetsWindow(ReleasableWindow, QObject):
             self._apply_empty_mask()
             return
 
+        # 遮罩跟随显示/隐藏动画逐帧变化时，Windows 的 SetWindowRgn
+        # 会让整个全屏分层窗口重绘，造成短时 GPU 峰值。动画期间临时
+        # 清空遮罩并把窗口设为输入穿透，动画结束后再恢复精确遮罩。
+        animation_active = bool(widgets_loader.property("maskAnimationActive") or False)
+        if animation_active:
+            if not self._mask_animation_active:
+                self._mask_animation_active = True
+                self.root_window.setMask(QRegion())
+                self.root_window.setFlag(Qt.WindowTransparentForInput, True)
+            return
+
+        was_animating = self._mask_animation_active
+        self._mask_animation_active = False
+
         menu_show = widgets_loader.property("menuVisible") or False
         edit_mode = widgets_loader.property("editMode") or False
         if menu_show or edit_mode:
             self.interactive_rect = QRegion()
             self.root_window.setMask(QRegion())
+            if was_animating:
+                self.root_window.setFlag(Qt.WindowTransparentForInput, False)
             return
 
         # 小组件在 WidgetsLayout（水平 ListView）中。ListView 会把 delegate 挂到自己的
@@ -317,8 +334,12 @@ class WidgetsWindow(ReleasableWindow, QObject):
             # minimal non-empty mask until a widget has a valid geometry.
             mask = QRegion(QRect(0, 0, 1, 1))
         self.root_window.setMask(mask)
+        if was_animating:
+            self.root_window.setFlag(Qt.WindowTransparentForInput, False)
 
     def update_mouse_state(self):
+        if self._mask_animation_active:
+            return  # 动画期间窗口处于输入穿透状态
         if not self.interactive_rect:
             return  # 没有 mask 就不处理
         if not self.app_central.configs.interactions.hover_fade:
