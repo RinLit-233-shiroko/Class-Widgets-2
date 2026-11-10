@@ -494,15 +494,6 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         finally:
             self._syncing_telemetry = False
 
-    @Slot(result=bool)
-    def completeTutorial(self) -> bool:
-        self.configs.set("app.tutorial_completed", True)
-        if not self.configs.app.tutorial_completed or not self.configs.save(silent=True):
-            self.configs.set("app.tutorial_completed", False)
-            return False
-        self.restart("--update-done")
-        return self._restart_requested
-
     @Slot()
     @Slot(str)
     def restart(self, extra_argument: Optional[str] = None):

@@ -23,8 +23,7 @@ Item {
         if (tutorial.createShortcutOnComplete && Qt.platform.os === "windows")
             UtilsBackend.createDesktopShortcut()
 
-        if (!tutorial.completeTutorial())
-            completing = false
+        tutorial.completeTutorial()
     }
 
     ColumnLayout {
