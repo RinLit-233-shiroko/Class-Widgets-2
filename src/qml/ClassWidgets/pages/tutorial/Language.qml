@@ -13,7 +13,7 @@ TutorialComponents.TutorialPage {
     title: qsTr("Choose your language")
     description: qsTr("Choose a language. You can refine every setting later.")
     currentStep: 1
-    totalSteps: 6
+    totalSteps: 7
     icon.source: PathManager.images("tutorial/cw2_lang.png")
     // visualTitle: qsTr("A little more you")
     // visualSubtitle: qsTr("Theme and language")

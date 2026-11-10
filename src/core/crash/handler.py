@@ -28,12 +28,24 @@ class CrashHandler(QObject):
         self._previous_excepthook: Optional[Callable] = sys.excepthook
         self._previous_thread_excepthook: Optional[Callable] = threading.excepthook
         self._context_provider: Optional[Callable[[], dict]] = None
+        self._exception_reporter: Callable[
+            [tuple[type[BaseException], BaseException | None, TracebackType | None], CrashReport], None
+        ] | None = None
         self._handling = False
 
     # ---------------- setup ----------------
     def set_context_provider(self, provider: Callable[[], dict]) -> None:
         """Register a callable returning extra report fields (uptime, plugins...)."""
         self._context_provider = provider
+
+    def set_exception_reporter(
+        self,
+        reporter: Callable[
+            [tuple[type[BaseException], BaseException | None, TracebackType | None], CrashReport], None
+        ],
+    ) -> None:
+        """注入可选的远程上报，不让崩溃处理依赖具体 SDK。"""
+        self._exception_reporter = reporter
 
     def install(self) -> None:
         if self._installed:
@@ -48,9 +60,9 @@ class CrashHandler(QObject):
     def uninstall(self) -> None:
         if not self._installed:
             return
-        if sys.excepthook is self._excepthook and self._previous_excepthook:
+        if sys.excepthook == self._excepthook and self._previous_excepthook:
             sys.excepthook = self._previous_excepthook
-        if threading.excepthook is self._thread_excepthook and self._previous_thread_excepthook:
+        if threading.excepthook == self._thread_excepthook and self._previous_thread_excepthook:
             threading.excepthook = self._previous_thread_excepthook
         self._installed = False
 
@@ -80,7 +92,7 @@ class CrashHandler(QObject):
         *,
         source: str = "",
     ) -> Optional[CrashReport]:
-        if exc_type is None:
+        if exc_type is None or issubclass(exc_type, (KeyboardInterrupt, SystemExit)):
             return None
 
         context: dict = {}
@@ -99,7 +111,12 @@ class CrashHandler(QObject):
             return None
 
         self._print_traceback(exc_type, exc_value, exc_tb)
-        logger.critical("Unhandled exception: {}", report.headline)
+        logger.bind(telemetry_skip=True).critical("Unhandled exception: {}", report.headline)
+        if self._exception_reporter is not None and not self._handling:
+            try:
+                self._exception_reporter((exc_type, exc_value, exc_tb), report)
+            except Exception:
+                logger.warning("Remote crash reporting failed; keeping the local report")
         self._dispatch(report)
         return report
 

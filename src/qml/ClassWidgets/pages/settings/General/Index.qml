@@ -198,4 +198,62 @@ FluentPage {
             }
         }
     }
+
+    ColumnLayout {
+        Layout.fillWidth: true
+        spacing: 4
+        Text {
+            typography: Typography.BodyStrong
+            text: qsTr("Privacy")
+        }
+
+        SettingExpander {
+            objectName: "telemetrySettingsCard"
+            Layout.fillWidth: true
+            title: qsTr("Telemetry & diagnostics")
+            description: qsTr("Enable anonymous diagnostics")
+            icon.name: "ic_fluent_data_usage_20_regular"
+
+            action: Switch {
+                objectName: "telemetrySwitch"
+                checked: Configs.data.telemetry.enabled
+                enabled: !Configs.isKeyLocked("telemetry.enabled")
+                onToggled: {
+                    AppCentral.setTelemetryEnabled(checked)
+                    checked = Qt.binding(function() { return Configs.data.telemetry.enabled })
+                }
+            }
+
+            SettingItem {
+                id: installationIdItem
+                objectName: "telemetryInstallationIdItem"
+                visible: Configs.data.telemetry.enabled
+                actionIcon.name: "ic_fluent_copy_20_regular"
+                clickable: true
+                onClicked: UtilsBackend.copyToClipboard(Configs.data.telemetry.installation_id)
+
+                RowLayout {
+                    Layout.fillWidth: true
+                    // 抵消 SettingItem 在空标题旁保留的间距，与相邻设置项标题对齐。
+                    Layout.leftMargin: -16
+                    spacing: 16
+
+                    Text {
+                        Layout.fillWidth: true
+                        text: qsTr("Installation ID")
+                    }
+
+                    Text {
+                        objectName: "telemetryInstallationId"
+                        Layout.maximumWidth: installationIdItem.width * 0.6
+                        Layout.alignment: Qt.AlignRight
+                        font.family: "Consolas"
+                        text: Configs.data.telemetry.installation_id
+                        elide: Text.ElideRight
+                        opacity: 0.8
+                    }
+                }
+            }
+        }
+    }
 }

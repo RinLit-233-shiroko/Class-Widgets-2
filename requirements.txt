@@ -15,3 +15,4 @@ icalendar~=7.3.0
 recurring-ical-events~=3.8.2
 tzdata~=2026.4
 platformdirs~=4.11.3
+sentry-sdk~=2.73.0

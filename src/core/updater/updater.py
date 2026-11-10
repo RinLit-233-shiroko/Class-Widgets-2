@@ -1,3 +1,4 @@
+from collections.abc import Callable
 import os
 import shutil
 import stat
@@ -18,7 +19,13 @@ class WindowsUpdater:
     def __init__(self, temp_dir: Path):
         self.temp_dir = temp_dir
 
-    def apply_update(self, zip_path: Path, target_dir: Path):
+    def apply_update(
+        self,
+        zip_path: Path,
+        target_dir: Path,
+        *,
+        before_exit: Callable[[], None] | None = None,
+    ) -> None:
         target_dir = Path(target_dir).resolve()
         # 解压到临时目录
         extract_dir = self.temp_dir / "extracted"
@@ -67,4 +74,6 @@ class WindowsUpdater:
             creationflags=subprocess.CREATE_NO_WINDOW,  # 静默执行w
             close_fds=True
         )
+        if before_exit is not None:
+            before_exit()
         os._exit(0)

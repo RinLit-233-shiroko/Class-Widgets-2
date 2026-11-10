@@ -124,6 +124,10 @@ class CrashReport:
     @property
     def summary_text(self) -> str:
         """Compact, clipboard friendly version of the report."""
+        return self.format_summary()
+
+    def format_summary(self, *, installation_id: str = "") -> str:
+        """Format report metadata before the traceback, with an optional installation ID."""
         lines = [
             self.headline,
             "",
@@ -137,6 +141,8 @@ class CrashReport:
             f"Source: {self.source or '-'}",
             f"Time: {self.occurred_at:%Y-%m-%d %H:%M:%S}",
         ]
+        if installation_id:
+            lines.append(f"Installation ID: {installation_id}")
         if self.log_dir:
             lines.append(f"Logs: {self.log_dir}")
         if self.diagnosis.blames_plugin:

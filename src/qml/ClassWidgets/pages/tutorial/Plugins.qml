@@ -30,8 +30,8 @@ TutorialComponents.TutorialPage {
 
     title: qsTr("Recommended plugins")
     description: qsTr("Pick certified plugins from Plugin Plaza to install with your first setup.")
-    currentStep: 6
-    totalSteps: 6
+    currentStep: 7
+    totalSteps: 7
     fillOperationHeight: true
     managesNextNavigation: true
     nextText: installingSelection
