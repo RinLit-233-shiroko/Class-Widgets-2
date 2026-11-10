@@ -198,26 +198,7 @@ ApplicationWindow {
     }
 
     function completeTutorial() {
-        if (!AppCentral.completeTutorial()) {
-            completionErrorDialog.open()
-            return false
-        }
-        return true
-    }
-
-    property Dialog completionErrorDialog: Dialog {
-        parent: Overlay.overlay
-        anchors.centerIn: parent
-        modal: true
-        title: qsTr("Setup could not be completed")
-        width: 390
-        standardButtons: Dialog.Ok
-
-        Text {
-            Layout.fillWidth: true
-            wrapMode: Text.WordWrap
-            text: qsTr("Unable to save your settings or restart Class Widgets. Please try again.")
-        }
+        return AppCentral.completeTutorial()
     }
 
     StackView {
