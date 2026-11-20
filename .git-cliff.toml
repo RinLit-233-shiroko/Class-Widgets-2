@@ -85,7 +85,7 @@ for file in "$@"; do
     links="$links[GitHub](https://github.com/rinlit-233-shiroko/class-widgets-2/releases/download/$tag/$name) "
   fi
   case "$targets" in
-    R2|Both) links="$links[R2 (美国)](https://cw2.helloswx.top/$tag/$name) [R2 (亚太)](https://cw2-apac.helloswx.top/$tag/$name) " ;;
+    R2|Both) links="$links[R2](https://cw2.helloswx.top/$tag/$name) " ;;
   esac
   case "$targets" in
     OneDrive|Both) links="$links[OneDrive](https://dl.cw.helloswx.pp.ua/api/raw/?path=/$tag/$name) " ;;

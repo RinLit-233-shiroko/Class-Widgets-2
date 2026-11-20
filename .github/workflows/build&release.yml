@@ -460,16 +460,10 @@ jobs:
           AWS_DEFAULT_REGION: auto
           R2_ENDPOINT: https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
           R2_BUCKET: ${{ vars.R2_BUCKET }}
-          R2_BUCKET_2: ${{ vars.R2_BUCKET_2 }}
         run: |
           VERSION="${{ steps.version.outputs.version_tag }}"
 
-          R2_BUCKETS=("$R2_BUCKET")
-          if [[ -n "$R2_BUCKET_2" ]]; then
-            R2_BUCKETS+=("$R2_BUCKET_2")
-          fi
-
-          if [[ -z "${R2_BUCKETS[0]}" ]]; then
+          if [[ -z "$R2_BUCKET" ]]; then
             echo "::error::R2 bucket is not configured"
             exit 1
           fi
@@ -483,15 +477,12 @@ jobs:
 
             local name
             name="$(basename "$file")"
-
-            for bucket in "${R2_BUCKETS[@]}"; do
-              local key="${VERSION}/${name}"
-              echo "Uploading $file -> s3://${bucket}/${key}"
-              aws s3 cp "$file" "s3://${bucket}/${key}" \
-                --endpoint-url "$R2_ENDPOINT" \
-                --checksum-algorithm CRC32 \
-                --only-show-errors
-            done
+            local key="${VERSION}/${name}"
+            echo "Uploading $file -> s3://${R2_BUCKET}/${key}"
+            aws s3 cp "$file" "s3://${R2_BUCKET}/${key}" \
+              --endpoint-url "$R2_ENDPOINT" \
+              --checksum-algorithm CRC32 \
+              --only-show-errors
           }
 
           upload_to_r2 "dist/ClassWidgets-2-Windows.zip"
