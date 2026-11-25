@@ -53,6 +53,7 @@ from src.core.updater import UpdaterBridge
 from src.core.utils import AppTranslator, UtilsBackend
 from src.core.utils.instance_locker import SingleInstanceGuard
 from src.core.widgets import WidgetsWindow, WidgetListModel
+from src.core.widgets.text_avoidance import TextAvoidanceDetector
 from src.core.automations.manager import AutomationManager
 from src.core.windows.manager import AppWindowManager
 
@@ -215,6 +216,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
 
     def _initialize_ui_components(self):
         """初始化启动必需的UI组件"""
+        self.text_avoidance: TextAvoidanceDetector = TextAvoidanceDetector(self)
         self.widgets_window: WidgetsWindow = WidgetsWindow(self)
         self.widgets_window.qmlReady.connect(self._schedule_startup_swap_restore_prompt)
         self.theme_recovery = ThemeRecoveryController(
@@ -344,6 +346,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         cleanup_steps = (
             ("configuration save", lambda: self._save_config_on_exit()),
             ("update timer stop", lambda: self.union_update_timer.stop()),
+            ("text avoidance stop", lambda: self.text_avoidance.stop()),
             ("main window release", lambda: self.widgets_window.release()),
             ("auxiliary window release", lambda: self.window_manager.release_all()),
             ("plugin cleanup", lambda: self.plugin_manager.cleanup()),
@@ -457,6 +460,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         context.setContextProperty("PathManager", self.path_manager)
         context.setContextProperty("ClassSwapManager", self._class_swap_manager)
         context.setContextProperty("UtilsBackend", self.utils_backend)
+        context.setContextProperty("TextAvoidance", self.text_avoidance)
 
     @staticmethod
     def clean_qml_context(window):
@@ -472,6 +476,7 @@ class AppCentral(QObject):  # Class Widgets 的中枢
         context.setContextProperty("WindowManager", None)
         context.setContextProperty("PathManager", None)
         context.setContextProperty("UtilsBackend", None)
+        context.setContextProperty("TextAvoidance", None)
         context.setContextProperty("backend", None)
 
     def _load_schedule(self) -> None:

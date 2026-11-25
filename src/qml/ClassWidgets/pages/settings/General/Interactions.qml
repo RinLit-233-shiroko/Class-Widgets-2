@@ -204,9 +204,77 @@ FluentPage {
                 onClicked: exemptPopup.open()
             }
         }
+
+        SettingExpander {
+            id: textAvoidExpander
+            Layout.fillWidth: true
+            // 依赖 Windows 的窗口捕获与系统 OCR
+            visible: Qt.platform.os === "windows"
+            icon.name: "ic_fluent_text_case_title_20_regular"
+            title: qsTr("Fade Widgets Over Text")
+            description: qsTr("Detect text under widgets and fade only the widgets covering it. Works with any app, including text inside images.")
+
+            action: Switch {
+                id: textAvoidSwitch
+                enabled: !Configs.isKeyLocked("interactions.hide.text_avoid")
+                    && (typeof TextAvoidance === "undefined"
+                        || !TextAvoidance || TextAvoidance.available)
+                onCheckedChanged: Configs.set("interactions.hide.text_avoid", checked)
+                Component.onCompleted: checked = Configs.data.interactions.hide.text_avoid
+            }
+
+            SettingItem {
+                title: qsTr("Opacity over text")
+                description: qsTr("This opacity is applied only while text is underneath a widget")
+                enabled: textAvoidSwitch.checked
+
+                RowLayout {
+                    spacing: 8
+
+                    Text {
+                        Layout.alignment: Qt.AlignVCenter
+                        text: Math.round(textAvoidOpacitySlider.value * 100) + "%"
+                    }
+                    Slider {
+                        id: textAvoidOpacitySlider
+                        Layout.preferredWidth: 160
+                        Layout.alignment: Qt.AlignVCenter
+                        from: 0.05
+                        to: 0.9
+                        stepSize: 0.05
+                        value: Configs.data.interactions.hide.text_avoid_opacity
+                        enabled: !Configs.isKeyLocked("interactions.hide.text_avoid_opacity")
+                        toolTip.text: Math.round(value * 100) + "%"
+                        // 拖动时不写配置：每个值都触发全量配置失效会让滑条卡顿。
+                        // 松手（或键盘调整停顿）后再提交一次。
+                        onValueChanged: if (!pressed)
+                            textAvoidOpacityCommit.restart()
+                        onPressedChanged: if (!pressed)
+                            textAvoidOpacityCommit.restart()
+                    }
+                }
+            }
+
+            SettingItem {
+                visible: typeof TextAvoidance !== "undefined"
+                    && TextAvoidance && !TextAvoidance.available
+                description: qsTr("Text recognition is unavailable on this system.")
+            }
+        }
     }
 
     NeverHideCoursesPopup {
         id: exemptPopup
+    }
+
+    Timer {
+        id: textAvoidOpacityCommit
+        interval: 200
+        onTriggered: {
+            if (Configs.data.interactions.hide.text_avoid_opacity
+                    !== textAvoidOpacitySlider.value)
+                Configs.set("interactions.hide.text_avoid_opacity",
+                            textAvoidOpacitySlider.value)
+        }
     }
 }

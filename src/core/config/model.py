@@ -128,6 +128,8 @@ class HideInteractionsConfig(ConfigBaseModel):
     maximized: bool = False  # 窗口最大化
     fullscreen: bool = False   # 窗口全屏
     action: TapAction = TapAction.HIDE  # 触发隐藏时的行为（隐藏 / 切换迷你模式 / 浮窗）
+    text_avoid: bool = False  # 防止遮挡文字：小组件下方有文字时自动降低不透明度
+    text_avoid_opacity: float = 0.35  # 被文字遮挡时的不透明度
     no_hide_subjects: list[str] = Field(default_factory=list)  # 永不自动隐藏的课程名称（对所有课表、所有隐藏触发条件生效）
     last_exempt_schedule: str = ""  # “永不自动隐藏”选择器上次查看的课表（仅用于恢复界面状态）
 
