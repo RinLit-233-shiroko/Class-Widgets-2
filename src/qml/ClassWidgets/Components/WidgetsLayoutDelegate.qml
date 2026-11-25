@@ -59,9 +59,28 @@ Item {
     property bool removing: false
     property bool initialized: false   // 入场只播一次，避免切主题重播
 
+    // 防挡文字：被文字压住时降低整个组件的不透明度，悬停时恢复。
+    readonly property bool textOccluded: {
+        if (!widgetInstanceId || typeof TextAvoidance === "undefined" || !TextAvoidance)
+            return false
+        const occluded = TextAvoidance.occludedWidgets
+        return !!(occluded && occluded[widgetInstanceId] === true)
+    }
+    property real textAvoidOpacity: {
+        if (!textOccluded)
+            return 1.0
+        if (loader.item && loader.item.hovered === true)
+            return 1.0
+        const value = Configs.data.interactions.hide.text_avoid_opacity
+        return typeof value === "number" ? value : 0.35
+    }
+    Behavior on textAvoidOpacity {
+        NumberAnimation { duration: 180; easing.type: Easing.InOutQuad }
+    }
+
     // 隐藏状态不再整体降透明度：收起完全由位置/浮窗表达，
     // opacity 只负责出现/消失动画（拖动时给一点提示性半透明）。
-    opacity: (dragHandler.active ? 0.75 : 1) * visOpacity
+    opacity: (dragHandler.active ? 0.75 : 1) * visOpacity * textAvoidOpacity
     scale: visScale * dragRaiseScale
     rotation: host.editMode ? shakeAngle : 0
     z: dragHandler.active ? 1 : 0

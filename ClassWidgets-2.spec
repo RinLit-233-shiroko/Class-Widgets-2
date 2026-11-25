@@ -51,13 +51,20 @@ for mod in stdlib_modules:
 
 # 原项目中指定的 hiddenimports
 base_hiddenimports = [
-    'sqlite3', 
+    'sqlite3',
     'tkinter',
     'xml.etree.ElementTree',
     '_elementtree',
     'mmap',
     'winsound',
 ]
+
+# WinRT 是命名空间式包，OCR 与图像解码模块需显式收集
+if sys.platform == 'win32':
+    try:
+        base_hiddenimports += collect_submodules('winrt')
+    except Exception:
+        pass
 
 # 合并去重
 combined_hiddenimports = list(set(base_hiddenimports) | all_stdlib_imports)

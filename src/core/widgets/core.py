@@ -1,4 +1,5 @@
-﻿from pathlib import Path
+﻿import sys
+from pathlib import Path
 from PySide6.QtCore import QObject, Signal, QRect, QPointF, Qt, QTimer
 from PySide6.QtGui import QRegion, QCursor
 from loguru import logger
@@ -228,6 +229,7 @@ class WidgetsWindow(ReleasableWindow, QObject):
         self.interactive_rect = QRegion()
         if self.root_window:
             self.root_window.setMask(QRegion(QRect(0, 0, 1, 1)))
+        self._update_text_avoidance_rects({})
 
     def schedule_mask_update(self):
         if self._mask_update_pending:
@@ -243,6 +245,7 @@ class WidgetsWindow(ReleasableWindow, QObject):
             return
 
         mask = QRegion()
+        text_avoid_rects: dict[str, QRect] = {}
         widgets_loader = self.root_window.findChild(QObject, "widgetsLoader")
         if not widgets_loader:
             # An empty region clears the native mask and makes this full-screen
@@ -255,6 +258,7 @@ class WidgetsWindow(ReleasableWindow, QObject):
         if menu_show or edit_mode:
             self.interactive_rect = QRegion()
             self.root_window.setMask(QRegion())
+            self._update_text_avoidance_rects({})
             return
 
         # 小组件在 WidgetsLayout（水平 ListView）中。ListView 会把 delegate 挂到自己的
@@ -274,14 +278,17 @@ class WidgetsWindow(ReleasableWindow, QObject):
                             int(child.width()),
                             int(child.height()),
                         )
-                        yield rect
+                        instance_id = child.property("widgetInstanceId")
+                        yield str(instance_id or ""), rect
                     else:
                         yield from visit(child)
 
             found = False
-            for rect in visit(widgets_layout):
+            for instance_id, rect in visit(widgets_layout):
                 found = True
                 mask = mask.united(QRegion(rect))
+                if instance_id:
+                    text_avoid_rects[instance_id] = rect
 
             # 兜底：若遍历未找到任何 delegate（例如 QML 层级变动），
             # 退化为使用容器自身几何。否则 mask 会是空的，
@@ -317,6 +324,52 @@ class WidgetsWindow(ReleasableWindow, QObject):
             # minimal non-empty mask until a widget has a valid geometry.
             mask = QRegion(QRect(0, 0, 1, 1))
         self.root_window.setMask(mask)
+        self._update_text_avoidance_rects(text_avoid_rects)
+
+    def _update_text_avoidance_rects(self, scene_rects: dict[str, QRect]) -> None:
+        """把小组件的场景矩形换算成物理屏幕坐标，交给文字遮挡检测线程。"""
+        detector = getattr(self.app_central, "text_avoidance", None)
+        if detector is None:
+            return
+        try:
+            hide_cfg = self.app_central.configs.interactions.hide
+            enabled = bool(hide_cfg.text_avoid) and not bool(hide_cfg.state)
+        except Exception:  # noqa: BLE001
+            enabled = False
+        if (
+            not enabled
+            or not scene_rects
+            or not self.root_window
+            or not self.root_window.isVisible()
+        ):
+            detector.set_widget_rects({})
+            return
+        if sys.platform != "win32":
+            detector.set_widget_rects({})
+            return
+        try:
+            import win32gui
+
+            hwnd = int(self.root_window.winId())
+            left, top, right, bottom = win32gui.GetWindowRect(hwnd)
+            scale_x = (right - left) / max(1, self.root_window.width())
+            scale_y = (bottom - top) / max(1, self.root_window.height())
+            rects = {}
+            for instance_id, rect in scene_rects.items():
+                width = round(rect.width() * scale_x)
+                height = round(rect.height() * scale_y)
+                if width <= 0 or height <= 0:
+                    continue
+                rects[instance_id] = (
+                    round(left + rect.x() * scale_x),
+                    round(top + rect.y() * scale_y),
+                    width,
+                    height,
+                )
+            detector.set_widget_rects(rects)
+        except Exception as exc:  # noqa: BLE001
+            logger.debug("Text avoidance: failed to publish widget rects: {}", exc)
+            detector.set_widget_rects({})
 
     def update_mouse_state(self):
         if not self.interactive_rect:

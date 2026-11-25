@@ -23,7 +23,15 @@ dependencies = [
   "icalendar~=7.3.0",
   "recurring-ical-events~=3.8.2",
   "tzdata~=2026.4",
-  "platformdirs"
+  "platformdirs",
+  # 防挡文字：系统自带 OCR（仅 Windows）
+  "winrt-runtime>=4.0; sys_platform == 'win32'",
+  "winrt-Windows.Foundation>=4.0; sys_platform == 'win32'",
+  "winrt-Windows.Globalization>=4.0; sys_platform == 'win32'",
+  "winrt-Windows.Graphics.Imaging>=4.0; sys_platform == 'win32'",
+  "winrt-Windows.Media.Ocr>=4.0; sys_platform == 'win32'",
+  "winrt-Windows.Storage>=4.0; sys_platform == 'win32'",
+  "winrt-Windows.Storage.Streams>=4.0; sys_platform == 'win32'"
 ]
 description = "Class Widgets 2, The Next Class Schedule."
 dynamic = ["version"]
